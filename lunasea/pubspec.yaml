@@ -1,5 +1,5 @@
-name: lunasea
-description: Self-Hosted Controller
+name: arrpilot
+description: Self-Hosted Media Server Controller
 version: 11.0.0+1
 publish_to: "none"
 environment:
@@ -71,9 +71,9 @@ flutter:
     - assets/images/
     - assets/localization/
   fonts:
-    - family: LunaBrandIcons
+    - family: ArrPilotBrandIcons
       fonts:
-        - asset: assets/LunaBrandIcons.ttf
+        - asset: assets/ArrPilotBrandIcons.ttf
 flutter_icons:
   android: true
   ios: true
@@ -86,11 +86,11 @@ flutter_native_splash:
 msix_config:
   architecture: x64
   capabilities: internetClientServer,privateNetworkClientServer
-  display_name: LunaSea
+  display_name: ArrPilot
   enable_at_startup: false
-  execution_alias: lunasea
-  identity_name: app.lunasea.lunasea
+  execution_alias: arrpilot
+  identity_name: app.arrpilot.arrpilot
   install_certificate: false
   logo_path: assets\icon\icon_windows.png
-  output_name: lunasea-windows-amd64
+  output_name: arrpilot-windows-amd64
   store: false
