@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:arrpilot/database/tables/lunasea.dart';
+import 'package:arrpilot/database/tables/arrpilot.dart';
 import 'package:arrpilot/modules.dart';
 import 'package:arrpilot/system/platform.dart';
 

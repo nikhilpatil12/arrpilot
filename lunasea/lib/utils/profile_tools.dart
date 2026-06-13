@@ -1,6 +1,6 @@
 import 'package:arrpilot/database/models/profile.dart';
 import 'package:arrpilot/database/box.dart';
-import 'package:arrpilot/database/tables/lunasea.dart';
+import 'package:arrpilot/database/tables/arrpilot.dart';
 import 'package:arrpilot/system/state.dart';
 import 'package:arrpilot/router/router.dart';
 import 'package:arrpilot/system/logger.dart';

@@ -5,7 +5,7 @@ import 'package:arrpilot/database/models/deprecated.dart';
 import 'package:arrpilot/database/tables/bios.dart';
 import 'package:arrpilot/database/tables/dashboard.dart';
 import 'package:arrpilot/database/tables/lidarr.dart';
-import 'package:arrpilot/database/tables/lunasea.dart';
+import 'package:arrpilot/database/tables/arrpilot.dart';
 import 'package:arrpilot/database/tables/nzbget.dart';
 import 'package:arrpilot/database/tables/radarr.dart';
 import 'package:arrpilot/database/tables/sabnzbd.dart';
@@ -18,7 +18,7 @@ enum ArrPilotTable<T extends ArrPilotTableMixin> {
   bios<BIOSDatabase>('bios', items: BIOSDatabase.values),
   dashboard<DashboardDatabase>('home', items: DashboardDatabase.values),
   lidarr<LidarrDatabase>('lidarr', items: LidarrDatabase.values),
-  lunasea<ArrPilotDatabase>('lunasea', items: ArrPilotDatabase.values),
+  arrpilot<ArrPilotDatabase>('lunasea', items: ArrPilotDatabase.values),
   nzbget<NZBGetDatabase>('nzbget', items: NZBGetDatabase.values),
   radarr<RadarrDatabase>('radarr', items: RadarrDatabase.values),
   sabnzbd<SABnzbdDatabase>('sabnzbd', items: SABnzbdDatabase.values),
@@ -70,7 +70,7 @@ mixin ArrPilotTableMixin<T> on Enum {
   T get fallback;
   ArrPilotTable get table;
 
-  ArrPilotBox get box => ArrPilotBox.lunasea;
+  ArrPilotBox get box => ArrPilotBox.arrpilot;
   String get key => '${table.key.toUpperCase()}_$name';
 
   T read() => box.read(key, fallback: fallback);

@@ -1,4 +1,4 @@
-import 'package:arrpilot/database/tables/lunasea.dart';
+import 'package:arrpilot/database/tables/arrpilot.dart';
 import 'package:arrpilot/extensions/string/string.dart';
 import 'package:arrpilot/vendor.dart';
 import 'package:arrpilot/widgets/ui.dart';

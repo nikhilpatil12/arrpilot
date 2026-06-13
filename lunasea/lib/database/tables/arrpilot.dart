@@ -32,7 +32,7 @@ enum ArrPilotDatabase<T> with ArrPilotTableMixin<T> {
   CHANGELOG_LAST_BUILD_VERSION<int>(0);
 
   @override
-  ArrPilotTable get table => ArrPilotTable.lunasea;
+  ArrPilotTable get table => ArrPilotTable.arrpilot;
 
   @override
   final T fallback;

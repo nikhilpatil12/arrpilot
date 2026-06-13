@@ -1,7 +1,7 @@
 import 'package:arrpilot/database/box.dart';
 import 'package:arrpilot/database/models/profile.dart';
 import 'package:arrpilot/database/table.dart';
-import 'package:arrpilot/database/tables/lunasea.dart';
+import 'package:arrpilot/database/tables/arrpilot.dart';
 import 'package:arrpilot/system/filesystem/filesystem.dart';
 import 'package:arrpilot/system/platform.dart';
 import 'package:arrpilot/vendor.dart';

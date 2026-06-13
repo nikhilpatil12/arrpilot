@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:arrpilot/modules.dart';
 import 'package:arrpilot/database/models/profile.dart';
-import 'package:arrpilot/database/tables/lunasea.dart';
+import 'package:arrpilot/database/tables/arrpilot.dart';
 import 'package:arrpilot/vendor.dart';
 import 'package:arrpilot/widgets/ui.dart';
 import 'package:arrpilot/api/wake_on_lan/wake_on_lan.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:wake_on_lan/wake_on_lan.dart';
-import 'package:arrpilot/database/tables/lunasea.dart';
+import 'package:arrpilot/database/tables/arrpilot.dart';
 import 'package:arrpilot/modules.dart';
 import 'package:arrpilot/modules/dashboard/core/adapters/calendar_starting_day.dart';
 import 'package:arrpilot/modules/dashboard/core/adapters/calendar_starting_size.dart';

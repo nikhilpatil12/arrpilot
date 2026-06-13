@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:arrpilot/database/tables/lunasea.dart';
+import 'package:arrpilot/database/tables/arrpilot.dart';
 import 'package:arrpilot/vendor.dart';
 
 // ignore: always_use_package_imports

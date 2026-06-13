@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:arrpilot/modules.dart';
 import 'package:arrpilot/database/tables/dashboard.dart';
-import 'package:arrpilot/database/tables/lunasea.dart';
+import 'package:arrpilot/database/tables/arrpilot.dart';
 import 'package:arrpilot/widgets/ui.dart';
 import 'package:arrpilot/modules/dashboard/routes/dashboard/pages/calendar.dart';
 import 'package:arrpilot/modules/dashboard/routes/dashboard/pages/modules.dart';

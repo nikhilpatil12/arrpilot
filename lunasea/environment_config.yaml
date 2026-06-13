@@ -1,6 +1,6 @@
 environment_config:
   path: system/environment.dart
-  class: LunaEnvironment
+  class: ArrPilotEnvironment
 
   fields:
     build:

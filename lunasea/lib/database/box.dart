@@ -13,7 +13,7 @@ enum ArrPilotBox<T> {
   externalModules<ArrPilotExternalModule>('external_modules'),
   indexers<ArrPilotIndexer>('indexers'),
   logs<ArrPilotLog>('logs'),
-  lunasea<dynamic>('lunasea'),
+  arrpilot<dynamic>('lunasea'),
   profiles<ArrPilotProfile>('profiles');
 
   final String key;
