@@ -102,7 +102,7 @@ class _State extends State<CalendarView> {
   }
 
   Widget _calendar() {
-    return ArrPilotBox.lunasea.listenableBuilder(
+    return ArrPilotBox.arrpilot.listenableBuilder(
       selectItems: [
         DashboardDatabase.CALENDAR_STARTING_DAY,
         DashboardDatabase.CALENDAR_STARTING_SIZE,

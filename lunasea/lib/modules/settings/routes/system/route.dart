@@ -63,7 +63,8 @@ class _State extends State<SystemRoute> with ArrPilotScrollControllerMixin {
     return ArrPilotBlock(
       title: 'settings.ClearImageCache'.tr(),
       body: [TextSpan(text: 'settings.ClearImageCacheDescription'.tr())],
-      trailing: const ArrPilotIconButton(icon: Icons.image_not_supported_rounded),
+      trailing:
+          const ArrPilotIconButton(icon: Icons.image_not_supported_rounded),
       onTap: () async {
         bool result = await SettingsDialogs().clearImageCache(context);
         if (result) {
@@ -92,7 +93,7 @@ class _State extends State<SystemRoute> with ArrPilotScrollControllerMixin {
       onTap: () async {
         bool result = await SettingsDialogs().clearConfiguration(context);
         if (result) {
-          ArrPilotDatabase().bootstrap();
+          ArrPilotDatabaseService().bootstrap();
           ArrPilotState.reset(context);
           showLunaSuccessSnackBar(
             title: 'settings.ConfigurationCleared'.tr(),

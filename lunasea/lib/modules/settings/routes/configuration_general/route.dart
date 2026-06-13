@@ -125,7 +125,7 @@ class _State extends State<ConfigurationGeneralRoute>
   }
 
   Widget _amoledThemeBorders() {
-    return ArrPilotBox.lunasea.listenableBuilder(
+    return ArrPilotBox.arrpilot.listenableBuilder(
       selectItems: [
         ArrPilotDatabase.THEME_AMOLED_BORDER,
         ArrPilotDatabase.THEME_AMOLED,

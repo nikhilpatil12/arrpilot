@@ -34,10 +34,11 @@ Future<void> main() async {
 /// Bootstrap the core
 ///
 Future<void> bootstrap() async {
-  await ArrPilotDatabase().initialize();
+  await ArrPilotDatabaseService().initialize();
   ArrPilotLogger().initialize();
   ArrPilotTheme().initialize();
-  if (ArrPilotWindowManager.isSupported) await ArrPilotWindowManager().initialize();
+  if (ArrPilotWindowManager.isSupported)
+    await ArrPilotWindowManager().initialize();
   if (ArrPilotNetwork.isSupported) ArrPilotNetwork().initialize();
   if (ArrPilotImageCache.isSupported) ArrPilotImageCache().initialize();
   ArrPilotRouter().initialize();
@@ -63,7 +64,7 @@ class ArrPilotBIOS extends StatelessWidget {
           fallbackLocale: Locale('en'),
           startLocale: Locale('en'),
           useFallbackTranslations: true,
-          child: ArrPilotBox.lunasea.listenableBuilder(
+          child: ArrPilotBox.arrpilot.listenableBuilder(
             selectItems: [
               ArrPilotDatabase.THEME_AMOLED,
               ArrPilotDatabase.THEME_AMOLED_BORDER,

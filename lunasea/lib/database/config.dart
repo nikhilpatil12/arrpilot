@@ -7,7 +7,7 @@ import 'package:arrpilot/database/table.dart';
 
 class ArrPilotConfig {
   Future<void> import(BuildContext context, String data) async {
-    await ArrPilotDatabase().clear();
+    await ArrPilotDatabaseService().clear();
 
     try {
       Map<String, dynamic> config = json.decode(data);
@@ -17,11 +17,12 @@ class ArrPilotConfig {
       _setExternalModules(config[ArrPilotBox.externalModules.key]);
       for (final table in ArrPilotTable.values) table.import(config[table.key]);
 
-      if (!ArrPilotProfile.list.contains(ArrPilotDatabase.ENABLED_PROFILE.read())) {
+      if (!ArrPilotProfile.list
+          .contains(ArrPilotDatabase.ENABLED_PROFILE.read())) {
         ArrPilotDatabase.ENABLED_PROFILE.update(ArrPilotProfile.list[0]);
       }
     } catch (error, stack) {
-      await ArrPilotDatabase().bootstrap();
+      await ArrPilotDatabaseService().bootstrap();
       ArrPilotLogger().error(
         'Failed to import configuration, resetting to default',
         error,
@@ -34,10 +35,12 @@ class ArrPilotConfig {
 
   String export() {
     Map<String, dynamic> config = {};
-    config[ArrPilotBox.externalModules.key] = ArrPilotBox.externalModules.export();
+    config[ArrPilotBox.externalModules.key] =
+        ArrPilotBox.externalModules.export();
     config[ArrPilotBox.indexers.key] = ArrPilotBox.indexers.export();
     config[ArrPilotBox.profiles.key] = ArrPilotBox.profiles.export();
-    for (final table in ArrPilotTable.values) config[table.key] = table.export();
+    for (final table in ArrPilotTable.values)
+      config[table.key] = table.export();
 
     return json.encode(config);
   }

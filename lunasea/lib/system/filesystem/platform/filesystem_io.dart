@@ -25,7 +25,7 @@ ArrPilotFileSystem getFileSystem() {
 abstract class _Shared implements ArrPilotFileSystem {
   @override
   Future<void> nuke() async {
-    final subpath = ArrPilotDatabase().path;
+    final subpath = ArrPilotDatabaseService().path;
     final appDocDir = await getApplicationDocumentsDirectory();
     final database = Directory('${appDocDir.path}/$subpath');
 
@@ -56,7 +56,8 @@ class _Desktop extends _Shared {
   }
 
   @override
-  Future<ArrPilotFile?> read(BuildContext context, List<String> extensions) async {
+  Future<ArrPilotFile?> read(
+      BuildContext context, List<String> extensions) async {
     try {
       final result = await FilePicker.platform.pickFiles(withData: true);
 
@@ -116,7 +117,8 @@ class _Mobile extends _Shared {
   }
 
   @override
-  Future<ArrPilotFile?> read(BuildContext context, List<String> extensions) async {
+  Future<ArrPilotFile?> read(
+      BuildContext context, List<String> extensions) async {
     try {
       final result = await FilePicker.platform.pickFiles(withData: true);
 

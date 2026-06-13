@@ -12,6 +12,6 @@ class ClearDatabaseTile extends RecoveryActionTile {
 
   @override
   Future<void> action(BuildContext context) async {
-    await ArrPilotDatabase().nuke();
+    await ArrPilotDatabaseService().nuke();
   }
 }

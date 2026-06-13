@@ -77,7 +77,7 @@ class _State extends State<ConfigurationQuickActionsRoute>
   Widget _actionTile(String title, ArrPilotDatabase action) {
     return ArrPilotBlock(
       title: title,
-      trailing: ArrPilotBox.lunasea.listenableBuilder(
+      trailing: ArrPilotBox.arrpilot.listenableBuilder(
         selectKeys: [action.key],
         builder: (context, _) => ArrPilotSwitch(
           value: action.read(),

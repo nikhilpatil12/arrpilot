@@ -6,12 +6,13 @@ import 'package:arrpilot/system/filesystem/filesystem.dart';
 import 'package:arrpilot/system/platform.dart';
 import 'package:arrpilot/vendor.dart';
 
-class ArrPilotDatabase {
+class ArrPilotDatabaseService {
   static const String _DATABASE_LEGACY_PATH = 'database';
   static const String _DATABASE_PATH = 'ArrPilot/database';
 
   String get path {
-    if (ArrPilotPlatform.isWindows || ArrPilotPlatform.isLinux) return _DATABASE_PATH;
+    if (ArrPilotPlatform.isWindows || ArrPilotPlatform.isLinux)
+      return _DATABASE_PATH;
     return _DATABASE_LEGACY_PATH;
   }
 
