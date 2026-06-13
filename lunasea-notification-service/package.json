@@ -1,8 +1,8 @@
 {
-  "name": "lunasea-notification-service",
+  "name": "arrpilot-notification-service",
   "version": "1.5.5",
-  "description": "Notification service for LunaSea",
-  "repository": "https://github.com/JagandeepBrar/LunaSea-Notification-Service",
+  "description": "Notification service for ArrPilot",
+  "repository": "https://github.com/gemridge/arrpilot",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development nodemon --config nodemon.json src/index.ts",

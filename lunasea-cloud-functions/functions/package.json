@@ -1,5 +1,5 @@
 {
-  "name": "functions",
+  "name": "arrpilot-cloud-functions",
   "scripts": {
     "lint": "eslint --ext .js,.ts .",
     "build": "tsc",

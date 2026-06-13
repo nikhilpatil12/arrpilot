@@ -1,6 +1,6 @@
-Package:LunaSea
+Package:arrpilot
 Architecture:amd64
 Essential:no
 Priority:optional
-Maintainer:LunaSea Support <hello@lunasea.app>
-Description:Self-hosted software controller built using Flutter
+Maintainer:ArrPilot Support <support@arrpilot.app>
+Description:Self-Hosted Media Server Controller

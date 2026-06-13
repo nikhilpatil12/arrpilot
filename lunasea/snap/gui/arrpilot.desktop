@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ArrPilot
+Comment=Self-Hosted Media Server Controller
+Exec=arrpilot
+Icon=${SNAP}/meta/gui/arrpilot.png
+Terminal=false
+Type=Application
+Categories=Utility;

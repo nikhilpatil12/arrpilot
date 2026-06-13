@@ -1,31 +1,31 @@
-name: lunasea
+name: arrpilot
 version: 11.0.0
 confinement: strict
 base: core22
 # Required but managed manually via Snapcraft dashboard
-summary: summary
-description: description
+summary: Self-Hosted Media Server Controller
+description: ArrPilot is a self-hosted media server controller for *arr applications
 slots:
-  dbus-lunasea:
+  dbus-arrpilot:
     interface: dbus
     bus: session
-    name: app.lunasea.lunasea
+    name: com.gemridge.arrpilot
 apps:
-  lunasea:
-    command: lunasea
+  arrpilot:
+    command: arrpilot
     extensions:
     - gnome
     plugs:
     - home
     - network
     slots:
-    - dbus-lunasea
+    - dbus-arrpilot
 parts:
   zenity:
     plugin: nil
     stage-packages:
     - zenity
-  lunasea:
+  arrpilot:
     source: .
     plugin: flutter
     flutter-target: lib/main.dart
