@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'package:lunasea/widgets/ui.dart';
-import 'package:lunasea/system/logger.dart';
-import 'package:lunasea/vendor.dart';
-import 'package:lunasea/modules/dashboard/core/adapters/calendar_starting_type.dart';
-import 'package:lunasea/modules/dashboard/core/api/data/abstract.dart';
-import 'package:lunasea/modules/dashboard/core/state.dart';
-import 'package:lunasea/modules/dashboard/routes/dashboard/widgets/calendar_view.dart';
-import 'package:lunasea/modules/dashboard/routes/dashboard/widgets/schedule_view.dart';
+import 'package:arrpilot/widgets/ui.dart';
+import 'package:arrpilot/system/logger.dart';
+import 'package:arrpilot/vendor.dart';
+import 'package:arrpilot/modules/dashboard/core/adapters/calendar_starting_type.dart';
+import 'package:arrpilot/modules/dashboard/core/api/data/abstract.dart';
+import 'package:arrpilot/modules/dashboard/core/state.dart';
+import 'package:arrpilot/modules/dashboard/routes/dashboard/widgets/calendar_view.dart';
+import 'package:arrpilot/modules/dashboard/routes/dashboard/widgets/schedule_view.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({Key? key}) : super(key: key);

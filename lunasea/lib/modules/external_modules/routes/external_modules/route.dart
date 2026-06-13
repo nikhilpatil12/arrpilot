@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/external_modules/routes/external_modules/widgets/module_tile.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/external_modules/routes/external_modules/widgets/module_tile.dart';
 
 class ExternalModulesRoute extends StatefulWidget {
   const ExternalModulesRoute({

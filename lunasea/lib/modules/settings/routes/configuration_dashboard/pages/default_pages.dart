@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/database/tables/dashboard.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/database/tables/dashboard.dart';
 
-import 'package:lunasea/modules/dashboard/core/dialogs.dart';
-import 'package:lunasea/modules/dashboard/routes/dashboard/widgets/navigation_bar.dart';
+import 'package:arrpilot/modules/dashboard/core/dialogs.dart';
+import 'package:arrpilot/modules/dashboard/routes/dashboard/widgets/navigation_bar.dart';
 
 class ConfigurationDashboardDefaultPagesRoute extends StatefulWidget {
   const ConfigurationDashboardDefaultPagesRoute({

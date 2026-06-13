@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/settings.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/settings.dart';
 
 class ConfigurationWakeOnLANRoute extends StatefulWidget {
   const ConfigurationWakeOnLANRoute({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/radarr.dart';
-import 'package:lunasea/router/routes/radarr.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/radarr.dart';
+import 'package:arrpilot/router/routes/radarr.dart';
 
 class RadarrManualImportBottomActionBar extends StatelessWidget {
   const RadarrManualImportBottomActionBar({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/string/links.dart';
-import 'package:lunasea/modules/radarr.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/string/links.dart';
+import 'package:arrpilot/modules/radarr.dart';
 
 class RadarrHealthCheckTile extends StatelessWidget {
   final RadarrHealthCheck healthCheck;

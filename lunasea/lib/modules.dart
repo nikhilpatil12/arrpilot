@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
 import 'package:quick_actions/quick_actions.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/string/links.dart';
-import 'package:lunasea/router/router.dart';
-import 'package:lunasea/router/routes.dart';
-import 'package:lunasea/router/routes/settings.dart';
-import 'package:lunasea/modules/search.dart';
-import 'package:lunasea/modules/settings.dart';
-import 'package:lunasea/modules/lidarr.dart';
-import 'package:lunasea/modules/radarr.dart';
-import 'package:lunasea/modules/sonarr.dart';
-import 'package:lunasea/modules/sabnzbd.dart';
-import 'package:lunasea/modules/nzbget.dart';
-import 'package:lunasea/modules/tautulli.dart';
-import 'package:lunasea/modules/dashboard/core/state.dart';
-import 'package:lunasea/api/wake_on_lan/wake_on_lan.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/string/links.dart';
+import 'package:arrpilot/router/router.dart';
+import 'package:arrpilot/router/routes.dart';
+import 'package:arrpilot/router/routes/settings.dart';
+import 'package:arrpilot/modules/search.dart';
+import 'package:arrpilot/modules/settings.dart';
+import 'package:arrpilot/modules/lidarr.dart';
+import 'package:arrpilot/modules/radarr.dart';
+import 'package:arrpilot/modules/sonarr.dart';
+import 'package:arrpilot/modules/sabnzbd.dart';
+import 'package:arrpilot/modules/nzbget.dart';
+import 'package:arrpilot/modules/tautulli.dart';
+import 'package:arrpilot/modules/dashboard/core/state.dart';
+import 'package:arrpilot/api/wake_on_lan/wake_on_lan.dart';
 
 part 'modules.g.dart';
 

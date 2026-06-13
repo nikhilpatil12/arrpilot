@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/tautulli.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/tautulli.dart';
 
 // ignore: non_constant_identifier_names
 Widget TautulliSearchAppBar({

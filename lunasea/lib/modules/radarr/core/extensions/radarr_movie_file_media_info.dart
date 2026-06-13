@@ -1,5 +1,5 @@
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/radarr.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/radarr.dart';
 
 extension LunaRadarrMovieFileMediaInfo on RadarrMovieFileMediaInfo {
   String get lunaVideoBitDepth {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/database/models/profile.dart';
-import 'package:lunasea/widgets/sheets/download_client/sheet.dart';
-import 'package:lunasea/widgets/ui.dart';
+import 'package:arrpilot/database/models/profile.dart';
+import 'package:arrpilot/widgets/sheets/download_client/sheet.dart';
+import 'package:arrpilot/widgets/ui.dart';
 
 class DownloadClientButton extends StatelessWidget {
   const DownloadClientButton({

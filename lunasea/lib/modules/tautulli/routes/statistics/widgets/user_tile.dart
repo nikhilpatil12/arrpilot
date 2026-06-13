@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/datetime.dart';
-import 'package:lunasea/extensions/duration/timestamp.dart';
-import 'package:lunasea/extensions/string/string.dart';
-import 'package:lunasea/modules/tautulli.dart';
-import 'package:lunasea/router/routes/tautulli.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/datetime.dart';
+import 'package:arrpilot/extensions/duration/timestamp.dart';
+import 'package:arrpilot/extensions/string/string.dart';
+import 'package:arrpilot/modules/tautulli.dart';
+import 'package:arrpilot/router/routes/tautulli.dart';
 
 class TautulliStatisticsUserTile extends StatefulWidget {
   final Map<String, dynamic> data;

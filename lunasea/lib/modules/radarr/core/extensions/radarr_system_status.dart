@@ -1,7 +1,7 @@
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/duration/timestamp.dart';
-import 'package:lunasea/extensions/string/string.dart';
-import 'package:lunasea/modules/radarr.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/duration/timestamp.dart';
+import 'package:arrpilot/extensions/string/string.dart';
+import 'package:arrpilot/modules/radarr.dart';
 
 extension RadarrSystemStatusExtension on RadarrSystemStatus {
   String get lunaVersion {

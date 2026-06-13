@@ -1,4 +1,4 @@
-import 'package:lunasea/modules/lidarr.dart';
+import 'package:arrpilot/modules/lidarr.dart';
 
 enum LidarrCatalogueSorting {
   alphabetical,

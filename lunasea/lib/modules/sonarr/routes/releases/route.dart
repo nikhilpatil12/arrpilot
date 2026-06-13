@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/sonarr.dart';
-import 'package:lunasea/widgets/sheets/download_client/button.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/sonarr.dart';
+import 'package:arrpilot/widgets/sheets/download_client/button.dart';
 
 class ReleasesRoute extends StatefulWidget {
   final int? episodeId;

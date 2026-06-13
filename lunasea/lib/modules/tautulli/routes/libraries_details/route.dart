@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/tautulli.dart';
-import 'package:lunasea/widgets/pages/invalid_route.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/tautulli.dart';
+import 'package:arrpilot/widgets/pages/invalid_route.dart';
 
 class LibrariesDetailsRoute extends StatefulWidget {
   final int? sectionId;

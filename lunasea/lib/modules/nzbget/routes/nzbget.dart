@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/database/tables/nzbget.dart';
-import 'package:lunasea/extensions/string/links.dart';
-import 'package:lunasea/modules/nzbget.dart';
-import 'package:lunasea/router/routes/nzbget.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/database/tables/nzbget.dart';
+import 'package:arrpilot/extensions/string/links.dart';
+import 'package:arrpilot/modules/nzbget.dart';
+import 'package:arrpilot/router/routes/nzbget.dart';
 
-import 'package:lunasea/system/filesystem/file.dart';
-import 'package:lunasea/system/filesystem/filesystem.dart';
+import 'package:arrpilot/system/filesystem/file.dart';
+import 'package:arrpilot/system/filesystem/filesystem.dart';
 
 class NZBGetRoute extends StatefulWidget {
   final bool showDrawer;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/router/routes/radarr.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/router/routes/radarr.dart';
 
 class RadarrAppBarAddMoviesAction extends StatelessWidget {
   const RadarrAppBarAddMoviesAction({

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/main.dart';
-import 'package:lunasea/system/recovery_mode/action_tile.dart';
+import 'package:arrpilot/main.dart';
+import 'package:arrpilot/system/recovery_mode/action_tile.dart';
 
 class BootstrapTile extends RecoveryActionTile {
   const BootstrapTile({

@@ -1,11 +1,11 @@
-import 'package:lunasea/database/table.dart';
-import 'package:lunasea/modules/sonarr/core/types/filter_releases.dart';
-import 'package:lunasea/modules/sonarr/core/types/filter_series.dart';
-import 'package:lunasea/modules/sonarr/core/types/monitor_status.dart';
-import 'package:lunasea/modules/sonarr/core/types/sorting_releases.dart';
-import 'package:lunasea/modules/sonarr/core/types/sorting_series.dart';
-import 'package:lunasea/types/list_view_option.dart';
-import 'package:lunasea/vendor.dart';
+import 'package:arrpilot/database/table.dart';
+import 'package:arrpilot/modules/sonarr/core/types/filter_releases.dart';
+import 'package:arrpilot/modules/sonarr/core/types/filter_series.dart';
+import 'package:arrpilot/modules/sonarr/core/types/monitor_status.dart';
+import 'package:arrpilot/modules/sonarr/core/types/sorting_releases.dart';
+import 'package:arrpilot/modules/sonarr/core/types/sorting_series.dart';
+import 'package:arrpilot/types/list_view_option.dart';
+import 'package:arrpilot/vendor.dart';
 
 enum SonarrDatabase<T> with LunaTableMixin<T> {
   NAVIGATION_INDEX<int>(0),

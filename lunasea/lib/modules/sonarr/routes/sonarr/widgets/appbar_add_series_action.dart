@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/router/routes/sonarr.dart';
-import 'package:lunasea/widgets/ui.dart';
+import 'package:arrpilot/router/routes/sonarr.dart';
+import 'package:arrpilot/widgets/ui.dart';
 
 class SonarrAppBarAddSeriesAction extends StatelessWidget {
   const SonarrAppBarAddSeriesAction({

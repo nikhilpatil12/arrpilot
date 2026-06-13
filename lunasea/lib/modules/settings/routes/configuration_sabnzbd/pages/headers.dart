@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/modules.dart';
-import 'package:lunasea/modules/settings.dart';
+import 'package:arrpilot/modules.dart';
+import 'package:arrpilot/modules/settings.dart';
 
 class ConfigurationSABnzbdConnectionDetailsHeadersRoute
     extends StatelessWidget {

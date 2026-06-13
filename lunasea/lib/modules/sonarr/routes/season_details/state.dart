@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/sonarr.dart';
-import 'package:lunasea/system/cache/memory/memory_cache.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/sonarr.dart';
+import 'package:arrpilot/system/cache/memory/memory_cache.dart';
 
 class SonarrSeasonDetailsState extends ChangeNotifier {
   final int seriesId;

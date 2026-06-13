@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/database/tables/lunasea.dart';
-import 'package:lunasea/modules.dart';
-import 'package:lunasea/system/platform.dart';
+import 'package:arrpilot/database/tables/lunasea.dart';
+import 'package:arrpilot/modules.dart';
+import 'package:arrpilot/system/platform.dart';
 
 class LunaScaffold extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;

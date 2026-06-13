@@ -1,4 +1,4 @@
-import 'package:lunasea/core.dart';
+import 'package:arrpilot/core.dart';
 
 part 'external_module.g.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lunasea/core.dart';
+import 'package:arrpilot/core.dart';
 
 enum LunaSnackbarType {
   SUCCESS,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:lunasea/core.dart';
-import 'package:lunasea/database/tables/bios.dart';
-import 'package:lunasea/modules/settings.dart';
-import 'package:lunasea/system/network/network.dart';
-import 'package:lunasea/system/platform.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/database/tables/bios.dart';
+import 'package:arrpilot/modules/settings.dart';
+import 'package:arrpilot/system/network/network.dart';
+import 'package:arrpilot/system/platform.dart';
 
 class ConfigurationGeneralRoute extends StatefulWidget {
   const ConfigurationGeneralRoute({

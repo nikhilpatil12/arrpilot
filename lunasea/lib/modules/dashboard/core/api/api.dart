@@ -1,12 +1,12 @@
-import 'package:lunasea/database/models/profile.dart';
-import 'package:lunasea/database/tables/dashboard.dart';
-import 'package:lunasea/extensions/datetime.dart';
-import 'package:lunasea/modules/dashboard/core/api/data/abstract.dart';
-import 'package:lunasea/modules/dashboard/core/api/data/lidarr.dart';
-import 'package:lunasea/modules/dashboard/core/api/data/radarr.dart';
-import 'package:lunasea/modules/dashboard/core/api/data/sonarr.dart';
-import 'package:lunasea/widgets/ui.dart';
-import 'package:lunasea/vendor.dart';
+import 'package:arrpilot/database/models/profile.dart';
+import 'package:arrpilot/database/tables/dashboard.dart';
+import 'package:arrpilot/extensions/datetime.dart';
+import 'package:arrpilot/modules/dashboard/core/api/data/abstract.dart';
+import 'package:arrpilot/modules/dashboard/core/api/data/lidarr.dart';
+import 'package:arrpilot/modules/dashboard/core/api/data/radarr.dart';
+import 'package:arrpilot/modules/dashboard/core/api/data/sonarr.dart';
+import 'package:arrpilot/widgets/ui.dart';
+import 'package:arrpilot/vendor.dart';
 
 class API {
   final LunaProfile profile;

@@ -1,7 +1,7 @@
-import 'package:lunasea/database/tables/lunasea.dart';
+import 'package:arrpilot/database/tables/lunasea.dart';
 import 'package:quick_actions/quick_actions.dart';
-import 'package:lunasea/modules.dart';
-import 'package:lunasea/system/platform.dart';
+import 'package:arrpilot/modules.dart';
+import 'package:arrpilot/system/platform.dart';
 
 // ignore: always_use_package_imports
 import '../quick_actions.dart';

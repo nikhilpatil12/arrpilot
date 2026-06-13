@@ -1,5 +1,5 @@
-import 'package:lunasea/extensions/string/string.dart';
-import 'package:lunasea/core.dart';
+import 'package:arrpilot/extensions/string/string.dart';
+import 'package:arrpilot/core.dart';
 
 Future<void> showLunaInfoSnackBar({
   required String title,

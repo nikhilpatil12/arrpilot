@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/modules.dart';
-import 'package:lunasea/modules/nzbget/routes/nzbget.dart';
-import 'package:lunasea/modules/nzbget/routes/statistics.dart';
-import 'package:lunasea/router/routes.dart';
-import 'package:lunasea/vendor.dart';
+import 'package:arrpilot/modules.dart';
+import 'package:arrpilot/modules/nzbget/routes/nzbget.dart';
+import 'package:arrpilot/modules/nzbget/routes/statistics.dart';
+import 'package:arrpilot/router/routes.dart';
+import 'package:arrpilot/vendor.dart';
 
 enum NZBGetRoutes with LunaRoutesMixin {
   HOME('/nzbget'),

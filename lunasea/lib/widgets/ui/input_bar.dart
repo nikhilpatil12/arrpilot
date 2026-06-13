@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/scroll_controller.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/scroll_controller.dart';
 
 class LunaTextInputBar extends StatefulWidget {
   static const double defaultHeight = 50.0;

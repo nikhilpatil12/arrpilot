@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/search.dart';
-import 'package:lunasea/utils/profile_tools.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/search.dart';
+import 'package:arrpilot/utils/profile_tools.dart';
 
 class SearchDialogs {
   Future<Tuple2<bool, SearchDownloadType?>> downloadResult(

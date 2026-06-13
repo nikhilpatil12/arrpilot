@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/api/radarr/models.dart';
-import 'package:lunasea/extensions/string/links.dart';
-import 'package:lunasea/utils/links.dart';
-import 'package:lunasea/widgets/ui.dart';
+import 'package:arrpilot/api/radarr/models.dart';
+import 'package:arrpilot/extensions/string/links.dart';
+import 'package:arrpilot/utils/links.dart';
+import 'package:arrpilot/widgets/ui.dart';
 
 class LinksSheet extends LunaBottomModalSheet {
   RadarrMovie movie;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/nzbget.dart';
-import 'package:lunasea/modules/settings.dart';
-import 'package:lunasea/router/routes/settings.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/nzbget.dart';
+import 'package:arrpilot/modules/settings.dart';
+import 'package:arrpilot/router/routes/settings.dart';
 
 class ConfigurationNZBGetConnectionDetailsRoute extends StatefulWidget {
   const ConfigurationNZBGetConnectionDetailsRoute({

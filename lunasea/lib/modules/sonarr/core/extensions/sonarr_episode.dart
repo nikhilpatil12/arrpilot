@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/int/bytes.dart';
-import 'package:lunasea/modules/sonarr.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/int/bytes.dart';
+import 'package:arrpilot/modules/sonarr.dart';
 
 extension SonarrEpisodeExtension on SonarrEpisode {
   bool _hasAired() {

@@ -1,5 +1,5 @@
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/sonarr.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/sonarr.dart';
 
 extension SonarrCalendarExtension on SonarrCalendar {
   String get lunaAirTime {

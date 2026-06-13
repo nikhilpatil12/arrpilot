@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/api/radarr/models/movie/movie.dart';
-import 'package:lunasea/modules.dart';
-import 'package:lunasea/modules/radarr/core/state.dart';
-import 'package:lunasea/modules/radarr/routes/add_movie/route.dart';
-import 'package:lunasea/modules/radarr/routes/add_movie_details/route.dart';
-import 'package:lunasea/modules/radarr/routes/edit_movie/route.dart';
-import 'package:lunasea/modules/radarr/routes/history/route.dart';
-import 'package:lunasea/modules/radarr/routes/manual_import/route.dart';
-import 'package:lunasea/modules/radarr/routes/manual_import_details/route.dart';
-import 'package:lunasea/modules/radarr/routes/movie_details/route.dart';
-import 'package:lunasea/modules/radarr/routes/queue/route.dart';
-import 'package:lunasea/modules/radarr/routes/radarr/route.dart';
-import 'package:lunasea/modules/radarr/routes/releases/route.dart';
-import 'package:lunasea/modules/radarr/routes/system_status/route.dart';
-import 'package:lunasea/modules/radarr/routes/tags/route.dart';
-import 'package:lunasea/router/routes.dart';
-import 'package:lunasea/vendor.dart';
+import 'package:arrpilot/api/radarr/models/movie/movie.dart';
+import 'package:arrpilot/modules.dart';
+import 'package:arrpilot/modules/radarr/core/state.dart';
+import 'package:arrpilot/modules/radarr/routes/add_movie/route.dart';
+import 'package:arrpilot/modules/radarr/routes/add_movie_details/route.dart';
+import 'package:arrpilot/modules/radarr/routes/edit_movie/route.dart';
+import 'package:arrpilot/modules/radarr/routes/history/route.dart';
+import 'package:arrpilot/modules/radarr/routes/manual_import/route.dart';
+import 'package:arrpilot/modules/radarr/routes/manual_import_details/route.dart';
+import 'package:arrpilot/modules/radarr/routes/movie_details/route.dart';
+import 'package:arrpilot/modules/radarr/routes/queue/route.dart';
+import 'package:arrpilot/modules/radarr/routes/radarr/route.dart';
+import 'package:arrpilot/modules/radarr/routes/releases/route.dart';
+import 'package:arrpilot/modules/radarr/routes/system_status/route.dart';
+import 'package:arrpilot/modules/radarr/routes/tags/route.dart';
+import 'package:arrpilot/router/routes.dart';
+import 'package:arrpilot/vendor.dart';
 
 enum RadarrRoutes with LunaRoutesMixin {
   HOME('/radarr'),

@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:lunasea/database/box.dart';
-import 'package:lunasea/database/tables/dashboard.dart';
-import 'package:lunasea/extensions/datetime.dart';
-import 'package:lunasea/modules/dashboard/core/adapters/calendar_starting_day.dart';
-import 'package:lunasea/modules/dashboard/core/api/data/abstract.dart';
-import 'package:lunasea/modules/dashboard/core/api/data/lidarr.dart';
-import 'package:lunasea/modules/dashboard/core/api/data/radarr.dart';
-import 'package:lunasea/modules/dashboard/core/api/data/sonarr.dart';
-import 'package:lunasea/modules/dashboard/core/state.dart';
-import 'package:lunasea/modules/dashboard/routes/dashboard/widgets/content_block.dart';
-import 'package:lunasea/modules/dashboard/routes/dashboard/widgets/navigation_bar.dart';
-import 'package:lunasea/vendor.dart';
-import 'package:lunasea/widgets/ui.dart';
+import 'package:arrpilot/database/box.dart';
+import 'package:arrpilot/database/tables/dashboard.dart';
+import 'package:arrpilot/extensions/datetime.dart';
+import 'package:arrpilot/modules/dashboard/core/adapters/calendar_starting_day.dart';
+import 'package:arrpilot/modules/dashboard/core/api/data/abstract.dart';
+import 'package:arrpilot/modules/dashboard/core/api/data/lidarr.dart';
+import 'package:arrpilot/modules/dashboard/core/api/data/radarr.dart';
+import 'package:arrpilot/modules/dashboard/core/api/data/sonarr.dart';
+import 'package:arrpilot/modules/dashboard/core/state.dart';
+import 'package:arrpilot/modules/dashboard/routes/dashboard/widgets/content_block.dart';
+import 'package:arrpilot/modules/dashboard/routes/dashboard/widgets/navigation_bar.dart';
+import 'package:arrpilot/vendor.dart';
+import 'package:arrpilot/widgets/ui.dart';
 
 class CalendarView extends StatefulWidget {
   final Map<DateTime, List<CalendarData>> events;

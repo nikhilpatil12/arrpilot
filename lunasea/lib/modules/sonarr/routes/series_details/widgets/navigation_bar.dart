@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
+import 'package:arrpilot/core.dart';
 
 class SonarrSeriesDetailsNavigationBar extends StatelessWidget {
   static List<ScrollController> scrollControllers =

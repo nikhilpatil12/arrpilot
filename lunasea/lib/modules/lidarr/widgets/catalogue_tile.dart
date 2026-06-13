@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/string/string.dart';
-import 'package:lunasea/modules/lidarr.dart';
-import 'package:lunasea/router/routes/lidarr.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/string/string.dart';
+import 'package:arrpilot/modules/lidarr.dart';
+import 'package:arrpilot/router/routes/lidarr.dart';
 
 class LidarrCatalogueTile extends StatefulWidget {
   final LidarrCatalogueData data;

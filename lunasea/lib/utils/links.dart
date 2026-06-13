@@ -1,6 +1,6 @@
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/string/links.dart';
-import 'package:lunasea/system/platform.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/string/links.dart';
+import 'package:arrpilot/system/platform.dart';
 
 enum LinkedContentType {
   MOVIE,

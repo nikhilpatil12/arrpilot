@@ -1,4 +1,4 @@
-import 'package:lunasea/database/table.dart';
+import 'package:arrpilot/database/table.dart';
 
 enum SearchDatabase<T> with LunaTableMixin<T> {
   HIDE_XXX<bool>(false),

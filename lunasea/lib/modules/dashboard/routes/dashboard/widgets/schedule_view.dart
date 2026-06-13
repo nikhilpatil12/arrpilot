@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/extensions/scroll_controller.dart';
-import 'package:lunasea/vendor.dart';
+import 'package:arrpilot/extensions/scroll_controller.dart';
+import 'package:arrpilot/vendor.dart';
 
-import 'package:lunasea/widgets/ui.dart';
-import 'package:lunasea/modules/dashboard/core/api/data/abstract.dart';
-import 'package:lunasea/modules/dashboard/core/state.dart';
-import 'package:lunasea/modules/dashboard/routes/dashboard/widgets/content_block.dart';
-import 'package:lunasea/modules/dashboard/routes/dashboard/widgets/navigation_bar.dart';
+import 'package:arrpilot/widgets/ui.dart';
+import 'package:arrpilot/modules/dashboard/core/api/data/abstract.dart';
+import 'package:arrpilot/modules/dashboard/core/state.dart';
+import 'package:arrpilot/modules/dashboard/routes/dashboard/widgets/content_block.dart';
+import 'package:arrpilot/modules/dashboard/routes/dashboard/widgets/navigation_bar.dart';
 
 class ScheduleView extends StatefulWidget {
   final Map<DateTime, List<CalendarData>> events;

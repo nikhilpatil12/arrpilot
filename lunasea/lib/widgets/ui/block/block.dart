@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
+import 'package:arrpilot/core.dart';
 
 class LunaBlock extends StatelessWidget {
   static const TITLE_HEIGHT = LunaUI.FONT_SIZE_H2 + 4.0;

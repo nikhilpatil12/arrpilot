@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/system/recovery_mode/actions/clear_database.dart';
-import 'package:lunasea/system/recovery_mode/actions/bootstrap.dart';
+import 'package:arrpilot/system/recovery_mode/actions/clear_database.dart';
+import 'package:arrpilot/system/recovery_mode/actions/bootstrap.dart';
 
 class LunaRecoveryMode extends StatelessWidget {
   const LunaRecoveryMode({

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 import 'package:wake_on_lan/wake_on_lan.dart';
-import 'package:lunasea/database/tables/lunasea.dart';
-import 'package:lunasea/modules.dart';
-import 'package:lunasea/modules/dashboard/core/adapters/calendar_starting_day.dart';
-import 'package:lunasea/modules/dashboard/core/adapters/calendar_starting_size.dart';
-import 'package:lunasea/modules/dashboard/core/adapters/calendar_starting_type.dart';
-import 'package:lunasea/modules/settings/core/types/header.dart';
-import 'package:lunasea/system/state.dart';
-import 'package:lunasea/utils/validator.dart';
-import 'package:lunasea/vendor.dart';
-import 'package:lunasea/widgets/ui.dart';
+import 'package:arrpilot/database/tables/lunasea.dart';
+import 'package:arrpilot/modules.dart';
+import 'package:arrpilot/modules/dashboard/core/adapters/calendar_starting_day.dart';
+import 'package:arrpilot/modules/dashboard/core/adapters/calendar_starting_size.dart';
+import 'package:arrpilot/modules/dashboard/core/adapters/calendar_starting_type.dart';
+import 'package:arrpilot/modules/settings/core/types/header.dart';
+import 'package:arrpilot/system/state.dart';
+import 'package:arrpilot/utils/validator.dart';
+import 'package:arrpilot/vendor.dart';
+import 'package:arrpilot/widgets/ui.dart';
 
 class SettingsDialogs {
   Future<Tuple2<bool, int>> setDefaultOption(

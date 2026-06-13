@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/radarr.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/radarr.dart';
 
 class RadarrAddMovieDiscoverPage extends StatefulWidget {
   const RadarrAddMovieDiscoverPage({

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/database/models/profile.dart';
-import 'package:lunasea/router/routes/lidarr.dart';
-import 'package:lunasea/widgets/ui.dart';
-import 'package:lunasea/modules/lidarr/core/api/api.dart';
-import 'package:lunasea/modules/dashboard/core/api/data/abstract.dart';
+import 'package:arrpilot/database/models/profile.dart';
+import 'package:arrpilot/router/routes/lidarr.dart';
+import 'package:arrpilot/widgets/ui.dart';
+import 'package:arrpilot/modules/lidarr/core/api/api.dart';
+import 'package:arrpilot/modules/dashboard/core/api/data/abstract.dart';
 
 class CalendarLidarrData extends CalendarData {
   String albumTitle;

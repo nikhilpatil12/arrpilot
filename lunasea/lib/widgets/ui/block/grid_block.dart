@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
+import 'package:arrpilot/core.dart';
 
 class LunaGridBlock extends StatelessWidget {
   static const MAX_CROSS_AXIS_EXTENT = 180.0;

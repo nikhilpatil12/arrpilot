@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/database/tables/bios.dart';
-import 'package:lunasea/modules.dart';
-import 'package:lunasea/router/routes.dart';
-import 'package:lunasea/router/routes/dashboard.dart';
-import 'package:lunasea/system/bios.dart';
-import 'package:lunasea/vendor.dart';
+import 'package:arrpilot/database/tables/bios.dart';
+import 'package:arrpilot/modules.dart';
+import 'package:arrpilot/router/routes.dart';
+import 'package:arrpilot/router/routes/dashboard.dart';
+import 'package:arrpilot/system/bios.dart';
+import 'package:arrpilot/vendor.dart';
 
 enum BIOSRoutes with LunaRoutesMixin {
   HOME('/');

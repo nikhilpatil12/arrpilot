@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/system/flavor.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/system/flavor.dart';
 
 part 'log_type.g.dart';
 

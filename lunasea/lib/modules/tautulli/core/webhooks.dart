@@ -1,6 +1,6 @@
-import 'package:lunasea/core.dart';
-import 'package:lunasea/router/routes/tautulli.dart';
-import 'package:lunasea/system/webhooks.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/router/routes/tautulli.dart';
+import 'package:arrpilot/system/webhooks.dart';
 
 class TautulliWebhooks extends LunaWebhooks {
   @override

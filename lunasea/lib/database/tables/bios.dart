@@ -1,5 +1,5 @@
-import 'package:lunasea/database/table.dart';
-import 'package:lunasea/modules.dart';
+import 'package:arrpilot/database/table.dart';
+import 'package:arrpilot/modules.dart';
 
 enum BIOSDatabase<T> with LunaTableMixin<T> {
   BOOT_MODULE<LunaModule>(LunaModule.DASHBOARD),

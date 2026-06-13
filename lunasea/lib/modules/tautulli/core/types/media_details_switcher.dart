@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/modules/tautulli.dart';
-import 'package:lunasea/router/routes/tautulli.dart';
+import 'package:arrpilot/modules/tautulli.dart';
+import 'package:arrpilot/router/routes/tautulli.dart';
 
 enum TautulliMediaDetailsSwitcherType {
   GO_TO_SERIES,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/modules/sonarr.dart';
-import 'package:lunasea/vendor.dart';
-import 'package:lunasea/widgets/ui.dart';
+import 'package:arrpilot/modules/sonarr.dart';
+import 'package:arrpilot/vendor.dart';
+import 'package:arrpilot/widgets/ui.dart';
 
 enum SonarrEpisodeMultiSettingsType {
   AUTOMATIC_SEARCH,

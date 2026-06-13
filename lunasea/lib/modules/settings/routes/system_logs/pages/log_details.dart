@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/database/models/log.dart';
-import 'package:lunasea/modules/settings/routes/system_logs/widgets/log_tile.dart';
-import 'package:lunasea/types/log_type.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/database/models/log.dart';
+import 'package:arrpilot/modules/settings/routes/system_logs/widgets/log_tile.dart';
+import 'package:arrpilot/types/log_type.dart';
 
 class SystemLogsDetailsRoute extends StatefulWidget {
   final LunaLogType? type;

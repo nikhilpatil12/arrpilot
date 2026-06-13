@@ -1,10 +1,10 @@
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/int/bytes.dart';
-import 'package:lunasea/extensions/string/string.dart';
-import 'package:lunasea/modules/radarr.dart';
-import 'package:lunasea/router/routes/radarr.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/int/bytes.dart';
+import 'package:arrpilot/extensions/string/string.dart';
+import 'package:arrpilot/modules/radarr.dart';
+import 'package:arrpilot/router/routes/radarr.dart';
 
 class RadarrQueueTile extends StatelessWidget {
   final RadarrQueueRecord record;

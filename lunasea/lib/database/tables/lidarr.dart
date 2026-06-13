@@ -1,8 +1,8 @@
-import 'package:lunasea/database/table.dart';
-import 'package:lunasea/modules/lidarr/core/api/data/metadata.dart';
-import 'package:lunasea/modules/lidarr/core/api/data/qualityprofile.dart';
-import 'package:lunasea/modules/lidarr/core/api/data/rootfolder.dart';
-import 'package:lunasea/vendor.dart';
+import 'package:arrpilot/database/table.dart';
+import 'package:arrpilot/modules/lidarr/core/api/data/metadata.dart';
+import 'package:arrpilot/modules/lidarr/core/api/data/qualityprofile.dart';
+import 'package:arrpilot/modules/lidarr/core/api/data/rootfolder.dart';
+import 'package:arrpilot/vendor.dart';
 
 enum LidarrDatabase<T> with LunaTableMixin<T> {
   NAVIGATION_INDEX<int>(0),

@@ -1,6 +1,6 @@
 library sonarr_utilities;
 
-import 'package:lunasea/modules/sonarr.dart';
+import 'package:arrpilot/modules/sonarr.dart';
 
 class SonarrUtilities {
   SonarrUtilities._();

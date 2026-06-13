@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/string/string.dart';
-import 'package:lunasea/modules/tautulli.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/string/string.dart';
+import 'package:arrpilot/modules/tautulli.dart';
 
 class TautulliStatisticsTypeButton extends StatelessWidget {
   const TautulliStatisticsTypeButton({

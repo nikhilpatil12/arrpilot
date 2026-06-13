@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/database/models/log.dart';
-import 'package:lunasea/extensions/datetime.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/database/models/log.dart';
+import 'package:arrpilot/extensions/datetime.dart';
 
 class SettingsSystemLogTile extends StatelessWidget {
   final LunaLog log;

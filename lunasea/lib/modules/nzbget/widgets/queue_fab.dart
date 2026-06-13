@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/int/duration.dart';
-import 'package:lunasea/modules/nzbget.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/int/duration.dart';
+import 'package:arrpilot/modules/nzbget.dart';
 
 class NZBGetQueueFAB extends StatefulWidget {
   final ScrollController scrollController;

@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:lunasea/core.dart';
-import 'package:lunasea/database/models/log.dart';
-import 'package:lunasea/types/exception.dart';
-import 'package:lunasea/types/log_type.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/database/models/log.dart';
+import 'package:arrpilot/types/exception.dart';
+import 'package:arrpilot/types/log_type.dart';
 
 class LunaLogger {
   static String get checkLogsMessage => 'lunasea.CheckLogsMessage'.tr();

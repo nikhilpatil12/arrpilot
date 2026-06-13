@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:lunasea/core.dart';
+import 'package:arrpilot/core.dart';
 
 class LunaLoader extends StatelessWidget {
   final double size;

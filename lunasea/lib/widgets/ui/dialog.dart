@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lunasea/core.dart';
+import 'package:arrpilot/core.dart';
 
 // ignore: avoid_classes_with_only_static_members
 abstract class LunaDialog {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/modules.dart';
-import 'package:lunasea/modules/sabnzbd/core/api/data/history.dart';
-import 'package:lunasea/modules/sabnzbd/routes/history_stages.dart';
-import 'package:lunasea/modules/sabnzbd/routes/sabnzbd.dart';
-import 'package:lunasea/modules/sabnzbd/routes/statistics.dart';
-import 'package:lunasea/router/routes.dart';
-import 'package:lunasea/vendor.dart';
+import 'package:arrpilot/modules.dart';
+import 'package:arrpilot/modules/sabnzbd/core/api/data/history.dart';
+import 'package:arrpilot/modules/sabnzbd/routes/history_stages.dart';
+import 'package:arrpilot/modules/sabnzbd/routes/sabnzbd.dart';
+import 'package:arrpilot/modules/sabnzbd/routes/statistics.dart';
+import 'package:arrpilot/router/routes.dart';
+import 'package:arrpilot/vendor.dart';
 
 enum SABnzbdRoutes with LunaRoutesMixin {
   HOME('/sabnzbd'),

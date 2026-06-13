@@ -1,6 +1,6 @@
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/int/bytes.dart';
-import 'package:lunasea/modules/tautulli.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/int/bytes.dart';
+import 'package:arrpilot/modules/tautulli.dart';
 
 extension TautulliActivityExtension on TautulliActivity {
   String get lunaSessionsHeader {

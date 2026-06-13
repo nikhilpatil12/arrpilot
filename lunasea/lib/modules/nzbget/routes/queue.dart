@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/nzbget.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/nzbget.dart';
 
 class NZBGetQueue extends StatefulWidget {
   static const ROUTE_NAME = '/nzbget/queue';

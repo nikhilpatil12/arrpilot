@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/string/string.dart';
-import 'package:lunasea/modules/sabnzbd.dart';
-import 'package:lunasea/router/routes/sabnzbd.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/string/string.dart';
+import 'package:arrpilot/modules/sabnzbd.dart';
+import 'package:arrpilot/router/routes/sabnzbd.dart';
 
 class SABnzbdHistoryTile extends StatefulWidget {
   final SABnzbdHistoryData data;

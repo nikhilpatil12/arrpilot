@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:lunasea/modules/tautulli.dart';
+import 'package:arrpilot/modules/tautulli.dart';
 
 part 'session.g.dart';
 

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-import 'package:lunasea/database/box.dart';
-import 'package:lunasea/database/models/deprecated.dart';
-import 'package:lunasea/database/tables/bios.dart';
-import 'package:lunasea/database/tables/dashboard.dart';
-import 'package:lunasea/database/tables/lidarr.dart';
-import 'package:lunasea/database/tables/lunasea.dart';
-import 'package:lunasea/database/tables/nzbget.dart';
-import 'package:lunasea/database/tables/radarr.dart';
-import 'package:lunasea/database/tables/sabnzbd.dart';
-import 'package:lunasea/database/tables/search.dart';
-import 'package:lunasea/database/tables/sonarr.dart';
-import 'package:lunasea/database/tables/tautulli.dart';
-import 'package:lunasea/vendor.dart';
+import 'package:arrpilot/database/box.dart';
+import 'package:arrpilot/database/models/deprecated.dart';
+import 'package:arrpilot/database/tables/bios.dart';
+import 'package:arrpilot/database/tables/dashboard.dart';
+import 'package:arrpilot/database/tables/lidarr.dart';
+import 'package:arrpilot/database/tables/lunasea.dart';
+import 'package:arrpilot/database/tables/nzbget.dart';
+import 'package:arrpilot/database/tables/radarr.dart';
+import 'package:arrpilot/database/tables/sabnzbd.dart';
+import 'package:arrpilot/database/tables/search.dart';
+import 'package:arrpilot/database/tables/sonarr.dart';
+import 'package:arrpilot/database/tables/tautulli.dart';
+import 'package:arrpilot/vendor.dart';
 
 enum LunaTable<T extends LunaTableMixin> {
   bios<BIOSDatabase>('bios', items: BIOSDatabase.values),

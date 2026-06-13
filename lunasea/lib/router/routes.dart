@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-import 'package:lunasea/modules.dart';
-import 'package:lunasea/router/router.dart';
-import 'package:lunasea/router/routes/bios.dart';
-import 'package:lunasea/router/routes/dashboard.dart';
-import 'package:lunasea/router/routes/external_modules.dart';
-import 'package:lunasea/router/routes/lidarr.dart';
-import 'package:lunasea/router/routes/nzbget.dart';
-import 'package:lunasea/router/routes/radarr.dart';
-import 'package:lunasea/router/routes/sabnzbd.dart';
-import 'package:lunasea/router/routes/search.dart';
-import 'package:lunasea/router/routes/settings.dart';
-import 'package:lunasea/router/routes/sonarr.dart';
-import 'package:lunasea/router/routes/tautulli.dart';
-import 'package:lunasea/vendor.dart';
-import 'package:lunasea/widgets/pages/not_enabled.dart';
+import 'package:arrpilot/modules.dart';
+import 'package:arrpilot/router/router.dart';
+import 'package:arrpilot/router/routes/bios.dart';
+import 'package:arrpilot/router/routes/dashboard.dart';
+import 'package:arrpilot/router/routes/external_modules.dart';
+import 'package:arrpilot/router/routes/lidarr.dart';
+import 'package:arrpilot/router/routes/nzbget.dart';
+import 'package:arrpilot/router/routes/radarr.dart';
+import 'package:arrpilot/router/routes/sabnzbd.dart';
+import 'package:arrpilot/router/routes/search.dart';
+import 'package:arrpilot/router/routes/settings.dart';
+import 'package:arrpilot/router/routes/sonarr.dart';
+import 'package:arrpilot/router/routes/tautulli.dart';
+import 'package:arrpilot/vendor.dart';
+import 'package:arrpilot/widgets/pages/not_enabled.dart';
 
 enum LunaRoutes {
   bios('bios', root: BIOSRoutes.HOME),

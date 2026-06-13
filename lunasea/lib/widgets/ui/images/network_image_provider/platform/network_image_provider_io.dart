@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:lunasea/system/cache/image/image_cache.dart';
+import 'package:arrpilot/system/cache/image/image_cache.dart';
 
 // ignore: always_use_package_imports
 import '../network_image_provider.dart';

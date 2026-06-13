@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/string/string.dart';
-import 'package:lunasea/modules/sonarr.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/string/string.dart';
+import 'package:arrpilot/modules/sonarr.dart';
 
 class SonarrSeriesEditSeriesTypeTile extends StatelessWidget {
   const SonarrSeriesEditSeriesTypeTile({

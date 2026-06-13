@@ -1,5 +1,5 @@
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/sabnzbd.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/sabnzbd.dart';
 
 class SABnzbdAPI {
   final Dio _dio;

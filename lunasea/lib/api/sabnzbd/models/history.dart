@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:lunasea/api/sabnzbd/models/stage_log.dart';
+import 'package:arrpilot/api/sabnzbd/models/stage_log.dart';
 
 part 'history.g.dart';
 

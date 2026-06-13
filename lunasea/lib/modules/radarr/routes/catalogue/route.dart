@@ -1,9 +1,9 @@
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/radarr.dart';
-import 'package:lunasea/router/routes/radarr.dart';
-import 'package:lunasea/types/list_view_option.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/radarr.dart';
+import 'package:arrpilot/router/routes/radarr.dart';
+import 'package:arrpilot/types/list_view_option.dart';
 
 class RadarrCatalogueRoute extends StatefulWidget {
   const RadarrCatalogueRoute({

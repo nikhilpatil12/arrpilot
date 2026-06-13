@@ -1,6 +1,6 @@
-import 'package:lunasea/api/nzbget/models/status.dart';
-import 'package:lunasea/api/nzbget/models/version.dart';
-import 'package:lunasea/vendor.dart';
+import 'package:arrpilot/api/nzbget/models/status.dart';
+import 'package:arrpilot/api/nzbget/models/version.dart';
+import 'package:arrpilot/vendor.dart';
 
 part 'api.g.dart';
 

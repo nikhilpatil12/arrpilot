@@ -1,4 +1,4 @@
-import 'package:lunasea/core.dart';
+import 'package:arrpilot/core.dart';
 
 Future<void> showLunaErrorSnackBar({
   required String title,

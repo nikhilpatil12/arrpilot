@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/lidarr.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/lidarr.dart';
 
 class LidarrCatalogueHideButton extends StatefulWidget {
   final ScrollController controller;

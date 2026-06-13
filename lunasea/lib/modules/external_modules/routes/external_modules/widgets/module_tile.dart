@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/database/models/external_module.dart';
-import 'package:lunasea/extensions/string/links.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/database/models/external_module.dart';
+import 'package:arrpilot/extensions/string/links.dart';
 
 class ExternalModulesModuleTile extends StatelessWidget {
   final LunaExternalModule? module;

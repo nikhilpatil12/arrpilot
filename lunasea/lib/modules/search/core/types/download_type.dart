@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/nzbget.dart';
-import 'package:lunasea/modules/sabnzbd.dart';
-import 'package:lunasea/modules/search.dart';
-import 'package:lunasea/system/filesystem/filesystem.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/nzbget.dart';
+import 'package:arrpilot/modules/sabnzbd.dart';
+import 'package:arrpilot/modules/search.dart';
+import 'package:arrpilot/system/filesystem/filesystem.dart';
 
 enum SearchDownloadType {
   NZBGET,

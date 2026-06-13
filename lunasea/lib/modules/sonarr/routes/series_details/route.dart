@@ -1,10 +1,10 @@
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/sonarr.dart';
-import 'package:lunasea/modules/sonarr/routes/series_details/sheets/links.dart';
-import 'package:lunasea/router/routes/sonarr.dart';
-import 'package:lunasea/widgets/pages/invalid_route.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/sonarr.dart';
+import 'package:arrpilot/modules/sonarr/routes/series_details/sheets/links.dart';
+import 'package:arrpilot/router/routes/sonarr.dart';
+import 'package:arrpilot/widgets/pages/invalid_route.dart';
 
 class SeriesDetailsRoute extends StatefulWidget {
   final int seriesId;

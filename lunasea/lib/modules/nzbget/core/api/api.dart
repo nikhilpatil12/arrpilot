@@ -1,5 +1,5 @@
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/nzbget.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/nzbget.dart';
 
 class NZBGetAPI {
   final Dio _dio;

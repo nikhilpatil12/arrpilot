@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/sabnzbd.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/sabnzbd.dart';
 
 class SABnzbdHistoryHideButton extends StatefulWidget {
   final ScrollController controller;

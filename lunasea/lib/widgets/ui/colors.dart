@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
+import 'package:arrpilot/core.dart';
 
 class LunaColours {
   /// List of LunaSea colours in order that the should appear in a list.

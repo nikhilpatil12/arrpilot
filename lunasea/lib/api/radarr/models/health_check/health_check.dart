@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:lunasea/api/radarr/types.dart';
-import 'package:lunasea/api/radarr/utilities.dart';
+import 'package:arrpilot/api/radarr/types.dart';
+import 'package:arrpilot/api/radarr/utilities.dart';
 
 part 'health_check.g.dart';
 

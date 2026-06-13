@@ -1,4 +1,4 @@
-export 'package:lunasea/database/tables/tautulli.dart';
+export 'package:arrpilot/database/tables/tautulli.dart';
 export 'core/api_helper.dart';
 export 'core/dialogs.dart';
 export 'core/extensions.dart';

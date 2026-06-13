@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/database/tables/dashboard.dart';
-import 'package:lunasea/vendor.dart';
+import 'package:arrpilot/database/tables/dashboard.dart';
+import 'package:arrpilot/vendor.dart';
 
-import 'package:lunasea/modules.dart';
-import 'package:lunasea/widgets/ui.dart';
-import 'package:lunasea/modules/dashboard/core/adapters/calendar_starting_day.dart';
-import 'package:lunasea/modules/dashboard/core/adapters/calendar_starting_size.dart';
-import 'package:lunasea/modules/dashboard/core/adapters/calendar_starting_type.dart';
-import 'package:lunasea/modules/dashboard/core/dialogs.dart';
-import 'package:lunasea/modules/settings/core/dialogs.dart';
+import 'package:arrpilot/modules.dart';
+import 'package:arrpilot/widgets/ui.dart';
+import 'package:arrpilot/modules/dashboard/core/adapters/calendar_starting_day.dart';
+import 'package:arrpilot/modules/dashboard/core/adapters/calendar_starting_size.dart';
+import 'package:arrpilot/modules/dashboard/core/adapters/calendar_starting_type.dart';
+import 'package:arrpilot/modules/dashboard/core/dialogs.dart';
+import 'package:arrpilot/modules/settings/core/dialogs.dart';
 
 class ConfigurationDashboardCalendarRoute extends StatefulWidget {
   const ConfigurationDashboardCalendarRoute({

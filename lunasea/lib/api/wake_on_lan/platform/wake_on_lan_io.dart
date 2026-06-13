@@ -1,9 +1,9 @@
 import 'package:wake_on_lan/wake_on_lan.dart';
-import 'package:lunasea/api/wake_on_lan/wake_on_lan.dart';
-import 'package:lunasea/database/models/profile.dart';
-import 'package:lunasea/system/logger.dart';
-import 'package:lunasea/vendor.dart';
-import 'package:lunasea/widgets/ui.dart';
+import 'package:arrpilot/api/wake_on_lan/wake_on_lan.dart';
+import 'package:arrpilot/database/models/profile.dart';
+import 'package:arrpilot/system/logger.dart';
+import 'package:arrpilot/vendor.dart';
+import 'package:arrpilot/widgets/ui.dart';
 
 bool isPlatformSupported() => true;
 LunaWakeOnLAN getWakeOnLAN() => IO();

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/int/bytes.dart';
-import 'package:lunasea/extensions/string/string.dart';
-import 'package:lunasea/modules/tautulli.dart';
-import 'package:lunasea/router/routes/tautulli.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/int/bytes.dart';
+import 'package:arrpilot/extensions/string/string.dart';
+import 'package:arrpilot/modules/tautulli.dart';
+import 'package:arrpilot/router/routes/tautulli.dart';
 
 class TautulliSyncedItemTile extends StatelessWidget {
   final TautulliSyncedItem syncedItem;

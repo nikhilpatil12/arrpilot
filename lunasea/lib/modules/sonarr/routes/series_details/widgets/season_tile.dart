@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:collection/collection.dart' show IterableExtension;
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/datetime.dart';
-import 'package:lunasea/extensions/int/bytes.dart';
-import 'package:lunasea/extensions/string/string.dart';
-import 'package:lunasea/modules/sonarr.dart';
-import 'package:lunasea/router/routes/sonarr.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/datetime.dart';
+import 'package:arrpilot/extensions/int/bytes.dart';
+import 'package:arrpilot/extensions/string/string.dart';
+import 'package:arrpilot/modules/sonarr.dart';
+import 'package:arrpilot/router/routes/sonarr.dart';
 
 class SonarrSeriesDetailsSeasonTile extends StatefulWidget {
   final SonarrSeriesSeason season;

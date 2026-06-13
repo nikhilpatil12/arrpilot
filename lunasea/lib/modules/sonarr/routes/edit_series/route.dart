@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/sonarr.dart';
-import 'package:lunasea/widgets/pages/invalid_route.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/sonarr.dart';
+import 'package:arrpilot/widgets/pages/invalid_route.dart';
 
 class SeriesEditRoute extends StatefulWidget {
   final int seriesId;

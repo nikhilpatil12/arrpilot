@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/extensions/string/links.dart';
-import 'package:lunasea/modules/sonarr.dart';
-import 'package:lunasea/utils/links.dart';
-import 'package:lunasea/widgets/ui.dart';
+import 'package:arrpilot/extensions/string/links.dart';
+import 'package:arrpilot/modules/sonarr.dart';
+import 'package:arrpilot/utils/links.dart';
+import 'package:arrpilot/widgets/ui.dart';
 
 class LinksSheet extends LunaBottomModalSheet {
   SonarrSeries series;

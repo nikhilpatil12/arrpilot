@@ -1,4 +1,4 @@
-import 'package:lunasea/core.dart';
+import 'package:arrpilot/core.dart';
 
 class NZBGetState extends LunaModuleState {
   NZBGetState() {

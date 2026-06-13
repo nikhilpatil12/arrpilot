@@ -2,8 +2,8 @@
 library radarr_commands;
 
 import 'package:dio/dio.dart';
-import 'package:lunasea/api/radarr/models.dart';
-import 'package:lunasea/api/radarr/types.dart';
+import 'package:arrpilot/api/radarr/models.dart';
+import 'package:arrpilot/api/radarr/types.dart';
 
 // Commands
 part 'commands/command.dart';

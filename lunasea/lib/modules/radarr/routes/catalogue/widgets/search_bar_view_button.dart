@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/scroll_controller.dart';
-import 'package:lunasea/modules/radarr.dart';
-import 'package:lunasea/types/list_view_option.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/scroll_controller.dart';
+import 'package:arrpilot/modules/radarr.dart';
+import 'package:arrpilot/types/list_view_option.dart';
 
 class RadarrCatalogueSearchBarViewButton extends StatefulWidget {
   final ScrollController controller;

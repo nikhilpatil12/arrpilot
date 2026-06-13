@@ -1,6 +1,6 @@
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/int/duration.dart';
-import 'package:lunasea/extensions/string/string.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/int/duration.dart';
+import 'package:arrpilot/extensions/string/string.dart';
 
 class NZBGetQueueData {
   int id;

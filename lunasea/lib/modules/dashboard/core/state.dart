@@ -1,11 +1,11 @@
-import 'package:lunasea/database/tables/dashboard.dart';
-import 'package:lunasea/extensions/datetime.dart';
-import 'package:lunasea/modules/dashboard/core/adapters/calendar_starting_size.dart';
-import 'package:lunasea/modules/dashboard/core/adapters/calendar_starting_type.dart';
-import 'package:lunasea/modules/dashboard/core/api/api.dart';
-import 'package:lunasea/modules/dashboard/core/api/data/abstract.dart';
-import 'package:lunasea/system/state.dart';
-import 'package:lunasea/vendor.dart';
+import 'package:arrpilot/database/tables/dashboard.dart';
+import 'package:arrpilot/extensions/datetime.dart';
+import 'package:arrpilot/modules/dashboard/core/adapters/calendar_starting_size.dart';
+import 'package:arrpilot/modules/dashboard/core/adapters/calendar_starting_type.dart';
+import 'package:arrpilot/modules/dashboard/core/api/api.dart';
+import 'package:arrpilot/modules/dashboard/core/api/data/abstract.dart';
+import 'package:arrpilot/system/state.dart';
+import 'package:arrpilot/vendor.dart';
 
 class DashboardState extends LunaModuleState {
   DashboardState() {

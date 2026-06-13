@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/widgets/ui.dart';
+import 'package:arrpilot/widgets/ui.dart';
 
 class ErrorRoutePage extends StatelessWidget {
   final _scaffoldKey = GlobalKey<ScaffoldState>();

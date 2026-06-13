@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/database/models/indexer.dart';
-import 'package:lunasea/modules/settings.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/database/models/indexer.dart';
+import 'package:arrpilot/modules/settings.dart';
 
 class HeaderUtility {
   /// Show a dialog confirming the user wants to delete a header.

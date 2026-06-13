@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/int/duration.dart';
-import 'package:lunasea/modules/lidarr.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/int/duration.dart';
+import 'package:arrpilot/modules/lidarr.dart';
 
 class LidarrDetailsTrackTile extends StatefulWidget {
   final LidarrTrackData data;

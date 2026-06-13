@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:fl_chart/fl_chart.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/duration/timestamp.dart';
-import 'package:lunasea/modules/tautulli.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/duration/timestamp.dart';
+import 'package:arrpilot/modules/tautulli.dart';
 
 class TautulliBarGraphHelper {
   static const int BAR_COUNT = 7;

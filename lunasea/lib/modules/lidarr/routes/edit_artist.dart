@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/lidarr.dart';
-import 'package:lunasea/router/router.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/lidarr.dart';
+import 'package:arrpilot/router/router.dart';
 
 class ArtistEditRoute extends StatefulWidget {
   final LidarrCatalogueData? data;

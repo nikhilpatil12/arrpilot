@@ -1,5 +1,5 @@
-import 'package:lunasea/extensions/int/bytes.dart';
-import 'package:lunasea/extensions/int/duration.dart';
+import 'package:arrpilot/extensions/int/bytes.dart';
+import 'package:arrpilot/extensions/int/duration.dart';
 
 class NZBGetStatusData {
   bool paused;

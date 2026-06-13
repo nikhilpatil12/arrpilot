@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/extensions/datetime.dart';
-import 'package:lunasea/modules/tautulli.dart';
+import 'package:arrpilot/extensions/datetime.dart';
+import 'package:arrpilot/modules/tautulli.dart';
 
 extension TautulliHistoryRecordExtension on TautulliHistoryRecord {
   String get lsFullTitle => [

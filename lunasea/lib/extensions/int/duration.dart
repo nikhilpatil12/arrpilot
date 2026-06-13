@@ -1,4 +1,4 @@
-import 'package:lunasea/vendor.dart';
+import 'package:arrpilot/vendor.dart';
 
 extension IntegerAsDurationExtension on int? {
   static const int _MINUTE_IN_SECONDS = 60;

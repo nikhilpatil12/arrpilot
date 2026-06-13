@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/extensions/int/duration.dart';
-import 'package:lunasea/extensions/string/string.dart';
-import 'package:lunasea/router/routes/radarr.dart';
-import 'package:lunasea/vendor.dart';
-import 'package:lunasea/widgets/ui.dart';
-import 'package:lunasea/modules/radarr/core/api_helper.dart';
-import 'package:lunasea/modules/radarr/core/state.dart';
-import 'package:lunasea/modules/dashboard/core/api/data/abstract.dart';
+import 'package:arrpilot/extensions/int/duration.dart';
+import 'package:arrpilot/extensions/string/string.dart';
+import 'package:arrpilot/router/routes/radarr.dart';
+import 'package:arrpilot/vendor.dart';
+import 'package:arrpilot/widgets/ui.dart';
+import 'package:arrpilot/modules/radarr/core/api_helper.dart';
+import 'package:arrpilot/modules/radarr/core/state.dart';
+import 'package:arrpilot/modules/dashboard/core/api/data/abstract.dart';
 
 class CalendarRadarrData extends CalendarData {
   bool hasFile;

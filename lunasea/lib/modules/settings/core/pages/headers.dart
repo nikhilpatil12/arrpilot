@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/radarr.dart';
-import 'package:lunasea/modules/sonarr.dart';
-import 'package:lunasea/modules/settings.dart';
-import 'package:lunasea/modules/tautulli.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/radarr.dart';
+import 'package:arrpilot/modules/sonarr.dart';
+import 'package:arrpilot/modules/settings.dart';
+import 'package:arrpilot/modules/tautulli.dart';
 
 class SettingsHeaderRoute extends StatefulWidget {
   final LunaModule module;

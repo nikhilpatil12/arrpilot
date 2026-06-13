@@ -1,5 +1,5 @@
-import 'package:lunasea/core.dart';
-import 'package:lunasea/types/log_type.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/types/log_type.dart';
 import 'package:stack_trace/stack_trace.dart';
 
 part 'log.g.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/database/database.dart';
-import 'package:lunasea/system/recovery_mode/action_tile.dart';
+import 'package:arrpilot/database/database.dart';
+import 'package:arrpilot/system/recovery_mode/action_tile.dart';
 
 class ClearDatabaseTile extends RecoveryActionTile {
   const ClearDatabaseTile({

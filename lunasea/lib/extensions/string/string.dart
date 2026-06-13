@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:lunasea/vendor.dart';
-import 'package:lunasea/widgets/ui.dart';
+import 'package:arrpilot/vendor.dart';
+import 'package:arrpilot/widgets/ui.dart';
 
 extension StringNullableExtension on String? {
   /// Return a "UI-Safe" string by replacing null or empty (if considered unsafe) strings with a dash.

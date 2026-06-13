@@ -1,5 +1,5 @@
-import 'package:lunasea/core.dart';
-import 'package:lunasea/system/webhooks.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/system/webhooks.dart';
 
 class LidarrWebhooks extends LunaWebhooks {
   @override

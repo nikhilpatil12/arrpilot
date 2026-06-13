@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/database/models/indexer.dart';
-import 'package:lunasea/modules/settings.dart';
-import 'package:lunasea/widgets/pages/invalid_route.dart';
-import 'package:lunasea/router/routes/settings.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/database/models/indexer.dart';
+import 'package:arrpilot/modules/settings.dart';
+import 'package:arrpilot/widgets/pages/invalid_route.dart';
+import 'package:arrpilot/router/routes/settings.dart';
 
 class ConfigurationSearchEditIndexerRoute extends StatefulWidget {
   final int id;

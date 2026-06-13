@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/api/sonarr/models.dart';
-import 'package:lunasea/modules.dart';
-import 'package:lunasea/modules/sonarr/core/state.dart';
-import 'package:lunasea/modules/sonarr/routes/add_series/route.dart';
-import 'package:lunasea/modules/sonarr/routes/add_series_details/route.dart';
-import 'package:lunasea/modules/sonarr/routes/edit_series/route.dart';
-import 'package:lunasea/modules/sonarr/routes/history/route.dart';
-import 'package:lunasea/modules/sonarr/routes/queue/route.dart';
-import 'package:lunasea/modules/sonarr/routes/releases/route.dart';
-import 'package:lunasea/modules/sonarr/routes/season_details/route.dart';
-import 'package:lunasea/modules/sonarr/routes/series_details/route.dart';
-import 'package:lunasea/modules/sonarr/routes/sonarr/route.dart';
-import 'package:lunasea/modules/sonarr/routes/tags/route.dart';
-import 'package:lunasea/router/routes.dart';
-import 'package:lunasea/vendor.dart';
+import 'package:arrpilot/api/sonarr/models.dart';
+import 'package:arrpilot/modules.dart';
+import 'package:arrpilot/modules/sonarr/core/state.dart';
+import 'package:arrpilot/modules/sonarr/routes/add_series/route.dart';
+import 'package:arrpilot/modules/sonarr/routes/add_series_details/route.dart';
+import 'package:arrpilot/modules/sonarr/routes/edit_series/route.dart';
+import 'package:arrpilot/modules/sonarr/routes/history/route.dart';
+import 'package:arrpilot/modules/sonarr/routes/queue/route.dart';
+import 'package:arrpilot/modules/sonarr/routes/releases/route.dart';
+import 'package:arrpilot/modules/sonarr/routes/season_details/route.dart';
+import 'package:arrpilot/modules/sonarr/routes/series_details/route.dart';
+import 'package:arrpilot/modules/sonarr/routes/sonarr/route.dart';
+import 'package:arrpilot/modules/sonarr/routes/tags/route.dart';
+import 'package:arrpilot/router/routes.dart';
+import 'package:arrpilot/vendor.dart';
 
 enum SonarrRoutes with LunaRoutesMixin {
   HOME('/sonarr'),

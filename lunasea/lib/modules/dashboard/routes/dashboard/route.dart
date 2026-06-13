@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'package:lunasea/modules.dart';
-import 'package:lunasea/database/tables/dashboard.dart';
-import 'package:lunasea/database/tables/lunasea.dart';
-import 'package:lunasea/widgets/ui.dart';
-import 'package:lunasea/modules/dashboard/routes/dashboard/pages/calendar.dart';
-import 'package:lunasea/modules/dashboard/routes/dashboard/pages/modules.dart';
-import 'package:lunasea/modules/dashboard/routes/dashboard/widgets/switch_view_action.dart';
-import 'package:lunasea/modules/dashboard/routes/dashboard/widgets/navigation_bar.dart';
+import 'package:arrpilot/modules.dart';
+import 'package:arrpilot/database/tables/dashboard.dart';
+import 'package:arrpilot/database/tables/lunasea.dart';
+import 'package:arrpilot/widgets/ui.dart';
+import 'package:arrpilot/modules/dashboard/routes/dashboard/pages/calendar.dart';
+import 'package:arrpilot/modules/dashboard/routes/dashboard/pages/modules.dart';
+import 'package:arrpilot/modules/dashboard/routes/dashboard/widgets/switch_view_action.dart';
+import 'package:arrpilot/modules/dashboard/routes/dashboard/widgets/navigation_bar.dart';
 
 class DashboardRoute extends StatefulWidget {
   const DashboardRoute({

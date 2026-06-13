@@ -1,18 +1,18 @@
-import 'package:lunasea/vendor.dart';
-import 'package:lunasea/api/sabnzbd/models/action_result.dart';
-import 'package:lunasea/api/sabnzbd/models/categories.dart';
-import 'package:lunasea/api/sabnzbd/models/history.dart';
-import 'package:lunasea/api/sabnzbd/models/queue.dart';
-import 'package:lunasea/api/sabnzbd/models/server_stats.dart';
-import 'package:lunasea/api/sabnzbd/models/status.dart';
-import 'package:lunasea/api/sabnzbd/models/version.dart';
-import 'package:lunasea/api/sabnzbd/types/action.dart';
-import 'package:lunasea/api/sabnzbd/types/clear_history.dart';
-import 'package:lunasea/api/sabnzbd/types/on_complete_action.dart';
-import 'package:lunasea/api/sabnzbd/types/post_processing.dart';
-import 'package:lunasea/api/sabnzbd/types/priority.dart';
-import 'package:lunasea/api/sabnzbd/types/sort_category.dart';
-import 'package:lunasea/api/sabnzbd/types/sort_direction.dart';
+import 'package:arrpilot/vendor.dart';
+import 'package:arrpilot/api/sabnzbd/models/action_result.dart';
+import 'package:arrpilot/api/sabnzbd/models/categories.dart';
+import 'package:arrpilot/api/sabnzbd/models/history.dart';
+import 'package:arrpilot/api/sabnzbd/models/queue.dart';
+import 'package:arrpilot/api/sabnzbd/models/server_stats.dart';
+import 'package:arrpilot/api/sabnzbd/models/status.dart';
+import 'package:arrpilot/api/sabnzbd/models/version.dart';
+import 'package:arrpilot/api/sabnzbd/types/action.dart';
+import 'package:arrpilot/api/sabnzbd/types/clear_history.dart';
+import 'package:arrpilot/api/sabnzbd/types/on_complete_action.dart';
+import 'package:arrpilot/api/sabnzbd/types/post_processing.dart';
+import 'package:arrpilot/api/sabnzbd/types/priority.dart';
+import 'package:arrpilot/api/sabnzbd/types/sort_category.dart';
+import 'package:arrpilot/api/sabnzbd/types/sort_direction.dart';
 
 part 'api.g.dart';
 

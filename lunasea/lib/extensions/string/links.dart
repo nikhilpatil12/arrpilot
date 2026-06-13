@@ -1,4 +1,4 @@
-import 'package:lunasea/system/logger.dart';
+import 'package:arrpilot/system/logger.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 extension StringAsLinksExtension on String {

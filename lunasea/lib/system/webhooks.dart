@@ -1,4 +1,4 @@
-import 'package:lunasea/core.dart';
+import 'package:arrpilot/core.dart';
 
 abstract class LunaWebhooks {
   Future<void> handle(Map<dynamic, dynamic> data);

@@ -1,6 +1,6 @@
-import 'package:lunasea/types/enum/readable.dart';
-import 'package:lunasea/types/enum/serializable.dart';
-import 'package:lunasea/vendor.dart';
+import 'package:arrpilot/types/enum/readable.dart';
+import 'package:arrpilot/types/enum/serializable.dart';
+import 'package:arrpilot/vendor.dart';
 
 enum SABnzbdSortDirection with EnumSerializable, EnumReadable {
   ASCENDING('asc'),

@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/tautulli.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/tautulli.dart';
 
 class TautulliGraphsPlayCountByTopPlatformsGraph extends StatelessWidget {
   const TautulliGraphsPlayCountByTopPlatformsGraph({

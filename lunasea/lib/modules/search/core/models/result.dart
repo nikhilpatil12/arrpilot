@@ -1,5 +1,5 @@
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/datetime.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/datetime.dart';
 
 class NewznabResultData {
   String title;

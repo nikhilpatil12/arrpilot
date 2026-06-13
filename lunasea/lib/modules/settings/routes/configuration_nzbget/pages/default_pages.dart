@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/database/tables/nzbget.dart';
-import 'package:lunasea/modules/nzbget.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/database/tables/nzbget.dart';
+import 'package:arrpilot/modules/nzbget.dart';
 
 class ConfigurationNZBGetDefaultPagesRoute extends StatefulWidget {
   const ConfigurationNZBGetDefaultPagesRoute({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:lunasea/core.dart';
+import 'package:arrpilot/core.dart';
 
 class LunaTheme {
   /// Initialize the theme by setting the system navigation and system colours.

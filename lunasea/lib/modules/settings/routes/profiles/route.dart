@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/modules/settings.dart';
-import 'package:lunasea/utils/profile_tools.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/modules/settings.dart';
+import 'package:arrpilot/utils/profile_tools.dart';
 
 class ProfilesRoute extends StatefulWidget {
   const ProfilesRoute({

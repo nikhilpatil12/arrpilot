@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/modules.dart';
-import 'package:lunasea/modules/lidarr/core/api.dart';
-import 'package:lunasea/modules/lidarr/routes/add_details.dart';
-import 'package:lunasea/modules/lidarr/routes/add_search.dart';
-import 'package:lunasea/modules/lidarr/routes/details_album.dart';
-import 'package:lunasea/modules/lidarr/routes/details_artist.dart';
-import 'package:lunasea/modules/lidarr/routes/edit_artist.dart';
-import 'package:lunasea/modules/lidarr/routes/lidarr.dart';
-import 'package:lunasea/modules/lidarr/routes/search_results.dart';
-import 'package:lunasea/router/routes.dart';
-import 'package:lunasea/vendor.dart';
+import 'package:arrpilot/modules.dart';
+import 'package:arrpilot/modules/lidarr/core/api.dart';
+import 'package:arrpilot/modules/lidarr/routes/add_details.dart';
+import 'package:arrpilot/modules/lidarr/routes/add_search.dart';
+import 'package:arrpilot/modules/lidarr/routes/details_album.dart';
+import 'package:arrpilot/modules/lidarr/routes/details_artist.dart';
+import 'package:arrpilot/modules/lidarr/routes/edit_artist.dart';
+import 'package:arrpilot/modules/lidarr/routes/lidarr.dart';
+import 'package:arrpilot/modules/lidarr/routes/search_results.dart';
+import 'package:arrpilot/router/routes.dart';
+import 'package:arrpilot/vendor.dart';
 
 enum LidarrRoutes with LunaRoutesMixin {
   HOME('/lidarr'),

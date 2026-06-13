@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:lunasea/system/platform.dart';
+import 'package:arrpilot/system/platform.dart';
 import 'package:window_manager/window_manager.dart';
 
 // ignore: always_use_package_imports

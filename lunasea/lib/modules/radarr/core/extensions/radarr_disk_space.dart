@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/extensions/int/bytes.dart';
-import 'package:lunasea/modules/radarr.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/extensions/int/bytes.dart';
+import 'package:arrpilot/modules/radarr.dart';
 
 extension LunaRadarrDiskSpaceExtension on RadarrDiskSpace {
   String? get lunaPath {

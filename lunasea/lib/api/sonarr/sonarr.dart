@@ -1,7 +1,7 @@
 library sonarr;
 
 import 'package:dio/dio.dart';
-import 'package:lunasea/api/sonarr/controllers.dart';
+import 'package:arrpilot/api/sonarr/controllers.dart';
 
 class SonarrAPI {
   SonarrAPI._internal({

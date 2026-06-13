@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:lunasea/api/radarr/models.dart';
+import 'package:arrpilot/api/radarr/models.dart';
 
 part 'collection.g.dart';
 

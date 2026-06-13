@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/core.dart';
-import 'package:lunasea/database/database.dart';
-import 'package:lunasea/database/models/external_module.dart';
-import 'package:lunasea/database/models/indexer.dart';
-import 'package:lunasea/database/table.dart';
+import 'package:arrpilot/core.dart';
+import 'package:arrpilot/database/database.dart';
+import 'package:arrpilot/database/models/external_module.dart';
+import 'package:arrpilot/database/models/indexer.dart';
+import 'package:arrpilot/database/table.dart';
 
 class LunaConfig {
   Future<void> import(BuildContext context, String data) async {

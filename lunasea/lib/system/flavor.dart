@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunasea/system/environment.dart';
-import 'package:lunasea/vendor.dart';
-import 'package:lunasea/widgets/ui.dart';
+import 'package:arrpilot/system/environment.dart';
+import 'package:arrpilot/vendor.dart';
+import 'package:arrpilot/widgets/ui.dart';
 
 const FLAVOR_EDGE = 'edge';
 const FLAVOR_BETA = 'beta';

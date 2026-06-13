@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lunasea/core.dart';
+import 'package:arrpilot/core.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:lunasea/extensions/page_controller.dart';
-import 'package:lunasea/extensions/scroll_controller.dart';
+import 'package:arrpilot/extensions/page_controller.dart';
+import 'package:arrpilot/extensions/scroll_controller.dart';
 
 class LunaBottomNavigationBar extends StatefulWidget {
   final PageController? pageController;

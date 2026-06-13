@@ -1,4 +1,4 @@
-import 'package:lunasea/vendor.dart';
+import 'package:arrpilot/vendor.dart';
 
 part 'deprecated.g.dart';
 

@@ -1,4 +1,4 @@
-import 'package:lunasea/extensions/int/bytes.dart';
+import 'package:arrpilot/extensions/int/bytes.dart';
 
 class SABnzbdStatusData {
   bool paused;
