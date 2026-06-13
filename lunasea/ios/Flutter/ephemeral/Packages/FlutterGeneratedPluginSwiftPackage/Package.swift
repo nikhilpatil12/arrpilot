@@ -17,6 +17,7 @@ let package = Package(
     dependencies: [
         .package(name: "file_picker", path: "../.packages/file_picker-9.2.3"),
         .package(name: "flutter_native_splash", path: "../.packages/flutter_native_splash-2.4.5"),
+        .package(name: "integration_test", path: "../.packages/integration_test"),
         .package(name: "package_info_plus", path: "../.packages/package_info_plus-8.3.0"),
         .package(name: "path_provider_foundation", path: "../.packages/path_provider_foundation-2.4.1"),
         .package(name: "quick_actions_ios", path: "../.packages/quick_actions_ios-1.2.0"),
@@ -32,6 +33,7 @@ let package = Package(
             dependencies: [
                 .product(name: "file-picker", package: "file_picker"),
                 .product(name: "flutter-native-splash", package: "flutter_native_splash"),
+                .product(name: "integration-test", package: "integration_test"),
                 .product(name: "package-info-plus", package: "package_info_plus"),
                 .product(name: "path-provider-foundation", package: "path_provider_foundation"),
                 .product(name: "quick-actions-ios", package: "quick_actions_ios"),

@@ -61,6 +61,12 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   flutter_native_splash: ^2.3.2
   msix: ^3.16.1
+  # Testing
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  mockito: ^5.4.4
 dependency_overrides:
   intl: ^0.18.1
   http: ^1.0.0
