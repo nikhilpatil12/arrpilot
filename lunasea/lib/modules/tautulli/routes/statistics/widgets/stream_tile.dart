@@ -16,11 +16,11 @@ class TautulliStatisticsStreamTile extends StatefulWidget {
 class _State extends State<TautulliStatisticsStreamTile> {
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: widget.data['title'] ?? 'Unknown Title',
       body: _body(),
       posterIsSquare: true,
-      posterPlaceholderIcon: LunaIcons.SHUFFLE,
+      posterPlaceholderIcon: ArrPilotIcons.SHUFFLE,
     );
   }
 
@@ -30,13 +30,13 @@ class _State extends State<TautulliStatisticsStreamTile> {
         text: widget.data['count'].toString() +
             (widget.data['count'] == 1 ? ' Play' : ' Plays'),
         style: const TextStyle(
-          color: LunaColours.accent,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          color: ArrPilotColours.accent,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         ),
       ),
       int.tryParse(widget.data['started']) != null
           ? TextSpan(
-              text: LunaSeaDatabase.USE_24_HOUR_TIME.read()
+              text: ArrPilotDatabase.USE_24_HOUR_TIME.read()
                   ? DateFormat('yyyy-MM-dd HH:mm').format(
                       DateTime.fromMillisecondsSinceEpoch(
                           int.tryParse(widget.data['started'])! * 1000))
@@ -44,7 +44,7 @@ class _State extends State<TautulliStatisticsStreamTile> {
                       DateTime.fromMillisecondsSinceEpoch(
                           int.tryParse(widget.data['started'])! * 1000)),
             )
-          : const TextSpan(text: LunaUI.TEXT_EMDASH),
+          : const TextSpan(text: ArrPilotUI.TEXT_EMDASH),
     ];
   }
 }

@@ -12,15 +12,15 @@ class RadarrRootFolderTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: rootFolder.lunaPath,
       body: [
         TextSpan(text: rootFolder.lunaSpace),
         TextSpan(
           text: rootFolder.lunaUnmappedFolders,
           style: const TextStyle(
-            color: LunaColours.accent,
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+            color: ArrPilotColours.accent,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
           ),
         )
       ],

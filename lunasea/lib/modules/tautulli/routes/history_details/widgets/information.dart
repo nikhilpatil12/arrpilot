@@ -16,57 +16,57 @@ class TautulliHistoryDetailsInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
-        const LunaHeader(text: 'Metadata'),
+        const ArrPilotHeader(text: 'Metadata'),
         _metadataBlock(),
-        const LunaHeader(text: 'Session'),
+        const ArrPilotHeader(text: 'Session'),
         _sessionBlock(),
-        const LunaHeader(text: 'Player'),
+        const ArrPilotHeader(text: 'Player'),
         _playerBlock(),
       ],
     );
   }
 
   Widget _metadataBlock() {
-    return LunaTableCard(
+    return ArrPilotTableCard(
       content: [
-        LunaTableContent(title: 'status', body: history.lsStatus),
-        LunaTableContent(title: 'title', body: history.lsFullTitle),
+        ArrPilotTableContent(title: 'status', body: history.lsStatus),
+        ArrPilotTableContent(title: 'title', body: history.lsFullTitle),
         if (history.year != null)
-          LunaTableContent(title: 'year', body: history.year.toString()),
-        LunaTableContent(title: 'user', body: history.friendlyName),
+          ArrPilotTableContent(title: 'year', body: history.year.toString()),
+        ArrPilotTableContent(title: 'user', body: history.friendlyName),
       ],
     );
   }
 
   Widget _sessionBlock() {
-    return LunaTableCard(
+    return ArrPilotTableCard(
       content: [
-        LunaTableContent(title: 'state', body: history.lsState),
-        LunaTableContent(
+        ArrPilotTableContent(title: 'state', body: history.lsState),
+        ArrPilotTableContent(
             title: 'date',
             body: DateFormat('yyyy-MM-dd').format(history.date!)),
-        LunaTableContent(title: 'started', body: history.date!.asTimeOnly()),
-        LunaTableContent(
+        ArrPilotTableContent(title: 'started', body: history.date!.asTimeOnly()),
+        ArrPilotTableContent(
             title: 'stopped',
             body: history.state == null
                 ? history.stopped!.asTimeOnly()
-                : LunaUI.TEXT_EMDASH),
-        LunaTableContent(
+                : ArrPilotUI.TEXT_EMDASH),
+        ArrPilotTableContent(
             title: 'paused', body: history.pausedCounter!.asWordsTimestamp()),
       ],
     );
   }
 
   Widget _playerBlock() {
-    return LunaTableCard(
+    return ArrPilotTableCard(
       content: [
-        LunaTableContent(title: 'location', body: history.ipAddress),
-        LunaTableContent(title: 'platform', body: history.platform),
-        LunaTableContent(title: 'product', body: history.product),
-        LunaTableContent(title: 'player', body: history.player),
+        ArrPilotTableContent(title: 'location', body: history.ipAddress),
+        ArrPilotTableContent(title: 'platform', body: history.platform),
+        ArrPilotTableContent(title: 'product', body: history.product),
+        ArrPilotTableContent(title: 'player', body: history.player),
       ],
     );
   }

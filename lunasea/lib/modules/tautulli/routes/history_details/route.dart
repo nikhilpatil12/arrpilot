@@ -20,7 +20,7 @@ class HistoryDetailsRoute extends StatefulWidget {
 }
 
 class _State extends State<HistoryDetailsRoute>
-    with LunaLoadCallbackMixin, LunaScrollControllerMixin {
+    with ArrPilotLoadCallbackMixin, ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -39,7 +39,7 @@ class _State extends State<HistoryDetailsRoute>
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -47,7 +47,7 @@ class _State extends State<HistoryDetailsRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'History Details',
       scrollControllers: [scrollController],
       actions: [
@@ -64,7 +64,7 @@ class _State extends State<HistoryDetailsRoute>
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: loadCallback,
@@ -74,12 +74,12 @@ class _State extends State<HistoryDetailsRoute>
         builder: (context, AsyncSnapshot<TautulliHistory> snapshot) {
           if (snapshot.hasError) {
             if (snapshot.connectionState != ConnectionState.waiting)
-              LunaLogger().error(
+              ArrPilotLogger().error(
                 'Unable to pull Tautulli history session',
                 snapshot.error,
                 snapshot.stackTrace,
               );
-            return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+            return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
           }
           if (snapshot.hasData) {
             TautulliHistoryRecord? _record =
@@ -95,14 +95,14 @@ class _State extends State<HistoryDetailsRoute>
               );
             return _unknown();
           }
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
   }
 
   Widget _unknown() {
-    return LunaMessage.goBack(
+    return ArrPilotMessage.goBack(
       context: context,
       text: 'History Not Found',
     );

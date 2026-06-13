@@ -13,24 +13,24 @@ extension TautulliSessionAudioExtension on TautulliSession {
   }
 
   String get _codec {
-    if (audioCodec?.isEmpty ?? true) return LunaUI.TEXT_EMDASH;
+    if (audioCodec?.isEmpty ?? true) return ArrPilotUI.TEXT_EMDASH;
     if (audioCodec == 'truehd') return 'TrueHD';
     return audioCodec!.toUpperCase();
   }
 
   String get _channelLayout {
-    if (audioChannelLayout?.isEmpty ?? true) return LunaUI.TEXT_EMDASH;
+    if (audioChannelLayout?.isEmpty ?? true) return ArrPilotUI.TEXT_EMDASH;
     return audioChannelLayout!.split('(')[0].toTitleCase();
   }
 
   String get _streamCodec {
-    if (streamAudioCodec?.isEmpty ?? true) return LunaUI.TEXT_EMDASH;
+    if (streamAudioCodec?.isEmpty ?? true) return ArrPilotUI.TEXT_EMDASH;
     if (streamAudioCodec == 'truehd') return 'TrueHD';
     return streamAudioCodec!.toUpperCase();
   }
 
   String get _streamChannelLayout {
-    if (streamAudioChannelLayout?.isEmpty ?? false) return LunaUI.TEXT_EMDASH;
+    if (streamAudioChannelLayout?.isEmpty ?? false) return ArrPilotUI.TEXT_EMDASH;
     return streamAudioChannelLayout!.split('(')[0].toTitleCase();
   }
 
@@ -40,7 +40,7 @@ extension TautulliSessionAudioExtension on TautulliSession {
 
       switch (streamAudioDecision) {
         case TautulliTranscodeDecision.TRANSCODE:
-          return '$decision ($_language - $_codec $_channelLayout ${LunaUI.TEXT_ARROW_RIGHT} $_streamCodec $_streamChannelLayout)';
+          return '$decision ($_language - $_codec $_channelLayout ${ArrPilotUI.TEXT_ARROW_RIGHT} $_streamCodec $_streamChannelLayout)';
         case TautulliTranscodeDecision.COPY:
           return '$decision ($_language - $_streamCodec $_streamChannelLayout)';
         default:
@@ -65,7 +65,7 @@ extension TautulliSessionContainerExtension on TautulliSession {
 
   String formattedContainer() {
     if (streamContainerDecision == TautulliTranscodeDecision.TRANSCODE) {
-      return '${'tautulli.Converting'.tr()} ($_container ${LunaUI.TEXT_ARROW_RIGHT} $_streamContainer)';
+      return '${'tautulli.Converting'.tr()} ($_container ${ArrPilotUI.TEXT_ARROW_RIGHT} $_streamContainer)';
     }
 
     return '${TautulliTranscodeDecision.DIRECT_PLAY.localizedName} ($_streamContainer)';
@@ -81,12 +81,12 @@ extension TautulliSessionSubtitleExtension on TautulliSession {
   String get _codec {
     if ((streamSubtitleTransient ?? false) && streamSubtitleCodec != null)
       return 'tautulli.None'.tr();
-    if (subtitleCodec?.isEmpty ?? true) return LunaUI.TEXT_EMDASH;
+    if (subtitleCodec?.isEmpty ?? true) return ArrPilotUI.TEXT_EMDASH;
     return subtitleCodec!.toUpperCase();
   }
 
   String get _streamCodec {
-    if (streamSubtitleCodec?.isEmpty ?? true) return LunaUI.TEXT_EMDASH;
+    if (streamSubtitleCodec?.isEmpty ?? true) return ArrPilotUI.TEXT_EMDASH;
     return streamSubtitleCodec!.toUpperCase();
   }
 
@@ -97,7 +97,7 @@ extension TautulliSessionSubtitleExtension on TautulliSession {
 
       switch (streamSubtitleDecision) {
         case TautulliTranscodeDecision.TRANSCODE:
-          return '$decision ($_language - $_codec ${LunaUI.TEXT_ARROW_RIGHT} $_streamCodec)';
+          return '$decision ($_language - $_codec ${ArrPilotUI.TEXT_ARROW_RIGHT} $_streamCodec)';
         case TautulliTranscodeDecision.COPY:
           return '$decision ($_language - $_codec)';
         case TautulliTranscodeDecision.BURN:
@@ -187,7 +187,7 @@ extension TautulliSessionVideoExtension on TautulliSession {
 
       switch (streamVideoDecision) {
         case TautulliTranscodeDecision.TRANSCODE:
-          return '$decision ($_codec$_hardwareDecoding $_fullResolution$_dynamicRange ${LunaUI.TEXT_ARROW_RIGHT} $_streamCodec$_hardwareEncoding $_streamFullResolution$_streamDynamicRange)';
+          return '$decision ($_codec$_hardwareDecoding $_fullResolution$_dynamicRange ${ArrPilotUI.TEXT_ARROW_RIGHT} $_streamCodec$_hardwareEncoding $_streamFullResolution$_streamDynamicRange)';
         case TautulliTranscodeDecision.COPY:
           return '$decision ($_streamCodec $_streamFullResolution$_streamDynamicRange)';
         default:
@@ -235,7 +235,7 @@ extension TautulliSessionExtension on TautulliSession {
     if (this.parentTitle != null && this.parentTitle!.isNotEmpty)
       return this.parentTitle;
     if (this.title != null && this.title!.isNotEmpty) return this.title;
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaFullTitle {
@@ -250,7 +250,7 @@ extension TautulliSessionExtension on TautulliSession {
 
   String get lunaYear {
     if (this.year != null) return this.year.toString();
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaDuration {
@@ -268,24 +268,24 @@ extension TautulliSessionExtension on TautulliSession {
   String? get lunaLibraryName {
     if (this.libraryName != null && this.libraryName!.isNotEmpty)
       return this.libraryName;
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String? get lunaFriendlyName {
     if (this.friendlyName != null && this.friendlyName!.isNotEmpty)
       return this.friendlyName;
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String? get lunaIPAddress {
     if (this.ipAddress != null && this.ipAddress!.isNotEmpty)
       return this.ipAddress;
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaPlatform {
     return [
-      this.platform ?? LunaUI.TEXT_EMDASH,
+      this.platform ?? ArrPilotUI.TEXT_EMDASH,
       if (this.platformVersion != null && this.platformVersion!.isNotEmpty)
         '(${this.platformVersion})',
     ].join(' ');
@@ -293,17 +293,17 @@ extension TautulliSessionExtension on TautulliSession {
 
   String? get lunaProduct {
     if (this.product != null && this.product!.isNotEmpty) return this.product;
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String? get lunaPlayer {
     if (this.player != null && this.player!.isNotEmpty) return this.player;
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaQuality {
     return [
-      this.qualityProfile ?? LunaUI.TEXT_EMDASH,
+      this.qualityProfile ?? ArrPilotUI.TEXT_EMDASH,
       if (this.streamBitrate != null)
         '(${this.streamBitrate.asKilobits(decimals: 1)}ps)',
     ].join(' ');
@@ -312,7 +312,7 @@ extension TautulliSessionExtension on TautulliSession {
   String get lunaBandwidth {
     if (this.bandwidth != null)
       return '${this.bandwidth.asKilobits(decimals: 1)}ps';
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String? lunaArtworkPath(BuildContext context) {
@@ -366,7 +366,7 @@ extension TautulliSessionExtension on TautulliSession {
       Duration _eta = this.streamDuration! - _progress;
       return DateTime.now().add(_eta).asTimeOnly();
     } catch (error, stack) {
-      LunaLogger().error('Failed to calculate ETA', error, stack);
+      ArrPilotLogger().error('Failed to calculate ETA', error, stack);
       return 'lunasea.Unknown'.tr();
     }
   }

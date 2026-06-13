@@ -22,7 +22,7 @@ class TautulliStatisticsMediaTile extends StatefulWidget {
 class _State extends State<TautulliStatisticsMediaTile> {
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: widget.data['title'] ?? 'lunasea.Unknown'.tr(),
       body: _body(),
       onTap: _onTap,
@@ -30,7 +30,7 @@ class _State extends State<TautulliStatisticsMediaTile> {
           .read<TautulliState>()
           .getImageURLFromPath(widget.data['thumb']),
       posterHeaders: context.watch<TautulliState>().headers,
-      posterPlaceholderIcon: LunaIcons.VIDEO_CAM,
+      posterPlaceholderIcon: ArrPilotIcons.VIDEO_CAM,
       backgroundUrl:
           context.read<TautulliState>().getImageURLFromPath(widget.data['art']),
       backgroundHeaders: context.watch<TautulliState>().headers,
@@ -45,11 +45,11 @@ class _State extends State<TautulliStatisticsMediaTile> {
         style: TextStyle(
           color: context.watch<TautulliState>().statisticsType ==
                   TautulliStatsType.PLAYS
-              ? LunaColours.accent
+              ? ArrPilotColours.accent
               : null,
           fontWeight: context.watch<TautulliState>().statisticsType ==
                   TautulliStatsType.PLAYS
-              ? LunaUI.FONT_WEIGHT_BOLD
+              ? ArrPilotUI.FONT_WEIGHT_BOLD
               : null,
         ),
       ),
@@ -60,21 +60,21 @@ class _State extends State<TautulliStatisticsMediaTile> {
               style: TextStyle(
                 color: context.watch<TautulliState>().statisticsType ==
                         TautulliStatsType.DURATION
-                    ? LunaColours.accent
+                    ? ArrPilotColours.accent
                     : null,
                 fontWeight: context.watch<TautulliState>().statisticsType ==
                         TautulliStatsType.DURATION
-                    ? LunaUI.FONT_WEIGHT_BOLD
+                    ? ArrPilotUI.FONT_WEIGHT_BOLD
                     : null,
               ),
             )
-          : const TextSpan(text: LunaUI.TEXT_EMDASH),
+          : const TextSpan(text: ArrPilotUI.TEXT_EMDASH),
       widget.data['last_play'] != null
           ? TextSpan(
               text:
                   'Last Played ${DateTime.fromMillisecondsSinceEpoch(widget.data['last_play'] * 1000).asAge()}',
             )
-          : const TextSpan(text: LunaUI.TEXT_EMDASH)
+          : const TextSpan(text: ArrPilotUI.TEXT_EMDASH)
     ];
   }
 

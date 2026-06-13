@@ -13,9 +13,9 @@ class RadarrManualImportDetailsState extends ChangeNotifier {
   }
 
   bool canExecuteAction = false;
-  LunaLoadingState _loadingState = LunaLoadingState.INACTIVE;
-  LunaLoadingState get loadingState => _loadingState;
-  set loadingState(LunaLoadingState state) {
+  ArrPilotLoadingState _loadingState = ArrPilotLoadingState.INACTIVE;
+  ArrPilotLoadingState get loadingState => _loadingState;
+  set loadingState(ArrPilotLoadingState state) {
     _loadingState = state;
     notifyListeners();
   }

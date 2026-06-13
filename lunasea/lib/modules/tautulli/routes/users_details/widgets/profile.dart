@@ -17,7 +17,7 @@ class TautulliUserDetailsProfile extends StatefulWidget {
 }
 
 class _State extends State<TautulliUserDetailsProfile>
-    with AutomaticKeepAliveClientMixin, LunaLoadCallbackMixin {
+    with AutomaticKeepAliveClientMixin, ArrPilotLoadCallbackMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -66,15 +66,15 @@ class _State extends State<TautulliUserDetailsProfile>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      module: LunaModule.TAUTULLI,
-      body: _initialLoad ? _body() : const LunaLoader(),
+      module: ArrPilotModule.TAUTULLI,
+      body: _initialLoad ? _body() : const ArrPilotLoader(),
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: loadCallback,
@@ -87,12 +87,12 @@ class _State extends State<TautulliUserDetailsProfile>
         builder: (context, AsyncSnapshot<List<Object>> snapshot) {
           if (snapshot.hasError) {
             if (snapshot.connectionState != ConnectionState.waiting)
-              LunaLogger().error(
+              ArrPilotLogger().error(
                 'Unable to fetch Tautulli user: ${widget.user.userId}',
                 snapshot.error,
                 snapshot.stackTrace,
               );
-            return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+            return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
           }
           if (snapshot.hasData)
             return _list(
@@ -100,7 +100,7 @@ class _State extends State<TautulliUserDetailsProfile>
               watchtime: snapshot.data![1] as List<TautulliUserWatchTimeStats>,
               player: snapshot.data![2] as List<TautulliUserPlayerStats>,
             );
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -111,46 +111,46 @@ class _State extends State<TautulliUserDetailsProfile>
     required List<TautulliUserWatchTimeStats> watchtime,
     required List<TautulliUserPlayerStats> player,
   }) {
-    return LunaListView(
+    return ArrPilotListView(
       controller: TautulliUserDetailsNavigationBar.scrollControllers[0],
       children: [
-        const LunaHeader(text: 'Profile'),
+        const ArrPilotHeader(text: 'Profile'),
         _profile(user),
-        const LunaHeader(text: 'Global Stats'),
+        const ArrPilotHeader(text: 'Global Stats'),
         _globalStats(watchtime),
-        if (player.isNotEmpty) const LunaHeader(text: 'Player Stats'),
+        if (player.isNotEmpty) const ArrPilotHeader(text: 'Player Stats'),
         if (player.isNotEmpty) ..._playerStats(player),
       ],
     );
   }
 
   Widget _profile(TautulliUser user) {
-    return LunaTableCard(
+    return ArrPilotTableCard(
       content: [
-        LunaTableContent(title: 'email', body: user.email),
-        LunaTableContent(
+        ArrPilotTableContent(title: 'email', body: user.email),
+        ArrPilotTableContent(
           title: 'last seen',
           body: widget.user.lastSeen != null
               ? widget.user.lastSeen?.asAge() ?? 'Unknown'
               : 'Never',
         ),
-        LunaTableContent(title: '', body: ''),
-        LunaTableContent(
+        ArrPilotTableContent(title: '', body: ''),
+        ArrPilotTableContent(
             title: 'title', body: widget.user.lastPlayed ?? 'None'),
-        LunaTableContent(
+        ArrPilotTableContent(
             title: 'platform', body: widget.user.platform ?? 'None'),
-        LunaTableContent(title: 'player', body: widget.user.player ?? 'None'),
-        LunaTableContent(
+        ArrPilotTableContent(title: 'player', body: widget.user.player ?? 'None'),
+        ArrPilotTableContent(
             title: 'location', body: widget.user.ipAddress ?? 'None'),
       ],
     );
   }
 
   Widget _globalStats(List<TautulliUserWatchTimeStats> watchtime) {
-    return LunaTableCard(
+    return ArrPilotTableCard(
       content: List.generate(
         watchtime.length,
-        (index) => LunaTableContent(
+        (index) => ArrPilotTableContent(
           title: _globalStatsTitle(watchtime[index].queryDays),
           body: _globalStatsContent(
               watchtime[index].totalPlays, watchtime[index].totalTime!),
@@ -173,11 +173,11 @@ class _State extends State<TautulliUserDetailsProfile>
   List<Widget> _playerStats(List<TautulliUserPlayerStats> player) =>
       List.generate(
         player.length,
-        (index) => LunaTableCard(
+        (index) => ArrPilotTableCard(
           content: [
-            LunaTableContent(title: 'player', body: player[index].playerName),
-            LunaTableContent(title: 'platform', body: player[index].platform),
-            LunaTableContent(
+            ArrPilotTableContent(title: 'player', body: player[index].playerName),
+            ArrPilotTableContent(title: 'platform', body: player[index].platform),
+            ArrPilotTableContent(
                 title: 'plays',
                 body: player[index].totalPlays == 1
                     ? '1 Play'

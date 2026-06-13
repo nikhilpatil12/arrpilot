@@ -19,16 +19,16 @@ class LidarrDetailsTrackTile extends StatefulWidget {
 
 class _State extends State<LidarrDetailsTrackTile> {
   @override
-  Widget build(BuildContext context) => LunaBlock(
+  Widget build(BuildContext context) => ArrPilotBlock(
         title: widget.data.title,
         body: [
           TextSpan(text: widget.data.duration.asTrackDuration(divisor: 1000)),
           widget.data.file(widget.monitored),
         ],
         disabled: !widget.monitored,
-        leading: LunaIconButton(
+        leading: ArrPilotIconButton(
           text: widget.data.trackNumber,
-          textSize: LunaUI.FONT_SIZE_H4,
+          textSize: ArrPilotUI.FONT_SIZE_H4,
         ),
       );
 }

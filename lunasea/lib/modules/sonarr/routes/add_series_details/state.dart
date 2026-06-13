@@ -77,7 +77,7 @@ class SonarrSeriesAddDetailsState extends ChangeNotifier {
           element.id == SonarrDatabase.ADD_SERIES_DEFAULT_ROOT_FOLDER.read(),
       orElse: () => rootFolders.isNotEmpty
           ? rootFolders[0]
-          : SonarrRootFolder(id: -1, freeSpace: 0, path: LunaUI.TEXT_EMDASH),
+          : SonarrRootFolder(id: -1, freeSpace: 0, path: ArrPilotUI.TEXT_EMDASH),
     );
   }
 
@@ -95,7 +95,7 @@ class SonarrSeriesAddDetailsState extends ChangeNotifier {
           SonarrDatabase.ADD_SERIES_DEFAULT_QUALITY_PROFILE.read(),
       orElse: () => qualityProfiles.isNotEmpty
           ? qualityProfiles[0]
-          : SonarrQualityProfile(id: -1, name: LunaUI.TEXT_EMDASH),
+          : SonarrQualityProfile(id: -1, name: ArrPilotUI.TEXT_EMDASH),
     );
   }
 
@@ -113,7 +113,7 @@ class SonarrSeriesAddDetailsState extends ChangeNotifier {
           SonarrDatabase.ADD_SERIES_DEFAULT_LANGUAGE_PROFILE.read(),
       orElse: () => languageProfiles.isNotEmpty
           ? languageProfiles[0]
-          : SonarrLanguageProfile(id: -1, name: LunaUI.TEXT_EMDASH),
+          : SonarrLanguageProfile(id: -1, name: ArrPilotUI.TEXT_EMDASH),
     );
   }
 
@@ -133,9 +133,9 @@ class SonarrSeriesAddDetailsState extends ChangeNotifier {
         .toList();
   }
 
-  LunaLoadingState _state = LunaLoadingState.INACTIVE;
-  LunaLoadingState get state => _state;
-  set state(LunaLoadingState state) {
+  ArrPilotLoadingState _state = ArrPilotLoadingState.INACTIVE;
+  ArrPilotLoadingState get state => _state;
+  set state(ArrPilotLoadingState state) {
     _state = state;
     notifyListeners();
   }

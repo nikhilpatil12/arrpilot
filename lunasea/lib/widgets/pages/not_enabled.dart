@@ -12,10 +12,10 @@ class NotEnabledPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      appBar: LunaAppBar(title: module),
-      body: LunaMessage.moduleNotEnabled(
+      appBar: ArrPilotAppBar(title: module),
+      body: ArrPilotMessage.moduleNotEnabled(
         context: context,
         module: module,
       ),

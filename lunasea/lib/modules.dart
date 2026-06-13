@@ -32,8 +32,8 @@ const MODULE_SONARR_KEY = 'sonarr';
 const MODULE_TAUTULLI_KEY = 'tautulli';
 const MODULE_WAKE_ON_LAN_KEY = 'wake_on_lan';
 
-@HiveType(typeId: 25, adapterName: 'LunaModuleAdapter')
-enum LunaModule {
+@HiveType(typeId: 25, adapterName: 'ArrPilotModuleAdapter')
+enum ArrPilotModule {
   @HiveField(0)
   DASHBOARD(MODULE_DASHBOARD_KEY),
   @HiveField(11)
@@ -60,54 +60,54 @@ enum LunaModule {
   WAKE_ON_LAN(MODULE_WAKE_ON_LAN_KEY);
 
   final String key;
-  const LunaModule(this.key);
+  const ArrPilotModule(this.key);
 
-  static LunaModule? fromKey(String? key) {
+  static ArrPilotModule? fromKey(String? key) {
     switch (key) {
       case MODULE_DASHBOARD_KEY:
-        return LunaModule.DASHBOARD;
+        return ArrPilotModule.DASHBOARD;
       case MODULE_LIDARR_KEY:
-        return LunaModule.LIDARR;
+        return ArrPilotModule.LIDARR;
       case MODULE_NZBGET_KEY:
-        return LunaModule.NZBGET;
+        return ArrPilotModule.NZBGET;
       case MODULE_RADARR_KEY:
-        return LunaModule.RADARR;
+        return ArrPilotModule.RADARR;
       case MODULE_SABNZBD_KEY:
-        return LunaModule.SABNZBD;
+        return ArrPilotModule.SABNZBD;
       case MODULE_SEARCH_KEY:
-        return LunaModule.SEARCH;
+        return ArrPilotModule.SEARCH;
       case MODULE_SETTINGS_KEY:
-        return LunaModule.SETTINGS;
+        return ArrPilotModule.SETTINGS;
       case MODULE_SONARR_KEY:
-        return LunaModule.SONARR;
+        return ArrPilotModule.SONARR;
       case MODULE_OVERSEERR_KEY:
-        return LunaModule.OVERSEERR;
+        return ArrPilotModule.OVERSEERR;
       case MODULE_TAUTULLI_KEY:
-        return LunaModule.TAUTULLI;
+        return ArrPilotModule.TAUTULLI;
       case MODULE_WAKE_ON_LAN_KEY:
-        return LunaModule.WAKE_ON_LAN;
+        return ArrPilotModule.WAKE_ON_LAN;
       case MODULE_EXTERNAL_MODULES_KEY:
-        return LunaModule.EXTERNAL_MODULES;
+        return ArrPilotModule.EXTERNAL_MODULES;
     }
     return null;
   }
 
-  static List<LunaModule> get active {
-    return LunaModule.values.filter((m) {
-      if (m == LunaModule.DASHBOARD) return false;
-      if (m == LunaModule.SETTINGS) return false;
+  static List<ArrPilotModule> get active {
+    return ArrPilotModule.values.filter((m) {
+      if (m == ArrPilotModule.DASHBOARD) return false;
+      if (m == ArrPilotModule.SETTINGS) return false;
       return m.featureFlag;
     }).toList();
   }
 }
 
-extension LunaModuleEnablementExtension on LunaModule {
+extension ArrPilotModuleEnablementExtension on ArrPilotModule {
   bool get featureFlag {
     switch (this) {
-      case LunaModule.OVERSEERR:
+      case ArrPilotModule.OVERSEERR:
         return false;
-      case LunaModule.WAKE_ON_LAN:
-        return LunaWakeOnLAN.isSupported;
+      case ArrPilotModule.WAKE_ON_LAN:
+        return ArrPilotWakeOnLAN.isSupported;
       default:
         return true;
     }
@@ -115,317 +115,317 @@ extension LunaModuleEnablementExtension on LunaModule {
 
   bool get isEnabled {
     switch (this) {
-      case LunaModule.DASHBOARD:
+      case ArrPilotModule.DASHBOARD:
         return true;
-      case LunaModule.SETTINGS:
+      case ArrPilotModule.SETTINGS:
         return true;
-      case LunaModule.LIDARR:
-        return LunaProfile.current.lidarrEnabled;
-      case LunaModule.NZBGET:
-        return LunaProfile.current.nzbgetEnabled;
-      case LunaModule.OVERSEERR:
-        return LunaProfile.current.overseerrEnabled;
-      case LunaModule.RADARR:
-        return LunaProfile.current.radarrEnabled;
-      case LunaModule.SABNZBD:
-        return LunaProfile.current.sabnzbdEnabled;
-      case LunaModule.SEARCH:
-        return !LunaBox.indexers.isEmpty;
-      case LunaModule.SONARR:
-        return LunaProfile.current.sonarrEnabled;
-      case LunaModule.TAUTULLI:
-        return LunaProfile.current.tautulliEnabled;
-      case LunaModule.WAKE_ON_LAN:
-        return LunaProfile.current.wakeOnLANEnabled;
-      case LunaModule.EXTERNAL_MODULES:
-        return !LunaBox.externalModules.isEmpty;
+      case ArrPilotModule.LIDARR:
+        return ArrPilotProfile.current.lidarrEnabled;
+      case ArrPilotModule.NZBGET:
+        return ArrPilotProfile.current.nzbgetEnabled;
+      case ArrPilotModule.OVERSEERR:
+        return ArrPilotProfile.current.overseerrEnabled;
+      case ArrPilotModule.RADARR:
+        return ArrPilotProfile.current.radarrEnabled;
+      case ArrPilotModule.SABNZBD:
+        return ArrPilotProfile.current.sabnzbdEnabled;
+      case ArrPilotModule.SEARCH:
+        return !ArrPilotBox.indexers.isEmpty;
+      case ArrPilotModule.SONARR:
+        return ArrPilotProfile.current.sonarrEnabled;
+      case ArrPilotModule.TAUTULLI:
+        return ArrPilotProfile.current.tautulliEnabled;
+      case ArrPilotModule.WAKE_ON_LAN:
+        return ArrPilotProfile.current.wakeOnLANEnabled;
+      case ArrPilotModule.EXTERNAL_MODULES:
+        return !ArrPilotBox.externalModules.isEmpty;
     }
   }
 }
 
-extension LunaModuleMetadataExtension on LunaModule {
+extension ArrPilotModuleMetadataExtension on ArrPilotModule {
   String get title {
     switch (this) {
-      case LunaModule.DASHBOARD:
+      case ArrPilotModule.DASHBOARD:
         return 'lunasea.Dashboard'.tr();
-      case LunaModule.LIDARR:
+      case ArrPilotModule.LIDARR:
         return 'Lidarr';
-      case LunaModule.NZBGET:
+      case ArrPilotModule.NZBGET:
         return 'NZBGet';
-      case LunaModule.RADARR:
+      case ArrPilotModule.RADARR:
         return 'Radarr';
-      case LunaModule.SABNZBD:
+      case ArrPilotModule.SABNZBD:
         return 'SABnzbd';
-      case LunaModule.SEARCH:
+      case ArrPilotModule.SEARCH:
         return 'search.Search'.tr();
-      case LunaModule.SETTINGS:
+      case ArrPilotModule.SETTINGS:
         return 'lunasea.Settings'.tr();
-      case LunaModule.SONARR:
+      case ArrPilotModule.SONARR:
         return 'Sonarr';
-      case LunaModule.TAUTULLI:
+      case ArrPilotModule.TAUTULLI:
         return 'Tautulli';
-      case LunaModule.OVERSEERR:
+      case ArrPilotModule.OVERSEERR:
         return 'Overseerr';
-      case LunaModule.WAKE_ON_LAN:
+      case ArrPilotModule.WAKE_ON_LAN:
         return 'Wake on LAN';
-      case LunaModule.EXTERNAL_MODULES:
+      case ArrPilotModule.EXTERNAL_MODULES:
         return 'lunasea.ExternalModules'.tr();
     }
   }
 
   IconData get icon {
     switch (this) {
-      case LunaModule.DASHBOARD:
+      case ArrPilotModule.DASHBOARD:
         return Icons.home_rounded;
-      case LunaModule.LIDARR:
-        return LunaIcons.LIDARR;
-      case LunaModule.NZBGET:
-        return LunaIcons.NZBGET;
-      case LunaModule.RADARR:
-        return LunaIcons.RADARR;
-      case LunaModule.SABNZBD:
-        return LunaIcons.SABNZBD;
-      case LunaModule.SEARCH:
+      case ArrPilotModule.LIDARR:
+        return ArrPilotIcons.LIDARR;
+      case ArrPilotModule.NZBGET:
+        return ArrPilotIcons.NZBGET;
+      case ArrPilotModule.RADARR:
+        return ArrPilotIcons.RADARR;
+      case ArrPilotModule.SABNZBD:
+        return ArrPilotIcons.SABNZBD;
+      case ArrPilotModule.SEARCH:
         return Icons.search_rounded;
-      case LunaModule.SETTINGS:
+      case ArrPilotModule.SETTINGS:
         return Icons.settings_rounded;
-      case LunaModule.SONARR:
-        return LunaIcons.SONARR;
-      case LunaModule.TAUTULLI:
-        return LunaIcons.TAUTULLI;
-      case LunaModule.OVERSEERR:
-        return LunaIcons.OVERSEERR;
-      case LunaModule.WAKE_ON_LAN:
+      case ArrPilotModule.SONARR:
+        return ArrPilotIcons.SONARR;
+      case ArrPilotModule.TAUTULLI:
+        return ArrPilotIcons.TAUTULLI;
+      case ArrPilotModule.OVERSEERR:
+        return ArrPilotIcons.OVERSEERR;
+      case ArrPilotModule.WAKE_ON_LAN:
         return Icons.settings_remote_rounded;
-      case LunaModule.EXTERNAL_MODULES:
+      case ArrPilotModule.EXTERNAL_MODULES:
         return Icons.settings_ethernet_rounded;
     }
   }
 
   Color get color {
     switch (this) {
-      case LunaModule.DASHBOARD:
-        return LunaColours.accent;
-      case LunaModule.LIDARR:
+      case ArrPilotModule.DASHBOARD:
+        return ArrPilotColours.accent;
+      case ArrPilotModule.LIDARR:
         return const Color(0xFF159552);
-      case LunaModule.NZBGET:
+      case ArrPilotModule.NZBGET:
         return const Color(0xFF42D535);
-      case LunaModule.RADARR:
+      case ArrPilotModule.RADARR:
         return const Color(0xFFFEC333);
-      case LunaModule.SABNZBD:
+      case ArrPilotModule.SABNZBD:
         return const Color(0xFFFECC2B);
-      case LunaModule.SEARCH:
-        return LunaColours.accent;
-      case LunaModule.SETTINGS:
-        return LunaColours.accent;
-      case LunaModule.SONARR:
+      case ArrPilotModule.SEARCH:
+        return ArrPilotColours.accent;
+      case ArrPilotModule.SETTINGS:
+        return ArrPilotColours.accent;
+      case ArrPilotModule.SONARR:
         return const Color(0xFF3FC6F4);
-      case LunaModule.TAUTULLI:
+      case ArrPilotModule.TAUTULLI:
         return const Color(0xFFDBA23A);
-      case LunaModule.OVERSEERR:
+      case ArrPilotModule.OVERSEERR:
         return const Color(0xFF6366F1);
-      case LunaModule.WAKE_ON_LAN:
-        return LunaColours.accent;
-      case LunaModule.EXTERNAL_MODULES:
-        return LunaColours.accent;
+      case ArrPilotModule.WAKE_ON_LAN:
+        return ArrPilotColours.accent;
+      case ArrPilotModule.EXTERNAL_MODULES:
+        return ArrPilotColours.accent;
     }
   }
 
   String? get website {
     switch (this) {
-      case LunaModule.DASHBOARD:
+      case ArrPilotModule.DASHBOARD:
         return null;
-      case LunaModule.LIDARR:
+      case ArrPilotModule.LIDARR:
         return 'https://lidarr.audio';
-      case LunaModule.NZBGET:
+      case ArrPilotModule.NZBGET:
         return 'https://nzbget.net';
-      case LunaModule.RADARR:
+      case ArrPilotModule.RADARR:
         return 'https://radarr.video';
-      case LunaModule.SABNZBD:
+      case ArrPilotModule.SABNZBD:
         return 'https://sabnzbd.org';
-      case LunaModule.SEARCH:
+      case ArrPilotModule.SEARCH:
         return null;
-      case LunaModule.SETTINGS:
+      case ArrPilotModule.SETTINGS:
         return null;
-      case LunaModule.SONARR:
+      case ArrPilotModule.SONARR:
         return 'https://sonarr.tv';
-      case LunaModule.TAUTULLI:
+      case ArrPilotModule.TAUTULLI:
         return 'https://tautulli.com';
-      case LunaModule.OVERSEERR:
+      case ArrPilotModule.OVERSEERR:
         return 'https://overseerr.dev';
-      case LunaModule.WAKE_ON_LAN:
+      case ArrPilotModule.WAKE_ON_LAN:
         return null;
-      case LunaModule.EXTERNAL_MODULES:
+      case ArrPilotModule.EXTERNAL_MODULES:
         return null;
     }
   }
 
   String? get github {
     switch (this) {
-      case LunaModule.DASHBOARD:
+      case ArrPilotModule.DASHBOARD:
         return null;
-      case LunaModule.LIDARR:
+      case ArrPilotModule.LIDARR:
         return 'https://github.com/Lidarr/Lidarr';
-      case LunaModule.NZBGET:
+      case ArrPilotModule.NZBGET:
         return 'https://github.com/nzbget/nzbget';
-      case LunaModule.RADARR:
+      case ArrPilotModule.RADARR:
         return 'https://github.com/Radarr/Radarr';
-      case LunaModule.SABNZBD:
+      case ArrPilotModule.SABNZBD:
         return 'https://github.com/sabnzbd/sabnzbd';
-      case LunaModule.SEARCH:
+      case ArrPilotModule.SEARCH:
         return 'https://github.com/theotherp/nzbhydra2';
-      case LunaModule.SETTINGS:
+      case ArrPilotModule.SETTINGS:
         return null;
-      case LunaModule.SONARR:
+      case ArrPilotModule.SONARR:
         return 'https://github.com/Sonarr/Sonarr';
-      case LunaModule.TAUTULLI:
+      case ArrPilotModule.TAUTULLI:
         return 'https://github.com/Tautulli/Tautulli';
-      case LunaModule.OVERSEERR:
+      case ArrPilotModule.OVERSEERR:
         return 'https://github.com/sct/overseerr';
-      case LunaModule.WAKE_ON_LAN:
+      case ArrPilotModule.WAKE_ON_LAN:
         return null;
-      case LunaModule.EXTERNAL_MODULES:
+      case ArrPilotModule.EXTERNAL_MODULES:
         return null;
     }
   }
 
   String get description {
     switch (this) {
-      case LunaModule.DASHBOARD:
+      case ArrPilotModule.DASHBOARD:
         return 'lunasea.Dashboard'.tr();
-      case LunaModule.LIDARR:
+      case ArrPilotModule.LIDARR:
         return 'Manage Music';
-      case LunaModule.NZBGET:
+      case ArrPilotModule.NZBGET:
         return 'Manage Usenet Downloads';
-      case LunaModule.RADARR:
+      case ArrPilotModule.RADARR:
         return 'Manage Movies';
-      case LunaModule.SABNZBD:
+      case ArrPilotModule.SABNZBD:
         return 'Manage Usenet Downloads';
-      case LunaModule.SEARCH:
+      case ArrPilotModule.SEARCH:
         return 'Search Newznab Indexers';
-      case LunaModule.SETTINGS:
-        return 'Configure LunaSea';
-      case LunaModule.SONARR:
+      case ArrPilotModule.SETTINGS:
+        return 'Configure ArrPilot';
+      case ArrPilotModule.SONARR:
         return 'Manage Television Series';
-      case LunaModule.TAUTULLI:
+      case ArrPilotModule.TAUTULLI:
         return 'View Plex Activity';
-      case LunaModule.OVERSEERR:
+      case ArrPilotModule.OVERSEERR:
         return 'Manage Requests for New Content';
-      case LunaModule.WAKE_ON_LAN:
+      case ArrPilotModule.WAKE_ON_LAN:
         return 'Wake Your Machine';
-      case LunaModule.EXTERNAL_MODULES:
+      case ArrPilotModule.EXTERNAL_MODULES:
         return 'Access External Modules';
     }
   }
 
   String? get information {
     switch (this) {
-      case LunaModule.DASHBOARD:
+      case ArrPilotModule.DASHBOARD:
         return null;
-      case LunaModule.LIDARR:
+      case ArrPilotModule.LIDARR:
         return 'Lidarr is a music collection manager for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new tracks from your favorite artists and will grab, sort and rename them. It can also be configured to automatically upgrade the quality of files already downloaded when a better quality format becomes available.';
-      case LunaModule.NZBGET:
+      case ArrPilotModule.NZBGET:
         return 'NZBGet is a binary downloader, which downloads files from Usenet based on information given in nzb-files.';
-      case LunaModule.RADARR:
+      case ArrPilotModule.RADARR:
         return 'Radarr is a movie collection manager for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new movies and will interface with clients and indexers to grab, sort, and rename them. It can also be configured to automatically upgrade the quality of existing files in the library when a better quality format becomes available.';
-      case LunaModule.SABNZBD:
+      case ArrPilotModule.SABNZBD:
         return 'SABnzbd is a multi-platform binary newsgroup downloader. The program works in the background and simplifies the downloading verifying and extracting of files from Usenet.';
-      case LunaModule.SEARCH:
-        return 'LunaSea currently supports all indexers that support the newznab protocol, including NZBHydra2.';
-      case LunaModule.SETTINGS:
+      case ArrPilotModule.SEARCH:
+        return 'ArrPilot currently supports all indexers that support the newznab protocol, including NZBHydra2.';
+      case ArrPilotModule.SETTINGS:
         return null;
-      case LunaModule.SONARR:
+      case ArrPilotModule.SONARR:
         return 'Sonarr is a PVR for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new episodes of your favorite shows and will grab, sort and rename them. It can also be configured to automatically upgrade the quality of files already downloaded when a better quality format becomes available.';
-      case LunaModule.TAUTULLI:
+      case ArrPilotModule.TAUTULLI:
         return 'Tautulli is an application that you can run alongside your Plex Media Server to monitor activity and track various statistics. Most importantly, these statistics include what has been watched, who watched it, when and where they watched it, and how it was watched.';
-      case LunaModule.OVERSEERR:
+      case ArrPilotModule.OVERSEERR:
         return 'Overseerr is a free and open source software application for managing requests for your media library. It integrates with your existing services, such as Sonarr, Radarr, and Plex!';
-      case LunaModule.WAKE_ON_LAN:
+      case ArrPilotModule.WAKE_ON_LAN:
         return 'Wake on LAN is an industry standard protocol for waking computers up from a very low power mode remotely by sending a specially constructed packet to the machine.';
-      case LunaModule.EXTERNAL_MODULES:
-        return 'LunaSea allows you to add links to additional modules that are not currently supported allowing you to open the module\'s web GUI without having to leave LunaSea!';
+      case ArrPilotModule.EXTERNAL_MODULES:
+        return 'ArrPilot allows you to add links to additional modules that are not currently supported allowing you to open the module\'s web GUI without having to leave ArrPilot!';
     }
   }
 }
 
-extension LunaModuleRoutingExtension on LunaModule {
+extension ArrPilotModuleRoutingExtension on ArrPilotModule {
   String? get homeRoute {
     switch (this) {
-      case LunaModule.DASHBOARD:
-        return LunaRoutes.dashboard.root.path;
-      case LunaModule.LIDARR:
-        return LunaRoutes.lidarr.root.path;
-      case LunaModule.NZBGET:
-        return LunaRoutes.nzbget.root.path;
-      case LunaModule.RADARR:
-        return LunaRoutes.radarr.root.path;
-      case LunaModule.SABNZBD:
-        return LunaRoutes.sabnzbd.root.path;
-      case LunaModule.SEARCH:
-        return LunaRoutes.search.root.path;
-      case LunaModule.SETTINGS:
-        return LunaRoutes.settings.root.path;
-      case LunaModule.SONARR:
-        return LunaRoutes.sonarr.root.path;
-      case LunaModule.TAUTULLI:
-        return LunaRoutes.tautulli.root.path;
-      case LunaModule.OVERSEERR:
+      case ArrPilotModule.DASHBOARD:
+        return ArrPilotRoutes.dashboard.root.path;
+      case ArrPilotModule.LIDARR:
+        return ArrPilotRoutes.lidarr.root.path;
+      case ArrPilotModule.NZBGET:
+        return ArrPilotRoutes.nzbget.root.path;
+      case ArrPilotModule.RADARR:
+        return ArrPilotRoutes.radarr.root.path;
+      case ArrPilotModule.SABNZBD:
+        return ArrPilotRoutes.sabnzbd.root.path;
+      case ArrPilotModule.SEARCH:
+        return ArrPilotRoutes.search.root.path;
+      case ArrPilotModule.SETTINGS:
+        return ArrPilotRoutes.settings.root.path;
+      case ArrPilotModule.SONARR:
+        return ArrPilotRoutes.sonarr.root.path;
+      case ArrPilotModule.TAUTULLI:
+        return ArrPilotRoutes.tautulli.root.path;
+      case ArrPilotModule.OVERSEERR:
         return null;
-      case LunaModule.WAKE_ON_LAN:
+      case ArrPilotModule.WAKE_ON_LAN:
         return null;
-      case LunaModule.EXTERNAL_MODULES:
-        return LunaRoutes.externalModules.root.path;
+      case ArrPilotModule.EXTERNAL_MODULES:
+        return ArrPilotRoutes.externalModules.root.path;
     }
   }
 
   SettingsRoutes? get settingsRoute {
     switch (this) {
-      case LunaModule.DASHBOARD:
+      case ArrPilotModule.DASHBOARD:
         return SettingsRoutes.CONFIGURATION_DASHBOARD;
-      case LunaModule.LIDARR:
+      case ArrPilotModule.LIDARR:
         return SettingsRoutes.CONFIGURATION_LIDARR;
-      case LunaModule.NZBGET:
+      case ArrPilotModule.NZBGET:
         return SettingsRoutes.CONFIGURATION_NZBGET;
-      case LunaModule.OVERSEERR:
+      case ArrPilotModule.OVERSEERR:
         return null;
-      case LunaModule.RADARR:
+      case ArrPilotModule.RADARR:
         return SettingsRoutes.CONFIGURATION_RADARR;
-      case LunaModule.SABNZBD:
+      case ArrPilotModule.SABNZBD:
         return SettingsRoutes.CONFIGURATION_SABNZBD;
-      case LunaModule.SEARCH:
+      case ArrPilotModule.SEARCH:
         return SettingsRoutes.CONFIGURATION_SEARCH;
-      case LunaModule.SETTINGS:
+      case ArrPilotModule.SETTINGS:
         return null;
-      case LunaModule.SONARR:
+      case ArrPilotModule.SONARR:
         return SettingsRoutes.CONFIGURATION_SONARR;
-      case LunaModule.TAUTULLI:
+      case ArrPilotModule.TAUTULLI:
         return SettingsRoutes.CONFIGURATION_TAUTULLI;
-      case LunaModule.WAKE_ON_LAN:
+      case ArrPilotModule.WAKE_ON_LAN:
         return SettingsRoutes.CONFIGURATION_WAKE_ON_LAN;
-      case LunaModule.EXTERNAL_MODULES:
+      case ArrPilotModule.EXTERNAL_MODULES:
         return SettingsRoutes.CONFIGURATION_EXTERNAL_MODULES;
     }
   }
 
   Future<void> launch() async {
     if (homeRoute != null) {
-      LunaRouter.router.pushReplacement(homeRoute!);
+      ArrPilotRouter.router.pushReplacement(homeRoute!);
     }
   }
 }
 
-extension LunaModuleWebhookExtension on LunaModule {
+extension ArrPilotModuleWebhookExtension on ArrPilotModule {
   bool get hasWebhooks {
     switch (this) {
-      case LunaModule.LIDARR:
+      case ArrPilotModule.LIDARR:
         return true;
-      case LunaModule.RADARR:
+      case ArrPilotModule.RADARR:
         return true;
-      case LunaModule.SONARR:
+      case ArrPilotModule.SONARR:
         return true;
-      case LunaModule.OVERSEERR:
+      case ArrPilotModule.OVERSEERR:
         return true;
-      case LunaModule.TAUTULLI:
+      case ArrPilotModule.TAUTULLI:
         return true;
       default:
         return false;
@@ -434,15 +434,15 @@ extension LunaModuleWebhookExtension on LunaModule {
 
   String? get webhookDocs {
     switch (this) {
-      case LunaModule.LIDARR:
+      case ArrPilotModule.LIDARR:
         return 'https://docs.lunasea.app/lunasea/notifications/lidarr';
-      case LunaModule.RADARR:
+      case ArrPilotModule.RADARR:
         return 'https://docs.lunasea.app/lunasea/notifications/radarr';
-      case LunaModule.SONARR:
+      case ArrPilotModule.SONARR:
         return 'https://docs.lunasea.app/lunasea/notifications/sonarr';
-      case LunaModule.OVERSEERR:
+      case ArrPilotModule.OVERSEERR:
         return 'https://docs.lunasea.app/lunasea/notifications/overseerr';
-      case LunaModule.TAUTULLI:
+      case ArrPilotModule.TAUTULLI:
         return 'https://docs.lunasea.app/lunasea/notifications/tautulli';
       default:
         return null;
@@ -451,13 +451,13 @@ extension LunaModuleWebhookExtension on LunaModule {
 
   Future<void> handleWebhook(Map<String, dynamic> data) async {
     switch (this) {
-      case LunaModule.LIDARR:
+      case ArrPilotModule.LIDARR:
         return LidarrWebhooks().handle(data);
-      case LunaModule.RADARR:
+      case ArrPilotModule.RADARR:
         return RadarrWebhooks().handle(data);
-      case LunaModule.SONARR:
+      case ArrPilotModule.SONARR:
         return SonarrWebhooks().handle(data);
-      case LunaModule.TAUTULLI:
+      case ArrPilotModule.TAUTULLI:
         return TautulliWebhooks().handle(data);
       default:
         return;
@@ -465,52 +465,52 @@ extension LunaModuleWebhookExtension on LunaModule {
   }
 }
 
-extension LunaModuleExtension on LunaModule {
+extension ArrPilotModuleExtension on ArrPilotModule {
   ShortcutItem get shortcutItem {
-    if (this == LunaModule.WAKE_ON_LAN) {
+    if (this == ArrPilotModule.WAKE_ON_LAN) {
       throw Exception('WAKE_ON_LAN does not have a shortcut item');
     }
     return ShortcutItem(type: key, localizedTitle: title);
   }
 
-  LunaModuleState? state(BuildContext context) {
+  ArrPilotModuleState? state(BuildContext context) {
     switch (this) {
-      case LunaModule.WAKE_ON_LAN:
+      case ArrPilotModule.WAKE_ON_LAN:
         return null;
-      case LunaModule.DASHBOARD:
+      case ArrPilotModule.DASHBOARD:
         return context.read<DashboardState>();
-      case LunaModule.SETTINGS:
+      case ArrPilotModule.SETTINGS:
         return context.read<SettingsState>();
-      case LunaModule.SEARCH:
+      case ArrPilotModule.SEARCH:
         return context.read<SearchState>();
-      case LunaModule.LIDARR:
+      case ArrPilotModule.LIDARR:
         return context.read<LidarrState>();
-      case LunaModule.RADARR:
+      case ArrPilotModule.RADARR:
         return context.read<RadarrState>();
-      case LunaModule.SONARR:
+      case ArrPilotModule.SONARR:
         return context.read<SonarrState>();
-      case LunaModule.NZBGET:
+      case ArrPilotModule.NZBGET:
         return context.read<NZBGetState>();
-      case LunaModule.SABNZBD:
+      case ArrPilotModule.SABNZBD:
         return context.read<SABnzbdState>();
-      case LunaModule.OVERSEERR:
+      case ArrPilotModule.OVERSEERR:
         return null;
-      case LunaModule.TAUTULLI:
+      case ArrPilotModule.TAUTULLI:
         return context.read<TautulliState>();
-      case LunaModule.EXTERNAL_MODULES:
+      case ArrPilotModule.EXTERNAL_MODULES:
         return null;
     }
   }
 
   Widget informationBanner() {
     String key = 'LUNASEA_MODULE_INFORMATION_${this.key}';
-    void markSeen() => LunaBox.alerts.update(key, false);
+    void markSeen() => ArrPilotBox.alerts.update(key, false);
 
-    return LunaBox.alerts.listenableBuilder(
+    return ArrPilotBox.alerts.listenableBuilder(
       selectKeys: [key],
       builder: (context, _) {
-        if (LunaBox.alerts.read(key, fallback: true)) {
-          return LunaBanner(
+        if (ArrPilotBox.alerts.read(key, fallback: true)) {
+          return ArrPilotBanner(
             dismissCallback: markSeen,
             headerText: this.title,
             bodyText: this.information,
@@ -518,13 +518,13 @@ extension LunaModuleExtension on LunaModule {
             iconColor: this.color,
             buttons: [
               if (this.github != null)
-                LunaButton.text(
+                ArrPilotButton.text(
                   text: 'GitHub',
-                  icon: LunaIcons.GITHUB,
+                  icon: ArrPilotIcons.GITHUB,
                   onTap: this.github!.openLink,
                 ),
               if (this.website != null)
-                LunaButton.text(
+                ArrPilotButton.text(
                   text: 'lunasea.Website'.tr(),
                   icon: Icons.home_rounded,
                   onTap: this.website!.openLink,

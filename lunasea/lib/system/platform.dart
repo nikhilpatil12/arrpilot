@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-enum LunaPlatform {
+enum ArrPilotPlatform {
   ANDROID,
   IOS,
   LINUX,
@@ -35,19 +35,19 @@ enum LunaPlatform {
   static bool get isMobile => isAndroid || isIOS;
   static bool get isDesktop => isLinux || isMacOS || isWindows;
 
-  static LunaPlatform get current {
-    if (isWeb) return LunaPlatform.WEB;
+  static ArrPilotPlatform get current {
+    if (isWeb) return ArrPilotPlatform.WEB;
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        return LunaPlatform.ANDROID;
+        return ArrPilotPlatform.ANDROID;
       case TargetPlatform.iOS:
-        return LunaPlatform.IOS;
+        return ArrPilotPlatform.IOS;
       case TargetPlatform.linux:
-        return LunaPlatform.LINUX;
+        return ArrPilotPlatform.LINUX;
       case TargetPlatform.macOS:
-        return LunaPlatform.MACOS;
+        return ArrPilotPlatform.MACOS;
       case TargetPlatform.windows:
-        return LunaPlatform.WINDOWS;
+        return ArrPilotPlatform.WINDOWS;
       default:
         throw UnsupportedError('Platform is not supported');
     }
@@ -55,17 +55,17 @@ enum LunaPlatform {
 
   String get name {
     switch (this) {
-      case LunaPlatform.ANDROID:
+      case ArrPilotPlatform.ANDROID:
         return 'Android';
-      case LunaPlatform.IOS:
+      case ArrPilotPlatform.IOS:
         return 'iOS';
-      case LunaPlatform.LINUX:
+      case ArrPilotPlatform.LINUX:
         return 'Linux';
-      case LunaPlatform.MACOS:
+      case ArrPilotPlatform.MACOS:
         return 'macOS';
-      case LunaPlatform.WEB:
+      case ArrPilotPlatform.WEB:
         return 'Web';
-      case LunaPlatform.WINDOWS:
+      case ArrPilotPlatform.WINDOWS:
         return 'Windows';
     }
   }

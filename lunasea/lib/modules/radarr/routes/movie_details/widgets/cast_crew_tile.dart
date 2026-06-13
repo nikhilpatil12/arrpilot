@@ -13,19 +13,19 @@ class RadarrMovieDetailsCastCrewTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: credits.personName,
-      posterPlaceholderIcon: LunaIcons.USER,
+      posterPlaceholderIcon: ArrPilotIcons.USER,
       posterUrl: credits.images!.isEmpty ? null : credits.images![0].url,
       body: [
         TextSpan(text: _position),
         TextSpan(
           text: credits.type!.readable,
           style: TextStyle(
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
             color: credits.type == RadarrCreditType.CAST
-                ? LunaColours.accent
-                : LunaColours.orange,
+                ? ArrPilotColours.accent
+                : ArrPilotColours.orange,
           ),
         ),
       ],
@@ -36,13 +36,13 @@ class RadarrMovieDetailsCastCrewTile extends StatelessWidget {
   String? get _position {
     switch (credits.type) {
       case RadarrCreditType.CREW:
-        return credits.job!.isEmpty ? LunaUI.TEXT_EMDASH : credits.job;
+        return credits.job!.isEmpty ? ArrPilotUI.TEXT_EMDASH : credits.job;
       case RadarrCreditType.CAST:
         return credits.character!.isEmpty
-            ? LunaUI.TEXT_EMDASH
+            ? ArrPilotUI.TEXT_EMDASH
             : credits.character;
       default:
-        return LunaUI.TEXT_EMDASH;
+        return ArrPilotUI.TEXT_EMDASH;
     }
   }
 }

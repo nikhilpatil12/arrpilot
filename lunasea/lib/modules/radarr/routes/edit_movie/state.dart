@@ -14,9 +14,9 @@ class RadarrMoviesEditState extends ChangeNotifier {
 
   bool canExecuteAction = false;
 
-  LunaLoadingState _state = LunaLoadingState.INACTIVE;
-  LunaLoadingState get state => _state;
-  set state(LunaLoadingState state) {
+  ArrPilotLoadingState _state = ArrPilotLoadingState.INACTIVE;
+  ArrPilotLoadingState get state => _state;
+  set state(ArrPilotLoadingState state) {
     _state = state;
     notifyListeners();
   }

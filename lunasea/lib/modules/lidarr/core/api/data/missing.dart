@@ -42,9 +42,9 @@ class LidarrMissingData {
   }
 
   String albumCoverURI() {
-    final host = LunaProfile.current.lidarrHost;
-    final key = LunaProfile.current.lidarrKey;
-    if (LunaProfile.current.lidarrEnabled) {
+    final host = ArrPilotProfile.current.lidarrHost;
+    final key = ArrPilotProfile.current.lidarrKey;
+    if (ArrPilotProfile.current.lidarrEnabled) {
       String _base = host.endsWith('/')
           ? '${host}api/v1/MediaCover/Album'
           : '$host/api/v1/MediaCover/Album';
@@ -54,9 +54,9 @@ class LidarrMissingData {
   }
 
   String posterURI() {
-    final host = LunaProfile.current.lidarrHost;
-    final key = LunaProfile.current.lidarrKey;
-    if (LunaProfile.current.lidarrEnabled) {
+    final host = ArrPilotProfile.current.lidarrHost;
+    final key = ArrPilotProfile.current.lidarrKey;
+    if (ArrPilotProfile.current.lidarrEnabled) {
       String _base = host.endsWith('/')
           ? '${host}api/v1/MediaCover/Artist'
           : '$host/api/v1/MediaCover/Artist';
@@ -66,9 +66,9 @@ class LidarrMissingData {
   }
 
   String fanartURI({bool highRes = false}) {
-    final host = LunaProfile.current.lidarrHost;
-    final key = LunaProfile.current.lidarrKey;
-    if (LunaProfile.current.lidarrEnabled) {
+    final host = ArrPilotProfile.current.lidarrHost;
+    final key = ArrPilotProfile.current.lidarrKey;
+    if (ArrPilotProfile.current.lidarrEnabled) {
       String _base = host.endsWith('/')
           ? '${host}api/v1/MediaCover/Artist'
           : '$host/api/v1/MediaCover/Artist';

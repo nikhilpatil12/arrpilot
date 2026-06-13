@@ -12,7 +12,7 @@ class TautulliGraphsStreamInformationRoute extends StatefulWidget {
 }
 
 class _State extends State<TautulliGraphsStreamInformationRoute>
-    with AutomaticKeepAliveClientMixin, LunaLoadCallbackMixin {
+    with AutomaticKeepAliveClientMixin, ArrPilotLoadCallbackMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -35,21 +35,21 @@ class _State extends State<TautulliGraphsStreamInformationRoute>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       body: _body(),
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: loadCallback,
-      child: LunaListView(
+      child: ArrPilotListView(
         controller: TautulliGraphsNavigationBar.scrollControllers[1],
         children: [
-          LunaHeader(
+          ArrPilotHeader(
             text: 'Daily Stream Type Breakdown',
             subtitle: [
               'Last ${TautulliDatabase.GRAPHS_LINECHART_DAYS.read()} Days',
@@ -58,7 +58,7 @@ class _State extends State<TautulliGraphsStreamInformationRoute>
             ].join(),
           ),
           const TautulliGraphsDailyStreamTypeBreakdownGraph(),
-          LunaHeader(
+          ArrPilotHeader(
             text: 'By Source Resolution',
             subtitle: [
               'Last ${TautulliDatabase.GRAPHS_DAYS.read()} Days',
@@ -67,7 +67,7 @@ class _State extends State<TautulliGraphsStreamInformationRoute>
             ].join(),
           ),
           const TautulliGraphsPlayCountBySourceResolutionGraph(),
-          LunaHeader(
+          ArrPilotHeader(
             text: 'By Stream Resolution',
             subtitle: [
               'Last ${TautulliDatabase.GRAPHS_DAYS.read()} Days',
@@ -76,7 +76,7 @@ class _State extends State<TautulliGraphsStreamInformationRoute>
             ].join(),
           ),
           const TautulliGraphsPlayCountByStreamResolutionGraph(),
-          LunaHeader(
+          ArrPilotHeader(
             text: 'By Platform Stream Type',
             subtitle: [
               'Last ${TautulliDatabase.GRAPHS_DAYS.read()} Days',
@@ -85,7 +85,7 @@ class _State extends State<TautulliGraphsStreamInformationRoute>
             ].join(),
           ),
           const TautulliGraphsPlayCountByPlatformStreamTypeGraph(),
-          LunaHeader(
+          ArrPilotHeader(
             text: 'By User Stream Type',
             subtitle: [
               'Last ${TautulliDatabase.GRAPHS_DAYS.read()} Days',

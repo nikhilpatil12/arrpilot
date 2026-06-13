@@ -48,52 +48,52 @@ class SonarrHistoryTile extends StatelessWidget {
   Widget build(BuildContext context) {
     bool _isThreeLine =
         _hasEpisodeInfo() && type != SonarrHistoryTileType.EPISODE;
-    return LunaExpandableListTile(
+    return ArrPilotExpandableListTile(
       title: type != SonarrHistoryTileType.ALL
           ? history.sourceTitle!
-          : series?.title ?? LunaUI.TEXT_EMDASH,
+          : series?.title ?? ArrPilotUI.TEXT_EMDASH,
       collapsedSubtitles: [
         if (_isThreeLine) _subtitle1(),
         _subtitle2(),
         _subtitle3(),
       ],
       expandedHighlightedNodes: [
-        LunaHighlightedNode(
-          text: history.eventType?.readable ?? LunaUI.TEXT_EMDASH,
+        ArrPilotHighlightedNode(
+          text: history.eventType?.readable ?? ArrPilotUI.TEXT_EMDASH,
           backgroundColor: history.eventType!.lunaColour(),
         ),
         if (history.lunaHasPreferredWordScore())
-          LunaHighlightedNode(
+          ArrPilotHighlightedNode(
             text: history.lunaPreferredWordScore(),
-            backgroundColor: LunaColours.purple,
+            backgroundColor: ArrPilotColours.purple,
           ),
         if (history.episode?.seasonNumber != null)
-          LunaHighlightedNode(
+          ArrPilotHighlightedNode(
             text: 'sonarr.SeasonNumber'.tr(
               args: [history.episode!.seasonNumber.toString()],
             ),
-            backgroundColor: LunaColours.blueGrey,
+            backgroundColor: ArrPilotColours.blueGrey,
           ),
         if (episode?.seasonNumber != null)
-          LunaHighlightedNode(
+          ArrPilotHighlightedNode(
             text: 'sonarr.SeasonNumber'.tr(
-              args: [episode?.seasonNumber?.toString() ?? LunaUI.TEXT_EMDASH],
+              args: [episode?.seasonNumber?.toString() ?? ArrPilotUI.TEXT_EMDASH],
             ),
-            backgroundColor: LunaColours.blueGrey,
+            backgroundColor: ArrPilotColours.blueGrey,
           ),
         if (history.episode?.episodeNumber != null)
-          LunaHighlightedNode(
+          ArrPilotHighlightedNode(
             text: 'sonarr.EpisodeNumber'.tr(
               args: [history.episode!.episodeNumber.toString()],
             ),
-            backgroundColor: LunaColours.blueGrey,
+            backgroundColor: ArrPilotColours.blueGrey,
           ),
         if (episode?.episodeNumber != null)
-          LunaHighlightedNode(
+          ArrPilotHighlightedNode(
             text: 'sonarr.EpisodeNumber'.tr(
-              args: [episode?.episodeNumber?.toString() ?? LunaUI.TEXT_EMDASH],
+              args: [episode?.episodeNumber?.toString() ?? ArrPilotUI.TEXT_EMDASH],
             ),
-            backgroundColor: LunaColours.blueGrey,
+            backgroundColor: ArrPilotColours.blueGrey,
           ),
       ],
       expandedTableContent: history.eventType?.lunaTableContent(
@@ -135,11 +135,11 @@ class SonarrHistoryTile extends StatelessWidget {
       TextSpan(
         text: history.lunaSeasonEpisode() ??
             episode?.lunaSeasonEpisode() ??
-            LunaUI.TEXT_EMDASH,
+            ArrPilotUI.TEXT_EMDASH,
       ),
       const TextSpan(text: ': '),
       TextSpan(
-        text: history.episode?.title ?? episode?.title ?? LunaUI.TEXT_EMDASH,
+        text: history.episode?.title ?? episode?.title ?? ArrPilotUI.TEXT_EMDASH,
         style: const TextStyle(
           fontStyle: FontStyle.italic,
         ),
@@ -150,18 +150,18 @@ class SonarrHistoryTile extends StatelessWidget {
   TextSpan _subtitle2() {
     return TextSpan(
       text: [
-        history.date?.asAge() ?? LunaUI.TEXT_EMDASH,
-        history.date?.asDateTime() ?? LunaUI.TEXT_EMDASH,
-      ].join(LunaUI.TEXT_BULLET.pad()),
+        history.date?.asAge() ?? ArrPilotUI.TEXT_EMDASH,
+        history.date?.asDateTime() ?? ArrPilotUI.TEXT_EMDASH,
+      ].join(ArrPilotUI.TEXT_BULLET.pad()),
     );
   }
 
   TextSpan _subtitle3() {
     return TextSpan(
-      text: history.eventType?.lunaReadable(history) ?? LunaUI.TEXT_EMDASH,
+      text: history.eventType?.lunaReadable(history) ?? ArrPilotUI.TEXT_EMDASH,
       style: TextStyle(
-        color: history.eventType?.lunaColour() ?? LunaColours.blueGrey,
-        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+        color: history.eventType?.lunaColour() ?? ArrPilotColours.blueGrey,
+        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
       ),
     );
   }

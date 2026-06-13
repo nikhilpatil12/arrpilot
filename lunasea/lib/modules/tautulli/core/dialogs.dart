@@ -14,20 +14,20 @@ class TautulliDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'lunasea.Settings'.tr(),
       content: List.generate(
         TautulliGlobalSettingsType.values.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: TautulliGlobalSettingsType.values[index].name,
           icon: TautulliGlobalSettingsType.values[index].icon,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () =>
               _setValues(true, TautulliGlobalSettingsType.values[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _value);
   }
@@ -46,19 +46,19 @@ class TautulliDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Page',
       content: List.generate(
         titles.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: titles[index],
           icon: icons[index],
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, index),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
 
     return [_flag, _index];
@@ -77,23 +77,23 @@ class TautulliDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'tautulli.TerminateSession'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'tautulli.Terminate'.tr(),
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
             text: '${"tautulli.TerminationConfirmMessage".tr()}\n'),
-        LunaDialog.textContent(text: 'tautulli.TerminationAttachMessage'.tr()),
+        ArrPilotDialog.textContent(text: 'tautulli.TerminationAttachMessage'.tr()),
         Form(
           key: _formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             controller: _textController,
             title: 'tautulli.TerminationMessage'.tr(),
             onSubmitted: (_) => _setValues(true),
@@ -101,7 +101,7 @@ class TautulliDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputTextDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputTextDialogContentPadding(),
     );
 
     return Tuple2(_flag, _textController.text);
@@ -120,22 +120,22 @@ class TautulliDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Refresh Rate',
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'Set',
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
             text:
                 'Set the rate at which the activity information will refresh at in seconds.'),
         Form(
           key: _formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             controller: _textController,
             title: 'Refresh Rate',
             onSubmitted: (_) => _setValues(true),
@@ -148,7 +148,7 @@ class TautulliDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputTextDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputTextDialogContentPadding(),
     );
 
     return [_flag, int.tryParse(_textController.text) ?? 10];
@@ -168,22 +168,22 @@ class TautulliDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Statistics Item Count',
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'Set',
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
             text:
                 'Set the amount of items fetched for each category in the statistics.'),
         Form(
           key: _formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             controller: _textController,
             title: 'Item Count',
             onSubmitted: (_) => _setValues(true),
@@ -196,7 +196,7 @@ class TautulliDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputTextDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputTextDialogContentPadding(),
     );
 
     return [_flag, int.tryParse(_textController.text) ?? 3];
@@ -216,21 +216,21 @@ class TautulliDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Termination Message',
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'Set',
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
             text: 'Set a default, prefilled message for terminating sessions.'),
         Form(
           key: _formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             controller: _textController,
             title: 'Termination Message',
             onSubmitted: (_) => _setValues(true),
@@ -238,7 +238,7 @@ class TautulliDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputTextDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputTextDialogContentPadding(),
     );
 
     return Tuple2(_flag, _textController.text);

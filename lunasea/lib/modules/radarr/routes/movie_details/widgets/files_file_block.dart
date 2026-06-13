@@ -16,62 +16,62 @@ class RadarrMovieDetailsFilesFileBlock extends StatefulWidget {
 }
 
 class _State extends State<RadarrMovieDetailsFilesFileBlock> {
-  LunaLoadingState _deleteFileState = LunaLoadingState.INACTIVE;
+  ArrPilotLoadingState _deleteFileState = ArrPilotLoadingState.INACTIVE;
 
   @override
   Widget build(BuildContext context) {
-    return LunaTableCard(
+    return ArrPilotTableCard(
       content: [
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'relative path',
           body: widget.file.lunaRelativePath,
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'video',
           body: widget.file.mediaInfo?.lunaVideoCodec,
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'audio',
           body: [
             widget.file.mediaInfo?.lunaAudioCodec,
             if (widget.file.mediaInfo?.audioChannels != null)
               widget.file.mediaInfo?.audioChannels.toString(),
-          ].join(LunaUI.TEXT_BULLET.pad()),
+          ].join(ArrPilotUI.TEXT_BULLET.pad()),
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'size',
           body: widget.file.lunaSize,
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'languages',
           body: widget.file.lunaLanguage,
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'quality',
           body: widget.file.lunaQuality,
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'formats',
           body: widget.file.lunaCustomFormats,
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'added on',
           body: widget.file.lunaDateAdded,
         ),
       ],
       buttons: [
         if (widget.file.mediaInfo != null)
-          LunaButton.text(
+          ArrPilotButton.text(
             text: 'Media Info',
             icon: Icons.info_outline_rounded,
             onTap: () async => _viewMediaInfo(),
           ),
-        LunaButton(
-          type: LunaButtonType.TEXT,
+        ArrPilotButton(
+          type: ArrPilotButtonType.TEXT,
           text: 'Delete',
           icon: Icons.delete_rounded,
           onTap: () async => _deleteFile(),
-          color: LunaColours.red,
+          color: ArrPilotColours.red,
           loadingState: _deleteFileState,
         ),
       ],
@@ -79,78 +79,78 @@ class _State extends State<RadarrMovieDetailsFilesFileBlock> {
   }
 
   Future<void> _deleteFile() async {
-    setState(() => _deleteFileState = LunaLoadingState.ACTIVE);
+    setState(() => _deleteFileState = ArrPilotLoadingState.ACTIVE);
     bool result = await RadarrDialogs().deleteMovieFile(context);
     if (result) {
       bool execute = await RadarrAPIHelper()
           .deleteMovieFile(context: context, movieFile: widget.file);
       if (execute) context.read<RadarrMovieDetailsState>().fetchFiles(context);
     }
-    setState(() => _deleteFileState = LunaLoadingState.INACTIVE);
+    setState(() => _deleteFileState = ArrPilotLoadingState.INACTIVE);
   }
 
   Future<void> _viewMediaInfo() async {
-    LunaBottomModalSheet().show(
-      builder: (context) => LunaListViewModal(
+    ArrPilotBottomModalSheet().show(
+      builder: (context) => ArrPilotListViewModal(
         children: [
-          LunaHeader(text: 'radarr.Video'.tr()),
-          LunaTableCard(
+          ArrPilotHeader(text: 'radarr.Video'.tr()),
+          ArrPilotTableCard(
             content: [
-              LunaTableContent(
+              ArrPilotTableContent(
                 title: 'radarr.BitDepth'.tr(),
                 body: widget.file.mediaInfo?.lunaVideoBitDepth,
               ),
-              LunaTableContent(
+              ArrPilotTableContent(
                 title: 'radarr.Codec'.tr(),
                 body: widget.file.mediaInfo?.lunaVideoCodec,
               ),
-              LunaTableContent(
+              ArrPilotTableContent(
                 title: 'radarr.DynamicRange'.tr(),
                 body: widget.file.mediaInfo?.lunaVideoDynamicRange,
               ),
-              LunaTableContent(
+              ArrPilotTableContent(
                 title: 'radarr.FPS'.tr(),
                 body: widget.file.mediaInfo?.lunaVideoFps,
               ),
-              LunaTableContent(
+              ArrPilotTableContent(
                 title: 'radarr.Resolution'.tr(),
                 body: widget.file.mediaInfo?.lunaVideoResolution,
               ),
             ],
           ),
-          LunaHeader(text: 'radarr.Audio'.tr()),
-          LunaTableCard(
+          ArrPilotHeader(text: 'radarr.Audio'.tr()),
+          ArrPilotTableCard(
             content: [
-              LunaTableContent(
+              ArrPilotTableContent(
                 title: 'radarr.Channels'.tr(),
                 body: widget.file.mediaInfo?.lunaAudioChannels,
               ),
-              LunaTableContent(
+              ArrPilotTableContent(
                 title: 'radarr.Codec'.tr(),
                 body: widget.file.mediaInfo?.lunaAudioCodec,
               ),
-              LunaTableContent(
+              ArrPilotTableContent(
                 title: 'radarr.Languages'.tr(),
                 body: widget.file.mediaInfo?.lunaAudioLanguages,
               ),
-              LunaTableContent(
+              ArrPilotTableContent(
                 title: 'radarr.Streams'.tr(),
                 body: widget.file.mediaInfo?.lunaAudioStreamCount,
               ),
             ],
           ),
-          LunaHeader(text: 'radarr.Other'.tr()),
-          LunaTableCard(
+          ArrPilotHeader(text: 'radarr.Other'.tr()),
+          ArrPilotTableCard(
             content: [
-              LunaTableContent(
+              ArrPilotTableContent(
                 title: 'radarr.Runtime'.tr(),
                 body: widget.file.mediaInfo?.lunaRunTime,
               ),
-              LunaTableContent(
+              ArrPilotTableContent(
                 title: 'radarr.ScanType'.tr(),
                 body: widget.file.mediaInfo?.lunaScanType,
               ),
-              LunaTableContent(
+              ArrPilotTableContent(
                 title: 'radarr.Subtitles'.tr(),
                 body: widget.file.mediaInfo?.lunaSubtitles,
               ),

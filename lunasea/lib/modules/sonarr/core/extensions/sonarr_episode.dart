@@ -23,7 +23,7 @@ extension SonarrEpisodeExtension on SonarrEpisode {
     if (queueRecord != null) {
       return [
         queueRecord.lunaPercentage(),
-        LunaUI.TEXT_EMDASH,
+        ArrPilotUI.TEXT_EMDASH,
         queueRecord.lunaStatusParameters().item1,
       ].join(' ');
     }
@@ -35,7 +35,7 @@ extension SonarrEpisodeExtension on SonarrEpisode {
     if (file == null) return 'lunasea.Unknown'.tr();
     String quality = file.quality?.quality?.name ?? 'lunasea.Unknown'.tr();
     String size = file.size?.asBytes() ?? '0.00 B';
-    return '$quality ${LunaUI.TEXT_EMDASH} $size';
+    return '$quality ${ArrPilotUI.TEXT_EMDASH} $size';
   }
 
   Color lunaDownloadedQualityColor(
@@ -47,12 +47,12 @@ extension SonarrEpisodeExtension on SonarrEpisode {
     }
 
     if (!this.hasFile!) {
-      if (_hasAired()) return LunaColours.blue;
-      return LunaColours.red;
+      if (_hasAired()) return ArrPilotColours.blue;
+      return ArrPilotColours.red;
     }
-    if (file == null) return LunaColours.blueGrey;
-    if (file.qualityCutoffNotMet!) return LunaColours.orange;
-    return LunaColours.accent;
+    if (file == null) return ArrPilotColours.blueGrey;
+    if (file.qualityCutoffNotMet!) return ArrPilotColours.orange;
+    return ArrPilotColours.accent;
   }
 
   String lunaSeasonEpisode() {
@@ -66,6 +66,6 @@ extension SonarrEpisodeExtension on SonarrEpisode {
             args: [this.episodeNumber.toString()],
           )
         : 'lunasea.Unknown'.tr();
-    return '$season ${LunaUI.TEXT_BULLET} $episode';
+    return '$season ${ArrPilotUI.TEXT_BULLET} $episode';
   }
 }

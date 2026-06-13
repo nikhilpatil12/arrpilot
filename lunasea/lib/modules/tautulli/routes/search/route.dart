@@ -11,13 +11,13 @@ class SearchRoute extends StatefulWidget {
   State<SearchRoute> createState() => _State();
 }
 
-class _State extends State<SearchRoute> with LunaScrollControllerMixin {
+class _State extends State<SearchRoute> with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  Widget build(BuildContext context) => LunaScaffold(
+  Widget build(BuildContext context) => ArrPilotScaffold(
         scaffoldKey: _scaffoldKey,
-        module: LunaModule.TAUTULLI,
+        module: ArrPilotModule.TAUTULLI,
         appBar: TautulliSearchAppBar(scrollController: scrollController)
             as PreferredSizeWidget?,
         body: TautulliSearchSearchResults(scrollController: scrollController),

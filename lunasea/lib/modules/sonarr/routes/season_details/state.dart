@@ -40,16 +40,16 @@ class SonarrSeasonDetailsState extends ChangeNotifier {
     super.dispose();
   }
 
-  LunaLoadingState _episodeSearchState = LunaLoadingState.INACTIVE;
-  LunaLoadingState get episodeSearchState => _episodeSearchState;
-  set episodeSearchState(LunaLoadingState state) {
+  ArrPilotLoadingState _episodeSearchState = ArrPilotLoadingState.INACTIVE;
+  ArrPilotLoadingState get episodeSearchState => _episodeSearchState;
+  set episodeSearchState(ArrPilotLoadingState state) {
     _episodeSearchState = state;
     notifyListeners();
   }
 
-  final _episodeHistoryCache = LunaMemoryCache<Future<SonarrHistoryPage>>(
+  final _episodeHistoryCache = ArrPilotMemoryCache<Future<SonarrHistoryPage>>(
     maxEntries: 10,
-    module: LunaModule.SONARR,
+    module: ArrPilotModule.SONARR,
     id: 'episode_history_cache',
   );
 

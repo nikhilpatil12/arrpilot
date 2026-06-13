@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaReorderableListViewDragger extends StatelessWidget {
+class ArrPilotReorderableListViewDragger extends StatelessWidget {
   final int index;
 
-  const LunaReorderableListViewDragger({
+  const ArrPilotReorderableListViewDragger({
     Key? key,
     required this.index,
   }) : super(key: key);
@@ -16,7 +16,7 @@ class LunaReorderableListViewDragger extends StatelessWidget {
       children: [
         ReorderableDragStartListener(
           index: index,
-          child: const LunaIconButton(
+          child: const ArrPilotIconButton(
             icon: Icons.menu_rounded,
             mouseCursor: SystemMouseCursors.click,
           ),

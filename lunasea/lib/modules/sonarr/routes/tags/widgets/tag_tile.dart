@@ -14,7 +14,7 @@ class SonarrTagsTagTile extends StatefulWidget {
   State<SonarrTagsTagTile> createState() => _State();
 }
 
-class _State extends State<SonarrTagsTagTile> with LunaLoadCallbackMixin {
+class _State extends State<SonarrTagsTagTile> with ArrPilotLoadCallbackMixin {
   List<String?>? seriesList;
 
   @override
@@ -39,14 +39,14 @@ class _State extends State<SonarrTagsTagTile> with LunaLoadCallbackMixin {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: widget.tag.label,
       body: [TextSpan(text: subtitle())],
       trailing: (seriesList?.isNotEmpty ?? true)
           ? null
-          : LunaIconButton(
-              icon: LunaIcons.DELETE,
-              color: LunaColours.red,
+          : ArrPilotIconButton(
+              icon: ArrPilotIcons.DELETE,
+              color: ArrPilotColours.red,
               onPressed: _handleDelete,
             ),
       onTap: _handleInfo,
@@ -60,7 +60,7 @@ class _State extends State<SonarrTagsTagTile> with LunaLoadCallbackMixin {
   }
 
   Future<void> _handleInfo() async {
-    return LunaDialogs().textPreview(
+    return ArrPilotDialogs().textPreview(
       context,
       'Series List',
       (seriesList?.isEmpty ?? true) ? 'No Series' : seriesList!.join('\n'),
@@ -88,7 +88,7 @@ class _State extends State<SonarrTagsTagTile> with LunaLoadCallbackMixin {
           );
           context.read<SonarrState>().fetchTags();
         }).catchError((error, stack) {
-          LunaLogger().error(
+          ArrPilotLogger().error(
             'Failed to delete tag: ${widget.tag.id}',
             error,
             stack,

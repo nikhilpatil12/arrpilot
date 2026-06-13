@@ -13,12 +13,12 @@ class ConfigurationNZBGetDefaultPagesRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationNZBGetDefaultPagesRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -26,14 +26,14 @@ class _State extends State<ConfigurationNZBGetDefaultPagesRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'settings.DefaultPages'.tr(),
       scrollControllers: [scrollController],
     );
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
         _homePage(),
@@ -44,10 +44,10 @@ class _State extends State<ConfigurationNZBGetDefaultPagesRoute>
   Widget _homePage() {
     const _db = NZBGetDatabase.NAVIGATION_INDEX;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'lunasea.Home'.tr(),
         body: [TextSpan(text: NZBGetNavigationBar.titles[_db.read()])],
-        trailing: LunaIconButton(
+        trailing: ArrPilotIconButton(
           icon: NZBGetNavigationBar.icons[_db.read()],
         ),
         onTap: () async {

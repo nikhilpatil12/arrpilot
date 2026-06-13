@@ -13,12 +13,12 @@ class ConfigurationSABnzbdDefaultPagesRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationSABnzbdDefaultPagesRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -26,14 +26,14 @@ class _State extends State<ConfigurationSABnzbdDefaultPagesRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'settings.DefaultPages'.tr(),
       scrollControllers: [scrollController],
     );
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
         _homePage(),
@@ -44,10 +44,10 @@ class _State extends State<ConfigurationSABnzbdDefaultPagesRoute>
   Widget _homePage() {
     const _db = SABnzbdDatabase.NAVIGATION_INDEX;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'lunasea.Home'.tr(),
         body: [TextSpan(text: SABnzbdNavigationBar.titles[_db.read()])],
-        trailing: LunaIconButton(icon: SABnzbdNavigationBar.icons[_db.read()]),
+        trailing: ArrPilotIconButton(icon: SABnzbdNavigationBar.icons[_db.read()]),
         onTap: () async {
           List values = await SABnzbdDialogs.defaultPage(context);
           if (values[0]) _db.update(values[1]);

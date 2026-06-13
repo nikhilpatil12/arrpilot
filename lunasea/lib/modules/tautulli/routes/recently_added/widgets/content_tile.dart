@@ -20,7 +20,7 @@ class TautulliRecentlyAddedContentTile extends StatefulWidget {
 class _State extends State<TautulliRecentlyAddedContentTile> {
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: _title,
       body: _body,
       posterHeaders: context.watch<TautulliState>().headers,
@@ -30,7 +30,7 @@ class _State extends State<TautulliRecentlyAddedContentTile> {
       backgroundUrl: context
           .watch<TautulliState>()
           .getImageURLFromPath(widget.recentlyAdded.art),
-      posterPlaceholderIcon: LunaIcons.VIDEO_CAM,
+      posterPlaceholderIcon: ArrPilotIcons.VIDEO_CAM,
       onTap: _onTap,
     );
   }
@@ -75,7 +75,7 @@ class _State extends State<TautulliRecentlyAddedContentTile> {
         TextSpan(
           children: [
             TextSpan(text: 'S${widget.recentlyAdded.parentMediaIndex}'),
-            TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+            TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
             TextSpan(text: 'E${widget.recentlyAdded.mediaIndex}: '),
             TextSpan(
               text: widget.recentlyAdded.title,
@@ -94,22 +94,22 @@ class _State extends State<TautulliRecentlyAddedContentTile> {
         TextSpan(text: widget.recentlyAdded.year.toString()),
       // Music
       if (widget.recentlyAdded.mediaType == TautulliMediaType.ARTIST)
-        const TextSpan(text: LunaUI.TEXT_EMDASH),
+        const TextSpan(text: ArrPilotUI.TEXT_EMDASH),
       if (widget.recentlyAdded.mediaType == TautulliMediaType.ALBUM)
         TextSpan(text: widget.recentlyAdded.title),
       if (widget.recentlyAdded.mediaType == TautulliMediaType.TRACK)
         TextSpan(
           children: [
             TextSpan(text: widget.recentlyAdded.title),
-            TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+            TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
             TextSpan(text: widget.recentlyAdded.parentTitle),
           ],
         ),
       // Other
       if (widget.recentlyAdded.mediaType == TautulliMediaType.LIVE)
-        const TextSpan(text: LunaUI.TEXT_EMDASH),
+        const TextSpan(text: ArrPilotUI.TEXT_EMDASH),
       if (widget.recentlyAdded.mediaType == TautulliMediaType.COLLECTION)
-        const TextSpan(text: LunaUI.TEXT_EMDASH),
+        const TextSpan(text: ArrPilotUI.TEXT_EMDASH),
       TextSpan(text: widget.recentlyAdded.libraryName),
       TextSpan(
         text: widget.recentlyAdded.addedAt?.asAge() ?? 'lunasea.Unknown'.tr(),

@@ -5,7 +5,7 @@ class NZBGetAPI {
   final Dio _dio;
 
   NZBGetAPI._internal(this._dio);
-  factory NZBGetAPI.from(LunaProfile profile) {
+  factory NZBGetAPI.from(ArrPilotProfile profile) {
     String _baseURL = Uri.encodeFull(profile.nzbgetHost);
     _baseURL += profile.nzbgetUser.isNotEmpty && profile.nzbgetPass.isNotEmpty
         ? '/${profile.nzbgetUser}:${profile.nzbgetPass}/jsonrpc'
@@ -26,7 +26,7 @@ class NZBGetAPI {
   }
 
   void logError(String text, Object error, StackTrace trace) =>
-      LunaLogger().error('NZBGet: $text', error, trace);
+      ArrPilotLogger().error('NZBGet: $text', error, trace);
 
   String getBody(String method, {List<dynamic>? params}) {
     return json.encode({

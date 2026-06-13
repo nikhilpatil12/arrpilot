@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class LunaSwitch extends Switch {
-  LunaSwitch({
+class ArrPilotSwitch extends Switch {
+  ArrPilotSwitch({
     Key? key,
     required bool value,
     required void Function(bool)? onChanged,

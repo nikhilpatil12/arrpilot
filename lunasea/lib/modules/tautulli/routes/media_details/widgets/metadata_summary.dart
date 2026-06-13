@@ -42,7 +42,7 @@ class _State extends State<TautulliMediaDetailsMetadataSummary> {
   Widget build(BuildContext context) {
     if (_summary == null && _buttons == null)
       return const SizedBox(height: 0.0);
-    return LunaCard(
+    return ArrPilotCard(
       context: context,
       child: InkWell(
         child: Row(
@@ -56,7 +56,7 @@ class _State extends State<TautulliMediaDetailsMetadataSummary> {
                       child: RichText(
                         text: TextSpan(
                           style: const TextStyle(
-                            fontSize: LunaUI.FONT_SIZE_H3,
+                            fontSize: ArrPilotUI.FONT_SIZE_H3,
                           ),
                           text: _summary,
                         ),
@@ -77,7 +77,7 @@ class _State extends State<TautulliMediaDetailsMetadataSummary> {
             ),
           ],
         ),
-        onTap: () async => LunaDialogs()
+        onTap: () async => ArrPilotDialogs()
             .textPreview(context, widget.metadata!.title, _summary!),
       ),
     );
@@ -85,7 +85,7 @@ class _State extends State<TautulliMediaDetailsMetadataSummary> {
 
   Widget? _buildButtons() {
     if (_blacklist.contains(widget.type)) return null;
-    return LunaButtonContainer(
+    return ArrPilotButtonContainer(
       children: _buttonBuilder(),
       padding: EdgeInsets.fromLTRB(
         6.0,
@@ -122,7 +122,7 @@ class _State extends State<TautulliMediaDetailsMetadataSummary> {
   }
 
   Widget _button(TautulliMediaDetailsSwitcherType type) {
-    return LunaButton.text(
+    return ArrPilotButton.text(
       text: type.label!,
       icon: Icons.info_outline_rounded,
       onTap: () => _buttonOnTap(type),

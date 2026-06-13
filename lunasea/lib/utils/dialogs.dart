@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaDialogs {
+class ArrPilotDialogs {
   /// Show an an edit text prompt.
   ///
   /// Can pass in [prefill] String to prefill the [TextFormField]. Can also pass in a list of [TextSpan] tp show text above the field.
@@ -24,21 +24,21 @@ class LunaDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: dialogTitle,
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'Save',
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
         if (extraText?.isNotEmpty ?? false)
-          LunaDialog.richText(children: extraText),
+          ArrPilotDialog.richText(children: extraText),
         Form(
           key: _formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             controller: _textController,
             title: dialogTitle,
             onSubmitted: (_) => _setValues(true),
@@ -47,8 +47,8 @@ class LunaDialogs {
         ),
       ],
       contentPadding: (extraText?.length ?? 0) == 0
-          ? LunaDialog.inputDialogContentPadding()
-          : LunaDialog.inputTextDialogContentPadding(),
+          ? ArrPilotDialog.inputDialogContentPadding()
+          : ArrPilotDialog.inputTextDialogContentPadding(),
     );
     return Tuple2(_flag, _textController.text);
   }
@@ -59,12 +59,12 @@ class LunaDialogs {
   Future<void> textPreview(
       BuildContext context, String? dialogTitle, String text,
       {bool alignLeft = false}) async {
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: dialogTitle,
       cancelButtonText: 'Close',
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
             text: 'Copy',
             onPressed: () async {
               await Clipboard.setData(ClipboardData(text: text));
@@ -75,9 +75,9 @@ class LunaDialogs {
             }),
       ],
       content: [
-        LunaDialog.textContent(text: text),
+        ArrPilotDialog.textContent(text: text),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
   }
 
@@ -90,19 +90,19 @@ class LunaDialogs {
         'No rejections found',
       );
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Rejection Reasons',
       cancelButtonText: 'Close',
       content: List.generate(
         rejections.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: rejections[index],
           icon: Icons.report_outlined,
-          iconColor: LunaColours.red,
+          iconColor: ArrPilotColours.red,
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
   }
 
@@ -110,19 +110,19 @@ class LunaDialogs {
     if (messages.isEmpty) {
       return textPreview(context, 'Messages', 'No messages found');
     }
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Messages',
       cancelButtonText: 'Close',
       content: List.generate(
         messages.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: messages[index],
           icon: Icons.info_outline_rounded,
-          iconColor: LunaColours.accent,
+          iconColor: ArrPilotColours.accent,
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
   }
 
@@ -138,57 +138,57 @@ class LunaDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Delete All Files',
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'Delete',
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
             text:
                 'Are you sure you want to delete all the files and folders for $moduleTitle?'),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return [_flag];
   }
 
-  Future<LunaModule?> selectDownloadClient() async {
-    final profile = LunaProfile.current;
-    final context = LunaState.context;
-    LunaModule? module;
+  Future<ArrPilotModule?> selectDownloadClient() async {
+    final profile = ArrPilotProfile.current;
+    final context = ArrPilotState.context;
+    ArrPilotModule? module;
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'lunasea.DownloadClient'.tr(),
       content: [
         if (profile.nzbgetEnabled)
-          LunaDialog.tile(
-            text: LunaModule.NZBGET.title,
-            icon: LunaModule.NZBGET.icon,
-            iconColor: LunaModule.NZBGET.color,
+          ArrPilotDialog.tile(
+            text: ArrPilotModule.NZBGET.title,
+            icon: ArrPilotModule.NZBGET.icon,
+            iconColor: ArrPilotModule.NZBGET.color,
             onTap: () {
-              module = LunaModule.NZBGET;
+              module = ArrPilotModule.NZBGET;
               Navigator.of(context).pop();
             },
           ),
         if (profile.sabnzbdEnabled)
-          LunaDialog.tile(
-            text: LunaModule.SABNZBD.title,
-            icon: LunaModule.SABNZBD.icon,
-            iconColor: LunaModule.SABNZBD.color,
+          ArrPilotDialog.tile(
+            text: ArrPilotModule.SABNZBD.title,
+            icon: ArrPilotModule.SABNZBD.icon,
+            iconColor: ArrPilotModule.SABNZBD.color,
             onTap: () {
-              module = LunaModule.SABNZBD;
+              module = ArrPilotModule.SABNZBD;
               Navigator.of(context).pop();
             },
           ),
       ],
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
 
     return module;

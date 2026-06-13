@@ -21,9 +21,9 @@ class _State extends State<SonarrMoreRoute> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      module: LunaModule.SONARR,
+      module: ArrPilotModule.SONARR,
       body: _body(),
     );
   }
@@ -37,51 +37,51 @@ class _State extends State<SonarrMoreRoute> with AutomaticKeepAliveClientMixin {
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: SonarrNavigationBar.scrollControllers[3],
       children: [
-        LunaBlock(
+        ArrPilotBlock(
           title: 'sonarr.History'.tr(),
           body: [TextSpan(text: 'sonarr.HistoryDescription'.tr())],
-          trailing: LunaIconButton(
+          trailing: ArrPilotIconButton(
             icon: Icons.history_rounded,
-            color: LunaColours().byListIndex(0),
+            color: ArrPilotColours().byListIndex(0),
           ),
           onTap: SonarrRoutes.HISTORY.go,
         ),
-        // LunaBlock(
+        // ArrPilotBlock(
         //   title: 'sonarr.ManualImport'.tr(),
         //   body: [TextSpan(text: 'sonarr.ManualImportDescription'.tr())],
-        //   trailing: LunaIconButton(
+        //   trailing: ArrPilotIconButton(
         //     icon: Icons.download_done_rounded,
-        //     color: LunaColours().byListIndex(1),
+        //     color: ArrPilotColours().byListIndex(1),
         //   ),
         //   onTap: () async => _showComingSoonMessage(),
         // ),
-        LunaBlock(
+        ArrPilotBlock(
           title: 'sonarr.Queue'.tr(),
           body: [TextSpan(text: 'sonarr.QueueDescription'.tr())],
-          trailing: LunaIconButton(
+          trailing: ArrPilotIconButton(
             icon: Icons.queue_play_next_rounded,
-            color: LunaColours().byListIndex(1),
+            color: ArrPilotColours().byListIndex(1),
           ),
           onTap: SonarrRoutes.QUEUE.go,
         ),
-        // LunaBlock(
+        // ArrPilotBlock(
         //   title: 'sonarr.SystemStatus'.tr(),
         //   body: [TextSpan(text: 'sonarr.SystemStatusDescription'.tr())],
-        //   trailing: LunaIconButton(
+        //   trailing: ArrPilotIconButton(
         //     icon: Icons.computer_rounded,
-        //     color: LunaColours().byListIndex(3),
+        //     color: ArrPilotColours().byListIndex(3),
         //   ),
         //   onTap: () async => _showComingSoonMessage(),
         // ),
-        LunaBlock(
+        ArrPilotBlock(
           title: 'sonarr.Tags'.tr(),
           body: [TextSpan(text: 'sonarr.TagsDescription'.tr())],
-          trailing: LunaIconButton(
+          trailing: ArrPilotIconButton(
             icon: Icons.style_rounded,
-            color: LunaColours().byListIndex(2),
+            color: ArrPilotColours().byListIndex(2),
           ),
           onTap: SonarrRoutes.TAGS.go,
         ),

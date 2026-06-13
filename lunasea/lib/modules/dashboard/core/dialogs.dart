@@ -16,19 +16,19 @@ class DashboardDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'lunasea.Page'.tr(),
       content: List.generate(
         HomeNavigationBar.titles.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: HomeNavigationBar.titles[index],
           icon: HomeNavigationBar.icons[index],
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, index),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
 
     return Tuple2(_flag, _index);
@@ -48,22 +48,22 @@ class DashboardDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'dashboard.PastDays'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Set'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
           text: 'dashboard.PastDaysDescription'.tr(),
         ),
         Form(
           key: _formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             controller: _textController,
             title: 'dashboard.PastDays'.tr(),
             onSubmitted: (_) => _setValues(true),
@@ -76,7 +76,7 @@ class DashboardDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputTextDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputTextDialogContentPadding(),
     );
 
     return Tuple2(_flag, int.tryParse(_textController.text) ?? 14);
@@ -96,22 +96,22 @@ class DashboardDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'dashboard.FutureDays'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Set'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
           text: 'dashboard.FutureDaysDescription'.tr(),
         ),
         Form(
           key: _formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             controller: _textController,
             title: 'dashboard.FutureDays'.tr(),
             onSubmitted: (_) => _setValues(true),
@@ -124,7 +124,7 @@ class DashboardDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputTextDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputTextDialogContentPadding(),
     );
 
     return Tuple2(_flag, int.tryParse(_textController.text) ?? 14);

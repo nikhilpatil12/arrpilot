@@ -7,7 +7,7 @@ import 'package:arrpilot/modules/sabnzbd/routes/statistics.dart';
 import 'package:arrpilot/router/routes.dart';
 import 'package:arrpilot/vendor.dart';
 
-enum SABnzbdRoutes with LunaRoutesMixin {
+enum SABnzbdRoutes with ArrPilotRoutesMixin {
   HOME('/sabnzbd'),
   STATISTICS('statistics'),
   HISTORY_STAGES('history/stages');
@@ -18,7 +18,7 @@ enum SABnzbdRoutes with LunaRoutesMixin {
   const SABnzbdRoutes(this.path);
 
   @override
-  LunaModule get module => LunaModule.SABNZBD;
+  ArrPilotModule get module => ArrPilotModule.SABNZBD;
 
   @override
   bool isModuleEnabled(BuildContext context) => true;

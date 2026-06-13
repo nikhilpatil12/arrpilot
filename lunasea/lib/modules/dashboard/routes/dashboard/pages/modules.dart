@@ -28,17 +28,17 @@ class _State extends State<ModulesPage> with AutomaticKeepAliveClientMixin {
   }
 
   Widget _list() {
-    if (!(LunaProfile.current.isAnythingEnabled())) {
-      return LunaMessage(
+    if (!(ArrPilotProfile.current.isAnythingEnabled())) {
+      return ArrPilotMessage(
         text: 'lunasea.NoModulesEnabled'.tr(),
         buttonText: 'lunasea.GoToSettings'.tr(),
-        onTap: LunaModule.SETTINGS.launch,
+        onTap: ArrPilotModule.SETTINGS.launch,
       );
     }
-    return LunaListView(
+    return ArrPilotListView(
       controller: HomeNavigationBar.scrollControllers[0],
-      itemExtent: LunaBlock.calculateItemExtent(1),
-      children: LunaSeaDatabase.DRAWER_AUTOMATIC_MANAGE.read()
+      itemExtent: ArrPilotBlock.calculateItemExtent(1),
+      children: ArrPilotDatabase.DRAWER_AUTOMATIC_MANAGE.read()
           ? _buildAlphabeticalList()
           : _buildManuallyOrderedList(),
     );
@@ -47,13 +47,13 @@ class _State extends State<ModulesPage> with AutomaticKeepAliveClientMixin {
   List<Widget> _buildAlphabeticalList() {
     List<Widget> modules = [];
     int index = 0;
-    LunaModule.active
+    ArrPilotModule.active
       ..sort((a, b) => a.title.toLowerCase().compareTo(
             b.title.toLowerCase(),
           ))
       ..forEach((module) {
         if (module.isEnabled) {
-          if (module == LunaModule.WAKE_ON_LAN) {
+          if (module == ArrPilotModule.WAKE_ON_LAN) {
             modules.add(_buildWakeOnLAN(context, index));
           } else {
             modules.add(_buildFromLunaModule(module, index));
@@ -61,16 +61,16 @@ class _State extends State<ModulesPage> with AutomaticKeepAliveClientMixin {
           index++;
         }
       });
-    modules.add(_buildFromLunaModule(LunaModule.SETTINGS, index));
+    modules.add(_buildFromLunaModule(ArrPilotModule.SETTINGS, index));
     return modules;
   }
 
   List<Widget> _buildManuallyOrderedList() {
     List<Widget> modules = [];
     int index = 0;
-    LunaDrawer.moduleOrderedList().forEach((module) {
+    ArrPilotDrawer.moduleOrderedList().forEach((module) {
       if (module.isEnabled) {
-        if (module == LunaModule.WAKE_ON_LAN) {
+        if (module == ArrPilotModule.WAKE_ON_LAN) {
           modules.add(_buildWakeOnLAN(context, index));
         } else {
           modules.add(_buildFromLunaModule(module, index));
@@ -78,28 +78,28 @@ class _State extends State<ModulesPage> with AutomaticKeepAliveClientMixin {
         index++;
       }
     });
-    modules.add(_buildFromLunaModule(LunaModule.SETTINGS, index));
+    modules.add(_buildFromLunaModule(ArrPilotModule.SETTINGS, index));
     return modules;
   }
 
-  Widget _buildFromLunaModule(LunaModule module, int listIndex) {
-    return LunaBlock(
+  Widget _buildFromLunaModule(ArrPilotModule module, int listIndex) {
+    return ArrPilotBlock(
       title: module.title,
       body: [TextSpan(text: module.description)],
-      trailing: LunaIconButton(icon: module.icon, color: module.color),
+      trailing: ArrPilotIconButton(icon: module.icon, color: module.color),
       onTap: module.launch,
     );
   }
 
   Widget _buildWakeOnLAN(BuildContext context, int listIndex) {
-    return LunaBlock(
-      title: LunaModule.WAKE_ON_LAN.title,
-      body: [TextSpan(text: LunaModule.WAKE_ON_LAN.description)],
-      trailing: LunaIconButton(
-        icon: LunaModule.WAKE_ON_LAN.icon,
-        color: LunaModule.WAKE_ON_LAN.color,
+    return ArrPilotBlock(
+      title: ArrPilotModule.WAKE_ON_LAN.title,
+      body: [TextSpan(text: ArrPilotModule.WAKE_ON_LAN.description)],
+      trailing: ArrPilotIconButton(
+        icon: ArrPilotModule.WAKE_ON_LAN.icon,
+        color: ArrPilotModule.WAKE_ON_LAN.color,
       ),
-      onTap: () async => LunaWakeOnLAN().wake(),
+      onTap: () async => ArrPilotWakeOnLAN().wake(),
     );
   }
 }

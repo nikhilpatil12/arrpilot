@@ -12,12 +12,12 @@ class ConfigurationTautulliDefaultPagesRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationTautulliDefaultPagesRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -25,14 +25,14 @@ class _State extends State<ConfigurationTautulliDefaultPagesRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'settings.DefaultPages'.tr(),
       scrollControllers: [scrollController],
     );
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
         _homePage(),
@@ -47,10 +47,10 @@ class _State extends State<ConfigurationTautulliDefaultPagesRoute>
   Widget _homePage() {
     const _db = TautulliDatabase.NAVIGATION_INDEX;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'lunasea.Home'.tr(),
         body: [TextSpan(text: TautulliNavigationBar.titles[_db.read()])],
-        trailing: LunaIconButton(icon: TautulliNavigationBar.icons[_db.read()]),
+        trailing: ArrPilotIconButton(icon: TautulliNavigationBar.icons[_db.read()]),
         onTap: () async {
           List values = await TautulliDialogs.setDefaultPage(
             context,
@@ -66,11 +66,11 @@ class _State extends State<ConfigurationTautulliDefaultPagesRoute>
   Widget _graphsPage() {
     const _db = TautulliDatabase.NAVIGATION_INDEX_GRAPHS;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'tautulli.Graphs'.tr(),
         body: [TextSpan(text: TautulliGraphsNavigationBar.titles[_db.read()])],
         trailing:
-            LunaIconButton(icon: TautulliGraphsNavigationBar.icons[_db.read()]),
+            ArrPilotIconButton(icon: TautulliGraphsNavigationBar.icons[_db.read()]),
         onTap: () async {
           List values = await TautulliDialogs.setDefaultPage(
             context,
@@ -86,13 +86,13 @@ class _State extends State<ConfigurationTautulliDefaultPagesRoute>
   Widget _libraryDetailsPage() {
     const _db = TautulliDatabase.NAVIGATION_INDEX_LIBRARIES_DETAILS;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'tautulli.LibraryDetails'.tr(),
         body: [
           TextSpan(
               text: TautulliLibrariesDetailsNavigationBar.titles[_db.read()])
         ],
-        trailing: LunaIconButton(
+        trailing: ArrPilotIconButton(
             icon: TautulliLibrariesDetailsNavigationBar.icons[_db.read()]),
         onTap: () async {
           List values = await TautulliDialogs.setDefaultPage(
@@ -109,12 +109,12 @@ class _State extends State<ConfigurationTautulliDefaultPagesRoute>
   Widget _mediaDetailsPage() {
     const _db = TautulliDatabase.NAVIGATION_INDEX_MEDIA_DETAILS;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'tautulli.MediaDetails'.tr(),
         body: [
           TextSpan(text: TautulliMediaDetailsNavigationBar.titles[_db.read()]),
         ],
-        trailing: LunaIconButton(
+        trailing: ArrPilotIconButton(
             icon: TautulliMediaDetailsNavigationBar.icons[_db.read()]),
         onTap: () async {
           List values = await TautulliDialogs.setDefaultPage(
@@ -131,12 +131,12 @@ class _State extends State<ConfigurationTautulliDefaultPagesRoute>
   Widget _userDetailsPage() {
     const _db = TautulliDatabase.NAVIGATION_INDEX_USER_DETAILS;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'tautulli.UserDetails'.tr(),
         body: [
           TextSpan(text: TautulliUserDetailsNavigationBar.titles[_db.read()]),
         ],
-        trailing: LunaIconButton(
+        trailing: ArrPilotIconButton(
             icon: TautulliUserDetailsNavigationBar.icons[_db.read()]),
         onTap: () async {
           List values = await TautulliDialogs.setDefaultPage(

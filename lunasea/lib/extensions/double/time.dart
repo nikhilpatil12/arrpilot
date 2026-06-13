@@ -2,7 +2,7 @@ import 'package:arrpilot/core.dart';
 
 extension DoubleAsTimeExtension on double? {
   String asTimeAgo() {
-    if (this == null || this! < 0) return LunaUI.TEXT_EMDASH;
+    if (this == null || this! < 0) return ArrPilotUI.TEXT_EMDASH;
 
     double hours = this!;
     double minutes = (this! * 60);

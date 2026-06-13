@@ -3,24 +3,24 @@ import 'package:arrpilot/system/state.dart';
 import 'package:arrpilot/widgets/ui.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
-class LunaBottomModalSheet<T> {
+class ArrPilotBottomModalSheet<T> {
   @protected
   Future<T?> showModal({
     Widget Function(BuildContext context)? builder,
   }) async {
     return showBarModalBottomSheet<T>(
-      context: LunaState.context,
+      context: ArrPilotState.context,
       expand: false,
       backgroundColor:
-          LunaTheme.isAMOLEDTheme ? Colors.black : LunaColours.primary,
-      shape: LunaShapeBorder(
+          ArrPilotTheme.isAMOLEDTheme ? Colors.black : ArrPilotColours.primary,
+      shape: ArrPilotShapeBorder(
         topOnly: true,
-        useBorder: LunaUI.shouldUseBorder,
+        useBorder: ArrPilotUI.shouldUseBorder,
       ),
       builder: builder ?? this.builder as Widget Function(BuildContext),
       closeProgressThreshold: 0.90,
-      elevation: LunaUI.ELEVATION,
-      overlayStyle: LunaTheme().overlayStyle,
+      elevation: ArrPilotUI.ELEVATION,
+      overlayStyle: ArrPilotTheme().overlayStyle,
     );
   }
 

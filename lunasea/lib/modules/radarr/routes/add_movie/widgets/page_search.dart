@@ -16,7 +16,7 @@ class RadarrAddMovieSearchPage extends StatefulWidget {
 }
 
 class _State extends State<RadarrAddMovieSearchPage>
-    with AutomaticKeepAliveClientMixin, LunaLoadCallbackMixin {
+    with AutomaticKeepAliveClientMixin, ArrPilotLoadCallbackMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -36,7 +36,7 @@ class _State extends State<RadarrAddMovieSearchPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -44,13 +44,13 @@ class _State extends State<RadarrAddMovieSearchPage>
   }
 
   Widget _appBar() {
-    return LunaAppBar.empty(
+    return ArrPilotAppBar.empty(
       child: RadarrAddMovieSearchSearchBar(
         query: context.read<RadarrAddMovieState>().searchQuery,
         autofocus: widget.autofocusSearchBar,
         scrollController: RadarrAddMovieNavigationBar.scrollControllers[0],
       ),
-      height: LunaTextInputBar.defaultAppBarHeight,
+      height: ArrPilotTextInputBar.defaultAppBarHeight,
     );
   }
 
@@ -72,7 +72,7 @@ class _State extends State<RadarrAddMovieSearchPage>
       Future<List<RadarrMovie>>? movies,
       Future<List<RadarrMovie>>? lookup,
       Future<List<RadarrExclusion>>? exclusions) {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: loadCallback,
@@ -81,17 +81,17 @@ class _State extends State<RadarrAddMovieSearchPage>
         builder: (context, AsyncSnapshot<List> snapshot) {
           if (snapshot.hasError) {
             if (snapshot.connectionState != ConnectionState.waiting)
-              LunaLogger().error(
+              ArrPilotLogger().error(
                 'Unable to fetch Radarr movie lookup',
                 snapshot.error,
                 snapshot.stackTrace,
               );
-            return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+            return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
           }
           if (snapshot.hasData)
             return _list(
                 snapshot.data![0], snapshot.data![1], snapshot.data![2]);
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -103,13 +103,13 @@ class _State extends State<RadarrAddMovieSearchPage>
     List<RadarrExclusion> exclusions,
   ) {
     if (results.isEmpty)
-      return LunaListView(
+      return ArrPilotListView(
         controller: RadarrAddMovieNavigationBar.scrollControllers[0],
         children: [
-          LunaMessage.inList(text: 'radarr.NoResultsFound'.tr()),
+          ArrPilotMessage.inList(text: 'radarr.NoResultsFound'.tr()),
         ],
       );
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: RadarrAddMovieNavigationBar.scrollControllers[0],
       itemCount: results.length,
       itemBuilder: (context, index) {

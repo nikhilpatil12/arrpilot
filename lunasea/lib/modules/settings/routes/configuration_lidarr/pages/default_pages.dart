@@ -12,12 +12,12 @@ class ConfigurationLidarrDefaultPagesRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationLidarrDefaultPagesRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -25,14 +25,14 @@ class _State extends State<ConfigurationLidarrDefaultPagesRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'settings.DefaultPages'.tr(),
       scrollControllers: [scrollController],
     );
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
         _homePage(),
@@ -43,10 +43,10 @@ class _State extends State<ConfigurationLidarrDefaultPagesRoute>
   Widget _homePage() {
     const _db = LidarrDatabase.NAVIGATION_INDEX;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'lunasea.Home'.tr(),
         body: [TextSpan(text: LidarrNavigationBar.titles[_db.read()])],
-        trailing: LunaIconButton(
+        trailing: ArrPilotIconButton(
           icon: LidarrNavigationBar.icons[_db.read()],
         ),
         onTap: () async {

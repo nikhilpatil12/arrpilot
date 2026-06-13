@@ -12,25 +12,25 @@ class TautulliIPAddressDetailsWHOISTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaTableCard(
+    return ArrPilotTableCard(
       content: [
-        LunaTableContent(title: 'host', body: whois.host ?? LunaUI.TEXT_EMDASH),
+        ArrPilotTableContent(title: 'host', body: whois.host ?? ArrPilotUI.TEXT_EMDASH),
         ..._subnets(),
       ],
     );
   }
 
-  List<LunaTableContent> _subnets() {
+  List<ArrPilotTableContent> _subnets() {
     if (whois.subnets?.isEmpty ?? true) return [];
-    return whois.subnets!.fold<List<LunaTableContent>>([], (list, subnet) {
-      list.add(LunaTableContent(
+    return whois.subnets!.fold<List<ArrPilotTableContent>>([], (list, subnet) {
+      list.add(ArrPilotTableContent(
         title: 'isp',
         body: [
-          subnet.description ?? LunaUI.TEXT_EMDASH,
-          '\n\n${subnet.address ?? LunaUI.TEXT_EMDASH}',
-          '\n${subnet.city}, ${subnet.state ?? LunaUI.TEXT_EMDASH}',
-          '\n${subnet.postalCode ?? LunaUI.TEXT_EMDASH}',
-          '\n${subnet.country ?? LunaUI.TEXT_EMDASH}',
+          subnet.description ?? ArrPilotUI.TEXT_EMDASH,
+          '\n\n${subnet.address ?? ArrPilotUI.TEXT_EMDASH}',
+          '\n${subnet.city}, ${subnet.state ?? ArrPilotUI.TEXT_EMDASH}',
+          '\n${subnet.postalCode ?? ArrPilotUI.TEXT_EMDASH}',
+          '\n${subnet.country ?? ArrPilotUI.TEXT_EMDASH}',
         ].join(),
       ));
       return list;

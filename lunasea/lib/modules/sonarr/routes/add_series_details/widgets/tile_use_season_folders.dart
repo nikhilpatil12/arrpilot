@@ -9,9 +9,9 @@ class SonarrSeriesAddDetailsUseSeasonFoldersTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'sonarr.SeasonFolders'.tr(),
-      trailing: LunaSwitch(
+      trailing: ArrPilotSwitch(
         value: context.watch<SonarrSeriesAddDetailsState>().useSeasonFolders,
         onChanged: (value) {
           context.read<SonarrSeriesAddDetailsState>().useSeasonFolders = value;

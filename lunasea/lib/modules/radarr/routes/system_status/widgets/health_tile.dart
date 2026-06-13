@@ -13,7 +13,7 @@ class RadarrHealthCheckTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaExpandableListTile(
+    return ArrPilotExpandableListTile(
       title: healthCheck.message!,
       collapsedSubtitles: [
         subtitle1(),
@@ -34,24 +34,24 @@ class RadarrHealthCheckTile extends StatelessWidget {
       text: healthCheck.type!.readable,
       style: TextStyle(
         color: healthCheck.type.lunaColour,
-        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
-        fontSize: LunaUI.FONT_SIZE_H3,
+        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
+        fontSize: ArrPilotUI.FONT_SIZE_H3,
       ),
     );
   }
 
-  List<LunaHighlightedNode> highlightedNodes() {
+  List<ArrPilotHighlightedNode> highlightedNodes() {
     return [
-      LunaHighlightedNode(
+      ArrPilotHighlightedNode(
         text: healthCheck.type!.readable!,
         backgroundColor: healthCheck.type.lunaColour,
       ),
     ];
   }
 
-  List<LunaTableContent> expandedTable() {
+  List<ArrPilotTableContent> expandedTable() {
     return [
-      LunaTableContent(title: 'Source', body: healthCheck.source),
+      ArrPilotTableContent(title: 'Source', body: healthCheck.source),
     ];
   }
 }

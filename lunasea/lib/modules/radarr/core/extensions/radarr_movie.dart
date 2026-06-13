@@ -5,7 +5,7 @@ import 'package:arrpilot/extensions/int/bytes.dart';
 import 'package:arrpilot/extensions/int/duration.dart';
 import 'package:arrpilot/modules/radarr.dart';
 
-extension LunaRadarrMovieExtension on RadarrMovie {
+extension ArrPilotRadarrMovieExtension on RadarrMovie {
   String get lunaRuntime {
     return this.runtime.asVideoDuration();
   }
@@ -14,34 +14,34 @@ extension LunaRadarrMovieExtension on RadarrMovie {
     if (this.alternateTitles?.isNotEmpty ?? false) {
       return this.alternateTitles!.map((title) => title.title).join('\n');
     }
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaGenres {
     if (this.genres?.isNotEmpty ?? false) return this.genres!.join('\n');
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaStudio {
     if (this.studio?.isNotEmpty ?? false) return this.studio!;
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaYear {
     if (this.year != null && this.year != 0) return this.year.toString();
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaMinimumAvailability {
     if (this.minimumAvailability != null) {
       return this.minimumAvailability!.readable;
     }
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String lunaDateAdded([bool short = false]) {
     if (this.added != null) return this.added!.asDateOnly(shortenMonth: short);
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   bool get lunaIsInCinemas {
@@ -53,30 +53,30 @@ extension LunaRadarrMovieExtension on RadarrMovie {
   String lunaInCinemasOn([bool short = false]) {
     if (this.inCinemas != null)
       return this.inCinemas!.asDateOnly(shortenMonth: short);
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String lunaPhysicalReleaseDate([bool short = false]) {
     if (this.physicalRelease != null)
       return this.physicalRelease!.asDateOnly(shortenMonth: short);
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String lunaDigitalReleaseDate([bool short = false]) {
     if (this.digitalRelease != null)
       return this.digitalRelease!.asDateOnly(shortenMonth: short);
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaReleaseDate {
     if (this.lunaEarlierReleaseDate != null)
       return this.lunaEarlierReleaseDate!.asDateOnly();
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String lunaTags(List<RadarrTag> tags) {
     if (tags.isNotEmpty) return tags.map<String?>((t) => t.label).join('\n');
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   bool get lunaIsReleased {
@@ -89,7 +89,7 @@ extension LunaRadarrMovieExtension on RadarrMovie {
   }
 
   String get lunaFileSize {
-    if (!this.hasFile!) return LunaUI.TEXT_EMDASH;
+    if (!this.hasFile!) return ArrPilotUI.TEXT_EMDASH;
     return this.sizeOnDisk.asBytes();
   }
 
@@ -98,16 +98,16 @@ extension LunaRadarrMovieExtension on RadarrMovie {
       return Text(
         lunaFileSize,
         style: const TextStyle(
-          color: LunaColours.accent,
-          fontSize: LunaUI.FONT_SIZE_H3,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          color: ArrPilotColours.accent,
+          fontSize: ArrPilotUI.FONT_SIZE_H3,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         ),
       );
     return const Text(
       '',
       style: TextStyle(
-        fontSize: LunaUI.FONT_SIZE_H3,
-        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+        fontSize: ArrPilotUI.FONT_SIZE_H3,
+        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
       ),
     );
   }
@@ -118,7 +118,7 @@ extension LunaRadarrMovieExtension on RadarrMovie {
     if (this.hasFile! || lunaIsReleased)
       return const Text(
         '',
-        style: TextStyle(fontSize: LunaUI.FONT_SIZE_H3),
+        style: TextStyle(fontSize: ArrPilotUI.FONT_SIZE_H3),
       );
     // In Cinemas
     if (this.inCinemas != null && this.inCinemas!.toLocal().isAfter(now)) {
@@ -126,9 +126,9 @@ extension LunaRadarrMovieExtension on RadarrMovie {
       return Text(
         _date == 'TODAY' ? _date : 'IN $_date',
         style: const TextStyle(
-          color: LunaColours.orange,
-          fontSize: LunaUI.FONT_SIZE_H3,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          color: ArrPilotColours.orange,
+          fontSize: ArrPilotUI.FONT_SIZE_H3,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         ),
       );
     }
@@ -139,9 +139,9 @@ extension LunaRadarrMovieExtension on RadarrMovie {
       return Text(
         _date == 'TODAY' ? _date : 'IN $_date',
         style: const TextStyle(
-          color: LunaColours.blue,
-          fontSize: LunaUI.FONT_SIZE_H3,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          color: ArrPilotColours.blue,
+          fontSize: ArrPilotUI.FONT_SIZE_H3,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         ),
       );
     }
@@ -149,8 +149,8 @@ extension LunaRadarrMovieExtension on RadarrMovie {
     return const Text(
       '',
       style: TextStyle(
-        fontSize: LunaUI.FONT_SIZE_H3,
-        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+        fontSize: ArrPilotUI.FONT_SIZE_H3,
+        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
       ),
     );
   }

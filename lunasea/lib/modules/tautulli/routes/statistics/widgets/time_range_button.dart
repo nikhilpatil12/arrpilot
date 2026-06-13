@@ -12,7 +12,7 @@ class TautulliStatisticsTimeRangeButton extends StatelessWidget {
       Selector<TautulliState, TautulliStatisticsTimeRange>(
         selector: (_, state) => state.statisticsTimeRange,
         builder: (context, range, _) =>
-            LunaPopupMenuButton<TautulliStatisticsTimeRange>(
+            ArrPilotPopupMenuButton<TautulliStatisticsTimeRange>(
                 tooltip: 'Time Range',
                 icon: Icons.access_time_rounded,
                 onSelected: (value) {
@@ -27,10 +27,10 @@ class TautulliStatisticsTimeRangeButton extends StatelessWidget {
                         child: Text(
                           TautulliStatisticsTimeRange.values[index].name,
                           style: TextStyle(
-                            fontSize: LunaUI.FONT_SIZE_H3,
+                            fontSize: ArrPilotUI.FONT_SIZE_H3,
                             color: range ==
                                     TautulliStatisticsTimeRange.values[index]
-                                ? LunaColours.accent
+                                ? ArrPilotColours.accent
                                 : Colors.white,
                           ),
                         ),

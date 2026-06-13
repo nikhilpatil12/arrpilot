@@ -12,14 +12,14 @@ class ExternalModulesRoute extends StatefulWidget {
 }
 
 class _State extends State<ExternalModulesRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      module: LunaModule.EXTERNAL_MODULES,
+      module: ArrPilotModule.EXTERNAL_MODULES,
       appBar: _appBar(),
       drawer: _drawer(),
       body: _body(),
@@ -27,31 +27,31 @@ class _State extends State<ExternalModulesRoute>
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       useDrawer: true,
-      title: LunaModule.EXTERNAL_MODULES.title,
+      title: ArrPilotModule.EXTERNAL_MODULES.title,
       scrollControllers: [scrollController],
     );
   }
 
-  Widget _drawer() => LunaDrawer(page: LunaModule.EXTERNAL_MODULES.key);
+  Widget _drawer() => ArrPilotDrawer(page: ArrPilotModule.EXTERNAL_MODULES.key);
 
   Widget _body() {
-    if (LunaBox.externalModules.isEmpty) {
-      return LunaMessage.moduleNotEnabled(
+    if (ArrPilotBox.externalModules.isEmpty) {
+      return ArrPilotMessage.moduleNotEnabled(
         context: context,
-        module: LunaModule.EXTERNAL_MODULES.title,
+        module: ArrPilotModule.EXTERNAL_MODULES.title,
       );
     }
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
-      itemExtent: LunaBlock.calculateItemExtent(1),
+      itemExtent: ArrPilotBlock.calculateItemExtent(1),
       children: _list,
     );
   }
 
   List<Widget> get _list {
-    final list = LunaBox.externalModules.data
+    final list = ArrPilotBox.externalModules.data
         .map((module) => ExternalModulesModuleTile(module: module))
         .toList();
     list.sort((a, b) => a.module!.displayName

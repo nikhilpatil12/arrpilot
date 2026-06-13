@@ -13,21 +13,21 @@ class SonarrRoute extends StatefulWidget {
 
 class _State extends State<SonarrRoute> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  LunaPageController? _pageController;
+  ArrPilotPageController? _pageController;
 
   @override
   void initState() {
     super.initState();
-    _pageController = LunaPageController(
+    _pageController = ArrPilotPageController(
       initialPage: SonarrDatabase.NAVIGATION_INDEX.read(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      module: LunaModule.SONARR,
+      module: ArrPilotModule.SONARR,
       drawer: _drawer(),
       appBar: _appBar(),
       bottomNavigationBar: _bottomNavigationBar(),
@@ -36,7 +36,7 @@ class _State extends State<SonarrRoute> {
   }
 
   Widget _drawer() {
-    return LunaDrawer(page: LunaModule.SONARR.key);
+    return ArrPilotDrawer(page: ArrPilotModule.SONARR.key);
   }
 
   Widget? _bottomNavigationBar() {
@@ -47,10 +47,10 @@ class _State extends State<SonarrRoute> {
   }
 
   PreferredSizeWidget _appBar() {
-    List<String> profiles = LunaBox.profiles.keys.fold(
+    List<String> profiles = ArrPilotBox.profiles.keys.fold(
       [],
       (value, element) {
-        if (LunaBox.profiles.read(element)?.sonarrEnabled ?? false) {
+        if (ArrPilotBox.profiles.read(element)?.sonarrEnabled ?? false) {
           value.add(element);
         }
         return value;
@@ -63,8 +63,8 @@ class _State extends State<SonarrRoute> {
         const SonarrAppBarGlobalSettingsAction(),
       ];
     }
-    return LunaAppBar.dropdown(
-      title: LunaModule.SONARR.title,
+    return ArrPilotAppBar.dropdown(
+      title: ArrPilotModule.SONARR.title,
       useDrawer: true,
       profiles: profiles,
       actions: actions,
@@ -78,12 +78,12 @@ class _State extends State<SonarrRoute> {
       selector: (_, state) => state.enabled,
       builder: (context, enabled, _) {
         if (!enabled!) {
-          return LunaMessage.moduleNotEnabled(
+          return ArrPilotMessage.moduleNotEnabled(
             context: context,
             module: 'Sonarr',
           );
         }
-        return LunaPageView(
+        return ArrPilotPageView(
           controller: _pageController,
           children: const [
             SonarrCatalogueRoute(),

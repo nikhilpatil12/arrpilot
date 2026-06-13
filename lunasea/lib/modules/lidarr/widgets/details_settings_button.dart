@@ -20,7 +20,7 @@ class LidarrDetailsSettingsButton extends StatefulWidget {
 class _State extends State<LidarrDetailsSettingsButton> {
   @override
   Widget build(BuildContext context) => Consumer<LidarrState>(
-        builder: (context, model, widget) => LunaIconButton(
+        builder: (context, model, widget) => ArrPilotIconButton(
           icon: Icons.more_vert_rounded,
           onPressed: () async => _handlePopup(context),
         ),
@@ -41,7 +41,7 @@ class _State extends State<LidarrDetailsSettingsButton> {
           _removeArtist(context);
           break;
         default:
-          LunaLogger()
+          ArrPilotLogger()
               .warning('Invalid method passed through popup. (${values[1]})');
       }
   }
@@ -56,7 +56,7 @@ class _State extends State<LidarrDetailsSettingsButton> {
   }
 
   Future<void> _refreshArtist(BuildContext context) async {
-    final _api = LidarrAPI.from(LunaProfile.current);
+    final _api = LidarrAPI.from(ArrPilotProfile.current);
     await _api
         .refreshArtist(widget.data!.artistID)
         .then((_) => showLunaSuccessSnackBar(
@@ -66,11 +66,11 @@ class _State extends State<LidarrDetailsSettingsButton> {
   }
 
   Future<void> _removeArtist(BuildContext context) async {
-    final _api = LidarrAPI.from(LunaProfile.current);
+    final _api = LidarrAPI.from(ArrPilotProfile.current);
     List values = await LidarrDialogs.deleteArtist(context);
     if (values[0]) {
       if (values[1]) {
-        values = await LunaDialogs()
+        values = await ArrPilotDialogs()
             .deleteCatalogueWithFiles(context, widget.data!.title);
         if (values[0]) {
           await _api

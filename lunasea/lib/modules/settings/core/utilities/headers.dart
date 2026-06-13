@@ -12,12 +12,12 @@ class HeaderUtility {
     BuildContext context, {
     required Map<String, String> headers,
     required String key,
-    LunaIndexer? indexer,
+    ArrPilotIndexer? indexer,
   }) async {
     bool result = await SettingsDialogs().deleteHeader(context);
     if (result) {
       headers.remove(key);
-      LunaProfile.current.save();
+      ArrPilotProfile.current.save();
       indexer?.save();
       showLunaSuccessSnackBar(
         title: 'settings.HeaderDeleted'.tr(),
@@ -33,7 +33,7 @@ class HeaderUtility {
   Future<void> addHeader(
     BuildContext context, {
     required Map<String, String> headers,
-    LunaIndexer? indexer,
+    ArrPilotIndexer? indexer,
   }) async {
     final result = await SettingsDialogs().addHeader(context);
     if (result.item1)
@@ -45,7 +45,7 @@ class HeaderUtility {
           await _genericHeader(context, headers, indexer);
           break;
         default:
-          LunaLogger().warning('Unknown case: ${result.item2}');
+          ArrPilotLogger().warning('Unknown case: ${result.item2}');
       }
   }
 
@@ -53,12 +53,12 @@ class HeaderUtility {
   Future<void> _genericHeader(
     BuildContext context,
     Map<String, String> headers,
-    LunaIndexer? indexer,
+    ArrPilotIndexer? indexer,
   ) async {
     final results = await SettingsDialogs().addCustomHeader(context);
     if (results.item1) {
       headers[results.item2] = results.item3;
-      LunaProfile.current.save();
+      ArrPilotProfile.current.save();
       indexer?.save();
       showLunaSuccessSnackBar(
         title: 'settings.HeaderAdded'.tr(),
@@ -71,7 +71,7 @@ class HeaderUtility {
   Future<void> _basicAuthenticationHeader(
     BuildContext context,
     Map<String, String> headers,
-    LunaIndexer? indexer,
+    ArrPilotIndexer? indexer,
   ) async {
     final results =
         await SettingsDialogs().addBasicAuthenticationHeader(context);
@@ -80,7 +80,7 @@ class HeaderUtility {
         utf8.encode('${results.item2}:${results.item3}'),
       );
       headers['Authorization'] = 'Basic $_auth';
-      LunaProfile.current.save();
+      ArrPilotProfile.current.save();
       indexer?.save();
       showLunaSuccessSnackBar(
         title: 'settings.HeaderAdded'.tr(),

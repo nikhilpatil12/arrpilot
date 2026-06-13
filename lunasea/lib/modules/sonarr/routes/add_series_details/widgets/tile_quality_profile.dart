@@ -9,7 +9,7 @@ class SonarrSeriesAddDetailsQualityProfileTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'sonarr.QualityProfile'.tr(),
       body: [
         TextSpan(
@@ -17,10 +17,10 @@ class SonarrSeriesAddDetailsQualityProfileTile extends StatelessWidget {
                   .watch<SonarrSeriesAddDetailsState>()
                   .qualityProfile
                   .name ??
-              LunaUI.TEXT_EMDASH,
+              ArrPilotUI.TEXT_EMDASH,
         ),
       ],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async => _onTap(context),
     );
   }

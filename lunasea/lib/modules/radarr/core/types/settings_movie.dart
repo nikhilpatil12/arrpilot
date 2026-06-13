@@ -70,7 +70,7 @@ extension RadarrMovieSettingsTypeExtension on RadarrMovieSettingsType {
     if (result) {
       RadarrAPIHelper().removeMovie(context: context, movie: movie).then((_) {
         context.read<RadarrState>().fetchMovies();
-        LunaRouter().popSafely();
+        ArrPilotRouter().popSafely();
       });
     }
   }

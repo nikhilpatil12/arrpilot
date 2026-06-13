@@ -1,4 +1,4 @@
-abstract class LunaParser {
+abstract class ArrPilotParser {
   static DateTime? dateTimeFromString(String? date) {
     return DateTime.tryParse(date ?? '');
   }

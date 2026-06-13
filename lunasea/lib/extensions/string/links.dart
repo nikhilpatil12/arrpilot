@@ -23,7 +23,7 @@ extension StringAsLinksExtension on String {
       if (await _launchUniversal(this)) return;
       await _launchDefault(this);
     } catch (error, stack) {
-      LunaLogger().error(
+      ArrPilotLogger().error(
         'Unable to open URL',
         error,
         stack,

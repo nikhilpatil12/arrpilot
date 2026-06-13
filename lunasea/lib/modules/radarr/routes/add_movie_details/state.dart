@@ -57,7 +57,7 @@ class RadarrAddMovieDetailsState extends ChangeNotifier {
           element.id == RadarrDatabase.ADD_MOVIE_DEFAULT_ROOT_FOLDER_ID.read(),
       orElse: () => (rootFolders?.length ?? 0) != 0
           ? rootFolders![0]
-          : RadarrRootFolder(id: -1, freeSpace: 0, path: LunaUI.TEXT_EMDASH),
+          : RadarrRootFolder(id: -1, freeSpace: 0, path: ArrPilotUI.TEXT_EMDASH),
     );
   }
 
@@ -77,7 +77,7 @@ class RadarrAddMovieDetailsState extends ChangeNotifier {
           RadarrDatabase.ADD_MOVIE_DEFAULT_QUALITY_PROFILE_ID.read(),
       orElse: () => (qualityProfiles?.length ?? 0) != 0
           ? qualityProfiles![0]
-          : RadarrQualityProfile(id: -1, name: LunaUI.TEXT_EMDASH),
+          : RadarrQualityProfile(id: -1, name: ArrPilotUI.TEXT_EMDASH),
     );
   }
 
@@ -97,9 +97,9 @@ class RadarrAddMovieDetailsState extends ChangeNotifier {
         .toList();
   }
 
-  LunaLoadingState _state = LunaLoadingState.INACTIVE;
-  LunaLoadingState get state => _state;
-  set state(LunaLoadingState state) {
+  ArrPilotLoadingState _state = ArrPilotLoadingState.INACTIVE;
+  ArrPilotLoadingState get state => _state;
+  set state(ArrPilotLoadingState state) {
     _state = state;
     notifyListeners();
   }

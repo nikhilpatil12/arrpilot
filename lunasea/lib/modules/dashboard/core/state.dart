@@ -7,7 +7,7 @@ import 'package:arrpilot/modules/dashboard/core/api/data/abstract.dart';
 import 'package:arrpilot/system/state.dart';
 import 'package:arrpilot/vendor.dart';
 
-class DashboardState extends LunaModuleState {
+class DashboardState extends ArrPilotModuleState {
   DashboardState() {
     reset();
   }

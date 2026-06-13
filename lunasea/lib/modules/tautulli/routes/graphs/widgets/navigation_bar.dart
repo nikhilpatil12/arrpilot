@@ -23,7 +23,7 @@ class TautulliGraphsNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBottomNavigationBar(
+    return ArrPilotBottomNavigationBar(
       pageController: pageController,
       scrollControllers: scrollControllers,
       icons: icons,

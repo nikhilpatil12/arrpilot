@@ -10,9 +10,9 @@ class RadarrManualImportBottomActionBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBottomActionBar(
+    return ArrPilotBottomActionBar(
       actions: [
-        LunaButton.text(
+        ArrPilotButton.text(
           text: 'radarr.Quick'.tr(),
           icon: Icons.search_rounded,
           onTap: () async => RadarrAPIHelper().quickImport(
@@ -20,7 +20,7 @@ class RadarrManualImportBottomActionBar extends StatelessWidget {
             path: context.read<RadarrManualImportState>().currentPath,
           ),
         ),
-        LunaButton.text(
+        ArrPilotButton.text(
           text: 'radarr.Interactive'.tr(),
           icon: Icons.person_rounded,
           onTap: () => RadarrRoutes.MANUAL_IMPORT_DETAILS.go(queryParams: {

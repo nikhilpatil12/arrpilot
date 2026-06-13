@@ -4,19 +4,19 @@ import 'package:arrpilot/modules/radarr.dart';
 
 class RadarrBottomModalSheets {
   Future<void> configureManualImport(BuildContext context) async {
-    await LunaBottomModalSheet().show(
+    await ArrPilotBottomModalSheet().show(
       builder: (_) => ChangeNotifierProvider.value(
         value: context.read<RadarrManualImportDetailsTileState>(),
-        builder: (context, _) => LunaListViewModal(
+        builder: (context, _) => ArrPilotListViewModal(
           children: [
-            LunaHeader(
+            ArrPilotHeader(
               text: 'radarr.Configure'.tr(),
               subtitle: context
                   .read<RadarrManualImportDetailsTileState>()
                   .manualImport
                   .relativePath,
             ),
-            LunaBlock(
+            ArrPilotBlock(
               title: 'radarr.SelectMovie'.tr(),
               body: [
                 TextSpan(
@@ -26,7 +26,7 @@ class RadarrBottomModalSheets {
                       .lunaMovie,
                 ),
               ],
-              trailing: const LunaIconButton.arrow(),
+              trailing: const ArrPilotIconButton.arrow(),
               onTap: () async {
                 Tuple2<bool, RadarrMovie?> result = await selectMovie(context);
                 if (result.item1)
@@ -35,7 +35,7 @@ class RadarrBottomModalSheets {
                       .fetchUpdates(context, result.item2!.id);
               },
             ),
-            LunaBlock(
+            ArrPilotBlock(
               title: 'radarr.SelectQuality'.tr(),
               body: [
                 TextSpan(
@@ -45,10 +45,10 @@ class RadarrBottomModalSheets {
                       .lunaQualityProfile,
                 ),
               ],
-              trailing: const LunaIconButton.arrow(),
+              trailing: const ArrPilotIconButton.arrow(),
               onTap: () async => selectQuality(context),
             ),
-            LunaBlock(
+            ArrPilotBlock(
               title: 'radarr.SelectLanguage'.tr(),
               body: [
                 TextSpan(
@@ -58,7 +58,7 @@ class RadarrBottomModalSheets {
                       .lunaLanguage,
                 ),
               ],
-              trailing: const LunaIconButton.arrow(),
+              trailing: const ArrPilotIconButton.arrow(),
               onTap: () async {
                 List<RadarrLanguage> languages =
                     await context.read<RadarrState>().languages!;
@@ -73,13 +73,13 @@ class RadarrBottomModalSheets {
   }
 
   Future<void> selectQuality(BuildContext context) async {
-    await LunaBottomModalSheet().show(
+    await ArrPilotBottomModalSheet().show(
       builder: (_) => ChangeNotifierProvider.value(
         value: context.read<RadarrManualImportDetailsTileState>(),
-        builder: (context, _) => LunaListViewModal(
+        builder: (context, _) => ArrPilotListViewModal(
           children: [
-            LunaHeader(text: 'radarr.SelectQuality'.tr()),
-            LunaBlock(
+            ArrPilotHeader(text: 'radarr.SelectQuality'.tr()),
+            ArrPilotBlock(
               title: 'radarr.Quality'.tr(),
               body: [
                 TextSpan(
@@ -89,7 +89,7 @@ class RadarrBottomModalSheets {
                       .lunaQualityProfile,
                 ),
               ],
-              trailing: const LunaIconButton.arrow(),
+              trailing: const ArrPilotIconButton.arrow(),
               onTap: () async {
                 List<RadarrQualityDefinition> profiles =
                     await context.read<RadarrState>().qualityDefinitions!;
@@ -102,7 +102,7 @@ class RadarrBottomModalSheets {
                       .updateQuality(result.item2!.quality!);
               },
             ),
-            LunaBlock(
+            ArrPilotBlock(
               title: 'Proper',
               trailing: Switch(
                 value: context
@@ -123,7 +123,7 @@ class RadarrBottomModalSheets {
                 },
               ),
             ),
-            LunaBlock(
+            ArrPilotBlock(
               title: 'Real',
               trailing: Switch(
                 value: context
@@ -167,7 +167,7 @@ class RadarrBottomModalSheets {
       return _filtered;
     }
 
-    await LunaBottomModalSheet().show(
+    await ArrPilotBottomModalSheet().show(
       builder: (_) => ChangeNotifierProvider.value(
         value: context.read<RadarrManualImportDetailsTileState>(),
         builder: (context, _) => FutureBuilder(
@@ -175,36 +175,36 @@ class RadarrBottomModalSheets {
           builder: (context, AsyncSnapshot<List<RadarrMovie>> snapshot) {
             if (snapshot.hasError) {
               if (snapshot.connectionState != ConnectionState.waiting)
-                LunaLogger().error(
+                ArrPilotLogger().error(
                   'Unable to fetch Radarr movies',
                   snapshot.error,
                   snapshot.stackTrace,
                 );
-              return LunaMessage(text: 'lunasea.AnErrorHasOccurred'.tr());
+              return ArrPilotMessage(text: 'lunasea.AnErrorHasOccurred'.tr());
             }
             if (snapshot.hasData) {
               if ((snapshot.data?.length ?? 0) == 0)
-                return LunaMessage(text: 'radarr.NoMoviesFound'.tr());
+                return ArrPilotMessage(text: 'radarr.NoMoviesFound'.tr());
               String _query = context
                   .watch<RadarrManualImportDetailsTileState>()
                   .configureMoviesSearchQuery;
               List<RadarrMovie> movies = _sortAndFilter(snapshot.data!, _query);
               // Return the final movie list
-              return LunaListViewModalBuilder(
+              return ArrPilotListViewModalBuilder(
                 itemCount: movies.isEmpty ? 1 : movies.length,
                 itemBuilder: (context, index) {
                   if (movies.isEmpty) {
-                    return LunaMessage.inList(
+                    return ArrPilotMessage.inList(
                       text: 'radarr.NoMoviesFound'.tr(),
                     );
                   }
-                  String title = movies[index].title ?? LunaUI.TEXT_EMDASH;
+                  String title = movies[index].title ?? ArrPilotUI.TEXT_EMDASH;
                   if (movies[index].year != null && movies[index].year != 0)
                     title += ' (${movies[index].year})';
                   String? overview = movies[index].overview;
                   if (overview?.isEmpty ?? true)
                     overview = 'radarr.NoSummaryIsAvailable'.tr();
-                  return LunaBlock(
+                  return ArrPilotBlock(
                     title: title,
                     body: [
                       TextSpan(
@@ -221,17 +221,17 @@ class RadarrBottomModalSheets {
                     },
                   );
                 },
-                appBar: LunaAppBar(
+                appBar: ArrPilotAppBar(
                   title: 'radarr.SelectMovie'.tr(),
                   bottom:
                       const RadarrManualImportDetailsConfigureMoviesSearchBar(),
                   hideLeading: true,
                 ),
-                appBarHeight: LunaAppBar.APPBAR_HEIGHT +
-                    LunaTextInputBar.defaultAppBarHeight,
+                appBarHeight: ArrPilotAppBar.APPBAR_HEIGHT +
+                    ArrPilotTextInputBar.defaultAppBarHeight,
               );
             }
-            return const LunaLoader();
+            return const ArrPilotLoader();
           },
         ),
       ),

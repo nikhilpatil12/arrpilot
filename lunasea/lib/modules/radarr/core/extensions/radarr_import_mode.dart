@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 import 'package:arrpilot/modules/radarr.dart';
 
-extension LunaRadarrImportMode on RadarrImportMode {
+extension ArrPilotRadarrImportMode on RadarrImportMode {
   String get lunaReadable {
     switch (this) {
       case RadarrImportMode.COPY:

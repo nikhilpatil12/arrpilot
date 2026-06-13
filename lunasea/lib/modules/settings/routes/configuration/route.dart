@@ -14,12 +14,12 @@ class ConfigurationRoute extends StatefulWidget {
   State<ConfigurationRoute> createState() => _State();
 }
 
-class _State extends State<ConfigurationRoute> with LunaScrollControllerMixin {
+class _State extends State<ConfigurationRoute> with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -27,7 +27,7 @@ class _State extends State<ConfigurationRoute> with LunaScrollControllerMixin {
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'settings.Configuration'.tr(),
       scrollControllers: [scrollController],
       actions: [_enabledProfile()],
@@ -35,15 +35,15 @@ class _State extends State<ConfigurationRoute> with LunaScrollControllerMixin {
   }
 
   Widget _enabledProfile() {
-    return LunaBox.profiles.listenableBuilder(
+    return ArrPilotBox.profiles.listenableBuilder(
       builder: (context, _) {
-        if (LunaBox.profiles.size < 2) return const SizedBox();
-        return LunaIconButton(
+        if (ArrPilotBox.profiles.size < 2) return const SizedBox();
+        return ArrPilotIconButton(
           icon: Icons.switch_account_rounded,
           onPressed: () async {
             final dialogs = SettingsDialogs();
-            final enabledProfile = LunaSeaDatabase.ENABLED_PROFILE.read();
-            final profiles = LunaProfile.list;
+            final enabledProfile = ArrPilotDatabase.ENABLED_PROFILE.read();
+            final profiles = ArrPilotProfile.list;
             profiles.removeWhere((p) => p == enabledProfile);
 
             if (profiles.isEmpty) {
@@ -55,11 +55,11 @@ class _State extends State<ConfigurationRoute> with LunaScrollControllerMixin {
             }
 
             final selected = await dialogs.enabledProfile(
-              LunaState.context,
+              ArrPilotState.context,
               profiles,
             );
             if (selected.item1) {
-              LunaProfileTools().changeTo(selected.item2);
+              ArrPilotProfileTools().changeTo(selected.item2);
             }
           },
         );
@@ -68,47 +68,47 @@ class _State extends State<ConfigurationRoute> with LunaScrollControllerMixin {
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
-        LunaBlock(
+        ArrPilotBlock(
           title: 'settings.General'.tr(),
           body: [TextSpan(text: 'settings.GeneralDescription'.tr())],
-          trailing: const LunaIconButton(icon: Icons.brush_rounded),
+          trailing: const ArrPilotIconButton(icon: Icons.brush_rounded),
           onTap: SettingsRoutes.CONFIGURATION_GENERAL.go,
         ),
-        LunaBlock(
+        ArrPilotBlock(
           title: 'settings.Drawer'.tr(),
           body: [TextSpan(text: 'settings.DrawerDescription'.tr())],
-          trailing: const LunaIconButton(icon: Icons.menu_rounded),
+          trailing: const ArrPilotIconButton(icon: Icons.menu_rounded),
           onTap: SettingsRoutes.CONFIGURATION_DRAWER.go,
         ),
-        if (LunaQuickActions.isSupported)
-          LunaBlock(
+        if (ArrPilotQuickActions.isSupported)
+          ArrPilotBlock(
             title: 'settings.QuickActions'.tr(),
             body: [TextSpan(text: 'settings.QuickActionsDescription'.tr())],
-            trailing: const LunaIconButton(icon: Icons.rounded_corner_rounded),
+            trailing: const ArrPilotIconButton(icon: Icons.rounded_corner_rounded),
             onTap: SettingsRoutes.CONFIGURATION_QUICK_ACTIONS.go,
           ),
-        LunaDivider(),
+        ArrPilotDivider(),
         ..._moduleList(),
       ],
     );
   }
 
   List<Widget> _moduleList() {
-    return ([LunaModule.DASHBOARD, ...LunaModule.active])
+    return ([ArrPilotModule.DASHBOARD, ...ArrPilotModule.active])
         .map(_tileFromModuleMap)
         .toList();
   }
 
-  Widget _tileFromModuleMap(LunaModule module) {
-    return LunaBlock(
+  Widget _tileFromModuleMap(ArrPilotModule module) {
+    return ArrPilotBlock(
       title: module.title,
       body: [
         TextSpan(text: 'settings.ConfigureModule'.tr(args: [module.title]))
       ],
-      trailing: LunaIconButton(icon: module.icon),
+      trailing: ArrPilotIconButton(icon: module.icon),
       onTap: module.settingsRoute!.go,
     );
   }

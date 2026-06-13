@@ -17,19 +17,19 @@ class SonarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'lunasea.Settings'.tr(),
       content: List.generate(
         SonarrGlobalSettingsType.values.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: SonarrGlobalSettingsType.values[index].name,
           icon: SonarrGlobalSettingsType.values[index].icon,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, SonarrGlobalSettingsType.values[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _value);
   }
@@ -47,19 +47,19 @@ class SonarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: series.title,
       content: List.generate(
         SonarrSeriesSettingsType.values.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: SonarrSeriesSettingsType.values[index].name(series),
           icon: SonarrSeriesSettingsType.values[index].icon(series),
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, SonarrSeriesSettingsType.values[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _value);
   }
@@ -77,22 +77,22 @@ class SonarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: episode.title,
       content: List.generate(
         episode.hasFile!
             ? SonarrEpisodeSettingsType.values.length
             : SonarrEpisodeSettingsType.values.length - 1,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: SonarrEpisodeSettingsType.values[index].name(episode),
           icon: SonarrEpisodeSettingsType.values[index].icon(episode),
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () =>
               _setValues(true, SonarrEpisodeSettingsType.values[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _value);
   }
@@ -110,21 +110,21 @@ class SonarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: seasonNumber == 0
           ? 'sonarr.Specials'.tr()
           : 'sonarr.SeasonNumber'.tr(args: [seasonNumber.toString()]),
       content: List.generate(
         SonarrSeasonSettingsType.values.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: SonarrSeasonSettingsType.values[index].name,
           icon: SonarrSeasonSettingsType.values[index].icon,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, SonarrSeasonSettingsType.values[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _value);
   }
@@ -142,23 +142,23 @@ class SonarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: episodes > 1
           ? 'sonarr.EpisodesCount'.tr(args: [episodes.toString()])
           : 'sonarr.OneEpisode'.tr(),
       content: List.generate(
         SonarrEpisodeMultiSettingsType.values.length,
-        (idx) => LunaDialog.tile(
+        (idx) => ArrPilotDialog.tile(
           text: SonarrEpisodeMultiSettingsType.values[idx].name,
           icon: SonarrEpisodeMultiSettingsType.values[idx].icon,
-          iconColor: LunaColours().byListIndex(idx),
+          iconColor: ArrPilotColours().byListIndex(idx),
           onTap: () {
             _setValues(true, SonarrEpisodeMultiSettingsType.values[idx]);
           },
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _value);
   }
@@ -177,19 +177,19 @@ class SonarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Page',
       content: List.generate(
         titles.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: titles[index],
           icon: icons[index],
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, index),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
 
     return [_flag, _index];
@@ -209,25 +209,25 @@ class SonarrDialogs {
               return AlertDialog(
                 actions: <Widget>[
                   const SonarrTagsAppBarActionAddTag(asDialogButton: true),
-                  LunaDialog.button(
+                  ArrPilotDialog.button(
                     text: 'Close',
                     onPressed: () =>
                         Navigator.of(context, rootNavigator: true).pop(),
                   ),
                 ],
-                title: LunaDialog.title(text: 'Tags'),
+                title: ArrPilotDialog.title(text: 'Tags'),
                 content: Builder(
                   builder: (context) {
                     if ((snapshot.data?.length ?? 0) == 0)
-                      return LunaDialog.content(
+                      return ArrPilotDialog.content(
                         children: [
-                          LunaDialog.textContent(text: 'No Tags Found'),
+                          ArrPilotDialog.textContent(text: 'No Tags Found'),
                         ],
                       );
-                    return LunaDialog.content(
+                    return ArrPilotDialog.content(
                       children: List.generate(
                         snapshot.data!.length,
-                        (index) => LunaDialog.checkbox(
+                        (index) => ArrPilotDialog.checkbox(
                           title: snapshot.data![index].label!,
                           value: context
                               .watch<SonarrSeriesAddDetailsState>()
@@ -252,9 +252,9 @@ class SonarrDialogs {
                   },
                 ),
                 contentPadding: (snapshot.data?.length ?? 0) == 0
-                    ? LunaDialog.textDialogContentPadding()
-                    : LunaDialog.listDialogContentPadding(),
-                shape: LunaUI.shapeBorder,
+                    ? ArrPilotDialog.textDialogContentPadding()
+                    : ArrPilotDialog.listDialogContentPadding(),
+                shape: ArrPilotUI.shapeBorder,
               );
             },
           ),
@@ -277,25 +277,25 @@ class SonarrDialogs {
               return AlertDialog(
                 actions: <Widget>[
                   const SonarrTagsAppBarActionAddTag(asDialogButton: true),
-                  LunaDialog.button(
+                  ArrPilotDialog.button(
                     text: 'Close',
                     onPressed: () =>
                         Navigator.of(context, rootNavigator: true).pop(),
                   ),
                 ],
-                title: LunaDialog.title(text: 'Tags'),
+                title: ArrPilotDialog.title(text: 'Tags'),
                 content: Builder(
                   builder: (context) {
                     if ((snapshot.data?.length ?? 0) == 0)
-                      return LunaDialog.content(
+                      return ArrPilotDialog.content(
                         children: [
-                          LunaDialog.textContent(text: 'No Tags Found'),
+                          ArrPilotDialog.textContent(text: 'No Tags Found'),
                         ],
                       );
-                    return LunaDialog.content(
+                    return ArrPilotDialog.content(
                       children: List.generate(
                         snapshot.data!.length,
-                        (index) => LunaDialog.checkbox(
+                        (index) => ArrPilotDialog.checkbox(
                           title: snapshot.data![index].label!,
                           value: context
                               .watch<SonarrSeriesEditState>()
@@ -317,9 +317,9 @@ class SonarrDialogs {
                   },
                 ),
                 contentPadding: (snapshot.data?.length ?? 0) == 0
-                    ? LunaDialog.textDialogContentPadding()
-                    : LunaDialog.listDialogContentPadding(),
-                shape: LunaUI.shapeBorder,
+                    ? ArrPilotDialog.textDialogContentPadding()
+                    : ArrPilotDialog.listDialogContentPadding(),
+                shape: ArrPilotUI.shapeBorder,
               );
             },
           ),
@@ -340,11 +340,11 @@ class SonarrDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Add Tag',
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'Add',
           onPressed: () => _setValues(true),
         ),
@@ -352,7 +352,7 @@ class SonarrDialogs {
       content: [
         Form(
           key: _formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             controller: _textController,
             title: 'Tag Label',
             onSubmitted: (_) => _setValues(true),
@@ -363,7 +363,7 @@ class SonarrDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputDialogContentPadding(),
     );
     return Tuple2(_flag, _textController.text);
   }
@@ -378,21 +378,21 @@ class SonarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'sonarr.MissingEpisodes'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'sonarr.Search'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
           text: 'sonarr.MissingEpisodesHint1'.tr(),
         ),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return _flag;
   }
@@ -405,21 +405,21 @@ class SonarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Delete Tag',
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'Delete',
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
             text: 'Are you sure you want to delete this tag?'),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return _flag;
   }
@@ -435,19 +435,19 @@ class SonarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Language Profile',
       content: List.generate(
         profiles.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: profiles[index]!.name!,
           icon: Icons.portrait_rounded,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, profiles[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, profile);
   }
@@ -463,19 +463,19 @@ class SonarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Quality Profile',
       content: List.generate(
         profiles.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: profiles[index]!.name!,
           icon: Icons.portrait_rounded,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, profiles[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, profile);
   }
@@ -491,27 +491,27 @@ class SonarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Root Folder',
       content: List.generate(
         folders.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: folders[index].path!,
-          subtitle: LunaDialog.richText(
+          subtitle: ArrPilotDialog.richText(
             children: [
-              LunaDialog.bolded(
+              ArrPilotDialog.bolded(
                 text: folders[index].freeSpace.asBytes(),
-                fontSize: LunaDialog.BUTTON_SIZE,
+                fontSize: ArrPilotDialog.BUTTON_SIZE,
               ),
             ],
           ) as RichText?,
           icon: Icons.folder_rounded,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, folders[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _folder);
   }
@@ -527,19 +527,19 @@ class SonarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Monitoring Options',
       content: List.generate(
         SonarrSeriesMonitorType.values.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: SonarrSeriesMonitorType.values[index].lunaName,
           icon: Icons.view_list_rounded,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, SonarrSeriesMonitorType.values[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _type);
   }
@@ -555,19 +555,19 @@ class SonarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Series Type',
       content: List.generate(
         SonarrSeriesType.values.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: SonarrSeriesType.values[index].value!.toTitleCase(),
           icon: Icons.folder_open_rounded,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, SonarrSeriesType.values[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _type);
   }
@@ -580,19 +580,19 @@ class SonarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'sonarr.RemoveSeries'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Remove'.tr(),
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
         SonarrDatabase.REMOVE_SERIES_EXCLUSION_LIST.listenableBuilder(
-          builder: (context, _) => LunaDialog.checkbox(
+          builder: (context, _) => ArrPilotDialog.checkbox(
             title: 'sonarr.AddToExclusionList'.tr(),
             value: SonarrDatabase.REMOVE_SERIES_EXCLUSION_LIST.read(),
             onChanged: (value) =>
@@ -600,7 +600,7 @@ class SonarrDialogs {
           ),
         ),
         SonarrDatabase.REMOVE_SERIES_DELETE_FILES.listenableBuilder(
-          builder: (context, _) => LunaDialog.checkbox(
+          builder: (context, _) => ArrPilotDialog.checkbox(
             title: 'sonarr.DeleteFiles'.tr(),
             value: SonarrDatabase.REMOVE_SERIES_DELETE_FILES.read(),
             onChanged: (value) =>
@@ -608,17 +608,17 @@ class SonarrDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return _flag;
   }
 
   Future<void> addSeriesOptions(BuildContext context) async {
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'lunasea.Options'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Close'.tr(),
           onPressed: () => Navigator.of(context, rootNavigator: true).pop(),
         ),
@@ -626,7 +626,7 @@ class SonarrDialogs {
       showCancelButton: false,
       content: [
         SonarrDatabase.ADD_SERIES_SEARCH_FOR_MISSING.listenableBuilder(
-          builder: (context, _) => LunaDialog.checkbox(
+          builder: (context, _) => ArrPilotDialog.checkbox(
             title: 'sonarr.StartSearchForMissingEpisodes'.tr(),
             value: SonarrDatabase.ADD_SERIES_SEARCH_FOR_MISSING.read(),
             onChanged: (value) =>
@@ -634,7 +634,7 @@ class SonarrDialogs {
           ),
         ),
         SonarrDatabase.ADD_SERIES_SEARCH_FOR_CUTOFF_UNMET.listenableBuilder(
-          builder: (context, _) => LunaDialog.checkbox(
+          builder: (context, _) => ArrPilotDialog.checkbox(
             title: 'sonarr.StartSearchForCutoffUnmetEpisodes'.tr(),
             value: SonarrDatabase.ADD_SERIES_SEARCH_FOR_CUTOFF_UNMET.read(),
             onChanged: (value) => SonarrDatabase
@@ -643,7 +643,7 @@ class SonarrDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
   }
 
@@ -655,20 +655,20 @@ class SonarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'sonarr.DeleteEpisodeFile'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Delete'.tr(),
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(text: 'sonarr.DeleteEpisodeFileHint1'.tr()),
+        ArrPilotDialog.textContent(text: 'sonarr.DeleteEpisodeFileHint1'.tr()),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return _flag;
   }
@@ -684,23 +684,23 @@ class SonarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Season Search',
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'Search',
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
           text: seasonNumber == 0
               ? 'Search for all episodes in specials?'
               : 'Search for all episodes in season $seasonNumber?',
         ),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return _flag;
   }
@@ -713,19 +713,19 @@ class SonarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'sonarr.RemoveFromQueue'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Remove'.tr(),
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
         SonarrDatabase.QUEUE_REMOVE_DOWNLOAD_CLIENT.listenableBuilder(
-          builder: (context, _) => LunaDialog.checkbox(
+          builder: (context, _) => ArrPilotDialog.checkbox(
             title: 'sonarr.RemoveFromDownloadClient'.tr(),
             value: SonarrDatabase.QUEUE_REMOVE_DOWNLOAD_CLIENT.read(),
             onChanged: (value) =>
@@ -733,7 +733,7 @@ class SonarrDialogs {
           ),
         ),
         SonarrDatabase.QUEUE_ADD_BLOCKLIST.listenableBuilder(
-          builder: (context, _) => LunaDialog.checkbox(
+          builder: (context, _) => ArrPilotDialog.checkbox(
             title: 'sonarr.AddReleaseToBlocklist'.tr(),
             value: SonarrDatabase.QUEUE_ADD_BLOCKLIST.read(),
             onChanged: (value) =>
@@ -741,7 +741,7 @@ class SonarrDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return _flag;
   }
@@ -751,21 +751,21 @@ class SonarrDialogs {
     List<SonarrQueueStatusMessage> messages,
   ) async {
     if (messages.isEmpty) {
-      return LunaDialogs().textPreview(
+      return ArrPilotDialogs().textPreview(
         context,
         'sonarr.Messages'.tr(),
         'sonarr.NoMessagesFound'.tr(),
       );
     }
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'sonarr.Messages'.tr(),
       cancelButtonText: 'lunasea.Close'.tr(),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
       content: List.generate(
         messages.length,
         (index) => Padding(
-          padding: LunaDialog.tileContentPadding(),
+          padding: ArrPilotDialog.tileContentPadding(),
           child: Column(
             children: [
               Row(
@@ -774,8 +774,8 @@ class SonarrDialogs {
                   const Padding(
                     padding: EdgeInsets.only(right: 32.0),
                     child: Icon(
-                      LunaIcons.WARNING,
-                      color: LunaColours.orange,
+                      ArrPilotIcons.WARNING,
+                      color: ArrPilotColours.orange,
                       size: 24.0,
                     ),
                   ),
@@ -783,9 +783,9 @@ class SonarrDialogs {
                     child: Text(
                       messages[index].title!,
                       style: const TextStyle(
-                        fontSize: LunaDialog.BODY_SIZE,
-                        color: LunaColours.orange,
-                        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+                        fontSize: ArrPilotDialog.BODY_SIZE,
+                        color: ArrPilotColours.orange,
+                        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
                       ),
                     ),
                   ),
@@ -793,7 +793,7 @@ class SonarrDialogs {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(
-                  vertical: LunaUI.DEFAULT_MARGIN_SIZE / 4,
+                  vertical: ArrPilotUI.DEFAULT_MARGIN_SIZE / 4,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -804,14 +804,14 @@ class SonarrDialogs {
                           Expanded(
                             child: Padding(
                               padding: const EdgeInsets.only(
-                                left: 32.0 + LunaUI.ICON_SIZE,
+                                left: 32.0 + ArrPilotUI.ICON_SIZE,
                               ),
-                              child: LunaDialog.richText(
+                              child: ArrPilotDialog.richText(
                                 children: [
                                   TextSpan(
                                     text: messages[index]
                                         .messages!
-                                        .map((s) => '${LunaUI.TEXT_BULLET} $s')
+                                        .map((s) => '${ArrPilotUI.TEXT_BULLET} $s')
                                         .join('\n'),
                                   ),
                                 ],
@@ -844,21 +844,21 @@ class SonarrDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Queue Size',
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'Set',
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
             text: 'Set the amount of items fetched for the queue.'),
         Form(
           key: _formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             controller: _textController,
             title: 'Queue Page Size',
             onSubmitted: (_) => _setValues(true),
@@ -871,7 +871,7 @@ class SonarrDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputTextDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputTextDialogContentPadding(),
     );
 
     return Tuple2(_flag, int.tryParse(_textController.text) ?? 50);

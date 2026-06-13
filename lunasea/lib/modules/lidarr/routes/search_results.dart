@@ -16,7 +16,7 @@ class ArtistAlbumReleasesRoute extends StatefulWidget {
 }
 
 class _State extends State<ArtistAlbumReleasesRoute>
-    with LunaScrollControllerMixin, LunaLoadCallbackMixin {
+    with ArrPilotScrollControllerMixin, ArrPilotLoadCallbackMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -26,7 +26,7 @@ class _State extends State<ArtistAlbumReleasesRoute>
   @override
   Future<void> loadCallback() async {
     if (mounted) setState(() => _results = []);
-    final _api = LidarrAPI.from(LunaProfile.current);
+    final _api = LidarrAPI.from(ArrPilotProfile.current);
     setState(() {
       _future = _api.getReleases(widget.albumId);
     });
@@ -37,7 +37,7 @@ class _State extends State<ArtistAlbumReleasesRoute>
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       body: _body(),
       appBar: _appBar(),
@@ -45,7 +45,7 @@ class _State extends State<ArtistAlbumReleasesRoute>
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'Releases',
       scrollControllers: [scrollController],
       bottom: LidarrReleasesSearchBar(scrollController: scrollController),
@@ -56,7 +56,7 @@ class _State extends State<ArtistAlbumReleasesRoute>
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: loadCallback,
@@ -67,7 +67,7 @@ class _State extends State<ArtistAlbumReleasesRoute>
             case ConnectionState.done:
               {
                 if (snapshot.hasError || snapshot.data == null) {
-                  return LunaMessage.error(
+                  return ArrPilotMessage.error(
                       onTap: _refreshKey.currentState!.show);
                 }
                 _results = snapshot.data;
@@ -77,7 +77,7 @@ class _State extends State<ArtistAlbumReleasesRoute>
             case ConnectionState.waiting:
             case ConnectionState.active:
             default:
-              return const LunaLoader();
+              return const ArrPilotLoader();
           }
         },
       ),
@@ -86,7 +86,7 @@ class _State extends State<ArtistAlbumReleasesRoute>
 
   Widget _list() {
     if ((_results?.length ?? 0) == 0)
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'No Releases Found',
         buttonText: 'Refresh',
         onTap: _refreshKey.currentState?.show,
@@ -96,13 +96,13 @@ class _State extends State<ArtistAlbumReleasesRoute>
         List<LidarrReleaseData>? filtered =
             _filterAndSort(_results, state.searchReleasesFilter);
         if ((filtered?.length ?? 0) == 0)
-          return LunaListView(
+          return ArrPilotListView(
             controller: scrollController,
             children: [
-              LunaMessage.inList(text: 'No Releases Found'),
+              ArrPilotMessage.inList(text: 'No Releases Found'),
             ],
           );
-        return LunaListViewBuilder(
+        return ArrPilotListViewBuilder(
           controller: scrollController,
           itemCount: filtered!.length,
           itemBuilder: (context, index) =>

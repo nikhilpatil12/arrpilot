@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class LunaCustomScrollView extends StatelessWidget {
+class ArrPilotCustomScrollView extends StatelessWidget {
   final ScrollController controller;
   final List<Widget> slivers;
 
-  const LunaCustomScrollView({
+  const ArrPilotCustomScrollView({
     super.key,
     required this.controller,
     required this.slivers,

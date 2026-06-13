@@ -23,15 +23,15 @@ class _State extends State<RadarrMovieDetailsFilesPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
-      module: LunaModule.RADARR,
+    return ArrPilotScaffold(
+      module: ArrPilotModule.RADARR,
       scaffoldKey: _scaffoldKey,
       body: _body(),
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: () async =>
@@ -43,12 +43,12 @@ class _State extends State<RadarrMovieDetailsFilesPage>
         ]),
         builder: (context, AsyncSnapshot<List<Object>> snapshot) {
           if (snapshot.hasError) {
-            LunaLogger().error(
+            ArrPilotLogger().error(
               'Unable to fetch Radarr files: ${context.read<RadarrMovieDetailsState>().movie.id}',
               snapshot.error,
               snapshot.stackTrace,
             );
-            return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+            return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
           }
           if (snapshot.hasData) {
             return _list(
@@ -56,7 +56,7 @@ class _State extends State<RadarrMovieDetailsFilesPage>
               extraFiles: snapshot.requireData[1] as List<RadarrExtraFile>,
             );
           }
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -67,13 +67,13 @@ class _State extends State<RadarrMovieDetailsFilesPage>
     required List<RadarrExtraFile> extraFiles,
   }) {
     if (movieFiles.isEmpty && extraFiles.isEmpty) {
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'No Files Found',
         buttonText: 'Refresh',
         onTap: _refreshKey.currentState!.show,
       );
     }
-    return LunaListView(
+    return ArrPilotListView(
       controller: RadarrMovieDetailsNavigationBar.scrollControllers[1],
       children: [
         if (movieFiles.isNotEmpty) ..._filesTiles(movieFiles),

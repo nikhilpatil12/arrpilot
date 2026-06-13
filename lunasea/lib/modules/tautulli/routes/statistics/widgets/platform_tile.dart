@@ -18,10 +18,10 @@ class TautulliStatisticsPlatformTile extends StatefulWidget {
 class _State extends State<TautulliStatisticsPlatformTile> {
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: widget.data['platform'] ?? 'Unknown Platform',
       body: _body(),
-      posterPlaceholderIcon: LunaIcons.DEVICES,
+      posterPlaceholderIcon: ArrPilotIcons.DEVICES,
       posterIsSquare: true,
     );
   }
@@ -34,11 +34,11 @@ class _State extends State<TautulliStatisticsPlatformTile> {
         style: TextStyle(
           color: context.watch<TautulliState>().statisticsType ==
                   TautulliStatsType.PLAYS
-              ? LunaColours.accent
+              ? ArrPilotColours.accent
               : null,
           fontWeight: context.watch<TautulliState>().statisticsType ==
                   TautulliStatsType.PLAYS
-              ? LunaUI.FONT_WEIGHT_BOLD
+              ? ArrPilotUI.FONT_WEIGHT_BOLD
               : null,
         ),
       ),
@@ -49,15 +49,15 @@ class _State extends State<TautulliStatisticsPlatformTile> {
               style: TextStyle(
                 color: context.watch<TautulliState>().statisticsType ==
                         TautulliStatsType.DURATION
-                    ? LunaColours.accent
+                    ? ArrPilotColours.accent
                     : null,
                 fontWeight: context.watch<TautulliState>().statisticsType ==
                         TautulliStatsType.DURATION
-                    ? LunaUI.FONT_WEIGHT_BOLD
+                    ? ArrPilotUI.FONT_WEIGHT_BOLD
                     : null,
               ),
             )
-          : const TextSpan(text: LunaUI.TEXT_EMDASH),
+          : const TextSpan(text: ArrPilotUI.TEXT_EMDASH),
     ];
   }
 }

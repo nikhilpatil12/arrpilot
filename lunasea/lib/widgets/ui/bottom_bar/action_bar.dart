@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 
-/// Create a [LunaBottomActionBar] that contains button actions.
+/// Create a [ArrPilotBottomActionBar] that contains button actions.
 ///
-/// The children are expected to be [LunaButton]s or children of [LunaButton].
-class LunaBottomActionBar extends StatelessWidget {
+/// The children are expected to be [ArrPilotButton]s or children of [ArrPilotButton].
+class ArrPilotBottomActionBar extends StatelessWidget {
   final EdgeInsets padding;
   final List<Widget>? actions;
   final int actionsPerRow;
   final bool useSafeArea;
   final Color? backgroundColor;
 
-  LunaBottomActionBar({
+  ArrPilotBottomActionBar({
     required this.actions,
     this.padding = const EdgeInsets.symmetric(horizontal: 6.0, vertical: 8.0),
     this.actionsPerRow = 2,
@@ -31,7 +31,7 @@ class LunaBottomActionBar extends StatelessWidget {
         left: useSafeArea,
         right: useSafeArea,
         child: Padding(
-          child: LunaButtonContainer(
+          child: ArrPilotButtonContainer(
             children: actions!,
             padding: EdgeInsets.zero,
             buttonsPerRow: actionsPerRow,

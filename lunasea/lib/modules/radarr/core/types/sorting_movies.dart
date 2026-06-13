@@ -127,7 +127,7 @@ extension RadarrMoviesSortingExtension on RadarrMoviesSorting {
       case RadarrMoviesSorting.PHYSICAL_RELEASE:
         return movie.lunaPhysicalReleaseDate(true);
       case RadarrMoviesSorting.QUALITY_PROFILE:
-        return profile?.name ?? LunaUI.TEXT_EMDASH;
+        return profile?.name ?? ArrPilotUI.TEXT_EMDASH;
       case RadarrMoviesSorting.RUNTIME:
         return movie.lunaRuntime;
       case RadarrMoviesSorting.SIZE:

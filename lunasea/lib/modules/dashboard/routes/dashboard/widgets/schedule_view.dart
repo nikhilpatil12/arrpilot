@@ -28,10 +28,10 @@ class _State extends State<ScheduleView> {
     final controller = HomeNavigationBar.scrollControllers[1];
 
     if (widget.events.isEmpty) {
-      return LunaListView(
+      return ArrPilotListView(
         controller: controller,
         children: [
-          LunaMessage.inList(text: 'dashboard.NoNewContent'.tr()),
+          ArrPilotMessage.inList(text: 'dashboard.NoNewContent'.tr()),
         ],
       );
     }
@@ -39,15 +39,15 @@ class _State extends State<ScheduleView> {
     final schedule = _buildSchedule();
     Future.microtask(() => controller.animateToOffset(schedule.item2));
 
-    return LunaCustomScrollView(
+    return ArrPilotCustomScrollView(
       controller: controller,
       slivers: [
         const SliverPadding(
-          padding: EdgeInsets.symmetric(vertical: LunaUI.MARGIN_SIZE_HALF),
+          padding: EdgeInsets.symmetric(vertical: ArrPilotUI.MARGIN_SIZE_HALF),
         ),
         ...schedule.item1,
         const SliverPadding(
-          padding: EdgeInsets.only(bottom: LunaUI.MARGIN_SIZE_HALF),
+          padding: EdgeInsets.only(bottom: ArrPilotUI.MARGIN_SIZE_HALF),
         ),
       ],
     );
@@ -81,11 +81,11 @@ class _State extends State<ScheduleView> {
   Tuple2<List<Widget>, double> _buildDay(DateTime day) {
     List<CalendarData> events = widget.events[day]!;
 
-    final extent = LunaBlock.calculateItemExtent(3);
+    final extent = ArrPilotBlock.calculateItemExtent(3);
     final offset = 39.30 + events.length * extent;
     final slivers = [
       SliverToBoxAdapter(
-        child: LunaHeader(text: _formatter.format(day)),
+        child: ArrPilotHeader(text: _formatter.format(day)),
       ),
       SliverFixedExtentList(
         delegate: SliverChildBuilderDelegate(

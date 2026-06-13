@@ -16,14 +16,14 @@ class UserDetailsRoute extends StatefulWidget {
   State<StatefulWidget> createState() => _State();
 }
 
-class _State extends State<UserDetailsRoute> with LunaLoadCallbackMixin {
+class _State extends State<UserDetailsRoute> with ArrPilotLoadCallbackMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  late LunaPageController _pageController;
+  late ArrPilotPageController _pageController;
 
   @override
   void initState() {
     super.initState();
-    _pageController = LunaPageController(
+    _pageController = ArrPilotPageController(
       initialPage: TautulliDatabase.NAVIGATION_INDEX_USER_DETAILS.read(),
     );
   }
@@ -51,9 +51,9 @@ class _State extends State<UserDetailsRoute> with LunaLoadCallbackMixin {
       );
     }
 
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      module: LunaModule.TAUTULLI,
+      module: ArrPilotModule.TAUTULLI,
       appBar: _appBar(),
       bottomNavigationBar: _bottomNavigationBar(),
       body: _body,
@@ -61,7 +61,7 @@ class _State extends State<UserDetailsRoute> with LunaLoadCallbackMixin {
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'User Details',
       pageController: _pageController,
       scrollControllers: TautulliUserDetailsNavigationBar.scrollControllers,
@@ -78,29 +78,29 @@ class _State extends State<UserDetailsRoute> with LunaLoadCallbackMixin {
           builder: (context, AsyncSnapshot<TautulliUsersTable> snapshot) {
             if (snapshot.hasError) {
               if (snapshot.connectionState != ConnectionState.waiting)
-                LunaLogger().error(
+                ArrPilotLogger().error(
                   'Unable to pull Tautulli user table',
                   snapshot.error,
                   snapshot.stackTrace,
                 );
-              return LunaMessage.error(onTap: loadCallback);
+              return ArrPilotMessage.error(onTap: loadCallback);
             }
             if (snapshot.hasData) {
               TautulliTableUser? user = _findUser(snapshot.data!);
               if (user == null)
-                return LunaMessage.goBack(
+                return ArrPilotMessage.goBack(
                   context: context,
                   text: 'User Not Found',
                 );
               return _page(user);
             }
-            return const LunaLoader();
+            return const ArrPilotLoader();
           },
         ),
       );
 
   Widget _page(TautulliTableUser user) {
-    return LunaPageView(
+    return ArrPilotPageView(
       controller: _pageController,
       children: [
         TautulliUserDetailsProfile(user: user),

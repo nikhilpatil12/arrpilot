@@ -15,12 +15,12 @@ class SearchCategoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: category.name ?? 'lunasea.Unknown'.tr(),
       body: [TextSpan(text: category.subcategoriesTitleList)],
-      trailing: LunaIconButton(
+      trailing: ArrPilotIconButton(
         icon: category.icon,
-        color: LunaColours().byListIndex(index),
+        color: ArrPilotColours().byListIndex(index),
       ),
       onTap: () async {
         context.read<SearchState>().activeCategory = category;

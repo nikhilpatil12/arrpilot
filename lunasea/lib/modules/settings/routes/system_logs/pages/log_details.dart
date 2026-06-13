@@ -5,7 +5,7 @@ import 'package:arrpilot/modules/settings/routes/system_logs/widgets/log_tile.da
 import 'package:arrpilot/types/log_type.dart';
 
 class SystemLogsDetailsRoute extends StatefulWidget {
-  final LunaLogType? type;
+  final ArrPilotLogType? type;
 
   const SystemLogsDetailsRoute({
     Key? key,
@@ -17,12 +17,12 @@ class SystemLogsDetailsRoute extends StatefulWidget {
 }
 
 class _State extends State<SystemLogsDetailsRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar(),
       body: _body(),
@@ -30,22 +30,22 @@ class _State extends State<SystemLogsDetailsRoute>
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'settings.Logs'.tr(),
       scrollControllers: [scrollController],
     );
   }
 
   Widget _body() {
-    return LunaBox.logs.listenableBuilder(builder: (context, _) {
-      List<LunaLog> logs = filter();
+    return ArrPilotBox.logs.listenableBuilder(builder: (context, _) {
+      List<ArrPilotLog> logs = filter();
       if (logs.isEmpty) {
-        return LunaMessage.goBack(
+        return ArrPilotMessage.goBack(
           context: context,
           text: 'settings.NoLogsFound'.tr(),
         );
       }
-      return LunaListViewBuilder(
+      return ArrPilotListViewBuilder(
         controller: scrollController,
         itemCount: logs.length,
         itemBuilder: (context, index) => SettingsSystemLogTile(
@@ -55,24 +55,24 @@ class _State extends State<SystemLogsDetailsRoute>
     });
   }
 
-  List<LunaLog> filter() {
-    List<LunaLog> logs;
-    const box = LunaBox.logs;
+  List<ArrPilotLog> filter() {
+    List<ArrPilotLog> logs;
+    const box = ArrPilotBox.logs;
 
     switch (widget.type) {
-      case LunaLogType.WARNING:
+      case ArrPilotLogType.WARNING:
         logs =
-            box.data.where((log) => log.type == LunaLogType.WARNING).toList();
+            box.data.where((log) => log.type == ArrPilotLogType.WARNING).toList();
         break;
-      case LunaLogType.ERROR:
-        logs = box.data.where((log) => log.type == LunaLogType.ERROR).toList();
+      case ArrPilotLogType.ERROR:
+        logs = box.data.where((log) => log.type == ArrPilotLogType.ERROR).toList();
         break;
-      case LunaLogType.CRITICAL:
+      case ArrPilotLogType.CRITICAL:
         logs =
-            box.data.where((log) => log.type == LunaLogType.CRITICAL).toList();
+            box.data.where((log) => log.type == ArrPilotLogType.CRITICAL).toList();
         break;
-      case LunaLogType.DEBUG:
-        logs = box.data.where((log) => log.type == LunaLogType.DEBUG).toList();
+      case ArrPilotLogType.DEBUG:
+        logs = box.data.where((log) => log.type == ArrPilotLogType.DEBUG).toList();
         break;
       default:
         logs = box.data.where((log) => log.type.enabled).toList();

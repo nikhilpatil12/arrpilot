@@ -26,7 +26,7 @@ import 'package:arrpilot/modules/tautulli/routes/users_details/route.dart';
 import 'package:arrpilot/router/routes.dart';
 import 'package:arrpilot/vendor.dart';
 
-enum TautulliRoutes with LunaRoutesMixin {
+enum TautulliRoutes with ArrPilotRoutesMixin {
   HOME('/tautulli'),
   ACTIVITY_DETAILS('activity/:session'),
   CHECK_FOR_UPDATES('check_for_updates'),
@@ -55,7 +55,7 @@ enum TautulliRoutes with LunaRoutesMixin {
   const TautulliRoutes(this.path);
 
   @override
-  LunaModule get module => LunaModule.TAUTULLI;
+  ArrPilotModule get module => ArrPilotModule.TAUTULLI;
 
   @override
   bool isModuleEnabled(BuildContext context) {

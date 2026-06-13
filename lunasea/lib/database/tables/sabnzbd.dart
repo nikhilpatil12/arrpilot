@@ -1,10 +1,10 @@
 import 'package:arrpilot/database/table.dart';
 
-enum SABnzbdDatabase<T> with LunaTableMixin<T> {
+enum SABnzbdDatabase<T> with ArrPilotTableMixin<T> {
   NAVIGATION_INDEX<int>(0);
 
   @override
-  LunaTable get table => LunaTable.sabnzbd;
+  ArrPilotTable get table => ArrPilotTable.sabnzbd;
 
   @override
   final T fallback;

@@ -14,7 +14,7 @@ class TautulliHistoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: history.lsTitle,
       body: [
         _subtitle1(),
@@ -29,7 +29,7 @@ class TautulliHistoryTile extends StatelessWidget {
       posterUrl:
           context.watch<TautulliState>().getImageURLFromPath(history.thumb),
       posterHeaders: context.watch<TautulliState>().headers,
-      posterPlaceholderIcon: LunaIcons.VIDEO_CAM,
+      posterPlaceholderIcon: ArrPilotIcons.VIDEO_CAM,
       backgroundHeaders: context.watch<TautulliState>().headers,
       backgroundUrl: context.watch<TautulliState>().getImageURLFromRatingKey(
             history.grandparentRatingKey ??
@@ -56,7 +56,7 @@ class TautulliHistoryTile extends StatelessWidget {
           TextSpan(
             children: [
               TextSpan(text: 'Season ${history.parentMediaIndex}'),
-              TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+              TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
               TextSpan(text: 'Episode ${history.mediaIndex}: '),
               TextSpan(
                 text: history.title,
@@ -70,7 +70,7 @@ class TautulliHistoryTile extends StatelessWidget {
           TextSpan(
             children: [
               TextSpan(text: history.title),
-              TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+              TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
               TextSpan(text: history.parentTitle),
             ],
           ),

@@ -9,12 +9,12 @@ import 'package:arrpilot/vendor.dart';
 import 'package:arrpilot/widgets/ui.dart';
 
 bool isPlatformSupported() => true;
-LunaFileSystem getFileSystem() {
+ArrPilotFileSystem getFileSystem() {
   if (isPlatformSupported()) return _Web();
-  throw UnsupportedError('LunaFileSystem unsupported');
+  throw UnsupportedError('ArrPilotFileSystem unsupported');
 }
 
-class _Web implements LunaFileSystem {
+class _Web implements ArrPilotFileSystem {
   @override
   Future<void> nuke() async {}
 
@@ -27,20 +27,20 @@ class _Web implements LunaFileSystem {
       anchor.click();
       return true;
     } catch (error, stack) {
-      LunaLogger().error('Failed to save to filesystem', error, stack);
+      ArrPilotLogger().error('Failed to save to filesystem', error, stack);
       rethrow;
     }
   }
 
   @override
-  Future<LunaFile?> read(BuildContext context, List<String> extensions) async {
+  Future<ArrPilotFile?> read(BuildContext context, List<String> extensions) async {
     try {
       final result = await FilePicker.platform.pickFiles(withData: true);
 
       if (result?.files.isNotEmpty ?? false) {
         String? _ext = result!.files[0].extension;
-        if (LunaFileSystem.isValidExtension(extensions, _ext)) {
-          return LunaFile(
+        if (ArrPilotFileSystem.isValidExtension(extensions, _ext)) {
+          return ArrPilotFile(
             name: result.files[0].name,
             data: result.files[0].bytes!,
           );
@@ -54,7 +54,7 @@ class _Web implements LunaFileSystem {
 
       return null;
     } catch (error, stack) {
-      LunaLogger().error('Failed to read from filesystem', error, stack);
+      ArrPilotLogger().error('Failed to read from filesystem', error, stack);
       rethrow;
     }
   }

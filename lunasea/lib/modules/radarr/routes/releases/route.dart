@@ -16,7 +16,7 @@ class MovieReleasesRoute extends StatefulWidget {
   State<StatefulWidget> createState() => _State();
 }
 
-class _State extends State<MovieReleasesRoute> with LunaScrollControllerMixin {
+class _State extends State<MovieReleasesRoute> with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -31,7 +31,7 @@ class _State extends State<MovieReleasesRoute> with LunaScrollControllerMixin {
     }
     return ChangeNotifierProvider(
       create: (context) => RadarrReleasesState(context, widget.movieId),
-      builder: (context, _) => LunaScaffold(
+      builder: (context, _) => ArrPilotScaffold(
         scaffoldKey: _scaffoldKey,
         appBar: _appBar(context) as PreferredSizeWidget?,
         body: _body(context),
@@ -40,7 +40,7 @@ class _State extends State<MovieReleasesRoute> with LunaScrollControllerMixin {
   }
 
   Widget _appBar(BuildContext context) {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'Releases',
       scrollControllers: [scrollController],
       bottom: RadarrReleasesSearchBar(scrollController: scrollController),
@@ -51,7 +51,7 @@ class _State extends State<MovieReleasesRoute> with LunaScrollControllerMixin {
   }
 
   Widget _body(BuildContext context) {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: () async {
@@ -63,18 +63,18 @@ class _State extends State<MovieReleasesRoute> with LunaScrollControllerMixin {
         builder: (context, AsyncSnapshot<List<RadarrRelease>> snapshot) {
           if (snapshot.hasError) {
             if (snapshot.connectionState != ConnectionState.waiting) {
-              LunaLogger().error(
+              ArrPilotLogger().error(
                 'Unable to fetch Radarr releases: ${widget.movieId}',
                 snapshot.error,
                 snapshot.stackTrace,
               );
             }
-            return LunaMessage.error(
+            return ArrPilotMessage.error(
               onTap: () => _refreshKey.currentState!.show,
             );
           }
           if (snapshot.hasData) return _list(context, snapshot.data);
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -84,7 +84,7 @@ class _State extends State<MovieReleasesRoute> with LunaScrollControllerMixin {
     return Consumer<RadarrReleasesState>(
       builder: (context, state, _) {
         if ((releases?.length ?? 0) == 0) {
-          return LunaMessage(
+          return ArrPilotMessage(
             text: 'No Releases Found',
             buttonText: 'Refresh',
             onTap: _refreshKey.currentState!.show,
@@ -94,12 +94,12 @@ class _State extends State<MovieReleasesRoute> with LunaScrollControllerMixin {
           releases ?? [],
           state,
         );
-        return LunaListViewBuilder(
+        return ArrPilotListViewBuilder(
           controller: scrollController,
           itemCount: _processed.isEmpty ? 1 : _processed.length,
           itemBuilder: (context, index) {
             if (_processed.isEmpty) {
-              return LunaMessage.inList(text: 'No Releases Found');
+              return ArrPilotMessage.inList(text: 'No Releases Found');
             }
             return RadarrReleasesTile(release: _processed[index]);
           },

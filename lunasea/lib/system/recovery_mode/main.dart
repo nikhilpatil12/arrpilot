@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:arrpilot/system/recovery_mode/actions/clear_database.dart';
 import 'package:arrpilot/system/recovery_mode/actions/bootstrap.dart';
 
-class LunaRecoveryMode extends StatelessWidget {
-  const LunaRecoveryMode({
+class ArrPilotRecoveryMode extends StatelessWidget {
+  const ArrPilotRecoveryMode({
     super.key,
   });
 

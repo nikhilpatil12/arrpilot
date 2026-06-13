@@ -4,7 +4,7 @@ import 'package:arrpilot/modules/dashboard/routes/dashboard/route.dart';
 import 'package:arrpilot/router/routes.dart';
 import 'package:arrpilot/vendor.dart';
 
-enum DashboardRoutes with LunaRoutesMixin {
+enum DashboardRoutes with ArrPilotRoutesMixin {
   HOME('/dashboard');
 
   @override
@@ -13,7 +13,7 @@ enum DashboardRoutes with LunaRoutesMixin {
   const DashboardRoutes(this.path);
 
   @override
-  LunaModule get module => LunaModule.DASHBOARD;
+  ArrPilotModule get module => ArrPilotModule.DASHBOARD;
 
   @override
   bool isModuleEnabled(BuildContext context) => true;

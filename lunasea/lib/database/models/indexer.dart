@@ -3,8 +3,8 @@ import 'package:arrpilot/core.dart';
 part 'indexer.g.dart';
 
 @JsonSerializable()
-@HiveType(typeId: 1, adapterName: 'LunaIndexerAdapter')
-class LunaIndexer extends HiveObject {
+@HiveType(typeId: 1, adapterName: 'ArrPilotIndexerAdapter')
+class ArrPilotIndexer extends HiveObject {
   @JsonKey()
   @HiveField(0, defaultValue: '')
   String displayName;
@@ -21,20 +21,20 @@ class LunaIndexer extends HiveObject {
   @HiveField(3, defaultValue: <String, String>{})
   Map<String, String> headers;
 
-  LunaIndexer._internal({
+  ArrPilotIndexer._internal({
     required this.displayName,
     required this.host,
     required this.apiKey,
     required this.headers,
   });
 
-  factory LunaIndexer({
+  factory ArrPilotIndexer({
     String? displayName,
     String? host,
     String? apiKey,
     Map<String, String>? headers,
   }) {
-    return LunaIndexer._internal(
+    return ArrPilotIndexer._internal(
       displayName: displayName ?? '',
       host: host ?? '',
       apiKey: apiKey ?? '',
@@ -45,17 +45,17 @@ class LunaIndexer extends HiveObject {
   @override
   String toString() => json.encode(this.toJson());
 
-  Map<String, dynamic> toJson() => _$LunaIndexerToJson(this);
+  Map<String, dynamic> toJson() => _$ArrPilotIndexerToJson(this);
 
-  factory LunaIndexer.fromJson(Map<String, dynamic> json) {
-    return _$LunaIndexerFromJson(json);
+  factory ArrPilotIndexer.fromJson(Map<String, dynamic> json) {
+    return _$ArrPilotIndexerFromJson(json);
   }
 
-  factory LunaIndexer.clone(LunaIndexer profile) {
-    return LunaIndexer.fromJson(profile.toJson());
+  factory ArrPilotIndexer.clone(ArrPilotIndexer profile) {
+    return ArrPilotIndexer.fromJson(profile.toJson());
   }
 
-  factory LunaIndexer.get(String key) {
-    return LunaBox.indexers.read(key)!;
+  factory ArrPilotIndexer.get(String key) {
+    return ArrPilotBox.indexers.read(key)!;
   }
 }

@@ -15,17 +15,17 @@ class LidarrAddSearchResultTile extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => LunaBlock(
+  Widget build(BuildContext context) => ArrPilotBlock(
         title: data.title,
         disabled: alreadyAdded,
         body: [
-          LunaTextSpan.extended(text: data.overview!.trim()),
+          ArrPilotTextSpan.extended(text: data.overview!.trim()),
         ],
         customBodyMaxLines: 3,
-        trailing: alreadyAdded ? null : const LunaIconButton.arrow(),
+        trailing: alreadyAdded ? null : const ArrPilotIconButton.arrow(),
         posterIsSquare: true,
-        posterHeaders: LunaProfile.current.lidarrHeaders,
-        posterPlaceholderIcon: LunaIcons.USER,
+        posterHeaders: ArrPilotProfile.current.lidarrHeaders,
+        posterPlaceholderIcon: ArrPilotIcons.USER,
         posterUrl: _posterUrl,
         onTap: () async => _enterDetails(context),
         onLongPress: () async {

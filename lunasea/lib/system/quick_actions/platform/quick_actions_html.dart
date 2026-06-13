@@ -2,5 +2,5 @@
 import '../quick_actions.dart';
 
 bool isPlatformSupported() => false;
-LunaQuickActions getQuickActions() =>
-    throw UnsupportedError('LunaQuickActions unsupported');
+ArrPilotQuickActions getQuickActions() =>
+    throw UnsupportedError('ArrPilotQuickActions unsupported');

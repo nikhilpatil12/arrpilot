@@ -31,9 +31,9 @@ class LidarrAlbumData {
   }
 
   String albumCoverURI() {
-    final host = LunaProfile.current.lidarrHost;
-    final key = LunaProfile.current.lidarrKey;
-    if (LunaProfile.current.lidarrEnabled) {
+    final host = ArrPilotProfile.current.lidarrHost;
+    final key = ArrPilotProfile.current.lidarrKey;
+    if (ArrPilotProfile.current.lidarrEnabled) {
       String _base = host.endsWith('/')
           ? '${host}api/v1/MediaCover/Album'
           : '$host/api/v1/MediaCover/Album';

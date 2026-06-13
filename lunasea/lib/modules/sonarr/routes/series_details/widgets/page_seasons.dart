@@ -20,15 +20,15 @@ class _State extends State<SonarrSeriesDetailsSeasonsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      module: LunaModule.SONARR,
+      module: ArrPilotModule.SONARR,
       body: _body(),
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       key: _refreshKey,
       context: context,
       onRefresh: () async => context.read<SonarrState>().fetchSeries(
@@ -40,7 +40,7 @@ class _State extends State<SonarrSeriesDetailsSeasonsPage> {
 
   Widget _list() {
     if (widget.series?.seasons?.isEmpty ?? true) {
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'sonarr.NoSeasonsFound'.tr(),
         buttonText: 'lunasea.Refresh'.tr(),
         onTap: _refreshKey.currentState!.show,
@@ -48,7 +48,7 @@ class _State extends State<SonarrSeriesDetailsSeasonsPage> {
     }
     List<SonarrSeriesSeason> _seasons = widget.series!.seasons!;
     _seasons.sort((a, b) => a.seasonNumber!.compareTo(b.seasonNumber!));
-    return LunaListView(
+    return ArrPilotListView(
       controller: SonarrSeriesDetailsNavigationBar.scrollControllers[1],
       children: [
         if (_seasons.length > 1)

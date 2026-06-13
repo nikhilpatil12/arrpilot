@@ -14,22 +14,22 @@ extension SonarrSeriesExtension on SonarrSeries {
     if (this.alternateTitles?.isNotEmpty ?? false) {
       return this.alternateTitles!.map((title) => title.title).join('\n');
     }
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaGenres {
     if (this.genres?.isNotEmpty ?? false) return this.genres!.join('\n');
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaNetwork {
     if (this.network?.isNotEmpty ?? false) return this.network!;
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String lunaTags(List<SonarrTag> tags) {
     if (tags.isNotEmpty) return tags.map<String>((t) => t.label!).join('\n');
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   int get lunaPercentageComplete {
@@ -49,7 +49,7 @@ extension SonarrSeriesExtension on SonarrSeries {
   }
 
   String lunaPreviousAiring([bool short = false]) {
-    if (this.previousAiring == null) return LunaUI.TEXT_EMDASH;
+    if (this.previousAiring == null) return ArrPilotUI.TEXT_EMDASH;
     return this.previousAiring!.asDateTime(
           showSeconds: false,
           delimiter: '@'.pad(),
@@ -73,12 +73,12 @@ extension SonarrSeriesExtension on SonarrSeries {
 
   String get lunaYear {
     if (this.year != null && this.year != 0) return this.year.toString();
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String? get lunaAirTime {
     if (this.previousAiring != null) {
-      return LunaSeaDatabase.USE_24_HOUR_TIME.read()
+      return ArrPilotDatabase.USE_24_HOUR_TIME.read()
           ? DateFormat.Hm().format(this.previousAiring!.toLocal())
           : DateFormat('hh:mm a').format(this.previousAiring!.toLocal());
     }
@@ -120,9 +120,9 @@ extension SonarrSeriesExtension on SonarrSeries {
 
   String get lunaAirsOn {
     if (this.status == 'ended') {
-      return 'Aired on ${this.network ?? LunaUI.TEXT_EMDASH}';
+      return 'Aired on ${this.network ?? ArrPilotUI.TEXT_EMDASH}';
     }
-    return '${this.lunaAirTime ?? 'Unknown Time'} on ${this.network ?? LunaUI.TEXT_EMDASH}';
+    return '${this.lunaAirTime ?? 'Unknown Time'} on ${this.network ?? ArrPilotUI.TEXT_EMDASH}';
   }
 
   String get lunaEpisodeCount {

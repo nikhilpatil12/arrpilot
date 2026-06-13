@@ -16,38 +16,38 @@ class RadarrMovieDetailsOverviewInformationBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaTableCard(
+    return ArrPilotTableCard(
       content: [
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'monitoring',
           body: (movie?.monitored ?? false) ? 'Yes' : 'No',
         ),
-        LunaTableContent(title: 'path', body: movie?.path),
-        LunaTableContent(title: 'quality', body: qualityProfile?.name),
-        LunaTableContent(
+        ArrPilotTableContent(title: 'path', body: movie?.path),
+        ArrPilotTableContent(title: 'quality', body: qualityProfile?.name),
+        ArrPilotTableContent(
           title: 'availability',
           body: movie?.lunaMinimumAvailability,
         ),
-        LunaTableContent(title: 'tags', body: movie?.lunaTags(tags)),
-        LunaTableContent(title: '', body: ''),
-        LunaTableContent(title: 'status', body: movie?.status?.readable),
-        LunaTableContent(title: 'in cinemas', body: movie?.lunaInCinemasOn()),
-        LunaTableContent(
+        ArrPilotTableContent(title: 'tags', body: movie?.lunaTags(tags)),
+        ArrPilotTableContent(title: '', body: ''),
+        ArrPilotTableContent(title: 'status', body: movie?.status?.readable),
+        ArrPilotTableContent(title: 'in cinemas', body: movie?.lunaInCinemasOn()),
+        ArrPilotTableContent(
           title: 'digital',
           body: movie?.lunaDigitalReleaseDate(),
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'physical',
           body: movie?.lunaPhysicalReleaseDate(),
         ),
-        LunaTableContent(title: 'added on', body: movie?.lunaDateAdded()),
-        LunaTableContent(title: '', body: ''),
-        LunaTableContent(title: 'year', body: movie?.lunaYear),
-        LunaTableContent(title: 'studio', body: movie?.lunaStudio),
-        LunaTableContent(title: 'runtime', body: movie?.lunaRuntime),
-        LunaTableContent(title: 'rating', body: movie?.certification),
-        LunaTableContent(title: 'genres', body: movie?.lunaGenres),
-        LunaTableContent(
+        ArrPilotTableContent(title: 'added on', body: movie?.lunaDateAdded()),
+        ArrPilotTableContent(title: '', body: ''),
+        ArrPilotTableContent(title: 'year', body: movie?.lunaYear),
+        ArrPilotTableContent(title: 'studio', body: movie?.lunaStudio),
+        ArrPilotTableContent(title: 'runtime', body: movie?.lunaRuntime),
+        ArrPilotTableContent(title: 'rating', body: movie?.certification),
+        ArrPilotTableContent(title: 'genres', body: movie?.lunaGenres),
+        ArrPilotTableContent(
             title: 'alternate titles', body: movie?.lunaAlternateTitles),
       ],
     );

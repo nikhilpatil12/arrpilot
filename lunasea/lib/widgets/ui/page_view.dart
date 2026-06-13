@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class LunaPageView extends StatelessWidget {
+class ArrPilotPageView extends StatelessWidget {
   final PageController? controller;
   final List<Widget> children;
 
-  const LunaPageView({
+  const ArrPilotPageView({
     Key? key,
     this.controller,
     required this.children,

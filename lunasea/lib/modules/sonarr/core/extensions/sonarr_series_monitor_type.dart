@@ -1,7 +1,7 @@
 import 'package:arrpilot/core.dart';
 import 'package:arrpilot/modules/sonarr.dart';
 
-extension LunaSonarrSeriesMonitorTypeExtension on SonarrSeriesMonitorType {
+extension ArrPilotSonarrSeriesMonitorTypeExtension on SonarrSeriesMonitorType {
   String get lunaName {
     switch (this) {
       case SonarrSeriesMonitorType.ALL:

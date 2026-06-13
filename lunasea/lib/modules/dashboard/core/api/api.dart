@@ -9,14 +9,14 @@ import 'package:arrpilot/widgets/ui.dart';
 import 'package:arrpilot/vendor.dart';
 
 class API {
-  final LunaProfile profile;
+  final ArrPilotProfile profile;
 
   API._internal({
     required this.profile,
   });
 
   factory API() {
-    return API._internal(profile: LunaProfile.current);
+    return API._internal(profile: ArrPilotProfile.current);
   }
 
   Future<Map<DateTime, List<CalendarData>>> getUpcoming(DateTime today) async {
@@ -127,7 +127,7 @@ class API {
                   : '',
               year: entry['year'] ?? 0,
               runtime: entry['runtime'] ?? 0,
-              studio: entry['studio'] ?? LunaUI.TEXT_EMDASH,
+              studio: entry['studio'] ?? ArrPilotUI.TEXT_EMDASH,
               releaseDate: release,
             ));
             map[release] = day;

@@ -20,7 +20,7 @@ class TautulliSearchResultTile extends StatefulWidget {
 class _State extends State<TautulliSearchResultTile> {
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: widget.result.title,
       body: [
         TextSpan(text: _body1),
@@ -34,7 +34,7 @@ class _State extends State<TautulliSearchResultTile> {
       backgroundHeaders: context.watch<TautulliState>().headers,
       backgroundUrl:
           context.watch<TautulliState>().getImageURLFromPath(widget.result.art),
-      posterPlaceholderIcon: LunaIcons.VIDEO_CAM,
+      posterPlaceholderIcon: ArrPilotIcons.VIDEO_CAM,
       onTap: _onTap,
     );
   }
@@ -56,7 +56,7 @@ class _State extends State<TautulliSearchResultTile> {
         break;
       case TautulliMediaType.COLLECTION:
         _text =
-            '${widget.result.minYear ?? 0} ${LunaUI.TEXT_EMDASH} ${widget.result.maxYear ?? 0}';
+            '${widget.result.minYear ?? 0} ${ArrPilotUI.TEXT_EMDASH} ${widget.result.maxYear ?? 0}';
         break;
       default:
         break;
@@ -68,8 +68,8 @@ class _State extends State<TautulliSearchResultTile> {
     return TextSpan(
       text: widget.result.libraryName,
       style: const TextStyle(
-        color: LunaColours.accent,
-        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+        color: ArrPilotColours.accent,
+        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
       ),
     );
   }

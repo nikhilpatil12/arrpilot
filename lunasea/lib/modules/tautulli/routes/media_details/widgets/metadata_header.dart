@@ -12,7 +12,7 @@ class TautulliMediaDetailsMetadataHeaderTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: _title,
       body: _body,
       backgroundHeaders: context.watch<TautulliState>().headers,
@@ -25,7 +25,7 @@ class TautulliMediaDetailsMetadataHeaderTile extends StatelessWidget {
       posterUrl:
           context.watch<TautulliState>().getImageURLFromPath(_posterLink),
       posterHeaders: context.watch<TautulliState>().headers,
-      posterPlaceholderIcon: LunaIcons.VIDEO_CAM,
+      posterPlaceholderIcon: ArrPilotIcons.VIDEO_CAM,
     );
   }
 
@@ -83,16 +83,16 @@ class TautulliMediaDetailsMetadataHeaderTile extends StatelessWidget {
       case TautulliMediaType.SHOW:
       case TautulliMediaType.ALBUM:
       case TautulliMediaType.SEASON:
-        return LunaBlock.SUBTITLE_HEIGHT * 2;
+        return ArrPilotBlock.SUBTITLE_HEIGHT * 2;
       case TautulliMediaType.EPISODE:
       case TautulliMediaType.TRACK:
-        return LunaBlock.SUBTITLE_HEIGHT;
+        return ArrPilotBlock.SUBTITLE_HEIGHT;
       case TautulliMediaType.ARTIST:
       case TautulliMediaType.COLLECTION:
       case TautulliMediaType.LIVE:
       case TautulliMediaType.NULL:
       default:
-        return LunaBlock.SUBTITLE_HEIGHT * 3;
+        return ArrPilotBlock.SUBTITLE_HEIGHT * 3;
     }
   }
 
@@ -112,11 +112,11 @@ class TautulliMediaDetailsMetadataHeaderTile extends StatelessWidget {
         break;
       case TautulliMediaType.EPISODE:
         _text =
-            '${metadata!.parentTitle} ${LunaUI.TEXT_BULLET} Episode ${metadata!.mediaIndex}';
+            '${metadata!.parentTitle} ${ArrPilotUI.TEXT_BULLET} Episode ${metadata!.mediaIndex}';
         break;
       case TautulliMediaType.TRACK:
         _text =
-            '${metadata!.parentTitle} ${LunaUI.TEXT_BULLET} Track ${metadata!.mediaIndex}';
+            '${metadata!.parentTitle} ${ArrPilotUI.TEXT_BULLET} Track ${metadata!.mediaIndex}';
         break;
       case TautulliMediaType.NULL:
       default:

@@ -15,9 +15,9 @@ class LidarrRoute extends StatefulWidget {
 
 class _State extends State<LidarrRoute> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  LunaPageController? _pageController;
-  String _profileState = LunaProfile.current.toString();
-  LidarrAPI _api = LidarrAPI.from(LunaProfile.current);
+  ArrPilotPageController? _pageController;
+  String _profileState = ArrPilotProfile.current.toString();
+  LidarrAPI _api = LidarrAPI.from(ArrPilotProfile.current);
 
   final List _refreshKeys = [
     GlobalKey<RefreshIndicatorState>(),
@@ -29,38 +29,38 @@ class _State extends State<LidarrRoute> {
   void initState() {
     super.initState();
     _pageController =
-        LunaPageController(initialPage: LidarrDatabase.NAVIGATION_INDEX.read());
+        ArrPilotPageController(initialPage: LidarrDatabase.NAVIGATION_INDEX.read());
   }
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       body: _body(),
       drawer: _drawer(),
       appBar: _appBar() as PreferredSizeWidget?,
       bottomNavigationBar: _bottomNavigationBar(),
       onProfileChange: (_) {
-        if (_profileState != LunaProfile.current.toString()) _refreshProfile();
+        if (_profileState != ArrPilotProfile.current.toString()) _refreshProfile();
       },
     );
   }
 
-  Widget _drawer() => LunaDrawer(page: LunaModule.LIDARR.key);
+  Widget _drawer() => ArrPilotDrawer(page: ArrPilotModule.LIDARR.key);
 
   Widget? _bottomNavigationBar() {
-    if (LunaProfile.current.lidarrEnabled)
+    if (ArrPilotProfile.current.lidarrEnabled)
       return LidarrNavigationBar(pageController: _pageController);
     return null;
   }
 
   Widget _body() {
-    if (!LunaProfile.current.lidarrEnabled)
-      return LunaMessage.moduleNotEnabled(
+    if (!ArrPilotProfile.current.lidarrEnabled)
+      return ArrPilotMessage.moduleNotEnabled(
         context: context,
-        module: LunaModule.LIDARR.title,
+        module: ArrPilotModule.LIDARR.title,
       );
-    return LunaPageView(
+    return ArrPilotPageView(
       controller: _pageController,
       children: [
         LidarrCatalogue(
@@ -80,25 +80,25 @@ class _State extends State<LidarrRoute> {
   }
 
   Widget _appBar() {
-    const db = LunaBox.profiles;
+    const db = ArrPilotBox.profiles;
     final profiles = db.keys.fold<List<String>>([], (arr, key) {
-      if (LunaBox.profiles.read(key)?.lidarrEnabled ?? false) arr.add(key);
+      if (ArrPilotBox.profiles.read(key)?.lidarrEnabled ?? false) arr.add(key);
       return arr;
     });
     List<Widget>? actions;
-    if (LunaProfile.current.lidarrEnabled)
+    if (ArrPilotProfile.current.lidarrEnabled)
       actions = [
-        LunaIconButton(
+        ArrPilotIconButton(
           icon: Icons.add_rounded,
           onPressed: () async => _enterAddArtist(),
         ),
-        LunaIconButton(
+        ArrPilotIconButton(
           icon: Icons.more_vert_rounded,
           onPressed: () async => _handlePopup(),
         ),
       ];
-    return LunaAppBar.dropdown(
-      title: LunaModule.LIDARR.title,
+    return ArrPilotAppBar.dropdown(
+      title: ArrPilotModule.LIDARR.title,
       useDrawer: true,
       profiles: profiles,
       actions: actions,
@@ -118,7 +118,7 @@ class _State extends State<LidarrRoute> {
     if (values[0])
       switch (values[1]) {
         case 'web_gui':
-          LunaProfile profile = LunaProfile.current;
+          ArrPilotProfile profile = ArrPilotProfile.current;
           await profile.lidarrHost.openLink();
           break;
         case 'update_library':
@@ -163,13 +163,13 @@ class _State extends State<LidarrRoute> {
             break;
           }
         default:
-          LunaLogger().warning('Unknown Case: ${values[1]}');
+          ArrPilotLogger().warning('Unknown Case: ${values[1]}');
       }
   }
 
   void _refreshProfile() {
-    _api = LidarrAPI.from(LunaProfile.current);
-    _profileState = LunaProfile.current.toString();
+    _api = LidarrAPI.from(ArrPilotProfile.current);
+    _profileState = ArrPilotProfile.current.toString();
     _refreshAllPages();
   }
 

@@ -26,7 +26,7 @@ extension SonarrSeriesSettingsTypeExtension on SonarrSeriesSettingsType {
       case SonarrSeriesSettingsType.DELETE:
         return Icons.delete_rounded;
       case SonarrSeriesSettingsType.SEARCH:
-        return LunaIcons.SEARCH;
+        return ArrPilotIcons.SEARCH;
     }
   }
 
@@ -63,7 +63,7 @@ extension SonarrSeriesSettingsTypeExtension on SonarrSeriesSettingsType {
         if (result) {
           await SonarrAPIController()
               .removeSeries(context: context, series: series)
-              .then((_) => LunaRouter().popSafely());
+              .then((_) => ArrPilotRouter().popSafely());
         }
         break;
       case SonarrSeriesSettingsType.MONITORED:

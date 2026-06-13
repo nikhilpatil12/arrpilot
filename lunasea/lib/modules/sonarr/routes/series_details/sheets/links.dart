@@ -4,7 +4,7 @@ import 'package:arrpilot/modules/sonarr.dart';
 import 'package:arrpilot/utils/links.dart';
 import 'package:arrpilot/widgets/ui.dart';
 
-class LinksSheet extends LunaBottomModalSheet {
+class LinksSheet extends ArrPilotBottomModalSheet {
   SonarrSeries series;
 
   LinksSheet({
@@ -13,37 +13,37 @@ class LinksSheet extends LunaBottomModalSheet {
 
   @override
   Widget builder(BuildContext context) {
-    final imdb = LunaLinkedContent.imdb(series.imdbId);
+    final imdb = ArrPilotLinkedContent.imdb(series.imdbId);
     final tvdb =
-        LunaLinkedContent.theTVDB(series.tvdbId, LinkedContentType.SERIES);
+        ArrPilotLinkedContent.theTVDB(series.tvdbId, LinkedContentType.SERIES);
     final trakt =
-        LunaLinkedContent.trakt(series.tvdbId, LinkedContentType.SERIES);
-    final tvMaze = LunaLinkedContent.tvMaze(series.tvMazeId);
+        ArrPilotLinkedContent.trakt(series.tvdbId, LinkedContentType.SERIES);
+    final tvMaze = ArrPilotLinkedContent.tvMaze(series.tvMazeId);
 
-    return LunaListViewModal(
+    return ArrPilotListViewModal(
       children: [
         if (imdb != null)
-          LunaBlock(
+          ArrPilotBlock(
             title: 'IMDb',
-            leading: const LunaIconButton(icon: LunaIcons.IMDB),
+            leading: const ArrPilotIconButton(icon: ArrPilotIcons.IMDB),
             onTap: imdb.openLink,
           ),
         if (tvdb != null)
-          LunaBlock(
+          ArrPilotBlock(
             title: 'TheTVDB',
-            leading: const LunaIconButton(icon: LunaIcons.THETVDB),
+            leading: const ArrPilotIconButton(icon: ArrPilotIcons.THETVDB),
             onTap: tvdb.openLink,
           ),
         if (trakt != null)
-          LunaBlock(
+          ArrPilotBlock(
             title: 'Trakt',
-            leading: const LunaIconButton(icon: LunaIcons.TRAKT),
+            leading: const ArrPilotIconButton(icon: ArrPilotIcons.TRAKT),
             onTap: trakt.openLink,
           ),
         if (tvMaze != null)
-          LunaBlock(
+          ArrPilotBlock(
             title: 'TVmaze',
-            leading: const LunaIconButton(icon: LunaIcons.TVMAZE),
+            leading: const ArrPilotIconButton(icon: ArrPilotIcons.TVMAZE),
             onTap: tvMaze.openLink,
           ),
       ],

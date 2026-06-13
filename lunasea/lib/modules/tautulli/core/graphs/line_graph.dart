@@ -22,14 +22,14 @@ class TautulliLineGraphHelper {
         sideTitles: SideTitles(
           showTitles: true,
           reservedSize:
-              LunaUI.FONT_SIZE_GRAPH_LEGEND + LunaUI.DEFAULT_MARGIN_SIZE,
+              ArrPilotUI.FONT_SIZE_GRAPH_LEGEND + ArrPilotUI.DEFAULT_MARGIN_SIZE,
           getTitlesWidget: (value, meta) => Padding(
-            padding: const EdgeInsets.only(top: LunaUI.DEFAULT_MARGIN_SIZE),
+            padding: const EdgeInsets.only(top: ArrPilotUI.DEFAULT_MARGIN_SIZE),
             child: Text(
               _getTitle(value),
               style: const TextStyle(
-                color: LunaColours.grey,
-                fontSize: LunaUI.FONT_SIZE_GRAPH_LEGEND,
+                color: ArrPilotColours.grey,
+                fontSize: ArrPilotUI.FONT_SIZE_GRAPH_LEGEND,
               ),
             ),
           ),
@@ -45,7 +45,7 @@ class TautulliLineGraphHelper {
         isCurved: true,
         isStrokeCapRound: true,
         barWidth: 3.0,
-        color: LunaColours().byGraphLayer(sIndex),
+        color: ArrPilotColours().byGraphLayer(sIndex),
         spots: List<FlSpot>.generate(
           data.series![sIndex].data!.length,
           (dIndex) => FlSpot(dIndex.toDouble(),
@@ -53,9 +53,9 @@ class TautulliLineGraphHelper {
         ),
         belowBarData: BarAreaData(
           show: true,
-          color: LunaColours()
+          color: ArrPilotColours()
               .byGraphLayer(sIndex)
-              .withOpacity(LunaUI.OPACITY_SPLASH),
+              .withOpacity(ArrPilotUI.OPACITY_SPLASH),
         ),
         dotData: FlDotData(
           show: true,
@@ -79,8 +79,8 @@ class TautulliLineGraphHelper {
       enabled: true,
       touchTooltipData: LineTouchTooltipData(
         getTooltipColor: (_) =>
-            LunaTheme.isAMOLEDTheme ? Colors.black : LunaColours.primary,
-        tooltipRoundedRadius: LunaUI.BORDER_RADIUS,
+            ArrPilotTheme.isAMOLEDTheme ? Colors.black : ArrPilotColours.primary,
+        tooltipRoundedRadius: ArrPilotUI.BORDER_RADIUS,
         tooltipPadding: const EdgeInsets.all(8.0),
         maxContentWidth: MediaQuery.of(context).size.width / 1.25,
         fitInsideVertically: true,
@@ -100,8 +100,8 @@ class TautulliLineGraphHelper {
                       : Duration(seconds: value ?? 0).asWordsTimestamp(),
                 ].join().trim(),
                 const TextStyle(
-                  color: LunaColours.grey,
-                  fontSize: LunaUI.FONT_SIZE_SUBHEADER,
+                  color: ArrPilotColours.grey,
+                  fontSize: ArrPilotUI.FONT_SIZE_SUBHEADER,
                 ),
               );
             },
@@ -114,7 +114,7 @@ class TautulliLineGraphHelper {
         (index) => TouchedSpotIndicatorData(
           FlLine(
             strokeWidth: 3.0,
-            color: bar.color!.withOpacity(LunaUI.OPACITY_DISABLED),
+            color: bar.color!.withOpacity(ArrPilotUI.OPACITY_DISABLED),
           ),
           FlDotData(
             show: true,

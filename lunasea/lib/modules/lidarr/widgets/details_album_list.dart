@@ -32,7 +32,7 @@ class _State extends State<LidarrDetailsAlbumList>
 
   Future<void> _refresh() async {
     _results = [];
-    LidarrAPI _api = LidarrAPI.from(LunaProfile.current);
+    LidarrAPI _api = LidarrAPI.from(ArrPilotProfile.current);
     setState(() {
       _future = _api.getArtistAlbums(widget.artistID);
     });
@@ -46,7 +46,7 @@ class _State extends State<LidarrDetailsAlbumList>
     return _body;
   }
 
-  Widget get _body => LunaRefreshIndicator(
+  Widget get _body => ArrPilotRefreshIndicator(
         context: context,
         key: _refreshKey,
         onRefresh: _refresh,
@@ -57,7 +57,7 @@ class _State extends State<LidarrDetailsAlbumList>
               case ConnectionState.done:
                 {
                   if (snapshot.hasError || snapshot.data == null) {
-                    return LunaMessage.error(onTap: _refresh);
+                    return ArrPilotMessage.error(onTap: _refresh);
                   }
                   _results = snapshot.data;
                   return _list;
@@ -66,7 +66,7 @@ class _State extends State<LidarrDetailsAlbumList>
               case ConnectionState.waiting:
               case ConnectionState.active:
               default:
-                return const LunaLoader();
+                return const ArrPilotLoader();
             }
           },
         ),
@@ -74,11 +74,11 @@ class _State extends State<LidarrDetailsAlbumList>
 
   Widget get _list => Consumer<LidarrState>(
         builder: (context, model, _) {
-          return LunaListViewBuilder(
+          return ArrPilotListViewBuilder(
             controller: LidarrArtistNavigationBar.scrollControllers[1],
             itemCount: _results!.isEmpty ? 1 : _results!.length,
             itemBuilder: _results!.isEmpty
-                ? (context, _) => const LunaMessage(text: 'No Albums Found')
+                ? (context, _) => const ArrPilotMessage(text: 'No Albums Found')
                 : (context, index) => LidarrDetailsAlbumTile(
                       data: _results![index],
                       artistId: widget.artistID,

@@ -13,12 +13,12 @@ class ConfigurationSonarrRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationSonarrRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar(),
       body: _body(),
@@ -26,20 +26,20 @@ class _State extends State<ConfigurationSonarrRoute>
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
-      title: LunaModule.SONARR.title,
+    return ArrPilotAppBar(
+      title: ArrPilotModule.SONARR.title,
       scrollControllers: [scrollController],
     );
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
-        LunaModule.SONARR.informationBanner(),
+        ArrPilotModule.SONARR.informationBanner(),
         _enabledToggle(),
         _connectionDetailsPage(),
-        LunaDivider(),
+        ArrPilotDivider(),
         _defaultOptionsPage(),
         _defaultPagesPage(),
         _queueSize(),
@@ -48,14 +48,14 @@ class _State extends State<ConfigurationSonarrRoute>
   }
 
   Widget _enabledToggle() {
-    return LunaBox.profiles.listenableBuilder(
-      builder: (context, _) => LunaBlock(
-        title: 'settings.EnableModule'.tr(args: [LunaModule.SONARR.title]),
-        trailing: LunaSwitch(
-          value: LunaProfile.current.sonarrEnabled,
+    return ArrPilotBox.profiles.listenableBuilder(
+      builder: (context, _) => ArrPilotBlock(
+        title: 'settings.EnableModule'.tr(args: [ArrPilotModule.SONARR.title]),
+        trailing: ArrPilotSwitch(
+          value: ArrPilotProfile.current.sonarrEnabled,
           onChanged: (value) {
-            LunaProfile.current.sonarrEnabled = value;
-            LunaProfile.current.save();
+            ArrPilotProfile.current.sonarrEnabled = value;
+            ArrPilotProfile.current.save();
             context.read<SonarrState>().reset();
           },
         ),
@@ -64,36 +64,36 @@ class _State extends State<ConfigurationSonarrRoute>
   }
 
   Widget _connectionDetailsPage() {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.ConnectionDetails'.tr(),
       body: [
         TextSpan(
           text: 'settings.ConnectionDetailsDescription'.tr(
-            args: [LunaModule.SONARR.title],
+            args: [ArrPilotModule.SONARR.title],
           ),
         )
       ],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: SettingsRoutes.CONFIGURATION_SONARR_CONNECTION_DETAILS.go,
     );
   }
 
   Widget _defaultPagesPage() {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.DefaultPages'.tr(),
       body: [TextSpan(text: 'settings.DefaultPagesDescription'.tr())],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: SettingsRoutes.CONFIGURATION_SONARR_DEFAULT_PAGES.go,
     );
   }
 
   Widget _defaultOptionsPage() {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.DefaultOptions'.tr(),
       body: [
         TextSpan(text: 'settings.DefaultOptionsDescription'.tr()),
       ],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: SettingsRoutes.CONFIGURATION_SONARR_DEFAULT_OPTIONS.go,
     );
   }
@@ -101,7 +101,7 @@ class _State extends State<ConfigurationSonarrRoute>
   Widget _queueSize() {
     const _db = SonarrDatabase.QUEUE_PAGE_SIZE;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'sonarr.QueueSize'.tr(),
         body: [
           TextSpan(
@@ -110,7 +110,7 @@ class _State extends State<ConfigurationSonarrRoute>
                 : 'lunasea.Items'.tr(args: [_db.read().toString()]),
           ),
         ],
-        trailing: const LunaIconButton(icon: Icons.queue_play_next_rounded),
+        trailing: const ArrPilotIconButton(icon: Icons.queue_play_next_rounded),
         onTap: () async {
           Tuple2<bool, int> result =
               await SonarrDialogs().setQueuePageSize(context);

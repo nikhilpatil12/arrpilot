@@ -14,11 +14,11 @@ class TautulliUserTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: user.friendlyName,
       posterUrl: user.userThumb,
       posterHeaders: context.read<TautulliState>().headers,
-      posterPlaceholderIcon: LunaIcons.USER,
+      posterPlaceholderIcon: ArrPilotIcons.USER,
       posterIsSquare: true,
       backgroundUrl: context.watch<TautulliState>().getImageURLFromPath(
             user.thumb,
@@ -30,8 +30,8 @@ class TautulliUserTile extends StatelessWidget {
         TextSpan(text: user.lastPlayed ?? 'Never'),
       ],
       bodyLeadingIcons: const [
-        LunaIcons.WATCHED,
-        LunaIcons.PLAY,
+        ArrPilotIcons.WATCHED,
+        ArrPilotIcons.PLAY,
       ],
       onTap: () => TautulliRoutes.USER_DETAILS.go(params: {
         'user': user.userId!.toString(),

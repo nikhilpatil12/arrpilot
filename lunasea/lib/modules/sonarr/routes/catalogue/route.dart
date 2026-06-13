@@ -41,25 +41,25 @@ class _State extends State<SonarrCatalogueRoute>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      module: LunaModule.SONARR,
+      module: ArrPilotModule.SONARR,
       body: _body(),
       appBar: _appBar(),
     );
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar.empty(
+    return ArrPilotAppBar.empty(
       child: SonarrSeriesSearchBar(
         scrollController: SonarrNavigationBar.scrollControllers[0],
       ),
-      height: LunaTextInputBar.defaultAppBarHeight,
+      height: ArrPilotTextInputBar.defaultAppBarHeight,
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: _refresh,
@@ -79,13 +79,13 @@ class _State extends State<SonarrCatalogueRoute>
           builder: (context, AsyncSnapshot<List<Object>> snapshot) {
             if (snapshot.hasError) {
               if (snapshot.connectionState != ConnectionState.waiting) {
-                LunaLogger().error(
+                ArrPilotLogger().error(
                   'Unable to fetch Sonarr series',
                   snapshot.error,
                   snapshot.stackTrace,
                 );
               }
-              return LunaMessage.error(
+              return ArrPilotMessage.error(
                 onTap: _refreshKey.currentState!.show,
               );
             }
@@ -95,7 +95,7 @@ class _State extends State<SonarrCatalogueRoute>
                 snapshot.data![1] as List<SonarrQualityProfile>,
               );
             }
-            return const LunaLoader();
+            return const ArrPilotLoader();
           },
         ),
       ),
@@ -128,7 +128,7 @@ class _State extends State<SonarrCatalogueRoute>
     List<SonarrQualityProfile> qualities,
   ) {
     if (series.isEmpty)
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'sonarr.NoSeriesFound'.tr(),
         buttonText: 'lunasea.Refresh'.tr(),
         onTap: _refreshKey.currentState!.show,
@@ -138,21 +138,21 @@ class _State extends State<SonarrCatalogueRoute>
       builder: (context, query, _) {
         List<SonarrSeries> _filtered = _filterAndSort(series, qualities, query);
         if (_filtered.isEmpty)
-          return LunaListView(
+          return ArrPilotListView(
             controller: SonarrNavigationBar.scrollControllers[0],
             children: [
-              LunaMessage.inList(text: 'sonarr.NoSeriesFound'.tr()),
+              ArrPilotMessage.inList(text: 'sonarr.NoSeriesFound'.tr()),
               if (query.isNotEmpty)
-                LunaButtonContainer(
+                ArrPilotButtonContainer(
                   children: [
-                    LunaButton.text(
+                    ArrPilotButton.text(
                       icon: null,
                       text: query.length > 20
                           ? 'sonarr.SearchFor'.tr(args: [
-                              '"${query.substring(0, min(20, query.length))}${LunaUI.TEXT_ELLIPSIS}"'
+                              '"${query.substring(0, min(20, query.length))}${ArrPilotUI.TEXT_ELLIPSIS}"'
                             ])
                           : 'sonarr.SearchFor'.tr(args: ['"$query"']),
-                      backgroundColor: LunaColours.accent,
+                      backgroundColor: ArrPilotColours.accent,
                       onTap: () async {
                         SonarrRoutes.ADD_SERIES.go(queryParams: {
                           'query': query,
@@ -164,9 +164,9 @@ class _State extends State<SonarrCatalogueRoute>
             ],
           );
         switch (context.read<SonarrState>().seriesViewType) {
-          case LunaListViewOption.BLOCK_VIEW:
+          case ArrPilotListViewOption.BLOCK_VIEW:
             return _blockView(_filtered, qualities);
-          case LunaListViewOption.GRID_VIEW:
+          case ArrPilotListViewOption.GRID_VIEW:
             return _gridView(_filtered, qualities);
           default:
             throw Exception('Invalid moviesViewType');
@@ -179,7 +179,7 @@ class _State extends State<SonarrCatalogueRoute>
     List<SonarrSeries> series,
     List<SonarrQualityProfile> qualities,
   ) {
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: SonarrNavigationBar.scrollControllers[0],
       itemCount: series.length,
       itemExtent: SonarrSeriesTile.itemExtent,
@@ -196,9 +196,9 @@ class _State extends State<SonarrCatalogueRoute>
     List<SonarrSeries> series,
     List<SonarrQualityProfile> qualities,
   ) {
-    return LunaGridViewBuilder(
+    return ArrPilotGridViewBuilder(
       controller: SonarrNavigationBar.scrollControllers[0],
-      sliverGridDelegate: LunaGridBlock.getMaxCrossAxisExtent(),
+      sliverGridDelegate: ArrPilotGridBlock.getMaxCrossAxisExtent(),
       itemCount: series.length,
       itemBuilder: (context, index) => SonarrSeriesTile.grid(
         series: series[index],

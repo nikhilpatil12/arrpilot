@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LunaTextStyle {
+class ArrPilotTextStyle {
   static TextStyle bodySmall() {
     return GoogleFonts.robotoFlex(
       height: 1.33, // md.sys.typescale.body-small.line-height

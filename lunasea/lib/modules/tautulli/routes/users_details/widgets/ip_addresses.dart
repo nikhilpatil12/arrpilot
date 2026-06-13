@@ -18,7 +18,7 @@ class TautulliUserDetailsIPAddresses extends StatefulWidget {
 }
 
 class _State extends State<TautulliUserDetailsIPAddresses>
-    with AutomaticKeepAliveClientMixin, LunaLoadCallbackMixin {
+    with AutomaticKeepAliveClientMixin, ArrPilotLoadCallbackMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -42,15 +42,15 @@ class _State extends State<TautulliUserDetailsIPAddresses>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
-      module: LunaModule.TAUTULLI,
+    return ArrPilotScaffold(
+      module: ArrPilotModule.TAUTULLI,
       scaffoldKey: _scaffoldKey,
       body: _body(),
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: loadCallback,
@@ -59,15 +59,15 @@ class _State extends State<TautulliUserDetailsIPAddresses>
         builder: (context, AsyncSnapshot<TautulliUserIPs> snapshot) {
           if (snapshot.hasError) {
             if (snapshot.connectionState != ConnectionState.waiting)
-              LunaLogger().error(
+              ArrPilotLogger().error(
                 'Unable to fetch Tautulli user IP addresses: ${widget.user.userId}',
                 snapshot.error,
                 snapshot.stackTrace,
               );
-            return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+            return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
           }
           if (snapshot.hasData) return _list(snapshot.data);
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -75,12 +75,12 @@ class _State extends State<TautulliUserDetailsIPAddresses>
 
   Widget _list(TautulliUserIPs? ips) {
     if ((ips?.ips?.length ?? 0) == 0)
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'No IPs Found',
         buttonText: 'Refresh',
         onTap: _refreshKey.currentState?.show,
       );
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: TautulliUserDetailsNavigationBar.scrollControllers[3],
       itemCount: ips!.ips!.length,
       itemBuilder: (context, index) => _tile(ips.ips![index]),
@@ -89,13 +89,13 @@ class _State extends State<TautulliUserDetailsIPAddresses>
 
   Widget _tile(TautulliUserIPRecord record) {
     int? _count = record.playCount;
-    return LunaBlock(
+    return ArrPilotBlock(
       title: record.ipAddress,
       body: [
         TextSpan(
           children: [
             TextSpan(text: record.lastSeen?.asAge() ?? 'lunasea.Unknown'.tr()),
-            TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+            TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
             TextSpan(text: _count == 1 ? '1 Play' : '$_count Plays'),
           ],
         ),

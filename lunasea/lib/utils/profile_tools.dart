@@ -8,14 +8,14 @@ import 'package:arrpilot/types/exception.dart';
 import 'package:arrpilot/vendor.dart';
 import 'package:arrpilot/widgets/ui.dart';
 
-class LunaProfileTools {
+class ArrPilotProfileTools {
   bool changeTo(
     String profile, {
     bool showSnackbar = true,
     bool popToRootRoute = false,
   }) {
     try {
-      if (LunaSeaDatabase.ENABLED_PROFILE.read() == profile) return true;
+      if (ArrPilotDatabase.ENABLED_PROFILE.read() == profile) return true;
       _changeTo(profile);
 
       if (showSnackbar) {
@@ -26,12 +26,12 @@ class LunaProfileTools {
       }
 
       if (popToRootRoute) {
-        LunaRouter().popToRootRoute();
+        ArrPilotRouter().popToRootRoute();
       }
 
       return true;
     } on ProfileNotFoundException catch (error, trace) {
-      LunaLogger().exception(error, trace);
+      ArrPilotLogger().exception(error, trace);
     }
     return false;
   }
@@ -51,9 +51,9 @@ class LunaProfileTools {
         );
       }
     } on ProfileAlreadyExistsException catch (error, trace) {
-      LunaLogger().exception(error, trace);
+      ArrPilotLogger().exception(error, trace);
     } catch (error, trace) {
-      LunaLogger().error('Failed to create profile', error, trace);
+      ArrPilotLogger().error('Failed to create profile', error, trace);
     }
 
     return false;
@@ -73,11 +73,11 @@ class LunaProfileTools {
         );
       }
     } on ProfileNotFoundException catch (error, trace) {
-      LunaLogger().exception(error, trace);
+      ArrPilotLogger().exception(error, trace);
     } on ActiveProfileRemovalException catch (error, trace) {
-      LunaLogger().exception(error, trace);
+      ArrPilotLogger().exception(error, trace);
     } catch (error, trace) {
-      LunaLogger().error('Failed to delete profile', error, trace);
+      ArrPilotLogger().error('Failed to delete profile', error, trace);
     }
 
     return false;
@@ -102,58 +102,58 @@ class LunaProfileTools {
 
       return true;
     } on ProfileNotFoundException catch (error, trace) {
-      LunaLogger().exception(error, trace);
+      ArrPilotLogger().exception(error, trace);
     } on ProfileAlreadyExistsException catch (error, trace) {
-      LunaLogger().exception(error, trace);
+      ArrPilotLogger().exception(error, trace);
     } catch (error, trace) {
-      LunaLogger().error('Failed to rename profile', error, trace);
+      ArrPilotLogger().error('Failed to rename profile', error, trace);
     }
 
     return false;
   }
 
   void _changeTo(String profile) {
-    if (!LunaBox.profiles.contains(profile)) {
+    if (!ArrPilotBox.profiles.contains(profile)) {
       throw ProfileNotFoundException(profile);
     }
 
-    LunaSeaDatabase.ENABLED_PROFILE.update(profile);
-    LunaState.reset();
+    ArrPilotDatabase.ENABLED_PROFILE.update(profile);
+    ArrPilotState.reset();
   }
 
   Future<void> _create(String profile) async {
-    if (LunaBox.profiles.contains(profile)) {
+    if (ArrPilotBox.profiles.contains(profile)) {
       throw ProfileAlreadyExistsException(profile);
     }
 
-    await LunaBox.profiles.update(profile, LunaProfile());
+    await ArrPilotBox.profiles.update(profile, ArrPilotProfile());
   }
 
   Future<void> _remove(String profile) async {
-    if (LunaSeaDatabase.ENABLED_PROFILE.read() == profile) {
+    if (ArrPilotDatabase.ENABLED_PROFILE.read() == profile) {
       throw ActiveProfileRemovalException(profile);
     }
 
-    if (!LunaBox.profiles.contains(profile)) {
+    if (!ArrPilotBox.profiles.contains(profile)) {
       throw ProfileNotFoundException(profile);
     }
 
-    await LunaBox.profiles.delete(profile);
+    await ArrPilotBox.profiles.delete(profile);
   }
 
   Future<void> _rename(String oldProfile, String newProfile) async {
-    if (!LunaBox.profiles.contains(oldProfile)) {
+    if (!ArrPilotBox.profiles.contains(oldProfile)) {
       throw ProfileNotFoundException(oldProfile);
     }
 
-    if (LunaBox.profiles.contains(newProfile)) {
+    if (ArrPilotBox.profiles.contains(newProfile)) {
       throw ProfileAlreadyExistsException(newProfile);
     }
 
-    final oldDb = LunaBox.profiles.read(oldProfile)!;
-    final newDb = LunaProfile.clone(oldDb);
+    final oldDb = ArrPilotBox.profiles.read(oldProfile)!;
+    final newDb = ArrPilotProfile.clone(oldDb);
 
-    await LunaBox.profiles.update(newProfile, newDb);
+    await ArrPilotBox.profiles.update(newProfile, newDb);
     _changeTo(newProfile);
 
     oldDb.delete();

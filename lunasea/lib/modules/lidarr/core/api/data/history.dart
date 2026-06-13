@@ -72,8 +72,8 @@ class LidarrHistoryDataGeneric extends LidarrHistoryData {
       TextSpan(
         text: eventType,
         style: const TextStyle(
-          color: LunaColours.purple,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          color: ArrPilotColours.purple,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         ),
       ),
     ];
@@ -100,8 +100,8 @@ class LidarrHistoryDataGrabbed extends LidarrHistoryData {
       TextSpan(
         text: '${LidarrConstants.EVENT_TYPE_MESSAGES[eventType]} $indexer',
         style: const TextStyle(
-          color: LunaColours.orange,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          color: ArrPilotColours.orange,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         ),
       )
     ];
@@ -126,8 +126,8 @@ class LidarrHistoryDataTrackFileImported extends LidarrHistoryData {
       TextSpan(
         text: '${LidarrConstants.EVENT_TYPE_MESSAGES[eventType]} ($quality)',
         style: const TextStyle(
-          color: LunaColours.accent,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          color: ArrPilotColours.accent,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         ),
       )
     ];
@@ -152,8 +152,8 @@ class LidarrHistoryDataDownloadImported extends LidarrHistoryData {
       TextSpan(
         text: '${LidarrConstants.EVENT_TYPE_MESSAGES[eventType]} ($quality)',
         style: const TextStyle(
-          color: LunaColours.accent,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          color: ArrPilotColours.accent,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         ),
       )
     ];
@@ -175,8 +175,8 @@ class LidarrHistoryDataAlbumImportIncomplete extends LidarrHistoryData {
       TextSpan(
         text: '${LidarrConstants.EVENT_TYPE_MESSAGES[eventType]}',
         style: const TextStyle(
-          color: LunaColours.orange,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          color: ArrPilotColours.orange,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         ),
       )
     ];
@@ -202,8 +202,8 @@ class LidarrHistoryDataTrackFileDeleted extends LidarrHistoryData {
         text:
             '${LidarrConstants.EVENT_TYPE_MESSAGES[eventType]} (${super.historyReasonMessages[reason] ?? reason})',
         style: const TextStyle(
-          color: LunaColours.red,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          color: ArrPilotColours.red,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         ),
       )
     ];
@@ -225,8 +225,8 @@ class LidarrHistoryDataTrackFileRenamed extends LidarrHistoryData {
       TextSpan(
         text: '${LidarrConstants.EVENT_TYPE_MESSAGES[eventType]}',
         style: const TextStyle(
-          color: LunaColours.blue,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          color: ArrPilotColours.blue,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         ),
       )
     ];
@@ -248,8 +248,8 @@ class LidarrHistoryDataTrackFileRetagged extends LidarrHistoryData {
       TextSpan(
         text: '${LidarrConstants.EVENT_TYPE_MESSAGES[eventType]}',
         style: const TextStyle(
-          color: LunaColours.blue,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          color: ArrPilotColours.blue,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         ),
       )
     ];

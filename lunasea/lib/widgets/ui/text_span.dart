@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaTextSpan extends TextSpan {
-  const LunaTextSpan.extended({
+class ArrPilotTextSpan extends TextSpan {
+  const ArrPilotTextSpan.extended({
     required String? text,
   }) : super(
           text: text,
           style: const TextStyle(
-            height: LunaBlock.SUBTITLE_HEIGHT / LunaUI.FONT_SIZE_H3,
+            height: ArrPilotBlock.SUBTITLE_HEIGHT / ArrPilotUI.FONT_SIZE_H3,
           ),
         );
 }

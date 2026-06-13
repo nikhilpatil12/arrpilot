@@ -47,7 +47,7 @@ extension SettingsBannersExtension on SettingsBanners {
       case SettingsBanners.QUICK_ACTIONS_SUPPORT:
       case SettingsBanners.PROFILES_SUPPORT:
       default:
-        return LunaColours.accent;
+        return ArrPilotColours.accent;
     }
   }
 
@@ -58,26 +58,26 @@ extension SettingsBannersExtension on SettingsBanners {
       case SettingsBanners.QUICK_ACTIONS_SUPPORT:
         return Icons.rounded_corner_rounded;
       case SettingsBanners.PROFILES_SUPPORT:
-        return LunaIcons.PROFILES;
+        return ArrPilotIcons.PROFILES;
     }
   }
 
   /// Return true if the banner should be shown in the UI
-  bool? get shouldShow => LunaBox.alerts.read(key, fallback: true);
+  bool? get shouldShow => ArrPilotBox.alerts.read(key, fallback: true);
 
   /// Mark the banner as seen, so it will not appear in the UI anymore
-  void markSeen() => LunaBox.alerts.update(key, false);
+  void markSeen() => ArrPilotBox.alerts.update(key, false);
 
   /// Create a new [ValueListenableBuilder]
   ValueListenableBuilder banner({
     Color headerColor = Colors.white,
-    Color bodyColor = LunaColours.grey,
+    Color bodyColor = ArrPilotColours.grey,
   }) {
-    return LunaBox.alerts.listenableBuilder(
+    return ArrPilotBox.alerts.listenableBuilder(
       selectKeys: [key],
       builder: (context, _) {
         if (shouldShow!)
-          return LunaBanner(
+          return ArrPilotBanner(
             dismissCallback: markSeen,
             headerText: header,
             bodyText: body,

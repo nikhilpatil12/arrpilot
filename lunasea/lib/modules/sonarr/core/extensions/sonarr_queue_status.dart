@@ -1,7 +1,7 @@
 import 'package:arrpilot/core.dart';
 import 'package:arrpilot/modules/sonarr.dart';
 
-extension LunaSonarrQueueStatusExtension on SonarrQueueStatus {
+extension ArrPilotSonarrQueueStatusExtension on SonarrQueueStatus {
   String lunaStatus() {
     switch (this) {
       case SonarrQueueStatus.DOWNLOADING:

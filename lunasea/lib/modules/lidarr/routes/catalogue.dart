@@ -18,7 +18,7 @@ class LidarrCatalogue extends StatefulWidget {
 }
 
 class _State extends State<LidarrCatalogue>
-    with AutomaticKeepAliveClientMixin, LunaLoadCallbackMixin {
+    with AutomaticKeepAliveClientMixin, ArrPilotLoadCallbackMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   Future<List<LidarrCatalogueData>>? _future;
   List<LidarrCatalogueData>? _results = [];
@@ -29,7 +29,7 @@ class _State extends State<LidarrCatalogue>
   @override
   Future<void> loadCallback() async {
     if (mounted) setState(() => _results = []);
-    final _api = LidarrAPI.from(LunaProfile.current);
+    final _api = LidarrAPI.from(ArrPilotProfile.current);
     if (mounted) {
       setState(() {
         _future = _api.getAllArtists();
@@ -44,7 +44,7 @@ class _State extends State<LidarrCatalogue>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       body: _body(),
       appBar: _appBar() as PreferredSizeWidget?,
@@ -52,16 +52,16 @@ class _State extends State<LidarrCatalogue>
   }
 
   Widget _appBar() {
-    return LunaAppBar.empty(
+    return ArrPilotAppBar.empty(
       child: LidarrCatalogueSearchBar(
         scrollController: LidarrNavigationBar.scrollControllers[0],
       ),
-      height: LunaTextInputBar.defaultAppBarHeight,
+      height: ArrPilotTextInputBar.defaultAppBarHeight,
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: widget.refreshIndicatorKey,
       onRefresh: loadCallback,
@@ -72,7 +72,7 @@ class _State extends State<LidarrCatalogue>
             case ConnectionState.done:
               {
                 if (snapshot.hasError || snapshot.data == null) {
-                  return LunaMessage.error(
+                  return ArrPilotMessage.error(
                       onTap: () =>
                           widget.refreshIndicatorKey.currentState?.show);
                 }
@@ -83,7 +83,7 @@ class _State extends State<LidarrCatalogue>
             case ConnectionState.waiting:
             case ConnectionState.active:
             default:
-              return const LunaLoader();
+              return const ArrPilotLoader();
           }
         },
       ),
@@ -92,7 +92,7 @@ class _State extends State<LidarrCatalogue>
 
   Widget _list() {
     if ((_results?.length ?? 0) == 0)
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'No Artists Found',
         buttonText: 'Refresh',
         onTap: widget.refreshIndicatorKey.currentState?.show,
@@ -102,16 +102,16 @@ class _State extends State<LidarrCatalogue>
         List<LidarrCatalogueData>? filtered =
             _filterAndSort(_results, state.searchCatalogueFilter);
         if ((filtered?.length ?? 0) == 0)
-          return LunaListView(
+          return ArrPilotListView(
             controller: LidarrNavigationBar.scrollControllers[0],
             children: [
-              LunaMessage.inList(text: 'No Artists Found'),
+              ArrPilotMessage.inList(text: 'No Artists Found'),
             ],
           );
-        return LunaListViewBuilder(
+        return ArrPilotListViewBuilder(
           controller: LidarrNavigationBar.scrollControllers[0],
           itemCount: filtered!.length,
-          itemExtent: LunaBlock.calculateItemExtent(2),
+          itemExtent: ArrPilotBlock.calculateItemExtent(2),
           itemBuilder: (context, index) => LidarrCatalogueTile(
             data: filtered[index],
             scaffoldKey: _scaffoldKey,

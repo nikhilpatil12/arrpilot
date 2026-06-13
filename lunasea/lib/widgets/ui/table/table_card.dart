@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaTableCard extends StatelessWidget {
+class ArrPilotTableCard extends StatelessWidget {
   final String? title;
-  final List<LunaTableContent>? content;
-  final List<LunaButton>? buttons;
+  final List<ArrPilotTableContent>? content;
+  final List<ArrPilotButton>? buttons;
 
-  const LunaTableCard({
+  const ArrPilotTableCard({
     Key? key,
     this.content,
     this.buttons,
@@ -15,16 +15,16 @@ class LunaTableCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaCard(
+    return ArrPilotCard(
       context: context,
       child: Padding(
         child: _body(),
         padding: EdgeInsets.only(
-          left: LunaUI.DEFAULT_MARGIN_SIZE / 2,
-          right: LunaUI.DEFAULT_MARGIN_SIZE / 2,
-          top: LunaUI.DEFAULT_MARGIN_SIZE - LunaUI.DEFAULT_MARGIN_SIZE / 4,
+          left: ArrPilotUI.DEFAULT_MARGIN_SIZE / 2,
+          right: ArrPilotUI.DEFAULT_MARGIN_SIZE / 2,
+          top: ArrPilotUI.DEFAULT_MARGIN_SIZE - ArrPilotUI.DEFAULT_MARGIN_SIZE / 4,
           bottom: buttons?.isEmpty ?? true
-              ? LunaUI.DEFAULT_MARGIN_SIZE - LunaUI.DEFAULT_MARGIN_SIZE / 4
+              ? ArrPilotUI.DEFAULT_MARGIN_SIZE - ArrPilotUI.DEFAULT_MARGIN_SIZE / 4
               : 0,
         ),
       ),
@@ -46,8 +46,8 @@ class LunaTableCard extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(
-              horizontal: LunaUI.DEFAULT_MARGIN_SIZE),
-          child: LunaText.title(text: title!),
+              horizontal: ArrPilotUI.DEFAULT_MARGIN_SIZE),
+          child: ArrPilotText.title(text: title!),
         ),
       ],
     );
@@ -58,7 +58,7 @@ class LunaTableCard extends StatelessWidget {
         .map((child) => Padding(
               child: child,
               padding: const EdgeInsets.symmetric(
-                horizontal: LunaUI.DEFAULT_MARGIN_SIZE / 2,
+                horizontal: ArrPilotUI.DEFAULT_MARGIN_SIZE / 2,
               ),
             ))
         .toList();
@@ -72,8 +72,8 @@ class LunaTableCard extends StatelessWidget {
             buttons!.map<Widget>((button) => Expanded(child: button)).toList(),
       ),
       padding: const EdgeInsets.only(
-        top: LunaUI.DEFAULT_MARGIN_SIZE / 2 - LunaUI.DEFAULT_MARGIN_SIZE / 4,
-        bottom: LunaUI.DEFAULT_MARGIN_SIZE / 2,
+        top: ArrPilotUI.DEFAULT_MARGIN_SIZE / 2 - ArrPilotUI.DEFAULT_MARGIN_SIZE / 4,
+        bottom: ArrPilotUI.DEFAULT_MARGIN_SIZE / 2,
       ),
     );
   }

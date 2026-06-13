@@ -53,7 +53,7 @@ import 'package:arrpilot/router/routes.dart';
 import 'package:arrpilot/types/log_type.dart';
 import 'package:arrpilot/vendor.dart';
 
-enum SettingsRoutes with LunaRoutesMixin {
+enum SettingsRoutes with ArrPilotRoutesMixin {
   HOME('/settings'),
   CONFIGURATION('configuration'),
   CONFIGURATION_GENERAL('general'),
@@ -108,7 +108,7 @@ enum SettingsRoutes with LunaRoutesMixin {
   const SettingsRoutes(this.path);
 
   @override
-  LunaModule get module => LunaModule.SETTINGS;
+  ArrPilotModule get module => ArrPilotModule.SETTINGS;
 
   @override
   bool isModuleEnabled(BuildContext context) => true;
@@ -191,7 +191,7 @@ enum SettingsRoutes with LunaRoutesMixin {
         return route(widget: const ConfigurationSearchAddIndexerRoute());
       case SettingsRoutes.CONFIGURATION_SEARCH_ADD_INDEXER_HEADERS:
         return route(builder: (_, state) {
-          final indexer = state.extra as LunaIndexer?;
+          final indexer = state.extra as ArrPilotIndexer?;
           return ConfigurationSearchAddIndexerHeadersRoute(indexer: indexer);
         });
       case SettingsRoutes.CONFIGURATION_SEARCH_EDIT_INDEXER:
@@ -238,7 +238,7 @@ enum SettingsRoutes with LunaRoutesMixin {
         return route(widget: const SystemLogsRoute());
       case SettingsRoutes.SYSTEM_LOGS_DETAILS:
         return route(builder: (_, state) {
-          final type = LunaLogType.fromKey(state.pathParameters['type']!);
+          final type = ArrPilotLogType.fromKey(state.pathParameters['type']!);
           return SystemLogsDetailsRoute(type: type);
         });
     }

@@ -1,12 +1,12 @@
 import 'package:arrpilot/database/table.dart';
 import 'package:arrpilot/modules.dart';
 
-enum BIOSDatabase<T> with LunaTableMixin<T> {
-  BOOT_MODULE<LunaModule>(LunaModule.DASHBOARD),
+enum BIOSDatabase<T> with ArrPilotTableMixin<T> {
+  BOOT_MODULE<ArrPilotModule>(ArrPilotModule.DASHBOARD),
   FIRST_BOOT<bool>(true);
 
   @override
-  LunaTable get table => LunaTable.bios;
+  ArrPilotTable get table => ArrPilotTable.bios;
 
   @override
   final T fallback;
@@ -31,7 +31,7 @@ enum BIOSDatabase<T> with LunaTableMixin<T> {
 
     switch (db) {
       case BIOSDatabase.BOOT_MODULE:
-        result = LunaModule.fromKey(value.toString());
+        result = ArrPilotModule.fromKey(value.toString());
         break;
       default:
         result = value;

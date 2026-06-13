@@ -23,15 +23,15 @@ class TautulliBarGraphHelper {
                   0, (value, data) => value + data.data![cIndex]!),
               width: BAR_WIDTH,
               borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(LunaUI.BORDER_RADIUS / 3),
-                topRight: Radius.circular(LunaUI.BORDER_RADIUS / 3),
+                topLeft: Radius.circular(ArrPilotUI.BORDER_RADIUS / 3),
+                topRight: Radius.circular(ArrPilotUI.BORDER_RADIUS / 3),
               ),
               rodStackItems: List<BarChartRodStackItem>.generate(
                 data.series!.length,
                 (sIndex) => BarChartRodStackItem(
                   _fromY(cIndex, sIndex, data.series!),
                   _toY(cIndex, sIndex, data.series!),
-                  LunaColours().byGraphLayer(sIndex),
+                  ArrPilotColours().byGraphLayer(sIndex),
                 ),
               ),
             ),
@@ -45,8 +45,8 @@ class TautulliBarGraphHelper {
         enabled: true,
         touchTooltipData: BarTouchTooltipData(
           getTooltipColor: (_) =>
-              LunaTheme.isAMOLEDTheme ? Colors.black : LunaColours.primary,
-          tooltipRoundedRadius: LunaUI.BORDER_RADIUS,
+              ArrPilotTheme.isAMOLEDTheme ? Colors.black : ArrPilotColours.primary,
+          tooltipRoundedRadius: ArrPilotUI.BORDER_RADIUS,
           tooltipPadding: const EdgeInsets.all(8.0),
           maxContentWidth: MediaQuery.of(context).size.width / 1.25,
           fitInsideVertically: true,
@@ -67,8 +67,8 @@ class TautulliBarGraphHelper {
             return BarTooltipItem(
               (_header + _body).trim(),
               const TextStyle(
-                color: LunaColours.grey,
-                fontSize: LunaUI.FONT_SIZE_SUBHEADER,
+                color: ArrPilotColours.grey,
+                fontSize: ArrPilotUI.FONT_SIZE_SUBHEADER,
               ),
             );
           },

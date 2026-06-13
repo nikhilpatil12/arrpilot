@@ -21,16 +21,16 @@ class SonarrUpcomingTile extends StatefulWidget {
 class _State extends State<SonarrUpcomingTile> {
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       backgroundUrl:
           context.read<SonarrState>().getFanartURL(widget.record.seriesId),
       posterUrl:
           context.read<SonarrState>().getPosterURL(widget.record.seriesId),
       posterHeaders: context.read<SonarrState>().headers,
-      posterPlaceholderIcon: LunaIcons.VIDEO_CAM,
+      posterPlaceholderIcon: ArrPilotIcons.VIDEO_CAM,
       title: widget.record.series?.title ??
           widget.series?.title ??
-          LunaUI.TEXT_EMDASH,
+          ArrPilotUI.TEXT_EMDASH,
       body: [
         _subtitle1(),
         _subtitle2(),
@@ -43,7 +43,7 @@ class _State extends State<SonarrUpcomingTile> {
     );
   }
 
-  Widget _trailing() => LunaIconButton(
+  Widget _trailing() => ArrPilotIconButton(
         text: widget.record.lunaAirTime,
         onPressed: _trailingOnPressed,
         onLongPress: _trailingOnLongPress,
@@ -56,7 +56,7 @@ class _State extends State<SonarrUpcomingTile> {
             text: widget.record.seasonNumber == 0
                 ? 'Specials'
                 : 'Season ${widget.record.seasonNumber}'),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: 'Episode ${widget.record.episodeNumber}'),
       ],
     );
@@ -73,13 +73,13 @@ class _State extends State<SonarrUpcomingTile> {
 
   TextSpan _subtitle3() {
     Color color = widget.record.hasFile!
-        ? LunaColours.accent
+        ? ArrPilotColours.accent
         : widget.record.lunaHasAired
-            ? LunaColours.red
-            : LunaColours.blue;
+            ? ArrPilotColours.red
+            : ArrPilotColours.blue;
     return TextSpan(
       style: TextStyle(
-        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         color: color,
       ),
       children: [
@@ -117,7 +117,7 @@ class _State extends State<SonarrUpcomingTile> {
               message: widget.record.title,
             ))
         .catchError((error, stack) {
-          LunaLogger().error(
+          ArrPilotLogger().error(
               'Failed to search for episode: ${widget.record.id}',
               error,
               stack);

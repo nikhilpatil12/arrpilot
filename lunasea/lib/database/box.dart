@@ -8,16 +8,16 @@ import 'package:arrpilot/database/table.dart';
 import 'package:arrpilot/system/logger.dart';
 import 'package:arrpilot/vendor.dart';
 
-enum LunaBox<T> {
+enum ArrPilotBox<T> {
   alerts<dynamic>('alerts'),
-  externalModules<LunaExternalModule>('external_modules'),
-  indexers<LunaIndexer>('indexers'),
-  logs<LunaLog>('logs'),
+  externalModules<ArrPilotExternalModule>('external_modules'),
+  indexers<ArrPilotIndexer>('indexers'),
+  logs<ArrPilotLog>('logs'),
   lunasea<dynamic>('lunasea'),
-  profiles<LunaProfile>('profiles');
+  profiles<ArrPilotProfile>('profiles');
 
   final String key;
-  const LunaBox(this.key);
+  const ArrPilotBox(this.key);
 
   Box<T> get _instance => Hive.box<T>(key);
 
@@ -28,7 +28,7 @@ enum LunaBox<T> {
   bool get isEmpty => _instance.isEmpty;
 
   static Future<void> open() async {
-    for (final box in LunaBox.values) await box._open();
+    for (final box in ArrPilotBox.values) await box._open();
   }
 
   T? read(dynamic key, {T? fallback}) {
@@ -74,7 +74,7 @@ enum LunaBox<T> {
   ValueListenableBuilder listenableBuilder({
     required Widget Function(BuildContext, Widget?) builder,
     List<dynamic>? selectKeys,
-    List<LunaTableMixin>? selectItems,
+    List<ArrPilotTableMixin>? selectItems,
     Key? key,
     Widget? child,
   }) {
@@ -90,7 +90,7 @@ enum LunaBox<T> {
   }
 }
 
-extension LunaBoxExtension on LunaBox {
+extension ArrPilotBoxExtension on ArrPilotBox {
   /// This only works for boxes that are typed specifically for a hive object
   /// Should be improved to actually support every box.
   List<Map<String, dynamic>> export() {
@@ -99,7 +99,7 @@ extension LunaBoxExtension on LunaBox {
           .map<Map<String, dynamic>>((k) => _instance.get(k)!.toJson())
           .toList();
     } catch (error, stack) {
-      LunaLogger().error('Failed to export LunaBox', error, stack);
+      ArrPilotLogger().error('Failed to export ArrPilotBox', error, stack);
       return [];
     }
   }

@@ -16,7 +16,7 @@ class SwitchViewAction extends StatefulWidget {
   State<StatefulWidget> createState() => _State();
 }
 
-class _State extends State<SwitchViewAction> with LunaLoadCallbackMixin {
+class _State extends State<SwitchViewAction> with ArrPilotLoadCallbackMixin {
   bool _showButton = false;
 
   @override
@@ -47,7 +47,7 @@ class _State extends State<SwitchViewAction> with LunaLoadCallbackMixin {
       selector: (_, state) => state.calendarType,
       builder: (context, view, _) {
         if (_showButton) {
-          return LunaIconButton.appBar(
+          return ArrPilotIconButton.appBar(
             icon: view.icon,
             onPressed: () {
               final state = context.read<DashboardState>();

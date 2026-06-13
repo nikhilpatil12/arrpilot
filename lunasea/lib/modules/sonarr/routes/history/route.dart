@@ -12,7 +12,7 @@ class HistoryRoute extends StatefulWidget {
 }
 
 class _State extends State<HistoryRoute>
-    with LunaScrollControllerMixin, LunaLoadCallbackMixin {
+    with ArrPilotScrollControllerMixin, ArrPilotLoadCallbackMixin {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _refreshKey = GlobalKey<RefreshIndicatorState>();
   final _pagingController =
@@ -47,7 +47,7 @@ class _State extends State<HistoryRoute>
       }
       return _pagingController.appendLastPage(data.records!);
     }).catchError((error, stack) {
-      LunaLogger().error(
+      ArrPilotLogger().error(
         'Unable to fetch Sonarr history page: $pageKey',
         error,
         stack,
@@ -58,7 +58,7 @@ class _State extends State<HistoryRoute>
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -66,7 +66,7 @@ class _State extends State<HistoryRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'sonarr.History'.tr(),
       scrollControllers: [scrollController],
     );
@@ -78,22 +78,22 @@ class _State extends State<HistoryRoute>
       builder: (context, AsyncSnapshot<Map<int, SonarrSeries>> snapshot) {
         if (snapshot.hasError) {
           if (snapshot.connectionState != ConnectionState.waiting) {
-            LunaLogger().error(
+            ArrPilotLogger().error(
               'Unable to fetch Sonarr series',
               snapshot.error,
               snapshot.stackTrace,
             );
           }
-          return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+          return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
         }
         if (snapshot.hasData) return _list(snapshot.data);
-        return const LunaLoader();
+        return const ArrPilotLoader();
       },
     );
   }
 
   Widget _list(Map<int, SonarrSeries>? series) {
-    return LunaPagedListView<SonarrHistoryRecord>(
+    return ArrPilotPagedListView<SonarrHistoryRecord>(
       refreshKey: _refreshKey,
       pagingController: _pagingController,
       scrollController: scrollController,

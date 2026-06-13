@@ -20,7 +20,7 @@ class NZBGetHistoryTile extends StatefulWidget {
 class _State extends State<NZBGetHistoryTile> {
   @override
   Widget build(BuildContext context) {
-    return LunaExpandableListTile(
+    return ArrPilotExpandableListTile(
       title: widget.data.name,
       collapsedSubtitles: [
         _subtitle1(),
@@ -37,9 +37,9 @@ class _State extends State<NZBGetHistoryTile> {
     return TextSpan(
       children: [
         TextSpan(text: widget.data.completeTime),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: widget.data.sizeReadable),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(
             text: (widget.data.category ?? '').isEmpty
                 ? 'No Category'
@@ -53,44 +53,44 @@ class _State extends State<NZBGetHistoryTile> {
       text: widget.data.statusString,
       style: TextStyle(
         color: widget.data.statusColor,
-        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
       ),
     );
   }
 
-  List<LunaHighlightedNode> _expandedHighlightedNodes() {
+  List<ArrPilotHighlightedNode> _expandedHighlightedNodes() {
     return [
-      LunaHighlightedNode(
+      ArrPilotHighlightedNode(
         text: widget.data.statusString,
         backgroundColor: widget.data.statusColor,
       ),
-      LunaHighlightedNode(
+      ArrPilotHighlightedNode(
         text: widget.data.healthString,
-        backgroundColor: LunaColours.blueGrey,
+        backgroundColor: ArrPilotColours.blueGrey,
       )
     ];
   }
 
-  List<LunaTableContent> _expandedTableContent() {
+  List<ArrPilotTableContent> _expandedTableContent() {
     return [
-      LunaTableContent(title: 'age', body: widget.data.completeTime),
-      LunaTableContent(title: 'size', body: widget.data.sizeReadable),
-      LunaTableContent(
+      ArrPilotTableContent(title: 'age', body: widget.data.completeTime),
+      ArrPilotTableContent(title: 'size', body: widget.data.sizeReadable),
+      ArrPilotTableContent(
           title: 'category',
           body: (widget.data.category ?? '').isEmpty
               ? 'No Category'
               : widget.data.category),
-      LunaTableContent(title: 'speed', body: widget.data.downloadSpeed),
-      LunaTableContent(title: 'path', body: widget.data.storageLocation),
+      ArrPilotTableContent(title: 'speed', body: widget.data.downloadSpeed),
+      ArrPilotTableContent(title: 'path', body: widget.data.storageLocation),
     ];
   }
 
-  List<LunaButton> _expandedTableButtons() {
+  List<ArrPilotButton> _expandedTableButtons() {
     return [
-      LunaButton.text(
+      ArrPilotButton.text(
         text: 'Delete',
         icon: Icons.delete_rounded,
-        color: LunaColours.red,
+        color: ArrPilotColours.red,
         onTap: () async => _deleteButton(),
       ),
     ];
@@ -103,7 +103,7 @@ class _State extends State<NZBGetHistoryTile> {
       switch (values[1]) {
         case 'retry':
           {
-            await NZBGetAPI.from(LunaProfile.current)
+            await NZBGetAPI.from(ArrPilotProfile.current)
                 .retryHistoryEntry(widget.data.id)
                 .then((_) {
               widget.refresh();
@@ -120,7 +120,7 @@ class _State extends State<NZBGetHistoryTile> {
             break;
           }
         case 'hide':
-          await NZBGetAPI.from(LunaProfile.current)
+          await NZBGetAPI.from(ArrPilotProfile.current)
               .deleteHistoryEntry(widget.data.id, hide: true)
               .then((_) => _handleDelete('History Hidden'))
               .catchError((error) => showLunaErrorSnackBar(
@@ -129,7 +129,7 @@ class _State extends State<NZBGetHistoryTile> {
                   ));
           break;
         case 'delete':
-          await NZBGetAPI.from(LunaProfile.current)
+          await NZBGetAPI.from(ArrPilotProfile.current)
               .deleteHistoryEntry(widget.data.id, hide: true)
               .then((_) => _handleDelete('History Deleted'))
               .catchError((error) => showLunaErrorSnackBar(
@@ -142,7 +142,7 @@ class _State extends State<NZBGetHistoryTile> {
   Future<void> _deleteButton() async {
     List<dynamic> values = await NZBGetDialogs.deleteHistory(context);
     if (values[0])
-      await NZBGetAPI.from(LunaProfile.current)
+      await NZBGetAPI.from(ArrPilotProfile.current)
           .deleteHistoryEntry(
             widget.data.id,
             hide: values[1],

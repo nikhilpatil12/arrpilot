@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaGridViewBuilder extends StatelessWidget {
+class ArrPilotGridViewBuilder extends StatelessWidget {
   final int itemCount;
   final Widget Function(BuildContext, int) itemBuilder;
   final double? itemExtent;
@@ -10,7 +10,7 @@ class LunaGridViewBuilder extends StatelessWidget {
   final ScrollController controller;
   final SliverGridDelegate sliverGridDelegate;
 
-  const LunaGridViewBuilder({
+  const ArrPilotGridViewBuilder({
     Key? key,
     required this.itemCount,
     required this.itemBuilder,
@@ -39,6 +39,6 @@ class LunaGridViewBuilder extends StatelessWidget {
   }
 
   EdgeInsets _defaultPadding(BuildContext context) {
-    return MediaQuery.of(context).padding.add(LunaUI.MARGIN_HALF) as EdgeInsets;
+    return MediaQuery.of(context).padding.add(ArrPilotUI.MARGIN_HALF) as EdgeInsets;
   }
 }

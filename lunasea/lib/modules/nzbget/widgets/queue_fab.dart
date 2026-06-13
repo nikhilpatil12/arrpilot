@@ -40,14 +40,14 @@ class _State extends State<NZBGetQueueFAB> with TickerProviderStateMixin {
   void _setupIconController() {
     _iconController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: LunaUI.ANIMATION_SPEED),
+      duration: const Duration(milliseconds: ArrPilotUI.ANIMATION_SPEED),
     );
   }
 
   void _setupHideController() {
     _hideController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: LunaUI.ANIMATION_SPEED),
+      duration: const Duration(milliseconds: ArrPilotUI.ANIMATION_SPEED),
     );
     _hideController.forward();
     widget.scrollController.addListener(scrollControllerListener);
@@ -84,7 +84,7 @@ class _State extends State<NZBGetQueueFAB> with TickerProviderStateMixin {
                 : ScaleTransition(
                     scale: _hideController,
                     child: InkWell(
-                      child: LunaFloatingActionButtonAnimated(
+                      child: ArrPilotFloatingActionButtonAnimated(
                         controller: _iconController,
                         icon: AnimatedIcons.pause_play,
                         onPressed: () => _toggle(context, data.item2),
@@ -97,7 +97,7 @@ class _State extends State<NZBGetQueueFAB> with TickerProviderStateMixin {
 
   Future<void> _toggle(BuildContext context, bool paused) async {
     HapticFeedback.lightImpact();
-    NZBGetAPI _api = NZBGetAPI.from(LunaProfile.current);
+    NZBGetAPI _api = NZBGetAPI.from(ArrPilotProfile.current);
     paused ? _resume(context, _api) : _pause(context, _api);
   }
 
@@ -108,7 +108,7 @@ class _State extends State<NZBGetQueueFAB> with TickerProviderStateMixin {
       if (values[1] == -1) {
         List values = await NZBGetDialogs.customPauseFor(context);
         if (values[0])
-          await NZBGetAPI.from(LunaProfile.current)
+          await NZBGetAPI.from(ArrPilotProfile.current)
               .pauseQueueFor(values[1])
               .then((_) => showLunaSuccessSnackBar(
                     title: 'Pausing Queue',
@@ -120,7 +120,7 @@ class _State extends State<NZBGetQueueFAB> with TickerProviderStateMixin {
                     error: error,
                   ));
       } else {
-        await NZBGetAPI.from(LunaProfile.current)
+        await NZBGetAPI.from(ArrPilotProfile.current)
             .pauseQueueFor(values[1])
             .then((_) => showLunaSuccessSnackBar(
                   title: 'Pausing Queue',

@@ -1,15 +1,15 @@
 import 'package:arrpilot/types/log_type.dart';
 
-abstract class LunaException implements Exception {
-  LunaLogType get type;
+abstract class ArrPilotException implements Exception {
+  ArrPilotLogType get type;
 }
 
-mixin WarningExceptionMixin implements LunaException {
+mixin WarningExceptionMixin implements ArrPilotException {
   @override
-  LunaLogType get type => LunaLogType.WARNING;
+  ArrPilotLogType get type => ArrPilotLogType.WARNING;
 }
 
-mixin ErrorExceptionMixin implements LunaException {
+mixin ErrorExceptionMixin implements ArrPilotException {
   @override
-  LunaLogType get type => LunaLogType.ERROR;
+  ArrPilotLogType get type => ArrPilotLogType.ERROR;
 }

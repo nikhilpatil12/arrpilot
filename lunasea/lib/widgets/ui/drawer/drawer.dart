@@ -2,53 +2,53 @@ import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 import 'package:arrpilot/api/wake_on_lan/wake_on_lan.dart';
 
-class LunaDrawer extends StatelessWidget {
+class ArrPilotDrawer extends StatelessWidget {
   final String page;
 
-  const LunaDrawer({
+  const ArrPilotDrawer({
     Key? key,
     required this.page,
   }) : super(key: key);
 
-  static List<LunaModule> moduleAlphabeticalList() {
-    return LunaModule.active
+  static List<ArrPilotModule> moduleAlphabeticalList() {
+    return ArrPilotModule.active
       ..sort((a, b) => a.title.toLowerCase().compareTo(b.title.toLowerCase()));
   }
 
-  static List<LunaModule> moduleOrderedList() {
+  static List<ArrPilotModule> moduleOrderedList() {
     try {
-      const db = LunaSeaDatabase.DRAWER_MANUAL_ORDER;
+      const db = ArrPilotDatabase.DRAWER_MANUAL_ORDER;
       final modules = List.from(db.read());
-      final missing = LunaModule.active;
+      final missing = ArrPilotModule.active;
 
       missing.retainWhere((m) => !modules.contains(m));
       modules.addAll(missing);
-      modules.retainWhere((m) => (m as LunaModule).featureFlag);
+      modules.retainWhere((m) => (m as ArrPilotModule).featureFlag);
 
-      return modules.cast<LunaModule>();
+      return modules.cast<ArrPilotModule>();
     } catch (error, stack) {
-      LunaLogger().error('Failed to create ordered module list', error, stack);
+      ArrPilotLogger().error('Failed to create ordered module list', error, stack);
       return moduleAlphabeticalList();
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return LunaSeaDatabase.ENABLED_PROFILE.listenableBuilder(
-      builder: (context, _) => LunaBox.indexers.listenableBuilder(
+    return ArrPilotDatabase.ENABLED_PROFILE.listenableBuilder(
+      builder: (context, _) => ArrPilotBox.indexers.listenableBuilder(
         builder: (context, _) => Drawer(
-          elevation: LunaUI.ELEVATION,
+          elevation: ArrPilotUI.ELEVATION,
           backgroundColor: Theme.of(context).primaryColor,
-          child: LunaSeaDatabase.DRAWER_AUTOMATIC_MANAGE.listenableBuilder(
+          child: ArrPilotDatabase.DRAWER_AUTOMATIC_MANAGE.listenableBuilder(
             builder: (context, _) => Column(
               children: [
-                LunaDrawerHeader(page: page),
+                ArrPilotDrawerHeader(page: page),
                 Expanded(
-                  child: LunaListView(
+                  child: ArrPilotListView(
                     controller: PrimaryScrollController.of(context),
                     children: _moduleList(
                       context,
-                      LunaSeaDatabase.DRAWER_AUTOMATIC_MANAGE.read()
+                      ArrPilotDatabase.DRAWER_AUTOMATIC_MANAGE.read()
                           ? moduleAlphabeticalList()
                           : moduleOrderedList(),
                     ),
@@ -68,12 +68,12 @@ class LunaDrawer extends StatelessWidget {
     return [
       _buildEntry(
         context: context,
-        module: LunaModule.DASHBOARD,
+        module: ArrPilotModule.DASHBOARD,
       ),
     ];
   }
 
-  List<Widget> _moduleList(BuildContext context, List<LunaModule> modules) {
+  List<Widget> _moduleList(BuildContext context, List<ArrPilotModule> modules) {
     return <Widget>[
       ..._sharedHeader(context),
       ...modules.map((module) {
@@ -81,7 +81,7 @@ class LunaDrawer extends StatelessWidget {
           return _buildEntry(
             context: context,
             module: module,
-            onTap: module == LunaModule.WAKE_ON_LAN ? _wakeOnLAN : null,
+            onTap: module == ArrPilotModule.WAKE_ON_LAN ? _wakeOnLAN : null,
           );
         }
         return const SizedBox(height: 0.0);
@@ -91,12 +91,12 @@ class LunaDrawer extends StatelessWidget {
 
   Widget _buildEntry({
     required BuildContext context,
-    required LunaModule module,
+    required ArrPilotModule module,
     void Function()? onTap,
   }) {
     bool currentPage = page == module.key.toLowerCase();
     return SizedBox(
-      height: LunaTextInputBar.defaultAppBarHeight,
+      height: ArrPilotTextInputBar.defaultAppBarHeight,
       child: InkWell(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -104,15 +104,15 @@ class LunaDrawer extends StatelessWidget {
             Padding(
               child: Icon(
                 module.icon,
-                color: currentPage ? module.color : LunaColours.white,
+                color: currentPage ? module.color : ArrPilotColours.white,
               ),
-              padding: LunaUI.MARGIN_DEFAULT_HORIZONTAL * 1.5,
+              padding: ArrPilotUI.MARGIN_DEFAULT_HORIZONTAL * 1.5,
             ),
             Text(
               module.title,
               style: TextStyle(
-                color: currentPage ? module.color : LunaColours.white,
-                fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+                color: currentPage ? module.color : ArrPilotColours.white,
+                fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
               ),
             ),
           ],
@@ -126,5 +126,5 @@ class LunaDrawer extends StatelessWidget {
     );
   }
 
-  Future<void> _wakeOnLAN() async => LunaWakeOnLAN().wake();
+  Future<void> _wakeOnLAN() async => ArrPilotWakeOnLAN().wake();
 }

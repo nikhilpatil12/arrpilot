@@ -12,7 +12,7 @@ class SonarrMissingRoute extends StatefulWidget {
 }
 
 class _State extends State<SonarrMissingRoute>
-    with AutomaticKeepAliveClientMixin, LunaLoadCallbackMixin {
+    with AutomaticKeepAliveClientMixin, ArrPilotLoadCallbackMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -30,15 +30,15 @@ class _State extends State<SonarrMissingRoute>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      module: LunaModule.SONARR,
+      module: ArrPilotModule.SONARR,
       body: _body(),
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: loadCallback,
@@ -50,20 +50,20 @@ class _State extends State<SonarrMissingRoute>
           builder: (context, AsyncSnapshot<List<Object>> snapshot) {
             if (snapshot.hasError) {
               if (snapshot.connectionState != ConnectionState.waiting) {
-                LunaLogger().error(
+                ArrPilotLogger().error(
                   'Unable to fetch Sonarr missing episodes',
                   snapshot.error,
                   snapshot.stackTrace,
                 );
               }
-              return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+              return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
             }
             if (snapshot.hasData)
               return _episodes(
                 snapshot.data![0] as Map<int, SonarrSeries>,
                 snapshot.data![1] as SonarrMissing,
               );
-            return const LunaLoader();
+            return const ArrPilotLoader();
           },
         ),
       ),
@@ -72,12 +72,12 @@ class _State extends State<SonarrMissingRoute>
 
   Widget _episodes(Map<int, SonarrSeries> series, SonarrMissing missing) {
     if ((missing.records?.length ?? 0) == 0)
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'sonarr.NoEpisodesFound'.tr(),
         buttonText: 'lunasea.Refresh'.tr(),
         onTap: _refreshKey.currentState?.show,
       );
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: SonarrNavigationBar.scrollControllers[2],
       itemCount: missing.records!.length,
       itemExtent: SonarrMissingTile.itemExtent,

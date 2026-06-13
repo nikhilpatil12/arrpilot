@@ -12,7 +12,7 @@ class TautulliCheckForUpdatesTautulliTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'Tautulli',
       body: _subtitle(),
       trailing: _trailing(),
@@ -22,9 +22,9 @@ class TautulliCheckForUpdatesTautulliTile extends StatelessWidget {
   Widget _trailing() {
     return Column(
       children: [
-        LunaIconButton(
-          icon: LunaIcons.TAUTULLI,
-          color: LunaColours().byListIndex(1),
+        ArrPilotIconButton(
+          icon: ArrPilotIcons.TAUTULLI,
+          color: ArrPilotColours().byListIndex(1),
         ),
       ],
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -38,16 +38,16 @@ class TautulliCheckForUpdatesTautulliTile extends StatelessWidget {
         const TextSpan(
           text: 'No Updates Available',
           style: TextStyle(
-            color: LunaColours.accent,
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+            color: ArrPilotColours.accent,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
           ),
         ),
       if (update.update ?? false)
         const TextSpan(
           text: 'Update Available',
           style: TextStyle(
-            color: LunaColours.orange,
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+            color: ArrPilotColours.orange,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
           ),
         ),
       if (update.update ?? false)
@@ -79,7 +79,7 @@ class TautulliCheckForUpdatesTautulliTile extends StatelessWidget {
           ],
         ),
       TextSpan(
-          text: 'Install Type: ${update.installType ?? LunaUI.TEXT_EMDASH}'),
+          text: 'Install Type: ${update.installType ?? ArrPilotUI.TEXT_EMDASH}'),
     ];
   }
 }

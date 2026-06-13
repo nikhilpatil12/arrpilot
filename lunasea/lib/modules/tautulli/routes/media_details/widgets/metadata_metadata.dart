@@ -14,56 +14,56 @@ class TautulliMediaDetailsMetadataMetadata extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaTableCard(
+    return ArrPilotTableCard(
       content: [
         if (metadata!.originallyAvailableAt != null &&
             metadata!.originallyAvailableAt!.isNotEmpty)
-          LunaTableContent(
+          ArrPilotTableContent(
             title: 'released',
             body: metadata!.originallyAvailableAt,
           ),
         if (metadata!.addedAt != null)
-          LunaTableContent(
+          ArrPilotTableContent(
             title: 'added',
             body: metadata!.addedAt!.asPoleDate(),
           ),
         if (metadata!.duration != null)
-          LunaTableContent(
+          ArrPilotTableContent(
             title: 'duration',
             body: metadata!.duration!.asNumberTimestamp(),
           ),
         if (metadata?.mediaInfo?.isNotEmpty ?? false)
-          LunaTableContent(
+          ArrPilotTableContent(
             title: 'bitrate',
             body:
-                '${metadata!.mediaInfo![0].bitrate ?? LunaUI.TEXT_EMDASH} kbps',
+                '${metadata!.mediaInfo![0].bitrate ?? ArrPilotUI.TEXT_EMDASH} kbps',
           ),
         if (metadata!.rating != null)
-          LunaTableContent(
+          ArrPilotTableContent(
               title: 'rating',
               body: '${(((metadata?.rating ?? 0) * 10).truncate())}%'),
         if (metadata!.studio != null && metadata!.studio!.isNotEmpty)
-          LunaTableContent(
+          ArrPilotTableContent(
             title: 'studio',
             body: metadata!.studio,
           ),
         if (metadata?.genres?.isNotEmpty ?? false)
-          LunaTableContent(
+          ArrPilotTableContent(
             title: 'genres',
             body: metadata!.genres!.take(5).join('\n'),
           ),
         if (metadata?.directors?.isNotEmpty ?? false)
-          LunaTableContent(
+          ArrPilotTableContent(
             title: 'directors',
             body: metadata!.directors!.take(5).join('\n'),
           ),
         if (metadata?.writers?.isNotEmpty ?? false)
-          LunaTableContent(
+          ArrPilotTableContent(
             title: 'writers',
             body: metadata!.writers!.take(5).join('\n'),
           ),
         if (metadata?.actors?.isNotEmpty ?? false)
-          LunaTableContent(
+          ArrPilotTableContent(
             title: 'actors',
             body: metadata!.actors!.take(5).join('\n'),
           ),

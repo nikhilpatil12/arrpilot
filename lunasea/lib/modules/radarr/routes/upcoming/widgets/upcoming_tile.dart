@@ -6,7 +6,7 @@ import 'package:arrpilot/modules/radarr.dart';
 import 'package:arrpilot/router/routes/radarr.dart';
 
 class RadarrUpcomingTile extends StatefulWidget {
-  static final itemExtent = LunaBlock.calculateItemExtent(3);
+  static final itemExtent = ArrPilotBlock.calculateItemExtent(3);
 
   final RadarrMovie movie;
   final RadarrQualityProfile? profile;
@@ -27,7 +27,7 @@ class _State extends State<RadarrUpcomingTile> {
     return Selector<RadarrState, Future<List<RadarrMovie>>?>(
       selector: (_, state) => state.missing,
       builder: (context, missing, _) {
-        return LunaBlock(
+        return ArrPilotBlock(
           title: widget.movie.title,
           body: [
             _subtitle1(),
@@ -38,7 +38,7 @@ class _State extends State<RadarrUpcomingTile> {
           backgroundUrl:
               context.read<RadarrState>().getFanartURL(widget.movie.id),
           posterHeaders: context.read<RadarrState>().headers,
-          posterPlaceholderIcon: LunaIcons.VIDEO_CAM,
+          posterPlaceholderIcon: ArrPilotIcons.VIDEO_CAM,
           posterIsSquare: false,
           posterUrl: context.read<RadarrState>().getPosterURL(widget.movie.id),
           onTap: _onTap,
@@ -52,9 +52,9 @@ class _State extends State<RadarrUpcomingTile> {
     return TextSpan(
       children: [
         TextSpan(text: widget.movie.lunaYear),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: widget.movie.lunaRuntime),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: widget.movie.lunaStudio),
       ],
     );
@@ -64,9 +64,9 @@ class _State extends State<RadarrUpcomingTile> {
     return TextSpan(
       children: [
         TextSpan(text: widget.profile!.lunaName),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: widget.movie.lunaMinimumAvailability),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: widget.movie.lunaReleaseDate),
       ],
     );
@@ -77,21 +77,21 @@ class _State extends State<RadarrUpcomingTile> {
     String? _days;
     String type;
     if (widget.movie.lunaIsInCinemas && !widget.movie.lunaIsReleased) {
-      color = LunaColours.blue;
+      color = ArrPilotColours.blue;
       _days = widget.movie.lunaEarlierReleaseDate?.asDaysDifference();
       type = 'release';
     } else if (!widget.movie.lunaIsInCinemas && !widget.movie.lunaIsReleased) {
-      color = LunaColours.orange;
+      color = ArrPilotColours.orange;
       _days = widget.movie.inCinemas?.asDaysDifference();
       type = 'cinema';
     } else {
-      color = LunaColours.grey;
-      _days = LunaUI.TEXT_EMDASH;
+      color = ArrPilotColours.grey;
+      _days = ArrPilotUI.TEXT_EMDASH;
       type = 'unknown';
     }
     return TextSpan(
       style: TextStyle(
-        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         color: color,
       ),
       children: [
@@ -116,8 +116,8 @@ class _State extends State<RadarrUpcomingTile> {
     );
   }
 
-  LunaIconButton _trailing() {
-    return LunaIconButton(
+  ArrPilotIconButton _trailing() {
+    return ArrPilotIconButton(
       icon: Icons.search_rounded,
       onPressed: () async => RadarrAPIHelper().automaticSearch(
         context: context,

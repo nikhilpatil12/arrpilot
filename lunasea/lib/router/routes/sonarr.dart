@@ -15,7 +15,7 @@ import 'package:arrpilot/modules/sonarr/routes/tags/route.dart';
 import 'package:arrpilot/router/routes.dart';
 import 'package:arrpilot/vendor.dart';
 
-enum SonarrRoutes with LunaRoutesMixin {
+enum SonarrRoutes with ArrPilotRoutesMixin {
   HOME('/sonarr'),
   ADD_SERIES('add_series'),
   ADD_SERIES_DETAILS('details'),
@@ -33,7 +33,7 @@ enum SonarrRoutes with LunaRoutesMixin {
   const SonarrRoutes(this.path);
 
   @override
-  LunaModule get module => LunaModule.SONARR;
+  ArrPilotModule get module => ArrPilotModule.SONARR;
 
   @override
   bool isModuleEnabled(BuildContext context) {

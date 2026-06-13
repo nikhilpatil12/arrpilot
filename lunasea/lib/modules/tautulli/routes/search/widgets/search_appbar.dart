@@ -6,7 +6,7 @@ import 'package:arrpilot/modules/tautulli.dart';
 Widget TautulliSearchAppBar({
   required ScrollController scrollController,
 }) =>
-    LunaAppBar(
+    ArrPilotAppBar(
       title: 'Search',
       scrollControllers: [scrollController],
       bottom: _SearchBar(scrollController: scrollController),
@@ -22,7 +22,7 @@ class _SearchBar extends StatefulWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize =>
-      const Size.fromHeight(LunaTextInputBar.defaultAppBarHeight);
+      const Size.fromHeight(ArrPilotTextInputBar.defaultAppBarHeight);
 
   @override
   State<_SearchBar> createState() => _State();
@@ -45,7 +45,7 @@ class _State extends State<_SearchBar> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Expanded(
-                child: LunaTextInputBar(
+                child: ArrPilotTextInputBar(
                   controller: _controller,
                   scrollController: widget.scrollController,
                   autofocus: state.searchQuery.isEmpty,
@@ -55,12 +55,12 @@ class _State extends State<_SearchBar> {
                     if (value.isNotEmpty)
                       context.read<TautulliState>().fetchSearch();
                   },
-                  margin: LunaTextInputBar.appBarMargin,
+                  margin: ArrPilotTextInputBar.appBarMargin,
                 ),
               ),
             ],
           ),
-          height: LunaTextInputBar.defaultAppBarHeight,
+          height: ArrPilotTextInputBar.defaultAppBarHeight,
         ),
       );
 }

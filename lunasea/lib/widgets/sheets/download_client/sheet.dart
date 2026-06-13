@@ -8,20 +8,20 @@ import 'package:arrpilot/vendor.dart';
 import 'package:arrpilot/widgets/pages/invalid_route.dart';
 import 'package:arrpilot/widgets/ui.dart';
 
-class DownloadClientSheet extends LunaBottomModalSheet {
-  Future<LunaModule?> getDownloadClient() async {
-    final profile = LunaProfile.current;
+class DownloadClientSheet extends ArrPilotBottomModalSheet {
+  Future<ArrPilotModule?> getDownloadClient() async {
+    final profile = ArrPilotProfile.current;
     final nzbget = profile.nzbgetEnabled;
     final sabnzbd = profile.sabnzbdEnabled;
 
     if (nzbget && sabnzbd) {
-      return LunaDialogs().selectDownloadClient();
+      return ArrPilotDialogs().selectDownloadClient();
     }
     if (nzbget) {
-      return LunaModule.NZBGET;
+      return ArrPilotModule.NZBGET;
     }
     if (sabnzbd) {
-      return LunaModule.SABNZBD;
+      return ArrPilotModule.SABNZBD;
     }
 
     return null;
@@ -34,10 +34,10 @@ class DownloadClientSheet extends LunaBottomModalSheet {
     final module = await getDownloadClient();
     if (module != null) {
       return showModal(builder: (context) {
-        if (module == LunaModule.SABNZBD) {
+        if (module == ArrPilotModule.SABNZBD) {
           return const SABnzbdRoute(showDrawer: false);
         }
-        if (module == LunaModule.NZBGET) {
+        if (module == ArrPilotModule.NZBGET) {
           return const NZBGetRoute(showDrawer: false);
         }
         return InvalidRoutePage();

@@ -20,7 +20,7 @@ class SonarrAppBarSeriesSettingsAction extends StatelessWidget {
           if (snapshot.hasData) {
             SonarrSeries? series = snapshot.data![seriesId];
             if (series != null)
-              return LunaIconButton(
+              return ArrPilotIconButton(
                 icon: Icons.more_vert_rounded,
                 onPressed: () async {
                   Tuple2<bool, SonarrSeriesSettingsType?> values =

@@ -18,12 +18,12 @@ class RadarrCatalogueSearchBarFilterButton extends StatefulWidget {
 class _State extends State<RadarrCatalogueSearchBarFilterButton> {
   @override
   Widget build(BuildContext context) {
-    return LunaCard(
+    return ArrPilotCard(
       context: context,
       child: Consumer<RadarrState>(
-        builder: (context, state, _) => LunaPopupMenuButton<RadarrMoviesFilter>(
+        builder: (context, state, _) => ArrPilotPopupMenuButton<RadarrMoviesFilter>(
           tooltip: 'radarr.FilterCatalogue'.tr(),
-          icon: LunaIcons.FILTER,
+          icon: ArrPilotIcons.FILTER,
           onSelected: (result) {
             state.moviesFilterType = result;
             widget.controller.animateToStart();
@@ -36,10 +36,10 @@ class _State extends State<RadarrCatalogueSearchBarFilterButton> {
               child: Text(
                 RadarrMoviesFilter.values[index].readable,
                 style: TextStyle(
-                  fontSize: LunaUI.FONT_SIZE_H3,
+                  fontSize: ArrPilotUI.FONT_SIZE_H3,
                   color:
                       state.moviesFilterType == RadarrMoviesFilter.values[index]
-                          ? LunaColours.accent
+                          ? ArrPilotColours.accent
                           : Colors.white,
                 ),
               ),
@@ -47,9 +47,9 @@ class _State extends State<RadarrCatalogueSearchBarFilterButton> {
           ),
         ),
       ),
-      height: LunaTextInputBar.defaultHeight,
-      width: LunaTextInputBar.defaultHeight,
-      margin: const EdgeInsets.only(left: LunaUI.DEFAULT_MARGIN_SIZE),
+      height: ArrPilotTextInputBar.defaultHeight,
+      width: ArrPilotTextInputBar.defaultHeight,
+      margin: const EdgeInsets.only(left: ArrPilotUI.DEFAULT_MARGIN_SIZE),
       color: Theme.of(context).canvasColor,
     );
   }

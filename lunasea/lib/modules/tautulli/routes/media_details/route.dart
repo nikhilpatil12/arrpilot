@@ -18,18 +18,18 @@ class MediaDetailsRoute extends StatefulWidget {
 
 class _State extends State<MediaDetailsRoute> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  LunaPageController? _pageController;
+  ArrPilotPageController? _pageController;
 
   @override
   void initState() {
     super.initState();
-    _pageController = LunaPageController(
+    _pageController = ArrPilotPageController(
         initialPage: TautulliDatabase.NAVIGATION_INDEX_MEDIA_DETAILS.read());
   }
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       bottomNavigationBar: _bottomNavigationBar(),
@@ -38,7 +38,7 @@ class _State extends State<MediaDetailsRoute> {
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'Media Details',
       scrollControllers: TautulliMediaDetailsNavigationBar.scrollControllers,
       pageController: _pageController,
@@ -60,13 +60,13 @@ class _State extends State<MediaDetailsRoute> {
 
   Widget _body() {
     if (widget.mediaType == TautulliMediaType.NULL)
-      return const LunaMessage(text: 'No Content Found');
+      return const ArrPilotMessage(text: 'No Content Found');
     if (widget.mediaType == TautulliMediaType.COLLECTION)
       return TautulliMediaDetailsMetadata(
         ratingKey: widget.ratingKey,
         type: widget.mediaType,
       );
-    return LunaPageView(
+    return ArrPilotPageView(
       controller: _pageController,
       children: [
         TautulliMediaDetailsMetadata(

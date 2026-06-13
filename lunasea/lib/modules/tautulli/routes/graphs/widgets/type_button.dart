@@ -12,7 +12,7 @@ class TautulliGraphsTypeButton extends StatelessWidget {
   Widget build(BuildContext context) =>
       Selector<TautulliState, TautulliGraphYAxis>(
         selector: (_, state) => state.graphYAxis,
-        builder: (context, type, _) => LunaPopupMenuButton<TautulliGraphYAxis>(
+        builder: (context, type, _) => ArrPilotPopupMenuButton<TautulliGraphYAxis>(
             tooltip: 'Graph Type',
             icon: Icons.merge_type_rounded,
             onSelected: (value) {
@@ -28,9 +28,9 @@ class TautulliGraphsTypeButton extends StatelessWidget {
                     child: Text(
                       TautulliStatsType.values[index].value!.toTitleCase(),
                       style: TextStyle(
-                        fontSize: LunaUI.FONT_SIZE_H3,
+                        fontSize: ArrPilotUI.FONT_SIZE_H3,
                         color: type == TautulliGraphYAxis.values[index]
-                            ? LunaColours.accent
+                            ? ArrPilotColours.accent
                             : Colors.white,
                       ),
                     ),

@@ -12,17 +12,17 @@ class TautulliActivityDetailsPlayerBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaTableCard(
+    return ArrPilotTableCard(
       content: [
-        LunaTableContent(
+        ArrPilotTableContent(
             title: 'tautulli.Location'.tr(), body: session.lunaIPAddress),
-        LunaTableContent(
+        ArrPilotTableContent(
             title: 'tautulli.Platform'.tr(), body: session.lunaPlatform),
-        LunaTableContent(
+        ArrPilotTableContent(
             title: 'tautulli.Product'.tr(), body: session.lunaProduct),
-        LunaTableContent(
+        ArrPilotTableContent(
             title: 'tautulli.Player'.tr(), body: session.lunaPlayer),
-        LunaTableContent(
+        ArrPilotTableContent(
             title: 'tautulli.Quality'.tr(), body: session.lunaQuality),
       ],
     );

@@ -1,7 +1,7 @@
 import 'package:arrpilot/core.dart';
 import 'package:arrpilot/modules/tautulli.dart';
 
-extension LunaTautulliTranscodeDecisionExtension on TautulliTranscodeDecision? {
+extension ArrPilotTautulliTranscodeDecisionExtension on TautulliTranscodeDecision? {
   String get localizedName {
     switch (this) {
       case TautulliTranscodeDecision.TRANSCODE:

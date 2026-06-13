@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 /// Re-definition of [PageController] that adds a listener that will unfocus primary focus on a page change.
 ///
 /// Needed for situations that a page has a keyboard prompt to unfocus the keyboard.
-class LunaPageController extends PageController {
-  LunaPageController({
+class ArrPilotPageController extends PageController {
+  ArrPilotPageController({
     int? initialPage,
   }) : super(
           initialPage: initialPage ?? 0,

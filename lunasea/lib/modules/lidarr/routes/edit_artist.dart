@@ -18,7 +18,7 @@ class ArtistEditRoute extends StatefulWidget {
   State<ArtistEditRoute> createState() => _State();
 }
 
-class _State extends State<ArtistEditRoute> with LunaScrollControllerMixin {
+class _State extends State<ArtistEditRoute> with ArrPilotScrollControllerMixin {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   Future<bool>? _future;
 
@@ -39,7 +39,7 @@ class _State extends State<ArtistEditRoute> with LunaScrollControllerMixin {
   }
 
   @override
-  Widget build(BuildContext context) => LunaScaffold(
+  Widget build(BuildContext context) => ArrPilotScaffold(
         scaffoldKey: _scaffoldKey,
         body: _body,
         appBar: _appBar,
@@ -53,7 +53,7 @@ class _State extends State<ArtistEditRoute> with LunaScrollControllerMixin {
   }
 
   Future<bool> _fetch() async {
-    final _api = LidarrAPI.from(LunaProfile.current);
+    final _api = LidarrAPI.from(ArrPilotProfile.current);
     return _fetchProfiles(_api).then((_) => _fetchMetadata(_api)).then((_) {
       _path = widget.data!.path;
       _monitored = widget.data!.monitored;
@@ -89,16 +89,16 @@ class _State extends State<ArtistEditRoute> with LunaScrollControllerMixin {
   }
 
   PreferredSizeWidget get _appBar {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: widget.data?.title ?? 'Edit Artist',
       scrollControllers: [scrollController],
     );
   }
 
   Widget _bottomActionBar() {
-    return LunaBottomActionBar(
+    return ArrPilotBottomActionBar(
       actions: [
-        LunaButton.text(
+        ArrPilotButton.text(
           text: 'lunasea.Update'.tr(),
           icon: Icons.edit_rounded,
           onTap: _save,
@@ -114,44 +114,44 @@ class _State extends State<ArtistEditRoute> with LunaScrollControllerMixin {
             case ConnectionState.done:
               {
                 if (snapshot.hasError || snapshot.data == null)
-                  return LunaMessage.error(onTap: _refresh);
+                  return ArrPilotMessage.error(onTap: _refresh);
                 return _list;
               }
             case ConnectionState.none:
             case ConnectionState.waiting:
             case ConnectionState.active:
             default:
-              return const LunaLoader();
+              return const ArrPilotLoader();
           }
         },
       );
 
-  Widget get _list => LunaListView(
+  Widget get _list => ArrPilotListView(
         controller: scrollController,
         children: <Widget>[
-          LunaBlock(
+          ArrPilotBlock(
             title: 'Monitored',
-            trailing: LunaSwitch(
+            trailing: ArrPilotSwitch(
               value: _monitored!,
               onChanged: (value) => setState(() => _monitored = value),
             ),
           ),
-          LunaBlock(
+          ArrPilotBlock(
             title: 'Quality Profile',
             body: [TextSpan(text: _qualityProfile!.name)],
-            trailing: const LunaIconButton.arrow(),
+            trailing: const ArrPilotIconButton.arrow(),
             onTap: _changeProfile,
           ),
-          LunaBlock(
+          ArrPilotBlock(
             title: 'Metadata Profile',
             body: [TextSpan(text: _metadataProfile!.name)],
-            trailing: const LunaIconButton.arrow(),
+            trailing: const ArrPilotIconButton.arrow(),
             onTap: _changeMetadata,
           ),
-          LunaBlock(
+          ArrPilotBlock(
             title: 'Artist Path',
             body: [TextSpan(text: _path)],
-            trailing: const LunaIconButton.arrow(),
+            trailing: const ArrPilotIconButton.arrow(),
             onTap: _changePath,
           ),
         ],
@@ -159,7 +159,7 @@ class _State extends State<ArtistEditRoute> with LunaScrollControllerMixin {
 
   Future<void> _changePath() async {
     Tuple2<bool, String> _values =
-        await LunaDialogs().editText(context, 'Artist Path', prefill: _path!);
+        await ArrPilotDialogs().editText(context, 'Artist Path', prefill: _path!);
     if (_values.item1 && mounted) setState(() => _path = _values.item2);
   }
 
@@ -176,7 +176,7 @@ class _State extends State<ArtistEditRoute> with LunaScrollControllerMixin {
   }
 
   Future<void> _save() async {
-    final _api = LidarrAPI.from(LunaProfile.current);
+    final _api = LidarrAPI.from(ArrPilotProfile.current);
     await _api
         .editArtist(
       widget.data!.artistID,
@@ -198,9 +198,9 @@ class _State extends State<ArtistEditRoute> with LunaScrollControllerMixin {
         title: 'Artist Updated',
         message: widget.data!.title,
       );
-      LunaRouter.router.pop();
+      ArrPilotRouter.router.pop();
     }).catchError((error, stack) {
-      LunaLogger().error('Failed to update artist', error, stack);
+      ArrPilotLogger().error('Failed to update artist', error, stack);
       showLunaErrorSnackBar(
         title: 'Failed to Update',
         error: error,

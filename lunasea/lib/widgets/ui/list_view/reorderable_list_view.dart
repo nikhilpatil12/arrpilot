@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaReorderableListView extends StatelessWidget {
+class ArrPilotReorderableListView extends StatelessWidget {
   final List<Widget> children;
   final EdgeInsetsGeometry? padding;
   final ScrollPhysics physics;
@@ -9,7 +9,7 @@ class LunaReorderableListView extends StatelessWidget {
   final void Function(int, int) onReorder;
   final bool buildDefaultDragHandles;
 
-  const LunaReorderableListView({
+  const ArrPilotReorderableListView({
     Key? key,
     required this.children,
     required this.controller,
@@ -30,7 +30,7 @@ class LunaReorderableListView extends StatelessWidget {
         children: children,
         padding: padding as EdgeInsets? ??
             MediaQuery.of(context).padding.add(EdgeInsets.symmetric(
-                  vertical: LunaUI.MARGIN_H_DEFAULT_V_HALF.bottom,
+                  vertical: ArrPilotUI.MARGIN_H_DEFAULT_V_HALF.bottom,
                 )) as EdgeInsets?,
         physics: physics,
         onReorder: onReorder,

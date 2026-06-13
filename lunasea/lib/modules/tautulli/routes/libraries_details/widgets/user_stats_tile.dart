@@ -13,12 +13,12 @@ class TautulliLibrariesDetailsUserStatsTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       posterUrl:
           context.watch<TautulliState>().getImageURLFromPath(user.userThumb),
       posterHeaders:
           context.watch<TautulliState>().headers.cast<String, String>(),
-      posterPlaceholderIcon: LunaIcons.USER,
+      posterPlaceholderIcon: ArrPilotIcons.USER,
       title: user.friendlyName,
       body: [
         TextSpan(
@@ -26,8 +26,8 @@ class TautulliLibrariesDetailsUserStatsTile extends StatelessWidget {
         TextSpan(text: user.userId.toString()),
       ],
       bodyLeadingIcons: const [
-        LunaIcons.PLAY,
-        LunaIcons.USER,
+        ArrPilotIcons.PLAY,
+        ArrPilotIcons.USER,
       ],
       onTap: () async => _onTap(context),
       posterIsSquare: true,

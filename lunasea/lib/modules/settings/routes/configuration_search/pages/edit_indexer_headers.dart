@@ -17,20 +17,20 @@ class ConfigurationSearchEditIndexerHeadersRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationSearchEditIndexerHeadersRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  LunaIndexer? _indexer;
+  ArrPilotIndexer? _indexer;
 
   @override
   Widget build(BuildContext context) {
-    if (widget.id < 0 || !LunaBox.indexers.contains(widget.id)) {
+    if (widget.id < 0 || !ArrPilotBox.indexers.contains(widget.id)) {
       return InvalidRoutePage(
         title: 'settings.CustomHeaders'.tr(),
         message: 'search.IndexerNotFound'.tr(),
       );
     }
 
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -39,16 +39,16 @@ class _State extends State<ConfigurationSearchEditIndexerHeadersRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'settings.CustomHeaders'.tr(),
       scrollControllers: [scrollController],
     );
   }
 
   Widget _bottomActionBar() {
-    return LunaBottomActionBar(
+    return ArrPilotBottomActionBar(
       actions: [
-        LunaButton.text(
+        ArrPilotButton.text(
           text: 'settings.AddHeader'.tr(),
           icon: Icons.add_rounded,
           onTap: () async => HeaderUtility().addHeader(context,
@@ -59,16 +59,16 @@ class _State extends State<ConfigurationSearchEditIndexerHeadersRoute>
   }
 
   Widget _body() {
-    return LunaBox.indexers.listenableBuilder(
+    return ArrPilotBox.indexers.listenableBuilder(
       selectKeys: [widget.id],
       builder: (context, _) {
-        if (!LunaBox.indexers.contains(widget.id)) return Container();
-        _indexer = LunaBox.indexers.read(widget.id);
-        return LunaListView(
+        if (!ArrPilotBox.indexers.contains(widget.id)) return Container();
+        _indexer = ArrPilotBox.indexers.read(widget.id);
+        return ArrPilotListView(
           controller: scrollController,
           children: [
             if (_indexer!.headers.isEmpty)
-              LunaMessage.inList(text: 'settings.NoHeadersAdded'.tr()),
+              ArrPilotMessage.inList(text: 'settings.NoHeadersAdded'.tr()),
             ..._list(),
           ],
         );
@@ -80,17 +80,17 @@ class _State extends State<ConfigurationSearchEditIndexerHeadersRoute>
     final headers = _indexer!.headers.cast<String, dynamic>();
     List<String> _sortedKeys = headers.keys.toList()..sort();
     return _sortedKeys
-        .map<LunaBlock>((key) => _headerBlock(key, headers[key]))
+        .map<ArrPilotBlock>((key) => _headerBlock(key, headers[key]))
         .toList();
   }
 
-  LunaBlock _headerBlock(String key, String? value) {
-    return LunaBlock(
+  ArrPilotBlock _headerBlock(String key, String? value) {
+    return ArrPilotBlock(
       title: key.toString(),
       body: [TextSpan(text: value.toString())],
-      trailing: LunaIconButton(
-        icon: LunaIcons.DELETE,
-        color: LunaColours.red,
+      trailing: ArrPilotIconButton(
+        icon: ArrPilotIcons.DELETE,
+        color: ArrPilotColours.red,
         onPressed: () async => HeaderUtility().deleteHeader(
           context,
           headers: _indexer!.headers,

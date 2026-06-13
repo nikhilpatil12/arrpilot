@@ -53,7 +53,7 @@ class _State extends State<TautulliNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBottomNavigationBar(
+    return ArrPilotBottomNavigationBar(
       pageController: widget.pageController,
       scrollControllers: TautulliNavigationBar.scrollControllers,
       icons: TautulliNavigationBar.icons,
@@ -63,7 +63,7 @@ class _State extends State<TautulliNavigationBar> {
           future: context.watch<TautulliState>().activity,
           builder: (BuildContext context,
                   AsyncSnapshot<TautulliActivity?> snapshot) =>
-              LunaNavigationBarBadge(
+              ArrPilotNavigationBarBadge(
             text:
                 snapshot.hasData ? snapshot.data!.streamCount.toString() : '?',
             icon: TautulliNavigationBar.icons[0],

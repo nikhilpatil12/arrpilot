@@ -6,7 +6,7 @@ import 'package:arrpilot/router/routes/dashboard.dart';
 import 'package:arrpilot/system/bios.dart';
 import 'package:arrpilot/vendor.dart';
 
-enum BIOSRoutes with LunaRoutesMixin {
+enum BIOSRoutes with ArrPilotRoutesMixin {
   HOME('/');
 
   @override
@@ -15,7 +15,7 @@ enum BIOSRoutes with LunaRoutesMixin {
   const BIOSRoutes(this.path);
 
   @override
-  LunaModule? get module => null;
+  ArrPilotModule? get module => null;
 
   @override
   bool isModuleEnabled(BuildContext context) => true;
@@ -25,7 +25,7 @@ enum BIOSRoutes with LunaRoutesMixin {
     switch (this) {
       case BIOSRoutes.HOME:
         return redirect(redirect: (context, _) {
-          LunaOS().boot(context);
+          ArrPilotOS().boot(context);
 
           final fallback = DashboardRoutes.HOME.path;
           return BIOSDatabase.BOOT_MODULE.read().homeRoute ?? fallback;

@@ -12,7 +12,7 @@ class TautulliCheckForUpdatesPMSTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'Plex Media Server',
       body: _subtitle(),
       trailing: _trailing(),
@@ -22,10 +22,10 @@ class TautulliCheckForUpdatesPMSTile extends StatelessWidget {
   Widget _trailing() {
     return Column(
       children: [
-        LunaIconButton(
-          icon: LunaIcons.PLEX,
-          iconSize: LunaUI.ICON_SIZE - 2.0,
-          color: LunaColours().byListIndex(0),
+        ArrPilotIconButton(
+          icon: ArrPilotIcons.PLEX,
+          iconSize: ArrPilotUI.ICON_SIZE - 2.0,
+          color: ArrPilotColours().byListIndex(0),
         ),
       ],
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,24 +39,24 @@ class TautulliCheckForUpdatesPMSTile extends StatelessWidget {
         const TextSpan(
           text: 'No Updates Available',
           style: TextStyle(
-            color: LunaColours.accent,
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+            color: ArrPilotColours.accent,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
           ),
         ),
       if (!(update.updateAvailable ?? false))
         TextSpan(
-            text: 'Current Version: ${update.version ?? LunaUI.TEXT_EMDASH}'),
+            text: 'Current Version: ${update.version ?? ArrPilotUI.TEXT_EMDASH}'),
       if (update.updateAvailable ?? false)
         const TextSpan(
           text: 'Update Available',
           style: TextStyle(
-            color: LunaColours.orange,
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+            color: ArrPilotColours.orange,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
           ),
         ),
       if (update.updateAvailable ?? false)
         TextSpan(
-            text: 'Latest Version: ${update.version ?? LunaUI.TEXT_EMDASH}'),
+            text: 'Latest Version: ${update.version ?? ArrPilotUI.TEXT_EMDASH}'),
     ];
   }
 }

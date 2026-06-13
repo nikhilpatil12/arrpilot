@@ -34,7 +34,7 @@ class RadarrAPIHelper {
           return true;
         });
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
             'Unable to toggle monitored state: ${movie.monitored.toString()} to ${movieCopy.monitored.toString()}',
             error,
             stack);
@@ -67,7 +67,7 @@ class RadarrAPIHelper {
               title: 'Refreshing...', message: movie.title.uiSafe());
         return true;
       }).catchError((error, stack) {
-        LunaLogger()
+        ArrPilotLogger()
             .error('Unable to refresh movie: ${movie.id}', error, stack);
         if (showSnackbar)
           showLunaErrorSnackBar(title: 'Failed to Refresh', error: error);
@@ -116,7 +116,7 @@ class RadarrAPIHelper {
           );
         return movie;
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
             'Failed to add movie (tmdbId: ${movie.tmdbId})', error, stack);
         if (showSnackbar)
           showLunaErrorSnackBar(title: 'Failed to Add Movie', error: error);
@@ -137,11 +137,11 @@ class RadarrAPIHelper {
       return await context.read<RadarrState>().api!.command.backup().then((_) {
         if (showSnackbar)
           showLunaSuccessSnackBar(
-              title: 'Backing Up Database${LunaUI.TEXT_ELLIPSIS}',
+              title: 'Backing Up Database${ArrPilotUI.TEXT_ELLIPSIS}',
               message: 'Backing up the database in the background');
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error('Unable to backup database', error, stack);
+        ArrPilotLogger().error('Unable to backup database', error, stack);
         if (showSnackbar)
           showLunaErrorSnackBar(
               title: 'Failed to Backup Database', error: error);
@@ -165,11 +165,11 @@ class RadarrAPIHelper {
           .then((_) {
         if (showSnackbar)
           showLunaSuccessSnackBar(
-              title: 'Searching${LunaUI.TEXT_ELLIPSIS}',
+              title: 'Searching${ArrPilotUI.TEXT_ELLIPSIS}',
               message: 'Searching for all missing movies');
         return true;
       }).catchError((error, stack) {
-        LunaLogger()
+        ArrPilotLogger()
             .error('Unable to search for all missing movies', error, stack);
         if (showSnackbar)
           showLunaErrorSnackBar(title: 'Failed to Search', error: error);
@@ -188,11 +188,11 @@ class RadarrAPIHelper {
       return await context.read<RadarrState>().api!.command.rssSync().then((_) {
         if (showSnackbar)
           showLunaSuccessSnackBar(
-              title: 'Running RSS Sync${LunaUI.TEXT_ELLIPSIS}',
+              title: 'Running RSS Sync${ArrPilotUI.TEXT_ELLIPSIS}',
               message: 'Running RSS sync in the background');
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error('Unable to run RSS sync', error, stack);
+        ArrPilotLogger().error('Unable to run RSS sync', error, stack);
         if (showSnackbar)
           showLunaErrorSnackBar(title: 'Failed to Run RSS Sync', error: error);
         return false;
@@ -215,11 +215,11 @@ class RadarrAPIHelper {
           .then((_) {
         if (showSnackbar)
           showLunaSuccessSnackBar(
-              title: 'Updating Library${LunaUI.TEXT_ELLIPSIS}',
+              title: 'Updating Library${ArrPilotUI.TEXT_ELLIPSIS}',
               message: 'Updating library in the background');
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error('Unable to update library', error, stack);
+        ArrPilotLogger().error('Unable to update library', error, stack);
         if (showSnackbar)
           showLunaErrorSnackBar(
               title: 'Failed to Update Library', error: error);
@@ -249,7 +249,7 @@ class RadarrAPIHelper {
           );
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
             'Failed to delete movie file: ${movieFile.id}', error, stack);
         if (showSnackbar)
           showLunaErrorSnackBar(title: 'Failed to Delete File', error: error);
@@ -285,7 +285,7 @@ class RadarrAPIHelper {
           return true;
         });
       }).catchError((error, stack) {
-        LunaLogger().error('Failed to update movie: ${movie.id}', error, stack);
+        ArrPilotLogger().error('Failed to update movie: ${movie.id}', error, stack);
         showLunaErrorSnackBar(title: 'Failed to Update Movie', error: error);
         return false;
       });
@@ -327,7 +327,7 @@ class RadarrAPIHelper {
           return true;
         });
       }).catchError((error, stack) {
-        LunaLogger().error('Failed to remove movie: ${movie.id}', error, stack);
+        ArrPilotLogger().error('Failed to remove movie: ${movie.id}', error, stack);
         showLunaErrorSnackBar(title: 'Failed to Remove Movie', error: error);
         return false;
       });
@@ -350,12 +350,12 @@ class RadarrAPIHelper {
           .then((_) async {
         if (showSnackbar)
           showLunaSuccessSnackBar(
-            title: 'Running Quick Import${LunaUI.TEXT_ELLIPSIS}',
+            title: 'Running Quick Import${ArrPilotUI.TEXT_ELLIPSIS}',
             message: path,
           );
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
             'Failed to execute downloaded movies scan: $path', error, stack);
         showLunaErrorSnackBar(title: 'Failed to Quick Import', error: error);
         return false;
@@ -384,7 +384,7 @@ class RadarrAPIHelper {
           );
         return true;
       }).catchError((error, stack) {
-        LunaLogger()
+        ArrPilotLogger()
             .error('Failed to search for movie: $movieId', error, stack);
         if (showSnackbar)
           showLunaErrorSnackBar(title: 'Failed to Search', error: error);
@@ -414,7 +414,7 @@ class RadarrAPIHelper {
           );
         return true;
       }).catchError((error, stack) {
-        LunaLogger()
+        ArrPilotLogger()
             .error('Failed to download release: ${release.guid}', error, stack);
         if (showSnackbar)
           showLunaErrorSnackBar(
@@ -444,7 +444,7 @@ class RadarrAPIHelper {
         );
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error('Failed to add tag: $label', error, stack);
+        ArrPilotLogger().error('Failed to add tag: $label', error, stack);
         if (showSnackbar)
           showLunaErrorSnackBar(
             title: 'radarr.FailedToAddTag'.tr(),
@@ -475,7 +475,7 @@ class RadarrAPIHelper {
         );
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error('Failed to add tag: ${tag.id}', error, stack);
+        ArrPilotLogger().error('Failed to add tag: ${tag.id}', error, stack);
         if (showSnackbar)
           showLunaErrorSnackBar(title: 'Failed to Delete Tag', error: error);
         return false;
@@ -508,7 +508,7 @@ class RadarrAPIHelper {
         );
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error('Failed to trigger manual import', error, stack);
+        ArrPilotLogger().error('Failed to trigger manual import', error, stack);
         if (showSnackbar)
           showLunaErrorSnackBar(title: 'Failed to Import', error: error);
         return false;

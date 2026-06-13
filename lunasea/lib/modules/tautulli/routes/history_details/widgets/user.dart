@@ -29,7 +29,7 @@ class TautulliHistoryDetailsUser extends StatelessWidget {
               return false;
             });
             if (_record != null)
-              return LunaIconButton(
+              return ArrPilotIconButton(
                 icon: Icons.person_rounded,
                 onPressed: () async => _onPressed(context, _record.userId!),
               );

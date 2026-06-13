@@ -20,12 +20,12 @@ class ConfigurationDashboardCalendarRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationDashboardCalendarRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -33,23 +33,23 @@ class _State extends State<ConfigurationDashboardCalendarRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'settings.CalendarSettings'.tr(),
       scrollControllers: [scrollController],
     );
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
         _futureDays(),
         _pastDays(),
-        LunaDivider(),
+        ArrPilotDivider(),
         _startingDay(),
         _startingSize(),
         _startingView(),
-        LunaDivider(),
+        ArrPilotDivider(),
         _modulesLidarr(),
         _modulesRadarr(),
         _modulesSonarr(),
@@ -60,7 +60,7 @@ class _State extends State<ConfigurationDashboardCalendarRoute>
   Widget _pastDays() {
     const _db = DashboardDatabase.CALENDAR_DAYS_PAST;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'settings.PastDays'.tr(),
         body: [
           TextSpan(
@@ -69,7 +69,7 @@ class _State extends State<ConfigurationDashboardCalendarRoute>
                 : 'settings.DaysCount'.tr(args: [_db.read().toString()]),
           ),
         ],
-        trailing: const LunaIconButton.arrow(),
+        trailing: const ArrPilotIconButton.arrow(),
         onTap: () async {
           Tuple2<bool, int> result =
               await DashboardDialogs().setPastDays(context);
@@ -82,7 +82,7 @@ class _State extends State<ConfigurationDashboardCalendarRoute>
   Widget _futureDays() {
     const _db = DashboardDatabase.CALENDAR_DAYS_FUTURE;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'settings.FutureDays'.tr(),
         body: [
           TextSpan(
@@ -91,7 +91,7 @@ class _State extends State<ConfigurationDashboardCalendarRoute>
                 : 'settings.DaysCount'.tr(args: [_db.read().toString()]),
           ),
         ],
-        trailing: const LunaIconButton.arrow(),
+        trailing: const ArrPilotIconButton.arrow(),
         onTap: () async {
           Tuple2<bool, int> result =
               await DashboardDialogs().setFutureDays(context);
@@ -104,16 +104,16 @@ class _State extends State<ConfigurationDashboardCalendarRoute>
   Widget _modulesLidarr() {
     const _db = DashboardDatabase.CALENDAR_ENABLE_LIDARR;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
-        title: LunaModule.LIDARR.title,
+      builder: (context, _) => ArrPilotBlock(
+        title: ArrPilotModule.LIDARR.title,
         body: [
           TextSpan(
             text: 'settings.ShowCalendarEntries'.tr(
-              args: [LunaModule.LIDARR.title],
+              args: [ArrPilotModule.LIDARR.title],
             ),
           )
         ],
-        trailing: LunaSwitch(
+        trailing: ArrPilotSwitch(
           value: _db.read(),
           onChanged: _db.update,
         ),
@@ -124,16 +124,16 @@ class _State extends State<ConfigurationDashboardCalendarRoute>
   Widget _modulesRadarr() {
     const _db = DashboardDatabase.CALENDAR_ENABLE_RADARR;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
-        title: LunaModule.RADARR.title,
+      builder: (context, _) => ArrPilotBlock(
+        title: ArrPilotModule.RADARR.title,
         body: [
           TextSpan(
             text: 'settings.ShowCalendarEntries'.tr(
-              args: [LunaModule.RADARR.title],
+              args: [ArrPilotModule.RADARR.title],
             ),
           )
         ],
-        trailing: LunaSwitch(
+        trailing: ArrPilotSwitch(
           value: _db.read(),
           onChanged: _db.update,
         ),
@@ -144,16 +144,16 @@ class _State extends State<ConfigurationDashboardCalendarRoute>
   Widget _modulesSonarr() {
     const _db = DashboardDatabase.CALENDAR_ENABLE_SONARR;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
-        title: LunaModule.SONARR.title,
+      builder: (context, _) => ArrPilotBlock(
+        title: ArrPilotModule.SONARR.title,
         body: [
           TextSpan(
             text: 'settings.ShowCalendarEntries'.tr(
-              args: [LunaModule.SONARR.title],
+              args: [ArrPilotModule.SONARR.title],
             ),
           )
         ],
-        trailing: LunaSwitch(
+        trailing: ArrPilotSwitch(
           value: _db.read(),
           onChanged: _db.update,
         ),
@@ -164,12 +164,12 @@ class _State extends State<ConfigurationDashboardCalendarRoute>
   Widget _startingView() {
     const _db = DashboardDatabase.CALENDAR_STARTING_TYPE;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'settings.StartingView'.tr(),
         body: [
           TextSpan(text: _db.read().name),
         ],
-        trailing: const LunaIconButton.arrow(),
+        trailing: const ArrPilotIconButton.arrow(),
         onTap: () async {
           Tuple2<bool, CalendarStartingType?> _values =
               await SettingsDialogs().editCalendarStartingView(context);
@@ -182,12 +182,12 @@ class _State extends State<ConfigurationDashboardCalendarRoute>
   Widget _startingDay() {
     const _db = DashboardDatabase.CALENDAR_STARTING_DAY;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'settings.StartingDay'.tr(),
         body: [
           TextSpan(text: _db.read().name),
         ],
-        trailing: const LunaIconButton.arrow(),
+        trailing: const ArrPilotIconButton.arrow(),
         onTap: () async {
           Tuple2<bool, CalendarStartingDay?> results =
               await SettingsDialogs().editCalendarStartingDay(context);
@@ -200,12 +200,12 @@ class _State extends State<ConfigurationDashboardCalendarRoute>
   Widget _startingSize() {
     const _db = DashboardDatabase.CALENDAR_STARTING_SIZE;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'settings.StartingSize'.tr(),
         body: [
           TextSpan(text: _db.read().name),
         ],
-        trailing: const LunaIconButton.arrow(),
+        trailing: const ArrPilotIconButton.arrow(),
         onTap: () async {
           Tuple2<bool, CalendarStartingSize?> _values =
               await SettingsDialogs().editCalendarStartingSize(context);

@@ -72,7 +72,7 @@ class NZBGetQueueData {
 
   String get subtitle {
     String size = '$downloaded/$sizeTotal MB';
-    String paddedBullet = LunaUI.TEXT_BULLET.pad();
+    String paddedBullet = ArrPilotUI.TEXT_BULLET.pad();
     return '$statusString$paddedBullet$size$paddedBullet$percentageDone%$paddedBullet$formattedCategory';
   }
 }

@@ -28,19 +28,19 @@ class SettingsDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: title,
       content: List.generate(
         values.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: values[index]!,
           icon: icons[index],
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, index),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
 
     return Tuple2(_flag, _index);
@@ -54,20 +54,20 @@ class SettingsDialogs {
       Navigator.of(context).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.SignOut'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'settings.SignOut'.tr(),
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(text: 'settings.SignOutHint1'.tr()),
+        ArrPilotDialog.textContent(text: 'settings.SignOutHint1'.tr()),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return _flag;
   }
@@ -87,39 +87,39 @@ class SettingsDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.Host'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Set'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
-          text: '${LunaUI.TEXT_BULLET} ${'settings.HostHint1'.tr()}',
+        ArrPilotDialog.textContent(
+          text: '${ArrPilotUI.TEXT_BULLET} ${'settings.HostHint1'.tr()}',
           textAlign: TextAlign.left,
         ),
-        LunaDialog.textContent(
-          text: '${LunaUI.TEXT_BULLET} ${'settings.HostHint2'.tr()}',
+        ArrPilotDialog.textContent(
+          text: '${ArrPilotUI.TEXT_BULLET} ${'settings.HostHint2'.tr()}',
           textAlign: TextAlign.left,
         ),
-        LunaDialog.textContent(
-          text: '${LunaUI.TEXT_BULLET} ${'settings.HostHint3'.tr()}',
+        ArrPilotDialog.textContent(
+          text: '${ArrPilotUI.TEXT_BULLET} ${'settings.HostHint3'.tr()}',
           textAlign: TextAlign.left,
         ),
-        LunaDialog.textContent(
-          text: '${LunaUI.TEXT_BULLET} ${'settings.HostHint4'.tr()}',
+        ArrPilotDialog.textContent(
+          text: '${ArrPilotUI.TEXT_BULLET} ${'settings.HostHint4'.tr()}',
           textAlign: TextAlign.left,
         ),
-        LunaDialog.textContent(
-          text: '${LunaUI.TEXT_BULLET} ${'settings.HostHint5'.tr()}',
+        ArrPilotDialog.textContent(
+          text: '${ArrPilotUI.TEXT_BULLET} ${'settings.HostHint5'.tr()}',
           textAlign: TextAlign.left,
         ),
         Form(
           key: _formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             controller: _textController,
             title: 'settings.Host'.tr(),
             keyboardType: TextInputType.url,
@@ -135,7 +135,7 @@ class SettingsDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputTextDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputTextDialogContentPadding(),
     );
     return Tuple2(_flag, _textController.text);
   }
@@ -155,35 +155,35 @@ class SettingsDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.Host'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Set'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
-          text: '${LunaUI.TEXT_BULLET} ${'settings.HostHint1'.tr()}',
+        ArrPilotDialog.textContent(
+          text: '${ArrPilotUI.TEXT_BULLET} ${'settings.HostHint1'.tr()}',
           textAlign: TextAlign.left,
         ),
-        LunaDialog.textContent(
-          text: '${LunaUI.TEXT_BULLET} ${'settings.HostHint2'.tr()}',
+        ArrPilotDialog.textContent(
+          text: '${ArrPilotUI.TEXT_BULLET} ${'settings.HostHint2'.tr()}',
           textAlign: TextAlign.left,
         ),
-        LunaDialog.textContent(
-          text: '${LunaUI.TEXT_BULLET} ${'settings.HostHint3'.tr()}',
+        ArrPilotDialog.textContent(
+          text: '${ArrPilotUI.TEXT_BULLET} ${'settings.HostHint3'.tr()}',
           textAlign: TextAlign.left,
         ),
-        LunaDialog.textContent(
-          text: '${LunaUI.TEXT_BULLET} ${'settings.HostHint4'.tr()}',
+        ArrPilotDialog.textContent(
+          text: '${ArrPilotUI.TEXT_BULLET} ${'settings.HostHint4'.tr()}',
           textAlign: TextAlign.left,
         ),
         Form(
           key: _formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             controller: _textController,
             title: 'settings.Host'.tr(),
             keyboardType: TextInputType.url,
@@ -199,7 +199,7 @@ class SettingsDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputTextDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputTextDialogContentPadding(),
     );
     return Tuple2(_flag, _textController.text);
   }
@@ -212,20 +212,20 @@ class SettingsDialogs {
       Navigator.of(context).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.DeleteIndexer'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Delete'.tr(),
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(text: 'settings.DeleteIndexerHint1'.tr()),
+        ArrPilotDialog.textContent(text: 'settings.DeleteIndexerHint1'.tr()),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return _flag;
   }
@@ -238,20 +238,20 @@ class SettingsDialogs {
       Navigator.of(context).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.DeleteModule'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Delete'.tr(),
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(text: 'settings.DeleteModuleHint1'.tr()),
+        ArrPilotDialog.textContent(text: 'settings.DeleteModuleHint1'.tr()),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return _flag;
   }
@@ -264,20 +264,20 @@ class SettingsDialogs {
       Navigator.of(context).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.DeleteHeader'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Delete'.tr(),
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(text: 'settings.DeleteHeaderHint1'.tr()),
+        ArrPilotDialog.textContent(text: 'settings.DeleteHeaderHint1'.tr()),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return _flag;
   }
@@ -292,19 +292,19 @@ class SettingsDialogs {
       Navigator.of(context).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.AddHeader'.tr(),
       content: List.generate(
         HeaderType.values.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: HeaderType.values[index].name,
           icon: HeaderType.values[index].icon,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, HeaderType.values[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _type);
   }
@@ -324,11 +324,11 @@ class SettingsDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.CustomHeader'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Add'.tr(),
           onPressed: () => _setValues(true),
         ),
@@ -338,7 +338,7 @@ class SettingsDialogs {
           key: formKey,
           child: Column(
             children: [
-              LunaDialog.textFormInput(
+              ArrPilotDialog.textFormInput(
                 controller: _key,
                 validator: (value) {
                   if (value?.isNotEmpty ?? false) return null;
@@ -347,7 +347,7 @@ class SettingsDialogs {
                 onSubmitted: (_) => _setValues(true),
                 title: 'settings.HeaderKey'.tr(),
               ),
-              LunaDialog.textFormInput(
+              ArrPilotDialog.textFormInput(
                 controller: _value,
                 validator: (value) {
                   if (value?.isNotEmpty ?? false) return null;
@@ -360,7 +360,7 @@ class SettingsDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputDialogContentPadding(),
     );
     return Tuple3(_flag, _key.text, _value.text);
   }
@@ -380,36 +380,36 @@ class SettingsDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.BasicAuthentication'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Add'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
           text:
-              '${LunaUI.TEXT_BULLET} ${'settings.BasicAuthenticationHint1'.tr()}',
+              '${ArrPilotUI.TEXT_BULLET} ${'settings.BasicAuthenticationHint1'.tr()}',
           textAlign: TextAlign.left,
         ),
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
           text:
-              '${LunaUI.TEXT_BULLET} ${'settings.BasicAuthenticationHint2'.tr()}',
+              '${ArrPilotUI.TEXT_BULLET} ${'settings.BasicAuthenticationHint2'.tr()}',
           textAlign: TextAlign.left,
         ),
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
           text:
-              '${LunaUI.TEXT_BULLET} ${'settings.BasicAuthenticationHint3'.tr()}',
+              '${ArrPilotUI.TEXT_BULLET} ${'settings.BasicAuthenticationHint3'.tr()}',
           textAlign: TextAlign.left,
         ),
         Form(
           key: _formKey,
           child: Column(
             children: [
-              LunaDialog.textFormInput(
+              ArrPilotDialog.textFormInput(
                 controller: _username,
                 validator: (username) => (username?.isNotEmpty ?? false)
                     ? null
@@ -417,7 +417,7 @@ class SettingsDialogs {
                 onSubmitted: (_) => _setValues(true),
                 title: 'settings.Username'.tr(),
               ),
-              LunaDialog.textFormInput(
+              ArrPilotDialog.textFormInput(
                 controller: _password,
                 validator: (password) => (password?.isNotEmpty ?? false)
                     ? null
@@ -430,7 +430,7 @@ class SettingsDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputTextDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputTextDialogContentPadding(),
     );
     return Tuple3(_flag, _username.text, _password.text);
   }
@@ -443,20 +443,20 @@ class SettingsDialogs {
       Navigator.of(context).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.ClearLogs'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Clear'.tr(),
           onPressed: () => _setValues(true),
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
         ),
       ],
       content: [
-        LunaDialog.textContent(text: 'settings.ClearLogsHint1'.tr()),
+        ArrPilotDialog.textContent(text: 'settings.ClearLogsHint1'.tr()),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return _flag;
   }
@@ -475,30 +475,30 @@ class SettingsDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.DeleteAccount'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Delete'.tr(),
           onPressed: () => _setValues(true),
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
         ),
       ],
       content: [
-        LunaDialog.richText(
+        ArrPilotDialog.richText(
           children: [
-            LunaDialog.bolded(
+            ArrPilotDialog.bolded(
               text: 'settings.DeleteAccountWarning1'.tr().toUpperCase(),
-              color: LunaColours.red,
-              fontSize: LunaDialog.BUTTON_SIZE,
+              color: ArrPilotColours.red,
+              fontSize: ArrPilotDialog.BUTTON_SIZE,
             ),
-            LunaDialog.textSpanContent(text: '\n\n'),
-            LunaDialog.textSpanContent(
+            ArrPilotDialog.textSpanContent(text: '\n\n'),
+            ArrPilotDialog.textSpanContent(
               text: 'settings.DeleteAccountHint1'.tr(),
             ),
-            LunaDialog.textSpanContent(text: '\n\n'),
-            LunaDialog.textSpanContent(
+            ArrPilotDialog.textSpanContent(text: '\n\n'),
+            ArrPilotDialog.textSpanContent(
               text: 'settings.DeleteAccountHint2'.tr(),
             ),
           ],
@@ -506,7 +506,7 @@ class SettingsDialogs {
         ),
         Form(
           key: _formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             controller: _textController,
             title: 'settings.Password'.tr(),
             obscureText: true,
@@ -517,7 +517,7 @@ class SettingsDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return Tuple2(_flag, _textController.text);
   }
@@ -537,11 +537,11 @@ class SettingsDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.UpdateEmail'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Update'.tr(),
           onPressed: () => _setValues(true),
         ),
@@ -551,17 +551,17 @@ class SettingsDialogs {
           key: _formKey,
           child: Column(
             children: [
-              LunaDialog.textFormInput(
+              ArrPilotDialog.textFormInput(
                 controller: _emailController,
                 title: 'settings.Email'.tr(),
                 onSubmitted: (_) => _setValues(true),
                 validator: (value) {
-                  return LunaValidator().email(value ?? '')
+                  return ArrPilotValidator().email(value ?? '')
                       ? null
                       : 'settings.EmailValidation'.tr();
                 },
               ),
-              LunaDialog.textFormInput(
+              ArrPilotDialog.textFormInput(
                 controller: _passwordController,
                 title: 'settings.CurrentPassword'.tr(),
                 obscureText: true,
@@ -576,7 +576,7 @@ class SettingsDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return Tuple3(_flag, _emailController.text, _passwordController.text);
   }
@@ -596,11 +596,11 @@ class SettingsDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.UpdatePassword'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Update'.tr(),
           onPressed: () => _setValues(true),
         ),
@@ -610,7 +610,7 @@ class SettingsDialogs {
           key: _formKey,
           child: Column(
             children: [
-              LunaDialog.textFormInput(
+              ArrPilotDialog.textFormInput(
                 controller: _currentPassController,
                 title: 'settings.CurrentPassword'.tr(),
                 obscureText: true,
@@ -621,7 +621,7 @@ class SettingsDialogs {
                       : null;
                 },
               ),
-              LunaDialog.textFormInput(
+              ArrPilotDialog.textFormInput(
                 controller: _newPassController,
                 title: 'settings.NewPassword'.tr(),
                 obscureText: true,
@@ -636,7 +636,7 @@ class SettingsDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return Tuple3(_flag, _newPassController.text, _currentPassController.text);
   }
@@ -656,11 +656,11 @@ class SettingsDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.AddProfile'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Add'.tr(),
           onPressed: () => _setValues(true),
         ),
@@ -668,7 +668,7 @@ class SettingsDialogs {
       content: [
         Form(
           key: _formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             controller: _controller,
             validator: (value) {
               if (profiles.contains(value)) {
@@ -684,7 +684,7 @@ class SettingsDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputDialogContentPadding(),
     );
     return Tuple2(_flag, _controller.text);
   }
@@ -702,19 +702,19 @@ class SettingsDialogs {
       Navigator.of(context).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.RenameProfile'.tr(),
       content: List.generate(
         profiles.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           icon: Icons.settings_rounded,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           text: profiles[index],
           onTap: () => _setValues(true, profiles[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _profile);
   }
@@ -734,19 +734,19 @@ class SettingsDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.RenameProfile'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
             text: 'lunasea.Rename'.tr(),
             onPressed: () => _setValues(true),
-            textColor: LunaColours.accent),
+            textColor: ArrPilotColours.accent),
       ],
       content: [
         Form(
           key: _formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             controller: _controller,
             validator: (value) {
               if (profiles.contains(value)) {
@@ -762,7 +762,7 @@ class SettingsDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputDialogContentPadding(),
     );
     return Tuple2(_flag, _controller.text);
   }
@@ -780,19 +780,19 @@ class SettingsDialogs {
       Navigator.of(context).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.DeleteProfile'.tr(),
       content: List.generate(
         profiles.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           icon: Icons.settings_rounded,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           text: profiles[index],
           onTap: () => _setValues(true, profiles[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _profile);
   }
@@ -810,19 +810,19 @@ class SettingsDialogs {
       Navigator.of(context).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.EnabledProfile'.tr(),
       content: List.generate(
         profiles.length,
-        (index) => LunaDialog.tile(
-          icon: LunaIcons.USER,
-          iconColor: LunaColours().byListIndex(index),
+        (index) => ArrPilotDialog.tile(
+          icon: ArrPilotIcons.USER,
+          iconColor: ArrPilotColours().byListIndex(index),
           text: profiles[index],
           onTap: () => _setValues(true, profiles[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _profile);
   }
@@ -839,19 +839,19 @@ class SettingsDialogs {
       Navigator.of(context).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.StartingDay'.tr(),
       content: List.generate(
         CalendarStartingDay.values.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           icon: Icons.calendar_today_rounded,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           text: CalendarStartingDay.values[index].name,
           onTap: () => _setValues(true, CalendarStartingDay.values[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _startingDate);
   }
@@ -868,19 +868,19 @@ class SettingsDialogs {
       Navigator.of(context).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.StartingSize'.tr(),
       content: List.generate(
         CalendarStartingSize.values.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           icon: CalendarStartingSize.values[index].icon,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           text: CalendarStartingSize.values[index].name,
           onTap: () => _setValues(true, CalendarStartingSize.values[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _startingSize);
   }
@@ -906,19 +906,19 @@ class SettingsDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.StartingView'.tr(),
       content: List.generate(
         CalendarStartingType.values.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           icon: _getIcon(CalendarStartingType.values[index]),
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           text: CalendarStartingType.values[index].name,
           onTap: () => _setValues(true, CalendarStartingType.values[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _startingType);
   }
@@ -938,34 +938,34 @@ class SettingsDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.BroadcastAddress'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Set'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
           text:
-              '${LunaUI.TEXT_BULLET} ${'settings.BroadcastAddressHint1'.tr()}',
+              '${ArrPilotUI.TEXT_BULLET} ${'settings.BroadcastAddressHint1'.tr()}',
           textAlign: TextAlign.left,
         ),
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
           text:
-              '${LunaUI.TEXT_BULLET} ${'settings.BroadcastAddressHint2'.tr()}',
+              '${ArrPilotUI.TEXT_BULLET} ${'settings.BroadcastAddressHint2'.tr()}',
           textAlign: TextAlign.left,
         ),
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
           text:
-              '${LunaUI.TEXT_BULLET} ${'settings.BroadcastAddressHint3'.tr()}',
+              '${ArrPilotUI.TEXT_BULLET} ${'settings.BroadcastAddressHint3'.tr()}',
           textAlign: TextAlign.left,
         ),
         Form(
           key: _formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             controller: _controller,
             validator: (address) {
               if (address?.isEmpty ?? true) return null;
@@ -978,7 +978,7 @@ class SettingsDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputTextDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputTextDialogContentPadding(),
     );
     return Tuple2(_flag, _controller.text);
   }
@@ -998,35 +998,35 @@ class SettingsDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.MACAddress'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Set'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
-          text: '${LunaUI.TEXT_BULLET} ${'settings.MACAddressHint1'.tr()}',
+        ArrPilotDialog.textContent(
+          text: '${ArrPilotUI.TEXT_BULLET} ${'settings.MACAddressHint1'.tr()}',
           textAlign: TextAlign.left,
         ),
-        LunaDialog.textContent(
-          text: '${LunaUI.TEXT_BULLET} ${'settings.MACAddressHint2'.tr()}',
+        ArrPilotDialog.textContent(
+          text: '${ArrPilotUI.TEXT_BULLET} ${'settings.MACAddressHint2'.tr()}',
           textAlign: TextAlign.left,
         ),
-        LunaDialog.textContent(
-          text: '${LunaUI.TEXT_BULLET} ${'settings.MACAddressHint3'.tr()}',
+        ArrPilotDialog.textContent(
+          text: '${ArrPilotUI.TEXT_BULLET} ${'settings.MACAddressHint3'.tr()}',
           textAlign: TextAlign.left,
         ),
-        LunaDialog.textContent(
-          text: '${LunaUI.TEXT_BULLET} ${'settings.MACAddressHint4'.tr()}',
+        ArrPilotDialog.textContent(
+          text: '${ArrPilotUI.TEXT_BULLET} ${'settings.MACAddressHint4'.tr()}',
           textAlign: TextAlign.left,
         ),
         Form(
           key: formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             controller: _controller,
             validator: (address) {
               if (address?.isEmpty ?? true) return null;
@@ -1039,7 +1039,7 @@ class SettingsDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputTextDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputTextDialogContentPadding(),
     );
     return Tuple2(_flag, _controller.text);
   }
@@ -1052,22 +1052,22 @@ class SettingsDialogs {
       Navigator.of(context).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.DismissBanners'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Dismiss'.tr(),
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(text: 'settings.DismissBannersHint1'.tr()),
-        LunaDialog.textContent(text: ''),
-        LunaDialog.textContent(text: 'settings.DismissBannersHint2'.tr()),
+        ArrPilotDialog.textContent(text: 'settings.DismissBannersHint1'.tr()),
+        ArrPilotDialog.textContent(text: ''),
+        ArrPilotDialog.textContent(text: 'settings.DismissBannersHint2'.tr()),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return _flag;
   }
@@ -1080,22 +1080,22 @@ class SettingsDialogs {
       Navigator.of(context).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.ClearImageCache'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Clear'.tr(),
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(text: 'settings.ClearImageCacheHint1'.tr()),
-        LunaDialog.textContent(text: ''),
-        LunaDialog.textContent(text: 'settings.ClearImageCacheHint2'.tr()),
+        ArrPilotDialog.textContent(text: 'settings.ClearImageCacheHint1'.tr()),
+        ArrPilotDialog.textContent(text: ''),
+        ArrPilotDialog.textContent(text: 'settings.ClearImageCacheHint2'.tr()),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return _flag;
   }
@@ -1108,24 +1108,24 @@ class SettingsDialogs {
       Navigator.of(context).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.ClearConfiguration'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Clear'.tr(),
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(text: 'settings.ClearConfigurationHint1'.tr()),
-        LunaDialog.textContent(text: ''),
-        LunaDialog.textContent(text: 'settings.ClearConfigurationHint2'.tr()),
-        LunaDialog.textContent(text: ''),
-        LunaDialog.textContent(text: 'settings.ClearConfigurationHint3'.tr()),
+        ArrPilotDialog.textContent(text: 'settings.ClearConfigurationHint1'.tr()),
+        ArrPilotDialog.textContent(text: ''),
+        ArrPilotDialog.textContent(text: 'settings.ClearConfigurationHint2'.tr()),
+        ArrPilotDialog.textContent(text: ''),
+        ArrPilotDialog.textContent(text: 'settings.ClearConfigurationHint3'.tr()),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return _flag;
   }
@@ -1142,20 +1142,20 @@ class SettingsDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.DecryptBackup'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Restore'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(text: 'settings.DecryptBackupHint1'.tr()),
+        ArrPilotDialog.textContent(text: 'settings.DecryptBackupHint1'.tr()),
         Form(
           key: _formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             controller: _textController,
             title: 'settings.EncryptionKey'.tr(),
             obscureText: true,
@@ -1166,7 +1166,7 @@ class SettingsDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputTextDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputTextDialogContentPadding(),
     );
     return Tuple2(_flag, _textController.text);
   }
@@ -1183,30 +1183,30 @@ class SettingsDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.BackupConfiguration'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.BackUp'.tr(),
-          textColor: LunaColours.accent,
+          textColor: ArrPilotColours.accent,
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
           text:
-              '${LunaUI.TEXT_BULLET} ${'settings.BackupConfigurationHint1'.tr()}',
+              '${ArrPilotUI.TEXT_BULLET} ${'settings.BackupConfigurationHint1'.tr()}',
           textAlign: TextAlign.left,
         ),
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
           text:
-              '${LunaUI.TEXT_BULLET} ${'settings.BackupConfigurationHint2'.tr()}',
+              '${ArrPilotUI.TEXT_BULLET} ${'settings.BackupConfigurationHint2'.tr()}',
           textAlign: TextAlign.left,
         ),
         Form(
           key: _formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             obscureText: true,
             controller: _textController,
             title: 'settings.EncryptionKey'.tr(),
@@ -1217,7 +1217,7 @@ class SettingsDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputTextDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputTextDialogContentPadding(),
     );
     return Tuple2(_flag, _textController.text);
   }
@@ -1229,7 +1229,7 @@ class SettingsDialogs {
     int _opacity = 0;
     final _formKey = GlobalKey<FormState>();
     final _textController = TextEditingController()
-      ..text = LunaSeaDatabase.THEME_IMAGE_BACKGROUND_OPACITY.read().toString();
+      ..text = ArrPilotDatabase.THEME_IMAGE_BACKGROUND_OPACITY.read().toString();
 
     void _setValues(bool flag) {
       if (_formKey.currentState!.validate()) {
@@ -1239,26 +1239,26 @@ class SettingsDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.ImageBackgroundOpacity'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Set'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
           text: 'settings.ImageBackgroundOpacityHint1'.tr(),
         ),
-        LunaDialog.textContent(text: ''),
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(text: ''),
+        ArrPilotDialog.textContent(
           text: 'settings.ImageBackgroundOpacityHint2'.tr(),
         ),
         Form(
           key: _formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             controller: _textController,
             title: 'settings.ImageBackgroundOpacity'.tr(),
             keyboardType: TextInputType.number,
@@ -1275,32 +1275,32 @@ class SettingsDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputTextDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputTextDialogContentPadding(),
     );
     return Tuple2(_flag, _opacity);
   }
 
   Future<void> accountHelpMessage(BuildContext context) async {
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.AccountHelp'.tr(),
-      content: [LunaDialog.textContent(text: 'settings.AccountHelpHint1'.tr())],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      content: [ArrPilotDialog.textContent(text: 'settings.AccountHelpHint1'.tr())],
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
   }
 
-  Future<Tuple2<bool, LunaModule?>> selectBootModule() async {
-    final context = LunaState.context;
+  Future<Tuple2<bool, ArrPilotModule?>> selectBootModule() async {
+    final context = ArrPilotState.context;
     bool _flag = false;
-    LunaModule? _module;
+    ArrPilotModule? _module;
 
-    void _setValues(LunaModule module) {
+    void _setValues(ArrPilotModule module) {
       _flag = true;
       _module = module;
       Navigator.of(context).pop();
     }
 
-    final modules = LunaModule.values.filter((module) {
+    final modules = ArrPilotModule.values.filter((module) {
       final enabled = module.isEnabled;
       final featureFlag = module.featureFlag;
       final homeRoute = module.homeRoute != null;
@@ -1308,19 +1308,19 @@ class SettingsDialogs {
       return homeRoute && enabled && featureFlag;
     }).toList();
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'settings.BootModule'.tr(),
       content: List.generate(
         modules.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: modules[index].title,
           icon: modules[index].icon,
           iconColor: modules[index].color,
           onTap: () => _setValues(modules[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
 
     return Tuple2(_flag, _module);

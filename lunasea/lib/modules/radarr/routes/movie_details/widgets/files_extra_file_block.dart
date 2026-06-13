@@ -12,11 +12,11 @@ class RadarrMovieDetailsFilesExtraFileBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaTableCard(
+    return ArrPilotTableCard(
       content: [
-        LunaTableContent(title: 'relative path', body: file.lunaRelativePath),
-        LunaTableContent(title: 'type', body: file.lunaType),
-        LunaTableContent(title: 'extension', body: file.lunaExtension),
+        ArrPilotTableContent(title: 'relative path', body: file.lunaRelativePath),
+        ArrPilotTableContent(title: 'type', body: file.lunaType),
+        ArrPilotTableContent(title: 'extension', body: file.lunaExtension),
       ],
     );
   }

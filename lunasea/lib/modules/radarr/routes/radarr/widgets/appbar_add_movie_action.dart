@@ -9,9 +9,9 @@ class RadarrAppBarAddMoviesAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaIconButton(
+    return ArrPilotIconButton(
       icon: Icons.add_rounded,
-      iconSize: LunaUI.ICON_SIZE,
+      iconSize: ArrPilotUI.ICON_SIZE,
       onPressed: RadarrRoutes.ADD_MOVIE.go,
     );
   }

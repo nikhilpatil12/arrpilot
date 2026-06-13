@@ -12,21 +12,21 @@ class SonarrSeriesDetailsOverviewDescriptionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
-      posterPlaceholderIcon: LunaIcons.VIDEO_CAM,
+    return ArrPilotBlock(
+      posterPlaceholderIcon: ArrPilotIcons.VIDEO_CAM,
       backgroundUrl: context.read<SonarrState>().getFanartURL(series!.id),
       posterUrl: context.read<SonarrState>().getPosterURL(series!.id),
       posterHeaders: context.read<SonarrState>().headers,
       title: series!.title,
       body: [
-        LunaTextSpan.extended(
+        ArrPilotTextSpan.extended(
           text: series!.overview == null || series!.overview!.isEmpty
               ? 'sonarr.NoSummaryAvailable'.tr()
               : series!.overview,
         ),
       ],
       customBodyMaxLines: 3,
-      onTap: () async => LunaDialogs().textPreview(
+      onTap: () async => ArrPilotDialogs().textPreview(
         context,
         series!.title,
         series!.overview!,

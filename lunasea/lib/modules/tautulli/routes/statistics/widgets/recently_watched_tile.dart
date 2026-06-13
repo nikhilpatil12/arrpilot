@@ -19,7 +19,7 @@ class TautulliStatisticsRecentlyWatchedTile extends StatefulWidget {
 class _State extends State<TautulliStatisticsRecentlyWatchedTile> {
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: widget.data['title'] ?? 'lunasea.Unknown'.tr(),
       body: _body(),
       onTap: _onTap,
@@ -27,7 +27,7 @@ class _State extends State<TautulliStatisticsRecentlyWatchedTile> {
           .read<TautulliState>()
           .getImageURLFromPath(widget.data['thumb']),
       posterHeaders: context.watch<TautulliState>().headers,
-      posterPlaceholderIcon: LunaIcons.VIDEO_CAM,
+      posterPlaceholderIcon: ArrPilotIcons.VIDEO_CAM,
       backgroundUrl:
           context.read<TautulliState>().getImageURLFromPath(widget.data['art']),
       backgroundHeaders: context.watch<TautulliState>().headers,
@@ -39,13 +39,13 @@ class _State extends State<TautulliStatisticsRecentlyWatchedTile> {
       TextSpan(text: widget.data['friendly_name'] ?? 'Unknown User'),
       widget.data['player'] != null
           ? TextSpan(text: widget.data['player'])
-          : const TextSpan(text: LunaUI.TEXT_EMDASH),
+          : const TextSpan(text: ArrPilotUI.TEXT_EMDASH),
       widget.data['last_watch'] != null
           ? TextSpan(
               text:
                   'Watched ${DateTime.fromMillisecondsSinceEpoch(widget.data['last_watch'] * 1000).asAge()}',
             )
-          : const TextSpan(text: LunaUI.TEXT_EMDASH)
+          : const TextSpan(text: ArrPilotUI.TEXT_EMDASH)
     ];
   }
 

@@ -18,7 +18,7 @@ class MovieDetailsRoute extends StatefulWidget {
   State<StatefulWidget> createState() => _State();
 }
 
-class _State extends State<MovieDetailsRoute> with LunaLoadCallbackMixin {
+class _State extends State<MovieDetailsRoute> with ArrPilotLoadCallbackMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   RadarrMovie? movie;
   PageController? _pageController;
@@ -67,9 +67,9 @@ class _State extends State<MovieDetailsRoute> with LunaLoadCallbackMixin {
         title: 'Movie Details',
         message: 'Movie Not Found',
       );
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      module: LunaModule.RADARR,
+      module: ArrPilotModule.RADARR,
       appBar: _appBar(),
       bottomNavigationBar:
           context.watch<RadarrState>().enabled ? _bottomNavigationBar() : null,
@@ -82,14 +82,14 @@ class _State extends State<MovieDetailsRoute> with LunaLoadCallbackMixin {
 
     if (movie != null) {
       _actions = [
-        LunaIconButton(
-          icon: LunaIcons.LINK,
+        ArrPilotIconButton(
+          icon: ArrPilotIcons.LINK,
           onPressed: () async {
             LinksSheet(movie: movie!).show();
           },
         ),
-        LunaIconButton(
-          icon: LunaIcons.EDIT,
+        ArrPilotIconButton(
+          icon: ArrPilotIcons.EDIT,
           onPressed: () => RadarrRoutes.MOVIE_EDIT.go(params: {
             'movie': widget.movieId.toString(),
           }),
@@ -98,7 +98,7 @@ class _State extends State<MovieDetailsRoute> with LunaLoadCallbackMixin {
       ];
     }
 
-    return LunaAppBar(
+    return ArrPilotAppBar(
       pageController: _pageController,
       scrollControllers: RadarrMovieDetailsNavigationBar.scrollControllers,
       title: 'Movie Details',
@@ -125,17 +125,17 @@ class _State extends State<MovieDetailsRoute> with LunaLoadCallbackMixin {
         builder: (context, AsyncSnapshot<List<Object>> snapshot) {
           if (snapshot.hasError) {
             if (snapshot.connectionState != ConnectionState.waiting)
-              LunaLogger().error(
+              ArrPilotLogger().error(
                 'Unable to pull Radarr movie details',
                 snapshot.error,
                 snapshot.stackTrace,
               );
-            return LunaMessage.error(onTap: loadCallback);
+            return ArrPilotMessage.error(onTap: loadCallback);
           }
           if (snapshot.hasData) {
             movie = _findMovie(snapshot.data![2] as List<RadarrMovie>);
             if (movie == null)
-              return LunaMessage.goBack(
+              return ArrPilotMessage.goBack(
                 text: 'Movie Not Found',
                 context: context,
               );
@@ -146,7 +146,7 @@ class _State extends State<MovieDetailsRoute> with LunaLoadCallbackMixin {
                 _findTags(movie!.tags, snapshot.data![1] as List<RadarrTag>);
             return _pages(qualityProfile, tags);
           }
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -156,7 +156,7 @@ class _State extends State<MovieDetailsRoute> with LunaLoadCallbackMixin {
     return ChangeNotifierProvider(
       create: (context) =>
           RadarrMovieDetailsState(context: context, movie: movie!),
-      builder: (context, _) => LunaPageView(
+      builder: (context, _) => ArrPilotPageView(
         controller: _pageController,
         children: [
           RadarrMovieDetailsOverviewPage(

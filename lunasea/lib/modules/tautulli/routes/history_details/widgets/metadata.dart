@@ -29,7 +29,7 @@ class TautulliHistoryDetailsMetadata extends StatelessWidget {
               return false;
             });
             if (_record != null)
-              return LunaIconButton(
+              return ArrPilotIconButton(
                 icon: Icons.info_outline_rounded,
                 onPressed: () async => _onPressed(context, _record),
               );

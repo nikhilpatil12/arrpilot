@@ -18,7 +18,7 @@ class SeriesDetailsRoute extends StatefulWidget {
   State<StatefulWidget> createState() => _State();
 }
 
-class _State extends State<SeriesDetailsRoute> with LunaLoadCallbackMixin {
+class _State extends State<SeriesDetailsRoute> with ArrPilotLoadCallbackMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   SonarrSeries? series;
   PageController? _pageController;
@@ -77,9 +77,9 @@ class _State extends State<SeriesDetailsRoute> with LunaLoadCallbackMixin {
         message: 'sonarr.SeriesNotFound'.tr(),
       );
     }
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      module: LunaModule.SONARR,
+      module: ArrPilotModule.SONARR,
       appBar: _appBar() as PreferredSizeWidget?,
       bottomNavigationBar:
           context.watch<SonarrState>().enabled ? _bottomNavigationBar() : null,
@@ -92,12 +92,12 @@ class _State extends State<SeriesDetailsRoute> with LunaLoadCallbackMixin {
 
     if (series != null) {
       _actions = [
-        LunaIconButton(
-          icon: LunaIcons.LINK,
+        ArrPilotIconButton(
+          icon: ArrPilotIcons.LINK,
           onPressed: () => LinksSheet(series: series!).show(),
         ),
-        LunaIconButton(
-          icon: LunaIcons.EDIT,
+        ArrPilotIconButton(
+          icon: ArrPilotIcons.EDIT,
           onPressed: () {
             SonarrRoutes.SERIES_EDIT.go(
               params: {'series': widget.seriesId.toString()},
@@ -107,7 +107,7 @@ class _State extends State<SeriesDetailsRoute> with LunaLoadCallbackMixin {
         SonarrAppBarSeriesSettingsAction(seriesId: widget.seriesId),
       ];
     }
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'sonarr.SeriesDetails'.tr(),
       scrollControllers: SonarrSeriesDetailsNavigationBar.scrollControllers,
       pageController: _pageController,
@@ -134,19 +134,19 @@ class _State extends State<SeriesDetailsRoute> with LunaLoadCallbackMixin {
         builder: (context, AsyncSnapshot<List<Object>> snapshot) {
           if (snapshot.hasError) {
             if (snapshot.connectionState != ConnectionState.waiting) {
-              LunaLogger().error(
+              ArrPilotLogger().error(
                 'Unable to pull Sonarr series details',
                 snapshot.error,
                 snapshot.stackTrace,
               );
             }
-            return LunaMessage.error(onTap: loadCallback);
+            return ArrPilotMessage.error(onTap: loadCallback);
           }
           if (snapshot.hasData) {
             series =
                 (snapshot.data![3] as Map<int, SonarrSeries>)[widget.seriesId];
             if (series == null) {
-              return LunaMessage.goBack(
+              return ArrPilotMessage.goBack(
                 text: 'sonarr.SeriesNotFound'.tr(),
                 context: context,
               );
@@ -167,7 +167,7 @@ class _State extends State<SeriesDetailsRoute> with LunaLoadCallbackMixin {
               tags: tags,
             );
           }
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -183,7 +183,7 @@ class _State extends State<SeriesDetailsRoute> with LunaLoadCallbackMixin {
         context: context,
         series: series!,
       ),
-      builder: (context, _) => LunaPageView(
+      builder: (context, _) => ArrPilotPageView(
         controller: _pageController,
         children: [
           SonarrSeriesDetailsOverviewPage(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-mixin LunaScrollControllerMixin<T extends StatefulWidget> on State<T> {
+mixin ArrPilotScrollControllerMixin<T extends StatefulWidget> on State<T> {
   final ScrollController scrollController = ScrollController();
 
   @mustCallSuper

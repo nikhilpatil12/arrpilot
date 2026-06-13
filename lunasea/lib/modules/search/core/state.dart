@@ -2,7 +2,7 @@ import 'package:arrpilot/core.dart';
 import 'package:arrpilot/database/models/indexer.dart';
 import 'package:arrpilot/modules/search.dart';
 
-class SearchState extends LunaModuleState {
+class SearchState extends ArrPilotModuleState {
   @override
   void reset() {}
 
@@ -12,9 +12,9 @@ class SearchState extends LunaModuleState {
     _api = api;
   }
 
-  late LunaIndexer _indexer;
-  LunaIndexer get indexer => _indexer;
-  set indexer(LunaIndexer indexer) {
+  late ArrPilotIndexer _indexer;
+  ArrPilotIndexer get indexer => _indexer;
+  set indexer(ArrPilotIndexer indexer) {
     _indexer = indexer;
     api = NewznabAPI.fromIndexer(_indexer);
     notifyListeners();

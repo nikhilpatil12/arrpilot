@@ -16,19 +16,19 @@ class RadarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'lunasea.Settings'.tr(),
       content: List.generate(
         RadarrGlobalSettingsType.values.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: RadarrGlobalSettingsType.values[index].name,
           icon: RadarrGlobalSettingsType.values[index].icon,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, RadarrGlobalSettingsType.values[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _value);
   }
@@ -46,19 +46,19 @@ class RadarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: movie.title,
       content: List.generate(
         RadarrMovieSettingsType.values.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: RadarrMovieSettingsType.values[index].name(movie),
           icon: RadarrMovieSettingsType.values[index].icon(movie),
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, RadarrMovieSettingsType.values[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _value);
   }
@@ -77,19 +77,19 @@ class RadarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Page',
       content: List.generate(
         titles.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: titles[index],
           icon: icons[index],
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, index),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
 
     return Tuple2(_flag, _index);
@@ -106,19 +106,19 @@ class RadarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'radarr.ImportMode'.tr(),
       content: List.generate(
         RadarrImportMode.values.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: RadarrImportMode.values[index].lunaReadable,
           icon: RadarrImportMode.values[index].lunaIcon,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, RadarrImportMode.values[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
 
     return Tuple2(_flag, _mode);
@@ -136,11 +136,11 @@ class RadarrDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Add Tag',
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'Add',
           onPressed: () => _setValues(true),
         ),
@@ -148,7 +148,7 @@ class RadarrDialogs {
       content: [
         Form(
           key: _formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             controller: _textController,
             title: 'Tag Label',
             onSubmitted: (_) => _setValues(true),
@@ -160,7 +160,7 @@ class RadarrDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputDialogContentPadding(),
     );
     return Tuple2(_flag, _textController.text);
   }
@@ -173,21 +173,21 @@ class RadarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Delete Tag',
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'Delete',
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
             text: 'Are you sure you want to delete this tag?'),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return _flag;
   }
@@ -200,20 +200,20 @@ class RadarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Missing Movies',
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'Search',
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
             text: 'Are you sure you want to search for all missing movies?'),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return _flag;
   }
@@ -226,21 +226,21 @@ class RadarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Delete File',
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'Delete',
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
             text: 'Are you sure you want to delete this movie file?'),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return _flag;
   }
@@ -262,19 +262,19 @@ class RadarrDialogs {
       return true;
     }).toList();
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'radarr.MinimumAvailability'.tr(),
       content: List.generate(
         _values.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: _values[index].readable,
           icon: Icons.folder_rounded,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, _values[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, availability);
   }
@@ -290,19 +290,19 @@ class RadarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'radarr.QualityProfile'.tr(),
       content: List.generate(
         profiles.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: profiles[index]!.name!,
           icon: Icons.portrait_rounded,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, profiles[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, profile);
   }
@@ -318,19 +318,19 @@ class RadarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'radarr.Quality'.tr(),
       content: List.generate(
         definitions.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: definitions[index].title!,
           icon: Icons.portrait_rounded,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, definitions[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, profile);
   }
@@ -345,17 +345,17 @@ class RadarrDialogs {
         value: context.read<RadarrManualImportDetailsTileState>(),
         builder: (context, _) => AlertDialog(
           actions: <Widget>[
-            LunaDialog.button(
+            ArrPilotDialog.button(
               text: 'Close',
               onPressed: () => Navigator.of(context, rootNavigator: true).pop(),
             ),
           ],
-          title: LunaDialog.title(text: 'radarr.Languages'.tr()),
+          title: ArrPilotDialog.title(text: 'radarr.Languages'.tr()),
           content: Consumer<RadarrManualImportDetailsTileState>(
-            builder: (context, manualImport, _) => LunaDialog.content(
+            builder: (context, manualImport, _) => ArrPilotDialog.content(
               children: List.generate(
                 filteredLanguages.length,
-                (index) => LunaDialog.checkbox(
+                (index) => ArrPilotDialog.checkbox(
                     title: filteredLanguages[index].name!,
                     value: context
                             .read<RadarrManualImportDetailsTileState>()
@@ -374,8 +374,8 @@ class RadarrDialogs {
               ),
             ),
           ),
-          contentPadding: LunaDialog.listDialogContentPadding(),
-          shape: LunaUI.shapeBorder,
+          contentPadding: ArrPilotDialog.listDialogContentPadding(),
+          shape: ArrPilotUI.shapeBorder,
         ),
       ),
     );
@@ -394,27 +394,27 @@ class RadarrDialogs {
               return AlertDialog(
                 actions: <Widget>[
                   const RadarrTagsAppBarActionAddTag(asDialogButton: true),
-                  LunaDialog.button(
+                  ArrPilotDialog.button(
                     text: 'Close',
                     onPressed: () =>
                         Navigator.of(context, rootNavigator: true).pop(),
                   ),
                 ],
-                title: LunaDialog.title(text: 'radarr.Tags'.tr()),
+                title: ArrPilotDialog.title(text: 'radarr.Tags'.tr()),
                 content: Builder(
                   builder: (context) {
                     if (snapshot.data?.isEmpty ?? true)
-                      return LunaDialog.content(
+                      return ArrPilotDialog.content(
                         children: [
-                          LunaDialog.textContent(
+                          ArrPilotDialog.textContent(
                             text: 'radarr.NoTagsFound'.tr(),
                           ),
                         ],
                       );
-                    return LunaDialog.content(
+                    return ArrPilotDialog.content(
                       children: List.generate(
                         snapshot.data!.length,
-                        (index) => LunaDialog.checkbox(
+                        (index) => ArrPilotDialog.checkbox(
                           title: snapshot.data![index].label!,
                           value: context
                               .watch<RadarrMoviesEditState>()
@@ -437,9 +437,9 @@ class RadarrDialogs {
                   },
                 ),
                 contentPadding: (snapshot.data?.length ?? 0) == 0
-                    ? LunaDialog.textDialogContentPadding()
-                    : LunaDialog.listDialogContentPadding(),
-                shape: LunaUI.shapeBorder,
+                    ? ArrPilotDialog.textDialogContentPadding()
+                    : ArrPilotDialog.listDialogContentPadding(),
+                shape: ArrPilotUI.shapeBorder,
               );
             },
           ),
@@ -456,19 +456,19 @@ class RadarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Remove From Queue',
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'Remove',
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
         RadarrDatabase.QUEUE_REMOVE_FROM_CLIENT.listenableBuilder(
-          builder: (context, _) => LunaDialog.checkbox(
+          builder: (context, _) => ArrPilotDialog.checkbox(
             title: 'Remove From Client',
             value: RadarrDatabase.QUEUE_REMOVE_FROM_CLIENT.read(),
             onChanged: (selected) =>
@@ -476,7 +476,7 @@ class RadarrDialogs {
           ),
         ),
         RadarrDatabase.QUEUE_BLACKLIST.listenableBuilder(
-          builder: (context, _) => LunaDialog.checkbox(
+          builder: (context, _) => ArrPilotDialog.checkbox(
             title: 'Blacklist Release',
             value: RadarrDatabase.QUEUE_BLACKLIST.read(),
             onChanged: (selected) =>
@@ -484,7 +484,7 @@ class RadarrDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return _flag;
   }
@@ -502,25 +502,25 @@ class RadarrDialogs {
               return AlertDialog(
                 actions: <Widget>[
                   const RadarrTagsAppBarActionAddTag(asDialogButton: true),
-                  LunaDialog.button(
+                  ArrPilotDialog.button(
                     text: 'Close',
                     onPressed: () =>
                         Navigator.of(context, rootNavigator: true).pop(),
                   ),
                 ],
-                title: LunaDialog.title(text: 'Tags'),
+                title: ArrPilotDialog.title(text: 'Tags'),
                 content: Builder(
                   builder: (context) {
                     if ((snapshot.data?.length ?? 0) == 0)
-                      return LunaDialog.content(
+                      return ArrPilotDialog.content(
                         children: [
-                          LunaDialog.textContent(text: 'No Tags Found'),
+                          ArrPilotDialog.textContent(text: 'No Tags Found'),
                         ],
                       );
-                    return LunaDialog.content(
+                    return ArrPilotDialog.content(
                       children: List.generate(
                         snapshot.data!.length,
-                        (index) => LunaDialog.checkbox(
+                        (index) => ArrPilotDialog.checkbox(
                           title: snapshot.data![index].label!,
                           value: context
                               .watch<RadarrAddMovieDetailsState>()
@@ -544,9 +544,9 @@ class RadarrDialogs {
                   },
                 ),
                 contentPadding: (snapshot.data?.length ?? 0) == 0
-                    ? LunaDialog.textDialogContentPadding()
-                    : LunaDialog.listDialogContentPadding(),
-                shape: LunaUI.shapeBorder,
+                    ? ArrPilotDialog.textDialogContentPadding()
+                    : ArrPilotDialog.listDialogContentPadding(),
+                shape: ArrPilotUI.shapeBorder,
               );
             },
           ),
@@ -566,27 +566,27 @@ class RadarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'radarr.RootFolder'.tr(),
       content: List.generate(
         folders.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: folders[index].path!,
-          subtitle: LunaDialog.richText(
+          subtitle: ArrPilotDialog.richText(
             children: [
-              LunaDialog.bolded(
+              ArrPilotDialog.bolded(
                 text: folders[index].freeSpace.asBytes(),
-                fontSize: LunaDialog.BUTTON_SIZE,
+                fontSize: ArrPilotDialog.BUTTON_SIZE,
               ),
             ],
           ) as RichText?,
           icon: Icons.folder_rounded,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, folders[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _folder);
   }
@@ -599,19 +599,19 @@ class RadarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Remove Movie',
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Remove'.tr(),
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
         RadarrDatabase.REMOVE_MOVIE_IMPORT_LIST.listenableBuilder(
-          builder: (context, _) => LunaDialog.checkbox(
+          builder: (context, _) => ArrPilotDialog.checkbox(
             title: 'Add to Exclusion List',
             value: RadarrDatabase.REMOVE_MOVIE_IMPORT_LIST.read(),
             onChanged: (value) =>
@@ -619,7 +619,7 @@ class RadarrDialogs {
           ),
         ),
         RadarrDatabase.REMOVE_MOVIE_DELETE_FILES.listenableBuilder(
-          builder: (context, _) => LunaDialog.checkbox(
+          builder: (context, _) => ArrPilotDialog.checkbox(
             title: 'Delete Files',
             value: RadarrDatabase.REMOVE_MOVIE_DELETE_FILES.read(),
             onChanged: (value) =>
@@ -627,7 +627,7 @@ class RadarrDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return _flag;
   }
@@ -645,21 +645,21 @@ class RadarrDialogs {
       }
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Queue Size',
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'Set',
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
             text: 'Set the amount of items fetched for the queue.'),
         Form(
           key: _formKey,
-          child: LunaDialog.textFormInput(
+          child: ArrPilotDialog.textFormInput(
             controller: _textController,
             title: 'Queue Page Size',
             onSubmitted: (_) => _setValues(true),
@@ -672,18 +672,18 @@ class RadarrDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.inputTextDialogContentPadding(),
+      contentPadding: ArrPilotDialog.inputTextDialogContentPadding(),
     );
 
     return Tuple2(_flag, int.tryParse(_textController.text) ?? 50);
   }
 
   Future<void> addMovieOptions(BuildContext context) async {
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'lunasea.Options'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Close'.tr(),
           onPressed: () => Navigator.of(context, rootNavigator: true).pop(),
         ),
@@ -691,7 +691,7 @@ class RadarrDialogs {
       showCancelButton: false,
       content: [
         RadarrDatabase.ADD_MOVIE_SEARCH_FOR_MISSING.listenableBuilder(
-          builder: (context, _) => LunaDialog.checkbox(
+          builder: (context, _) => ArrPilotDialog.checkbox(
             title: 'radarr.StartSearchForMissingMovie'.tr(),
             value: RadarrDatabase.ADD_MOVIE_SEARCH_FOR_MISSING.read(),
             onChanged: (value) =>
@@ -699,7 +699,7 @@ class RadarrDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
   }
 
@@ -708,22 +708,22 @@ class RadarrDialogs {
 
     void _setValues(bool flag) {
       _flag = flag;
-      Navigator.of(LunaState.context, rootNavigator: true).pop();
+      Navigator.of(ArrPilotState.context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
-      context: LunaState.context,
+    await ArrPilotDialog.dialog(
+      context: ArrPilotState.context,
       title: 'radarr.MoveFiles'.tr(),
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
       cancelButtonText: 'lunasea.No'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Yes'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(text: 'radarr.MoveFilesDescription'.tr()),
+        ArrPilotDialog.textContent(text: 'radarr.MoveFilesDescription'.tr()),
       ],
     );
 

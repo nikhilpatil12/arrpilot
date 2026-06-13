@@ -4,27 +4,27 @@ import 'package:arrpilot/system/state.dart';
 import 'package:arrpilot/types/loading_state.dart';
 import 'package:arrpilot/widgets/ui.dart';
 
-enum LunaButtonType {
+enum ArrPilotButtonType {
   TEXT,
   ICON,
   LOADER,
 }
 
 /// A Luna-styled button.
-class LunaButton extends Card {
+class ArrPilotButton extends Card {
   static const DEFAULT_HEIGHT = 46.0;
 
-  LunaButton._({
+  ArrPilotButton._({
     Key? key,
     required Widget child,
-    EdgeInsets margin = LunaUI.MARGIN_HALF,
+    EdgeInsets margin = ArrPilotUI.MARGIN_HALF,
     Color? backgroundColor,
     double height = DEFAULT_HEIGHT,
     Alignment alignment = Alignment.center,
     Decoration? decoration,
     Function? onTap,
     Function? onLongPress,
-    LunaLoadingState? loadingState,
+    ArrPilotLoadingState? loadingState,
   }) : super(
           key: key,
           child: InkWell(
@@ -34,42 +34,42 @@ class LunaButton extends Card {
               height: height,
               alignment: alignment,
             ),
-            borderRadius: BorderRadius.circular(LunaUI.BORDER_RADIUS),
+            borderRadius: BorderRadius.circular(ArrPilotUI.BORDER_RADIUS),
             onTap: () async {
               HapticFeedback.lightImpact();
-              if (onTap != null && loadingState != LunaLoadingState.ACTIVE)
+              if (onTap != null && loadingState != ArrPilotLoadingState.ACTIVE)
                 onTap();
             },
             onLongPress: () async {
               HapticFeedback.heavyImpact();
               if (onLongPress != null &&
-                  loadingState != LunaLoadingState.ACTIVE) onLongPress();
+                  loadingState != ArrPilotLoadingState.ACTIVE) onLongPress();
             },
           ),
           margin: margin,
           color: backgroundColor != null
-              ? backgroundColor.withOpacity(LunaUI.OPACITY_DIMMED)
-              : Theme.of(LunaState.context)
+              ? backgroundColor.withOpacity(ArrPilotUI.OPACITY_DIMMED)
+              : Theme.of(ArrPilotState.context)
                   .canvasColor
-                  .withOpacity(LunaUI.OPACITY_DIMMED),
+                  .withOpacity(ArrPilotUI.OPACITY_DIMMED),
           shape:
-              backgroundColor != null ? LunaShapeBorder() : LunaUI.shapeBorder,
-          elevation: LunaUI.ELEVATION,
+              backgroundColor != null ? ArrPilotShapeBorder() : ArrPilotUI.shapeBorder,
+          elevation: ArrPilotUI.ELEVATION,
           clipBehavior: Clip.antiAlias,
         );
 
   /// Create a default button.
   ///
-  /// If [LunaLoadingState] is passed in, will build the correct button based on the type.
-  factory LunaButton({
-    required LunaButtonType type,
-    Color color = LunaColours.accent,
+  /// If [ArrPilotLoadingState] is passed in, will build the correct button based on the type.
+  factory ArrPilotButton({
+    required ArrPilotButtonType type,
+    Color color = ArrPilotColours.accent,
     Color? backgroundColor,
     String? text,
     IconData? icon,
-    double iconSize = LunaUI.ICON_SIZE,
-    LunaLoadingState? loadingState,
-    EdgeInsets margin = LunaUI.MARGIN_HALF,
+    double iconSize = ArrPilotUI.ICON_SIZE,
+    ArrPilotLoadingState? loadingState,
+    EdgeInsets margin = ArrPilotUI.MARGIN_HALF,
     double height = DEFAULT_HEIGHT,
     Alignment alignment = Alignment.center,
     Decoration? decoration,
@@ -77,8 +77,8 @@ class LunaButton extends Card {
     Function? onLongPress,
   }) {
     switch (loadingState) {
-      case LunaLoadingState.ACTIVE:
-        return LunaButton.loader(
+      case ArrPilotLoadingState.ACTIVE:
+        return ArrPilotButton.loader(
           color: color,
           backgroundColor: backgroundColor,
           margin: margin,
@@ -89,8 +89,8 @@ class LunaButton extends Card {
           onLongPress: onLongPress,
           loadingState: loadingState,
         );
-      case LunaLoadingState.ERROR:
-        return LunaButton.icon(
+      case ArrPilotLoadingState.ERROR:
+        return ArrPilotButton.icon(
           icon: Icons.error_rounded,
           iconSize: iconSize,
           color: color,
@@ -107,8 +107,8 @@ class LunaButton extends Card {
         break;
     }
     switch (type) {
-      case LunaButtonType.TEXT:
-        return LunaButton.text(
+      case ArrPilotButtonType.TEXT:
+        return ArrPilotButton.text(
           text: text!,
           icon: icon,
           iconSize: iconSize,
@@ -122,9 +122,9 @@ class LunaButton extends Card {
           onLongPress: onLongPress,
           loadingState: loadingState,
         );
-      case LunaButtonType.ICON:
+      case ArrPilotButtonType.ICON:
         assert(icon != null);
-        return LunaButton.icon(
+        return ArrPilotButton.icon(
           icon: icon,
           iconSize: iconSize,
           color: color,
@@ -137,8 +137,8 @@ class LunaButton extends Card {
           onLongPress: onLongPress,
           loadingState: loadingState,
         );
-      case LunaButtonType.LOADER:
-        return LunaButton.loader(
+      case ArrPilotButtonType.LOADER:
+        return ArrPilotButton.loader(
           color: color,
           backgroundColor: backgroundColor,
           margin: margin,
@@ -153,21 +153,21 @@ class LunaButton extends Card {
   }
 
   /// Build a button that contains a centered text string.
-  factory LunaButton.text({
+  factory ArrPilotButton.text({
     required String text,
     required IconData? icon,
-    double iconSize = LunaUI.ICON_SIZE,
-    Color color = LunaColours.accent,
+    double iconSize = ArrPilotUI.ICON_SIZE,
+    Color color = ArrPilotColours.accent,
     Color? backgroundColor,
-    EdgeInsets margin = LunaUI.MARGIN_HALF,
+    EdgeInsets margin = ArrPilotUI.MARGIN_HALF,
     double height = DEFAULT_HEIGHT,
     Alignment alignment = Alignment.center,
     Decoration? decoration,
-    LunaLoadingState? loadingState,
+    ArrPilotLoadingState? loadingState,
     Function? onTap,
     Function? onLongPress,
   }) {
-    return LunaButton._(
+    return ArrPilotButton._(
       child: Padding(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -181,15 +181,15 @@ class LunaButton extends Card {
                   size: iconSize,
                 ),
                 padding: const EdgeInsets.only(
-                    right: LunaUI.DEFAULT_MARGIN_SIZE / 2),
+                    right: ArrPilotUI.DEFAULT_MARGIN_SIZE / 2),
               ),
             Flexible(
               child: Text(
                 text,
                 style: const TextStyle(
                   color: Colors.white,
-                  fontWeight: LunaUI.FONT_WEIGHT_BOLD,
-                  fontSize: LunaUI.FONT_SIZE_H3,
+                  fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
+                  fontSize: ArrPilotUI.FONT_SIZE_H3,
                 ),
                 overflow: TextOverflow.fade,
                 softWrap: false,
@@ -199,7 +199,7 @@ class LunaButton extends Card {
           ],
         ),
         padding:
-            const EdgeInsets.symmetric(horizontal: LunaUI.DEFAULT_MARGIN_SIZE),
+            const EdgeInsets.symmetric(horizontal: ArrPilotUI.DEFAULT_MARGIN_SIZE),
       ),
       margin: margin,
       height: height,
@@ -212,23 +212,23 @@ class LunaButton extends Card {
     );
   }
 
-  /// Build a button that contains a [LunaLoader].
-  factory LunaButton.loader({
-    EdgeInsets margin = LunaUI.MARGIN_HALF,
-    Color color = LunaColours.accent,
+  /// Build a button that contains a [ArrPilotLoader].
+  factory ArrPilotButton.loader({
+    EdgeInsets margin = ArrPilotUI.MARGIN_HALF,
+    Color color = ArrPilotColours.accent,
     Color? backgroundColor,
     double height = DEFAULT_HEIGHT,
     Alignment alignment = Alignment.center,
     Decoration? decoration,
     Function? onTap,
     Function? onLongPress,
-    LunaLoadingState? loadingState,
+    ArrPilotLoadingState? loadingState,
   }) {
-    return LunaButton._(
-      child: LunaLoader(
+    return ArrPilotButton._(
+      child: ArrPilotLoader(
         useSafeArea: false,
         color: color,
-        size: LunaUI.FONT_SIZE_H3,
+        size: ArrPilotUI.FONT_SIZE_H3,
       ),
       margin: margin,
       height: height,
@@ -242,20 +242,20 @@ class LunaButton extends Card {
   }
 
   /// Build a button that contains a single, centered [Icon].
-  factory LunaButton.icon({
+  factory ArrPilotButton.icon({
     required IconData? icon,
-    Color color = LunaColours.accent,
+    Color color = ArrPilotColours.accent,
     Color? backgroundColor,
-    EdgeInsets margin = LunaUI.MARGIN_HALF,
+    EdgeInsets margin = ArrPilotUI.MARGIN_HALF,
     double height = DEFAULT_HEIGHT,
-    double iconSize = LunaUI.ICON_SIZE,
+    double iconSize = ArrPilotUI.ICON_SIZE,
     Alignment alignment = Alignment.center,
     Decoration? decoration,
     Function? onTap,
     Function? onLongPress,
-    LunaLoadingState? loadingState,
+    ArrPilotLoadingState? loadingState,
   }) {
-    return LunaButton._(
+    return ArrPilotButton._(
       child: Icon(
         icon,
         color: color,

@@ -26,15 +26,15 @@ class _State extends State<RadarrMovieDetailsCastCrewPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
-      module: LunaModule.RADARR,
+    return ArrPilotScaffold(
+      module: ArrPilotModule.RADARR,
       scaffoldKey: _scaffoldKey,
       body: _body(),
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: () async =>
@@ -43,14 +43,14 @@ class _State extends State<RadarrMovieDetailsCastCrewPage>
         future: context.watch<RadarrMovieDetailsState>().credits,
         builder: (context, AsyncSnapshot<List<RadarrMovieCredits>> snapshot) {
           if (snapshot.hasError) {
-            LunaLogger().error(
+            ArrPilotLogger().error(
                 'Unable to fetch Radarr credit/crew list: ${widget.movie!.id}',
                 snapshot.error,
                 snapshot.stackTrace);
-            return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+            return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
           }
           if (snapshot.hasData) return _list(snapshot.data);
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -58,7 +58,7 @@ class _State extends State<RadarrMovieDetailsCastCrewPage>
 
   Widget _list(List<RadarrMovieCredits>? credits) {
     if ((credits?.length ?? 0) == 0)
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'No Credits Found',
         buttonText: 'Refresh',
         onTap: _refreshKey.currentState!.show,
@@ -69,7 +69,7 @@ class _State extends State<RadarrMovieDetailsCastCrewPage>
     List<RadarrMovieCredits> _crew = credits
         .where((credit) => credit.type == RadarrCreditType.CREW)
         .toList();
-    return LunaListView(
+    return ArrPilotListView(
       controller: RadarrMovieDetailsNavigationBar.scrollControllers[3],
       children: [
         ...List.generate(_cast.length,

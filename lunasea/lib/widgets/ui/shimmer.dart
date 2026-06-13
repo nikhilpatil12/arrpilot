@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 import 'package:shimmer/shimmer.dart';
 
-class LunaShimmer extends StatelessWidget {
+class ArrPilotShimmer extends StatelessWidget {
   final Widget child;
 
-  const LunaShimmer({
+  const ArrPilotShimmer({
     Key? key,
     required this.child,
   }) : super(key: key);
@@ -15,7 +15,7 @@ class LunaShimmer extends StatelessWidget {
     return Shimmer.fromColors(
       child: child,
       baseColor: Theme.of(context).primaryColor,
-      highlightColor: LunaColours.accent,
+      highlightColor: ArrPilotColours.accent,
     );
   }
 }

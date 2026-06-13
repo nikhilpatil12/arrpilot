@@ -11,12 +11,12 @@ class RadarrMoviesEditPathTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Selector<RadarrMoviesEditState, String>(
       selector: (_, state) => state.path,
-      builder: (context, path, _) => LunaBlock(
+      builder: (context, path, _) => ArrPilotBlock(
         title: 'radarr.MoviePath'.tr(),
         body: [TextSpan(text: path)],
-        trailing: const LunaIconButton.arrow(),
+        trailing: const ArrPilotIconButton.arrow(),
         onTap: () async {
-          Tuple2<bool, String> _values = await LunaDialogs().editText(
+          Tuple2<bool, String> _values = await ArrPilotDialogs().editText(
             context,
             'radarr.MoviePath'.tr(),
             prefill: path,

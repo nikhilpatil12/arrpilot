@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaCard extends Card {
-  LunaCard({
+class ArrPilotCard extends Card {
+  ArrPilotCard({
     Key? key,
     required BuildContext context,
     required Widget child,
-    EdgeInsets margin = LunaUI.MARGIN_H_DEFAULT_V_HALF,
+    EdgeInsets margin = ArrPilotUI.MARGIN_H_DEFAULT_V_HALF,
     Color? color,
     Decoration? decoration,
     double? height,
@@ -21,7 +21,7 @@ class LunaCard extends Card {
           ),
           margin: margin,
           color: color ?? Theme.of(context).primaryColor,
-          shape: LunaUI.shapeBorder,
+          shape: ArrPilotUI.shapeBorder,
           elevation: 0.0,
           clipBehavior: Clip.antiAlias,
         );

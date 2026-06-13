@@ -14,10 +14,10 @@ class RadarrMoviesEditQualityProfileTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Selector<RadarrMoviesEditState, RadarrQualityProfile>(
       selector: (_, state) => state.qualityProfile,
-      builder: (context, profile, _) => LunaBlock(
+      builder: (context, profile, _) => ArrPilotBlock(
         title: 'radarr.QualityProfile'.tr(),
-        body: [TextSpan(text: profile.name ?? LunaUI.TEXT_EMDASH)],
-        trailing: const LunaIconButton.arrow(),
+        body: [TextSpan(text: profile.name ?? ArrPilotUI.TEXT_EMDASH)],
+        trailing: const ArrPilotIconButton.arrow(),
         onTap: () async {
           Tuple2<bool, RadarrQualityProfile?> values =
               await RadarrDialogs().editQualityProfile(context, profiles!);

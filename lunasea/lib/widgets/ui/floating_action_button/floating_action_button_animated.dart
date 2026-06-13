@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaFloatingActionButtonAnimated extends StatelessWidget {
+class ArrPilotFloatingActionButtonAnimated extends StatelessWidget {
   final Object? heroTag;
   final AnimatedIconData icon;
   final AnimationController? controller;
@@ -9,12 +9,12 @@ class LunaFloatingActionButtonAnimated extends StatelessWidget {
   final Color backgroundColor;
   final Function onPressed;
 
-  const LunaFloatingActionButtonAnimated({
+  const ArrPilotFloatingActionButtonAnimated({
     Key? key,
     required this.onPressed,
     required this.icon,
     required this.controller,
-    this.backgroundColor = LunaColours.accent,
+    this.backgroundColor = ArrPilotColours.accent,
     this.color = Colors.white,
     this.heroTag,
   }) : super(key: key);

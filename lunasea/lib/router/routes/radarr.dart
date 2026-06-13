@@ -17,7 +17,7 @@ import 'package:arrpilot/modules/radarr/routes/tags/route.dart';
 import 'package:arrpilot/router/routes.dart';
 import 'package:arrpilot/vendor.dart';
 
-enum RadarrRoutes with LunaRoutesMixin {
+enum RadarrRoutes with ArrPilotRoutesMixin {
   HOME('/radarr'),
   ADD_MOVIE('add_movie'),
   ADD_MOVIE_DETAILS('details'),
@@ -37,7 +37,7 @@ enum RadarrRoutes with LunaRoutesMixin {
   const RadarrRoutes(this.path);
 
   @override
-  LunaModule get module => LunaModule.RADARR;
+  ArrPilotModule get module => ArrPilotModule.RADARR;
 
   @override
   bool isModuleEnabled(BuildContext context) {

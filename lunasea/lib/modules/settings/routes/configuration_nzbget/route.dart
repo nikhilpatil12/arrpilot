@@ -13,12 +13,12 @@ class ConfigurationNZBGetRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationNZBGetRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar(),
       body: _body(),
@@ -26,20 +26,20 @@ class _State extends State<ConfigurationNZBGetRoute>
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
-      title: LunaModule.NZBGET.title,
+    return ArrPilotAppBar(
+      title: ArrPilotModule.NZBGET.title,
       scrollControllers: [scrollController],
     );
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
-        LunaModule.NZBGET.informationBanner(),
+        ArrPilotModule.NZBGET.informationBanner(),
         _enabledToggle(),
         _connectionDetailsPage(),
-        LunaDivider(),
+        ArrPilotDivider(),
         _defaultPagesPage(),
         //_defaultPagesPage(),
       ],
@@ -47,14 +47,14 @@ class _State extends State<ConfigurationNZBGetRoute>
   }
 
   Widget _enabledToggle() {
-    return LunaBox.profiles.listenableBuilder(
-      builder: (context, _) => LunaBlock(
-        title: 'settings.EnableModule'.tr(args: [LunaModule.NZBGET.title]),
-        trailing: LunaSwitch(
-          value: LunaProfile.current.nzbgetEnabled,
+    return ArrPilotBox.profiles.listenableBuilder(
+      builder: (context, _) => ArrPilotBlock(
+        title: 'settings.EnableModule'.tr(args: [ArrPilotModule.NZBGET.title]),
+        trailing: ArrPilotSwitch(
+          value: ArrPilotProfile.current.nzbgetEnabled,
           onChanged: (value) {
-            LunaProfile.current.nzbgetEnabled = value;
-            LunaProfile.current.save();
+            ArrPilotProfile.current.nzbgetEnabled = value;
+            ArrPilotProfile.current.save();
             context.read<NZBGetState>().reset();
           },
         ),
@@ -63,24 +63,24 @@ class _State extends State<ConfigurationNZBGetRoute>
   }
 
   Widget _connectionDetailsPage() {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.ConnectionDetails'.tr(),
       body: [
         TextSpan(
           text: 'settings.ConnectionDetailsDescription'
-              .tr(args: [LunaModule.NZBGET.title]),
+              .tr(args: [ArrPilotModule.NZBGET.title]),
         ),
       ],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: SettingsRoutes.CONFIGURATION_NZBGET_CONNECTION_DETAILS.go,
     );
   }
 
   Widget _defaultPagesPage() {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.DefaultPages'.tr(),
       body: [TextSpan(text: 'settings.DefaultPagesDescription'.tr())],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: SettingsRoutes.CONFIGURATION_NZBGET_DEFAULT_PAGES.go,
     );
   }

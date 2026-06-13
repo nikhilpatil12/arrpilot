@@ -8,7 +8,7 @@ import 'package:arrpilot/modules/search/routes/subcategories/route.dart';
 import 'package:arrpilot/router/routes.dart';
 import 'package:arrpilot/vendor.dart';
 
-enum SearchRoutes with LunaRoutesMixin {
+enum SearchRoutes with ArrPilotRoutesMixin {
   HOME('/search'),
   CATEGORIES('categories'),
   RESULTS('results'),
@@ -21,7 +21,7 @@ enum SearchRoutes with LunaRoutesMixin {
   const SearchRoutes(this.path);
 
   @override
-  LunaModule get module => LunaModule.SEARCH;
+  ArrPilotModule get module => ArrPilotModule.SEARCH;
 
   @override
   bool isModuleEnabled(BuildContext context) => true;

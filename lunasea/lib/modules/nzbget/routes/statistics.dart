@@ -11,7 +11,7 @@ class StatisticsRoute extends StatefulWidget {
   State<StatisticsRoute> createState() => _State();
 }
 
-class _State extends State<StatisticsRoute> with LunaScrollControllerMixin {
+class _State extends State<StatisticsRoute> with ArrPilotScrollControllerMixin {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _refreshKey = GlobalKey<RefreshIndicatorState>();
 
@@ -33,7 +33,7 @@ class _State extends State<StatisticsRoute> with LunaScrollControllerMixin {
   }
 
   Future<bool> _fetch() async {
-    final _api = NZBGetAPI.from(LunaProfile.current);
+    final _api = NZBGetAPI.from(ArrPilotProfile.current);
     return _fetchStatistics(_api)
         .then((_) => _fetchLogs(_api))
         .then((_) => true);
@@ -52,18 +52,18 @@ class _State extends State<StatisticsRoute> with LunaScrollControllerMixin {
   }
 
   @override
-  Widget build(BuildContext context) => LunaScaffold(
+  Widget build(BuildContext context) => ArrPilotScaffold(
         scaffoldKey: _scaffoldKey,
         appBar: _appBar as PreferredSizeWidget?,
         body: _body,
       );
 
-  Widget get _appBar => LunaAppBar(
+  Widget get _appBar => ArrPilotAppBar(
         title: 'Server Statistics',
         scrollControllers: [scrollController],
       );
 
-  Widget get _body => LunaRefreshIndicator(
+  Widget get _body => ArrPilotRefreshIndicator(
         context: context,
         key: _refreshKey,
         onRefresh: _refresh,
@@ -74,25 +74,25 @@ class _State extends State<StatisticsRoute> with LunaScrollControllerMixin {
               case ConnectionState.done:
                 {
                   if (snapshot.hasError || snapshot.data == null)
-                    return LunaMessage.error(onTap: _refresh);
+                    return ArrPilotMessage.error(onTap: _refresh);
                   return _list;
                 }
               case ConnectionState.none:
               case ConnectionState.waiting:
               case ConnectionState.active:
               default:
-                return const LunaLoader();
+                return const ArrPilotLoader();
             }
           },
         ),
       );
 
-  Widget get _list => LunaListView(
+  Widget get _list => ArrPilotListView(
         controller: scrollController,
         children: <Widget>[
-          const LunaHeader(text: 'Status'),
+          const ArrPilotHeader(text: 'Status'),
           _statusBlock(),
-          const LunaHeader(text: 'Logs'),
+          const ArrPilotHeader(text: 'Logs'),
           for (var entry in _logs)
             NZBGetLogTile(
               data: entry,
@@ -101,22 +101,22 @@ class _State extends State<StatisticsRoute> with LunaScrollControllerMixin {
       );
 
   Widget _statusBlock() {
-    return LunaTableCard(
+    return ArrPilotTableCard(
       content: [
-        LunaTableContent(
+        ArrPilotTableContent(
             title: 'Server',
             body: _statistics.serverPaused ? 'Paused' : 'Active'),
-        LunaTableContent(
+        ArrPilotTableContent(
             title: 'Post', body: _statistics.postPaused ? 'Paused' : 'Active'),
-        LunaTableContent(
+        ArrPilotTableContent(
             title: 'Scan', body: _statistics.scanPaused ? 'Paused' : 'Active'),
-        LunaTableContent(title: '', body: ''),
-        LunaTableContent(title: 'Uptime', body: _statistics.uptimeString),
-        LunaTableContent(
+        ArrPilotTableContent(title: '', body: ''),
+        ArrPilotTableContent(title: 'Uptime', body: _statistics.uptimeString),
+        ArrPilotTableContent(
             title: 'Speed Limit', body: _statistics.speedLimitString),
-        LunaTableContent(
+        ArrPilotTableContent(
             title: 'Free Space', body: _statistics.freeSpaceString),
-        LunaTableContent(title: 'Download', body: _statistics.downloadedString),
+        ArrPilotTableContent(title: 'Download', body: _statistics.downloadedString),
       ],
     );
   }

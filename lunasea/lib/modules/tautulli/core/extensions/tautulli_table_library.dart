@@ -12,7 +12,7 @@ extension TautulliTableLibraryExtension on TautulliTableLibrary {
             this.parentCount == 1 ? '1 Season' : '${this.parentCount} Seasons';
         String _episodes =
             this.childCount == 1 ? '1 Episode' : '${this.childCount} Episodes';
-        return '$_shows ${LunaUI.TEXT_BULLET} $_seasons ${LunaUI.TEXT_BULLET} $_episodes';
+        return '$_shows ${ArrPilotUI.TEXT_BULLET} $_seasons ${ArrPilotUI.TEXT_BULLET} $_episodes';
       case TautulliSectionType.ARTIST:
         String _artists =
             this.count == 1 ? '1 Artist' : '${this.count} Artists';
@@ -20,7 +20,7 @@ extension TautulliTableLibraryExtension on TautulliTableLibrary {
             this.parentCount == 1 ? '1 Album' : '${this.parentCount} Albums';
         String _tracks =
             this.childCount == 1 ? '1 Track' : '${this.childCount} Tracks';
-        return '$_artists ${LunaUI.TEXT_BULLET} $_albums ${LunaUI.TEXT_BULLET} $_tracks';
+        return '$_artists ${ArrPilotUI.TEXT_BULLET} $_albums ${ArrPilotUI.TEXT_BULLET} $_tracks';
       case TautulliSectionType.PHOTO:
         return this.count == 1 ? '${this.count} Photo' : '${this.count} Photos';
       case TautulliSectionType.NULL:

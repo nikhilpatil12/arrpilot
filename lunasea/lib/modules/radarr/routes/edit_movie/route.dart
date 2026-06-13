@@ -16,7 +16,7 @@ class MovieEditRoute extends StatefulWidget {
 }
 
 class _State extends State<MovieEditRoute>
-    with LunaLoadCallbackMixin, LunaScrollControllerMixin {
+    with ArrPilotLoadCallbackMixin, ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -36,15 +36,15 @@ class _State extends State<MovieEditRoute>
     return ChangeNotifierProvider(
         create: (_) => RadarrMoviesEditState(),
         builder: (context, _) {
-          LunaLoadingState state =
-              context.select<RadarrMoviesEditState, LunaLoadingState>(
+          ArrPilotLoadingState state =
+              context.select<RadarrMoviesEditState, ArrPilotLoadingState>(
                   (state) => state.state);
-          return LunaScaffold(
+          return ArrPilotScaffold(
             scaffoldKey: _scaffoldKey,
             appBar: _appBar() as PreferredSizeWidget?,
             body:
-                state == LunaLoadingState.ERROR ? _bodyError() : _body(context),
-            bottomNavigationBar: state == LunaLoadingState.ERROR
+                state == ArrPilotLoadingState.ERROR ? _bodyError() : _body(context),
+            bottomNavigationBar: state == ArrPilotLoadingState.ERROR
                 ? null
                 : const RadarrEditMovieActionBar(),
           );
@@ -52,14 +52,14 @@ class _State extends State<MovieEditRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       scrollControllers: [scrollController],
       title: 'radarr.EditMovie'.tr(),
     );
   }
 
   Widget _bodyError() {
-    return LunaMessage.goBack(
+    return ArrPilotMessage.goBack(
       context: context,
       text: 'lunasea.AnErrorHasOccurred'.tr(),
     );
@@ -79,7 +79,7 @@ class _State extends State<MovieEditRoute>
         ),
       ]),
       builder: (context, AsyncSnapshot<List<Object>> snapshot) {
-        if (snapshot.hasError) return LunaMessage.error(onTap: loadCallback);
+        if (snapshot.hasError) return ArrPilotMessage.error(onTap: loadCallback);
         if (snapshot.hasData) {
           final movies = snapshot.data![0] as List<RadarrMovie>;
           final profiles = snapshot.data![1] as List<RadarrQualityProfile>;
@@ -93,7 +93,7 @@ class _State extends State<MovieEditRoute>
             tags: tags,
           );
         }
-        return const LunaLoader();
+        return const ArrPilotLoader();
       },
     );
   }
@@ -110,7 +110,7 @@ class _State extends State<MovieEditRoute>
       context.read<RadarrMoviesEditState>().initializeTags(tags);
       context.read<RadarrMoviesEditState>().canExecuteAction = true;
     }
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
         const RadarrMoviesEditMonitoredTile(),

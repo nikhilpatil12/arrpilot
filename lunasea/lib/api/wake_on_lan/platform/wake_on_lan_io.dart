@@ -6,12 +6,12 @@ import 'package:arrpilot/vendor.dart';
 import 'package:arrpilot/widgets/ui.dart';
 
 bool isPlatformSupported() => true;
-LunaWakeOnLAN getWakeOnLAN() => IO();
+ArrPilotWakeOnLAN getWakeOnLAN() => IO();
 
-class IO implements LunaWakeOnLAN {
+class IO implements ArrPilotWakeOnLAN {
   @override
   Future<void> wake() async {
-    LunaProfile profile = LunaProfile.current;
+    ArrPilotProfile profile = ArrPilotProfile.current;
     try {
       final ip = IPAddress(profile.wakeOnLANBroadcastAddress);
       final mac = MACAddress(profile.wakeOnLANMACAddress);
@@ -22,7 +22,7 @@ class IO implements LunaWakeOnLAN {
         );
       });
     } catch (error, stack) {
-      LunaLogger().error(
+      ArrPilotLogger().error(
         'Failed to send wake on LAN magic packet',
         error,
         stack,

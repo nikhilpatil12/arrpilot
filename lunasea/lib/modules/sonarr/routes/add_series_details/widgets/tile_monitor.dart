@@ -9,7 +9,7 @@ class SonarrSeriesAddDetailsMonitorTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'sonarr.Monitor'.tr(),
       body: [
         TextSpan(
@@ -17,7 +17,7 @@ class SonarrSeriesAddDetailsMonitorTile extends StatelessWidget {
               context.watch<SonarrSeriesAddDetailsState>().monitorType.lunaName,
         ),
       ],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async => _onTap(context),
     );
   }

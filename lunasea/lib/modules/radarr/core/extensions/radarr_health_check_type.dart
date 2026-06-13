@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 import 'package:arrpilot/modules/radarr.dart';
 
-extension LunaRadarrHealthCheckTypeExtension on RadarrHealthCheckType? {
+extension ArrPilotRadarrHealthCheckTypeExtension on RadarrHealthCheckType? {
   Color get lunaColour {
     switch (this) {
       case RadarrHealthCheckType.NOTICE:
-        return LunaColours.blue;
+        return ArrPilotColours.blue;
       case RadarrHealthCheckType.WARNING:
-        return LunaColours.orange;
+        return ArrPilotColours.orange;
       case RadarrHealthCheckType.ERROR:
-        return LunaColours.red;
+        return ArrPilotColours.red;
       default:
         return Colors.white;
     }

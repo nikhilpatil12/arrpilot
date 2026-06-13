@@ -9,6 +9,6 @@ class ConfigurationNZBGetConnectionDetailsHeadersRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SettingsHeaderRoute(module: LunaModule.NZBGET);
+    return const SettingsHeaderRoute(module: ArrPilotModule.NZBGET);
   }
 }

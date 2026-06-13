@@ -22,11 +22,11 @@ class LidarrDetailsAlbumTile extends StatefulWidget {
 class _State extends State<LidarrDetailsAlbumTile> {
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: widget.data.title,
       disabled: !widget.data.monitored,
-      posterHeaders: LunaProfile.current.lidarrHeaders,
-      posterPlaceholderIcon: LunaIcons.MUSIC,
+      posterHeaders: ArrPilotProfile.current.lidarrHeaders,
+      posterPlaceholderIcon: ArrPilotIcons.MUSIC,
       posterIsSquare: true,
       posterUrl: widget.data.albumCoverURI(),
       body: [
@@ -34,12 +34,12 @@ class _State extends State<LidarrDetailsAlbumTile> {
         TextSpan(
           text: widget.data.releaseDateString,
           style: const TextStyle(
-            color: LunaColours.accent,
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+            color: ArrPilotColours.accent,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
           ),
         ),
       ],
-      trailing: LunaIconButton(
+      trailing: ArrPilotIconButton(
         icon: widget.data.monitored
             ? Icons.turned_in_rounded
             : Icons.turned_in_not_rounded,
@@ -50,7 +50,7 @@ class _State extends State<LidarrDetailsAlbumTile> {
   }
 
   Future<void> _toggleMonitoredStatus() async {
-    LidarrAPI _api = LidarrAPI.from(LunaProfile.current);
+    LidarrAPI _api = LidarrAPI.from(ArrPilotProfile.current);
     await _api
         .toggleAlbumMonitored(widget.data.albumID, !widget.data.monitored)
         .then((_) {

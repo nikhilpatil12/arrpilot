@@ -14,13 +14,13 @@ class ContentBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final headers = getHeaders();
-    return LunaBlock(
+    return ArrPilotBlock(
       title: data.title,
       body: data.body,
       posterHeaders: headers,
       backgroundHeaders: headers,
       posterUrl: data.posterUrl(context),
-      posterPlaceholderIcon: LunaIcons.VIDEO_CAM,
+      posterPlaceholderIcon: ArrPilotIcons.VIDEO_CAM,
       backgroundUrl: data.backgroundUrl(context),
       trailing: data.trailing(context),
       onTap: () async => data.enterContent(context),
@@ -30,11 +30,11 @@ class ContentBlock extends StatelessWidget {
   Map getHeaders() {
     switch (data.runtimeType) {
       case CalendarLidarrData:
-        return LunaProfile.current.lidarrHeaders;
+        return ArrPilotProfile.current.lidarrHeaders;
       case CalendarRadarrData:
-        return LunaProfile.current.radarrHeaders;
+        return ArrPilotProfile.current.radarrHeaders;
       case CalendarSonarrData:
-        return LunaProfile.current.sonarrHeaders;
+        return ArrPilotProfile.current.sonarrHeaders;
       default:
         return const {};
     }

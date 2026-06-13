@@ -12,12 +12,12 @@ class SubcategoriesRoute extends StatefulWidget {
   State<SubcategoriesRoute> createState() => _State();
 }
 
-class _State extends State<SubcategoriesRoute> with LunaScrollControllerMixin {
+class _State extends State<SubcategoriesRoute> with ArrPilotScrollControllerMixin {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -25,12 +25,12 @@ class _State extends State<SubcategoriesRoute> with LunaScrollControllerMixin {
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: context.read<SearchState>().activeCategory?.name ??
           'search.Subcategories'.tr(),
       scrollControllers: [scrollController],
       actions: [
-        LunaIconButton(
+        ArrPilotIconButton(
           icon: Icons.search_rounded,
           onPressed: () async {
             context.read<SearchState>().activeSubcategory = null;
@@ -47,7 +47,7 @@ class _State extends State<SubcategoriesRoute> with LunaScrollControllerMixin {
       builder: (context, category, child) {
         List<NewznabSubcategoryData> subcategories =
             category?.subcategories ?? [];
-        return LunaListView(
+        return ArrPilotListView(
           controller: scrollController,
           children: [
             const SearchSubcategoryAllTile(),

@@ -11,15 +11,15 @@ class SonarrAddSeriesDetailsActionBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBottomActionBar(
+    return ArrPilotBottomActionBar(
       actions: [
-        LunaActionBarCard(
+        ArrPilotActionBarCard(
           title: 'lunasea.Options'.tr(),
           subtitle: 'sonarr.StartSearchFor'.tr(),
           onTap: () async => SonarrDialogs().addSeriesOptions(context),
         ),
-        LunaButton(
-          type: LunaButtonType.TEXT,
+        ArrPilotButton(
+          type: ArrPilotButtonType.TEXT,
           text: 'lunasea.Add'.tr(),
           icon: Icons.add_rounded,
           onTap: () async => _onTap(context),
@@ -32,7 +32,7 @@ class SonarrAddSeriesDetailsActionBar extends StatelessWidget {
   Future<void> _onTap(BuildContext context) async {
     if (context.read<SonarrSeriesAddDetailsState>().canExecuteAction) {
       context.read<SonarrSeriesAddDetailsState>().state =
-          LunaLoadingState.ACTIVE;
+          ArrPilotLoadingState.ACTIVE;
       SonarrSeriesAddDetailsState _state =
           context.read<SonarrSeriesAddDetailsState>();
       await SonarrAPIController()
@@ -51,16 +51,16 @@ class SonarrAddSeriesDetailsActionBar extends StatelessWidget {
         context.read<SonarrState>().fetchAllSeries();
         context.read<SonarrSeriesAddDetailsState>().series.id = series!.id;
 
-        LunaRouter.router.pop();
+        ArrPilotRouter.router.pop();
         SonarrRoutes.SERIES.go(params: {
           'series': series.id!.toString(),
         });
       }).catchError((error, stack) {
         context.read<SonarrSeriesAddDetailsState>().state =
-            LunaLoadingState.ERROR;
+            ArrPilotLoadingState.ERROR;
       });
       context.read<SonarrSeriesAddDetailsState>().state =
-          LunaLoadingState.INACTIVE;
+          ArrPilotLoadingState.INACTIVE;
     }
   }
 }

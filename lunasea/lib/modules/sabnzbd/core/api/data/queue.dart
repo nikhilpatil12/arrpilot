@@ -38,7 +38,7 @@ class SABnzbdQueueData {
             ? '―'
             : timeLeft;
     String size = '${sizeTotal - sizeLeft}/$sizeTotal MB';
-    String paddedBullet = LunaUI.TEXT_BULLET.pad();
+    String paddedBullet = ArrPilotUI.TEXT_BULLET.pad();
     return '$time$paddedBullet$size$paddedBullet$percentageDone%$paddedBullet$formattedCategory';
   }
 

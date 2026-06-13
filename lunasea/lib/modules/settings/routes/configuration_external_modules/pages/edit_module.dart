@@ -17,20 +17,20 @@ class ConfigurationExternalModulesEditRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationExternalModulesEditRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  LunaExternalModule? _module;
+  ArrPilotExternalModule? _module;
 
   @override
   Widget build(BuildContext context) {
     if (widget.moduleId < 0 ||
-        !LunaBox.externalModules.contains(widget.moduleId)) {
+        !ArrPilotBox.externalModules.contains(widget.moduleId)) {
       return InvalidRoutePage(
         title: 'settings.EditModule'.tr(),
         message: 'settings.ModuleNotFound'.tr(),
       );
     }
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -39,19 +39,19 @@ class _State extends State<ConfigurationExternalModulesEditRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       scrollControllers: [scrollController],
       title: 'settings.EditModule'.tr(),
     );
   }
 
   Widget _bottomNavigationBar() {
-    return LunaBottomActionBar(
+    return ArrPilotBottomActionBar(
       actions: [
-        LunaButton.text(
+        ArrPilotButton.text(
           text: 'settings.DeleteModule'.tr(),
           icon: Icons.delete_rounded,
-          color: LunaColours.red,
+          color: ArrPilotColours.red,
           onTap: () async {
             bool result = await SettingsDialogs().deleteExternalModule(context);
             if (result) {
@@ -68,13 +68,13 @@ class _State extends State<ConfigurationExternalModulesEditRoute>
   }
 
   Widget _body() {
-    return LunaBox.externalModules.listenableBuilder(
+    return ArrPilotBox.externalModules.listenableBuilder(
       selectKeys: [widget.moduleId],
       builder: (context, dynamic _) {
-        if (!LunaBox.externalModules.contains(widget.moduleId))
+        if (!ArrPilotBox.externalModules.contains(widget.moduleId))
           return Container();
-        _module = LunaBox.externalModules.read(widget.moduleId);
-        return LunaListView(
+        _module = ArrPilotBox.externalModules.read(widget.moduleId);
+        return ArrPilotListView(
           controller: scrollController,
           children: [
             _displayNameTile(),
@@ -87,16 +87,16 @@ class _State extends State<ConfigurationExternalModulesEditRoute>
 
   Widget _displayNameTile() {
     String _displayName = _module!.displayName;
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.DisplayName'.tr(),
       body: [
         TextSpan(
           text: _displayName.isEmpty ? 'lunasea.NotSet'.tr() : _displayName,
         ),
       ],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {
-        Tuple2<bool, String> values = await LunaDialogs().editText(
+        Tuple2<bool, String> values = await ArrPilotDialogs().editText(
           context,
           'settings.DisplayName'.tr(),
           prefill: _displayName,
@@ -109,12 +109,12 @@ class _State extends State<ConfigurationExternalModulesEditRoute>
 
   Widget _hostTile() {
     String _host = _module!.host;
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.Host'.tr(),
       body: [
         TextSpan(text: _host.isEmpty ? 'lunasea.NotSet'.tr() : _host),
       ],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {
         Tuple2<bool, String> values =
             await SettingsDialogs().editExternalModuleHost(

@@ -1,4 +1,4 @@
-enum LunaLoadingState {
+enum ArrPilotLoadingState {
   ACTIVE,
   INACTIVE,
   ERROR,

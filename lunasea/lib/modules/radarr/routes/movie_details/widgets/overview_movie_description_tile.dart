@@ -12,14 +12,14 @@ class RadarrMovieDetailsOverviewDescriptionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
-      posterPlaceholderIcon: LunaIcons.VIDEO_CAM,
+    return ArrPilotBlock(
+      posterPlaceholderIcon: ArrPilotIcons.VIDEO_CAM,
       backgroundUrl: context.read<RadarrState>().getFanartURL(movie!.id),
       posterUrl: context.read<RadarrState>().getPosterURL(movie!.id),
       posterHeaders: context.read<RadarrState>().headers,
       title: movie!.title,
       body: [
-        LunaTextSpan.extended(
+        ArrPilotTextSpan.extended(
           text: movie!.overview == null || movie!.overview!.isEmpty
               ? 'sonarr.NoSummaryAvailable'.tr()
               : movie!.overview,
@@ -27,7 +27,7 @@ class RadarrMovieDetailsOverviewDescriptionTile extends StatelessWidget {
       ],
       customBodyMaxLines: 3,
       onTap: () async =>
-          LunaDialogs().textPreview(context, movie!.title, movie!.overview!),
+          ArrPilotDialogs().textPreview(context, movie!.title, movie!.overview!),
     );
   }
 }

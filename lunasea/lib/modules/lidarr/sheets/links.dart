@@ -4,7 +4,7 @@ import 'package:arrpilot/modules/lidarr/core/api.dart';
 import 'package:arrpilot/utils/links.dart';
 import 'package:arrpilot/widgets/ui.dart';
 
-class LinksSheet extends LunaBottomModalSheet {
+class LinksSheet extends ArrPilotBottomModalSheet {
   LidarrCatalogueData artist;
 
   LinksSheet({
@@ -13,37 +13,37 @@ class LinksSheet extends LunaBottomModalSheet {
 
   @override
   Widget builder(BuildContext context) {
-    return LunaListViewModal(
+    return ArrPilotListViewModal(
       children: [
         if (artist.bandsintownURI?.isNotEmpty ?? false)
-          LunaBlock(
+          ArrPilotBlock(
             title: 'Bandsintown',
-            leading: const LunaIconButton(
-              icon: LunaIcons.BANDSINTOWN,
-              iconSize: LunaUI.ICON_SIZE - 4.0,
+            leading: const ArrPilotIconButton(
+              icon: ArrPilotIcons.BANDSINTOWN,
+              iconSize: ArrPilotUI.ICON_SIZE - 4.0,
             ),
             onTap: artist.bandsintownURI!.openLink,
           ),
         if (artist.discogsURI?.isNotEmpty ?? false)
-          LunaBlock(
+          ArrPilotBlock(
             title: 'Discogs',
-            leading: const LunaIconButton(
-              icon: LunaIcons.DISCOGS,
-              iconSize: LunaUI.ICON_SIZE - 2.0,
+            leading: const ArrPilotIconButton(
+              icon: ArrPilotIcons.DISCOGS,
+              iconSize: ArrPilotUI.ICON_SIZE - 2.0,
             ),
             onTap: artist.discogsURI!.openLink,
           ),
         if (artist.lastfmURI?.isNotEmpty ?? false)
-          LunaBlock(
+          ArrPilotBlock(
             title: 'Last.fm',
-            leading: const LunaIconButton(icon: LunaIcons.LASTFM),
+            leading: const ArrPilotIconButton(icon: ArrPilotIcons.LASTFM),
             onTap: artist.lastfmURI!.openLink,
           ),
-        LunaBlock(
+        ArrPilotBlock(
           title: 'MusicBrainz',
-          leading: const LunaIconButton(icon: LunaIcons.MUSICBRAINZ),
+          leading: const ArrPilotIconButton(icon: ArrPilotIcons.MUSICBRAINZ),
           onTap:
-              LunaLinkedContent.musicBrainz(artist.foreignArtistID)!.openLink,
+              ArrPilotLinkedContent.musicBrainz(artist.foreignArtistID)!.openLink,
         ),
       ],
     );

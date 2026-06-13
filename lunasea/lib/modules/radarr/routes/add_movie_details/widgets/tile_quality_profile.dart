@@ -11,10 +11,10 @@ class RadarrAddMovieDetailsQualityProfileTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Selector<RadarrAddMovieDetailsState, RadarrQualityProfile>(
       selector: (_, state) => state.qualityProfile,
-      builder: (context, profile, _) => LunaBlock(
+      builder: (context, profile, _) => ArrPilotBlock(
         title: 'radarr.QualityProfile'.tr(),
-        body: [TextSpan(text: profile.name ?? LunaUI.TEXT_EMDASH)],
-        trailing: const LunaIconButton.arrow(),
+        body: [TextSpan(text: profile.name ?? ArrPilotUI.TEXT_EMDASH)],
+        trailing: const ArrPilotIconButton.arrow(),
         onTap: () async {
           List<RadarrQualityProfile> qualityProfiles =
               await context.read<RadarrState>().qualityProfiles!;

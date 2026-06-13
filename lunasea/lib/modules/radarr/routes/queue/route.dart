@@ -13,14 +13,14 @@ class QueueRoute extends StatefulWidget {
 }
 
 class _State extends State<QueueRoute>
-    with LunaLoadCallbackMixin, LunaScrollControllerMixin {
+    with ArrPilotLoadCallbackMixin, ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -41,14 +41,14 @@ class _State extends State<QueueRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'radarr.Queue'.tr(),
       scrollControllers: [scrollController],
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       key: _refreshKey,
       context: context,
       onRefresh: loadCallback,
@@ -60,13 +60,13 @@ class _State extends State<QueueRoute>
         builder: (context, AsyncSnapshot<List> snapshot) {
           if (snapshot.hasError) {
             if (snapshot.connectionState != ConnectionState.waiting) {
-              LunaLogger().error(
+              ArrPilotLogger().error(
                 'Unable to fetch Radarr queue',
                 snapshot.error,
                 snapshot.stackTrace,
               );
             }
-            return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+            return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
           }
           if (snapshot.hasData) {
             return _list(
@@ -74,7 +74,7 @@ class _State extends State<QueueRoute>
               snapshot.data![1],
             );
           }
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -82,13 +82,13 @@ class _State extends State<QueueRoute>
 
   Widget _list(RadarrQueue queue, List<RadarrMovie> movies) {
     if ((queue.records?.length ?? 0) == 0) {
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'Empty Queue',
         buttonText: 'lunasea.Refresh'.tr(),
         onTap: _refreshKey.currentState?.show,
       );
     }
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: scrollController,
       itemCount: queue.records!.length,
       itemBuilder: (context, index) {

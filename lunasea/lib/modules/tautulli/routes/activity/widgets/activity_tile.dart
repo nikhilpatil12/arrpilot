@@ -16,11 +16,11 @@ class TautulliActivityTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: session.lunaTitle,
       posterUrl: session.lunaArtworkPath(context),
       posterHeaders: context.read<TautulliState>().headers,
-      posterPlaceholderIcon: LunaIcons.VIDEO_CAM,
+      posterPlaceholderIcon: ArrPilotIcons.VIDEO_CAM,
       backgroundUrl: context.watch<TautulliState>().getImageURLFromPath(
             session.art,
             width: MediaQuery.of(context).size.width.truncate(),
@@ -31,8 +31,8 @@ class TautulliActivityTile extends StatelessWidget {
         _subtitle3(),
       ],
       bottom: _bottomWidget(),
-      bottomHeight: LunaLinearPercentIndicator.height,
-      trailing: LunaIconButton(icon: session.lunaSessionStateIcon),
+      bottomHeight: ArrPilotLinearPercentIndicator.height,
+      trailing: ArrPilotIconButton(icon: session.lunaSessionStateIcon),
       onTap: disableOnTap ? null : () async => _enterDetails(context),
     );
   }
@@ -42,17 +42,17 @@ class TautulliActivityTile extends StatelessWidget {
       return TextSpan(
         children: [
           TextSpan(text: session.parentTitle),
-          TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+          TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
           TextSpan(
               text: 'tautulli.Episode'.tr(args: [
-            session.mediaIndex?.toString() ?? LunaUI.TEXT_EMDASH
+            session.mediaIndex?.toString() ?? ArrPilotUI.TEXT_EMDASH
           ])),
           const TextSpan(text: ': '),
           TextSpan(
             style: const TextStyle(
               fontStyle: FontStyle.italic,
             ),
-            text: session.title ?? LunaUI.TEXT_EMDASH,
+            text: session.title ?? ArrPilotUI.TEXT_EMDASH,
           ),
         ],
       );
@@ -64,7 +64,7 @@ class TautulliActivityTile extends StatelessWidget {
       return TextSpan(
         children: [
           TextSpan(text: session.parentTitle),
-          TextSpan(text: LunaUI.TEXT_EMDASH.pad()),
+          TextSpan(text: ArrPilotUI.TEXT_EMDASH.pad()),
           TextSpan(
             style: const TextStyle(
               fontStyle: FontStyle.italic,
@@ -77,7 +77,7 @@ class TautulliActivityTile extends StatelessWidget {
     if (session.mediaType == TautulliMediaType.LIVE) {
       return TextSpan(text: session.title);
     }
-    return const TextSpan(text: LunaUI.TEXT_EMDASH);
+    return const TextSpan(text: ArrPilotUI.TEXT_EMDASH);
   }
 
   TextSpan _subtitle2() {
@@ -88,30 +88,30 @@ class TautulliActivityTile extends StatelessWidget {
     return TextSpan(
       text: session.formattedStream(),
       style: const TextStyle(
-        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
-        color: LunaColours.accent,
+        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
+        color: ArrPilotColours.accent,
       ),
     );
   }
 
   Widget _bottomWidget() {
     return SizedBox(
-      height: LunaLinearPercentIndicator.height,
+      height: ArrPilotLinearPercentIndicator.height,
       child: Stack(
         alignment: Alignment.center,
         children: [
-          LunaLinearPercentIndicator(
+          ArrPilotLinearPercentIndicator(
             percent: session.lunaTranscodeProgress,
-            progressColor: LunaColours.accent.withOpacity(
-              LunaUI.OPACITY_SPLASH,
+            progressColor: ArrPilotColours.accent.withOpacity(
+              ArrPilotUI.OPACITY_SPLASH,
             ),
             backgroundColor: Colors.transparent,
           ),
-          LunaLinearPercentIndicator(
+          ArrPilotLinearPercentIndicator(
             percent: session.lunaProgressPercent,
-            progressColor: LunaColours.accent,
-            backgroundColor: LunaColours.grey.withOpacity(
-              LunaUI.OPACITY_SPLASH,
+            progressColor: ArrPilotColours.accent,
+            backgroundColor: ArrPilotColours.grey.withOpacity(
+              ArrPilotUI.OPACITY_SPLASH,
             ),
           ),
         ],

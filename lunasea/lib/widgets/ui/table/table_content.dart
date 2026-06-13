@@ -8,7 +8,7 @@ enum _Type {
   SPACER,
 }
 
-class LunaTableContent extends StatelessWidget {
+class ArrPilotTableContent extends StatelessWidget {
   final String? title;
   final String? body;
   final String? url;
@@ -20,7 +20,7 @@ class LunaTableContent extends StatelessWidget {
   final TextAlign bodyAlign;
   final _Type type;
 
-  const LunaTableContent._({
+  const ArrPilotTableContent._({
     Key? key,
     this.title,
     this.body,
@@ -30,21 +30,21 @@ class LunaTableContent extends StatelessWidget {
     this.bodyAlign = TextAlign.start,
     this.titleFlex = 5,
     this.bodyFlex = 10,
-    this.spacerSize = LunaUI.DEFAULT_MARGIN_SIZE,
+    this.spacerSize = ArrPilotUI.DEFAULT_MARGIN_SIZE,
     required this.type,
   });
 
-  factory LunaTableContent.spacer({
+  factory ArrPilotTableContent.spacer({
     Key? key,
-    double spacerSize = LunaUI.DEFAULT_MARGIN_SIZE,
+    double spacerSize = ArrPilotUI.DEFAULT_MARGIN_SIZE,
   }) =>
-      LunaTableContent._(
+      ArrPilotTableContent._(
         key: key,
         type: _Type.SPACER,
         spacerSize: spacerSize,
       );
 
-  factory LunaTableContent({
+  factory ArrPilotTableContent({
     Key? key,
     String? title,
     required String? body,
@@ -55,7 +55,7 @@ class LunaTableContent extends StatelessWidget {
     int titleFlex = 1,
     int bodyFlex = 2,
   }) =>
-      LunaTableContent._(
+      ArrPilotTableContent._(
         key: key,
         title: title,
         body: body,
@@ -84,17 +84,17 @@ class LunaTableContent extends StatelessWidget {
     return Expanded(
       child: Padding(
         child: Text(
-          title?.toUpperCase() ?? LunaUI.TEXT_EMDASH,
+          title?.toUpperCase() ?? ArrPilotUI.TEXT_EMDASH,
           textAlign: titleAlign,
           style: const TextStyle(
-            color: LunaColours.grey,
-            fontSize: LunaUI.FONT_SIZE_H3,
+            color: ArrPilotColours.grey,
+            fontSize: ArrPilotUI.FONT_SIZE_H3,
           ),
         ),
         padding: const EdgeInsets.only(
-          top: LunaUI.DEFAULT_MARGIN_SIZE / 4,
-          bottom: LunaUI.DEFAULT_MARGIN_SIZE / 4,
-          right: LunaUI.DEFAULT_MARGIN_SIZE / 4,
+          top: ArrPilotUI.DEFAULT_MARGIN_SIZE / 4,
+          bottom: ArrPilotUI.DEFAULT_MARGIN_SIZE / 4,
+          right: ArrPilotUI.DEFAULT_MARGIN_SIZE / 4,
         ),
       ),
       flex: titleFlex,
@@ -106,20 +106,20 @@ class LunaTableContent extends StatelessWidget {
       child: InkWell(
         child: Padding(
           child: Text(
-            body ?? LunaUI.TEXT_EMDASH,
+            body ?? ArrPilotUI.TEXT_EMDASH,
             textAlign: bodyAlign,
             style: const TextStyle(
-              color: LunaColours.white,
-              fontSize: LunaUI.FONT_SIZE_H3,
+              color: ArrPilotColours.white,
+              fontSize: ArrPilotUI.FONT_SIZE_H3,
             ),
           ),
           padding: const EdgeInsets.only(
-            top: LunaUI.DEFAULT_MARGIN_SIZE / 4,
-            bottom: LunaUI.DEFAULT_MARGIN_SIZE / 4,
-            left: LunaUI.DEFAULT_MARGIN_SIZE / 2,
+            top: ArrPilotUI.DEFAULT_MARGIN_SIZE / 4,
+            bottom: ArrPilotUI.DEFAULT_MARGIN_SIZE / 4,
+            left: ArrPilotUI.DEFAULT_MARGIN_SIZE / 2,
           ),
         ),
-        borderRadius: BorderRadius.circular(LunaUI.BORDER_RADIUS),
+        borderRadius: BorderRadius.circular(ArrPilotUI.BORDER_RADIUS),
         onTap: _onTap(),
         onLongPress: _onLongPress(),
       ),

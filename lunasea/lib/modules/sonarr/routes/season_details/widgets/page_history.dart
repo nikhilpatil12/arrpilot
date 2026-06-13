@@ -23,14 +23,14 @@ class _State extends State<SonarrSeasonDetailsHistoryPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       body: _body(),
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: () async =>
@@ -44,19 +44,19 @@ class _State extends State<SonarrSeasonDetailsHistoryPage>
         ]),
         builder: (context, AsyncSnapshot<List<Object>> snapshot) {
           if (snapshot.hasError) {
-            LunaLogger().error(
+            ArrPilotLogger().error(
               'Unable to fetch Sonarr series history for season',
               snapshot.error,
               snapshot.stackTrace,
             );
-            return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+            return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
           }
           if (snapshot.hasData)
             return _list(
               history: snapshot.data![0] as List<SonarrHistoryRecord>,
               episodes: snapshot.data![1] as Map<int, SonarrEpisode>,
             );
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -67,12 +67,12 @@ class _State extends State<SonarrSeasonDetailsHistoryPage>
     required Map<int, SonarrEpisode> episodes,
   }) {
     if (history.isEmpty)
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'sonarr.NoHistoryFound'.tr(),
         buttonText: 'lunasea.Refresh'.tr(),
         onTap: _refreshKey.currentState!.show,
       );
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: SonarrSeasonDetailsNavigationBar.scrollControllers[1],
       itemCount: history.length,
       itemBuilder: (context, index) => SonarrHistoryTile(

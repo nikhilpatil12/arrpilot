@@ -1,6 +1,6 @@
 import 'package:arrpilot/core.dart';
 
-class SettingsState extends LunaModuleState {
+class SettingsState extends ArrPilotModuleState {
   @override
   void reset() {}
 }

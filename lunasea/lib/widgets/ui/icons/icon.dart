@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:simple_icons/simple_icons.dart';
 
-class LunaIcons {
-  static const _fontFamily = 'LunaBrandIcons';
+class ArrPilotIcons {
+  static const _fontFamily = 'ArrPilotBrandIcons';
 
   // Built-In
   static const IconData ADD = Icons.add_rounded;

@@ -18,7 +18,7 @@ class LidarrDetailsEditButton extends StatefulWidget {
 class _State extends State<LidarrDetailsEditButton> {
   @override
   Widget build(BuildContext context) => Consumer<LidarrState>(
-        builder: (context, model, widget) => LunaIconButton(
+        builder: (context, model, widget) => ArrPilotIconButton(
           icon: Icons.edit_rounded,
           onPressed: () async => _enterEditArtist(context),
         ),

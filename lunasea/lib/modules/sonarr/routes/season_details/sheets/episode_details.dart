@@ -6,7 +6,7 @@ import 'package:arrpilot/extensions/string/string.dart';
 import 'package:arrpilot/modules/sonarr.dart';
 import 'package:arrpilot/router/routes/sonarr.dart';
 
-class SonarrEpisodeDetailsSheet extends LunaBottomModalSheet {
+class SonarrEpisodeDetailsSheet extends ArrPilotBottomModalSheet {
   BuildContext context;
   SonarrEpisode? episode;
   SonarrEpisodeFile? episodeFile;
@@ -24,7 +24,7 @@ class SonarrEpisodeDetailsSheet extends LunaBottomModalSheet {
   Future<void> _intializeSheet() async {
     SonarrSeasonDetailsState _state = context.read<SonarrSeasonDetailsState>();
     _state.currentEpisodeId = episode!.id;
-    _state.episodeSearchState = LunaLoadingState.INACTIVE;
+    _state.episodeSearchState = ArrPilotLoadingState.INACTIVE;
     _state.fetchState(
       context,
       shouldFetchEpisodes: false,
@@ -34,43 +34,43 @@ class SonarrEpisodeDetailsSheet extends LunaBottomModalSheet {
   }
 
   Widget _highlightedNodes(BuildContext context) {
-    List<LunaHighlightedNode> _nodes = [
+    List<ArrPilotHighlightedNode> _nodes = [
       if (!episode!.monitored!)
-        LunaHighlightedNode(
+        ArrPilotHighlightedNode(
           text: 'sonarr.Unmonitored'.tr(),
-          backgroundColor: LunaColours.red,
+          backgroundColor: ArrPilotColours.red,
         ),
       if (episode!.hasFile! && episodeFile != null)
-        LunaHighlightedNode(
+        ArrPilotHighlightedNode(
           backgroundColor: episodeFile!.qualityCutoffNotMet!
-              ? LunaColours.orange
-              : LunaColours.accent,
-          text: episodeFile!.quality?.quality?.name ?? LunaUI.TEXT_EMDASH,
+              ? ArrPilotColours.orange
+              : ArrPilotColours.accent,
+          text: episodeFile!.quality?.quality?.name ?? ArrPilotUI.TEXT_EMDASH,
         ),
       if (episode!.hasFile! &&
           episodeFile != null &&
           episodeFile!.languageCutoffNotMet != null)
-        LunaHighlightedNode(
+        ArrPilotHighlightedNode(
           backgroundColor: episodeFile!.languageCutoffNotMet!
-              ? LunaColours.orange
-              : LunaColours.accent,
-          text: episodeFile!.language?.name ?? LunaUI.TEXT_EMDASH,
+              ? ArrPilotColours.orange
+              : ArrPilotColours.accent,
+          text: episodeFile!.language?.name ?? ArrPilotUI.TEXT_EMDASH,
         ),
       if (episode!.hasFile! && episodeFile != null)
-        LunaHighlightedNode(
-          backgroundColor: LunaColours.blueGrey,
-          text: episodeFile!.size?.asBytes() ?? LunaUI.TEXT_EMDASH,
+        ArrPilotHighlightedNode(
+          backgroundColor: ArrPilotColours.blueGrey,
+          text: episodeFile!.size?.asBytes() ?? ArrPilotUI.TEXT_EMDASH,
         ),
       if (!episode!.hasFile! &&
           (episode?.airDateUtc?.toLocal().isAfter(DateTime.now()) ?? true))
-        LunaHighlightedNode(
-          backgroundColor: LunaColours.blue,
+        ArrPilotHighlightedNode(
+          backgroundColor: ArrPilotColours.blue,
           text: 'sonarr.Unaired'.tr(),
         ),
       if (!episode!.hasFile! &&
           (episode?.airDateUtc?.toLocal().isBefore(DateTime.now()) ?? false))
-        LunaHighlightedNode(
-          backgroundColor: LunaColours.red,
+        ArrPilotHighlightedNode(
+          backgroundColor: ArrPilotColours.red,
           text: 'sonarr.Missing'.tr(),
         ),
     ];
@@ -78,17 +78,17 @@ class SonarrEpisodeDetailsSheet extends LunaBottomModalSheet {
     return Padding(
       child: Wrap(
         direction: Axis.horizontal,
-        spacing: LunaUI.DEFAULT_MARGIN_SIZE / 2,
-        runSpacing: LunaUI.DEFAULT_MARGIN_SIZE / 2,
+        spacing: ArrPilotUI.DEFAULT_MARGIN_SIZE / 2,
+        runSpacing: ArrPilotUI.DEFAULT_MARGIN_SIZE / 2,
         children: _nodes,
       ),
-      padding: LunaUI.MARGIN_H_DEFAULT_V_HALF.copyWith(top: 0),
+      padding: ArrPilotUI.MARGIN_H_DEFAULT_V_HALF.copyWith(top: 0),
     );
   }
 
   List<Widget> _episodeDetails(BuildContext context) {
     return [
-      LunaHeader(
+      ArrPilotHeader(
         text: episode!.title,
         subtitle: [
           episode!.airDateUtc != null
@@ -96,11 +96,11 @@ class SonarrEpisodeDetailsSheet extends LunaBottomModalSheet {
               : 'lunasea.UnknownDate'.tr(),
           '\n',
           'sonarr.SeasonNumber'.tr(
-            args: [episode?.seasonNumber?.toString() ?? LunaUI.TEXT_EMDASH],
+            args: [episode?.seasonNumber?.toString() ?? ArrPilotUI.TEXT_EMDASH],
           ),
-          LunaUI.TEXT_BULLET.pad(),
+          ArrPilotUI.TEXT_BULLET.pad(),
           'sonarr.EpisodeNumber'.tr(
-            args: [episode?.episodeNumber?.toString() ?? LunaUI.TEXT_EMDASH],
+            args: [episode?.episodeNumber?.toString() ?? ArrPilotUI.TEXT_EMDASH],
           ),
           if (episode?.absoluteEpisodeNumber != null)
             ' (${episode!.absoluteEpisodeNumber})',
@@ -108,8 +108,8 @@ class SonarrEpisodeDetailsSheet extends LunaBottomModalSheet {
       ),
       _highlightedNodes(context),
       Padding(
-        padding: LunaUI.MARGIN_DEFAULT_HORIZONTAL,
-        child: LunaText.subtitle(
+        padding: ArrPilotUI.MARGIN_DEFAULT_HORIZONTAL,
+        child: ArrPilotText.subtitle(
           text: episode!.overview ?? 'sonarr.NoSummaryAvailable'.tr(),
           maxLines: 0,
           softWrap: true,
@@ -121,44 +121,44 @@ class SonarrEpisodeDetailsSheet extends LunaBottomModalSheet {
   List<Widget> _files(BuildContext context) {
     if (!episode!.hasFile! || episodeFile == null) return [];
     return [
-      LunaTableCard(
+      ArrPilotTableCard(
         content: [
-          LunaTableContent(
+          ArrPilotTableContent(
             title: 'sonarr.RelativePath'.tr(),
-            body: episodeFile!.relativePath ?? LunaUI.TEXT_EMDASH,
+            body: episodeFile!.relativePath ?? ArrPilotUI.TEXT_EMDASH,
           ),
-          LunaTableContent(
+          ArrPilotTableContent(
             title: 'sonarr.Video'.tr(),
             body: episodeFile?.mediaInfo?.videoCodec,
           ),
-          LunaTableContent(
+          ArrPilotTableContent(
             title: 'sonarr.Audio'.tr(),
             body: [
-              episodeFile?.mediaInfo?.audioCodec ?? LunaUI.TEXT_EMDASH,
+              episodeFile?.mediaInfo?.audioCodec ?? ArrPilotUI.TEXT_EMDASH,
               if (episodeFile?.mediaInfo?.audioChannels != null)
                 episodeFile?.mediaInfo?.audioChannels?.toString(),
-            ].join(LunaUI.TEXT_BULLET.pad()),
+            ].join(ArrPilotUI.TEXT_BULLET.pad()),
           ),
-          LunaTableContent(
+          ArrPilotTableContent(
             title: 'sonarr.Size'.tr(),
-            body: episodeFile!.size?.asBytes() ?? LunaUI.TEXT_EMDASH,
+            body: episodeFile!.size?.asBytes() ?? ArrPilotUI.TEXT_EMDASH,
           ),
-          LunaTableContent(
+          ArrPilotTableContent(
             title: 'sonarr.AddedOn'.tr(),
             body: episodeFile?.dateAdded?.asDateTime(delimiter: '\n'),
           ),
         ],
         buttons: [
           if (episodeFile?.mediaInfo != null)
-            LunaButton.text(
+            ArrPilotButton.text(
               text: 'sonarr.MediaInfo'.tr(),
               icon: Icons.info_outline_rounded,
               onTap: () async =>
                   SonarrMediaInfoSheet(mediaInfo: episodeFile!.mediaInfo)
                       .show(),
             ),
-          LunaButton(
-            type: LunaButtonType.TEXT,
+          ArrPilotButton(
+            type: ArrPilotButtonType.TEXT,
             text: 'lunasea.Delete'.tr(),
             icon: Icons.delete_rounded,
             onTap: () async {
@@ -180,7 +180,7 @@ class SonarrEpisodeDetailsSheet extends LunaBottomModalSheet {
                 });
               }
             },
-            color: LunaColours.red,
+            color: ArrPilotColours.red,
           ),
         ],
       ),
@@ -210,7 +210,7 @@ class SonarrEpisodeDetailsSheet extends LunaBottomModalSheet {
             (BuildContext context, AsyncSnapshot<SonarrHistoryPage?> snapshot) {
           if (snapshot.hasError) {
             if (snapshot.connectionState != ConnectionState.waiting) {
-              LunaLogger().error(
+              ArrPilotLogger().error(
                 'Unable to fetch Sonarr episode history ${episode!.id}',
                 snapshot.error,
                 snapshot.stackTrace,
@@ -220,11 +220,11 @@ class SonarrEpisodeDetailsSheet extends LunaBottomModalSheet {
           if (snapshot.hasData) {
             if (snapshot.data!.records!.isEmpty)
               return Padding(
-                child: LunaMessage.inList(
+                child: ArrPilotMessage.inList(
                   text: 'sonarr.NoHistoryFound'.tr(),
                 ),
                 padding: const EdgeInsets.only(
-                    bottom: LunaUI.DEFAULT_MARGIN_SIZE / 2),
+                    bottom: ArrPilotUI.DEFAULT_MARGIN_SIZE / 2),
               );
             return Padding(
               child: Column(
@@ -238,17 +238,17 @@ class SonarrEpisodeDetailsSheet extends LunaBottomModalSheet {
                 ),
               ),
               padding:
-                  const EdgeInsets.only(bottom: LunaUI.DEFAULT_MARGIN_SIZE / 2),
+                  const EdgeInsets.only(bottom: ArrPilotUI.DEFAULT_MARGIN_SIZE / 2),
             );
           }
           return const Padding(
-            child: LunaLoader(
+            child: ArrPilotLoader(
               useSafeArea: false,
               size: 16.0,
             ),
             padding: EdgeInsets.only(
-              bottom: LunaUI.DEFAULT_MARGIN_SIZE * 1.5,
-              top: LunaUI.DEFAULT_MARGIN_SIZE,
+              bottom: ArrPilotUI.DEFAULT_MARGIN_SIZE * 1.5,
+              top: ArrPilotUI.DEFAULT_MARGIN_SIZE,
             ),
           );
         },
@@ -257,26 +257,26 @@ class SonarrEpisodeDetailsSheet extends LunaBottomModalSheet {
   }
 
   Widget _actionBar(BuildContext context) {
-    return LunaBottomActionBar(
+    return ArrPilotBottomActionBar(
       actions: [
-        LunaButton(
+        ArrPilotButton(
           loadingState:
-              context.select<SonarrSeasonDetailsState, LunaLoadingState>(
+              context.select<SonarrSeasonDetailsState, ArrPilotLoadingState>(
                   (s) => s.episodeSearchState),
-          type: LunaButtonType.TEXT,
+          type: ArrPilotButtonType.TEXT,
           text: 'sonarr.Automatic'.tr(),
           icon: Icons.search_rounded,
           onTap: () async {
             context.read<SonarrSeasonDetailsState>().episodeSearchState =
-                LunaLoadingState.ACTIVE;
+                ArrPilotLoadingState.ACTIVE;
             SonarrAPIController()
                 .episodeSearch(context: context, episode: episode!)
                 .whenComplete(() => context
                     .read<SonarrSeasonDetailsState>()
-                    .episodeSearchState = LunaLoadingState.INACTIVE);
+                    .episodeSearchState = ArrPilotLoadingState.INACTIVE);
           },
         ),
-        LunaButton.text(
+        ArrPilotButton.text(
           text: 'sonarr.Interactive'.tr(),
           icon: Icons.person_rounded,
           onTap: () {
@@ -320,14 +320,14 @@ class SonarrEpisodeDetailsSheet extends LunaBottomModalSheet {
                       .toList();
               queueRecords = _qr;
             }
-            return LunaListViewModal(
+            return ArrPilotListViewModal(
               children: [
                 ..._episodeDetails(context),
                 ..._queue(context),
                 ..._files(context),
                 ..._history(context),
               ],
-              actionBar: _actionBar(context) as LunaBottomActionBar?,
+              actionBar: _actionBar(context) as ArrPilotBottomActionBar?,
             );
           },
         ),

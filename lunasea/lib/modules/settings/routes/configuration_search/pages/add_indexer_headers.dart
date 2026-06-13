@@ -5,7 +5,7 @@ import 'package:arrpilot/modules/settings.dart';
 import 'package:arrpilot/widgets/pages/invalid_route.dart';
 
 class ConfigurationSearchAddIndexerHeadersRoute extends StatefulWidget {
-  final LunaIndexer? indexer;
+  final ArrPilotIndexer? indexer;
 
   const ConfigurationSearchAddIndexerHeadersRoute({
     Key? key,
@@ -17,7 +17,7 @@ class ConfigurationSearchAddIndexerHeadersRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationSearchAddIndexerHeadersRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -29,7 +29,7 @@ class _State extends State<ConfigurationSearchAddIndexerHeadersRoute>
       );
     }
 
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar(),
       body: _body(),
@@ -38,16 +38,16 @@ class _State extends State<ConfigurationSearchAddIndexerHeadersRoute>
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'settings.CustomHeaders'.tr(),
       scrollControllers: [scrollController],
     );
   }
 
   Widget _bottomActionBar() {
-    return LunaBottomActionBar(
+    return ArrPilotBottomActionBar(
       actions: [
-        LunaButton.text(
+        ArrPilotButton.text(
           text: 'settings.AddHeader'.tr(),
           icon: Icons.add_rounded,
           onTap: () async {
@@ -61,11 +61,11 @@ class _State extends State<ConfigurationSearchAddIndexerHeadersRoute>
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
         if (widget.indexer!.headers.isEmpty)
-          LunaMessage.inList(text: 'settings.NoHeadersAdded'.tr()),
+          ArrPilotMessage.inList(text: 'settings.NoHeadersAdded'.tr()),
         ..._list(),
       ],
     );
@@ -75,17 +75,17 @@ class _State extends State<ConfigurationSearchAddIndexerHeadersRoute>
     final headers = widget.indexer!.headers.cast<String, dynamic>();
     List<String> _sortedKeys = headers.keys.toList()..sort();
     return _sortedKeys
-        .map<LunaBlock>((key) => _headerTile(key, headers[key]))
+        .map<ArrPilotBlock>((key) => _headerTile(key, headers[key]))
         .toList();
   }
 
-  LunaBlock _headerTile(String key, String? value) {
-    return LunaBlock(
+  ArrPilotBlock _headerTile(String key, String? value) {
+    return ArrPilotBlock(
       title: key.toString(),
       body: [TextSpan(text: value.toString())],
-      trailing: LunaIconButton(
-        icon: LunaIcons.DELETE,
-        color: LunaColours.red,
+      trailing: ArrPilotIconButton(
+        icon: ArrPilotIcons.DELETE,
+        color: ArrPilotColours.red,
         onPressed: () async {
           await HeaderUtility().deleteHeader(
             context,

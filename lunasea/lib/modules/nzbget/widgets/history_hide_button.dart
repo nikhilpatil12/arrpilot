@@ -16,18 +16,18 @@ class NZBGetHistoryHideButton extends StatefulWidget {
 
 class _State extends State<NZBGetHistoryHideButton> {
   @override
-  Widget build(BuildContext context) => LunaCard(
+  Widget build(BuildContext context) => ArrPilotCard(
         context: context,
         child: Consumer<NZBGetState>(
-          builder: (context, model, widget) => LunaIconButton(
+          builder: (context, model, widget) => ArrPilotIconButton(
             icon: model.historyHideFailed
                 ? Icons.visibility_off_rounded
                 : Icons.visibility_rounded,
             onPressed: () => model.historyHideFailed = !model.historyHideFailed,
           ),
         ),
-        height: LunaTextInputBar.defaultHeight,
-        width: LunaTextInputBar.defaultHeight,
+        height: ArrPilotTextInputBar.defaultHeight,
+        width: ArrPilotTextInputBar.defaultHeight,
         margin: const EdgeInsets.only(left: 12.0),
         color: Theme.of(context).canvasColor,
       );

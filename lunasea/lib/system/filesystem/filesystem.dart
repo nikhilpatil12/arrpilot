@@ -6,9 +6,9 @@ import 'platform/filesystem_stub.dart'
     if (dart.library.io) 'platform/filesystem_io.dart'
     if (dart.library.html) 'platform/filesystem_html.dart';
 
-abstract class LunaFileSystem {
+abstract class ArrPilotFileSystem {
   static bool get isSupported => isPlatformSupported();
-  factory LunaFileSystem() => getFileSystem();
+  factory ArrPilotFileSystem() => getFileSystem();
 
   static bool isValidExtension(List<String> extensions, String? extension) {
     String _ext = extension ?? '';
@@ -16,6 +16,6 @@ abstract class LunaFileSystem {
   }
 
   Future<bool> save(BuildContext context, String name, List<int> data);
-  Future<LunaFile?> read(BuildContext context, List<String> extensions);
+  Future<ArrPilotFile?> read(BuildContext context, List<String> extensions);
   Future<void> nuke();
 }

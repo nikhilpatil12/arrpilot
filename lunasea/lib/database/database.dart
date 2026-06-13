@@ -6,48 +6,48 @@ import 'package:arrpilot/system/filesystem/filesystem.dart';
 import 'package:arrpilot/system/platform.dart';
 import 'package:arrpilot/vendor.dart';
 
-class LunaDatabase {
+class ArrPilotDatabase {
   static const String _DATABASE_LEGACY_PATH = 'database';
-  static const String _DATABASE_PATH = 'LunaSea/database';
+  static const String _DATABASE_PATH = 'ArrPilot/database';
 
   String get path {
-    if (LunaPlatform.isWindows || LunaPlatform.isLinux) return _DATABASE_PATH;
+    if (ArrPilotPlatform.isWindows || ArrPilotPlatform.isLinux) return _DATABASE_PATH;
     return _DATABASE_LEGACY_PATH;
   }
 
   Future<void> initialize() async {
     await Hive.initFlutter(path);
-    LunaTable.register();
+    ArrPilotTable.register();
     await open();
   }
 
   Future<void> open() async {
-    await LunaBox.open();
-    if (LunaBox.profiles.isEmpty) await bootstrap();
+    await ArrPilotBox.open();
+    if (ArrPilotBox.profiles.isEmpty) await bootstrap();
   }
 
   Future<void> nuke() async {
     await Hive.close();
 
-    for (final box in LunaBox.values) {
+    for (final box in ArrPilotBox.values) {
       await Hive.deleteBoxFromDisk(box.key, path: path);
     }
 
-    if (LunaFileSystem.isSupported) {
-      await LunaFileSystem().nuke();
+    if (ArrPilotFileSystem.isSupported) {
+      await ArrPilotFileSystem().nuke();
     }
   }
 
   Future<void> bootstrap() async {
-    const defaultProfile = LunaProfile.DEFAULT_PROFILE;
+    const defaultProfile = ArrPilotProfile.DEFAULT_PROFILE;
     await clear();
 
-    LunaBox.profiles.update(defaultProfile, LunaProfile());
-    LunaSeaDatabase.ENABLED_PROFILE.update(defaultProfile);
+    ArrPilotBox.profiles.update(defaultProfile, ArrPilotProfile());
+    ArrPilotDatabase.ENABLED_PROFILE.update(defaultProfile);
   }
 
   Future<void> clear() async {
-    for (final box in LunaBox.values) await box.clear();
+    for (final box in ArrPilotBox.values) await box.clear();
   }
 
   Future<void> deinitialize() async {

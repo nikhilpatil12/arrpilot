@@ -15,7 +15,7 @@ class TautulliUserDetailsSyncedItems extends StatefulWidget {
 }
 
 class _State extends State<TautulliUserDetailsSyncedItems>
-    with AutomaticKeepAliveClientMixin, LunaLoadCallbackMixin {
+    with AutomaticKeepAliveClientMixin, ArrPilotLoadCallbackMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -39,15 +39,15 @@ class _State extends State<TautulliUserDetailsSyncedItems>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      module: LunaModule.TAUTULLI,
+      module: ArrPilotModule.TAUTULLI,
       body: _body(),
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: loadCallback,
@@ -57,15 +57,15 @@ class _State extends State<TautulliUserDetailsSyncedItems>
         builder: (context, AsyncSnapshot<List<TautulliSyncedItem>> snapshot) {
           if (snapshot.hasError) {
             if (snapshot.connectionState != ConnectionState.waiting)
-              LunaLogger().error(
+              ArrPilotLogger().error(
                 'Unable to fetch Tautulli user synced items: ${widget.user.userId}',
                 snapshot.error,
                 snapshot.stackTrace,
               );
-            return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+            return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
           }
           if (snapshot.hasData) return _syncedItems(snapshot.data);
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -73,12 +73,12 @@ class _State extends State<TautulliUserDetailsSyncedItems>
 
   Widget _syncedItems(List<TautulliSyncedItem>? items) {
     if ((items?.length ?? 0) == 0)
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'No Synced Items Found',
         buttonText: 'Refresh',
         onTap: _refreshKey.currentState!.show,
       );
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: TautulliUserDetailsNavigationBar.scrollControllers[2],
       itemCount: items!.length,
       itemBuilder: (context, index) =>

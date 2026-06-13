@@ -14,7 +14,7 @@ class IPDetailsRoute extends StatefulWidget {
   State<IPDetailsRoute> createState() => _State();
 }
 
-class _State extends State<IPDetailsRoute> with LunaScrollControllerMixin {
+class _State extends State<IPDetailsRoute> with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -24,7 +24,7 @@ class _State extends State<IPDetailsRoute> with LunaScrollControllerMixin {
     return ChangeNotifierProvider(
       create: (context) =>
           TautulliIPAddressDetailsState(context, widget.ipAddress),
-      builder: (context, _) => LunaScaffold(
+      builder: (context, _) => ArrPilotScaffold(
         scaffoldKey: _scaffoldKey,
         appBar: _appBar() as PreferredSizeWidget?,
         body: _body(context),
@@ -33,14 +33,14 @@ class _State extends State<IPDetailsRoute> with LunaScrollControllerMixin {
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'IP Address Details',
       scrollControllers: [scrollController],
     );
   }
 
   Widget _body(BuildContext context) {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: () async =>
@@ -53,29 +53,29 @@ class _State extends State<IPDetailsRoute> with LunaScrollControllerMixin {
         builder: (context, AsyncSnapshot<List<Object>> snapshot) {
           if (snapshot.hasError) {
             if (snapshot.connectionState != ConnectionState.waiting)
-              LunaLogger().error(
+              ArrPilotLogger().error(
                 'Unable to fetch Tautulli IP address information',
                 snapshot.error,
                 snapshot.stackTrace,
               );
-            return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+            return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
           }
           if (snapshot.hasData)
             return _list(snapshot.data![0] as TautulliGeolocationInfo,
                 snapshot.data![1] as TautulliWHOISInfo);
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
   }
 
   Widget _list(TautulliGeolocationInfo geolocation, TautulliWHOISInfo whois) {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
-        const LunaHeader(text: 'Location'),
+        const ArrPilotHeader(text: 'Location'),
         TautulliIPAddressDetailsGeolocationTile(geolocation: geolocation),
-        const LunaHeader(text: 'Connection'),
+        const ArrPilotHeader(text: 'Connection'),
         TautulliIPAddressDetailsWHOISTile(whois: whois),
       ],
     );

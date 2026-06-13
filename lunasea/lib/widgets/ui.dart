@@ -43,7 +43,7 @@ export 'ui/text.dart';
 export 'ui/theme.dart';
 
 // ignore: avoid_classes_with_only_static_members
-class LunaUI {
+class ArrPilotUI {
   // Text Constants
   static const String TEXT_ARROW_LEFT = '←';
   static const String TEXT_ARROW_RIGHT = '→';
@@ -110,10 +110,10 @@ class LunaUI {
 
   // <--> Borders
   static bool get shouldUseBorder {
-    return LunaTheme.isAMOLEDTheme && LunaTheme.useBorders;
+    return ArrPilotTheme.isAMOLEDTheme && ArrPilotTheme.useBorders;
   }
 
   static ShapeBorder get shapeBorder {
-    return LunaShapeBorder(useBorder: shouldUseBorder);
+    return ArrPilotShapeBorder(useBorder: shouldUseBorder);
   }
 }

@@ -15,19 +15,19 @@ class RadarrManualImportDirectoryTile extends StatefulWidget {
 }
 
 class _State extends State<RadarrManualImportDirectoryTile> {
-  LunaLoadingState _loadingState = LunaLoadingState.INACTIVE;
+  ArrPilotLoadingState _loadingState = ArrPilotLoadingState.INACTIVE;
 
   @override
   Widget build(BuildContext context) {
     RadarrFileSystemDirectory _dir = widget.directory;
     if (_dir.path?.isEmpty ?? true) return const SizedBox(height: 0.0);
-    return LunaBlock(
-      title: _dir.name ?? LunaUI.TEXT_EMDASH,
+    return ArrPilotBlock(
+      title: _dir.name ?? ArrPilotUI.TEXT_EMDASH,
       body: [TextSpan(text: _dir.path)],
-      trailing: LunaIconButton.arrow(loadingState: _loadingState),
+      trailing: ArrPilotIconButton.arrow(loadingState: _loadingState),
       onTap: () async {
-        if (_loadingState == LunaLoadingState.INACTIVE) {
-          if (mounted) setState(() => _loadingState = LunaLoadingState.ACTIVE);
+        if (_loadingState == ArrPilotLoadingState.INACTIVE) {
+          if (mounted) setState(() => _loadingState = ArrPilotLoadingState.ACTIVE);
           context.read<RadarrManualImportState>().fetchDirectories(
                 context,
                 _dir.path,

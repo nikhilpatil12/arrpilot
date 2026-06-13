@@ -12,13 +12,13 @@ class ErrorRoutePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      appBar: LunaAppBar(
-        title: 'LunaSea',
+      appBar: ArrPilotAppBar(
+        title: 'ArrPilot',
         scrollControllers: const [],
       ),
-      body: LunaMessage.goBack(
+      body: ArrPilotMessage.goBack(
         context: context,
         text: exception?.toString() ?? '404: Not Found',
       ),

@@ -13,7 +13,7 @@ class LidarrCatalogueSearchBar extends StatefulWidget
 
   @override
   Size get preferredSize =>
-      const Size.fromHeight(LunaTextInputBar.defaultAppBarHeight);
+      const Size.fromHeight(ArrPilotTextInputBar.defaultAppBarHeight);
 
   @override
   State<LidarrCatalogueSearchBar> createState() => _State();
@@ -35,7 +35,7 @@ class _State extends State<LidarrCatalogueSearchBar> {
         children: [
           Expanded(
             child: Consumer<LidarrState>(
-              builder: (context, state, _) => LunaTextInputBar(
+              builder: (context, state, _) => ArrPilotTextInputBar(
                 controller: _controller,
                 scrollController: widget.scrollController,
                 autofocus: false,
@@ -49,7 +49,7 @@ class _State extends State<LidarrCatalogueSearchBar> {
           LidarrCatalogueSortButton(controller: widget.scrollController),
         ],
       ),
-      height: LunaTextInputBar.defaultAppBarHeight,
+      height: ArrPilotTextInputBar.defaultAppBarHeight,
     );
   }
 }

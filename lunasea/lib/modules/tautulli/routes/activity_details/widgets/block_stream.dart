@@ -12,32 +12,32 @@ class TautulliActivityDetailsStreamBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaTableCard(
+    return ArrPilotTableCard(
       content: [
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'tautulli.Bandwidth'.tr(),
           body: session.lunaBandwidth,
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'tautulli.Stream'.tr(),
           body: session.formattedStream(),
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'tautulli.Container'.tr(),
           body: session.formattedContainer(),
         ),
         if (session.hasVideo())
-          LunaTableContent(
+          ArrPilotTableContent(
             title: 'tautulli.Video'.tr(),
             body: session.formattedVideo(),
           ),
         if (session.hasAudio())
-          LunaTableContent(
+          ArrPilotTableContent(
             title: 'tautulli.Audio'.tr(),
             body: session.formattedAudio(),
           ),
         if (session.hasSubtitles())
-          LunaTableContent(
+          ArrPilotTableContent(
             title: 'tautulli.Subtitle'.tr(),
             body: session.formattedSubtitles(),
           ),

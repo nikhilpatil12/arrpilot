@@ -12,7 +12,7 @@ class StatisticsRoute extends StatefulWidget {
 }
 
 class _State extends State<StatisticsRoute>
-    with LunaLoadCallbackMixin, LunaScrollControllerMixin {
+    with ArrPilotLoadCallbackMixin, ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -30,16 +30,16 @@ class _State extends State<StatisticsRoute>
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      module: LunaModule.TAUTULLI,
+      module: ArrPilotModule.TAUTULLI,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
     );
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'Statistics',
       scrollControllers: [scrollController],
       actions: const [
@@ -50,7 +50,7 @@ class _State extends State<StatisticsRoute>
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: loadCallback,
@@ -61,15 +61,15 @@ class _State extends State<StatisticsRoute>
           builder: (context, AsyncSnapshot<List<TautulliHomeStats>> snapshot) {
             if (snapshot.hasError) {
               if (snapshot.connectionState != ConnectionState.waiting)
-                LunaLogger().error(
+                ArrPilotLogger().error(
                   'Unable to fetch Tautulli statistics',
                   snapshot.error,
                   snapshot.stackTrace,
                 );
-              return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+              return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
             }
             if (snapshot.hasData) return _statistics(snapshot.data);
-            return const LunaLoader();
+            return const ArrPilotLoader();
           },
         ),
       ),
@@ -78,14 +78,14 @@ class _State extends State<StatisticsRoute>
 
   Widget _statistics(List<TautulliHomeStats>? stats) {
     if ((stats?.length ?? 0) == 0)
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'No Statistics Found',
         buttonText: 'Refresh',
         onTap: _refreshKey.currentState?.show,
       );
     List<List<Widget>> list = [];
     stats!.forEach((element) => list.add(_builder(element)));
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: list.expand((e) => e).toList(),
     );
@@ -94,7 +94,7 @@ class _State extends State<StatisticsRoute>
   List<Widget> _builder(TautulliHomeStats stats) {
     if ((stats.data ?? 0) == 0 || denylist.contains(stats.id)) return [];
     return [
-      LunaHeader(text: stats.title),
+      ArrPilotHeader(text: stats.title),
       ...List.generate(stats.data!.length, (index) {
         switch (stats.id) {
           case 'top_movies':

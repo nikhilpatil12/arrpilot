@@ -12,7 +12,7 @@ class HistoryRoute extends StatefulWidget {
   State<HistoryRoute> createState() => _State();
 }
 
-class _State extends State<HistoryRoute> with LunaScrollControllerMixin {
+class _State extends State<HistoryRoute> with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -42,7 +42,7 @@ class _State extends State<HistoryRoute> with LunaScrollControllerMixin {
       }
       return _pagingController.appendLastPage(data.records!);
     }).catchError((error, stack) {
-      LunaLogger().error(
+      ArrPilotLogger().error(
         'Unable to fetch Radarr history page: $pageKey',
         error,
         stack,
@@ -53,7 +53,7 @@ class _State extends State<HistoryRoute> with LunaScrollControllerMixin {
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -61,7 +61,7 @@ class _State extends State<HistoryRoute> with LunaScrollControllerMixin {
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'radarr.History'.tr(),
       scrollControllers: [scrollController],
     );
@@ -73,24 +73,24 @@ class _State extends State<HistoryRoute> with LunaScrollControllerMixin {
       builder: (context, AsyncSnapshot<List<RadarrMovie>> snapshot) {
         if (snapshot.hasError) {
           if (snapshot.connectionState != ConnectionState.waiting) {
-            LunaLogger().error(
+            ArrPilotLogger().error(
               'Unable to fetch Radarr movies for history list',
               snapshot.error,
               snapshot.stackTrace,
             );
           }
-          return LunaMessage.error(
+          return ArrPilotMessage.error(
             onTap: () => Future.sync(_pagingController.refresh),
           );
         }
         if (snapshot.hasData) return _paginatedList(snapshot.data);
-        return const LunaLoader();
+        return const ArrPilotLoader();
       },
     );
   }
 
   Widget _paginatedList(List<RadarrMovie>? movies) {
-    return LunaPagedListView<RadarrHistoryRecord>(
+    return ArrPilotPagedListView<RadarrHistoryRecord>(
       refreshKey: _refreshKey,
       pagingController: _pagingController,
       scrollController: scrollController,

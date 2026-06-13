@@ -14,12 +14,12 @@ class ConfigurationSonarrConnectionDetailsRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationSonarrConnectionDetailsRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar(),
       body: _body(),
@@ -28,14 +28,14 @@ class _State extends State<ConfigurationSonarrConnectionDetailsRoute>
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'settings.ConnectionDetails'.tr(),
       scrollControllers: [scrollController],
     );
   }
 
   Widget _bottomActionBar() {
-    return LunaBottomActionBar(
+    return ArrPilotBottomActionBar(
       actions: [
         _testConnection(),
       ],
@@ -43,8 +43,8 @@ class _State extends State<ConfigurationSonarrConnectionDetailsRoute>
   }
 
   Widget _body() {
-    return LunaBox.profiles.listenableBuilder(
-      builder: (context, _) => LunaListView(
+    return ArrPilotBox.profiles.listenableBuilder(
+      builder: (context, _) => ArrPilotListView(
         controller: scrollController,
         children: [
           _host(),
@@ -56,19 +56,19 @@ class _State extends State<ConfigurationSonarrConnectionDetailsRoute>
   }
 
   Widget _host() {
-    String host = LunaProfile.current.sonarrHost;
-    return LunaBlock(
+    String host = ArrPilotProfile.current.sonarrHost;
+    return ArrPilotBlock(
       title: 'settings.Host'.tr(),
       body: [TextSpan(text: host.isEmpty ? 'lunasea.NotSet'.tr() : host)],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {
         Tuple2<bool, String> _values = await SettingsDialogs().editHost(
           context,
           prefill: host,
         );
         if (_values.item1) {
-          LunaProfile.current.sonarrHost = _values.item2;
-          LunaProfile.current.save();
+          ArrPilotProfile.current.sonarrHost = _values.item2;
+          ArrPilotProfile.current.save();
           context.read<SonarrState>().reset();
         }
       },
@@ -76,26 +76,26 @@ class _State extends State<ConfigurationSonarrConnectionDetailsRoute>
   }
 
   Widget _apiKey() {
-    String apiKey = LunaProfile.current.sonarrKey;
-    return LunaBlock(
+    String apiKey = ArrPilotProfile.current.sonarrKey;
+    return ArrPilotBlock(
       title: 'settings.ApiKey'.tr(),
       body: [
         TextSpan(
           text: apiKey.isEmpty
               ? 'lunasea.NotSet'.tr()
-              : LunaUI.TEXT_OBFUSCATED_PASSWORD,
+              : ArrPilotUI.TEXT_OBFUSCATED_PASSWORD,
         ),
       ],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {
-        Tuple2<bool, String> _values = await LunaDialogs().editText(
+        Tuple2<bool, String> _values = await ArrPilotDialogs().editText(
           context,
           'settings.ApiKey'.tr(),
           prefill: apiKey,
         );
         if (_values.item1) {
-          LunaProfile.current.sonarrKey = _values.item2;
-          LunaProfile.current.save();
+          ArrPilotProfile.current.sonarrKey = _values.item2;
+          ArrPilotProfile.current.save();
           context.read<SonarrState>().reset();
         }
       },
@@ -103,16 +103,16 @@ class _State extends State<ConfigurationSonarrConnectionDetailsRoute>
   }
 
   Widget _testConnection() {
-    return LunaButton.text(
+    return ArrPilotButton.text(
       text: 'settings.TestConnection'.tr(),
-      icon: LunaIcons.CONNECTION_TEST,
+      icon: ArrPilotIcons.CONNECTION_TEST,
       onTap: () async {
-        LunaProfile _profile = LunaProfile.current;
+        ArrPilotProfile _profile = ArrPilotProfile.current;
         if (_profile.sonarrHost.isEmpty) {
           showLunaErrorSnackBar(
             title: 'settings.HostRequired'.tr(),
             message: 'settings.HostRequiredMessage'
-                .tr(args: [LunaModule.SONARR.title]),
+                .tr(args: [ArrPilotModule.SONARR.title]),
           );
           return;
         }
@@ -120,7 +120,7 @@ class _State extends State<ConfigurationSonarrConnectionDetailsRoute>
           showLunaErrorSnackBar(
             title: 'settings.ApiKeyRequired'.tr(),
             message: 'settings.ApiKeyRequiredMessage'
-                .tr(args: [LunaModule.SONARR.title]),
+                .tr(args: [ArrPilotModule.SONARR.title]),
           );
           return;
         }
@@ -134,10 +134,10 @@ class _State extends State<ConfigurationSonarrConnectionDetailsRoute>
           showLunaSuccessSnackBar(
             title: 'settings.ConnectedSuccessfully'.tr(),
             message: 'settings.ConnectedSuccessfullyMessage'
-                .tr(args: [LunaModule.SONARR.title]),
+                .tr(args: [ArrPilotModule.SONARR.title]),
           );
         }).catchError((error, trace) {
-          LunaLogger().error(
+          ArrPilotLogger().error(
             'Connection Test Failed',
             error,
             trace,
@@ -152,10 +152,10 @@ class _State extends State<ConfigurationSonarrConnectionDetailsRoute>
   }
 
   Widget _customHeaders() {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.CustomHeaders'.tr(),
       body: [TextSpan(text: 'settings.CustomHeadersDescription'.tr())],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: SettingsRoutes.CONFIGURATION_SONARR_CONNECTION_DETAILS_HEADERS.go,
     );
   }

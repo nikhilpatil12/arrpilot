@@ -1,12 +1,12 @@
 import 'package:arrpilot/core.dart';
 import 'package:arrpilot/system/webhooks.dart';
 
-class LidarrWebhooks extends LunaWebhooks {
+class LidarrWebhooks extends ArrPilotWebhooks {
   @override
   Future<void> handle(Map<dynamic, dynamic> data) async {
     _EventType? event = _EventType.GRAB.fromKey(data['event']);
     if (event == null)
-      LunaLogger().warning(
+      ArrPilotLogger().warning(
         'Unknown event type: ${data['event'] ?? 'null'}',
       );
     event?.execute(data);
@@ -55,22 +55,22 @@ extension _EventTypeExtension on _EventType {
   }
 
   Future<void> _downloadEvent(Map<dynamic, dynamic> data) async {
-    return LunaModule.LIDARR.launch();
+    return ArrPilotModule.LIDARR.launch();
   }
 
   Future<void> _grabEvent(Map<dynamic, dynamic> data) async {
-    return LunaModule.LIDARR.launch();
+    return ArrPilotModule.LIDARR.launch();
   }
 
   Future<void> _renameEvent(Map<dynamic, dynamic> data) async {
-    return LunaModule.LIDARR.launch();
+    return ArrPilotModule.LIDARR.launch();
   }
 
   Future<void> _retagEvent(Map<dynamic, dynamic> data) async {
-    return LunaModule.LIDARR.launch();
+    return ArrPilotModule.LIDARR.launch();
   }
 
   Future<void> _testEvent(Map<dynamic, dynamic> data) async {
-    return LunaModule.LIDARR.launch();
+    return ArrPilotModule.LIDARR.launch();
   }
 }

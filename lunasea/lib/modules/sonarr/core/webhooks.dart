@@ -2,12 +2,12 @@ import 'package:arrpilot/core.dart';
 import 'package:arrpilot/router/routes/sonarr.dart';
 import 'package:arrpilot/system/webhooks.dart';
 
-class SonarrWebhooks extends LunaWebhooks {
+class SonarrWebhooks extends ArrPilotWebhooks {
   @override
   Future<void> handle(Map<dynamic, dynamic> data) async {
     _EventType? event = _EventType.GRAB.fromKey(data['event']);
     if (event == null)
-      LunaLogger().warning(
+      ArrPilotLogger().warning(
         'Unknown event type: ${data['event'] ?? 'null'}',
       );
     event?.execute(data);
@@ -71,13 +71,13 @@ extension _EventTypeExtension on _EventType {
       _goToSeasonDetails(
           int.tryParse(data['seriesId']), int.tryParse(data['seasonNumber']));
   Future<void> _healthEvent(Map<dynamic, dynamic> data) async =>
-      LunaModule.SONARR.launch();
+      ArrPilotModule.SONARR.launch();
   Future<void> _renameEvent(Map<dynamic, dynamic> data) async =>
       _goToSeriesDetails(int.tryParse(data['seriesId']));
   Future<void> _seriesDeleteEvent(Map<dynamic, dynamic> data) async =>
-      LunaModule.SONARR.launch();
+      ArrPilotModule.SONARR.launch();
   Future<void> _testEvent(Map<dynamic, dynamic> data) async =>
-      LunaModule.SONARR.launch();
+      ArrPilotModule.SONARR.launch();
 
   Future<void> _grabEvent(Map<dynamic, dynamic> data) async {
     SonarrRoutes.QUEUE.go(buildTree: true);
@@ -92,7 +92,7 @@ extension _EventTypeExtension on _EventType {
         },
       );
     }
-    return LunaModule.SONARR.launch();
+    return ArrPilotModule.SONARR.launch();
   }
 
   Future<void> _goToSeasonDetails(int? seriesId, int? seasonNumber) async {
@@ -105,6 +105,6 @@ extension _EventTypeExtension on _EventType {
         },
       );
     }
-    return LunaModule.SONARR.launch();
+    return ArrPilotModule.SONARR.launch();
   }
 }

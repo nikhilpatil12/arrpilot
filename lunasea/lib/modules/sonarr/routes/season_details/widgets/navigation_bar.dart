@@ -32,24 +32,24 @@ class SonarrSeasonDetailsNavigationBar extends StatefulWidget {
 }
 
 class _State extends State<SonarrSeasonDetailsNavigationBar> {
-  LunaLoadingState _automaticLoadingState = LunaLoadingState.INACTIVE;
+  ArrPilotLoadingState _automaticLoadingState = ArrPilotLoadingState.INACTIVE;
 
   @override
   Widget build(BuildContext context) {
-    return LunaBottomNavigationBar(
+    return ArrPilotBottomNavigationBar(
       pageController: widget.pageController,
       scrollControllers: SonarrSeasonDetailsNavigationBar.scrollControllers,
       icons: SonarrSeasonDetailsNavigationBar.icons,
       titles: SonarrSeasonDetailsNavigationBar.titles,
       topActions: [
-        LunaButton(
-          type: LunaButtonType.TEXT,
+        ArrPilotButton(
+          type: ArrPilotButtonType.TEXT,
           text: 'sonarr.Automatic'.tr(),
           icon: Icons.search_rounded,
           onTap: _automatic,
           loadingState: _automaticLoadingState,
         ),
-        LunaButton.text(
+        ArrPilotButton.text(
           text: 'sonarr.Interactive'.tr(),
           icon: Icons.person_rounded,
           onTap: _manual,
@@ -59,18 +59,18 @@ class _State extends State<SonarrSeasonDetailsNavigationBar> {
   }
 
   Future<void> _automatic() async {
-    Future<void> setLoadingState(LunaLoadingState state) async {
+    Future<void> setLoadingState(ArrPilotLoadingState state) async {
       if (this.mounted) setState(() => _automaticLoadingState = state);
     }
 
-    setLoadingState(LunaLoadingState.ACTIVE);
+    setLoadingState(ArrPilotLoadingState.ACTIVE);
     SonarrAPIController()
         .automaticSeasonSearch(
           context: context,
           seriesId: widget.seriesId,
           seasonNumber: widget.seasonNumber,
         )
-        .whenComplete(() => setLoadingState(LunaLoadingState.INACTIVE));
+        .whenComplete(() => setLoadingState(ArrPilotLoadingState.INACTIVE));
   }
 
   Future<void> _manual() async {

@@ -16,7 +16,7 @@ class TautulliLibrariesDetailsInformation extends StatefulWidget {
 }
 
 class _State extends State<TautulliLibrariesDetailsInformation>
-    with AutomaticKeepAliveClientMixin, LunaLoadCallbackMixin {
+    with AutomaticKeepAliveClientMixin, ArrPilotLoadCallbackMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -39,14 +39,14 @@ class _State extends State<TautulliLibrariesDetailsInformation>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      body: _initialLoad ? _body() : const LunaLoader(),
+      body: _initialLoad ? _body() : const ArrPilotLoader(),
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: loadCallback,
@@ -59,7 +59,7 @@ class _State extends State<TautulliLibrariesDetailsInformation>
         ]),
         builder: (context, AsyncSnapshot<List<Object>> snapshot) {
           if (snapshot.hasError)
-            return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+            return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
           if (snapshot.hasData) {
             TautulliTableLibrary? library =
                 (snapshot.data![0] as TautulliLibrariesTable)
@@ -70,7 +70,7 @@ class _State extends State<TautulliLibrariesDetailsInformation>
             return _list(library,
                 snapshot.data![1] as List<TautulliLibraryWatchTimeStats>);
           }
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -79,17 +79,17 @@ class _State extends State<TautulliLibrariesDetailsInformation>
   Widget _list(TautulliTableLibrary? library,
       List<TautulliLibraryWatchTimeStats> watchTimeStats) {
     if (library == null)
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'Library Not Found',
         buttonText: 'Refresh',
         onTap: _refreshKey.currentState?.show,
       );
-    return LunaListView(
+    return ArrPilotListView(
       controller: TautulliLibrariesDetailsNavigationBar.scrollControllers[0],
       children: [
-        const LunaHeader(text: 'Details'),
+        const ArrPilotHeader(text: 'Details'),
         TautulliLibrariesDetailsInformationDetails(library: library),
-        const LunaHeader(text: 'Global Stats'),
+        const ArrPilotHeader(text: 'Global Stats'),
         TautulliLibrariesDetailsInformationGlobalStats(
             watchtime: watchTimeStats),
       ],

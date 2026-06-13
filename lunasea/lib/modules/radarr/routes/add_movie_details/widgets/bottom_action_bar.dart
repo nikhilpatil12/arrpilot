@@ -11,15 +11,15 @@ class RadarrAddMovieDetailsActionBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBottomActionBar(
+    return ArrPilotBottomActionBar(
       actions: [
-        LunaActionBarCard(
+        ArrPilotActionBarCard(
           title: 'lunasea.Options'.tr(),
           subtitle: 'radarr.StartSearchFor'.tr(),
           onTap: () async => RadarrDialogs().addMovieOptions(context),
         ),
-        LunaButton(
-          type: LunaButtonType.TEXT,
+        ArrPilotButton(
+          type: ArrPilotButtonType.TEXT,
           text: 'lunasea.Add'.tr(),
           icon: Icons.add_rounded,
           onTap: () async => _onTap(context),
@@ -32,7 +32,7 @@ class RadarrAddMovieDetailsActionBar extends StatelessWidget {
   Future<void> _onTap(BuildContext context) async {
     if (context.read<RadarrAddMovieDetailsState>().canExecuteAction) {
       context.read<RadarrAddMovieDetailsState>().state =
-          LunaLoadingState.ACTIVE;
+          ArrPilotLoadingState.ACTIVE;
       await RadarrAPIHelper()
           .addMovie(
         context: context,
@@ -48,16 +48,16 @@ class RadarrAddMovieDetailsActionBar extends StatelessWidget {
           .then((movie) async {
         context.read<RadarrState>().fetchMovies();
         context.read<RadarrAddMovieDetailsState>().movie.id = movie!.id;
-        LunaRouter.router.pop();
+        ArrPilotRouter.router.pop();
         RadarrRoutes.MOVIE.go(params: {
           'movie': movie.id!.toString(),
         });
       }).catchError((error, stack) {
         context.read<RadarrAddMovieDetailsState>().state =
-            LunaLoadingState.ERROR;
+            ArrPilotLoadingState.ERROR;
       });
       context.read<RadarrAddMovieDetailsState>().state =
-          LunaLoadingState.INACTIVE;
+          ArrPilotLoadingState.INACTIVE;
     }
   }
 }

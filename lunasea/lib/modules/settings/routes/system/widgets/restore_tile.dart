@@ -12,20 +12,20 @@ class SettingsSystemBackupRestoreRestoreTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.RestoreFromDevice'.tr(),
       body: [TextSpan(text: 'settings.RestoreFromDeviceDescription'.tr())],
-      trailing: const LunaIconButton(icon: Icons.download_rounded),
+      trailing: const ArrPilotIconButton(icon: Icons.download_rounded),
       onTap: () async => _restore(context),
     );
   }
 
   Future<void> _restore(BuildContext context) async {
     try {
-      LunaFile? file = await LunaFileSystem().read(context, ['lunasea']);
+      ArrPilotFile? file = await ArrPilotFileSystem().read(context, ['lunasea']);
       if (file != null) await _decryptBackup(context, file);
     } catch (error, stack) {
-      LunaLogger().error('Failed to restore device backup', error, stack);
+      ArrPilotLogger().error('Failed to restore device backup', error, stack);
       showLunaErrorSnackBar(
         title: 'settings.RestoreFromCloudFailure'.tr(),
         error: error,
@@ -35,11 +35,11 @@ class SettingsSystemBackupRestoreRestoreTile extends StatelessWidget {
 
   Future<void> _decryptBackup(
     BuildContext context,
-    LunaFile file,
+    ArrPilotFile file,
   ) async {
     String encrypted = String.fromCharCodes(file.data);
     try {
-      await LunaConfig().import(context, encrypted);
+      await ArrPilotConfig().import(context, encrypted);
       showLunaSuccessSnackBar(
         title: 'settings.RestoreFromCloudSuccess'.tr(),
         message: 'settings.RestoreFromCloudSuccessMessage'.tr(),

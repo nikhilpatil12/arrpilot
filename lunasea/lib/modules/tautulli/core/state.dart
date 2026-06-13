@@ -1,7 +1,7 @@
 import 'package:arrpilot/core.dart';
 import 'package:arrpilot/modules/tautulli.dart';
 
-class TautulliState extends LunaModuleState {
+class TautulliState extends ArrPilotModuleState {
   TautulliState() {
     reset();
   }
@@ -83,7 +83,7 @@ class TautulliState extends LunaModuleState {
 
   /// Reset the profile data, reinitializes API instance
   void resetProfile() {
-    LunaProfile _profile = LunaProfile.current;
+    ArrPilotProfile _profile = ArrPilotProfile.current;
     // Copy profile into state
     _enabled = _profile.tautulliEnabled;
     _host = _profile.tautulliHost;

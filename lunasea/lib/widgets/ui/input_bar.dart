@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 import 'package:arrpilot/extensions/scroll_controller.dart';
 
-class LunaTextInputBar extends StatefulWidget {
+class ArrPilotTextInputBar extends StatefulWidget {
   static const double defaultHeight = 50.0;
   static const double defaultAppBarHeight =
-      defaultHeight + LunaUI.DEFAULT_MARGIN_SIZE;
+      defaultHeight + ArrPilotUI.DEFAULT_MARGIN_SIZE;
   static const EdgeInsets appBarMargin = EdgeInsets.fromLTRB(
-    LunaUI.DEFAULT_MARGIN_SIZE,
+    ArrPilotUI.DEFAULT_MARGIN_SIZE,
     0,
-    LunaUI.DEFAULT_MARGIN_SIZE,
-    LunaUI.DEFAULT_MARGIN_SIZE,
+    ArrPilotUI.DEFAULT_MARGIN_SIZE,
+    ArrPilotUI.DEFAULT_MARGIN_SIZE,
   );
 
   final TextEditingController? controller;
@@ -29,7 +29,7 @@ class LunaTextInputBar extends StatefulWidget {
   final FormFieldValidator<String>? validator;
   final EdgeInsets margin;
 
-  const LunaTextInputBar({
+  const ArrPilotTextInputBar({
     Key? key,
     required this.controller,
     this.scrollController,
@@ -41,7 +41,7 @@ class LunaTextInputBar extends StatefulWidget {
     this.keyboardType = TextInputType.text,
     this.labelText,
     this.labelIcon = Icons.search_rounded,
-    this.margin = LunaUI.MARGIN_H_DEFAULT_V_HALF,
+    this.margin = ArrPilotUI.MARGIN_H_DEFAULT_V_HALF,
     this.focusNode,
     this.autofocus = false,
     this.obscureText = false,
@@ -52,7 +52,7 @@ class LunaTextInputBar extends StatefulWidget {
   State<StatefulWidget> createState() => _State();
 }
 
-class _State extends State<LunaTextInputBar> {
+class _State extends State<ArrPilotTextInputBar> {
   bool _isFocused = false;
 
   @override
@@ -72,7 +72,7 @@ class _State extends State<LunaTextInputBar> {
   }
 
   @override
-  Widget build(BuildContext context) => LunaCard(
+  Widget build(BuildContext context) => ArrPilotCard(
         context: context,
         margin: widget.margin,
         child: FocusScope(
@@ -81,27 +81,27 @@ class _State extends State<LunaTextInputBar> {
             child: widget.isFormField ? _isForm : _isNotForm,
           ),
         ),
-        height: LunaTextInputBar.defaultHeight,
+        height: ArrPilotTextInputBar.defaultHeight,
         color: Theme.of(context).canvasColor,
       );
 
   TextStyle get _sharedTextStyle => const TextStyle(
-        color: LunaColours.white,
-        fontSize: LunaUI.FONT_SIZE_H3,
+        color: ArrPilotColours.white,
+        fontSize: ArrPilotUI.FONT_SIZE_H3,
       );
 
   InputDecoration get _sharedInputDecoration => InputDecoration(
         labelText: widget.labelText ?? 'lunasea.SearchTextBar'.tr(),
         labelStyle: const TextStyle(
-          color: LunaColours.grey,
+          color: ArrPilotColours.grey,
           decoration: TextDecoration.none,
-          fontSize: LunaUI.FONT_SIZE_H3,
+          fontSize: ArrPilotUI.FONT_SIZE_H3,
         ),
         suffixIcon: AnimatedOpacity(
           child: InkWell(
             child: const Icon(
               Icons.close_rounded,
-              color: LunaColours.accent,
+              color: ArrPilotColours.accent,
               size: 24.0,
             ),
             onTap: !_isFocused || widget.controller!.text == ''
@@ -118,12 +118,12 @@ class _State extends State<LunaTextInputBar> {
             hoverColor: Colors.transparent,
           ),
           opacity: !_isFocused || widget.controller!.text == '' ? 0.0 : 1.0,
-          duration: const Duration(milliseconds: LunaUI.ANIMATION_SPEED),
+          duration: const Duration(milliseconds: ArrPilotUI.ANIMATION_SPEED),
         ),
         icon: Padding(
           child: Icon(
             widget.labelIcon,
-            color: LunaColours.accent,
+            color: ArrPilotColours.accent,
           ),
           padding: const EdgeInsets.only(left: 16.0),
         ),
@@ -137,7 +137,7 @@ class _State extends State<LunaTextInputBar> {
         controller: widget.controller,
         decoration: _sharedInputDecoration,
         style: _sharedTextStyle,
-        cursorColor: LunaColours.accent,
+        cursorColor: ArrPilotColours.accent,
         textInputAction: widget.action,
         obscureText: widget.obscureText,
         autocorrect: false,
@@ -156,7 +156,7 @@ class _State extends State<LunaTextInputBar> {
         controller: widget.controller,
         decoration: _sharedInputDecoration,
         style: _sharedTextStyle,
-        cursorColor: LunaColours.accent,
+        cursorColor: ArrPilotColours.accent,
         textInputAction: widget.action,
         obscureText: widget.obscureText,
         autocorrect: false,

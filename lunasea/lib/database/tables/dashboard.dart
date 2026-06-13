@@ -4,7 +4,7 @@ import 'package:arrpilot/modules/dashboard/core/adapters/calendar_starting_size.
 import 'package:arrpilot/modules/dashboard/core/adapters/calendar_starting_type.dart';
 import 'package:arrpilot/vendor.dart';
 
-enum DashboardDatabase<T> with LunaTableMixin<T> {
+enum DashboardDatabase<T> with ArrPilotTableMixin<T> {
   NAVIGATION_INDEX<int>(0),
   CALENDAR_STARTING_DAY<CalendarStartingDay>(CalendarStartingDay.MONDAY),
   CALENDAR_STARTING_SIZE<CalendarStartingSize>(CalendarStartingSize.ONE_WEEK),
@@ -16,7 +16,7 @@ enum DashboardDatabase<T> with LunaTableMixin<T> {
   CALENDAR_DAYS_FUTURE<int>(14);
 
   @override
-  LunaTable get table => LunaTable.dashboard;
+  ArrPilotTable get table => ArrPilotTable.dashboard;
 
   @override
   final T fallback;

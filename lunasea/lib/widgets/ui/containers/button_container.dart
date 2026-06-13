@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaButtonContainer extends StatelessWidget {
+class ArrPilotButtonContainer extends StatelessWidget {
   final List<Widget> children;
   final EdgeInsets padding;
   final int buttonsPerRow;
 
-  const LunaButtonContainer({
+  const ArrPilotButtonContainer({
     Key? key,
     required this.children,
     this.buttonsPerRow = 2,

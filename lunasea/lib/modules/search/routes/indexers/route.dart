@@ -11,12 +11,12 @@ class SearchRoute extends StatefulWidget {
   State<SearchRoute> createState() => _State();
 }
 
-class _State extends State<SearchRoute> with LunaScrollControllerMixin {
+class _State extends State<SearchRoute> with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       drawer: _drawer(),
@@ -25,30 +25,30 @@ class _State extends State<SearchRoute> with LunaScrollControllerMixin {
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       useDrawer: true,
-      title: LunaModule.SEARCH.title,
+      title: ArrPilotModule.SEARCH.title,
       scrollControllers: [scrollController],
     );
   }
 
-  Widget _drawer() => LunaDrawer(page: LunaModule.SEARCH.key);
+  Widget _drawer() => ArrPilotDrawer(page: ArrPilotModule.SEARCH.key);
 
   Widget _body() {
-    if (LunaBox.indexers.isEmpty) {
-      return LunaMessage.moduleNotEnabled(
+    if (ArrPilotBox.indexers.isEmpty) {
+      return ArrPilotMessage.moduleNotEnabled(
         context: context,
-        module: LunaModule.SEARCH.title,
+        module: ArrPilotModule.SEARCH.title,
       );
     }
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: _list,
     );
   }
 
   List<Widget> get _list {
-    final list = LunaBox.indexers.data
+    final list = ArrPilotBox.indexers.data
         .map((indexer) => SearchIndexerTile(indexer: indexer))
         .toList();
     list.sort((a, b) => a.indexer!.displayName

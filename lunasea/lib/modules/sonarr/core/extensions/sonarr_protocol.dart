@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 import 'package:arrpilot/modules/sonarr.dart';
 
-extension LunaSonarrProtocolExtension on SonarrProtocol {
+extension ArrPilotSonarrProtocolExtension on SonarrProtocol {
   Color lunaProtocolColor({
     SonarrRelease? release,
   }) {
-    if (this == SonarrProtocol.USENET) return LunaColours.accent;
-    if (release == null) return LunaColours.blue;
+    if (this == SonarrProtocol.USENET) return ArrPilotColours.accent;
+    if (release == null) return ArrPilotColours.blue;
 
     int seeders = release.seeders ?? 0;
-    if (seeders > 10) return LunaColours.blue;
-    if (seeders > 0) return LunaColours.orange;
-    return LunaColours.red;
+    if (seeders > 10) return ArrPilotColours.blue;
+    if (seeders > 0) return ArrPilotColours.orange;
+    return ArrPilotColours.red;
   }
 
   String lunaReadable() {

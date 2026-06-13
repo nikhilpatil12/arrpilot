@@ -13,15 +13,15 @@ import 'package:arrpilot/modules/tautulli/core/state.dart';
 import 'package:arrpilot/modules.dart';
 import 'package:arrpilot/router/router.dart';
 
-class LunaState {
-  LunaState._();
+class ArrPilotState {
+  ArrPilotState._();
 
-  static BuildContext get context => LunaRouter.navigator.currentContext!;
+  static BuildContext get context => ArrPilotRouter.navigator.currentContext!;
 
-  /// Calls `.reset()` on all states which extend [LunaModuleState].
+  /// Calls `.reset()` on all states which extend [ArrPilotModuleState].
   static void reset([BuildContext? context]) {
-    final ctx = context ?? LunaState.context;
-    LunaModule.values.forEach((module) => module.state(ctx)?.reset());
+    final ctx = context ?? ArrPilotState.context;
+    ArrPilotModule.values.forEach((module) => module.state(ctx)?.reset());
   }
 
   static MultiProvider providers({required Widget child}) {
@@ -42,7 +42,7 @@ class LunaState {
   }
 }
 
-abstract class LunaModuleState extends ChangeNotifier {
+abstract class ArrPilotModuleState extends ChangeNotifier {
   /// Reset the state back to the default
   void reset();
 }

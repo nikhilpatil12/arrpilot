@@ -13,12 +13,12 @@ class ConfigurationQuickActionsRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationQuickActionsRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -26,65 +26,65 @@ class _State extends State<ConfigurationQuickActionsRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       scrollControllers: [scrollController],
       title: 'settings.QuickActions'.tr(),
     );
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
         SettingsBanners.QUICK_ACTIONS_SUPPORT.banner(),
         _actionTile(
-          LunaModule.LIDARR.title,
-          LunaSeaDatabase.QUICK_ACTIONS_LIDARR,
+          ArrPilotModule.LIDARR.title,
+          ArrPilotDatabase.QUICK_ACTIONS_LIDARR,
         ),
         _actionTile(
-          LunaModule.NZBGET.title,
-          LunaSeaDatabase.QUICK_ACTIONS_NZBGET,
+          ArrPilotModule.NZBGET.title,
+          ArrPilotDatabase.QUICK_ACTIONS_NZBGET,
         ),
-        if (LunaModule.OVERSEERR.featureFlag)
+        if (ArrPilotModule.OVERSEERR.featureFlag)
           _actionTile(
-            LunaModule.OVERSEERR.title,
-            LunaSeaDatabase.QUICK_ACTIONS_OVERSEERR,
+            ArrPilotModule.OVERSEERR.title,
+            ArrPilotDatabase.QUICK_ACTIONS_OVERSEERR,
           ),
         _actionTile(
-          LunaModule.RADARR.title,
-          LunaSeaDatabase.QUICK_ACTIONS_RADARR,
+          ArrPilotModule.RADARR.title,
+          ArrPilotDatabase.QUICK_ACTIONS_RADARR,
         ),
         _actionTile(
-          LunaModule.SABNZBD.title,
-          LunaSeaDatabase.QUICK_ACTIONS_SABNZBD,
+          ArrPilotModule.SABNZBD.title,
+          ArrPilotDatabase.QUICK_ACTIONS_SABNZBD,
         ),
         _actionTile(
-          LunaModule.SEARCH.title,
-          LunaSeaDatabase.QUICK_ACTIONS_SEARCH,
+          ArrPilotModule.SEARCH.title,
+          ArrPilotDatabase.QUICK_ACTIONS_SEARCH,
         ),
         _actionTile(
-          LunaModule.SONARR.title,
-          LunaSeaDatabase.QUICK_ACTIONS_SONARR,
+          ArrPilotModule.SONARR.title,
+          ArrPilotDatabase.QUICK_ACTIONS_SONARR,
         ),
         _actionTile(
-          LunaModule.TAUTULLI.title,
-          LunaSeaDatabase.QUICK_ACTIONS_TAUTULLI,
+          ArrPilotModule.TAUTULLI.title,
+          ArrPilotDatabase.QUICK_ACTIONS_TAUTULLI,
         ),
       ],
     );
   }
 
-  Widget _actionTile(String title, LunaSeaDatabase action) {
-    return LunaBlock(
+  Widget _actionTile(String title, ArrPilotDatabase action) {
+    return ArrPilotBlock(
       title: title,
-      trailing: LunaBox.lunasea.listenableBuilder(
+      trailing: ArrPilotBox.lunasea.listenableBuilder(
         selectKeys: [action.key],
-        builder: (context, _) => LunaSwitch(
+        builder: (context, _) => ArrPilotSwitch(
           value: action.read(),
           onChanged: (value) {
             action.update(value);
-            if (LunaQuickActions.isSupported)
-              LunaQuickActions().setActionItems();
+            if (ArrPilotQuickActions.isSupported)
+              ArrPilotQuickActions().setActionItems();
           },
         ),
       ),

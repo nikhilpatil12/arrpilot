@@ -16,13 +16,13 @@ class InvalidRoutePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      appBar: LunaAppBar(
-        title: title ?? 'LunaSea',
+      appBar: ArrPilotAppBar(
+        title: title ?? 'ArrPilot',
         scrollControllers: const [],
       ),
-      body: LunaMessage.goBack(
+      body: ArrPilotMessage.goBack(
         context: context,
         text: exception?.toString() ?? message ?? '404: Not Found',
       ),

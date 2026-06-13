@@ -2,7 +2,7 @@ import 'package:arrpilot/core.dart';
 import 'package:arrpilot/modules/radarr.dart';
 import 'package:arrpilot/types/list_view_option.dart';
 
-class RadarrState extends LunaModuleState {
+class RadarrState extends ArrPilotModuleState {
   RadarrState() {
     reset();
   }
@@ -65,7 +65,7 @@ class RadarrState extends LunaModuleState {
 
   /// Reset the profile data, reinitializes API instance
   void resetProfile() {
-    LunaProfile _profile = LunaProfile.current;
+    ArrPilotProfile _profile = ArrPilotProfile.current;
     // Copy profile into state
     _enabled = _profile.radarrEnabled;
     _host = _profile.radarrHost;
@@ -92,10 +92,10 @@ class RadarrState extends LunaModuleState {
     notifyListeners();
   }
 
-  LunaListViewOption? _moviesViewType =
+  ArrPilotListViewOption? _moviesViewType =
       RadarrDatabase.DEFAULT_VIEW_MOVIES.read();
-  LunaListViewOption get moviesViewType => _moviesViewType!;
-  set moviesViewType(LunaListViewOption moviesViewType) {
+  ArrPilotListViewOption get moviesViewType => _moviesViewType!;
+  set moviesViewType(ArrPilotListViewOption moviesViewType) {
     _moviesViewType = moviesViewType;
     notifyListeners();
   }

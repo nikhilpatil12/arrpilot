@@ -12,7 +12,7 @@ class SonarrUpcomingRoute extends StatefulWidget {
 }
 
 class _State extends State<SonarrUpcomingRoute>
-    with AutomaticKeepAliveClientMixin, LunaLoadCallbackMixin {
+    with AutomaticKeepAliveClientMixin, ArrPilotLoadCallbackMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -29,15 +29,15 @@ class _State extends State<SonarrUpcomingRoute>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      module: LunaModule.SONARR,
+      module: ArrPilotModule.SONARR,
       body: _body(),
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: loadCallback,
@@ -51,20 +51,20 @@ class _State extends State<SonarrUpcomingRoute>
           builder: (context, AsyncSnapshot<List<Object>> snapshot) {
             if (snapshot.hasError) {
               if (snapshot.connectionState != ConnectionState.waiting) {
-                LunaLogger().error(
+                ArrPilotLogger().error(
                   'Unable to fetch Sonarr upcoming episodes',
                   snapshot.error,
                   snapshot.stackTrace,
                 );
               }
-              return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+              return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
             }
             if (snapshot.hasData)
               return _episodes(
                 snapshot.data![0] as Map<int, SonarrSeries>,
                 snapshot.data![1] as List<SonarrCalendar>,
               );
-            return const LunaLoader();
+            return const ArrPilotLoader();
           },
         ),
       ),
@@ -76,7 +76,7 @@ class _State extends State<SonarrUpcomingRoute>
     List<SonarrCalendar> upcoming,
   ) {
     if (upcoming.isEmpty) {
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'sonarr.NoEpisodesFound'.tr(),
         buttonText: 'lunasea.Refresh'.tr(),
         onTap: _refreshKey.currentState?.show,
@@ -108,7 +108,7 @@ class _State extends State<SonarrUpcomingRoute>
         ));
       });
     // Return the list
-    return LunaListView(
+    return ArrPilotListView(
       controller: SonarrNavigationBar.scrollControllers[1],
       children: _episodeWidgets.expand((e) => e).toList(),
     );
@@ -120,7 +120,7 @@ class _State extends State<SonarrUpcomingRoute>
     Map<int, SonarrSeries> series,
   ) =>
       [
-        LunaHeader(
+        ArrPilotHeader(
           text: date,
           // subtitle: 'This is a test',
         ),

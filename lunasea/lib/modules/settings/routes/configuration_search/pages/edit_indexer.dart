@@ -18,20 +18,20 @@ class ConfigurationSearchEditIndexerRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationSearchEditIndexerRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  LunaIndexer? _indexer;
+  ArrPilotIndexer? _indexer;
 
   @override
   Widget build(BuildContext context) {
-    if (widget.id < 0 || !LunaBox.indexers.contains(widget.id)) {
+    if (widget.id < 0 || !ArrPilotBox.indexers.contains(widget.id)) {
       return InvalidRoutePage(
         title: 'search.EditIndexer'.tr(),
         message: 'search.IndexerNotFound'.tr(),
       );
     }
 
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar(),
       body: _body(),
@@ -40,19 +40,19 @@ class _State extends State<ConfigurationSearchEditIndexerRoute>
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'search.EditIndexer'.tr(),
       scrollControllers: [scrollController],
     );
   }
 
   Widget _bottomActionBar() {
-    return LunaBottomActionBar(
+    return ArrPilotBottomActionBar(
       actions: [
-        LunaButton.text(
+        ArrPilotButton.text(
           text: 'search.DeleteIndexer'.tr(),
           icon: Icons.delete_rounded,
-          color: LunaColours.red,
+          color: ArrPilotColours.red,
           onTap: () async {
             bool result = await SettingsDialogs().deleteIndexer(context);
             if (result) {
@@ -70,12 +70,12 @@ class _State extends State<ConfigurationSearchEditIndexerRoute>
   }
 
   Widget _body() {
-    return LunaBox.indexers.listenableBuilder(
+    return ArrPilotBox.indexers.listenableBuilder(
       selectKeys: [widget.id],
       builder: (context, _) {
-        if (!LunaBox.indexers.contains(widget.id)) return Container();
-        _indexer = LunaBox.indexers.read(widget.id);
-        return LunaListView(
+        if (!ArrPilotBox.indexers.contains(widget.id)) return Container();
+        _indexer = ArrPilotBox.indexers.read(widget.id);
+        return ArrPilotListView(
           controller: scrollController,
           children: [
             _displayName(),
@@ -90,12 +90,12 @@ class _State extends State<ConfigurationSearchEditIndexerRoute>
 
   Widget _displayName() {
     String _name = _indexer!.displayName;
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.DisplayName'.tr(),
       body: [TextSpan(text: _name.isEmpty ? 'lunasea.NotSet'.tr() : _name)],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {
-        Tuple2<bool, String> values = await LunaDialogs().editText(
+        Tuple2<bool, String> values = await ArrPilotDialogs().editText(
           context,
           'settings.DisplayName'.tr(),
           prefill: _indexer!.displayName,
@@ -110,12 +110,12 @@ class _State extends State<ConfigurationSearchEditIndexerRoute>
 
   Widget _apiURL() {
     String _host = _indexer!.host;
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'search.IndexerAPIHost'.tr(),
       body: [TextSpan(text: _host.isEmpty ? 'lunasea.NotSet'.tr() : _host)],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {
-        Tuple2<bool, String> values = await LunaDialogs().editText(
+        Tuple2<bool, String> values = await ArrPilotDialogs().editText(
           context,
           'search.IndexerAPIHost'.tr(),
           prefill: _host,
@@ -130,12 +130,12 @@ class _State extends State<ConfigurationSearchEditIndexerRoute>
 
   Widget _apiKey() {
     String _key = _indexer!.apiKey;
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'search.IndexerAPIKey'.tr(),
       body: [TextSpan(text: _key.isEmpty ? 'lunasea.NotSet'.tr() : _key)],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {
-        Tuple2<bool, String> values = await LunaDialogs().editText(
+        Tuple2<bool, String> values = await ArrPilotDialogs().editText(
           context,
           'search.IndexerAPIKey'.tr(),
           prefill: _key,
@@ -149,10 +149,10 @@ class _State extends State<ConfigurationSearchEditIndexerRoute>
   }
 
   Widget _headers() {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.CustomHeaders'.tr(),
       body: [TextSpan(text: 'settings.CustomHeadersDescription'.tr())],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () => SettingsRoutes.CONFIGURATION_SEARCH_EDIT_INDEXER_HEADERS.go(
         params: {
           'id': widget.id.toString(),

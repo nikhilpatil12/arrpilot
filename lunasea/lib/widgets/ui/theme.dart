@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 
 import 'package:arrpilot/core.dart';
 
-class LunaTheme {
+class ArrPilotTheme {
   /// Initialize the theme by setting the system navigation and system colours.
   void initialize() {
     //Set system UI overlay style (navbar, statusbar)
@@ -15,34 +15,34 @@ class LunaTheme {
     return isAMOLEDTheme ? _pureBlackTheme() : _midnightTheme();
   }
 
-  static bool get isAMOLEDTheme => LunaSeaDatabase.THEME_AMOLED.read();
-  static bool get useBorders => LunaSeaDatabase.THEME_AMOLED_BORDER.read();
+  static bool get isAMOLEDTheme => ArrPilotDatabase.THEME_AMOLED.read();
+  static bool get useBorders => ArrPilotDatabase.THEME_AMOLED_BORDER.read();
 
   /// Midnight theme (Default)
   ThemeData _midnightTheme() {
     return ThemeData(
       useMaterial3: false,
       brightness: Brightness.dark,
-      canvasColor: LunaColours.primary,
-      primaryColor: LunaColours.secondary,
-      highlightColor: LunaColours.accent.withOpacity(LunaUI.OPACITY_SPLASH / 2),
-      cardColor: LunaColours.secondary,
-      hoverColor: LunaColours.accent.withOpacity(LunaUI.OPACITY_SPLASH / 2),
-      splashColor: LunaColours.accent.withOpacity(LunaUI.OPACITY_SPLASH),
+      canvasColor: ArrPilotColours.primary,
+      primaryColor: ArrPilotColours.secondary,
+      highlightColor: ArrPilotColours.accent.withOpacity(ArrPilotUI.OPACITY_SPLASH / 2),
+      cardColor: ArrPilotColours.secondary,
+      hoverColor: ArrPilotColours.accent.withOpacity(ArrPilotUI.OPACITY_SPLASH / 2),
+      splashColor: ArrPilotColours.accent.withOpacity(ArrPilotUI.OPACITY_SPLASH),
       dialogTheme: DialogThemeData(
-        backgroundColor: LunaColours.secondary,
+        backgroundColor: ArrPilotColours.secondary,
       ),
       iconTheme: const IconThemeData(
         color: Colors.white,
       ),
       tooltipTheme: const TooltipThemeData(
         decoration: BoxDecoration(
-          color: LunaColours.secondary,
-          borderRadius: BorderRadius.all(Radius.circular(LunaUI.BORDER_RADIUS)),
+          color: ArrPilotColours.secondary,
+          borderRadius: BorderRadius.all(Radius.circular(ArrPilotUI.BORDER_RADIUS)),
         ),
         textStyle: TextStyle(
-          color: LunaColours.grey,
-          fontSize: LunaUI.FONT_SIZE_SUBHEADER,
+          color: ArrPilotColours.grey,
+          fontSize: ArrPilotUI.FONT_SIZE_SUBHEADER,
         ),
         preferBelow: true,
       ),
@@ -60,10 +60,10 @@ class LunaTheme {
       brightness: Brightness.dark,
       canvasColor: Colors.black,
       primaryColor: Colors.black,
-      highlightColor: LunaColours.accent.withOpacity(LunaUI.OPACITY_SPLASH / 2),
+      highlightColor: ArrPilotColours.accent.withOpacity(ArrPilotUI.OPACITY_SPLASH / 2),
       cardColor: Colors.black,
-      hoverColor: LunaColours.accent.withOpacity(LunaUI.OPACITY_SPLASH / 2),
-      splashColor: LunaColours.accent.withOpacity(LunaUI.OPACITY_SPLASH),
+      hoverColor: ArrPilotColours.accent.withOpacity(ArrPilotUI.OPACITY_SPLASH / 2),
+      splashColor: ArrPilotColours.accent.withOpacity(ArrPilotUI.OPACITY_SPLASH),
       dialogTheme: DialogThemeData(
         backgroundColor: Colors.black,
       ),
@@ -74,13 +74,13 @@ class LunaTheme {
         decoration: BoxDecoration(
           color: Colors.black,
           borderRadius: const BorderRadius.all(
-            Radius.circular(LunaUI.BORDER_RADIUS),
+            Radius.circular(ArrPilotUI.BORDER_RADIUS),
           ),
-          border: useBorders ? Border.all(color: LunaColours.white10) : null,
+          border: useBorders ? Border.all(color: ArrPilotColours.white10) : null,
         ),
         textStyle: const TextStyle(
-          color: LunaColours.grey,
-          fontSize: LunaUI.FONT_SIZE_SUBHEADER,
+          color: ArrPilotColours.grey,
+          fontSize: ArrPilotUI.FONT_SIZE_SUBHEADER,
         ),
         preferBelow: true,
       ),
@@ -93,12 +93,12 @@ class LunaTheme {
 
   SystemUiOverlayStyle get overlayStyle {
     return SystemUiOverlayStyle(
-      systemNavigationBarColor: LunaSeaDatabase.THEME_AMOLED.read()
+      systemNavigationBarColor: ArrPilotDatabase.THEME_AMOLED.read()
           ? Colors.black
-          : LunaColours.secondary,
-      systemNavigationBarDividerColor: LunaSeaDatabase.THEME_AMOLED.read()
+          : ArrPilotColours.secondary,
+      systemNavigationBarDividerColor: ArrPilotDatabase.THEME_AMOLED.read()
           ? Colors.black
-          : LunaColours.secondary,
+          : ArrPilotColours.secondary,
       statusBarColor: Colors.transparent,
       systemNavigationBarIconBrightness: Brightness.light,
       statusBarIconBrightness: Brightness.light,
@@ -131,7 +131,7 @@ class LunaTheme {
     return TextButtonThemeData(
       style: ButtonStyle(
         overlayColor: MaterialStateProperty.all<Color>(
-          LunaColours.accent.withOpacity(LunaUI.OPACITY_SPLASH),
+          ArrPilotColours.accent.withOpacity(ArrPilotUI.OPACITY_SPLASH),
         ),
       ),
     );

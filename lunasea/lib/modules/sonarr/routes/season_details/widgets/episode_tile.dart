@@ -20,11 +20,11 @@ class SonarrEpisodeTile extends StatefulWidget {
 }
 
 class _State extends State<SonarrEpisodeTile> {
-  LunaLoadingState _loadingState = LunaLoadingState.INACTIVE;
+  ArrPilotLoadingState _loadingState = ArrPilotLoadingState.INACTIVE;
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       disabled: !widget.episode.monitored!,
       title: widget.episode.title,
       body: _body(),
@@ -36,7 +36,7 @@ class _State extends State<SonarrEpisodeTile> {
               .read<SonarrSeasonDetailsState>()
               .selectedEpisodes
               .contains(widget.episode.id)
-          ? LunaColours.accent.selected()
+          ? ArrPilotColours.accent.selected()
           : null,
     );
   }
@@ -79,16 +79,16 @@ class _State extends State<SonarrEpisodeTile> {
                 ? widget.queueRecords!.first
                 : null,
           ),
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         ),
       ),
     ];
   }
 
   Widget _leading() {
-    return LunaIconButton(
+    return ArrPilotIconButton(
       text: widget.episode.episodeNumber.toString(),
-      textSize: LunaUI.FONT_SIZE_H4,
+      textSize: ArrPilotUI.FONT_SIZE_H4,
       onPressed: () {
         context
             .read<SonarrSeasonDetailsState>()
@@ -98,21 +98,21 @@ class _State extends State<SonarrEpisodeTile> {
   }
 
   Widget _trailing() {
-    Future<void> setLoadingState(LunaLoadingState state) async {
+    Future<void> setLoadingState(ArrPilotLoadingState state) async {
       if (this.mounted) setState(() => _loadingState = state);
     }
 
-    return LunaIconButton(
+    return ArrPilotIconButton(
       icon: Icons.search_rounded,
       loadingState: _loadingState,
       onPressed: () async {
-        setLoadingState(LunaLoadingState.ACTIVE);
+        setLoadingState(ArrPilotLoadingState.ACTIVE);
         SonarrAPIController()
             .episodeSearch(
               context: context,
               episode: widget.episode,
             )
-            .whenComplete(() => setLoadingState(LunaLoadingState.INACTIVE));
+            .whenComplete(() => setLoadingState(ArrPilotLoadingState.INACTIVE));
       },
       onLongPress: () async {
         SonarrRoutes.RELEASES.go(queryParams: {

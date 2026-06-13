@@ -17,7 +17,7 @@ class TautulliGraphsPlayCountBySourceResolutionGraph extends StatelessWidget {
           builder: (context, AsyncSnapshot<TautulliGraphData> snapshot) {
             if (snapshot.hasError) {
               if (snapshot.connectionState != ConnectionState.waiting) {
-                LunaLogger().error(
+                ArrPilotLogger().error(
                     'Unable to fetch Tautulli graph data: getPlaysBySourceResolution',
                     snapshot.error,
                     snapshot.stackTrace);
@@ -31,7 +31,7 @@ class TautulliGraphsPlayCountBySourceResolutionGraph extends StatelessWidget {
       );
 
   Widget _graph(BuildContext context, TautulliGraphData data) {
-    return LunaCard(
+    return ArrPilotCard(
       context: context,
       child: Column(
         children: [
@@ -50,7 +50,7 @@ class TautulliGraphsPlayCountBySourceResolutionGraph extends StatelessWidget {
                       TautulliBarGraphHelper.barTouchData(context, data),
                 ),
               ),
-              padding: LunaUI.MARGIN_DEFAULT,
+              padding: ArrPilotUI.MARGIN_DEFAULT,
             ),
           ),
           TautulliGraphHelper().createLegend(data.series!),

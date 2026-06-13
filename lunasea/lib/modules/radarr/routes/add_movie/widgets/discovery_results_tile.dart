@@ -22,15 +22,15 @@ class RadarrAddMovieDiscoveryResultTile extends StatefulWidget {
 class _State extends State<RadarrAddMovieDiscoveryResultTile> {
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       backgroundUrl: widget.movie.remotePoster,
       posterUrl: widget.movie.remotePoster,
       posterHeaders: context.watch<RadarrState>().headers,
-      posterPlaceholderIcon: LunaIcons.VIDEO_CAM,
+      posterPlaceholderIcon: ArrPilotIcons.VIDEO_CAM,
       title: widget.movie.title,
       body: [_subtitle1()],
       bottom: _subtitle2(),
-      bottomHeight: LunaBlock.SUBTITLE_HEIGHT * 2,
+      bottomHeight: ArrPilotBlock.SUBTITLE_HEIGHT * 2,
       onTap: _onTap,
       onLongPress: _onLongPress,
     );
@@ -40,9 +40,9 @@ class _State extends State<RadarrAddMovieDiscoveryResultTile> {
     return TextSpan(
       children: [
         TextSpan(text: widget.movie.lunaYear),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: widget.movie.lunaRuntime),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: widget.movie.lunaStudio),
       ],
     );
@@ -56,16 +56,16 @@ class _State extends State<RadarrAddMovieDiscoveryResultTile> {
       summary = widget.movie.overview;
     }
     return SizedBox(
-      height: LunaBlock.SUBTITLE_HEIGHT * 2,
+      height: ArrPilotBlock.SUBTITLE_HEIGHT * 2,
       child: RichText(
         text: TextSpan(
           style: const TextStyle(
             fontStyle: FontStyle.italic,
-            fontSize: LunaUI.FONT_SIZE_H3,
-            color: LunaColours.grey,
+            fontSize: ArrPilotUI.FONT_SIZE_H3,
+            color: ArrPilotColours.grey,
           ),
           children: [
-            LunaTextSpan.extended(text: summary),
+            ArrPilotTextSpan.extended(text: summary),
           ],
         ),
         overflow: TextOverflow.ellipsis,
@@ -76,7 +76,7 @@ class _State extends State<RadarrAddMovieDiscoveryResultTile> {
 
   Future<void> _onTap() async {
     if (widget.onTapShowOverview) {
-      LunaDialogs().textPreview(context, widget.movie.title,
+      ArrPilotDialogs().textPreview(context, widget.movie.title,
           widget.movie.overview ?? 'radarr.NoSummaryIsAvailable'.tr());
     } else {
       RadarrRoutes.ADD_MOVIE_DETAILS.go(extra: widget.movie, queryParams: {

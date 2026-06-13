@@ -20,8 +20,8 @@ class TautulliMediaDetailsOpenPlexButton extends StatelessWidget {
       future: context.watch<TautulliState>().serverIdentity,
       builder: (context, snapshot) {
         if (_isValidMediaType() && snapshot.hasData) {
-          return LunaIconButton.appBar(
-            icon: LunaIcons.PLEX,
+          return ArrPilotIconButton.appBar(
+            icon: ArrPilotIcons.PLEX,
             onPressed: () => _openPlex(snapshot.data as TautulliServerIdentity),
           );
         }
@@ -39,7 +39,7 @@ class TautulliMediaDetailsOpenPlexButton extends StatelessWidget {
   }
 
   Future<void> _openPlex(TautulliServerIdentity identity) async {
-    final mobile = LunaLinkedContent.plexMobile(
+    final mobile = ArrPilotLinkedContent.plexMobile(
       identity.machineIdentifier!,
       ratingKey,
     );
@@ -49,7 +49,7 @@ class TautulliMediaDetailsOpenPlexButton extends StatelessWidget {
       return;
     }
 
-    final web = LunaLinkedContent.plexWeb(
+    final web = ArrPilotLinkedContent.plexWeb(
       identity.machineIdentifier!,
       ratingKey,
       mediaType == TautulliMediaType.CLIP,

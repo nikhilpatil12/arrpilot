@@ -3,7 +3,7 @@ import 'package:arrpilot/modules/sonarr.dart';
 
 extension SonarrHistoryRecordLunaExtension on SonarrHistoryRecord {
   String lunaSeriesTitle() {
-    return this.series?.title ?? LunaUI.TEXT_EMDASH;
+    return this.series?.title ?? ArrPilotUI.TEXT_EMDASH;
   }
 
   String? lunaSeasonEpisode() {
@@ -18,7 +18,7 @@ extension SonarrHistoryRecordLunaExtension on SonarrHistoryRecord {
             args: [this.episode!.episodeNumber.toString()],
           )
         : 'lunasea.Unknown'.tr();
-    return '$season ${LunaUI.TEXT_BULLET} $episode';
+    return '$season ${ArrPilotUI.TEXT_BULLET} $episode';
   }
 
   bool lunaHasPreferredWordScore() {
@@ -33,6 +33,6 @@ extension SonarrHistoryRecordLunaExtension on SonarrHistoryRecord {
         return '$_prefix${this.data!['preferredWordScore']}';
       }
     }
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 }

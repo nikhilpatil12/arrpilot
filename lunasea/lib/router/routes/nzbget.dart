@@ -5,7 +5,7 @@ import 'package:arrpilot/modules/nzbget/routes/statistics.dart';
 import 'package:arrpilot/router/routes.dart';
 import 'package:arrpilot/vendor.dart';
 
-enum NZBGetRoutes with LunaRoutesMixin {
+enum NZBGetRoutes with ArrPilotRoutesMixin {
   HOME('/nzbget'),
   STATISTICS('statistics');
 
@@ -15,7 +15,7 @@ enum NZBGetRoutes with LunaRoutesMixin {
   const NZBGetRoutes(this.path);
 
   @override
-  LunaModule get module => LunaModule.NZBGET;
+  ArrPilotModule get module => ArrPilotModule.NZBGET;
 
   @override
   bool isModuleEnabled(BuildContext context) => true;

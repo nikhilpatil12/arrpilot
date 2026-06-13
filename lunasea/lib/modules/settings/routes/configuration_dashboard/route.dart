@@ -12,12 +12,12 @@ class ConfigurationDashboardRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationDashboardRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -25,14 +25,14 @@ class _State extends State<ConfigurationDashboardRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'Dashboard',
       scrollControllers: [scrollController],
     );
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
         _calendarSettingsPage(),
@@ -42,19 +42,19 @@ class _State extends State<ConfigurationDashboardRoute>
   }
 
   Widget _defaultPagesPage() {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.DefaultPages'.tr(),
       body: [TextSpan(text: 'settings.DefaultPagesDescription'.tr())],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: SettingsRoutes.CONFIGURATION_DASHBOARD_DEFAULT_PAGES.go,
     );
   }
 
   Widget _calendarSettingsPage() {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.CalendarSettings'.tr(),
       body: [TextSpan(text: 'settings.CalendarSettingsDescription'.tr())],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: SettingsRoutes.CONFIGURATION_DASHBOARD_CALENDAR.go,
     );
   }

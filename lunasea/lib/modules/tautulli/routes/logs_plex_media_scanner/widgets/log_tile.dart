@@ -12,7 +12,7 @@ class TautulliLogsPlexMediaScannerLogTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaExpandableListTile(
+    return ArrPilotExpandableListTile(
       title: log.message!.trim(),
       collapsedSubtitles: [
         _subtitle1(),
@@ -22,22 +22,22 @@ class TautulliLogsPlexMediaScannerLogTile extends StatelessWidget {
     );
   }
 
-  TextSpan _subtitle1() => TextSpan(text: log.timestamp ?? LunaUI.TEXT_EMDASH);
+  TextSpan _subtitle1() => TextSpan(text: log.timestamp ?? ArrPilotUI.TEXT_EMDASH);
 
   TextSpan _subtitle2() {
     return TextSpan(
-      text: log.level ?? LunaUI.TEXT_EMDASH,
+      text: log.level ?? ArrPilotUI.TEXT_EMDASH,
       style: const TextStyle(
-        color: LunaColours.accent,
-        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+        color: ArrPilotColours.accent,
+        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
       ),
     );
   }
 
-  List<LunaTableContent> _tableContent() {
+  List<ArrPilotTableContent> _tableContent() {
     return [
-      LunaTableContent(title: 'level', body: log.level),
-      LunaTableContent(title: 'timestamp', body: log.timestamp),
+      ArrPilotTableContent(title: 'level', body: log.level),
+      ArrPilotTableContent(title: 'timestamp', body: log.timestamp),
     ];
   }
 }

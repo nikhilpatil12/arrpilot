@@ -14,7 +14,7 @@ class AddSeriesRoute extends StatefulWidget {
   State<StatefulWidget> createState() => _State();
 }
 
-class _State extends State<AddSeriesRoute> with LunaScrollControllerMixin {
+class _State extends State<AddSeriesRoute> with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -24,7 +24,7 @@ class _State extends State<AddSeriesRoute> with LunaScrollControllerMixin {
         context,
         widget.query,
       ),
-      builder: (context, _) => LunaScaffold(
+      builder: (context, _) => ArrPilotScaffold(
         scaffoldKey: _scaffoldKey,
         appBar: _appBar() as PreferredSizeWidget?,
         body: _body(),

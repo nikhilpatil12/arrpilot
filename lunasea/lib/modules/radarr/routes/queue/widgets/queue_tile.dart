@@ -26,7 +26,7 @@ class RadarrQueueTile extends StatelessWidget {
           movie = snapshot.data!.firstWhereOrNull(
             (element) => element.id == record.movieId,
           );
-        return LunaExpandableListTile(
+        return ArrPilotExpandableListTile(
           title: record.title!,
           collapsedSubtitles: [
             _subtitle1(),
@@ -35,7 +35,7 @@ class RadarrQueueTile extends StatelessWidget {
           expandedHighlightedNodes: _highlightedNodes(),
           expandedTableContent: _tableContent(movie),
           expandedTableButtons: _tableButtons(context),
-          collapsedTrailing: LunaIconButton(
+          collapsedTrailing: ArrPilotIconButton(
             icon: record.lunaStatusIcon,
             color: record.lunaStatusColor,
           ),
@@ -57,68 +57,68 @@ class RadarrQueueTile extends StatelessWidget {
         TextSpan(
           text: record.lunaQuality,
           style: const TextStyle(
-            color: LunaColours.accent,
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+            color: ArrPilotColours.accent,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
           ),
         ),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
-        TextSpan(text: record.timeLeft ?? LunaUI.TEXT_EMDASH),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
+        TextSpan(text: record.timeLeft ?? ArrPilotUI.TEXT_EMDASH),
       ],
     );
   }
 
-  List<LunaTableContent> _tableContent(RadarrMovie? movie) {
+  List<ArrPilotTableContent> _tableContent(RadarrMovie? movie) {
     if (movie == null) return [];
     return [
-      LunaTableContent(
+      ArrPilotTableContent(
           title: 'radarr.Movie'.tr(), body: record.lunaMovieTitle(movie)),
-      LunaTableContent(
+      ArrPilotTableContent(
           title: 'radarr.Languages'.tr(), body: record.lunaLanguage),
-      LunaTableContent(title: 'Client', body: record.lunaDownloadClient),
-      LunaTableContent(title: 'Indexer', body: record.lunaIndexer),
-      LunaTableContent(
+      ArrPilotTableContent(title: 'Client', body: record.lunaDownloadClient),
+      ArrPilotTableContent(title: 'Indexer', body: record.lunaIndexer),
+      ArrPilotTableContent(
           title: 'radarr.Size'.tr(), body: record.size!.toInt().asBytes()),
-      LunaTableContent(
-          title: 'Time Left', body: record.timeLeft ?? LunaUI.TEXT_EMDASH),
+      ArrPilotTableContent(
+          title: 'Time Left', body: record.timeLeft ?? ArrPilotUI.TEXT_EMDASH),
     ];
   }
 
-  List<LunaHighlightedNode> _highlightedNodes() {
+  List<ArrPilotHighlightedNode> _highlightedNodes() {
     return [
-      LunaHighlightedNode(
-        text: record.protocol?.readable ?? LunaUI.TEXT_EMDASH,
-        backgroundColor: LunaColours.blue,
+      ArrPilotHighlightedNode(
+        text: record.protocol?.readable ?? ArrPilotUI.TEXT_EMDASH,
+        backgroundColor: ArrPilotColours.blue,
       ),
-      LunaHighlightedNode(
+      ArrPilotHighlightedNode(
         text: record.lunaQuality,
-        backgroundColor: LunaColours.accent,
+        backgroundColor: ArrPilotColours.accent,
       ),
       if ((record.customFormats?.length ?? 0) != 0)
         for (int i = 0; i < record.customFormats!.length; i++)
-          LunaHighlightedNode(
+          ArrPilotHighlightedNode(
             text: record.customFormats![i].name!,
-            backgroundColor: LunaColours.orange,
+            backgroundColor: ArrPilotColours.orange,
           ),
-      LunaHighlightedNode(
+      ArrPilotHighlightedNode(
         text: '${record.lunaPercentageComplete}%',
-        backgroundColor: LunaColours.blueGrey,
+        backgroundColor: ArrPilotColours.blueGrey,
       ),
-      LunaHighlightedNode(
-        text: record.status?.readable ?? LunaUI.TEXT_EMDASH,
-        backgroundColor: LunaColours.blueGrey,
+      ArrPilotHighlightedNode(
+        text: record.status?.readable ?? ArrPilotUI.TEXT_EMDASH,
+        backgroundColor: ArrPilotColours.blueGrey,
       ),
     ];
   }
 
-  List<LunaButton> _tableButtons(BuildContext context) {
+  List<ArrPilotButton> _tableButtons(BuildContext context) {
     return [
       if ((record.statusMessages ?? []).isNotEmpty)
-        LunaButton.text(
+        ArrPilotButton.text(
           icon: Icons.messenger_outline_rounded,
-          color: LunaColours.orange,
+          color: ArrPilotColours.orange,
           text: 'Messages',
           onTap: () async {
-            LunaDialogs().showMessages(
+            ArrPilotDialogs().showMessages(
               context,
               record.statusMessages!
                   .map<String>((status) => status.messages!.join('\n'))
@@ -129,16 +129,16 @@ class RadarrQueueTile extends StatelessWidget {
       if (record.status == RadarrQueueRecordStatus.COMPLETED &&
           record.trackedDownloadStatus == RadarrTrackedDownloadStatus.WARNING &&
           (record.outputPath ?? '').isNotEmpty)
-        LunaButton.text(
+        ArrPilotButton.text(
           icon: Icons.download_done_rounded,
           text: 'radarr.Import'.tr(),
           onTap: () => RadarrRoutes.MANUAL_IMPORT_DETAILS.go(queryParams: {
             'path': record.outputPath!,
           }),
         ),
-      LunaButton.text(
+      ArrPilotButton.text(
         icon: Icons.delete_rounded,
-        color: LunaColours.red,
+        color: ArrPilotColours.red,
         text: 'Remove',
         onTap: () async {
           if (context.read<RadarrState>().enabled) {
@@ -166,7 +166,7 @@ class RadarrQueueTile extends StatelessWidget {
                     .refreshMonitoredDownloads()
                     .then((_) => context.read<RadarrState>().fetchQueue());
               }).catchError((error, stack) {
-                LunaLogger().error(
+                ArrPilotLogger().error(
                     'Failed to remove queue record: ${record.id}',
                     error,
                     stack);

@@ -17,12 +17,12 @@ class SystemRoute extends StatefulWidget {
   State<SystemRoute> createState() => _State();
 }
 
-class _State extends State<SystemRoute> with LunaScrollControllerMixin {
+class _State extends State<SystemRoute> with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar(),
       body: _body(),
@@ -30,19 +30,19 @@ class _State extends State<SystemRoute> with LunaScrollControllerMixin {
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'settings.System'.tr(),
       scrollControllers: [scrollController],
     );
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: <Widget>[
         const SettingsSystemBackupRestoreBackupTile(),
         const SettingsSystemBackupRestoreRestoreTile(),
-        LunaDivider(),
+        ArrPilotDivider(),
         _logs(),
         _clearImageCache(),
         _clearConfiguration(),
@@ -51,23 +51,23 @@ class _State extends State<SystemRoute> with LunaScrollControllerMixin {
   }
 
   Widget _logs() {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.Logs'.tr(),
       body: [TextSpan(text: 'settings.LogsDescription'.tr())],
-      trailing: const LunaIconButton(icon: Icons.developer_mode_rounded),
+      trailing: const ArrPilotIconButton(icon: Icons.developer_mode_rounded),
       onTap: SettingsRoutes.SYSTEM_LOGS.go,
     );
   }
 
   Widget _clearImageCache() {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.ClearImageCache'.tr(),
       body: [TextSpan(text: 'settings.ClearImageCacheDescription'.tr())],
-      trailing: const LunaIconButton(icon: Icons.image_not_supported_rounded),
+      trailing: const ArrPilotIconButton(icon: Icons.image_not_supported_rounded),
       onTap: () async {
         bool result = await SettingsDialogs().clearImageCache(context);
         if (result) {
-          result = await LunaImageCache().clear();
+          result = await ArrPilotImageCache().clear();
           if (result) {
             showLunaSuccessSnackBar(
               title: 'settings.ImageCacheCleared'.tr(),
@@ -85,15 +85,15 @@ class _State extends State<SystemRoute> with LunaScrollControllerMixin {
   }
 
   Widget _clearConfiguration() {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.ClearConfiguration'.tr(),
       body: [TextSpan(text: 'settings.CleanSlate'.tr())],
-      trailing: const LunaIconButton(icon: Icons.delete_sweep_rounded),
+      trailing: const ArrPilotIconButton(icon: Icons.delete_sweep_rounded),
       onTap: () async {
         bool result = await SettingsDialogs().clearConfiguration(context);
         if (result) {
-          LunaDatabase().bootstrap();
-          LunaState.reset(context);
+          ArrPilotDatabase().bootstrap();
+          ArrPilotState.reset(context);
           showLunaSuccessSnackBar(
             title: 'settings.ConfigurationCleared'.tr(),
             message: 'settings.ConfigurationClearedDescription'.tr(),

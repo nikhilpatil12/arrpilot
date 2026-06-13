@@ -14,7 +14,7 @@ class RadarrTagsTagTile extends StatefulWidget {
   State<RadarrTagsTagTile> createState() => _State();
 }
 
-class _State extends State<RadarrTagsTagTile> with LunaLoadCallbackMixin {
+class _State extends State<RadarrTagsTagTile> with ArrPilotLoadCallbackMixin {
   List<String?>? movieList;
 
   @override
@@ -33,7 +33,7 @@ class _State extends State<RadarrTagsTagTile> with LunaLoadCallbackMixin {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: widget.tag.label,
       body: [TextSpan(text: _subtitle())],
       trailing: _trailing(),
@@ -51,9 +51,9 @@ class _State extends State<RadarrTagsTagTile> with LunaLoadCallbackMixin {
   Widget? _trailing() {
     // Default to true, to not try to delete a tag that actually does have movies attached
     if (movieList?.isNotEmpty ?? true) return null;
-    return LunaIconButton(
-      icon: LunaIcons.DELETE,
-      color: LunaColours.red,
+    return ArrPilotIconButton(
+      icon: ArrPilotIcons.DELETE,
+      color: ArrPilotColours.red,
       onPressed: _delete,
     );
   }
@@ -61,7 +61,7 @@ class _State extends State<RadarrTagsTagTile> with LunaLoadCallbackMixin {
   Future<void> _movieDialog() async {
     String data =
         (movieList?.isEmpty ?? true) ? 'No Movies' : movieList!.join('\n');
-    LunaDialogs().textPreview(context, 'Movie List', data);
+    ArrPilotDialogs().textPreview(context, 'Movie List', data);
   }
 
   Future<void> _delete() async {

@@ -38,7 +38,7 @@ class _State extends State<RadarrCatalogueRoute>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       body: _body(),
       appBar: _appBar(),
@@ -46,16 +46,16 @@ class _State extends State<RadarrCatalogueRoute>
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar.empty(
+    return ArrPilotAppBar.empty(
       child: RadarrCatalogueSearchBar(
         scrollController: RadarrNavigationBar.scrollControllers[0],
       ),
-      height: LunaTextInputBar.defaultAppBarHeight,
+      height: ArrPilotTextInputBar.defaultAppBarHeight,
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: _refresh,
@@ -76,13 +76,13 @@ class _State extends State<RadarrCatalogueRoute>
               builder: (context, AsyncSnapshot<List<Object>> snapshot) {
                 if (snapshot.hasError) {
                   if (snapshot.connectionState != ConnectionState.waiting) {
-                    LunaLogger().error(
+                    ArrPilotLogger().error(
                       'Unable to fetch Radarr movies',
                       snapshot.error,
                       snapshot.stackTrace,
                     );
                   }
-                  return LunaMessage.error(
+                  return ArrPilotMessage.error(
                     onTap: _refreshKey.currentState!.show,
                   );
                 }
@@ -91,7 +91,7 @@ class _State extends State<RadarrCatalogueRoute>
                     snapshot.data![0] as List<RadarrMovie>,
                     snapshot.data![1] as List<RadarrQualityProfile>,
                   );
-                return const LunaLoader();
+                return const ArrPilotLoader();
               },
             );
           }),
@@ -123,7 +123,7 @@ class _State extends State<RadarrCatalogueRoute>
     List<RadarrQualityProfile> qualityProfiles,
   ) {
     if (movies.isEmpty)
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'radarr.NoMoviesFound'.tr(),
         buttonText: 'lunasea.Refresh'.tr(),
         onTap: _refreshKey.currentState!.show,
@@ -133,21 +133,21 @@ class _State extends State<RadarrCatalogueRoute>
       builder: (context, query, _) {
         List<RadarrMovie> _filtered = _filterAndSort(movies, query);
         if (_filtered.isEmpty)
-          return LunaListView(
+          return ArrPilotListView(
             controller: RadarrNavigationBar.scrollControllers[0],
             children: [
-              LunaMessage.inList(text: 'radarr.NoMoviesFound'.tr()),
+              ArrPilotMessage.inList(text: 'radarr.NoMoviesFound'.tr()),
               if (query.isNotEmpty)
-                LunaButtonContainer(
+                ArrPilotButtonContainer(
                   children: [
-                    LunaButton.text(
+                    ArrPilotButton.text(
                       icon: null,
                       text: query.length > 20
                           ? 'radarr.SearchFor'.tr(args: [
-                              '"${query.substring(0, min(20, query.length))}${LunaUI.TEXT_ELLIPSIS}"'
+                              '"${query.substring(0, min(20, query.length))}${ArrPilotUI.TEXT_ELLIPSIS}"'
                             ])
                           : 'radarr.SearchFor'.tr(args: ['"$query"']),
-                      backgroundColor: LunaColours.accent,
+                      backgroundColor: ArrPilotColours.accent,
                       onTap: () => RadarrRoutes.ADD_MOVIE.go(queryParams: {
                         'query': query,
                       }),
@@ -157,9 +157,9 @@ class _State extends State<RadarrCatalogueRoute>
             ],
           );
         switch (context.read<RadarrState>().moviesViewType) {
-          case LunaListViewOption.BLOCK_VIEW:
+          case ArrPilotListViewOption.BLOCK_VIEW:
             return _blockView(_filtered, qualityProfiles);
-          case LunaListViewOption.GRID_VIEW:
+          case ArrPilotListViewOption.GRID_VIEW:
             return _gridView(_filtered, qualityProfiles);
           default:
             throw Exception('Invalid moviesViewType');
@@ -172,7 +172,7 @@ class _State extends State<RadarrCatalogueRoute>
     List<RadarrMovie> movies,
     List<RadarrQualityProfile> qualityProfiles,
   ) {
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: RadarrNavigationBar.scrollControllers[0],
       itemCount: movies.length,
       itemExtent: RadarrCatalogueTile.itemExtent,
@@ -189,9 +189,9 @@ class _State extends State<RadarrCatalogueRoute>
     List<RadarrMovie> movies,
     List<RadarrQualityProfile> qualityProfiles,
   ) {
-    return LunaGridViewBuilder(
+    return ArrPilotGridViewBuilder(
       controller: RadarrNavigationBar.scrollControllers[0],
-      sliverGridDelegate: LunaGridBlock.getMaxCrossAxisExtent(),
+      sliverGridDelegate: ArrPilotGridBlock.getMaxCrossAxisExtent(),
       itemCount: movies.length,
       itemBuilder: (context, index) => RadarrCatalogueTile.grid(
         movie: movies[index],

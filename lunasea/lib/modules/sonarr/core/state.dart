@@ -2,7 +2,7 @@ import 'package:arrpilot/core.dart';
 import 'package:arrpilot/modules/sonarr.dart';
 import 'package:arrpilot/types/list_view_option.dart';
 
-class SonarrState extends LunaModuleState {
+class SonarrState extends ArrPilotModuleState {
   SonarrState() {
     reset();
   }
@@ -56,7 +56,7 @@ class SonarrState extends LunaModuleState {
 
   /// Reset the profile data, reinitializes API instance
   void resetProfile() {
-    LunaProfile _profile = LunaProfile.current;
+    ArrPilotProfile _profile = ArrPilotProfile.current;
     // Copy profile into state
     _api = null;
     _enabled = _profile.sonarrEnabled;
@@ -77,10 +77,10 @@ class SonarrState extends LunaModuleState {
   /// CATALOGUE ///
   /////////////////
 
-  LunaListViewOption _seriesViewType =
+  ArrPilotListViewOption _seriesViewType =
       SonarrDatabase.DEFAULT_VIEW_SERIES.read();
-  LunaListViewOption get seriesViewType => _seriesViewType;
-  set seriesViewType(LunaListViewOption seriesViewType) {
+  ArrPilotListViewOption get seriesViewType => _seriesViewType;
+  set seriesViewType(ArrPilotListViewOption seriesViewType) {
     _seriesViewType = seriesViewType;
     notifyListeners();
   }
@@ -226,7 +226,7 @@ class SonarrState extends LunaModuleState {
       final profiles = await _api!.profile.getLanguageProfiles();
       return profiles;
     } catch (error, stack) {
-      LunaLogger().error(
+      ArrPilotLogger().error(
         'Failed to fetch language profiles, assuming v4',
         error,
         stack,

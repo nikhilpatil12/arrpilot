@@ -12,8 +12,8 @@ const _NZBHYDRA = 'nzbhydra';
 const _NZBSU = 'nzbsu';
 
 @JsonEnum()
-@HiveType(typeId: 22, adapterName: 'LunaIndexerIconAdapter')
-enum LunaIndexerIcon {
+@HiveType(typeId: 22, adapterName: 'ArrPilotIndexerIconAdapter')
+enum ArrPilotIndexerIcon {
   @JsonValue(_GENERIC)
   @HiveField(0)
   GENERIC(_GENERIC),
@@ -43,61 +43,61 @@ enum LunaIndexerIcon {
   NZBSU(_NZBSU);
 
   final String key;
-  const LunaIndexerIcon(this.key);
+  const ArrPilotIndexerIcon(this.key);
 
-  static LunaIndexerIcon fromKey(String key) {
+  static ArrPilotIndexerIcon fromKey(String key) {
     switch (key) {
       case _DOGNZB:
-        return LunaIndexerIcon.DOGNZB;
+        return ArrPilotIndexerIcon.DOGNZB;
       case _DRUNKENSLUG:
-        return LunaIndexerIcon.DRUNKENSLUG;
+        return ArrPilotIndexerIcon.DRUNKENSLUG;
       case _NZBFINDER:
-        return LunaIndexerIcon.NZBFINDER;
+        return ArrPilotIndexerIcon.NZBFINDER;
       case _NZBGEEK:
-        return LunaIndexerIcon.NZBGEEK;
+        return ArrPilotIndexerIcon.NZBGEEK;
       case _NZBHYDRA:
-        return LunaIndexerIcon.NZBHYDRA;
+        return ArrPilotIndexerIcon.NZBHYDRA;
       case _NZBSU:
-        return LunaIndexerIcon.NZBSU;
+        return ArrPilotIndexerIcon.NZBSU;
       default:
-        return LunaIndexerIcon.GENERIC;
+        return ArrPilotIndexerIcon.GENERIC;
     }
   }
 
   String get name {
     switch (this) {
-      case LunaIndexerIcon.GENERIC:
+      case ArrPilotIndexerIcon.GENERIC:
         return 'Generic';
-      case LunaIndexerIcon.DOGNZB:
+      case ArrPilotIndexerIcon.DOGNZB:
         return 'DOGnzb';
-      case LunaIndexerIcon.DRUNKENSLUG:
+      case ArrPilotIndexerIcon.DRUNKENSLUG:
         return 'DrunkenSlug';
-      case LunaIndexerIcon.NZBFINDER:
+      case ArrPilotIndexerIcon.NZBFINDER:
         return 'NZBFinder';
-      case LunaIndexerIcon.NZBGEEK:
+      case ArrPilotIndexerIcon.NZBGEEK:
         return 'NZBGeek';
-      case LunaIndexerIcon.NZBHYDRA:
+      case ArrPilotIndexerIcon.NZBHYDRA:
         return 'NZBHydra2';
-      case LunaIndexerIcon.NZBSU:
+      case ArrPilotIndexerIcon.NZBSU:
         return 'NZB.su';
     }
   }
 
   IconData get icon {
     switch (this) {
-      case LunaIndexerIcon.GENERIC:
+      case ArrPilotIndexerIcon.GENERIC:
         return Icons.rss_feed_rounded;
-      case LunaIndexerIcon.DOGNZB:
+      case ArrPilotIndexerIcon.DOGNZB:
         return Icons.rss_feed_rounded;
-      case LunaIndexerIcon.DRUNKENSLUG:
+      case ArrPilotIndexerIcon.DRUNKENSLUG:
         return Icons.rss_feed_rounded;
-      case LunaIndexerIcon.NZBFINDER:
+      case ArrPilotIndexerIcon.NZBFINDER:
         return Icons.rss_feed_rounded;
-      case LunaIndexerIcon.NZBGEEK:
+      case ArrPilotIndexerIcon.NZBGEEK:
         return Icons.rss_feed_rounded;
-      case LunaIndexerIcon.NZBHYDRA:
+      case ArrPilotIndexerIcon.NZBHYDRA:
         return Icons.rss_feed_rounded;
-      case LunaIndexerIcon.NZBSU:
+      case ArrPilotIndexerIcon.NZBSU:
         return Icons.rss_feed_rounded;
     }
   }

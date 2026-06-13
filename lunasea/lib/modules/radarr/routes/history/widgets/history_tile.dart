@@ -15,37 +15,37 @@ class RadarrHistoryTile extends StatelessWidget {
     Key? key,
     required this.history,
     this.movieHistory = false,
-    this.title = LunaUI.TEXT_EMDASH,
+    this.title = ArrPilotUI.TEXT_EMDASH,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return LunaExpandableListTile(
+    return ArrPilotExpandableListTile(
       title: movieHistory ? history.sourceTitle! : title,
       collapsedSubtitles: [
         TextSpan(
           text: [
-            history.date?.asAge() ?? LunaUI.TEXT_EMDASH,
-            history.date?.asDateTime() ?? LunaUI.TEXT_EMDASH,
-          ].join(LunaUI.TEXT_BULLET.pad()),
+            history.date?.asAge() ?? ArrPilotUI.TEXT_EMDASH,
+            history.date?.asDateTime() ?? ArrPilotUI.TEXT_EMDASH,
+          ].join(ArrPilotUI.TEXT_BULLET.pad()),
         ),
         TextSpan(
-          text: history.eventType?.lunaReadable(history) ?? LunaUI.TEXT_EMDASH,
+          text: history.eventType?.lunaReadable(history) ?? ArrPilotUI.TEXT_EMDASH,
           style: TextStyle(
-            color: history.eventType?.lunaColour ?? LunaColours.blueGrey,
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+            color: history.eventType?.lunaColour ?? ArrPilotColours.blueGrey,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
           ),
         ),
       ],
       expandedHighlightedNodes: [
-        LunaHighlightedNode(
+        ArrPilotHighlightedNode(
           text: history.eventType!.readable!,
           backgroundColor: history.eventType!.lunaColour,
         ),
         ...history.customFormats!
-            .map<LunaHighlightedNode>((format) => LunaHighlightedNode(
+            .map<ArrPilotHighlightedNode>((format) => ArrPilotHighlightedNode(
                   text: format.name!,
-                  backgroundColor: LunaColours.blueGrey,
+                  backgroundColor: ArrPilotColours.blueGrey,
                 )),
       ],
       expandedTableContent: history.eventType?.lunaTableContent(

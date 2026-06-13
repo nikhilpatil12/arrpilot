@@ -4,7 +4,7 @@ import 'package:arrpilot/modules/lidarr.dart';
 import 'package:arrpilot/router/routes/lidarr.dart';
 
 class LidarrHistoryTile extends StatefulWidget {
-  static final double extent = LunaBlock.calculateItemExtent(2);
+  static final double extent = ArrPilotBlock.calculateItemExtent(2);
   final LidarrHistoryData entry;
   final GlobalKey<ScaffoldState> scaffoldKey;
   final Function refresh;
@@ -22,10 +22,10 @@ class LidarrHistoryTile extends StatefulWidget {
 
 class _State extends State<LidarrHistoryTile> {
   @override
-  Widget build(BuildContext context) => LunaBlock(
+  Widget build(BuildContext context) => ArrPilotBlock(
         title: widget.entry.title,
         body: widget.entry.subtitle,
-        trailing: const LunaIconButton.arrow(),
+        trailing: const ArrPilotIconButton.arrow(),
         onTap: () async => _enterArtist(),
       );
 

@@ -2,12 +2,12 @@ import 'package:arrpilot/core.dart';
 import 'package:arrpilot/router/routes/radarr.dart';
 import 'package:arrpilot/system/webhooks.dart';
 
-class RadarrWebhooks extends LunaWebhooks {
+class RadarrWebhooks extends ArrPilotWebhooks {
   @override
   Future<void> handle(Map data) async {
     _EventType? event = _EventType.GRAB.fromKey(data['event']);
     if (event == null)
-      LunaLogger().warning(
+      ArrPilotLogger().warning(
         'Unknown event type: ${data['event'] ?? 'null'}',
       );
     event?.execute(data);
@@ -72,7 +72,7 @@ extension _EventTypeExtension on _EventType? {
     RadarrRoutes.SYSTEM_STATUS.go(buildTree: true);
   }
 
-  Future<void> _testEvent(Map data) async => LunaModule.RADARR.launch();
+  Future<void> _testEvent(Map data) async => ArrPilotModule.RADARR.launch();
 
   Future<void> _goToMovieDetails(int? movieId) async {
     if (movieId != null) {
@@ -83,6 +83,6 @@ extension _EventTypeExtension on _EventType? {
         },
       );
     }
-    return LunaModule.RADARR.launch();
+    return ArrPilotModule.RADARR.launch();
   }
 }

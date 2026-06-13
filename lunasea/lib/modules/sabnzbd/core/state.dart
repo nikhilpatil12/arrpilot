@@ -1,6 +1,6 @@
 import 'package:arrpilot/core.dart';
 
-class SABnzbdState extends LunaModuleState {
+class SABnzbdState extends ArrPilotModuleState {
   SABnzbdState() {
     reset();
   }

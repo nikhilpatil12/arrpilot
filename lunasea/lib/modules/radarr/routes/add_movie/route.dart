@@ -16,7 +16,7 @@ class AddMovieRoute extends StatefulWidget {
 
 class _State extends State<AddMovieRoute> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  late LunaPageController _pageController;
+  late ArrPilotPageController _pageController;
   bool hasQuery = false;
 
   @override
@@ -25,12 +25,12 @@ class _State extends State<AddMovieRoute> {
 
     final page = RadarrDatabase.NAVIGATION_INDEX_ADD_MOVIE.read();
     hasQuery = widget.query.isNotEmpty;
-    _pageController = LunaPageController(initialPage: hasQuery ? 0 : page);
+    _pageController = ArrPilotPageController(initialPage: hasQuery ? 0 : page);
   }
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar(),
       bottomNavigationBar: _bottomNavigationBar(),
@@ -43,7 +43,7 @@ class _State extends State<AddMovieRoute> {
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'radarr.AddMovie'.tr(),
       pageController: _pageController,
       scrollControllers: RadarrAddMovieNavigationBar.scrollControllers,
@@ -56,7 +56,7 @@ class _State extends State<AddMovieRoute> {
         context,
         widget.query,
       ),
-      builder: (context, _) => LunaPageView(
+      builder: (context, _) => ArrPilotPageView(
         controller: _pageController,
         children: [
           RadarrAddMovieSearchPage(

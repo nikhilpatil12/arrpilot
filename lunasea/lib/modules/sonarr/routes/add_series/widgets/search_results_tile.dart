@@ -6,10 +6,10 @@ import 'package:arrpilot/modules/sonarr.dart';
 import 'package:arrpilot/router/routes/sonarr.dart';
 
 class SonarrSeriesAddSearchResultTile extends StatefulWidget {
-  static final double extent = LunaBlock.calculateItemExtent(
+  static final double extent = ArrPilotBlock.calculateItemExtent(
     1,
     hasBottom: true,
-    bottomHeight: LunaBlock.SUBTITLE_HEIGHT * 2,
+    bottomHeight: ArrPilotBlock.SUBTITLE_HEIGHT * 2,
   );
 
   final SonarrSeries series;
@@ -32,17 +32,17 @@ class SonarrSeriesAddSearchResultTile extends StatefulWidget {
 class _State extends State<SonarrSeriesAddSearchResultTile> {
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       backgroundUrl: widget.series.remotePoster,
       posterUrl: widget.series.remotePoster,
       posterHeaders: context.watch<SonarrState>().headers,
-      posterPlaceholderIcon: LunaIcons.VIDEO_CAM,
+      posterPlaceholderIcon: ArrPilotIcons.VIDEO_CAM,
       title: widget.series.title,
-      titleColor: widget.isExcluded ? LunaColours.red : Colors.white,
+      titleColor: widget.isExcluded ? ArrPilotColours.red : Colors.white,
       disabled: widget.exists,
       body: [_subtitle1()],
       bottom: _subtitle2(),
-      bottomHeight: LunaBlock.SUBTITLE_HEIGHT * 2,
+      bottomHeight: ArrPilotBlock.SUBTITLE_HEIGHT * 2,
       onTap: _onTap,
       onLongPress: _onLongPress,
     );
@@ -51,25 +51,25 @@ class _State extends State<SonarrSeriesAddSearchResultTile> {
   TextSpan _subtitle1() {
     return TextSpan(children: [
       TextSpan(text: widget.series.lunaSeasonCount),
-      TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+      TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
       TextSpan(text: widget.series.lunaYear),
-      TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+      TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
       TextSpan(text: widget.series.lunaNetwork),
     ]);
   }
 
   Widget _subtitle2() {
     return SizedBox(
-      height: LunaBlock.SUBTITLE_HEIGHT * 2,
+      height: ArrPilotBlock.SUBTITLE_HEIGHT * 2,
       child: RichText(
         text: TextSpan(
           style: const TextStyle(
             fontStyle: FontStyle.italic,
-            fontSize: LunaUI.FONT_SIZE_H3,
-            color: LunaColours.grey,
+            fontSize: ArrPilotUI.FONT_SIZE_H3,
+            color: ArrPilotColours.grey,
           ),
           children: [
-            LunaTextSpan.extended(text: widget.series.lunaOverview),
+            ArrPilotTextSpan.extended(text: widget.series.lunaOverview),
           ],
         ),
         overflow: TextOverflow.ellipsis,
@@ -80,7 +80,7 @@ class _State extends State<SonarrSeriesAddSearchResultTile> {
 
   Future<void> _onTap() async {
     if (widget.onTapShowOverview) {
-      LunaDialogs().textPreview(
+      ArrPilotDialogs().textPreview(
         context,
         widget.series.title,
         widget.series.overview ?? 'sonarr.NoSummaryAvailable'.tr(),

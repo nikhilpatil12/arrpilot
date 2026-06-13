@@ -14,7 +14,7 @@ class SearchSearchBar extends StatefulWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize =>
-      const Size.fromHeight(LunaTextInputBar.defaultAppBarHeight);
+      const Size.fromHeight(ArrPilotTextInputBar.defaultAppBarHeight);
 
   @override
   State<SearchSearchBar> createState() => _State();
@@ -29,7 +29,7 @@ class _State extends State<SearchSearchBar> {
       children: [
         Expanded(
           child: Consumer<SearchState>(
-            builder: (context, state, _) => LunaTextInputBar(
+            builder: (context, state, _) => ArrPilotTextInputBar(
               controller: _controller,
               scrollController: widget.scrollController,
               autofocus: true,

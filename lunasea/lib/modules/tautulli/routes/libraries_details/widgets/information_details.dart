@@ -13,26 +13,26 @@ class TautulliLibrariesDetailsInformationDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaTableCard(
+    return ArrPilotTableCard(
       content: [
-        LunaTableContent(title: 'name', body: library.sectionName),
+        ArrPilotTableContent(title: 'name', body: library.sectionName),
         if (library.count != null)
-          LunaTableContent(
+          ArrPilotTableContent(
               title: _count(library.count),
               body: '${library.count} ${_count(library.count)}'),
         if (library.parentCount != null)
-          LunaTableContent(
+          ArrPilotTableContent(
               title: _parentCount(library.parentCount),
               body:
                   '${library.parentCount} ${_parentCount(library.parentCount)}'),
         if (library.childCount != null)
-          LunaTableContent(
+          ArrPilotTableContent(
               title: _childCount(library.childCount),
               body: '${library.childCount} ${_childCount(library.childCount)}'),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'last played',
           body: [
-            library.lastPlayed ?? LunaUI.TEXT_EMDASH,
+            library.lastPlayed ?? ArrPilotUI.TEXT_EMDASH,
             library.lastAccessed?.asAge() ?? 'Unknown',
           ].join('\n'),
         ),

@@ -15,7 +15,7 @@ class SABnzbdHistory extends StatefulWidget {
 }
 
 class _State extends State<SABnzbdHistory>
-    with AutomaticKeepAliveClientMixin, LunaLoadCallbackMixin {
+    with AutomaticKeepAliveClientMixin, ArrPilotLoadCallbackMixin {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   Future<List<SABnzbdHistoryData>>? _future;
   List<SABnzbdHistoryData>? _results = [];
@@ -26,7 +26,7 @@ class _State extends State<SABnzbdHistory>
   @override
   Future<void> loadCallback() async {
     if (mounted) setState(() => _results = []);
-    final _api = SABnzbdAPI.from(LunaProfile.current);
+    final _api = SABnzbdAPI.from(ArrPilotProfile.current);
     if (mounted)
       setState(() {
         _future = _api.getHistory();
@@ -36,7 +36,7 @@ class _State extends State<SABnzbdHistory>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       body: _body(),
       appBar: _appBar() as PreferredSizeWidget?,
@@ -44,15 +44,15 @@ class _State extends State<SABnzbdHistory>
   }
 
   Widget _appBar() {
-    return LunaAppBar.empty(
+    return ArrPilotAppBar.empty(
       child: SABnzbdHistorySearchBar(
           scrollController: SABnzbdNavigationBar.scrollControllers[1]),
-      height: LunaTextInputBar.defaultAppBarHeight,
+      height: ArrPilotTextInputBar.defaultAppBarHeight,
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: widget.refreshIndicatorKey,
       onRefresh: loadCallback,
@@ -63,7 +63,7 @@ class _State extends State<SABnzbdHistory>
             case ConnectionState.done:
               {
                 if (snapshot.hasError || snapshot.data == null) {
-                  return LunaMessage.error(
+                  return ArrPilotMessage.error(
                       onTap: widget.refreshIndicatorKey.currentState!.show);
                 }
                 _results = snapshot.data;
@@ -73,7 +73,7 @@ class _State extends State<SABnzbdHistory>
             case ConnectionState.waiting:
             case ConnectionState.active:
             default:
-              return const LunaLoader();
+              return const ArrPilotLoader();
           }
         },
       ),
@@ -82,7 +82,7 @@ class _State extends State<SABnzbdHistory>
 
   Widget get _list {
     if (_results?.isEmpty ?? true) {
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'No History Found',
         buttonText: 'Refresh',
         onTap: loadCallback,
@@ -103,13 +103,13 @@ class _State extends State<SABnzbdHistory>
 
   Widget _listBody(List filtered) {
     if (filtered.isEmpty)
-      return LunaListView(
+      return ArrPilotListView(
         controller: SABnzbdNavigationBar.scrollControllers[1],
         children: [
-          LunaMessage.inList(text: 'No History Found'),
+          ArrPilotMessage.inList(text: 'No History Found'),
         ],
       );
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: SABnzbdNavigationBar.scrollControllers[1],
       itemCount: filtered.length,
       itemBuilder: (context, index) => SABnzbdHistoryTile(

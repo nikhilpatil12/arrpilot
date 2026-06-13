@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 import 'package:arrpilot/modules/sonarr.dart';
 
-class SonarrMediaInfoSheet extends LunaBottomModalSheet {
+class SonarrMediaInfoSheet extends ArrPilotBottomModalSheet {
   final SonarrEpisodeFileMediaInfo? mediaInfo;
 
   SonarrMediaInfoSheet({
@@ -11,70 +11,70 @@ class SonarrMediaInfoSheet extends LunaBottomModalSheet {
 
   @override
   Widget builder(BuildContext context) {
-    return LunaListViewModal(
+    return ArrPilotListViewModal(
       children: [
-        LunaHeader(text: 'sonarr.Video'.tr()),
-        LunaTableCard(
+        ArrPilotHeader(text: 'sonarr.Video'.tr()),
+        ArrPilotTableCard(
           content: [
-            LunaTableContent(
+            ArrPilotTableContent(
               title: 'sonarr.BitDepth'.tr(),
               body: mediaInfo!.lunaVideoBitDepth,
             ),
-            LunaTableContent(
+            ArrPilotTableContent(
               title: 'sonarr.Bitrate'.tr(),
               body: mediaInfo!.lunaVideoBitrate,
             ),
-            LunaTableContent(
+            ArrPilotTableContent(
               title: 'sonarr.Codec'.tr(),
               body: mediaInfo!.lunaVideoCodec,
             ),
-            LunaTableContent(
+            ArrPilotTableContent(
               title: 'sonarr.FPS'.tr(),
               body: mediaInfo!.lunaVideoFps,
             ),
-            LunaTableContent(
+            ArrPilotTableContent(
               title: 'sonarr.Resolution'.tr(),
               body: mediaInfo!.lunaVideoResolution,
             ),
-            LunaTableContent(
+            ArrPilotTableContent(
               title: 'sonarr.ScanType'.tr(),
               body: mediaInfo!.lunaVideoScanType,
             ),
           ],
         ),
-        LunaHeader(text: 'sonarr.Audio'.tr()),
-        LunaTableCard(
+        ArrPilotHeader(text: 'sonarr.Audio'.tr()),
+        ArrPilotTableCard(
           content: [
-            LunaTableContent(
+            ArrPilotTableContent(
               title: 'sonarr.Bitrate'.tr(),
               body: mediaInfo!.lunaAudioBitrate,
             ),
-            LunaTableContent(
+            ArrPilotTableContent(
               title: 'sonarr.Channels'.tr(),
               body: mediaInfo!.lunaAudioChannels,
             ),
-            LunaTableContent(
+            ArrPilotTableContent(
               title: 'sonarr.Codec'.tr(),
               body: mediaInfo!.lunaAudioCodec,
             ),
-            LunaTableContent(
+            ArrPilotTableContent(
               title: 'sonarr.Languages'.tr(),
               body: mediaInfo!.lunaAudioLanguages,
             ),
-            LunaTableContent(
+            ArrPilotTableContent(
               title: 'sonarr.Streams'.tr(),
               body: mediaInfo!.lunaAudioStreamCount,
             ),
           ],
         ),
-        LunaHeader(text: 'sonarr.Other'.tr()),
-        LunaTableCard(
+        ArrPilotHeader(text: 'sonarr.Other'.tr()),
+        ArrPilotTableCard(
           content: [
-            LunaTableContent(
+            ArrPilotTableContent(
               title: 'sonarr.Runtime'.tr(),
               body: mediaInfo!.lunaRunTime,
             ),
-            LunaTableContent(
+            ArrPilotTableContent(
               title: 'sonarr.Subtitles'.tr(),
               body: mediaInfo!.lunaSubtitles,
             ),

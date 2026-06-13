@@ -12,7 +12,7 @@ class TautulliGraphsPlayByPeriodRoute extends StatefulWidget {
 }
 
 class _State extends State<TautulliGraphsPlayByPeriodRoute>
-    with AutomaticKeepAliveClientMixin, LunaLoadCallbackMixin {
+    with AutomaticKeepAliveClientMixin, ArrPilotLoadCallbackMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -35,21 +35,21 @@ class _State extends State<TautulliGraphsPlayByPeriodRoute>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       body: _body(),
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: loadCallback,
-      child: LunaListView(
+      child: ArrPilotListView(
         controller: TautulliGraphsNavigationBar.scrollControllers[0],
         children: [
-          LunaHeader(
+          ArrPilotHeader(
             text: 'Daily',
             subtitle: [
               'Last ${TautulliDatabase.GRAPHS_LINECHART_DAYS.read()} Days',
@@ -58,7 +58,7 @@ class _State extends State<TautulliGraphsPlayByPeriodRoute>
             ].join(),
           ),
           const TautulliGraphsDailyPlayCountGraph(),
-          LunaHeader(
+          ArrPilotHeader(
             text: 'Monthly',
             subtitle: [
               'Last ${TautulliDatabase.GRAPHS_MONTHS.read()} Months',
@@ -67,7 +67,7 @@ class _State extends State<TautulliGraphsPlayByPeriodRoute>
             ].join(),
           ),
           const TautulliGraphsPlaysByMonthGraph(),
-          LunaHeader(
+          ArrPilotHeader(
             text: 'By Day Of Week',
             subtitle: [
               'Last ${TautulliDatabase.GRAPHS_DAYS.read()} Days',
@@ -76,7 +76,7 @@ class _State extends State<TautulliGraphsPlayByPeriodRoute>
             ].join(),
           ),
           const TautulliGraphsPlayCountByDayOfWeekGraph(),
-          LunaHeader(
+          ArrPilotHeader(
             text: 'By Top Platforms',
             subtitle: [
               'Last ${TautulliDatabase.GRAPHS_DAYS.read()} Days',
@@ -85,7 +85,7 @@ class _State extends State<TautulliGraphsPlayByPeriodRoute>
             ].join(),
           ),
           const TautulliGraphsPlayCountByTopPlatformsGraph(),
-          LunaHeader(
+          ArrPilotHeader(
             text: 'By Top Users',
             subtitle: [
               'Last ${TautulliDatabase.GRAPHS_DAYS.read()} Days',

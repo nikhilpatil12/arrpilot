@@ -7,8 +7,8 @@ extension StringNullableExtension on String? {
   String uiSafe({
     bool isEmptySafe = false,
   }) {
-    if (this == null) return LunaUI.TEXT_EMDASH;
-    if (!isEmptySafe && this!.isEmpty) return LunaUI.TEXT_EMDASH;
+    if (this == null) return ArrPilotUI.TEXT_EMDASH;
+    if (!isEmptySafe && this!.isEmpty) return ArrPilotUI.TEXT_EMDASH;
     return this!;
   }
 }
@@ -62,7 +62,7 @@ extension StringExtension on String {
 
   /// Returns the string with a bullet appended to the front.
   String bulleted({
-    String bullet = LunaUI.TEXT_BULLET,
+    String bullet = ArrPilotUI.TEXT_BULLET,
     int padCount = 1,
   }) {
     return '${bullet.pad(count: padCount)}$this';

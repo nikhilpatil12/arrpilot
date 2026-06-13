@@ -17,7 +17,7 @@ class SeriesSeasonDetailsRoute extends StatefulWidget {
 }
 
 class _State extends State<SeriesSeasonDetailsRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   PageController? _pageController;
 
@@ -31,7 +31,7 @@ class _State extends State<SeriesSeasonDetailsRoute>
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       bottomNavigationBar:
@@ -54,7 +54,7 @@ class _State extends State<SeriesSeasonDetailsRoute>
             'sonarr.SeasonNumber'.tr(args: [widget.seasonNumber.toString()]);
         break;
     }
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: _season,
       scrollControllers: SonarrSeasonDetailsNavigationBar.scrollControllers,
       pageController: _pageController,
@@ -78,7 +78,7 @@ class _State extends State<SeriesSeasonDetailsRoute>
         seasonNumber: widget.seasonNumber != -1 ? widget.seasonNumber : null,
       ),
       builder: (context, _) {
-        return LunaPageView(
+        return ArrPilotPageView(
           controller: _pageController,
           children: [
             const SonarrSeasonDetailsEpisodesPage(),

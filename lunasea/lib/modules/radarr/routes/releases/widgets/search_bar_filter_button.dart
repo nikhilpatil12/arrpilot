@@ -18,11 +18,11 @@ class RadarrReleasesAppBarFilterButton extends StatefulWidget {
 class _State extends State<RadarrReleasesAppBarFilterButton> {
   @override
   Widget build(BuildContext context) {
-    return LunaCard(
+    return ArrPilotCard(
       context: context,
       child: Consumer<RadarrReleasesState>(
         builder: (context, state, _) =>
-            LunaPopupMenuButton<RadarrReleasesFilter>(
+            ArrPilotPopupMenuButton<RadarrReleasesFilter>(
           tooltip: 'Filter Releases',
           icon: Icons.filter_list_rounded,
           onSelected: (result) {
@@ -37,9 +37,9 @@ class _State extends State<RadarrReleasesAppBarFilterButton> {
               child: Text(
                 RadarrReleasesFilter.values[index].readable,
                 style: TextStyle(
-                  fontSize: LunaUI.FONT_SIZE_H3,
+                  fontSize: ArrPilotUI.FONT_SIZE_H3,
                   color: state.filterType == RadarrReleasesFilter.values[index]
-                      ? LunaColours.accent
+                      ? ArrPilotColours.accent
                       : Colors.white,
                 ),
               ),
@@ -47,8 +47,8 @@ class _State extends State<RadarrReleasesAppBarFilterButton> {
           ),
         ),
       ),
-      height: LunaTextInputBar.defaultHeight,
-      width: LunaTextInputBar.defaultHeight,
+      height: ArrPilotTextInputBar.defaultHeight,
+      width: ArrPilotTextInputBar.defaultHeight,
       margin: const EdgeInsets.fromLTRB(0.0, 0.0, 12.0, 14.0),
       color: Theme.of(context).canvasColor,
     );

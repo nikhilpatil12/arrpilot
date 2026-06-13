@@ -16,7 +16,7 @@ import 'package:arrpilot/router/routes/tautulli.dart';
 import 'package:arrpilot/vendor.dart';
 import 'package:arrpilot/widgets/pages/not_enabled.dart';
 
-enum LunaRoutes {
+enum ArrPilotRoutes {
   bios('bios', root: BIOSRoutes.HOME),
   dashboard('dashboard', root: DashboardRoutes.HOME),
   externalModules('external_modules', root: ExternalModulesRoutes.HOME),
@@ -30,9 +30,9 @@ enum LunaRoutes {
   tautulli('tautulli', root: TautulliRoutes.HOME);
 
   final String key;
-  final LunaRoutesMixin root;
+  final ArrPilotRoutesMixin root;
 
-  const LunaRoutes(
+  const ArrPilotRoutes(
     this.key, {
     required this.root,
   });
@@ -40,11 +40,11 @@ enum LunaRoutes {
   static String get initialLocation => BIOSRoutes.HOME.path;
 }
 
-mixin LunaRoutesMixin on Enum {
+mixin ArrPilotRoutesMixin on Enum {
   String get _routeName => '${this.module?.key ?? 'unknown'}:$name';
 
   String get path;
-  LunaModule? get module;
+  ArrPilotModule? get module;
 
   GoRoute get routes;
   List<GoRoute> get subroutes => const <GoRoute>[];
@@ -64,7 +64,7 @@ mixin LunaRoutesMixin on Enum {
         if (isModuleEnabled(context)) {
           return builder?.call(context, state) ?? widget!;
         }
-        return NotEnabledPage(module: module?.title ?? 'LunaSea');
+        return NotEnabledPage(module: module?.title ?? 'ArrPilot');
       },
     );
   }
@@ -86,14 +86,14 @@ mixin LunaRoutesMixin on Enum {
     bool buildTree = false,
   }) {
     if (buildTree) {
-      return LunaRouter.router.goNamed(
+      return ArrPilotRouter.router.goNamed(
         _routeName,
         extra: extra,
         pathParameters: params,
         queryParameters: queryParams,
       );
     }
-    LunaRouter.router.pushNamed(
+    ArrPilotRouter.router.pushNamed(
       _routeName,
       extra: extra,
       pathParameters: params,

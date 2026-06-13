@@ -23,14 +23,14 @@ class SABnzbdQueueTile extends StatefulWidget {
 class _State extends State<SABnzbdQueueTile> {
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: widget.data.name,
       body: [TextSpan(text: widget.data.subtitle)],
-      bottomHeight: LunaLinearPercentIndicator.height,
-      bottom: LunaLinearPercentIndicator(
+      bottomHeight: ArrPilotLinearPercentIndicator.height,
+      bottom: ArrPilotLinearPercentIndicator(
         percent: min(1.0, max(0, widget.data.percentageDone / 100)),
       ),
-      trailing: LunaReorderableListViewDragger(index: widget.index),
+      trailing: ArrPilotReorderableListViewDragger(index: widget.index),
       onTap: _handlePopup,
     );
   }
@@ -60,7 +60,7 @@ class _State extends State<SABnzbdQueueTile> {
           _helper._delete();
           break;
         default:
-          LunaLogger().warning('Unknown Case: ${values[1]}');
+          ArrPilotLogger().warning('Unknown Case: ${values[1]}');
       }
   }
 }
@@ -77,7 +77,7 @@ class _Helper {
   );
 
   Future<void> _pauseJob() async {
-    await SABnzbdAPI.from(LunaProfile.current)
+    await SABnzbdAPI.from(ArrPilotProfile.current)
         .pauseSingleJob(data.nzoId)
         .then((_) {
       showLunaSuccessSnackBar(
@@ -94,7 +94,7 @@ class _Helper {
   }
 
   Future<void> _resumeJob() async {
-    await SABnzbdAPI.from(LunaProfile.current)
+    await SABnzbdAPI.from(ArrPilotProfile.current)
         .resumeSingleJob(data.nzoId)
         .then((_) {
       showLunaSuccessSnackBar(
@@ -112,10 +112,10 @@ class _Helper {
 
   Future<void> _category() async {
     List<SABnzbdCategoryData> categories =
-        await SABnzbdAPI.from(LunaProfile.current).getCategories();
+        await SABnzbdAPI.from(ArrPilotProfile.current).getCategories();
     List values = await SABnzbdDialogs.changeCategory(context, categories);
     if (values[0])
-      await SABnzbdAPI.from(LunaProfile.current)
+      await SABnzbdAPI.from(ArrPilotProfile.current)
           .setCategory(data.nzoId, values[1])
           .then((_) {
         showLunaSuccessSnackBar(
@@ -136,7 +136,7 @@ class _Helper {
   Future<void> _priority() async {
     List values = await SABnzbdDialogs.changePriority(context);
     if (values[0])
-      await SABnzbdAPI.from(LunaProfile.current)
+      await SABnzbdAPI.from(ArrPilotProfile.current)
           .setJobPriority(data.nzoId, values[1])
           .then((_) {
         showLunaSuccessSnackBar(
@@ -155,7 +155,7 @@ class _Helper {
   Future<void> _rename() async {
     List values = await SABnzbdDialogs.renameJob(context, data.name);
     if (values[0])
-      SABnzbdAPI.from(LunaProfile.current)
+      SABnzbdAPI.from(ArrPilotProfile.current)
           .renameJob(data.nzoId, values[1])
           .then((_) {
         showLunaSuccessSnackBar(
@@ -174,7 +174,7 @@ class _Helper {
   Future<void> _delete() async {
     List values = await SABnzbdDialogs.deleteJob(context);
     if (values[0])
-      await SABnzbdAPI.from(LunaProfile.current)
+      await SABnzbdAPI.from(ArrPilotProfile.current)
           .deleteJob(data.nzoId)
           .then((_) {
         showLunaSuccessSnackBar(
@@ -193,7 +193,7 @@ class _Helper {
   Future<void> _password() async {
     List values = await SABnzbdDialogs.setPassword(context);
     if (values[0])
-      await SABnzbdAPI.from(LunaProfile.current)
+      await SABnzbdAPI.from(ArrPilotProfile.current)
           .setJobPassword(data.nzoId, data.name, values[1])
           .then((_) {
         showLunaSuccessSnackBar(

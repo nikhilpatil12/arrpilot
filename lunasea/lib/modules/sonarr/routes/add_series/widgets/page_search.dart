@@ -16,7 +16,7 @@ class SonarrAddSeriesSearchPage extends StatefulWidget {
 }
 
 class _State extends State<SonarrAddSeriesSearchPage>
-    with LunaLoadCallbackMixin {
+    with ArrPilotLoadCallbackMixin {
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
 
@@ -51,7 +51,7 @@ class _State extends State<SonarrAddSeriesSearchPage>
     required Future<List<SonarrExclusion>>? exclusions,
     required Future<Map<int?, SonarrSeries>>? series,
   }) {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: loadCallback,
@@ -60,12 +60,12 @@ class _State extends State<SonarrAddSeriesSearchPage>
         builder: (context, AsyncSnapshot<List> snapshot) {
           if (snapshot.hasError) {
             if (snapshot.connectionState != ConnectionState.waiting)
-              LunaLogger().error(
+              ArrPilotLogger().error(
                 'Unable to fetch Sonarr series lookup',
                 snapshot.error,
                 snapshot.stackTrace,
               );
-            return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+            return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
           }
           if (snapshot.hasData)
             return _list(
@@ -73,7 +73,7 @@ class _State extends State<SonarrAddSeriesSearchPage>
               snapshot.data![1],
               snapshot.data![2],
             );
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -85,13 +85,13 @@ class _State extends State<SonarrAddSeriesSearchPage>
     List<SonarrExclusion> exclusions,
   ) {
     if (results.isEmpty)
-      return LunaListView(
+      return ArrPilotListView(
         controller: widget.scrollController,
         children: [
-          LunaMessage.inList(text: 'sonarr.NoResultsFound'.tr()),
+          ArrPilotMessage.inList(text: 'sonarr.NoResultsFound'.tr()),
         ],
       );
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: widget.scrollController,
       itemExtent: SonarrSeriesAddSearchResultTile.extent,
       itemCount: results.length,

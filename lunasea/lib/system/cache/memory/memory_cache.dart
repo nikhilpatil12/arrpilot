@@ -2,12 +2,12 @@ import 'package:arrpilot/system/cache/memory/memory_store.dart';
 import 'package:arrpilot/modules.dart';
 import 'package:arrpilot/vendor.dart';
 
-class LunaMemoryCache<T> {
+class ArrPilotMemoryCache<T> {
   late String _key;
   late Future<Cache<T>> _cache;
 
-  LunaMemoryCache({
-    required LunaModule module,
+  ArrPilotMemoryCache({
+    required ArrPilotModule module,
     required String id,
     EvictionPolicy evictionPolicy = const LruEvictionPolicy(),
     ExpiryPolicy expiryPolicy = const EternalExpiryPolicy(),
@@ -35,7 +35,7 @@ class LunaMemoryCache<T> {
     KeySampler sampler = const FullSampler(),
     EventListenerMode eventListenerMode = EventListenerMode.disabled,
   }) async {
-    return LunaMemoryStore().get(
+    return ArrPilotMemoryStore().get(
       id: _key,
       fresh: true,
       evictionPolicy: evictionPolicy,

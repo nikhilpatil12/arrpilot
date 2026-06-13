@@ -13,12 +13,12 @@ class ConfigurationLidarrRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationLidarrRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -26,20 +26,20 @@ class _State extends State<ConfigurationLidarrRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       scrollControllers: [scrollController],
-      title: LunaModule.LIDARR.title,
+      title: ArrPilotModule.LIDARR.title,
     );
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
-        LunaModule.LIDARR.informationBanner(),
+        ArrPilotModule.LIDARR.informationBanner(),
         _enabledToggle(),
         _connectionDetailsPage(),
-        LunaDivider(),
+        ArrPilotDivider(),
         _defaultPagesPage(),
         //_defaultPagesPage(),
       ],
@@ -47,14 +47,14 @@ class _State extends State<ConfigurationLidarrRoute>
   }
 
   Widget _enabledToggle() {
-    return LunaBox.profiles.listenableBuilder(
-      builder: (context, _) => LunaBlock(
-        title: 'settings.EnableModule'.tr(args: [LunaModule.LIDARR.title]),
-        trailing: LunaSwitch(
-          value: LunaProfile.current.lidarrEnabled,
+    return ArrPilotBox.profiles.listenableBuilder(
+      builder: (context, _) => ArrPilotBlock(
+        title: 'settings.EnableModule'.tr(args: [ArrPilotModule.LIDARR.title]),
+        trailing: ArrPilotSwitch(
+          value: ArrPilotProfile.current.lidarrEnabled,
           onChanged: (value) {
-            LunaProfile.current.lidarrEnabled = value;
-            LunaProfile.current.save();
+            ArrPilotProfile.current.lidarrEnabled = value;
+            ArrPilotProfile.current.save();
             context.read<LidarrState>().reset();
           },
         ),
@@ -63,25 +63,25 @@ class _State extends State<ConfigurationLidarrRoute>
   }
 
   Widget _connectionDetailsPage() {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.ConnectionDetails'.tr(),
       body: [
         TextSpan(
           text: 'settings.ConnectionDetailsDescription'.tr(
-            args: [LunaModule.LIDARR.title],
+            args: [ArrPilotModule.LIDARR.title],
           ),
         ),
       ],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: SettingsRoutes.CONFIGURATION_LIDARR_CONNECTION_DETAILS.go,
     );
   }
 
   Widget _defaultPagesPage() {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.DefaultPages'.tr(),
       body: [TextSpan(text: 'settings.DefaultPagesDescription'.tr())],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: SettingsRoutes.CONFIGURATION_LIDARR_DEFAULT_PAGES.go,
     );
   }

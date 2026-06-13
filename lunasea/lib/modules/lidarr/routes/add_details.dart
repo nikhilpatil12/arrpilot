@@ -19,7 +19,7 @@ class AddArtistDetailsRoute extends StatefulWidget {
 }
 
 class _State extends State<AddArtistDetailsRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   Future<void>? _future;
   List<LidarrRootFolder> _rootFolders = [];
@@ -39,7 +39,7 @@ class _State extends State<AddArtistDetailsRoute>
       });
 
   Future<void> _fetchParameters() async {
-    LidarrAPI _api = LidarrAPI.from(LunaProfile.current);
+    LidarrAPI _api = LidarrAPI.from(ArrPilotProfile.current);
     return _fetchRootFolders(_api)
         .then((_) => _fetchQualityProfiles(_api))
         .then((_) => _fetchMetadataProfiles(_api))
@@ -91,7 +91,7 @@ class _State extends State<AddArtistDetailsRoute>
       );
     }
 
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar,
       body: _body,
@@ -100,14 +100,14 @@ class _State extends State<AddArtistDetailsRoute>
   }
 
   Widget _bottomActionBar() {
-    return LunaBottomActionBar(
+    return ArrPilotBottomActionBar(
       actions: [
-        LunaActionBarCard(
+        ArrPilotActionBarCard(
           title: 'lunasea.Options'.tr(),
           subtitle: 'radarr.StartSearchFor'.tr(),
           onTap: () async => LidarrDialogs().addArtistOptions(context),
         ),
-        LunaButton.text(
+        ArrPilotButton.text(
           text: 'Add',
           icon: Icons.add_rounded,
           onTap: () async => _addArtist(),
@@ -117,7 +117,7 @@ class _State extends State<AddArtistDetailsRoute>
   }
 
   PreferredSizeWidget get _appBar {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: widget.data!.title,
       scrollControllers: [scrollController],
     );
@@ -130,21 +130,21 @@ class _State extends State<AddArtistDetailsRoute>
         switch (snapshot.connectionState) {
           case ConnectionState.done:
             {
-              if (snapshot.hasError) return LunaMessage.error(onTap: _refresh);
+              if (snapshot.hasError) return ArrPilotMessage.error(onTap: _refresh);
               return _list;
             }
           case ConnectionState.none:
           case ConnectionState.waiting:
           case ConnectionState.active:
           default:
-            return const LunaLoader();
+            return const ArrPilotLoader();
         }
       },
     );
   }
 
   Widget get _list {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: <Widget>[
         LidarrDescriptionBlock(
@@ -154,7 +154,7 @@ class _State extends State<AddArtistDetailsRoute>
               : widget.data!.overview,
           uri: widget.data?.posterURI ?? '',
           squareImage: true,
-          headers: LunaProfile.current.lidarrHeaders,
+          headers: ArrPilotProfile.current.lidarrHeaders,
           onLongPress: () async {
             if (widget.data?.discogsLink?.isEmpty ?? true) {
               showLunaInfoSnackBar(
@@ -168,12 +168,12 @@ class _State extends State<AddArtistDetailsRoute>
         LidarrDatabase.ADD_ROOT_FOLDER.listenableBuilder(
           builder: (context, _) {
             final _rootfolder = LidarrDatabase.ADD_ROOT_FOLDER.read();
-            return LunaBlock(
+            return ArrPilotBlock(
               title: 'Root Folder',
               body: [
                 TextSpan(text: _rootfolder?.path ?? 'Unknown Root Folder'),
               ],
-              trailing: const LunaIconButton.arrow(),
+              trailing: const ArrPilotIconButton.arrow(),
               onTap: () async {
                 List _values =
                     await LidarrDialogs.editRootFolder(context, _rootFolders);
@@ -189,9 +189,9 @@ class _State extends State<AddArtistDetailsRoute>
           final _status = LidarrMonitorStatus.ALL.fromKey(_db.read()) ??
               LidarrMonitorStatus.ALL;
 
-          return LunaBlock(
+          return ArrPilotBlock(
             title: 'Monitor',
-            trailing: const LunaIconButton.arrow(),
+            trailing: const ArrPilotIconButton.arrow(),
             body: [TextSpan(text: _status.readable)],
             onTap: () async {
               Tuple2<bool, LidarrMonitorStatus?> _result =
@@ -203,12 +203,12 @@ class _State extends State<AddArtistDetailsRoute>
         LidarrDatabase.ADD_QUALITY_PROFILE.listenableBuilder(
           builder: (context, _) {
             final _profile = LidarrDatabase.ADD_QUALITY_PROFILE.read();
-            return LunaBlock(
+            return ArrPilotBlock(
               title: 'Quality Profile',
               body: [
                 TextSpan(text: _profile?.name ?? 'Unknown Profile'),
               ],
-              trailing: const LunaIconButton.arrow(),
+              trailing: const ArrPilotIconButton.arrow(),
               onTap: () async {
                 List _values = await LidarrDialogs.editQualityProfile(
                     context, _qualityProfiles);
@@ -221,12 +221,12 @@ class _State extends State<AddArtistDetailsRoute>
         LidarrDatabase.ADD_METADATA_PROFILE.listenableBuilder(
           builder: (context, _) {
             final _profile = LidarrDatabase.ADD_METADATA_PROFILE.read();
-            return LunaBlock(
+            return ArrPilotBlock(
               title: 'Metadata Profile',
               body: [
                 TextSpan(text: _profile?.name ?? 'Unknown Profile'),
               ],
-              trailing: const LunaIconButton.arrow(),
+              trailing: const ArrPilotIconButton.arrow(),
               onTap: () async {
                 List _values = await LidarrDialogs.editMetadataProfile(
                     context, _metadataProfiles);
@@ -241,7 +241,7 @@ class _State extends State<AddArtistDetailsRoute>
   }
 
   Future<void> _addArtist() async {
-    LidarrAPI _api = LidarrAPI.from(LunaProfile.current);
+    LidarrAPI _api = LidarrAPI.from(ArrPilotProfile.current);
     bool? search = LidarrDatabase.ADD_ARTIST_SEARCH_FOR_MISSING.read();
     await _api
         .addArtist(
@@ -258,11 +258,11 @@ class _State extends State<AddArtistDetailsRoute>
         title: 'Artist Added',
         message: widget.data!.title,
       );
-      LunaRouter.router.pop();
+      ArrPilotRouter.router.pop();
 
       /// todo: Add redirect to artist page
     }).catchError((error, stack) {
-      LunaLogger().error('Failed to add artist', error, stack);
+      ArrPilotLogger().error('Failed to add artist', error, stack);
       showLunaErrorSnackBar(
         title: search
             ? 'Failed to Add Artist (With Search)'

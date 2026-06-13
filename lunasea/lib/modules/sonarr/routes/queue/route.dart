@@ -11,7 +11,7 @@ class QueueRoute extends StatefulWidget {
   State<StatefulWidget> createState() => _State();
 }
 
-class _State extends State<QueueRoute> with LunaScrollControllerMixin {
+class _State extends State<QueueRoute> with ArrPilotScrollControllerMixin {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _refreshKey = GlobalKey<RefreshIndicatorState>();
 
@@ -19,7 +19,7 @@ class _State extends State<QueueRoute> with LunaScrollControllerMixin {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => SonarrQueueState(context),
-      builder: (context, _) => LunaScaffold(
+      builder: (context, _) => ArrPilotScaffold(
         scaffoldKey: _scaffoldKey,
         appBar: _appBar(),
         body: _body(context),
@@ -36,14 +36,14 @@ class _State extends State<QueueRoute> with LunaScrollControllerMixin {
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'sonarr.Queue'.tr(),
       scrollControllers: [scrollController],
     );
   }
 
   Widget _body(BuildContext context) {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       key: _refreshKey,
       context: context,
       onRefresh: () async => _onRefresh(context),
@@ -52,20 +52,20 @@ class _State extends State<QueueRoute> with LunaScrollControllerMixin {
         builder: (context, AsyncSnapshot<SonarrQueuePage> snapshot) {
           if (snapshot.hasError) {
             if (snapshot.connectionState != ConnectionState.waiting) {
-              LunaLogger().error(
+              ArrPilotLogger().error(
                 'Unable to fetch Sonarr queue',
                 snapshot.error,
                 snapshot.stackTrace,
               );
             }
-            return LunaMessage.error(
+            return ArrPilotMessage.error(
               onTap: _refreshKey.currentState!.show,
             );
           }
           if (snapshot.hasData) {
             return _list(snapshot.data!);
           }
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -73,13 +73,13 @@ class _State extends State<QueueRoute> with LunaScrollControllerMixin {
 
   Widget _list(SonarrQueuePage queue) {
     if (queue.records!.isEmpty) {
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'sonarr.EmptyQueue'.tr(),
         buttonText: 'lunasea.Refresh'.tr(),
         onTap: _refreshKey.currentState!.show,
       );
     }
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: scrollController,
       itemCount: queue.records!.length,
       itemBuilder: (context, index) => SonarrQueueTile(

@@ -18,7 +18,7 @@ class AddMovieDetailsRoute extends StatefulWidget {
 }
 
 class _State extends State<AddMovieDetailsRoute>
-    with LunaLoadCallbackMixin, LunaScrollControllerMixin {
+    with ArrPilotLoadCallbackMixin, ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -43,7 +43,7 @@ class _State extends State<AddMovieDetailsRoute>
         movie: widget.movie!,
         isDiscovery: widget.isDiscovery,
       ),
-      builder: (context, _) => LunaScaffold(
+      builder: (context, _) => ArrPilotScaffold(
         scaffoldKey: _scaffoldKey,
         appBar: _appBar(),
         body: _body(),
@@ -53,7 +53,7 @@ class _State extends State<AddMovieDetailsRoute>
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'radarr.AddMovie'.tr(),
       scrollControllers: [scrollController],
     );
@@ -71,13 +71,13 @@ class _State extends State<AddMovieDetailsRoute>
       builder: (context, AsyncSnapshot<List<Object>> snapshot) {
         if (snapshot.hasError) {
           if (snapshot.connectionState != ConnectionState.waiting) {
-            LunaLogger().error(
+            ArrPilotLogger().error(
               'Unable to fetch Radarr add movie data',
               snapshot.error,
               snapshot.stackTrace,
             );
           }
-          return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+          return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
         }
         if (snapshot.hasData) {
           return _content(
@@ -87,7 +87,7 @@ class _State extends State<AddMovieDetailsRoute>
             tags: snapshot.data![2] as List<RadarrTag>?,
           );
         }
-        return const LunaLoader();
+        return const ArrPilotLoader();
       },
     );
   }
@@ -107,11 +107,11 @@ class _State extends State<AddMovieDetailsRoute>
         .initializeRootFolder(rootFolders);
     context.read<RadarrAddMovieDetailsState>().initializeTags(tags);
     context.read<RadarrAddMovieDetailsState>().canExecuteAction = true;
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: loadCallback,
-      child: LunaListView(
+      child: ArrPilotListView(
         controller: scrollController,
         children: [
           RadarrAddMovieSearchResultTile(

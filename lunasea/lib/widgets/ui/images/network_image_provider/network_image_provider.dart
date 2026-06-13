@@ -5,8 +5,8 @@ import 'platform/network_image_provider_stub.dart'
     if (dart.library.io) 'platform/network_image_provider_io.dart'
     if (dart.library.html) 'platform/network_image_provider_html.dart';
 
-abstract class LunaNetworkImageProvider {
-  factory LunaNetworkImageProvider({
+abstract class ArrPilotNetworkImageProvider {
+  factory ArrPilotNetworkImageProvider({
     required String url,
     Map<String, String>? headers,
   }) {

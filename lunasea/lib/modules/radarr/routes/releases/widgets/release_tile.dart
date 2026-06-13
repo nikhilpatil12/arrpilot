@@ -17,11 +17,11 @@ class RadarrReleasesTile extends StatefulWidget {
 }
 
 class _State extends State<RadarrReleasesTile> {
-  LunaLoadingState _downloadState = LunaLoadingState.INACTIVE;
+  ArrPilotLoadingState _downloadState = ArrPilotLoadingState.INACTIVE;
 
   @override
   Widget build(BuildContext context) {
-    return LunaExpandableListTile(
+    return ArrPilotExpandableListTile(
       title: widget.release.title!,
       collapsedSubtitles: [
         _subtitle1(),
@@ -35,7 +35,7 @@ class _State extends State<RadarrReleasesTile> {
   }
 
   Widget _trailing() {
-    return LunaIconButton(
+    return ArrPilotIconButton(
       icon: widget.release.lunaTrailingIcon,
       color: widget.release.lunaTrailingColor,
       onPressed: () async =>
@@ -52,12 +52,12 @@ class _State extends State<RadarrReleasesTile> {
           text: widget.release.lunaProtocol,
           style: TextStyle(
             color: widget.release.lunaProtocolColor,
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
           ),
         ),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: widget.release.lunaIndexer),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: widget.release.lunaAge),
       ],
     );
@@ -67,86 +67,86 @@ class _State extends State<RadarrReleasesTile> {
     return TextSpan(
       children: [
         TextSpan(text: widget.release.lunaQuality),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: widget.release.lunaSize),
       ],
     );
   }
 
-  List<LunaHighlightedNode> _highlightedNodes() {
+  List<ArrPilotHighlightedNode> _highlightedNodes() {
     return [
-      LunaHighlightedNode(
+      ArrPilotHighlightedNode(
         text: widget.release.protocol!.readable!,
         backgroundColor: widget.release.lunaProtocolColor,
       ),
       if (widget.release.lunaCustomFormatScore(nullOnEmpty: true) != null)
-        LunaHighlightedNode(
+        ArrPilotHighlightedNode(
           text: widget.release.lunaCustomFormatScore()!,
-          backgroundColor: LunaColours.purple,
+          backgroundColor: ArrPilotColours.purple,
         ),
-      ...widget.release.customFormats!.map<LunaHighlightedNode>((custom) =>
-          LunaHighlightedNode(
-              text: custom.name!, backgroundColor: LunaColours.blueGrey)),
+      ...widget.release.customFormats!.map<ArrPilotHighlightedNode>((custom) =>
+          ArrPilotHighlightedNode(
+              text: custom.name!, backgroundColor: ArrPilotColours.blueGrey)),
     ];
   }
 
-  List<LunaTableContent> _tableContent() {
+  List<ArrPilotTableContent> _tableContent() {
     return [
-      LunaTableContent(title: 'age', body: widget.release.lunaAge),
-      LunaTableContent(title: 'indexer', body: widget.release.lunaIndexer),
-      LunaTableContent(title: 'size', body: widget.release.lunaSize),
-      LunaTableContent(
+      ArrPilotTableContent(title: 'age', body: widget.release.lunaAge),
+      ArrPilotTableContent(title: 'indexer', body: widget.release.lunaIndexer),
+      ArrPilotTableContent(title: 'size', body: widget.release.lunaSize),
+      ArrPilotTableContent(
           title: 'language',
           body: widget.release.languages
                   ?.map<String>(
-                      (language) => language.name ?? LunaUI.TEXT_EMDASH)
+                      (language) => language.name ?? ArrPilotUI.TEXT_EMDASH)
                   .join('\n') ??
-              LunaUI.TEXT_EMDASH),
-      LunaTableContent(title: 'quality', body: widget.release.lunaQuality),
+              ArrPilotUI.TEXT_EMDASH),
+      ArrPilotTableContent(title: 'quality', body: widget.release.lunaQuality),
       if (widget.release.seeders != null)
-        LunaTableContent(title: 'seeders', body: '${widget.release.seeders}'),
+        ArrPilotTableContent(title: 'seeders', body: '${widget.release.seeders}'),
       if (widget.release.leechers != null)
-        LunaTableContent(title: 'leechers', body: '${widget.release.leechers}'),
+        ArrPilotTableContent(title: 'leechers', body: '${widget.release.leechers}'),
     ];
   }
 
-  List<LunaButton> _tableButtons() {
+  List<ArrPilotButton> _tableButtons() {
     return [
-      LunaButton(
-        type: LunaButtonType.TEXT,
+      ArrPilotButton(
+        type: ArrPilotButtonType.TEXT,
         text: 'Download',
         icon: Icons.download_rounded,
         onTap: _startDownload,
         loadingState: _downloadState,
       ),
       if (widget.release.infoUrl?.isNotEmpty ?? false)
-        LunaButton.text(
+        ArrPilotButton.text(
           text: 'Indexer',
           icon: Icons.info_outline_rounded,
-          color: LunaColours.blue,
+          color: ArrPilotColours.blue,
           onTap: widget.release.infoUrl!.openLink,
         ),
       if (widget.release.rejected!)
-        LunaButton.text(
+        ArrPilotButton.text(
           text: 'Rejected',
           icon: Icons.report_outlined,
-          color: LunaColours.red,
+          color: ArrPilotColours.red,
           onTap: _showWarnings,
         ),
     ];
   }
 
   Future<void> _startDownload() async {
-    setState(() => _downloadState = LunaLoadingState.ACTIVE);
+    setState(() => _downloadState = ArrPilotLoadingState.ACTIVE);
     RadarrAPIHelper()
         .pushRelease(context: context, release: widget.release)
         .then((value) {
       if (mounted)
         setState(() => _downloadState =
-            value ? LunaLoadingState.INACTIVE : LunaLoadingState.ERROR);
+            value ? ArrPilotLoadingState.INACTIVE : ArrPilotLoadingState.ERROR);
     });
   }
 
-  Future<void> _showWarnings() async => await LunaDialogs()
+  Future<void> _showWarnings() async => await ArrPilotDialogs()
       .showRejections(context, widget.release.rejections ?? []);
 }

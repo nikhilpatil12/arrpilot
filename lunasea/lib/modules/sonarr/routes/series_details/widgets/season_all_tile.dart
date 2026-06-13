@@ -14,14 +14,14 @@ class SonarrSeriesDetailsSeasonAllTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'sonarr.AllSeasons'.tr(),
       disabled: !series!.monitored!,
       body: [
         _subtitle1(),
         _subtitle2(),
       ],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {
         SonarrRoutes.SERIES_SEASON.go(params: {
           'series': (series?.id ?? -1).toString(),
@@ -41,13 +41,13 @@ class SonarrSeriesDetailsSeasonAllTile extends StatelessWidget {
     return TextSpan(
       style: TextStyle(
         color: series!.lunaPercentageComplete == 100
-            ? LunaColours.accent
-            : LunaColours.red,
-        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+            ? ArrPilotColours.accent
+            : ArrPilotColours.red,
+        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
       ),
       text: [
         '${series!.lunaPercentageComplete}%',
-        LunaUI.TEXT_BULLET,
+        ArrPilotUI.TEXT_BULLET,
         '${series!.statistics?.episodeFileCount ?? 0}/${series!.statistics?.episodeCount ?? 0}',
         'Episodes Available',
       ].join(' '),

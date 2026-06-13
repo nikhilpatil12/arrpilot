@@ -1,7 +1,7 @@
 import 'package:arrpilot/core.dart';
 import 'package:arrpilot/modules/lidarr.dart';
 
-class LidarrState extends LunaModuleState {
+class LidarrState extends ArrPilotModuleState {
   LidarrState() {
     reset();
   }

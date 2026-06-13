@@ -21,7 +21,7 @@ class ArtistDetailsRoute extends StatefulWidget {
 
 class _State extends State<ArtistDetailsRoute> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  final _pageController = LunaPageController(initialPage: 1);
+  final _pageController = ArrPilotPageController(initialPage: 1);
 
   LidarrCatalogueData? data;
   bool _error = false;
@@ -37,7 +37,7 @@ class _State extends State<ArtistDetailsRoute> {
 
   Future<void> _fetch() async {
     if (mounted) setState(() => _error = false);
-    final api = LidarrAPI.from(LunaProfile.current);
+    final api = LidarrAPI.from(ArrPilotProfile.current);
     await api.getArtist(widget.artistId).then((newData) {
       if (mounted) {
         setState(() {
@@ -57,18 +57,18 @@ class _State extends State<ArtistDetailsRoute> {
   @override
   Widget build(BuildContext context) {
     if (_error) {
-      return LunaScaffold(
+      return ArrPilotScaffold(
         scaffoldKey: _scaffoldKey,
-        appBar: LunaAppBar(title: 'Artist Details'),
-        body: LunaMessage.error(onTap: _fetch),
+        appBar: ArrPilotAppBar(title: 'Artist Details'),
+        body: ArrPilotMessage.error(onTap: _fetch),
       );
     }
 
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar,
       bottomNavigationBar: data != null ? _bottomNavigationBar : null,
-      body: data != null ? _body : const LunaLoader(),
+      body: data != null ? _body : const ArrPilotLoader(),
     );
   }
 
@@ -77,8 +77,8 @@ class _State extends State<ArtistDetailsRoute> {
 
     if (data != null) {
       _actions = [
-        LunaIconButton(
-          icon: LunaIcons.LINK,
+        ArrPilotIconButton(
+          icon: ArrPilotIcons.LINK,
           onPressed: () async {
             LinksSheet(artist: data!).show();
           },
@@ -91,7 +91,7 @@ class _State extends State<ArtistDetailsRoute> {
       ];
     }
 
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'Artist Details',
       pageController: _pageController,
       scrollControllers: LidarrArtistNavigationBar.scrollControllers,
@@ -107,7 +107,7 @@ class _State extends State<ArtistDetailsRoute> {
         LidarrDetailsAlbumList(artistID: data!.artistID),
       ];
 
-  Widget get _body => LunaPageView(
+  Widget get _body => ArrPilotPageView(
         controller: _pageController,
         children: _tabs,
       );
@@ -117,6 +117,6 @@ class _State extends State<ArtistDetailsRoute> {
       title: 'Artist Removed',
       message: data!.title,
     );
-    LunaRouter.router.pop();
+    ArrPilotRouter.router.pop();
   }
 }

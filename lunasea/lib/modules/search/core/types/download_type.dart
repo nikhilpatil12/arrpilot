@@ -26,9 +26,9 @@ extension SearchDownloadTypeExtension on SearchDownloadType {
   IconData get icon {
     switch (this) {
       case SearchDownloadType.NZBGET:
-        return LunaModule.NZBGET.icon;
+        return ArrPilotModule.NZBGET.icon;
       case SearchDownloadType.SABNZBD:
-        return LunaModule.SABNZBD.icon;
+        return ArrPilotModule.SABNZBD.icon;
       case SearchDownloadType.FILESYSTEM:
         return Icons.download_rounded;
     }
@@ -47,7 +47,7 @@ extension SearchDownloadTypeExtension on SearchDownloadType {
 
   Future<void> _executeNZBGet(
       BuildContext context, NewznabResultData data) async {
-    NZBGetAPI api = NZBGetAPI.from(LunaProfile.current);
+    NZBGetAPI api = NZBGetAPI.from(ArrPilotProfile.current);
     await api
         .uploadURL(data.linkDownload)
         .then((_) => showLunaSuccessSnackBar(
@@ -55,10 +55,10 @@ extension SearchDownloadTypeExtension on SearchDownloadType {
               message:
                   'search.SentTo'.tr(args: [SearchDownloadType.NZBGET.name]),
               showButton: true,
-              buttonOnPressed: LunaModule.NZBGET.launch,
+              buttonOnPressed: ArrPilotModule.NZBGET.launch,
             ))
         .catchError((error, stack) {
-      LunaLogger().error('Failed to download data', error, stack);
+      ArrPilotLogger().error('Failed to download data', error, stack);
       return showLunaErrorSnackBar(
           title: 'search.FailedToSend'.tr(), error: error);
     });
@@ -66,7 +66,7 @@ extension SearchDownloadTypeExtension on SearchDownloadType {
 
   Future<void> _executeSABnzbd(
       BuildContext context, NewznabResultData data) async {
-    SABnzbdAPI api = SABnzbdAPI.from(LunaProfile.current);
+    SABnzbdAPI api = SABnzbdAPI.from(ArrPilotProfile.current);
     await api
         .uploadURL(data.linkDownload)
         .then((_) => showLunaSuccessSnackBar(
@@ -74,10 +74,10 @@ extension SearchDownloadTypeExtension on SearchDownloadType {
               message:
                   'search.SentTo'.tr(args: [SearchDownloadType.SABNZBD.name]),
               showButton: true,
-              buttonOnPressed: LunaModule.SABNZBD.launch,
+              buttonOnPressed: ArrPilotModule.SABNZBD.launch,
             ))
         .catchError((error, stack) {
-      LunaLogger().error('Failed to download data', error, stack);
+      ArrPilotLogger().error('Failed to download data', error, stack);
       return showLunaErrorSnackBar(
           title: 'search.FailedToSend'.tr(), error: error);
     });
@@ -96,7 +96,7 @@ extension SearchDownloadTypeExtension on SearchDownloadType {
           .api
           .downloadRelease(data)
           .then((download) async {
-        bool result = await LunaFileSystem().save(
+        bool result = await ArrPilotFileSystem().save(
           context,
           '$cleanTitle.nzb',
           utf8.encode(download!),
@@ -106,7 +106,7 @@ extension SearchDownloadTypeExtension on SearchDownloadType {
               title: 'Saved NZB', message: 'NZB has been successfully saved');
       });
     } catch (error, stack) {
-      LunaLogger().error('Error downloading NZB', error, stack);
+      ArrPilotLogger().error('Error downloading NZB', error, stack);
       showLunaErrorSnackBar(
           title: 'search.FailedToDownloadNZB'.tr(), error: error);
     }

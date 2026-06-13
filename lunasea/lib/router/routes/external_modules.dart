@@ -4,7 +4,7 @@ import 'package:arrpilot/modules/external_modules/routes/external_modules/route.
 import 'package:arrpilot/router/routes.dart';
 import 'package:arrpilot/vendor.dart';
 
-enum ExternalModulesRoutes with LunaRoutesMixin {
+enum ExternalModulesRoutes with ArrPilotRoutesMixin {
   HOME('/external_modules');
 
   @override
@@ -13,7 +13,7 @@ enum ExternalModulesRoutes with LunaRoutesMixin {
   const ExternalModulesRoutes(this.path);
 
   @override
-  LunaModule get module => LunaModule.EXTERNAL_MODULES;
+  ArrPilotModule get module => ArrPilotModule.EXTERNAL_MODULES;
 
   @override
   bool isModuleEnabled(BuildContext context) => true;

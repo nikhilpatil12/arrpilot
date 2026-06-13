@@ -4,12 +4,12 @@ import 'package:stack_trace/stack_trace.dart';
 
 part 'log.g.dart';
 
-@HiveType(typeId: 23, adapterName: 'LunaLogAdapter')
-class LunaLog extends HiveObject {
+@HiveType(typeId: 23, adapterName: 'ArrPilotLogAdapter')
+class ArrPilotLog extends HiveObject {
   @HiveField(0)
   final int timestamp;
   @HiveField(1)
-  final LunaLogType type;
+  final ArrPilotLogType type;
   @HiveField(2)
   final String? className;
   @HiveField(3)
@@ -21,7 +21,7 @@ class LunaLog extends HiveObject {
   @HiveField(6)
   final String? stackTrace;
 
-  LunaLog({
+  ArrPilotLog({
     required this.timestamp,
     required this.type,
     this.className,
@@ -31,22 +31,22 @@ class LunaLog extends HiveObject {
     this.stackTrace,
   });
 
-  factory LunaLog.withMessage({
-    required LunaLogType type,
+  factory ArrPilotLog.withMessage({
+    required ArrPilotLogType type,
     required String message,
     String? className,
     String? methodName,
   }) {
     int timestamp = DateTime.now().millisecondsSinceEpoch;
-    return LunaLog(
+    return ArrPilotLog(
       timestamp: timestamp,
       type: type,
       message: message,
     );
   }
 
-  factory LunaLog.withError({
-    required LunaLogType type,
+  factory ArrPilotLog.withError({
+    required ArrPilotLogType type,
     required String message,
     required dynamic error,
     required StackTrace? stackTrace,
@@ -60,7 +60,7 @@ class LunaLog extends HiveObject {
       _className = trace?.frames[0].uri.toString();
       _methodName = trace?.frames[0].member.toString();
     }
-    return LunaLog(
+    return ArrPilotLog(
       timestamp: timestamp,
       type: type,
       className: className ?? _className,

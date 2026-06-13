@@ -1,10 +1,10 @@
 import 'package:arrpilot/core.dart';
 import 'package:arrpilot/modules/radarr.dart';
 
-extension LunaRadarrHistoryRecord on RadarrHistoryRecord {
+extension ArrPilotRadarrHistoryRecord on RadarrHistoryRecord {
   String get lunaFileDeletedReasonMessage {
     if (this.eventType != RadarrEventType.MOVIE_FILE_DELETED ||
-        this.data!['reason'] == null) return LunaUI.TEXT_EMDASH;
+        this.data!['reason'] == null) return ArrPilotUI.TEXT_EMDASH;
     switch (this.data!['reason']) {
       case 'Manual':
         return 'File was deleted manually';
@@ -13,7 +13,7 @@ extension LunaRadarrHistoryRecord on RadarrHistoryRecord {
       case 'Upgrade':
         return 'File was deleted to import an upgrade';
       default:
-        return LunaUI.TEXT_EMDASH;
+        return ArrPilotUI.TEXT_EMDASH;
     }
   }
 }

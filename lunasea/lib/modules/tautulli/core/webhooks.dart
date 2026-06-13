@@ -2,12 +2,12 @@ import 'package:arrpilot/core.dart';
 import 'package:arrpilot/router/routes/tautulli.dart';
 import 'package:arrpilot/system/webhooks.dart';
 
-class TautulliWebhooks extends LunaWebhooks {
+class TautulliWebhooks extends ArrPilotWebhooks {
   @override
   Future<void> handle(Map data) async {
     _EventType? event = _EventType.PLAYBACK_PAUSE.fromKey(data['event']);
     if (event == null)
-      LunaLogger().warning(
+      ArrPilotLogger().warning(
         'Unknown event type: ${data['event'] ?? 'null'}',
       );
     event?.execute(data);
@@ -174,7 +174,7 @@ extension _EventTypeExtension on _EventType {
   }
 
   Future<void> _goToHome() async {
-    return LunaModule.TAUTULLI.launch();
+    return ArrPilotModule.TAUTULLI.launch();
   }
 
   Future<void> _goToUserDetails(String? userId) async {

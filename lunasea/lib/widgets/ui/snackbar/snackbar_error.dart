@@ -10,14 +10,14 @@ Future<void> showLunaErrorSnackBar({
 }) async =>
     showLunaSnackBar(
       title: title,
-      message: message ?? LunaLogger.checkLogsMessage,
-      type: LunaSnackbarType.ERROR,
+      message: message ?? ArrPilotLogger.checkLogsMessage,
+      type: ArrPilotSnackbarType.ERROR,
       showButton: error != null || showButton,
       buttonText: buttonText,
       buttonOnPressed: () async {
         if (error != null) {
-          LunaDialogs().textPreview(
-            LunaState.context,
+          ArrPilotDialogs().textPreview(
+            ArrPilotState.context,
             'Error',
             error.toString(),
           );

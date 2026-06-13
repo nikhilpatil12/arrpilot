@@ -2,14 +2,14 @@ import 'package:arrpilot/core.dart';
 import 'package:arrpilot/extensions/int/bytes.dart';
 import 'package:arrpilot/modules/radarr.dart';
 
-extension LunaRadarrRootFolderExtension on RadarrRootFolder? {
+extension ArrPilotRadarrRootFolderExtension on RadarrRootFolder? {
   String get lunaPath {
     if (this?.path?.isNotEmpty ?? false) return this!.path!;
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaSpace {
-    return this?.freeSpace.asBytes() ?? LunaUI.TEXT_EMDASH;
+    return this?.freeSpace.asBytes() ?? ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaUnmappedFolders {

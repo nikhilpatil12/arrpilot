@@ -23,13 +23,13 @@ class NZBGetQueueTile extends StatefulWidget {
 class _State extends State<NZBGetQueueTile> {
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: widget.data.name,
       body: [TextSpan(text: widget.data.subtitle)],
-      bottom: LunaLinearPercentIndicator(
+      bottom: ArrPilotLinearPercentIndicator(
         percent: min(1.0, max(0, widget.data.percentageDone / 100)),
       ),
-      trailing: LunaReorderableListViewDragger(index: widget.index),
+      trailing: ArrPilotReorderableListViewDragger(index: widget.index),
       onTap: _handlePopup,
     );
   }
@@ -59,7 +59,7 @@ class _State extends State<NZBGetQueueTile> {
           _helper._delete();
           break;
         default:
-          LunaLogger().warning('Unknown Case: ${values[1]}');
+          ArrPilotLogger().warning('Unknown Case: ${values[1]}');
       }
   }
 }
@@ -76,7 +76,7 @@ class _Helper {
   );
 
   Future<void> _pauseJob() async {
-    await NZBGetAPI.from(LunaProfile.current).pauseSingleJob(data.id).then((_) {
+    await NZBGetAPI.from(ArrPilotProfile.current).pauseSingleJob(data.id).then((_) {
       showLunaSuccessSnackBar(title: 'Job Paused', message: data.name);
       refresh();
     }).catchError((error) {
@@ -88,7 +88,7 @@ class _Helper {
   }
 
   Future<void> _resumeJob() async {
-    await NZBGetAPI.from(LunaProfile.current)
+    await NZBGetAPI.from(ArrPilotProfile.current)
         .resumeSingleJob(data.id)
         .then((_) {
       showLunaSuccessSnackBar(title: 'Job Resumed', message: data.name);
@@ -103,10 +103,10 @@ class _Helper {
 
   Future<void> _category() async {
     List<NZBGetCategoryData> categories =
-        await NZBGetAPI.from(LunaProfile.current).getCategories();
+        await NZBGetAPI.from(ArrPilotProfile.current).getCategories();
     List values = await NZBGetDialogs.changeCategory(context, categories);
     if (values[0])
-      await NZBGetAPI.from(LunaProfile.current)
+      await NZBGetAPI.from(ArrPilotProfile.current)
           .setJobCategory(data.id, values[1])
           .then((_) {
         showLunaSuccessSnackBar(
@@ -127,7 +127,7 @@ class _Helper {
   Future<void> _priority() async {
     List values = await NZBGetDialogs.changePriority(context);
     if (values[0])
-      await NZBGetAPI.from(LunaProfile.current)
+      await NZBGetAPI.from(ArrPilotProfile.current)
           .setJobPriority(data.id, values[1])
           .then((_) {
         showLunaSuccessSnackBar(
@@ -145,7 +145,7 @@ class _Helper {
   Future<void> _rename() async {
     List values = await NZBGetDialogs.renameJob(context, data.name);
     if (values[0])
-      NZBGetAPI.from(LunaProfile.current)
+      NZBGetAPI.from(ArrPilotProfile.current)
           .renameJob(data.id, values[1])
           .then((_) {
         showLunaSuccessSnackBar(title: 'Job Renamed', message: values[1]);
@@ -161,7 +161,7 @@ class _Helper {
   Future<void> _delete() async {
     List values = await NZBGetDialogs.deleteJob(context);
     if (values[0])
-      await NZBGetAPI.from(LunaProfile.current).deleteJob(data.id).then((_) {
+      await NZBGetAPI.from(ArrPilotProfile.current).deleteJob(data.id).then((_) {
         showLunaSuccessSnackBar(title: 'Job Deleted', message: data.name);
         refresh();
       }).catchError((error) {
@@ -175,7 +175,7 @@ class _Helper {
   Future<void> _password() async {
     List values = await NZBGetDialogs.setPassword(context);
     if (values[0])
-      await NZBGetAPI.from(LunaProfile.current)
+      await NZBGetAPI.from(ArrPilotProfile.current)
           .setJobPassword(data.id, values[1])
           .then((_) {
         showLunaSuccessSnackBar(title: 'Job Password Set', message: data.name);

@@ -47,14 +47,14 @@ class _State extends State<TautulliMediaDetailsMetadata>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       body: _body(),
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: _refresh,
@@ -63,22 +63,22 @@ class _State extends State<TautulliMediaDetailsMetadata>
         builder: (context, AsyncSnapshot<TautulliMetadata> snapshot) {
           if (snapshot.hasError) {
             if (snapshot.connectionState != ConnectionState.waiting)
-              LunaLogger().error(
+              ArrPilotLogger().error(
                 'Unable to fetch Tautulli metadata: ${widget.ratingKey}',
                 snapshot.error,
                 snapshot.stackTrace,
               );
-            return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+            return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
           }
           if (snapshot.hasData) return _metadata(snapshot.data);
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
   }
 
   Widget _metadata(TautulliMetadata? metadata) {
-    return LunaListView(
+    return ArrPilotListView(
       controller: TautulliMediaDetailsNavigationBar.scrollControllers[0],
       children: [
         TautulliMediaDetailsMetadataHeaderTile(metadata: metadata),

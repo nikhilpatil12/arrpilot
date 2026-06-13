@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaListView extends StatelessWidget {
+class ArrPilotListView extends StatelessWidget {
   final List<Widget> children;
   final double? itemExtent;
   final EdgeInsetsGeometry? padding;
   final ScrollPhysics physics;
   final ScrollController? controller;
 
-  const LunaListView({
+  const ArrPilotListView({
     Key? key,
     required this.children,
     required this.controller,
@@ -29,7 +29,7 @@ class LunaListView extends StatelessWidget {
         itemExtent: itemExtent,
         padding: padding ??
             MediaQuery.of(context).padding.add(EdgeInsets.symmetric(
-                  vertical: LunaUI.MARGIN_H_DEFAULT_V_HALF.bottom,
+                  vertical: ArrPilotUI.MARGIN_H_DEFAULT_V_HALF.bottom,
                 )),
         physics: physics,
       ),

@@ -12,7 +12,7 @@ class TautulliHistoryRoute extends StatefulWidget {
 }
 
 class _State extends State<TautulliHistoryRoute>
-    with AutomaticKeepAliveClientMixin, LunaLoadCallbackMixin {
+    with AutomaticKeepAliveClientMixin, ArrPilotLoadCallbackMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -29,15 +29,15 @@ class _State extends State<TautulliHistoryRoute>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      module: LunaModule.TAUTULLI,
+      module: ArrPilotModule.TAUTULLI,
       body: _body(),
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: loadCallback,
@@ -48,15 +48,15 @@ class _State extends State<TautulliHistoryRoute>
           builder: (context, AsyncSnapshot<TautulliHistory> snapshot) {
             if (snapshot.hasError) {
               if (snapshot.connectionState != ConnectionState.waiting)
-                LunaLogger().error(
+                ArrPilotLogger().error(
                   'Unable to fetch Tautulli history',
                   snapshot.error,
                   snapshot.stackTrace,
                 );
-              return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+              return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
             }
             if (snapshot.hasData) return _history(snapshot.data);
-            return const LunaLoader();
+            return const ArrPilotLoader();
           },
         ),
       ),
@@ -65,15 +65,15 @@ class _State extends State<TautulliHistoryRoute>
 
   Widget _history(TautulliHistory? history) {
     if ((history?.records?.length ?? 0) == 0)
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'No History Found',
         buttonText: 'Refresh',
         onTap: _refreshKey.currentState!.show,
       );
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: TautulliNavigationBar.scrollControllers[2],
       itemCount: history!.records!.length,
-      itemExtent: LunaBlock.calculateItemExtent(3),
+      itemExtent: ArrPilotBlock.calculateItemExtent(3),
       itemBuilder: (context, index) =>
           TautulliHistoryTile(history: history.records![index]),
     );

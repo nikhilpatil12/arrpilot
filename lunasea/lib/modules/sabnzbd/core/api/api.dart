@@ -5,7 +5,7 @@ class SABnzbdAPI {
   final Dio _dio;
 
   SABnzbdAPI._internal(this._dio);
-  factory SABnzbdAPI.from(LunaProfile profile) {
+  factory SABnzbdAPI.from(ArrPilotProfile profile) {
     Dio _client = Dio(
       BaseOptions(
         baseUrl: profile.sabnzbdHost.endsWith('/')
@@ -27,7 +27,7 @@ class SABnzbdAPI {
   }
 
   void logError(String text, Object error, StackTrace trace) =>
-      LunaLogger().error('SABnzbd: $text', error, trace);
+      ArrPilotLogger().error('SABnzbd: $text', error, trace);
 
   Future<dynamic> testConnection() async => _dio.get('', queryParameters: {
         'mode': 'fullstatus',

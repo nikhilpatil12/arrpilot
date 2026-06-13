@@ -15,7 +15,7 @@ class TautulliSyncedItemTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: syncedItem.syncTitle,
       body: [
         _subtitle1(),
@@ -32,7 +32,7 @@ class TautulliSyncedItemTile extends StatelessWidget {
             syncedItem.ratingKey,
             width: MediaQuery.of(context).size.width.truncate(),
           ),
-      posterPlaceholderIcon: LunaIcons.VIDEO_CAM,
+      posterPlaceholderIcon: ArrPilotIcons.VIDEO_CAM,
       onTap: () async => _onTap(context),
     );
   }
@@ -45,9 +45,9 @@ class TautulliSyncedItemTile extends StatelessWidget {
     return TextSpan(
       children: [
         TextSpan(text: _type.toTitleCase()),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: _count == 1 ? '1 Item' : '$_count Items'),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: _size.asBytes(decimals: 1)),
       ],
     );
@@ -57,9 +57,9 @@ class TautulliSyncedItemTile extends StatelessWidget {
     return TextSpan(
       children: [
         TextSpan(text: syncedItem.user ?? 'Unknown User'),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: syncedItem.deviceName ?? 'Unknown Device'),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: syncedItem.platform ?? 'Unknown Platform'),
       ],
     );
@@ -70,8 +70,8 @@ class TautulliSyncedItemTile extends StatelessWidget {
     return TextSpan(
       text: _state.toTitleCase(),
       style: const TextStyle(
-        color: LunaColours.accent,
-        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+        color: ArrPilotColours.accent,
+        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
       ),
     );
   }

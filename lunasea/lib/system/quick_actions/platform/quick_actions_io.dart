@@ -6,13 +6,13 @@ import 'package:arrpilot/system/platform.dart';
 // ignore: always_use_package_imports
 import '../quick_actions.dart';
 
-bool isPlatformSupported() => LunaPlatform.isMobile;
-LunaQuickActions getQuickActions() {
+bool isPlatformSupported() => ArrPilotPlatform.isMobile;
+ArrPilotQuickActions getQuickActions() {
   if (isPlatformSupported()) return IO();
-  throw UnsupportedError('LunaQuickActions unsupported');
+  throw UnsupportedError('ArrPilotQuickActions unsupported');
 }
 
-class IO implements LunaQuickActions {
+class IO implements ArrPilotQuickActions {
   final QuickActions _quickActions = const QuickActions();
 
   @override
@@ -23,29 +23,29 @@ class IO implements LunaQuickActions {
 
   @override
   void actionHandler(String action) {
-    LunaModule.fromKey(action)?.launch();
+    ArrPilotModule.fromKey(action)?.launch();
   }
 
   @override
   void setActionItems() {
     _quickActions.setShortcutItems(<ShortcutItem>[
-      if (LunaSeaDatabase.QUICK_ACTIONS_TAUTULLI.read())
-        LunaModule.TAUTULLI.shortcutItem,
-      if (LunaSeaDatabase.QUICK_ACTIONS_SONARR.read())
-        LunaModule.SONARR.shortcutItem,
-      if (LunaSeaDatabase.QUICK_ACTIONS_SEARCH.read())
-        LunaModule.SEARCH.shortcutItem,
-      if (LunaSeaDatabase.QUICK_ACTIONS_SABNZBD.read())
-        LunaModule.SABNZBD.shortcutItem,
-      if (LunaSeaDatabase.QUICK_ACTIONS_RADARR.read())
-        LunaModule.RADARR.shortcutItem,
-      if (LunaSeaDatabase.QUICK_ACTIONS_OVERSEERR.read())
-        LunaModule.OVERSEERR.shortcutItem,
-      if (LunaSeaDatabase.QUICK_ACTIONS_NZBGET.read())
-        LunaModule.NZBGET.shortcutItem,
-      if (LunaSeaDatabase.QUICK_ACTIONS_LIDARR.read())
-        LunaModule.LIDARR.shortcutItem,
-      LunaModule.SETTINGS.shortcutItem,
+      if (ArrPilotDatabase.QUICK_ACTIONS_TAUTULLI.read())
+        ArrPilotModule.TAUTULLI.shortcutItem,
+      if (ArrPilotDatabase.QUICK_ACTIONS_SONARR.read())
+        ArrPilotModule.SONARR.shortcutItem,
+      if (ArrPilotDatabase.QUICK_ACTIONS_SEARCH.read())
+        ArrPilotModule.SEARCH.shortcutItem,
+      if (ArrPilotDatabase.QUICK_ACTIONS_SABNZBD.read())
+        ArrPilotModule.SABNZBD.shortcutItem,
+      if (ArrPilotDatabase.QUICK_ACTIONS_RADARR.read())
+        ArrPilotModule.RADARR.shortcutItem,
+      if (ArrPilotDatabase.QUICK_ACTIONS_OVERSEERR.read())
+        ArrPilotModule.OVERSEERR.shortcutItem,
+      if (ArrPilotDatabase.QUICK_ACTIONS_NZBGET.read())
+        ArrPilotModule.NZBGET.shortcutItem,
+      if (ArrPilotDatabase.QUICK_ACTIONS_LIDARR.read())
+        ArrPilotModule.LIDARR.shortcutItem,
+      ArrPilotModule.SETTINGS.shortcutItem,
     ]);
   }
 }

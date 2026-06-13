@@ -32,24 +32,24 @@ class RadarrMovieDetailsNavigationBar extends StatefulWidget {
 }
 
 class _State extends State<RadarrMovieDetailsNavigationBar> {
-  LunaLoadingState _automaticLoadingState = LunaLoadingState.INACTIVE;
+  ArrPilotLoadingState _automaticLoadingState = ArrPilotLoadingState.INACTIVE;
 
   @override
   Widget build(BuildContext context) {
-    return LunaBottomNavigationBar(
+    return ArrPilotBottomNavigationBar(
       pageController: widget.pageController,
       scrollControllers: RadarrMovieDetailsNavigationBar.scrollControllers,
       icons: RadarrMovieDetailsNavigationBar.icons,
       titles: RadarrMovieDetailsNavigationBar.titles,
       topActions: [
-        LunaButton(
-          type: LunaButtonType.TEXT,
+        ArrPilotButton(
+          type: ArrPilotButtonType.TEXT,
           text: 'Automatic',
           icon: Icons.search_rounded,
           onTap: _automatic,
           loadingState: _automaticLoadingState,
         ),
-        LunaButton.text(
+        ArrPilotButton.text(
           text: 'Interactive',
           icon: Icons.person_rounded,
           onTap: _manual,
@@ -59,7 +59,7 @@ class _State extends State<RadarrMovieDetailsNavigationBar> {
   }
 
   Future<void> _automatic() async {
-    setState(() => _automaticLoadingState = LunaLoadingState.ACTIVE);
+    setState(() => _automaticLoadingState = ArrPilotLoadingState.ACTIVE);
     RadarrAPIHelper()
         .automaticSearch(
             context: context,
@@ -69,7 +69,7 @@ class _State extends State<RadarrMovieDetailsNavigationBar> {
       if (mounted)
         setState(() {
           _automaticLoadingState =
-              value ? LunaLoadingState.INACTIVE : LunaLoadingState.ERROR;
+              value ? ArrPilotLoadingState.INACTIVE : ArrPilotLoadingState.ERROR;
         });
     });
   }

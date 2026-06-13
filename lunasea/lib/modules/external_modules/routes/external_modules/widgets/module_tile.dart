@@ -4,7 +4,7 @@ import 'package:arrpilot/database/models/external_module.dart';
 import 'package:arrpilot/extensions/string/links.dart';
 
 class ExternalModulesModuleTile extends StatelessWidget {
-  final LunaExternalModule? module;
+  final ArrPilotExternalModule? module;
 
   const ExternalModulesModuleTile({
     Key? key,
@@ -13,10 +13,10 @@ class ExternalModulesModuleTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: module!.displayName,
       body: [TextSpan(text: module!.host)],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: module!.host.openLink,
     );
   }

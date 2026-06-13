@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaColours {
-  /// List of LunaSea colours in order that the should appear in a list.
+class ArrPilotColours {
+  /// List of ArrPilot colours in order that the should appear in a list.
   ///
   /// Use [byListIndex] to fetch the colour at the any index
   static const _LIST_COLOR_ICONS = [
@@ -39,11 +39,11 @@ class LunaColours {
   Color byGraphLayer(int index) {
     switch (index) {
       case 0:
-        return LunaColours.accent;
+        return ArrPilotColours.accent;
       case 1:
-        return LunaColours.purple;
+        return ArrPilotColours.purple;
       case 2:
-        return LunaColours.blue;
+        return ArrPilotColours.blue;
       default:
         return byListIndex(index);
     }
@@ -56,21 +56,21 @@ class LunaColours {
   }
 }
 
-extension LunaColor on Color {
+extension ArrPilotColor on Color {
   Color disabled([bool condition = true]) {
-    if (condition) return this.withOpacity(LunaUI.OPACITY_DISABLED);
+    if (condition) return this.withOpacity(ArrPilotUI.OPACITY_DISABLED);
     return this;
   }
 
   Color enabled([bool condition = true]) {
     if (condition) return this;
-    return this.withOpacity(LunaUI.OPACITY_DISABLED);
+    return this.withOpacity(ArrPilotUI.OPACITY_DISABLED);
   }
 
   Color selected([bool condition = true]) {
-    if (condition) return this.withOpacity(LunaUI.OPACITY_SELECTED);
+    if (condition) return this.withOpacity(ArrPilotUI.OPACITY_SELECTED);
     return this;
   }
 
-  Color dimmed() => this.withOpacity(LunaUI.OPACITY_DIMMED);
+  Color dimmed() => this.withOpacity(ArrPilotUI.OPACITY_DIMMED);
 }

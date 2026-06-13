@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaHighlightedNode extends StatelessWidget {
+class ArrPilotHighlightedNode extends StatelessWidget {
   final Color backgroundColor;
   final Color textColor;
   final String text;
 
-  const LunaHighlightedNode({
+  const ArrPilotHighlightedNode({
     Key? key,
     required this.text,
-    this.backgroundColor = LunaColours.accent,
+    this.backgroundColor = ArrPilotColours.accent,
     this.textColor = Colors.white,
   }) : super(key: key);
 
@@ -21,16 +21,16 @@ class LunaHighlightedNode extends StatelessWidget {
           text,
           maxLines: 1,
           style: TextStyle(
-            fontSize: LunaUI.FONT_SIZE_H4,
+            fontSize: ArrPilotUI.FONT_SIZE_H4,
             color: textColor,
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
           ),
         ),
         padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
       ),
       decoration: BoxDecoration(
         color: backgroundColor,
-        borderRadius: BorderRadius.circular(LunaUI.BORDER_RADIUS),
+        borderRadius: BorderRadius.circular(ArrPilotUI.BORDER_RADIUS),
       ),
     );
   }

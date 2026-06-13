@@ -3,10 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:arrpilot/core.dart';
 
 // ignore: avoid_classes_with_only_static_members
-abstract class LunaDialog {
-  static const HEADER_SIZE = LunaUI.FONT_SIZE_H1;
-  static const BODY_SIZE = LunaUI.FONT_SIZE_H3;
-  static const BUTTON_SIZE = LunaUI.FONT_SIZE_H4;
+abstract class ArrPilotDialog {
+  static const HEADER_SIZE = ArrPilotUI.FONT_SIZE_H1;
+  static const BODY_SIZE = ArrPilotUI.FONT_SIZE_H3;
+  static const BUTTON_SIZE = ArrPilotUI.FONT_SIZE_H4;
 
   static Widget title({
     required String text,
@@ -15,21 +15,21 @@ abstract class LunaDialog {
         text,
         textAlign: TextAlign.center,
         style: const TextStyle(
-          fontSize: LunaDialog.HEADER_SIZE,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          fontSize: ArrPilotDialog.HEADER_SIZE,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         ),
       );
 
   static TextSpan bolded({
     required String text,
-    double fontSize = LunaDialog.BODY_SIZE,
+    double fontSize = ArrPilotDialog.BODY_SIZE,
     Color? color,
   }) =>
       TextSpan(
         text: text,
         style: TextStyle(
-          color: color ?? LunaColours.accent,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          color: color ?? ArrPilotColours.accent,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
           fontSize: fontSize,
         ),
       );
@@ -41,7 +41,7 @@ abstract class LunaDialog {
       RichText(
         text: TextSpan(
           style: const TextStyle(
-            fontSize: LunaDialog.BODY_SIZE,
+            fontSize: ArrPilotDialog.BODY_SIZE,
           ),
           children: children,
         ),
@@ -57,8 +57,8 @@ abstract class LunaDialog {
         child: Text(
           text,
           style: TextStyle(
-            color: textColor ?? LunaColours.accent,
-            fontSize: LunaDialog.BUTTON_SIZE,
+            color: textColor ?? ArrPilotColours.accent,
+            fontSize: ArrPilotDialog.BUTTON_SIZE,
           ),
         ),
         onPressed: () async {
@@ -77,7 +77,7 @@ abstract class LunaDialog {
           text ?? 'lunasea.Cancel'.tr(),
           style: TextStyle(
             color: textColor,
-            fontSize: LunaDialog.BUTTON_SIZE,
+            fontSize: ArrPilotDialog.BUTTON_SIZE,
           ),
         ),
         onPressed: () {
@@ -104,7 +104,7 @@ abstract class LunaDialog {
         text,
         style: const TextStyle(
           color: Colors.white,
-          fontSize: LunaDialog.BODY_SIZE,
+          fontSize: ArrPilotDialog.BODY_SIZE,
         ),
         textAlign: textAlign,
       );
@@ -116,7 +116,7 @@ abstract class LunaDialog {
         text: text,
         style: const TextStyle(
           color: Colors.white,
-          fontSize: LunaDialog.BODY_SIZE,
+          fontSize: ArrPilotDialog.BODY_SIZE,
         ),
       );
 
@@ -132,23 +132,23 @@ abstract class LunaDialog {
         decoration: InputDecoration(
           labelText: title,
           labelStyle: const TextStyle(
-            color: LunaColours.grey,
+            color: ArrPilotColours.grey,
             decoration: TextDecoration.none,
-            fontSize: LunaDialog.BODY_SIZE,
+            fontSize: ArrPilotDialog.BODY_SIZE,
           ),
           focusedBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: LunaColours.accent),
+            borderSide: BorderSide(color: ArrPilotColours.accent),
           ),
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(
-                color: LunaColours.accent.withOpacity(LunaUI.OPACITY_SPLASH)),
+                color: ArrPilotColours.accent.withOpacity(ArrPilotUI.OPACITY_SPLASH)),
           ),
         ),
         style: const TextStyle(
           color: Colors.white,
-          fontSize: LunaDialog.BODY_SIZE,
+          fontSize: ArrPilotDialog.BODY_SIZE,
         ),
-        cursorColor: LunaColours.accent,
+        cursorColor: ArrPilotColours.accent,
         textInputAction: TextInputAction.done,
         onSubmitted: onSubmitted,
       );
@@ -170,23 +170,23 @@ abstract class LunaDialog {
         decoration: InputDecoration(
           labelText: title,
           labelStyle: const TextStyle(
-            color: LunaColours.grey,
+            color: ArrPilotColours.grey,
             decoration: TextDecoration.none,
-            fontSize: LunaDialog.BODY_SIZE,
+            fontSize: ArrPilotDialog.BODY_SIZE,
           ),
           focusedBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: LunaColours.accent),
+            borderSide: BorderSide(color: ArrPilotColours.accent),
           ),
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(
-                color: LunaColours.accent.withOpacity(LunaUI.OPACITY_SPLASH)),
+                color: ArrPilotColours.accent.withOpacity(ArrPilotUI.OPACITY_SPLASH)),
           ),
         ),
         style: const TextStyle(
           color: Colors.white,
-          fontSize: LunaDialog.BODY_SIZE,
+          fontSize: ArrPilotDialog.BODY_SIZE,
         ),
-        cursorColor: LunaColours.accent,
+        cursorColor: ArrPilotColours.accent,
         textInputAction: TextInputAction.done,
         validator: validator,
         onFieldSubmitted: onSubmitted,
@@ -205,14 +205,14 @@ abstract class LunaDialog {
           children: <Widget>[
             Icon(
               icon ?? Icons.error_outline_rounded,
-              color: iconColor ?? LunaColours.accent,
+              color: iconColor ?? ArrPilotColours.accent,
             ),
           ],
         ),
         title: Text(
           text,
           style: const TextStyle(
-            fontSize: LunaDialog.BODY_SIZE,
+            fontSize: ArrPilotDialog.BODY_SIZE,
             color: Colors.white,
           ),
         ),
@@ -272,17 +272,17 @@ abstract class LunaDialog {
       builder: (context) => AlertDialog(
         actions: <Widget>[
           if (showCancelButton)
-            LunaDialog.cancel(
+            ArrPilotDialog.cancel(
               context,
               text: cancelButtonText,
-              textColor: buttons != null ? Colors.white : LunaColours.accent,
+              textColor: buttons != null ? Colors.white : ArrPilotColours.accent,
             ),
           if (buttons != null) ...buttons,
         ],
-        title: LunaDialog.title(text: title!),
-        content: customContent ?? LunaDialog.content(children: content!),
+        title: ArrPilotDialog.title(text: title!),
+        content: customContent ?? ArrPilotDialog.content(children: content!),
         contentPadding: contentPadding,
-        shape: LunaUI.shapeBorder,
+        shape: ArrPilotUI.shapeBorder,
       ),
     );
   }

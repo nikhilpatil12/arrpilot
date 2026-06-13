@@ -25,21 +25,21 @@ class SABnzbdAppBarStats extends StatelessWidget {
             child: RichText(
               text: TextSpan(
                 style: const TextStyle(
-                  color: LunaColours.grey,
-                  fontSize: LunaUI.FONT_SIZE_H3,
+                  color: ArrPilotColours.grey,
+                  fontSize: ArrPilotUI.FONT_SIZE_H3,
                 ),
                 children: [
                   TextSpan(
                     text: _status(data.item1, data.item2),
                     style: const TextStyle(
-                      fontWeight: LunaUI.FONT_WEIGHT_BOLD,
-                      fontSize: LunaUI.FONT_SIZE_HEADER,
-                      color: LunaColours.accent,
+                      fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
+                      fontSize: ArrPilotUI.FONT_SIZE_HEADER,
+                      color: ArrPilotColours.accent,
                     ),
                   ),
                   const TextSpan(text: '\n'),
                   TextSpan(text: data.item3 == '0:00:00' ? '―' : data.item3),
-                  TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+                  TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
                   TextSpan(text: data.item4 == '0.0 B' ? '―' : data.item4)
                 ],
               ),
@@ -67,7 +67,7 @@ class SABnzbdAppBarStats extends StatelessWidget {
           {
             values = await SABnzbdDialogs.customSpeedLimit(context);
             if (values[0])
-              SABnzbdAPI.from(LunaProfile.current)
+              SABnzbdAPI.from(ArrPilotProfile.current)
                   .setSpeedLimit(values[1])
                   .then((_) => showLunaSuccessSnackBar(
                         title: 'Speed Limit Set',
@@ -80,7 +80,7 @@ class SABnzbdAppBarStats extends StatelessWidget {
             break;
           }
         default:
-          SABnzbdAPI.from(LunaProfile.current)
+          SABnzbdAPI.from(ArrPilotProfile.current)
               .setSpeedLimit(values[1])
               .then((_) => showLunaSuccessSnackBar(
                     title: 'Speed Limit Set',

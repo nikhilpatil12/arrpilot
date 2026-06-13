@@ -9,11 +9,11 @@ class RadarrAddMovieDetailsMonitoredTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'radarr.Monitor'.tr(),
       trailing: Selector<RadarrAddMovieDetailsState, bool>(
         selector: (_, state) => state.monitored,
-        builder: (context, monitored, _) => LunaSwitch(
+        builder: (context, monitored, _) => ArrPilotSwitch(
           value: monitored,
           onChanged: (value) =>
               context.read<RadarrAddMovieDetailsState>().monitored = value,

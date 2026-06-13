@@ -2,5 +2,5 @@
 import '../filesystem.dart';
 
 bool isPlatformSupported() => false;
-LunaFileSystem getFileSystem() =>
-    throw UnsupportedError('LunaFileSystem unsupported');
+ArrPilotFileSystem getFileSystem() =>
+    throw UnsupportedError('ArrPilotFileSystem unsupported');

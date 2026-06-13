@@ -15,7 +15,7 @@ class RadarrManualImportDetailsTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => RadarrManualImportDetailsTileState(context, manualImport),
-      builder: (context, _) => LunaExpandableListTile(
+      builder: (context, _) => ArrPilotExpandableListTile(
         key: ObjectKey(manualImport),
         title: context
             .watch<RadarrManualImportDetailsTileState>()
@@ -32,7 +32,7 @@ class RadarrManualImportDetailsTile extends StatelessWidget {
                 .watch<RadarrManualImportDetailsState>()
                 .selectedFiles
                 .contains(manualImport.id)
-            ? LunaColours.accent.withOpacity(LunaUI.OPACITY_SPLASH)
+            ? ArrPilotColours.accent.withOpacity(ArrPilotUI.OPACITY_SPLASH)
             : null,
       ),
     );
@@ -46,13 +46,13 @@ class RadarrManualImportDetailsTile extends StatelessWidget {
                 .watch<RadarrManualImportDetailsTileState>()
                 .manualImport
                 .lunaQualityProfile),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(
             text: context
                 .watch<RadarrManualImportDetailsTileState>()
                 .manualImport
                 .lunaLanguage),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(
             text: context
                 .watch<RadarrManualImportDetailsTileState>()
@@ -69,8 +69,8 @@ class RadarrManualImportDetailsTile extends StatelessWidget {
           .manualImport
           .lunaMovie,
       style: const TextStyle(
-        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
-        color: LunaColours.accent,
+        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
+        color: ArrPilotColours.accent,
       ),
     );
   }
@@ -84,30 +84,30 @@ class RadarrManualImportDetailsTile extends StatelessWidget {
     );
   }
 
-  List<LunaTableContent> _table(BuildContext context) {
+  List<ArrPilotTableContent> _table(BuildContext context) {
     return [
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'radarr.Movie'.tr(),
         body: context
             .watch<RadarrManualImportDetailsTileState>()
             .manualImport
             .lunaMovie,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'radarr.Quality'.tr(),
         body: context
             .watch<RadarrManualImportDetailsTileState>()
             .manualImport
             .lunaQualityProfile,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'radarr.Languages'.tr(),
         body: context
             .watch<RadarrManualImportDetailsTileState>()
             .manualImport
             .lunaLanguage,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'radarr.Size'.tr(),
         body: context
             .watch<RadarrManualImportDetailsTileState>()
@@ -117,7 +117,7 @@ class RadarrManualImportDetailsTile extends StatelessWidget {
     ];
   }
 
-  List<LunaButton> _buttons(BuildContext context) {
+  List<ArrPilotButton> _buttons(BuildContext context) {
     return [
       _configureButton(context),
       if ((context
@@ -131,8 +131,8 @@ class RadarrManualImportDetailsTile extends StatelessWidget {
     ];
   }
 
-  LunaButton _configureButton(BuildContext context) {
-    return LunaButton.text(
+  ArrPilotButton _configureButton(BuildContext context) {
+    return ArrPilotButton.text(
         text: 'radarr.Configure'.tr(),
         icon: Icons.edit_rounded,
         onTap: () async {
@@ -143,12 +143,12 @@ class RadarrManualImportDetailsTile extends StatelessWidget {
         });
   }
 
-  LunaButton _rejectionsButton(BuildContext context) {
-    return LunaButton.text(
+  ArrPilotButton _rejectionsButton(BuildContext context) {
+    return ArrPilotButton.text(
       text: 'radarr.Rejected'.tr(),
       icon: Icons.report_outlined,
-      color: LunaColours.red,
-      onTap: () async => LunaDialogs().showRejections(
+      color: ArrPilotColours.red,
+      onTap: () async => ArrPilotDialogs().showRejections(
         context,
         context
                 .read<RadarrManualImportDetailsTileState>()

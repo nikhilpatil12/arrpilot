@@ -17,21 +17,21 @@ class TautulliLibrariesLibraryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int? _plays = library.plays;
-    return LunaBlock(
+    return ArrPilotBlock(
       title: library.sectionName,
       body: [
         TextSpan(text: library.readableCount),
         TextSpan(
           children: [
             TextSpan(text: _plays == 1 ? '1 Play' : '$_plays Plays'),
-            TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+            TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
             TextSpan(text: library.duration!.asWordsTimestamp()),
           ],
         ),
         TextSpan(
           style: const TextStyle(
-            color: LunaColours.accent,
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+            color: ArrPilotColours.accent,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
           ),
           text: library.lastAccessed?.asAge() ?? 'Unknown',
         ),

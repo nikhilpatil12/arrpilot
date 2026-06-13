@@ -17,13 +17,13 @@ class LidarrReleasesSortButton extends StatefulWidget {
 
 class _State extends State<LidarrReleasesSortButton> {
   @override
-  Widget build(BuildContext context) => LunaCard(
+  Widget build(BuildContext context) => ArrPilotCard(
         context: context,
-        height: LunaTextInputBar.defaultHeight,
-        width: LunaTextInputBar.defaultHeight,
+        height: ArrPilotTextInputBar.defaultHeight,
+        width: ArrPilotTextInputBar.defaultHeight,
         child: Consumer<LidarrState>(
           builder: (context, model, _) =>
-              LunaPopupMenuButton<LidarrReleasesSorting>(
+              ArrPilotPopupMenuButton<LidarrReleasesSorting>(
             tooltip: 'Sort Releases',
             icon: Icons.sort_rounded,
             onSelected: (result) {
@@ -46,7 +46,7 @@ class _State extends State<LidarrReleasesSortButton> {
                     Text(
                       LidarrReleasesSorting.values[index].readable,
                       style: const TextStyle(
-                        fontSize: LunaUI.FONT_SIZE_H3,
+                        fontSize: ArrPilotUI.FONT_SIZE_H3,
                       ),
                     ),
                     if (model.sortReleasesType ==
@@ -55,8 +55,8 @@ class _State extends State<LidarrReleasesSortButton> {
                         model.sortReleasesAscending
                             ? Icons.arrow_upward_rounded
                             : Icons.arrow_downward_rounded,
-                        size: LunaUI.FONT_SIZE_H2,
-                        color: LunaColours.accent,
+                        size: ArrPilotUI.FONT_SIZE_H2,
+                        color: ArrPilotColours.accent,
                       ),
                   ],
                 ),
@@ -64,7 +64,7 @@ class _State extends State<LidarrReleasesSortButton> {
             ),
           ),
         ),
-        margin: LunaTextInputBar.appBarMargin
+        margin: ArrPilotTextInputBar.appBarMargin
             .subtract(const EdgeInsets.only(left: 12.0)) as EdgeInsets,
         color: Theme.of(context).canvasColor,
       );

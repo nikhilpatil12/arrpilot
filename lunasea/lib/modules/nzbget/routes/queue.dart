@@ -34,7 +34,7 @@ class _State extends State<NZBGetQueue>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       body: _body,
       floatingActionButton: context.watch<NZBGetState>().error
@@ -66,7 +66,7 @@ class _State extends State<NZBGetQueue>
   }
 
   Future _fetch() async {
-    NZBGetAPI _api = NZBGetAPI.from(LunaProfile.current);
+    NZBGetAPI _api = NZBGetAPI.from(ArrPilotProfile.current);
     return _fetchStatus(_api).then((_) => _fetchQueue(_api)).then((_) {
       try {
         if (_timer == null || !_timer!.isActive) _createTimer();
@@ -106,7 +106,7 @@ class _State extends State<NZBGetQueue>
     _model.error = error;
   }
 
-  Widget get _body => LunaRefreshIndicator(
+  Widget get _body => ArrPilotRefreshIndicator(
         context: context,
         key: widget.refreshIndicatorKey,
         onRefresh: _fetchWithoutMessage,
@@ -115,19 +115,19 @@ class _State extends State<NZBGetQueue>
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done &&
                 context.read<NZBGetState>().error)
-              return LunaMessage.error(onTap: _refresh);
+              return ArrPilotMessage.error(onTap: _refresh);
             if (snapshot.hasData) return _list;
-            return const LunaLoader();
+            return const ArrPilotLoader();
           },
         ),
       );
 
   Widget get _list {
     if (_queue == null) {
-      return LunaMessage.error(onTap: _refresh);
+      return ArrPilotMessage.error(onTap: _refresh);
     }
     if (_queue!.isEmpty) {
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'Empty Queue',
         buttonText: 'Refresh',
         onTap: _fetchWithoutMessage,
@@ -137,7 +137,7 @@ class _State extends State<NZBGetQueue>
   }
 
   Widget _reorderableList() {
-    return LunaReorderableListViewBuilder(
+    return ArrPilotReorderableListViewBuilder(
       controller: NZBGetNavigationBar.scrollControllers[0],
       onReorder: (oIndex, nIndex) async {
         if (oIndex > _queue!.length) oIndex = _queue!.length;
@@ -148,7 +148,7 @@ class _State extends State<NZBGetQueue>
             _queue!.remove(data);
             _queue!.insert(nIndex, data);
           });
-        await NZBGetAPI.from(LunaProfile.current)
+        await NZBGetAPI.from(ArrPilotProfile.current)
             .moveQueue(data.id, (nIndex - oIndex))
             .then((_) => showLunaSuccessSnackBar(
                 title: 'Moved Job in Queue', message: data.name))

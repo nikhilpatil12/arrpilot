@@ -22,12 +22,12 @@ class SonarrSeriesDetailsSeasonTile extends StatefulWidget {
 }
 
 class _State extends State<SonarrSeriesDetailsSeasonTile> {
-  LunaLoadingState _loadingState = LunaLoadingState.INACTIVE;
+  ArrPilotLoadingState _loadingState = ArrPilotLoadingState.INACTIVE;
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
-      posterPlaceholderIcon: LunaIcons.VIDEO_CAM,
+    return ArrPilotBlock(
+      posterPlaceholderIcon: ArrPilotIcons.VIDEO_CAM,
       posterUrl: _posterUrl(),
       posterHeaders: context.read<SonarrState>().headers,
       title: widget.season.lunaTitle,
@@ -73,14 +73,14 @@ class _State extends State<SonarrSeriesDetailsSeasonTile> {
             showSeconds: false,
             delimiter: '@'.pad(),
           ) ??
-          LunaUI.TEXT_EMDASH,
+          ArrPilotUI.TEXT_EMDASH,
     );
   }
 
   TextSpan _subtitle2() {
     return TextSpan(
       text: widget.season.statistics?.sizeOnDisk?.asBytes(decimals: 1) ??
-          LunaUI.TEXT_EMDASH,
+          ArrPilotUI.TEXT_EMDASH,
     );
   }
 
@@ -88,13 +88,13 @@ class _State extends State<SonarrSeriesDetailsSeasonTile> {
     return TextSpan(
       style: TextStyle(
         color: widget.season.lunaPercentageComplete == 100
-            ? LunaColours.accent
-            : LunaColours.red,
-        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+            ? ArrPilotColours.accent
+            : ArrPilotColours.red,
+        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
       ),
       text: [
         '${widget.season.lunaPercentageComplete}%',
-        LunaUI.TEXT_BULLET,
+        ArrPilotUI.TEXT_BULLET,
         '${widget.season.statistics?.episodeFileCount ?? 0}/${widget.season.statistics?.episodeCount ?? 0}',
         'sonarr.EpisodesAvailable'.tr(),
       ].join(' '),
@@ -102,25 +102,25 @@ class _State extends State<SonarrSeriesDetailsSeasonTile> {
   }
 
   Widget _trailing() {
-    Future<void> setLoadingState(LunaLoadingState state) async {
+    Future<void> setLoadingState(ArrPilotLoadingState state) async {
       if (this.mounted) setState(() => _loadingState = state);
     }
 
-    return LunaIconButton(
+    return ArrPilotIconButton(
       icon: widget.season.monitored!
           ? Icons.turned_in_rounded
           : Icons.turned_in_not_rounded,
-      color: LunaColours.white,
+      color: ArrPilotColours.white,
       loadingState: _loadingState,
       onPressed: () async {
-        setLoadingState(LunaLoadingState.ACTIVE);
+        setLoadingState(ArrPilotLoadingState.ACTIVE);
         await SonarrAPIController()
             .toggleSeasonMonitored(
               context: context,
               season: widget.season,
               seriesId: widget.seriesId,
             )
-            .whenComplete(() => setLoadingState(LunaLoadingState.INACTIVE));
+            .whenComplete(() => setLoadingState(ArrPilotLoadingState.INACTIVE));
       },
     );
   }

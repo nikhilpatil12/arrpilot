@@ -13,21 +13,21 @@ class RadarrRoute extends StatefulWidget {
 
 class _State extends State<RadarrRoute> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  LunaPageController? _pageController;
+  ArrPilotPageController? _pageController;
 
   @override
   void initState() {
     super.initState();
-    _pageController = LunaPageController(
+    _pageController = ArrPilotPageController(
       initialPage: RadarrDatabase.NAVIGATION_INDEX.read(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      module: LunaModule.RADARR,
+      module: ArrPilotModule.RADARR,
       drawer: _drawer(),
       appBar: _appBar() as PreferredSizeWidget?,
       bottomNavigationBar: _bottomNavigationBar(),
@@ -36,7 +36,7 @@ class _State extends State<RadarrRoute> {
   }
 
   Widget _drawer() {
-    return LunaDrawer(page: LunaModule.RADARR.key);
+    return ArrPilotDrawer(page: ArrPilotModule.RADARR.key);
   }
 
   Widget? _bottomNavigationBar() {
@@ -47,10 +47,10 @@ class _State extends State<RadarrRoute> {
   }
 
   Widget _appBar() {
-    List<String> profiles = LunaBox.profiles.keys.fold(
+    List<String> profiles = ArrPilotBox.profiles.keys.fold(
       [],
       (value, element) {
-        if (LunaBox.profiles.read(element)?.radarrEnabled ?? false) {
+        if (ArrPilotBox.profiles.read(element)?.radarrEnabled ?? false) {
           value.add(element);
         }
         return value;
@@ -63,8 +63,8 @@ class _State extends State<RadarrRoute> {
         const RadarrAppBarGlobalSettingsAction(),
       ];
     }
-    return LunaAppBar.dropdown(
-      title: LunaModule.RADARR.title,
+    return ArrPilotAppBar.dropdown(
+      title: ArrPilotModule.RADARR.title,
       useDrawer: true,
       profiles: profiles,
       actions: actions,
@@ -78,12 +78,12 @@ class _State extends State<RadarrRoute> {
       selector: (_, state) => state.enabled,
       builder: (context, enabled, _) {
         if (!enabled!) {
-          return LunaMessage.moduleNotEnabled(
+          return ArrPilotMessage.moduleNotEnabled(
             context: context,
             module: 'Radarr',
           );
         }
-        return LunaPageView(
+        return ArrPilotPageView(
           controller: _pageController,
           children: const [
             RadarrCatalogueRoute(),

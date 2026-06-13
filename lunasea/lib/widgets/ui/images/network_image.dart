@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaNetworkImage extends ClipRRect {
-  LunaNetworkImage({
+class ArrPilotNetworkImage extends ClipRRect {
+  ArrPilotNetworkImage({
     Key? key,
     required BuildContext context,
     required double height,
@@ -23,16 +23,16 @@ class LunaNetworkImage extends ClipRRect {
                     child: placeholderIcon != null
                         ? Icon(
                             placeholderIcon,
-                            color: LunaColours.accent,
+                            color: ArrPilotColours.accent,
                             size: width * 0.40,
                           )
                         : null,
                   ),
                   decoration: BoxDecoration(
                     color: Theme.of(context).canvasColor,
-                    borderRadius: BorderRadius.circular(LunaUI.BORDER_RADIUS),
-                    border: LunaUI.shouldUseBorder
-                        ? Border.all(color: LunaColours.white10)
+                    borderRadius: BorderRadius.circular(ArrPilotUI.BORDER_RADIUS),
+                    border: ArrPilotUI.shouldUseBorder
+                        ? Border.all(color: ArrPilotColours.white10)
                         : null,
                   ),
                 ),
@@ -41,12 +41,12 @@ class LunaNetworkImage extends ClipRRect {
                     height: height,
                     width: width,
                     fadeInDuration: const Duration(
-                      milliseconds: LunaUI.ANIMATION_SPEED_IMAGES,
+                      milliseconds: ArrPilotUI.ANIMATION_SPEED_IMAGES,
                     ),
                     fadeOutDuration: const Duration(milliseconds: 1),
                     placeholder: MemoryImage(kTransparentImage),
                     fit: BoxFit.cover,
-                    image: LunaNetworkImageProvider(
+                    image: ArrPilotNetworkImageProvider(
                       url: url!,
                       headers: headers?.cast<String, String>(),
                     ).imageProvider,
@@ -61,6 +61,6 @@ class LunaNetworkImage extends ClipRRect {
             width: width,
           ),
           clipBehavior: Clip.antiAlias,
-          borderRadius: BorderRadius.circular(LunaUI.BORDER_RADIUS),
+          borderRadius: BorderRadius.circular(ArrPilotUI.BORDER_RADIUS),
         );
 }

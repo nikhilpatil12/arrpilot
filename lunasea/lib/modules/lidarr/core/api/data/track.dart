@@ -23,16 +23,16 @@ class LidarrTrackData {
       return const TextSpan(
         text: 'Downloaded',
         style: TextStyle(
-          color: LunaColours.accent,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          color: ArrPilotColours.accent,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         ),
       );
     } else {
       return const TextSpan(
         text: 'Not Downloaded',
         style: TextStyle(
-          color: LunaColours.red,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          color: ArrPilotColours.red,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         ),
       );
     }

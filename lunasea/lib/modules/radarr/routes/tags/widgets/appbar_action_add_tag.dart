@@ -13,12 +13,12 @@ class RadarrTagsAppBarActionAddTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (asDialogButton)
-      return LunaDialog.button(
+      return ArrPilotDialog.button(
         text: 'lunasea.Add'.tr(),
         textColor: Colors.white,
         onPressed: () async => _onPressed(context),
       );
-    return LunaIconButton(
+    return ArrPilotIconButton(
       icon: Icons.add_rounded,
       onPressed: () async => _onPressed(context),
     );

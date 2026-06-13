@@ -27,7 +27,7 @@ class SonarrAPIController {
         }
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
           'Failed to set download release (${release.guid})',
           error,
           stack,
@@ -67,7 +67,7 @@ class SonarrAPIController {
         }
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
           'Failed to set episode monitored state (${_episode.id})',
           error,
           stack,
@@ -110,7 +110,7 @@ class SonarrAPIController {
         }
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
           'Failed to delete episode (${episodeFile.id})',
           error,
           stack,
@@ -158,7 +158,7 @@ class SonarrAPIController {
         }
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
           'Failed to delete episodes (${episodeFileIds.join(',')})',
           error,
           stack,
@@ -194,7 +194,7 @@ class SonarrAPIController {
         }
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
           'Failed to search for episode: ${episode.id}',
           error,
           stack,
@@ -234,7 +234,7 @@ class SonarrAPIController {
         }
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
           'Failed to search for episode: ${episodeIds.join(',')}',
           error,
           stack,
@@ -286,7 +286,7 @@ class SonarrAPIController {
         }
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
           'Unable to toggle season monitored state: ${season.monitored.toString()} to ${(!season.monitored!).toString()}',
           error,
           stack,
@@ -333,7 +333,7 @@ class SonarrAPIController {
           return true;
         });
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
           'Unable to toggle monitored state: ${series.monitored.toString()} to ${seriesCopy.monitored.toString()}',
           error,
           stack,
@@ -369,7 +369,7 @@ class SonarrAPIController {
         );
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error('Failed to add tag: $label', error, stack);
+        ArrPilotLogger().error('Failed to add tag: $label', error, stack);
         if (showSnackbar)
           showLunaErrorSnackBar(
             title: 'sonarr.FailedToAddTag'.tr(),
@@ -406,7 +406,7 @@ class SonarrAPIController {
           return true;
         });
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
           'Failed to update series: ${series.id}',
           error,
           stack,
@@ -429,13 +429,13 @@ class SonarrAPIController {
       return await context.read<SonarrState>().api!.command.backup().then((_) {
         if (showSnackbar) {
           showLunaSuccessSnackBar(
-            title: 'sonarr.BackingUpDatabase'.tr(args: [LunaUI.TEXT_ELLIPSIS]),
+            title: 'sonarr.BackingUpDatabase'.tr(args: [ArrPilotUI.TEXT_ELLIPSIS]),
             message: 'sonarr.BackingUpDatabaseDescription'.tr(),
           );
         }
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
           'Sonarr: Unable to backup database',
           error,
           stack,
@@ -466,14 +466,14 @@ class SonarrAPIController {
           .then((_) {
         if (showSnackbar)
           showLunaSuccessSnackBar(
-            title: 'sonarr.SearchingForSeason'.tr(args: [LunaUI.TEXT_ELLIPSIS]),
+            title: 'sonarr.SearchingForSeason'.tr(args: [ArrPilotUI.TEXT_ELLIPSIS]),
             message: seasonNumber == 0
                 ? 'sonarr.Specials'.tr()
                 : 'sonarr.SeasonNumber'.tr(args: [seasonNumber.toString()]),
           );
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
           'Failed to season search ($seriesId, $seasonNumber)',
           error,
           stack,
@@ -508,7 +508,7 @@ class SonarrAPIController {
           );
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
           'Failed to search for monitored episodes (${series.id})',
           error,
           stack,
@@ -532,12 +532,12 @@ class SonarrAPIController {
       return await context.read<SonarrState>().api!.command.rssSync().then((_) {
         if (showSnackbar)
           showLunaSuccessSnackBar(
-            title: 'sonarr.RunningRSSSync'.tr(args: [LunaUI.TEXT_ELLIPSIS]),
+            title: 'sonarr.RunningRSSSync'.tr(args: [ArrPilotUI.TEXT_ELLIPSIS]),
             message: 'sonarr.RunningRSSSyncDescription'.tr(),
           );
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
           'Unable to run RSS sync',
           error,
           stack,
@@ -566,12 +566,12 @@ class SonarrAPIController {
           .then((_) {
         if (showSnackbar)
           showLunaSuccessSnackBar(
-            title: 'sonarr.UpdatingLibrary'.tr(args: [LunaUI.TEXT_ELLIPSIS]),
+            title: 'sonarr.UpdatingLibrary'.tr(args: [ArrPilotUI.TEXT_ELLIPSIS]),
             message: 'sonarr.UpdatingLibraryDescription'.tr(),
           );
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
           'Unable to update library',
           error,
           stack,
@@ -600,12 +600,12 @@ class SonarrAPIController {
           .then((_) {
         if (showSnackbar)
           showLunaSuccessSnackBar(
-            title: 'sonarr.Searching'.tr(args: [LunaUI.TEXT_ELLIPSIS]),
+            title: 'sonarr.Searching'.tr(args: [ArrPilotUI.TEXT_ELLIPSIS]),
             message: 'sonarr.SearchingDescription'.tr(),
           );
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
           'Sonarr: Unable to search for all missing episodes',
           error,
           stack,
@@ -640,7 +640,7 @@ class SonarrAPIController {
           );
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
           'Sonarr: Unable to refresh movie: ${series.id}',
           error,
           stack,
@@ -687,7 +687,7 @@ class SonarrAPIController {
           return true;
         });
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
           'Failed to remove series: ${series.id}',
           error,
           stack,
@@ -744,7 +744,7 @@ class SonarrAPIController {
         }
         return series;
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
           'Failed to add series (tmdbId: ${series.tvdbId})',
           error,
           stack,
@@ -782,7 +782,7 @@ class SonarrAPIController {
           );
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error(
+        ArrPilotLogger().error(
           'Failed to remove queue record: ${queueRecord.id}',
           error,
           stack,

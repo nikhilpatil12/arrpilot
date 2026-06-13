@@ -16,22 +16,22 @@ class LidarrCatalogueHideButton extends StatefulWidget {
 
 class _State extends State<LidarrCatalogueHideButton> {
   @override
-  Widget build(BuildContext context) => LunaCard(
+  Widget build(BuildContext context) => ArrPilotCard(
         context: context,
         child: Consumer<LidarrState>(
           builder: (context, model, widget) => InkWell(
-            child: LunaIconButton(
+            child: ArrPilotIconButton(
               icon: model.hideUnmonitoredArtists
                   ? Icons.visibility_off_rounded
                   : Icons.visibility_rounded,
             ),
             onTap: () =>
                 model.hideUnmonitoredArtists = !model.hideUnmonitoredArtists,
-            borderRadius: BorderRadius.circular(LunaUI.BORDER_RADIUS),
+            borderRadius: BorderRadius.circular(ArrPilotUI.BORDER_RADIUS),
           ),
         ),
-        height: LunaTextInputBar.defaultHeight,
-        width: LunaTextInputBar.defaultHeight,
+        height: ArrPilotTextInputBar.defaultHeight,
+        width: ArrPilotTextInputBar.defaultHeight,
         margin: const EdgeInsets.symmetric(horizontal: 12.0),
         color: Theme.of(context).canvasColor,
       );

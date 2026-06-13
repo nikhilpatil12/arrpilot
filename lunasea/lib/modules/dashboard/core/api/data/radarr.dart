@@ -36,7 +36,7 @@ class CalendarRadarrData extends CalendarData {
       TextSpan(
         children: [
           TextSpan(text: year.toString()),
-          TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+          TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
           TextSpan(text: runtime.asVideoDuration()),
         ],
       ),
@@ -45,16 +45,16 @@ class CalendarRadarrData extends CalendarData {
         TextSpan(
           text: released ? 'radarr.Missing'.tr() : 'radarr.Unreleased'.tr(),
           style: TextStyle(
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
-            color: released ? LunaColours.red : LunaColours.blue,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
+            color: released ? ArrPilotColours.red : ArrPilotColours.blue,
           ),
         ),
       if (hasFile)
         TextSpan(
           text: 'Downloaded ($fileQualityProfile)',
           style: const TextStyle(
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
-            color: LunaColours.accent,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
+            color: ArrPilotColours.accent,
           ),
         )
     ];
@@ -69,7 +69,7 @@ class CalendarRadarrData extends CalendarData {
 
   @override
   Widget trailing(BuildContext context) {
-    return LunaIconButton(
+    return ArrPilotIconButton(
       icon: Icons.search_rounded,
       onPressed: () async => trailingOnPress(context),
       onLongPress: () async => trailingOnLongPress(context),

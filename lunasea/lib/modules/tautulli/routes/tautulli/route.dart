@@ -24,9 +24,9 @@ class _State extends State<TautulliRoute> {
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      module: LunaModule.TAUTULLI,
+      module: ArrPilotModule.TAUTULLI,
       drawer: _drawer(),
       appBar: _appBar(),
       bottomNavigationBar: _bottomNavigationBar(),
@@ -34,7 +34,7 @@ class _State extends State<TautulliRoute> {
     );
   }
 
-  Widget _drawer() => LunaDrawer(page: LunaModule.TAUTULLI.key);
+  Widget _drawer() => ArrPilotDrawer(page: ArrPilotModule.TAUTULLI.key);
 
   Widget? _bottomNavigationBar() {
     if (context.read<TautulliState>().enabled)
@@ -43,8 +43,8 @@ class _State extends State<TautulliRoute> {
   }
 
   PreferredSizeWidget _appBar() {
-    List<String> profiles = LunaBox.profiles.keys.fold([], (value, element) {
-      if (LunaBox.profiles.read(element)?.tautulliEnabled ?? false)
+    List<String> profiles = ArrPilotBox.profiles.keys.fold([], (value, element) {
+      if (ArrPilotBox.profiles.read(element)?.tautulliEnabled ?? false)
         value.add(element);
       return value;
     });
@@ -53,8 +53,8 @@ class _State extends State<TautulliRoute> {
       actions = [
         const TautulliAppBarGlobalSettingsAction(),
       ];
-    return LunaAppBar.dropdown(
-      title: LunaModule.TAUTULLI.title,
+    return ArrPilotAppBar.dropdown(
+      title: ArrPilotModule.TAUTULLI.title,
       useDrawer: true,
       profiles: profiles,
       actions: actions,
@@ -68,9 +68,9 @@ class _State extends State<TautulliRoute> {
       selector: (_, state) => state.enabled,
       builder: (context, enabled, _) {
         if (!enabled!)
-          return LunaMessage.moduleNotEnabled(
+          return ArrPilotMessage.moduleNotEnabled(
               context: context, module: 'Tautulli');
-        return LunaPageView(
+        return ArrPilotPageView(
           controller: _pageController,
           children: const [
             TautulliActivityRoute(),

@@ -1,13 +1,13 @@
 import 'package:arrpilot/core.dart';
 
-abstract class LunaWebhooks {
+abstract class ArrPilotWebhooks {
   Future<void> handle(Map<dynamic, dynamic> data);
 
-  static String buildUserTokenURL(String token, LunaModule module) {
+  static String buildUserTokenURL(String token, ArrPilotModule module) {
     return 'https://notify.lunasea.app/v1/${module.key}/user/$token';
   }
 
-  static String buildDeviceTokenURL(String token, LunaModule module) {
+  static String buildDeviceTokenURL(String token, ArrPilotModule module) {
     return 'https://notify.lunasea.app/v1/${module.key}/device/$token';
   }
 }

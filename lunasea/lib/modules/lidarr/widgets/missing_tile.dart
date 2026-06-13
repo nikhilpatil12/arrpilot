@@ -4,7 +4,7 @@ import 'package:arrpilot/modules/lidarr.dart';
 import 'package:arrpilot/router/routes/lidarr.dart';
 
 class LidarrMissingTile extends StatefulWidget {
-  static final double extent = LunaBlock.calculateItemExtent(2);
+  static final double extent = ArrPilotBlock.calculateItemExtent(2);
 
   final LidarrMissingData entry;
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -24,42 +24,42 @@ class LidarrMissingTile extends StatefulWidget {
 class _State extends State<LidarrMissingTile> {
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: widget.entry.artistTitle,
       body: [
         TextSpan(
           text: widget.entry.title,
           style: const TextStyle(
-            color: LunaColours.grey,
+            color: ArrPilotColours.grey,
             fontStyle: FontStyle.italic,
           ),
         ),
         TextSpan(
           text: 'Released ${widget.entry.releaseDateString}',
           style: const TextStyle(
-            color: LunaColours.red,
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+            color: ArrPilotColours.red,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
           ),
         ),
       ],
-      trailing: LunaIconButton(
-        icon: LunaIcons.SEARCH,
+      trailing: ArrPilotIconButton(
+        icon: ArrPilotIcons.SEARCH,
         onPressed: () async => _search(),
         onLongPress: () async => _interactiveSearch(),
       ),
       onTap: () async => _enterAlbum(),
       onLongPress: () async => _enterArtist(),
       posterUrl: widget.entry.albumCoverURI(),
-      posterHeaders: LunaProfile.current.lidarrHeaders,
+      posterHeaders: ArrPilotProfile.current.lidarrHeaders,
       posterIsSquare: true,
-      posterPlaceholderIcon: LunaIcons.MUSIC,
+      posterPlaceholderIcon: ArrPilotIcons.MUSIC,
       backgroundUrl: widget.entry.fanartURI(),
-      backgroundHeaders: LunaProfile.current.lidarrHeaders,
+      backgroundHeaders: ArrPilotProfile.current.lidarrHeaders,
     );
   }
 
   Future<void> _search() async {
-    final _api = LidarrAPI.from(LunaProfile.current);
+    final _api = LidarrAPI.from(ArrPilotProfile.current);
     await _api
         .searchAlbums([widget.entry.albumID])
         .then((_) => showLunaSuccessSnackBar(

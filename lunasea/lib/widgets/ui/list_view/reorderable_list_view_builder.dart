@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaReorderableListViewBuilder extends StatelessWidget {
+class ArrPilotReorderableListViewBuilder extends StatelessWidget {
   final int itemCount;
   final Widget Function(BuildContext, int) itemBuilder;
   final EdgeInsetsGeometry? padding;
@@ -10,7 +10,7 @@ class LunaReorderableListViewBuilder extends StatelessWidget {
   final void Function(int, int) onReorder;
   final bool buildDefaultDragHandles;
 
-  const LunaReorderableListViewBuilder({
+  const ArrPilotReorderableListViewBuilder({
     Key? key,
     required this.itemCount,
     required this.itemBuilder,
@@ -31,7 +31,7 @@ class LunaReorderableListViewBuilder extends StatelessWidget {
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         padding: padding as EdgeInsets? ??
             MediaQuery.of(context).padding.add(EdgeInsets.symmetric(
-                  vertical: LunaUI.MARGIN_H_DEFAULT_V_HALF.bottom,
+                  vertical: ArrPilotUI.MARGIN_H_DEFAULT_V_HALF.bottom,
                 )) as EdgeInsets?,
         physics: physics,
         itemCount: itemCount,

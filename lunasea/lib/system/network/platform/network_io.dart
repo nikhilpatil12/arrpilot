@@ -7,9 +7,9 @@ import 'package:arrpilot/vendor.dart';
 import '../network.dart';
 
 bool isPlatformSupported() => true;
-LunaNetwork getNetwork() => IO();
+ArrPilotNetwork getNetwork() => IO();
 
-class IO extends HttpOverrides implements LunaNetwork {
+class IO extends HttpOverrides implements ArrPilotNetwork {
   @override
   void initialize() {
     HttpOverrides.global = IO();
@@ -24,13 +24,13 @@ class IO extends HttpOverrides implements LunaNetwork {
     final HttpClient client = super.createHttpClient(context);
 
     // Disable TLS validation
-    if (!LunaSeaDatabase.NETWORKING_TLS_VALIDATION.read())
+    if (!ArrPilotDatabase.NETWORKING_TLS_VALIDATION.read())
       client.badCertificateCallback = (cert, host, port) => true;
 
     // Set User-Agent
     PackageInfo.fromPlatform()
         .then((info) => client.userAgent = generateUserAgent(info))
-        .catchError((_) => client.userAgent = 'LunaSea/Unknown');
+        .catchError((_) => client.userAgent = 'ArrPilot/Unknown');
 
     return client;
   }

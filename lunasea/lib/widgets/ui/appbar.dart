@@ -11,7 +11,7 @@ enum _AppBarType {
   DROPDOWN,
 }
 
-class LunaAppBar extends StatefulWidget implements PreferredSizeWidget {
+class ArrPilotAppBar extends StatefulWidget implements PreferredSizeWidget {
   static const APPBAR_HEIGHT = kToolbarHeight;
 
   final _AppBarType type;
@@ -34,7 +34,7 @@ class LunaAppBar extends StatefulWidget implements PreferredSizeWidget {
     return Size.fromHeight(_size);
   }
 
-  const LunaAppBar._internal({
+  const ArrPilotAppBar._internal({
     required this.type,
     required this.useDrawer,
     this.title,
@@ -49,14 +49,14 @@ class LunaAppBar extends StatefulWidget implements PreferredSizeWidget {
     this.backgroundColor,
   });
 
-  /// Create a new [AppBar] widget pre-styled for LunaSea.
+  /// Create a new [AppBar] widget pre-styled for ArrPilot.
   ///
   /// Will register an onTap gesture for the AppBar if:
   /// - [state] is supplied, and will call [scrollBackList] on the state controller.
   /// - [pageController] and [scrollControllers] are supplied, will register a listener on the page controller and scroll back the respective scroll controller.
   ///
   /// Passing in all 3 will result in state.scrollBackList taking precedence.
-  factory LunaAppBar({
+  factory ArrPilotAppBar({
     required String title,
     List<Widget>? actions,
     PreferredSizeWidget? bottom,
@@ -69,7 +69,7 @@ class LunaAppBar extends StatefulWidget implements PreferredSizeWidget {
     if (pageController != null)
       assert(scrollControllers != null,
           'pageController is defined, scrollControllers should as well.');
-    return LunaAppBar._internal(
+    return ArrPilotAppBar._internal(
       title: title,
       actions: actions,
       bottom: bottom,
@@ -82,19 +82,19 @@ class LunaAppBar extends StatefulWidget implements PreferredSizeWidget {
     );
   }
 
-  /// Create a new, empty [LunaAppBar] which can be used to attach to a [Scaffold] in a [PageView] that is already wrapped in an [AppBar].
+  /// Create a new, empty [ArrPilotAppBar] which can be used to attach to a [Scaffold] in a [PageView] that is already wrapped in an [AppBar].
   ///
   /// Example usages would be a [PageView] but a single page needs an [AppBar] bottom widget.
   ///
-  /// The default padding is for a [LunaTextInputBar].
-  factory LunaAppBar.empty({
+  /// The default padding is for a [ArrPilotTextInputBar].
+  factory ArrPilotAppBar.empty({
     required Widget child,
     required double height,
-    EdgeInsets padding = LunaTextInputBar.appBarMargin,
+    EdgeInsets padding = ArrPilotTextInputBar.appBarMargin,
     Alignment alignment = Alignment.topCenter,
     Color? backgroundColor,
   }) {
-    return LunaAppBar._internal(
+    return ArrPilotAppBar._internal(
       child: Container(
         child: child,
         height: height,
@@ -115,7 +115,7 @@ class LunaAppBar extends StatefulWidget implements PreferredSizeWidget {
   /// - [pageController] and [scrollControllers] are supplied, will register a listener on the page controller and scroll back the respective scroll controller.
   ///
   /// Passing in all 3 will result in state.scrollBackList taking precedence.
-  factory LunaAppBar.dropdown({
+  factory ArrPilotAppBar.dropdown({
     required String title,
     required List<String> profiles,
     bool useDrawer = true,
@@ -130,7 +130,7 @@ class LunaAppBar extends StatefulWidget implements PreferredSizeWidget {
       assert(scrollControllers != null,
           'if pageController is defined, scrollControllers should as well.');
     if (profiles.length < 2)
-      return LunaAppBar._internal(
+      return ArrPilotAppBar._internal(
         title: title,
         actions: actions,
         useDrawer: useDrawer,
@@ -141,7 +141,7 @@ class LunaAppBar extends StatefulWidget implements PreferredSizeWidget {
         backgroundColor: backgroundColor,
         type: _AppBarType.DEFAULT,
       );
-    return LunaAppBar._internal(
+    return ArrPilotAppBar._internal(
       title: title,
       profiles: profiles,
       actions: actions,
@@ -159,7 +159,7 @@ class LunaAppBar extends StatefulWidget implements PreferredSizeWidget {
   State<StatefulWidget> createState() => _State();
 }
 
-class _State extends State<LunaAppBar> {
+class _State extends State<ArrPilotAppBar> {
   int _index = 0;
 
   @override
@@ -187,7 +187,7 @@ class _State extends State<LunaAppBar> {
         widget.scrollControllers![_index].animateToStart();
       }
     } catch (error, stack) {
-      LunaLogger().error(
+      ArrPilotLogger().error(
           'Failed to scroll back: Index: $_index, ScrollControllers: ${widget.scrollControllers?.length ?? 0}',
           error,
           stack);
@@ -220,7 +220,7 @@ class _State extends State<LunaAppBar> {
     if (widget.hideLeading) return null;
     if (widget.useDrawer)
       return SizedBox(
-        child: LunaIconButton.appBar(
+        child: ArrPilotIconButton.appBar(
           icon: Icons.menu_rounded,
           onPressed: () async {
             HapticFeedback.lightImpact();
@@ -233,10 +233,10 @@ class _State extends State<LunaAppBar> {
         height: kToolbarHeight,
       );
     return SizedBox(
-      child: LunaIconButton.appBar(
+      child: ArrPilotIconButton.appBar(
         icon: Icons.arrow_back_ios_new_rounded,
-        onPressed: LunaRouter().popSafely,
-        onLongPress: LunaRouter().popToRootRoute,
+        onPressed: ArrPilotRouter().popSafely,
+        onLongPress: ArrPilotRouter().popToRootRoute,
       ),
       height: kToolbarHeight,
     );
@@ -248,7 +248,7 @@ class _State extends State<LunaAppBar> {
       title: Text(
         widget.title ?? '',
         overflow: TextOverflow.fade,
-        style: const TextStyle(fontSize: LunaUI.FONT_SIZE_H1),
+        style: const TextStyle(fontSize: ArrPilotUI.FONT_SIZE_H1),
       ),
       leading: _sharedLeading(context),
       automaticallyImplyLeading: !(widget.hideLeading),
@@ -275,7 +275,7 @@ class _State extends State<LunaAppBar> {
     return AppBar(
       backgroundColor: widget.backgroundColor,
       automaticallyImplyLeading: !(widget.hideLeading),
-      title: LunaPopupMenuButton<String>(
+      title: ArrPilotPopupMenuButton<String>(
         tooltip: 'Change Profiles',
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -286,7 +286,7 @@ class _State extends State<LunaAppBar> {
                 scrollDirection: Axis.horizontal,
                 child: Text(
                   widget.title!,
-                  style: const TextStyle(fontSize: LunaUI.FONT_SIZE_H1),
+                  style: const TextStyle(fontSize: ArrPilotUI.FONT_SIZE_H1),
                 ),
               ),
             ),
@@ -295,7 +295,7 @@ class _State extends State<LunaAppBar> {
         ),
         onSelected: (result) {
           HapticFeedback.selectionClick();
-          LunaProfileTools().changeTo(result, popToRootRoute: true);
+          ArrPilotProfileTools().changeTo(result, popToRootRoute: true);
         },
         itemBuilder: (context) {
           return <PopupMenuEntry<String>>[
@@ -305,9 +305,9 @@ class _State extends State<LunaAppBar> {
                 child: Text(
                   profile!,
                   style: TextStyle(
-                    fontSize: LunaUI.FONT_SIZE_H3,
-                    color: LunaSeaDatabase.ENABLED_PROFILE.read() == profile
-                        ? LunaColours.accent
+                    fontSize: ArrPilotUI.FONT_SIZE_H3,
+                    color: ArrPilotDatabase.ENABLED_PROFILE.read() == profile
+                        ? ArrPilotColours.accent
                         : Colors.white,
                   ),
                 ),

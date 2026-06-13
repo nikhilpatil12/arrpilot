@@ -10,10 +10,10 @@ class RadarrEditMovieActionBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBottomActionBar(
+    return ArrPilotBottomActionBar(
       actions: [
-        LunaButton(
-          type: LunaButtonType.TEXT,
+        ArrPilotButton(
+          type: ArrPilotButtonType.TEXT,
           text: 'lunasea.Update'.tr(),
           icon: Icons.edit_rounded,
           loadingState: context.watch<RadarrMoviesEditState>().state,
@@ -25,7 +25,7 @@ class RadarrEditMovieActionBar extends StatelessWidget {
 
   Future<void> _updateOnTap(BuildContext context) async {
     final state = context.read<RadarrMoviesEditState>();
-    state.state = LunaLoadingState.ACTIVE;
+    state.state = ArrPilotLoadingState.ACTIVE;
 
     if (state.canExecuteAction && state.movie != null) {
       bool moveFiles = false;
@@ -39,7 +39,7 @@ class RadarrEditMovieActionBar extends StatelessWidget {
         movie: movie,
         moveFiles: moveFiles,
       );
-      if (result) LunaRouter().popSafely();
+      if (result) ArrPilotRouter().popSafely();
     }
   }
 }

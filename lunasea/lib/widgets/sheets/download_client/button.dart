@@ -11,8 +11,8 @@ class DownloadClientButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (_shouldShow) {
-      return LunaIconButton.appBar(
-        icon: LunaIcons.DOWNLOAD,
+      return ArrPilotIconButton.appBar(
+        icon: ArrPilotIcons.DOWNLOAD,
         onPressed: DownloadClientSheet().show,
       );
     }
@@ -20,7 +20,7 @@ class DownloadClientButton extends StatelessWidget {
   }
 
   bool get _shouldShow {
-    final profile = LunaProfile.current;
+    final profile = ArrPilotProfile.current;
     return profile.sabnzbdEnabled || profile.nzbgetEnabled;
   }
 }

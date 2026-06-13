@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // ignore: always_use_package_imports
 import '../network_image_provider.dart';
 
-LunaNetworkImageProvider getNetworkImageProvider({
+ArrPilotNetworkImageProvider getNetworkImageProvider({
   required String url,
   Map<String, String>? headers,
 }) {
@@ -13,7 +13,7 @@ LunaNetworkImageProvider getNetworkImageProvider({
   );
 }
 
-class Web implements LunaNetworkImageProvider {
+class Web implements ArrPilotNetworkImageProvider {
   String url;
   Map<String, String>? headers;
 

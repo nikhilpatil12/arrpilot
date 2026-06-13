@@ -12,7 +12,7 @@ import 'package:arrpilot/system/recovery_mode/main.dart';
 import 'package:arrpilot/system/window_manager/window_manager.dart';
 import 'package:arrpilot/system/platform.dart';
 
-/// LunaSea Entry Point: Bootstrap & Run Application
+/// ArrPilot Entry Point: Bootstrap & Run Application
 ///
 /// Runs app in guarded zone to attempt to capture fatal (crashing) errors
 Future<void> main() async {
@@ -22,51 +22,51 @@ Future<void> main() async {
 
       try {
         await bootstrap();
-        runApp(const LunaBIOS());
+        runApp(const ArrPilotBIOS());
       } catch (error) {
-        runApp(const LunaRecoveryMode());
+        runApp(const ArrPilotRecoveryMode());
       }
     },
-    (error, stack) => LunaLogger().critical(error, stack),
+    (error, stack) => ArrPilotLogger().critical(error, stack),
   );
 }
 
 /// Bootstrap the core
 ///
 Future<void> bootstrap() async {
-  await LunaDatabase().initialize();
-  LunaLogger().initialize();
-  LunaTheme().initialize();
-  if (LunaWindowManager.isSupported) await LunaWindowManager().initialize();
-  if (LunaNetwork.isSupported) LunaNetwork().initialize();
-  if (LunaImageCache.isSupported) LunaImageCache().initialize();
-  LunaRouter().initialize();
-  await LunaMemoryStore().initialize();
+  await ArrPilotDatabase().initialize();
+  ArrPilotLogger().initialize();
+  ArrPilotTheme().initialize();
+  if (ArrPilotWindowManager.isSupported) await ArrPilotWindowManager().initialize();
+  if (ArrPilotNetwork.isSupported) ArrPilotNetwork().initialize();
+  if (ArrPilotImageCache.isSupported) ArrPilotImageCache().initialize();
+  ArrPilotRouter().initialize();
+  await ArrPilotMemoryStore().initialize();
 }
 
-class LunaBIOS extends StatelessWidget {
-  const LunaBIOS({
+class ArrPilotBIOS extends StatelessWidget {
+  const ArrPilotBIOS({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    final theme = LunaTheme();
-    final router = LunaRouter.router;
+    final theme = ArrPilotTheme();
+    final router = ArrPilotRouter.router;
 
-    return LunaState.providers(
+    return ArrPilotState.providers(
       child: DevicePreview(
-        enabled: kDebugMode && LunaPlatform.isDesktop,
+        enabled: kDebugMode && ArrPilotPlatform.isDesktop,
         builder: (context) => EasyLocalization(
           supportedLocales: [Locale('en')],
           path: 'assets/localization',
           fallbackLocale: Locale('en'),
           startLocale: Locale('en'),
           useFallbackTranslations: true,
-          child: LunaBox.lunasea.listenableBuilder(
+          child: ArrPilotBox.lunasea.listenableBuilder(
             selectItems: [
-              LunaSeaDatabase.THEME_AMOLED,
-              LunaSeaDatabase.THEME_AMOLED_BORDER,
+              ArrPilotDatabase.THEME_AMOLED,
+              ArrPilotDatabase.THEME_AMOLED_BORDER,
             ],
             builder: (context, _) {
               return MaterialApp.router(
@@ -76,7 +76,7 @@ class LunaBIOS extends StatelessWidget {
                 builder: DevicePreview.appBuilder,
                 darkTheme: theme.activeTheme(),
                 theme: theme.activeTheme(),
-                title: 'LunaSea',
+                title: 'ArrPilot',
                 routeInformationProvider: router.routeInformationProvider,
                 routeInformationParser: router.routeInformationParser,
                 routerDelegate: router.routerDelegate,

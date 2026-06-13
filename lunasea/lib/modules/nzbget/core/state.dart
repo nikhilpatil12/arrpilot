@@ -1,6 +1,6 @@
 import 'package:arrpilot/core.dart';
 
-class NZBGetState extends LunaModuleState {
+class NZBGetState extends ArrPilotModuleState {
   NZBGetState() {
     reset();
   }

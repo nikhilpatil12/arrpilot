@@ -9,6 +9,6 @@ class ConfigurationLidarrConnectionDetailsHeadersRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SettingsHeaderRoute(module: LunaModule.LIDARR);
+    return const SettingsHeaderRoute(module: ArrPilotModule.LIDARR);
   }
 }

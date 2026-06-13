@@ -16,7 +16,7 @@ class SonarrSeasonHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: LunaHeader(
+      child: ArrPilotHeader(
         text: seasonNumber == 0
             ? 'sonarr.Specials'.tr()
             : 'sonarr.SeasonNumber'.tr(

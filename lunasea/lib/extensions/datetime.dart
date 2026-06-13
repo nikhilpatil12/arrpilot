@@ -13,7 +13,7 @@ extension DateTimeExtension on DateTime {
   }
 
   String asTimeOnly() {
-    if (LunaSeaDatabase.USE_24_HOUR_TIME.read()) return _formatted('Hm');
+    if (ArrPilotDatabase.USE_24_HOUR_TIME.read()) return _formatted('Hm');
     return _formatted('jm');
   }
 
@@ -30,10 +30,10 @@ extension DateTimeExtension on DateTime {
     String? delimiter,
   }) {
     final format = StringBuffer(shortenMonth ? 'MMM dd, y' : 'MMMM dd, y');
-    format.write(delimiter ?? LunaUI.TEXT_BULLET.pad());
-    format.write(LunaSeaDatabase.USE_24_HOUR_TIME.read() ? 'HH:mm' : 'hh:mm');
+    format.write(delimiter ?? ArrPilotUI.TEXT_BULLET.pad());
+    format.write(ArrPilotDatabase.USE_24_HOUR_TIME.read() ? 'HH:mm' : 'hh:mm');
     if (showSeconds) format.write(':ss');
-    if (!LunaSeaDatabase.USE_24_HOUR_TIME.read()) format.write(' a');
+    if (!ArrPilotDatabase.USE_24_HOUR_TIME.read()) format.write(' a');
 
     return _formatted(format.toString());
   }

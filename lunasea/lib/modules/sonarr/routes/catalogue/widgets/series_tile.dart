@@ -10,7 +10,7 @@ enum _SonarrSeriesTileType {
 }
 
 class SonarrSeriesTile extends StatefulWidget {
-  static final itemExtent = LunaBlock.calculateItemExtent(3);
+  static final itemExtent = ArrPilotBlock.calculateItemExtent(3);
 
   final SonarrSeries series;
   final SonarrQualityProfile? profile;
@@ -53,12 +53,12 @@ class _State extends State<SonarrSeriesTile> {
   }
 
   Widget _buildBlockTile() {
-    return LunaBlock(
+    return ArrPilotBlock(
       backgroundUrl: context.read<SonarrState>().getFanartURL(widget.series.id),
       backgroundHeaders: context.read<SonarrState>().headers,
       posterUrl: context.read<SonarrState>().getPosterURL(widget.series.id),
       posterHeaders: context.read<SonarrState>().headers,
-      posterPlaceholderIcon: LunaIcons.VIDEO_CAM,
+      posterPlaceholderIcon: ArrPilotIcons.VIDEO_CAM,
       disabled: !widget.series.monitored!,
       title: widget.series.title,
       body: [
@@ -73,13 +73,13 @@ class _State extends State<SonarrSeriesTile> {
 
   Widget _buildGridTile() {
     SonarrSeriesSorting _sorting = context.read<SonarrState>().seriesSortType;
-    return LunaGridBlock(
+    return ArrPilotGridBlock(
       key: ObjectKey(widget.series),
       backgroundUrl: context.read<SonarrState>().getFanartURL(widget.series.id),
       posterUrl: context.read<SonarrState>().getPosterURL(widget.series.id),
       posterHeaders: context.read<SonarrState>().headers,
       backgroundHeaders: context.read<SonarrState>().headers,
-      posterPlaceholderIcon: LunaIcons.VIDEO_CAM,
+      posterPlaceholderIcon: ArrPilotIcons.VIDEO_CAM,
       title: widget.series.title,
       subtitle: TextSpan(text: _sorting.value(widget.series, widget.profile)),
       disabled: !widget.series.monitored!,
@@ -92,9 +92,9 @@ class _State extends State<SonarrSeriesTile> {
     TextStyle? style;
     if (context.read<SonarrState>().seriesSortType == sorting) {
       style = const TextStyle(
-        color: LunaColours.accent,
-        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
-        fontSize: LunaUI.FONT_SIZE_H3,
+        color: ArrPilotColours.accent,
+        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
+        fontSize: ArrPilotUI.FONT_SIZE_H3,
       );
     }
     return TextSpan(
@@ -110,9 +110,9 @@ class _State extends State<SonarrSeriesTile> {
           widget.series.lunaEpisodeCount,
           SonarrSeriesSorting.EPISODES,
         ),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: widget.series.lunaSeasonCount),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         _buildChildTextSpan(
           widget.series.lunaSizeOnDisk,
           SonarrSeriesSorting.SIZE,
@@ -128,9 +128,9 @@ class _State extends State<SonarrSeriesTile> {
           widget.series.lunaSeriesType,
           SonarrSeriesSorting.TYPE,
         ),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         _buildChildTextSpan(
-          widget.profile?.name ?? LunaUI.TEXT_EMDASH,
+          widget.profile?.name ?? ArrPilotUI.TEXT_EMDASH,
           SonarrSeriesSorting.QUALITY,
         ),
       ],
@@ -145,7 +145,7 @@ class _State extends State<SonarrSeriesTile> {
           widget.series.lunaNetwork,
           SonarrSeriesSorting.NETWORK,
         ),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         if (_sorting == SonarrSeriesSorting.DATE_ADDED)
           _buildChildTextSpan(
             widget.series.lunaDateAdded,

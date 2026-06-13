@@ -1,6 +1,6 @@
 import 'package:arrpilot/core.dart';
 
-class LunaMemoryStore {
+class ArrPilotMemoryStore {
   static late MemoryCacheStore _store;
 
   Future<void> initialize() async {

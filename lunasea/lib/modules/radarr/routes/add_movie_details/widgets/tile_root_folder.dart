@@ -11,10 +11,10 @@ class RadarrAddMovieDetailsRootFolderTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Selector<RadarrAddMovieDetailsState, RadarrRootFolder>(
       selector: (_, state) => state.rootFolder,
-      builder: (context, folder, _) => LunaBlock(
+      builder: (context, folder, _) => ArrPilotBlock(
         title: 'radarr.RootFolder'.tr(),
-        body: [TextSpan(text: folder.path ?? LunaUI.TEXT_EMDASH)],
-        trailing: const LunaIconButton.arrow(),
+        body: [TextSpan(text: folder.path ?? ArrPilotUI.TEXT_EMDASH)],
+        trailing: const ArrPilotIconButton.arrow(),
         onTap: () async {
           List<RadarrRootFolder> folders =
               await context.read<RadarrState>().rootFolders!;

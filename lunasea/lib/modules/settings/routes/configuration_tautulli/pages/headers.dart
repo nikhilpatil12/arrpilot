@@ -10,6 +10,6 @@ class ConfigurationTautulliConnectionDetailsHeadersRoute
 
   @override
   Widget build(BuildContext context) {
-    return const SettingsHeaderRoute(module: LunaModule.TAUTULLI);
+    return const SettingsHeaderRoute(module: ArrPilotModule.TAUTULLI);
   }
 }

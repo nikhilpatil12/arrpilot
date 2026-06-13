@@ -12,7 +12,7 @@ class SyncedItemsRoute extends StatefulWidget {
 }
 
 class _State extends State<SyncedItemsRoute>
-    with LunaScrollControllerMixin, LunaLoadCallbackMixin {
+    with ArrPilotScrollControllerMixin, ArrPilotLoadCallbackMixin {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _refreshKey = GlobalKey<RefreshIndicatorState>();
 
@@ -24,23 +24,23 @@ class _State extends State<SyncedItemsRoute>
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      module: LunaModule.TAUTULLI,
+      module: ArrPilotModule.TAUTULLI,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
     );
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'Synced Items',
       scrollControllers: [scrollController],
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: loadCallback,
@@ -51,15 +51,15 @@ class _State extends State<SyncedItemsRoute>
           builder: (context, AsyncSnapshot<List<TautulliSyncedItem>> snapshot) {
             if (snapshot.hasError) {
               if (snapshot.connectionState != ConnectionState.waiting)
-                LunaLogger().error(
+                ArrPilotLogger().error(
                   'Unable to fetch Tautulli synced items',
                   snapshot.error,
                   snapshot.stackTrace,
                 );
-              return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+              return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
             }
             if (snapshot.hasData) return _list(snapshot.data);
-            return const LunaLoader();
+            return const ArrPilotLoader();
           },
         ),
       ),
@@ -68,12 +68,12 @@ class _State extends State<SyncedItemsRoute>
 
   Widget _list(List<TautulliSyncedItem>? syncedItems) {
     if ((syncedItems?.length ?? 0) == 0)
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'No Synced Items Found',
         buttonText: 'Refresh',
         onTap: _refreshKey.currentState!.show,
       );
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: scrollController,
       itemCount: syncedItems!.length,
       itemBuilder: (context, index) =>

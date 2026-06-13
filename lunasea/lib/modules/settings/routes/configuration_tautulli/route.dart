@@ -13,12 +13,12 @@ class ConfigurationTautulliRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationTautulliRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar(),
       body: _body(),
@@ -26,20 +26,20 @@ class _State extends State<ConfigurationTautulliRoute>
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
-      title: LunaModule.TAUTULLI.title,
+    return ArrPilotAppBar(
+      title: ArrPilotModule.TAUTULLI.title,
       scrollControllers: [scrollController],
     );
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
-        LunaModule.TAUTULLI.informationBanner(),
+        ArrPilotModule.TAUTULLI.informationBanner(),
         _enabledToggle(),
         _connectionDetailsPage(),
-        LunaDivider(),
+        ArrPilotDivider(),
         _activityRefreshRate(),
         _defaultPagesPage(),
         _defaultTerminationMessage(),
@@ -49,14 +49,14 @@ class _State extends State<ConfigurationTautulliRoute>
   }
 
   Widget _enabledToggle() {
-    return LunaBox.profiles.listenableBuilder(
-      builder: (context, _) => LunaBlock(
-        title: 'settings.EnableModule'.tr(args: [LunaModule.TAUTULLI.title]),
-        trailing: LunaSwitch(
-          value: LunaProfile.current.tautulliEnabled,
+    return ArrPilotBox.profiles.listenableBuilder(
+      builder: (context, _) => ArrPilotBlock(
+        title: 'settings.EnableModule'.tr(args: [ArrPilotModule.TAUTULLI.title]),
+        trailing: ArrPilotSwitch(
+          value: ArrPilotProfile.current.tautulliEnabled,
           onChanged: (value) {
-            LunaProfile.current.tautulliEnabled = value;
-            LunaProfile.current.save();
+            ArrPilotProfile.current.tautulliEnabled = value;
+            ArrPilotProfile.current.save();
             context.read<TautulliState>().reset();
           },
         ),
@@ -65,25 +65,25 @@ class _State extends State<ConfigurationTautulliRoute>
   }
 
   Widget _connectionDetailsPage() {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.ConnectionDetails'.tr(),
       body: [
         TextSpan(
           text: 'settings.ConnectionDetailsDescription'.tr(
-            args: [LunaModule.TAUTULLI.title],
+            args: [ArrPilotModule.TAUTULLI.title],
           ),
         ),
       ],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: SettingsRoutes.CONFIGURATION_TAUTULLI_CONNECTION_DETAILS.go,
     );
   }
 
   Widget _defaultPagesPage() {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.DefaultPages'.tr(),
       body: [TextSpan(text: 'settings.DefaultPagesDescription'.tr())],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: SettingsRoutes.CONFIGURATION_TAUTULLI_DEFAULT_PAGES.go,
     );
   }
@@ -93,12 +93,12 @@ class _State extends State<ConfigurationTautulliRoute>
     return _db.listenableBuilder(
       builder: (context, _) {
         String message = _db.read();
-        return LunaBlock(
+        return ArrPilotBlock(
           title: 'tautulli.DefaultTerminationMessage'.tr(),
           body: [
             TextSpan(text: message.isEmpty ? 'lunasea.NotSet'.tr() : message),
           ],
-          trailing: const LunaIconButton(icon: Icons.videocam_off_rounded),
+          trailing: const ArrPilotIconButton(icon: Icons.videocam_off_rounded),
           onTap: () async {
             Tuple2<bool, String> result =
                 await TautulliDialogs.setTerminationMessage(context);
@@ -115,10 +115,10 @@ class _State extends State<ConfigurationTautulliRoute>
       String refreshRate = _db.read() == 1
           ? 'lunasea.EverySecond'.tr()
           : 'lunasea.EverySeconds'.tr(args: [_db.read().toString()]);
-      return LunaBlock(
+      return ArrPilotBlock(
         title: 'tautulli.ActivityRefreshRate'.tr(),
         body: [TextSpan(text: refreshRate)],
-        trailing: const LunaIconButton(icon: LunaIcons.REFRESH),
+        trailing: const ArrPilotIconButton(icon: ArrPilotIcons.REFRESH),
         onTap: () async {
           List<dynamic> _values = await TautulliDialogs.setRefreshRate(context);
           if (_values[0]) _db.update(_values[1]);
@@ -134,10 +134,10 @@ class _State extends State<ConfigurationTautulliRoute>
         String statisticsItems = _db.read() == 1
             ? 'lunasea.OneItem'.tr()
             : 'lunasea.Items'.tr(args: [_db.read().toString()]);
-        return LunaBlock(
+        return ArrPilotBlock(
           title: 'tautulli.StatisticsItemCount'.tr(),
           body: [TextSpan(text: statisticsItems)],
-          trailing: const LunaIconButton(icon: Icons.format_list_numbered),
+          trailing: const ArrPilotIconButton(icon: Icons.format_list_numbered),
           onTap: () async {
             List<dynamic> _values =
                 await TautulliDialogs.setStatisticsItemCount(context);

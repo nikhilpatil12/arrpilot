@@ -7,44 +7,44 @@ const FLAVOR_EDGE = 'edge';
 const FLAVOR_BETA = 'beta';
 const FLAVOR_STABLE = 'stable';
 
-enum LunaFlavor {
+enum ArrPilotFlavor {
   EDGE(FLAVOR_EDGE),
   BETA(FLAVOR_BETA),
   STABLE(FLAVOR_STABLE);
 
   final String key;
-  const LunaFlavor(this.key);
+  const ArrPilotFlavor(this.key);
 
-  static LunaFlavor fromKey(String key) {
+  static ArrPilotFlavor fromKey(String key) {
     switch (key) {
       case FLAVOR_EDGE:
-        return LunaFlavor.EDGE;
+        return ArrPilotFlavor.EDGE;
       case FLAVOR_BETA:
-        return LunaFlavor.BETA;
+        return ArrPilotFlavor.BETA;
       case FLAVOR_STABLE:
-        return LunaFlavor.STABLE;
+        return ArrPilotFlavor.STABLE;
     }
-    throw Exception('Invalid LunaFlavor');
+    throw Exception('Invalid ArrPilotFlavor');
   }
 
-  static LunaFlavor get current => LunaFlavor.fromKey(LunaEnvironment.flavor);
+  static ArrPilotFlavor get current => ArrPilotFlavor.fromKey(ArrPilotEnvironment.flavor);
 
-  static bool get isEdge => current == LunaFlavor.EDGE;
-  static bool get isBeta => current == LunaFlavor.BETA;
-  static bool get isStable => current == LunaFlavor.STABLE;
+  static bool get isEdge => current == ArrPilotFlavor.EDGE;
+  static bool get isBeta => current == ArrPilotFlavor.BETA;
+  static bool get isStable => current == ArrPilotFlavor.STABLE;
 }
 
-extension LunaFlavorExtension on LunaFlavor {
+extension ArrPilotFlavorExtension on ArrPilotFlavor {
   bool isRunningFlavor() {
-    LunaFlavor flavor = LunaFlavor.current;
+    ArrPilotFlavor flavor = ArrPilotFlavor.current;
     if (flavor == this) return true;
 
     switch (this) {
-      case LunaFlavor.EDGE:
+      case ArrPilotFlavor.EDGE:
         return false;
-      case LunaFlavor.BETA:
-        return flavor == LunaFlavor.EDGE;
-      case LunaFlavor.STABLE:
+      case ArrPilotFlavor.BETA:
+        return flavor == ArrPilotFlavor.EDGE;
+      case ArrPilotFlavor.STABLE:
         return true;
     }
   }
@@ -52,34 +52,34 @@ extension LunaFlavorExtension on LunaFlavor {
   String get downloadLink {
     String base = 'https://builds.lunasea.app/#latest';
     switch (this) {
-      case LunaFlavor.EDGE:
+      case ArrPilotFlavor.EDGE:
         return '$base/${this.key}/';
-      case LunaFlavor.BETA:
+      case ArrPilotFlavor.BETA:
         return '$base/${this.key}/';
-      case LunaFlavor.STABLE:
+      case ArrPilotFlavor.STABLE:
         return '$base/${this.key}/';
     }
   }
 
   String get name {
     switch (this) {
-      case LunaFlavor.EDGE:
+      case ArrPilotFlavor.EDGE:
         return 'lunasea.Edge'.tr();
-      case LunaFlavor.BETA:
+      case ArrPilotFlavor.BETA:
         return 'lunasea.Beta'.tr();
-      case LunaFlavor.STABLE:
+      case ArrPilotFlavor.STABLE:
         return 'lunasea.Stable'.tr();
     }
   }
 
   Color get color {
     switch (this) {
-      case LunaFlavor.EDGE:
-        return LunaColours.red;
-      case LunaFlavor.BETA:
-        return LunaColours.blue;
-      case LunaFlavor.STABLE:
-        return LunaColours.accent;
+      case ArrPilotFlavor.EDGE:
+        return ArrPilotColours.red;
+      case ArrPilotFlavor.BETA:
+        return ArrPilotColours.blue;
+      case ArrPilotFlavor.STABLE:
+        return ArrPilotColours.accent;
     }
   }
 }

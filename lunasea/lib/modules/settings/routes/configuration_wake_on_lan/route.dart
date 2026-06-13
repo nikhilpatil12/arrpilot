@@ -12,12 +12,12 @@ class ConfigurationWakeOnLANRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationWakeOnLANRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar(),
       body: _body(),
@@ -25,18 +25,18 @@ class _State extends State<ConfigurationWakeOnLANRoute>
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       scrollControllers: [scrollController],
-      title: LunaModule.WAKE_ON_LAN.title,
+      title: ArrPilotModule.WAKE_ON_LAN.title,
     );
   }
 
   Widget _body() {
-    return LunaBox.profiles.listenableBuilder(
-      builder: (context, _) => LunaListView(
+    return ArrPilotBox.profiles.listenableBuilder(
+      builder: (context, _) => ArrPilotListView(
         controller: scrollController,
         children: [
-          LunaModule.WAKE_ON_LAN.informationBanner(),
+          ArrPilotModule.WAKE_ON_LAN.informationBanner(),
           _enabledToggle(),
           _broadcastAddress(),
           _macAddress(),
@@ -46,21 +46,21 @@ class _State extends State<ConfigurationWakeOnLANRoute>
   }
 
   Widget _enabledToggle() {
-    return LunaBlock(
-      title: 'settings.EnableModule'.tr(args: [LunaModule.WAKE_ON_LAN.title]),
-      trailing: LunaSwitch(
-        value: LunaProfile.current.wakeOnLANEnabled,
+    return ArrPilotBlock(
+      title: 'settings.EnableModule'.tr(args: [ArrPilotModule.WAKE_ON_LAN.title]),
+      trailing: ArrPilotSwitch(
+        value: ArrPilotProfile.current.wakeOnLANEnabled,
         onChanged: (value) {
-          LunaProfile.current.wakeOnLANEnabled = value;
-          LunaProfile.current.save();
+          ArrPilotProfile.current.wakeOnLANEnabled = value;
+          ArrPilotProfile.current.save();
         },
       ),
     );
   }
 
   Widget _broadcastAddress() {
-    String? broadcastAddress = LunaProfile.current.wakeOnLANBroadcastAddress;
-    return LunaBlock(
+    String? broadcastAddress = ArrPilotProfile.current.wakeOnLANBroadcastAddress;
+    return ArrPilotBlock(
       title: 'settings.BroadcastAddress'.tr(),
       body: [
         TextSpan(
@@ -68,7 +68,7 @@ class _State extends State<ConfigurationWakeOnLANRoute>
               broadcastAddress == '' ? 'lunasea.NotSet'.tr() : broadcastAddress,
         ),
       ],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {
         Tuple2<bool, String> _values =
             await SettingsDialogs().editBroadcastAddress(
@@ -76,29 +76,29 @@ class _State extends State<ConfigurationWakeOnLANRoute>
           broadcastAddress,
         );
         if (_values.item1) {
-          LunaProfile.current.wakeOnLANBroadcastAddress = _values.item2;
-          LunaProfile.current.save();
+          ArrPilotProfile.current.wakeOnLANBroadcastAddress = _values.item2;
+          ArrPilotProfile.current.save();
         }
       },
     );
   }
 
   Widget _macAddress() {
-    String? macAddress = LunaProfile.current.wakeOnLANMACAddress;
-    return LunaBlock(
+    String? macAddress = ArrPilotProfile.current.wakeOnLANMACAddress;
+    return ArrPilotBlock(
       title: 'settings.MACAddress'.tr(),
       body: [
         TextSpan(text: macAddress == '' ? 'lunasea.NotSet'.tr() : macAddress),
       ],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {
         Tuple2<bool, String> _values = await SettingsDialogs().editMACAddress(
           context,
           macAddress,
         );
         if (_values.item1) {
-          LunaProfile.current.wakeOnLANMACAddress = _values.item2;
-          LunaProfile.current.save();
+          ArrPilotProfile.current.wakeOnLANMACAddress = _values.item2;
+          ArrPilotProfile.current.save();
         }
       },
     );

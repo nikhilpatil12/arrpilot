@@ -12,7 +12,7 @@ class StatisticsRoute extends StatefulWidget {
   State<StatisticsRoute> createState() => _State();
 }
 
-class _State extends State<StatisticsRoute> with LunaScrollControllerMixin {
+class _State extends State<StatisticsRoute> with ArrPilotScrollControllerMixin {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _refreshKey = GlobalKey<RefreshIndicatorState>();
   Future<SABnzbdStatisticsData>? _future;
@@ -25,14 +25,14 @@ class _State extends State<StatisticsRoute> with LunaScrollControllerMixin {
   }
 
   @override
-  Widget build(BuildContext context) => LunaScaffold(
+  Widget build(BuildContext context) => ArrPilotScaffold(
         scaffoldKey: _scaffoldKey,
         appBar: _appBar as PreferredSizeWidget?,
         body: _body,
       );
 
   Future<SABnzbdStatisticsData> _fetch() async =>
-      SABnzbdAPI.from(LunaProfile.current).getStatistics();
+      SABnzbdAPI.from(ArrPilotProfile.current).getStatistics();
 
   Future<void> _refresh() async {
     if (mounted)
@@ -41,12 +41,12 @@ class _State extends State<StatisticsRoute> with LunaScrollControllerMixin {
       });
   }
 
-  Widget get _appBar => LunaAppBar(
+  Widget get _appBar => ArrPilotAppBar(
         title: 'Server Statistics',
         scrollControllers: [scrollController],
       );
 
-  Widget get _body => LunaRefreshIndicator(
+  Widget get _body => ArrPilotRefreshIndicator(
         context: context,
         key: _refreshKey,
         onRefresh: _refresh,
@@ -57,7 +57,7 @@ class _State extends State<StatisticsRoute> with LunaScrollControllerMixin {
               case ConnectionState.done:
                 {
                   if (snapshot.hasError || snapshot.data == null)
-                    return LunaMessage.error(onTap: _refresh);
+                    return ArrPilotMessage.error(onTap: _refresh);
                   _data = snapshot.data;
                   return _list;
                 }
@@ -65,32 +65,32 @@ class _State extends State<StatisticsRoute> with LunaScrollControllerMixin {
               case ConnectionState.waiting:
               case ConnectionState.active:
               default:
-                return const LunaLoader();
+                return const ArrPilotLoader();
             }
           },
         ),
       );
 
-  Widget get _list => LunaListView(
+  Widget get _list => ArrPilotListView(
         controller: scrollController,
         children: <Widget>[
-          const LunaHeader(text: 'Status'),
+          const ArrPilotHeader(text: 'Status'),
           _status(),
-          const LunaHeader(text: 'Statistics'),
+          const ArrPilotHeader(text: 'Statistics'),
           _statistics(),
           ..._serverStatistics(),
         ],
       );
 
   Widget _status() {
-    return LunaTableCard(
+    return ArrPilotTableCard(
       content: [
-        LunaTableContent(title: 'Uptime', body: _data!.uptime),
-        LunaTableContent(title: 'Version', body: _data!.version),
-        LunaTableContent(
+        ArrPilotTableContent(title: 'Uptime', body: _data!.uptime),
+        ArrPilotTableContent(title: 'Version', body: _data!.version),
+        ArrPilotTableContent(
             title: 'Temp. Space',
             body: '${_data!.tempFreespace.toString()} GB'),
-        LunaTableContent(
+        ArrPilotTableContent(
             title: 'Final Space',
             body: '${_data!.finalFreespace.toString()} GB'),
       ],
@@ -98,12 +98,12 @@ class _State extends State<StatisticsRoute> with LunaScrollControllerMixin {
   }
 
   Widget _statistics() {
-    return LunaTableCard(
+    return ArrPilotTableCard(
       content: [
-        LunaTableContent(title: 'Daily', body: _data!.dailyUsage.asBytes()),
-        LunaTableContent(title: 'Weekly', body: _data!.weeklyUsage.asBytes()),
-        LunaTableContent(title: 'Monthly', body: _data!.monthlyUsage.asBytes()),
-        LunaTableContent(title: 'Total', body: _data!.totalUsage.asBytes()),
+        ArrPilotTableContent(title: 'Daily', body: _data!.dailyUsage.asBytes()),
+        ArrPilotTableContent(title: 'Weekly', body: _data!.weeklyUsage.asBytes()),
+        ArrPilotTableContent(title: 'Monthly', body: _data!.monthlyUsage.asBytes()),
+        ArrPilotTableContent(title: 'Total', body: _data!.totalUsage.asBytes()),
       ],
     );
   }
@@ -111,16 +111,16 @@ class _State extends State<StatisticsRoute> with LunaScrollControllerMixin {
   List<Widget> _serverStatistics() {
     return _data!.servers
         .map((server) => [
-              LunaHeader(text: server.name),
-              LunaTableCard(
+              ArrPilotHeader(text: server.name),
+              ArrPilotTableCard(
                 content: [
-                  LunaTableContent(
+                  ArrPilotTableContent(
                       title: 'Daily', body: server.dailyUsage.asBytes()),
-                  LunaTableContent(
+                  ArrPilotTableContent(
                       title: 'Weekly', body: server.weeklyUsage.asBytes()),
-                  LunaTableContent(
+                  ArrPilotTableContent(
                       title: 'Monthly', body: server.monthlyUsage.asBytes()),
-                  LunaTableContent(
+                  ArrPilotTableContent(
                       title: 'Total', body: server.totalUsage.asBytes()),
                 ],
               ),

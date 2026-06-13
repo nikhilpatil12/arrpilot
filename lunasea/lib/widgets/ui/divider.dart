@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaDivider extends Divider {
-  LunaDivider({
+class ArrPilotDivider extends Divider {
+  ArrPilotDivider({
     Key? key,
   }) : super(
           key: key,
           thickness: 1.0,
-          color: LunaColours.accent.dimmed(),
-          indent: LunaUI.DEFAULT_MARGIN_SIZE * 5,
-          endIndent: LunaUI.DEFAULT_MARGIN_SIZE * 5,
+          color: ArrPilotColours.accent.dimmed(),
+          indent: ArrPilotUI.DEFAULT_MARGIN_SIZE * 5,
+          endIndent: ArrPilotUI.DEFAULT_MARGIN_SIZE * 5,
         );
 }

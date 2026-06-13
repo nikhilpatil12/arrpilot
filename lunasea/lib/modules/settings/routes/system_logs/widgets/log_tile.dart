@@ -4,7 +4,7 @@ import 'package:arrpilot/database/models/log.dart';
 import 'package:arrpilot/extensions/datetime.dart';
 
 class SettingsSystemLogTile extends StatelessWidget {
-  final LunaLog log;
+  final ArrPilotLog log;
 
   const SettingsSystemLogTile({
     Key? key,
@@ -15,7 +15,7 @@ class SettingsSystemLogTile extends StatelessWidget {
   Widget build(BuildContext context) {
     String dateTime =
         DateTime.fromMillisecondsSinceEpoch(log.timestamp).asDateTime();
-    return LunaExpandableListTile(
+    return ArrPilotExpandableListTile(
       title: log.message,
       collapsedSubtitles: [
         TextSpan(text: dateTime),
@@ -23,27 +23,27 @@ class SettingsSystemLogTile extends StatelessWidget {
           text: log.type.title.toUpperCase(),
           style: TextStyle(
             color: log.type.color,
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
           ),
         ),
       ],
       expandedHighlightedNodes: [
-        LunaHighlightedNode(
+        ArrPilotHighlightedNode(
           text: log.type.title.toUpperCase(),
           backgroundColor: log.type.color,
         ),
-        LunaHighlightedNode(
+        ArrPilotHighlightedNode(
           text: dateTime,
-          backgroundColor: LunaColours.blueGrey,
+          backgroundColor: ArrPilotColours.blueGrey,
         ),
       ],
       expandedTableContent: [
         if (log.className != null && log.className!.isNotEmpty)
-          LunaTableContent(title: 'settings.Class'.tr(), body: log.className),
+          ArrPilotTableContent(title: 'settings.Class'.tr(), body: log.className),
         if (log.methodName != null && log.methodName!.isNotEmpty)
-          LunaTableContent(title: 'settings.Method'.tr(), body: log.methodName),
+          ArrPilotTableContent(title: 'settings.Method'.tr(), body: log.methodName),
         if (log.error != null && log.error!.isNotEmpty)
-          LunaTableContent(title: 'settings.Exception'.tr(), body: log.error),
+          ArrPilotTableContent(title: 'settings.Exception'.tr(), body: log.error),
       ],
     );
   }

@@ -3,8 +3,8 @@ import 'package:arrpilot/core.dart';
 part 'external_module.g.dart';
 
 @JsonSerializable()
-@HiveType(typeId: 26, adapterName: 'LunaExternalModuleAdapter')
-class LunaExternalModule extends HiveObject {
+@HiveType(typeId: 26, adapterName: 'ArrPilotExternalModuleAdapter')
+class ArrPilotExternalModule extends HiveObject {
   @JsonKey()
   @HiveField(0, defaultValue: '')
   String displayName;
@@ -13,7 +13,7 @@ class LunaExternalModule extends HiveObject {
   @HiveField(1, defaultValue: '')
   String host;
 
-  LunaExternalModule({
+  ArrPilotExternalModule({
     this.displayName = '',
     this.host = '',
   });
@@ -21,17 +21,17 @@ class LunaExternalModule extends HiveObject {
   @override
   String toString() => json.encode(this.toJson());
 
-  Map<String, dynamic> toJson() => _$LunaExternalModuleToJson(this);
+  Map<String, dynamic> toJson() => _$ArrPilotExternalModuleToJson(this);
 
-  factory LunaExternalModule.fromJson(Map<String, dynamic> json) {
-    return _$LunaExternalModuleFromJson(json);
+  factory ArrPilotExternalModule.fromJson(Map<String, dynamic> json) {
+    return _$ArrPilotExternalModuleFromJson(json);
   }
 
-  factory LunaExternalModule.clone(LunaExternalModule profile) {
-    return LunaExternalModule.fromJson(profile.toJson());
+  factory ArrPilotExternalModule.clone(ArrPilotExternalModule profile) {
+    return ArrPilotExternalModule.fromJson(profile.toJson());
   }
 
-  factory LunaExternalModule.get(String key) {
-    return LunaBox.externalModules.read(key)!;
+  factory ArrPilotExternalModule.get(String key) {
+    return ArrPilotBox.externalModules.read(key)!;
   }
 }

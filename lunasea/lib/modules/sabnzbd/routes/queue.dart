@@ -34,7 +34,7 @@ class _State extends State<SABnzbdQueue>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       body: _body,
       floatingActionButton: context.watch<SABnzbdState>().error
@@ -62,7 +62,7 @@ class _State extends State<SABnzbdQueue>
   }
 
   Future _fetch() async {
-    SABnzbdAPI _api = SABnzbdAPI.from(LunaProfile.current);
+    SABnzbdAPI _api = SABnzbdAPI.from(ArrPilotProfile.current);
     return _api.getStatusAndQueue().then((data) {
       try {
         _processStatus(data[0]);
@@ -96,7 +96,7 @@ class _State extends State<SABnzbdQueue>
     _model.error = error;
   }
 
-  Widget get _body => LunaRefreshIndicator(
+  Widget get _body => ArrPilotRefreshIndicator(
         context: context,
         key: widget.refreshIndicatorKey,
         onRefresh: _fetchWithoutMessage,
@@ -105,17 +105,17 @@ class _State extends State<SABnzbdQueue>
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done &&
                 context.read<SABnzbdState>().error)
-              return LunaMessage.error(onTap: _refresh);
+              return ArrPilotMessage.error(onTap: _refresh);
             if (snapshot.hasData) return _list;
-            return const LunaLoader();
+            return const ArrPilotLoader();
           },
         ),
       );
 
   Widget get _list {
-    if (_queue == null) return LunaMessage.error(onTap: _refresh);
+    if (_queue == null) return ArrPilotMessage.error(onTap: _refresh);
     if (_queue!.isEmpty) {
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'Empty Queue',
         buttonText: 'Refresh',
         onTap: _fetchWithoutMessage,
@@ -125,7 +125,7 @@ class _State extends State<SABnzbdQueue>
   }
 
   Widget _reorderableList() {
-    return LunaReorderableListViewBuilder(
+    return ArrPilotReorderableListViewBuilder(
       controller: SABnzbdNavigationBar.scrollControllers[0],
       onReorder: (oIndex, nIndex) async {
         if (oIndex > _queue!.length) oIndex = _queue!.length;
@@ -136,7 +136,7 @@ class _State extends State<SABnzbdQueue>
             _queue!.remove(data);
             _queue!.insert(nIndex, data);
           });
-        await SABnzbdAPI.from(LunaProfile.current)
+        await SABnzbdAPI.from(ArrPilotProfile.current)
             .moveQueue(data.nzoId, nIndex)
             .then(
               (_) => showLunaSuccessSnackBar(

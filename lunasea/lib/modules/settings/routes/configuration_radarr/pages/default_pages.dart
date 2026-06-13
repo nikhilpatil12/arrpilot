@@ -12,12 +12,12 @@ class ConfigurationRadarrDefaultPagesRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationRadarrDefaultPagesRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -25,14 +25,14 @@ class _State extends State<ConfigurationRadarrDefaultPagesRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'settings.DefaultPages'.tr(),
       scrollControllers: [scrollController],
     );
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
         _homePage(),
@@ -46,10 +46,10 @@ class _State extends State<ConfigurationRadarrDefaultPagesRoute>
   Widget _homePage() {
     const _db = RadarrDatabase.NAVIGATION_INDEX;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'settings.Home'.tr(),
         body: [TextSpan(text: RadarrNavigationBar.titles[_db.read()])],
-        trailing: LunaIconButton(icon: RadarrNavigationBar.icons[_db.read()]),
+        trailing: ArrPilotIconButton(icon: RadarrNavigationBar.icons[_db.read()]),
         onTap: () async {
           Tuple2<bool, int> values = await RadarrDialogs().setDefaultPage(
             context,
@@ -65,12 +65,12 @@ class _State extends State<ConfigurationRadarrDefaultPagesRoute>
   Widget _movieDetailsPage() {
     const _db = RadarrDatabase.NAVIGATION_INDEX_MOVIE_DETAILS;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'radarr.MovieDetails'.tr(),
         body: [
           TextSpan(text: RadarrMovieDetailsNavigationBar.titles[_db.read()]),
         ],
-        trailing: LunaIconButton(
+        trailing: ArrPilotIconButton(
           icon: RadarrMovieDetailsNavigationBar.icons[_db.read()],
         ),
         onTap: () async {
@@ -88,11 +88,11 @@ class _State extends State<ConfigurationRadarrDefaultPagesRoute>
   Widget _addMoviePage() {
     const _db = RadarrDatabase.NAVIGATION_INDEX_ADD_MOVIE;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'radarr.AddMovie'.tr(),
         body: [TextSpan(text: RadarrAddMovieNavigationBar.titles[_db.read()])],
         trailing:
-            LunaIconButton(icon: RadarrAddMovieNavigationBar.icons[_db.read()]),
+            ArrPilotIconButton(icon: RadarrAddMovieNavigationBar.icons[_db.read()]),
         onTap: () async {
           Tuple2<bool, int> values = await RadarrDialogs().setDefaultPage(
             context,
@@ -108,12 +108,12 @@ class _State extends State<ConfigurationRadarrDefaultPagesRoute>
   Widget _systemStatusPage() {
     const _db = RadarrDatabase.NAVIGATION_INDEX_SYSTEM_STATUS;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'radarr.SystemStatus'.tr(),
         body: [
           TextSpan(text: RadarrSystemStatusNavigationBar.titles[_db.read()]),
         ],
-        trailing: LunaIconButton(
+        trailing: ArrPilotIconButton(
           icon: RadarrSystemStatusNavigationBar.icons[_db.read()],
         ),
         onTap: () async {

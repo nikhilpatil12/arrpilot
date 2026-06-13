@@ -13,19 +13,19 @@ class SystemStatusRoute extends StatefulWidget {
 
 class _State extends State<SystemStatusRoute> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  LunaPageController? _pageController;
+  ArrPilotPageController? _pageController;
 
   @override
   void initState() {
     super.initState();
-    _pageController = LunaPageController(
+    _pageController = ArrPilotPageController(
       initialPage: RadarrDatabase.NAVIGATION_INDEX_SYSTEM_STATUS.read(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar(),
       bottomNavigationBar:
@@ -35,7 +35,7 @@ class _State extends State<SystemStatusRoute> {
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'System Status',
       pageController: _pageController,
       scrollControllers: RadarrSystemStatusNavigationBar.scrollControllers,
@@ -49,7 +49,7 @@ class _State extends State<SystemStatusRoute> {
   Widget _body() {
     return ChangeNotifierProvider(
       create: (context) => RadarrSystemStatusState(context),
-      builder: (context, _) => LunaPageView(
+      builder: (context, _) => ArrPilotPageView(
         controller: _pageController,
         children: [
           RadarrSystemStatusAboutPage(

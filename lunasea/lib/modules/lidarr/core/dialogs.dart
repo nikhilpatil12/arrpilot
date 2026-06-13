@@ -16,19 +16,19 @@ class LidarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Monitoring Options',
       content: List.generate(
         LidarrMonitorStatus.values.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: LidarrMonitorStatus.values[index].readable,
-          icon: LunaIcons.MONITOR_ON,
-          iconColor: LunaColours().byListIndex(index),
+          icon: ArrPilotIcons.MONITOR_ON,
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, LidarrMonitorStatus.values[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _value);
   }
@@ -44,19 +44,19 @@ class LidarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Quality Profile',
       content: List.generate(
         qualities.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           icon: Icons.portrait_rounded,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           text: qualities[index].name!,
           onTap: () => _setValues(true, qualities[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return [_flag, _quality];
   }
@@ -72,19 +72,19 @@ class LidarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Metadata Profile',
       content: List.generate(
         metadatas.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           icon: Icons.portrait_rounded,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           text: metadatas[index].name!,
           onTap: () => _setValues(true, metadatas[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return [_flag, _metadata];
   }
@@ -99,26 +99,26 @@ class LidarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Remove Artist',
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'Remove + Files',
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true, true),
         ),
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'Remove',
-          textColor: LunaColours.red,
+          textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true, false),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
             text: 'Are you sure you want to remove the artist from Lidarr?'),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return [_flag, _files];
   }
@@ -131,21 +131,21 @@ class LidarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Download Release',
       buttons: <Widget>[
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'Download',
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
             text:
                 'Are you sure you want to download this release? It has been marked as a rejected release by Lidarr.'),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return [_flag];
   }
@@ -158,20 +158,20 @@ class LidarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Search All Missing',
       buttons: <Widget>[
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'Search',
           onPressed: () => _setValues(true),
         ),
       ],
       content: [
-        LunaDialog.textContent(
+        ArrPilotDialog.textContent(
             text: 'Are you sure you want to search for all missing albums?'),
       ],
-      contentPadding: LunaDialog.textDialogContentPadding(),
+      contentPadding: ArrPilotDialog.textDialogContentPadding(),
     );
     return [_flag];
   }
@@ -192,19 +192,19 @@ class LidarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: entry.title,
       content: List.generate(
         _options.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           icon: _options[index][1],
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           text: _options[index][0],
           onTap: () => _setValues(true, _options[index][2]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return [_flag, _value];
   }
@@ -220,27 +220,27 @@ class LidarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Root Folder',
       content: List.generate(
         folders.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: folders[index].path!,
-          subtitle: LunaDialog.richText(
+          subtitle: ArrPilotDialog.richText(
             children: [
-              LunaDialog.bolded(
+              ArrPilotDialog.bolded(
                 text: folders[index].freeSpace.asBytes(),
-                fontSize: LunaDialog.BUTTON_SIZE,
+                fontSize: ArrPilotDialog.BUTTON_SIZE,
               ),
             ],
           ) as RichText?,
           icon: Icons.folder_rounded,
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, folders[index]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return [_flag, _folder];
   }
@@ -262,19 +262,19 @@ class LidarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Settings',
       content: List.generate(
         _options.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: _options[index][0],
           icon: _options[index][1],
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, _options[index][2]),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return [_flag, _value];
   }
@@ -289,30 +289,30 @@ class LidarrDialogs {
       Navigator.of(context, rootNavigator: true).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'Page',
       content: List.generate(
         LidarrNavigationBar.titles.length,
-        (index) => LunaDialog.tile(
+        (index) => ArrPilotDialog.tile(
           text: LidarrNavigationBar.titles[index],
           icon: LidarrNavigationBar.icons[index],
-          iconColor: LunaColours().byListIndex(index),
+          iconColor: ArrPilotColours().byListIndex(index),
           onTap: () => _setValues(true, index),
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
 
     return [_flag, _index];
   }
 
   Future<void> addArtistOptions(BuildContext context) async {
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'lunasea.Options'.tr(),
       buttons: [
-        LunaDialog.button(
+        ArrPilotDialog.button(
           text: 'lunasea.Close'.tr(),
           onPressed: () => Navigator.of(context, rootNavigator: true).pop(),
         ),
@@ -320,7 +320,7 @@ class LidarrDialogs {
       showCancelButton: false,
       content: [
         LidarrDatabase.ADD_ARTIST_SEARCH_FOR_MISSING.listenableBuilder(
-          builder: (context, _) => LunaDialog.checkbox(
+          builder: (context, _) => ArrPilotDialog.checkbox(
             title: 'lidarr.StartSearchForMissingAlbums'.tr(),
             value: LidarrDatabase.ADD_ARTIST_SEARCH_FOR_MISSING.read(),
             onChanged: (value) {
@@ -329,7 +329,7 @@ class LidarrDialogs {
           ),
         ),
       ],
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
   }
 }

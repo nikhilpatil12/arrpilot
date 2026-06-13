@@ -6,7 +6,7 @@ import 'package:arrpilot/modules/radarr.dart';
 extension RadarrSystemStatusExtension on RadarrSystemStatus {
   String get lunaVersion {
     if (this.version != null && this.version!.isNotEmpty) return this.version!;
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaPackageVersion {
@@ -15,12 +15,12 @@ extension RadarrSystemStatusExtension on RadarrSystemStatus {
       packageVersion = this.packageVersion;
     if (this.packageAuthor != null && this.packageAuthor!.isNotEmpty)
       packageAuthor = this.packageAuthor;
-    return '${packageVersion ?? LunaUI.TEXT_EMDASH} by ${packageAuthor ?? LunaUI.TEXT_EMDASH}';
+    return '${packageVersion ?? ArrPilotUI.TEXT_EMDASH} by ${packageAuthor ?? ArrPilotUI.TEXT_EMDASH}';
   }
 
   String get lunaNetCore {
     if (this.isNetCore ?? false)
-      return 'Yes (${this.runtimeVersion ?? LunaUI.TEXT_EMDASH})';
+      return 'Yes (${this.runtimeVersion ?? ArrPilotUI.TEXT_EMDASH})';
     return 'No';
   }
 
@@ -30,24 +30,24 @@ extension RadarrSystemStatusExtension on RadarrSystemStatus {
 
   String get lunaDBMigration {
     if (this.migrationVersion != null) return '${this.migrationVersion}';
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaAppDataDirectory {
     if (this.appData != null && this.appData!.isNotEmpty) return this.appData!;
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaStartupDirectory {
     if (this.startupPath != null && this.startupPath!.isNotEmpty)
       return this.startupPath!;
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaMode {
     if (this.mode != null && this.mode!.isNotEmpty)
       return this.mode!.toTitleCase();
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaUptime {
@@ -56,6 +56,6 @@ extension RadarrSystemStatusExtension on RadarrSystemStatus {
       if (_start != null)
         return DateTime.now().difference(_start).asWordsTimestamp();
     }
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 }

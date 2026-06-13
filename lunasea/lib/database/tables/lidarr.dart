@@ -4,7 +4,7 @@ import 'package:arrpilot/modules/lidarr/core/api/data/qualityprofile.dart';
 import 'package:arrpilot/modules/lidarr/core/api/data/rootfolder.dart';
 import 'package:arrpilot/vendor.dart';
 
-enum LidarrDatabase<T> with LunaTableMixin<T> {
+enum LidarrDatabase<T> with ArrPilotTableMixin<T> {
   NAVIGATION_INDEX<int>(0),
   ADD_MONITORED_STATUS<String>('all'),
   ADD_ARTIST_SEARCH_FOR_MISSING<bool>(true),
@@ -14,7 +14,7 @@ enum LidarrDatabase<T> with LunaTableMixin<T> {
   ADD_ROOT_FOLDER<LidarrRootFolder?>(null);
 
   @override
-  LunaTable get table => LunaTable.lidarr;
+  ArrPilotTable get table => ArrPilotTable.lidarr;
 
   @override
   final T fallback;

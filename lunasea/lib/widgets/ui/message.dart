@@ -5,14 +5,14 @@ import 'package:arrpilot/router/routes/dashboard.dart';
 import 'package:arrpilot/vendor.dart';
 import 'package:arrpilot/widgets/ui.dart';
 
-class LunaMessage extends StatelessWidget {
+class ArrPilotMessage extends StatelessWidget {
   final String text;
   final Color textColor;
   final String? buttonText;
   final Function? onTap;
   final bool useSafeArea;
 
-  const LunaMessage({
+  const ArrPilotMessage({
     Key? key,
     required this.text,
     this.textColor = Colors.white,
@@ -22,12 +22,12 @@ class LunaMessage extends StatelessWidget {
   }) : super(key: key);
 
   /// Return a message that is meant to be shown within a [ListView].
-  factory LunaMessage.inList({
+  factory ArrPilotMessage.inList({
     Key? key,
     required String text,
     bool useSafeArea = false,
   }) {
-    return LunaMessage(
+    return ArrPilotMessage(
       key: key,
       text: text,
       useSafeArea: useSafeArea,
@@ -35,21 +35,21 @@ class LunaMessage extends StatelessWidget {
   }
 
   /// Returns a centered message with a simple message, with a button to pop out of the route.
-  factory LunaMessage.goBack({
+  factory ArrPilotMessage.goBack({
     Key? key,
     required String text,
     required BuildContext context,
     bool useSafeArea = true,
   }) {
-    return LunaMessage(
+    return ArrPilotMessage(
       key: key,
       text: text,
       buttonText: 'lunasea.GoBack'.tr(),
       onTap: () {
-        if (LunaRouter.router.canPop()) {
-          LunaRouter.router.pop();
+        if (ArrPilotRouter.router.canPop()) {
+          ArrPilotRouter.router.pop();
         } else {
-          LunaRouter.router.pushReplacement(DashboardRoutes.HOME.path);
+          ArrPilotRouter.router.pushReplacement(DashboardRoutes.HOME.path);
         }
       },
       useSafeArea: useSafeArea,
@@ -57,12 +57,12 @@ class LunaMessage extends StatelessWidget {
   }
 
   /// Return a pre-structured "An Error Has Occurred" message, with a "Try Again" button shown.
-  factory LunaMessage.error({
+  factory ArrPilotMessage.error({
     Key? key,
     required Function onTap,
     bool useSafeArea = true,
   }) {
-    return LunaMessage(
+    return ArrPilotMessage(
       key: key,
       text: 'lunasea.AnErrorHasOccurred'.tr(),
       buttonText: 'lunasea.TryAgain'.tr(),
@@ -72,17 +72,17 @@ class LunaMessage extends StatelessWidget {
   }
 
   /// Return a pre-structured "<module> Is Not Enabled" message, with a "Return to Dashboard" button shown.
-  factory LunaMessage.moduleNotEnabled({
+  factory ArrPilotMessage.moduleNotEnabled({
     Key? key,
     required BuildContext context,
     required String module,
     bool useSafeArea = true,
   }) {
-    return LunaMessage(
+    return ArrPilotMessage(
       key: key,
       text: 'lunasea.ModuleIsNotEnabled'.tr(args: [module]),
       buttonText: 'lunasea.ReturnToDashboard'.tr(),
-      onTap: LunaModule.DASHBOARD.launch,
+      onTap: ArrPilotModule.DASHBOARD.launch,
       useSafeArea: useSafeArea,
     );
   }
@@ -99,9 +99,9 @@ class LunaMessage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Card(
-            margin: LunaUI.MARGIN_H_DEFAULT_V_HALF,
-            elevation: LunaUI.ELEVATION,
-            shape: LunaUI.shapeBorder,
+            margin: ArrPilotUI.MARGIN_H_DEFAULT_V_HALF,
+            elevation: ArrPilotUI.ELEVATION,
+            shape: ArrPilotUI.shapeBorder,
             child: Row(
               children: [
                 Expanded(
@@ -111,8 +111,8 @@ class LunaMessage extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: textColor,
-                        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
-                        fontSize: LunaUI.FONT_SIZE_MESSAGES,
+                        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
+                        fontSize: ArrPilotUI.FONT_SIZE_MESSAGES,
                       ),
                     ),
                     margin: const EdgeInsets.symmetric(
@@ -123,14 +123,14 @@ class LunaMessage extends StatelessWidget {
             ),
           ),
           if (buttonText != null)
-            LunaButtonContainer(
+            ArrPilotButtonContainer(
               children: [
-                LunaButton.text(
+                ArrPilotButton.text(
                   text: buttonText!,
                   icon: null,
                   onTap: onTap,
                   color: Colors.white,
-                  backgroundColor: LunaColours.accent,
+                  backgroundColor: ArrPilotColours.accent,
                 ),
               ],
             ),

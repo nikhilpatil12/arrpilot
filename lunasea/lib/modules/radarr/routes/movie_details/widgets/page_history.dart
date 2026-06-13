@@ -26,15 +26,15 @@ class _State extends State<RadarrMovieDetailsHistoryPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
-      module: LunaModule.RADARR,
+    return ArrPilotScaffold(
+      module: ArrPilotModule.RADARR,
       scaffoldKey: _scaffoldKey,
       body: _body(),
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: () async =>
@@ -43,14 +43,14 @@ class _State extends State<RadarrMovieDetailsHistoryPage>
         future: context.watch<RadarrMovieDetailsState>().history,
         builder: (context, AsyncSnapshot<List<RadarrHistoryRecord>> snapshot) {
           if (snapshot.hasError) {
-            LunaLogger().error(
+            ArrPilotLogger().error(
                 'Unable to fetch Radarr movie history: ${widget.movie!.id}',
                 snapshot.error,
                 snapshot.stackTrace);
-            return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+            return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
           }
           if (snapshot.hasData) return _list(snapshot.data);
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -58,12 +58,12 @@ class _State extends State<RadarrMovieDetailsHistoryPage>
 
   Widget _list(List<RadarrHistoryRecord>? history) {
     if ((history?.length ?? 0) == 0)
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'No History Found',
         buttonText: 'Refresh',
         onTap: _refreshKey.currentState!.show,
       );
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: RadarrMovieDetailsNavigationBar.scrollControllers[2],
       itemCount: history!.length,
       itemBuilder: (context, index) =>

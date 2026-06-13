@@ -9,7 +9,7 @@ class SonarrAppBarAddSeriesAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaIconButton(
+    return ArrPilotIconButton(
       icon: Icons.add_rounded,
       onPressed: SonarrRoutes.ADD_SERIES.go,
     );

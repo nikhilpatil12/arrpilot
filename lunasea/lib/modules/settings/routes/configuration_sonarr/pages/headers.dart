@@ -9,6 +9,6 @@ class ConfigurationSonarrConnectionDetailsHeadersRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SettingsHeaderRoute(module: LunaModule.SONARR);
+    return const SettingsHeaderRoute(module: ArrPilotModule.SONARR);
   }
 }

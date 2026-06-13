@@ -12,26 +12,26 @@ class TautulliIPAddressDetailsGeolocationTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaTableCard(
+    return ArrPilotTableCard(
       content: [
-        LunaTableContent(
-            title: 'country', body: geolocation.country ?? LunaUI.TEXT_EMDASH),
-        LunaTableContent(
-            title: 'region', body: geolocation.region ?? LunaUI.TEXT_EMDASH),
-        LunaTableContent(
-            title: 'city', body: geolocation.city ?? LunaUI.TEXT_EMDASH),
-        LunaTableContent(
+        ArrPilotTableContent(
+            title: 'country', body: geolocation.country ?? ArrPilotUI.TEXT_EMDASH),
+        ArrPilotTableContent(
+            title: 'region', body: geolocation.region ?? ArrPilotUI.TEXT_EMDASH),
+        ArrPilotTableContent(
+            title: 'city', body: geolocation.city ?? ArrPilotUI.TEXT_EMDASH),
+        ArrPilotTableContent(
             title: 'postal',
-            body: geolocation.postalCode ?? LunaUI.TEXT_EMDASH),
-        LunaTableContent(
+            body: geolocation.postalCode ?? ArrPilotUI.TEXT_EMDASH),
+        ArrPilotTableContent(
             title: 'timezone',
-            body: geolocation.timezone ?? LunaUI.TEXT_EMDASH),
-        LunaTableContent(
+            body: geolocation.timezone ?? ArrPilotUI.TEXT_EMDASH),
+        ArrPilotTableContent(
             title: 'latitude',
-            body: '${geolocation.latitude ?? LunaUI.TEXT_EMDASH}'),
-        LunaTableContent(
+            body: '${geolocation.latitude ?? ArrPilotUI.TEXT_EMDASH}'),
+        ArrPilotTableContent(
             title: 'longitude',
-            body: '${geolocation.longitude ?? LunaUI.TEXT_EMDASH}'),
+            body: '${geolocation.longitude ?? ArrPilotUI.TEXT_EMDASH}'),
       ],
     );
   }

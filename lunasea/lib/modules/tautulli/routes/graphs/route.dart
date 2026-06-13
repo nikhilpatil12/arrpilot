@@ -13,18 +13,18 @@ class GraphsRoute extends StatefulWidget {
 
 class _State extends State<GraphsRoute> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  LunaPageController? _pageController;
+  ArrPilotPageController? _pageController;
 
   @override
   void initState() {
     super.initState();
-    _pageController = LunaPageController(
+    _pageController = ArrPilotPageController(
         initialPage: TautulliDatabase.NAVIGATION_INDEX_GRAPHS.read());
   }
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       bottomNavigationBar: _bottomNavigationBar(),
@@ -33,7 +33,7 @@ class _State extends State<GraphsRoute> {
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       pageController: _pageController,
       scrollControllers: TautulliGraphsNavigationBar.scrollControllers,
       title: 'Graphs',
@@ -48,7 +48,7 @@ class _State extends State<GraphsRoute> {
   }
 
   Widget _body() {
-    return LunaPageView(
+    return ArrPilotPageView(
       controller: _pageController,
       children: const [
         TautulliGraphsPlayByPeriodRoute(),

@@ -14,11 +14,11 @@ import 'package:arrpilot/database/tables/sonarr.dart';
 import 'package:arrpilot/database/tables/tautulli.dart';
 import 'package:arrpilot/vendor.dart';
 
-enum LunaTable<T extends LunaTableMixin> {
+enum ArrPilotTable<T extends ArrPilotTableMixin> {
   bios<BIOSDatabase>('bios', items: BIOSDatabase.values),
   dashboard<DashboardDatabase>('home', items: DashboardDatabase.values),
   lidarr<LidarrDatabase>('lidarr', items: LidarrDatabase.values),
-  lunasea<LunaSeaDatabase>('lunasea', items: LunaSeaDatabase.values),
+  lunasea<ArrPilotDatabase>('lunasea', items: ArrPilotDatabase.values),
   nzbget<NZBGetDatabase>('nzbget', items: NZBGetDatabase.values),
   radarr<RadarrDatabase>('radarr', items: RadarrDatabase.values),
   sabnzbd<SABnzbdDatabase>('sabnzbd', items: SABnzbdDatabase.values),
@@ -29,13 +29,13 @@ enum LunaTable<T extends LunaTableMixin> {
   final String key;
   final List<T> items;
 
-  const LunaTable(
+  const ArrPilotTable(
     this.key, {
     required this.items,
   });
 
   static void register() {
-    for (final table in LunaTable.values) table.items[0].register();
+    for (final table in ArrPilotTable.values) table.items[0].register();
     registerDeprecatedAdapters();
   }
 
@@ -66,11 +66,11 @@ enum LunaTable<T extends LunaTableMixin> {
   }
 }
 
-mixin LunaTableMixin<T> on Enum {
+mixin ArrPilotTableMixin<T> on Enum {
   T get fallback;
-  LunaTable get table;
+  ArrPilotTable get table;
 
-  LunaBox get box => LunaBox.lunasea;
+  ArrPilotBox get box => ArrPilotBox.lunasea;
   String get key => '${table.key.toUpperCase()}_$name';
 
   T read() => box.read(key, fallback: fallback);

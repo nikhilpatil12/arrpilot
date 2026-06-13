@@ -26,23 +26,23 @@ class LidarrDescriptionBlock extends StatefulWidget {
 class _State extends State<LidarrDescriptionBlock> {
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: widget.title,
       body: [
-        LunaTextSpan.extended(
+        ArrPilotTextSpan.extended(
           text: widget.description?.isNotEmpty ?? false
               ? widget.description
               : 'No Summary Available',
         ),
       ],
-      onTap: () async => LunaDialogs().textPreview(
+      onTap: () async => ArrPilotDialogs().textPreview(
         context,
         widget.title,
         widget.description?.trim() ?? 'No Summary Available',
       ),
       onLongPress: widget.onLongPress,
       customBodyMaxLines: 3,
-      posterPlaceholderIcon: LunaIcons.USER,
+      posterPlaceholderIcon: ArrPilotIcons.USER,
       posterHeaders: widget.headers,
       posterIsSquare: widget.squareImage,
       posterUrl: widget.uri,

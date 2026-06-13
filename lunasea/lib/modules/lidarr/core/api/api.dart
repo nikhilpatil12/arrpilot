@@ -5,7 +5,7 @@ class LidarrAPI {
   final Dio _dio;
 
   LidarrAPI._internal(this._dio);
-  factory LidarrAPI.from(LunaProfile profile) {
+  factory LidarrAPI.from(ArrPilotProfile profile) {
     Dio _client = Dio(
       BaseOptions(
         baseUrl: profile.lidarrHost.endsWith('/')
@@ -16,7 +16,7 @@ class LidarrAPI {
         },
         contentType: Headers.jsonContentType,
         responseType: ResponseType.json,
-        headers: LunaProfile.current.lidarrHeaders,
+        headers: ArrPilotProfile.current.lidarrHeaders,
         followRedirects: true,
         maxRedirects: 5,
       ),
@@ -25,7 +25,7 @@ class LidarrAPI {
   }
 
   void logError(String text, Object error, StackTrace trace) =>
-      LunaLogger().error('Lidarr: $text', error, trace);
+      ArrPilotLogger().error('Lidarr: $text', error, trace);
 
   Future<dynamic> testConnection() async => await _dio.get('system/status');
 

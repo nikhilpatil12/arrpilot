@@ -5,7 +5,7 @@ import 'package:arrpilot/modules/search.dart';
 import 'package:arrpilot/router/routes/search.dart';
 
 class SearchIndexerTile extends StatelessWidget {
-  final LunaIndexer? indexer;
+  final ArrPilotIndexer? indexer;
 
   const SearchIndexerTile({
     Key? key,
@@ -14,10 +14,10 @@ class SearchIndexerTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: indexer!.displayName,
       body: [TextSpan(text: indexer!.host)],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {
         context.read<SearchState>().indexer = indexer!;
         SearchRoutes.CATEGORIES.go();

@@ -7,7 +7,7 @@ import 'package:arrpilot/modules/sonarr/core/types/sorting_series.dart';
 import 'package:arrpilot/types/list_view_option.dart';
 import 'package:arrpilot/vendor.dart';
 
-enum SonarrDatabase<T> with LunaTableMixin<T> {
+enum SonarrDatabase<T> with ArrPilotTableMixin<T> {
   NAVIGATION_INDEX<int>(0),
   NAVIGATION_INDEX_SERIES_DETAILS<int>(0),
   NAVIGATION_INDEX_SEASON_DETAILS<int>(0),
@@ -21,7 +21,7 @@ enum SonarrDatabase<T> with LunaTableMixin<T> {
   ADD_SERIES_DEFAULT_QUALITY_PROFILE<int?>(null),
   ADD_SERIES_DEFAULT_ROOT_FOLDER<int?>(null),
   ADD_SERIES_DEFAULT_TAGS<List>([]),
-  DEFAULT_VIEW_SERIES<LunaListViewOption>(LunaListViewOption.BLOCK_VIEW),
+  DEFAULT_VIEW_SERIES<ArrPilotListViewOption>(ArrPilotListViewOption.BLOCK_VIEW),
   DEFAULT_FILTERING_SERIES<SonarrSeriesFilter>(SonarrSeriesFilter.ALL),
   DEFAULT_FILTERING_RELEASES<SonarrReleasesFilter>(SonarrReleasesFilter.ALL),
   DEFAULT_SORTING_SERIES<SonarrSeriesSorting>(SonarrSeriesSorting.ALPHABETICAL),
@@ -38,7 +38,7 @@ enum SonarrDatabase<T> with LunaTableMixin<T> {
   CONTENT_PAGE_SIZE<int>(10);
 
   @override
-  LunaTable get table => LunaTable.sonarr;
+  ArrPilotTable get table => ArrPilotTable.sonarr;
 
   @override
   final T fallback;
@@ -92,7 +92,7 @@ enum SonarrDatabase<T> with LunaTableMixin<T> {
         result = SonarrReleasesFilter.ALL.fromKey(value.toString());
         break;
       case SonarrDatabase.DEFAULT_VIEW_SERIES:
-        result = LunaListViewOption.fromKey(value.toString());
+        result = ArrPilotListViewOption.fromKey(value.toString());
         break;
       default:
         result = value;

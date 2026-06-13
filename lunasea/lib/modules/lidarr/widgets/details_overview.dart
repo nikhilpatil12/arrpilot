@@ -22,7 +22,7 @@ class _State extends State<LidarrDetailsOverview>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaListView(
+    return ArrPilotListView(
       controller: LidarrArtistNavigationBar.scrollControllers[0],
       children: <Widget>[
         LidarrDescriptionBlock(
@@ -32,31 +32,31 @@ class _State extends State<LidarrDetailsOverview>
               : widget.data.overview,
           uri: widget.data.posterURI(),
           squareImage: true,
-          headers: LunaProfile.current.lidarrHeaders,
+          headers: ArrPilotProfile.current.lidarrHeaders,
         ),
-        LunaTableCard(
+        ArrPilotTableCard(
           content: [
-            LunaTableContent(
+            ArrPilotTableContent(
               title: 'Path',
               body: widget.data.path,
             ),
-            LunaTableContent(
+            ArrPilotTableContent(
               title: 'Quality',
               body: widget.data.quality,
             ),
-            LunaTableContent(
+            ArrPilotTableContent(
               title: 'Metadata',
               body: widget.data.metadata,
             ),
-            LunaTableContent(
+            ArrPilotTableContent(
               title: 'Albums',
               body: widget.data.albums,
             ),
-            LunaTableContent(
+            ArrPilotTableContent(
               title: 'Tracks',
               body: widget.data.tracks,
             ),
-            LunaTableContent(
+            ArrPilotTableContent(
               title: 'Genres',
               body: widget.data.genre,
             ),

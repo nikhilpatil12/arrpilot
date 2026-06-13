@@ -16,10 +16,10 @@ class LidarrReleasesHideButton extends StatefulWidget {
 
 class _State extends State<LidarrReleasesHideButton> {
   @override
-  Widget build(BuildContext context) => LunaCard(
+  Widget build(BuildContext context) => ArrPilotCard(
         context: context,
         child: Consumer<LidarrState>(
-          builder: (context, model, widget) => LunaIconButton(
+          builder: (context, model, widget) => ArrPilotIconButton(
             icon: model.hideRejectedReleases
                 ? Icons.visibility_off_rounded
                 : Icons.visibility_rounded,
@@ -27,9 +27,9 @@ class _State extends State<LidarrReleasesHideButton> {
                 model.hideRejectedReleases = !model.hideRejectedReleases,
           ),
         ),
-        height: LunaTextInputBar.defaultHeight,
-        width: LunaTextInputBar.defaultHeight,
-        margin: LunaTextInputBar.appBarMargin
+        height: ArrPilotTextInputBar.defaultHeight,
+        width: ArrPilotTextInputBar.defaultHeight,
+        margin: ArrPilotTextInputBar.appBarMargin
             .subtract(const EdgeInsets.only(left: 12.0)) as EdgeInsets,
         color: Theme.of(context).canvasColor,
       );

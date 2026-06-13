@@ -27,30 +27,30 @@ class _State extends State<LidarrCatalogueTile> {
   Widget build(BuildContext context) {
     return Selector<LidarrState, LidarrCatalogueSorting>(
       selector: (_, state) => state.sortCatalogueType,
-      builder: (context, sortingType, _) => LunaBlock(
+      builder: (context, sortingType, _) => ArrPilotBlock(
         title: widget.data.title,
         disabled: !widget.data.monitored!,
         body: [
           TextSpan(
             children: [
               TextSpan(text: widget.data.albums),
-              TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+              TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
               TextSpan(text: widget.data.tracks),
             ],
           ),
           TextSpan(text: widget.data.subtitle(sortingType)),
         ],
-        trailing: LunaIconButton(
+        trailing: ArrPilotIconButton(
           icon: widget.data.monitored!
-              ? LunaIcons.MONITOR_ON
-              : LunaIcons.MONITOR_OFF,
+              ? ArrPilotIcons.MONITOR_ON
+              : ArrPilotIcons.MONITOR_OFF,
           onPressed: _toggleMonitoredStatus,
         ),
-        posterPlaceholderIcon: LunaIcons.USER,
+        posterPlaceholderIcon: ArrPilotIcons.USER,
         posterUrl: widget.data.posterURI(),
-        posterHeaders: LunaProfile.current.lidarrHeaders,
+        posterHeaders: ArrPilotProfile.current.lidarrHeaders,
         backgroundUrl: widget.data.fanartURI(),
-        backgroundHeaders: LunaProfile.current.lidarrHeaders,
+        backgroundHeaders: ArrPilotProfile.current.lidarrHeaders,
         posterIsSquare: true,
         onTap: () async => _enterArtist(),
         onLongPress: () async => _handlePopup(),
@@ -59,7 +59,7 @@ class _State extends State<LidarrCatalogueTile> {
   }
 
   Future<void> _toggleMonitoredStatus() async {
-    final _api = LidarrAPI.from(LunaProfile.current);
+    final _api = LidarrAPI.from(ArrPilotProfile.current);
     await _api
         .toggleArtistMonitored(widget.data.artistID, !widget.data.monitored!)
         .then((_) {
@@ -103,7 +103,7 @@ class _State extends State<LidarrCatalogueTile> {
           _removeArtist();
           break;
         default:
-          LunaLogger()
+          ArrPilotLogger()
               .warning('Invalid method passed through popup. (${values[1]})');
       }
   }
@@ -118,7 +118,7 @@ class _State extends State<LidarrCatalogueTile> {
   }
 
   Future<void> _refreshArtist() async {
-    final _api = LidarrAPI.from(LunaProfile.current);
+    final _api = LidarrAPI.from(ArrPilotProfile.current);
     await _api
         .refreshArtist(widget.data.artistID)
         .then((_) => showLunaSuccessSnackBar(
@@ -128,11 +128,11 @@ class _State extends State<LidarrCatalogueTile> {
   }
 
   Future<void> _removeArtist() async {
-    final _api = LidarrAPI.from(LunaProfile.current);
+    final _api = LidarrAPI.from(ArrPilotProfile.current);
     List values = await LidarrDialogs.deleteArtist(context);
     if (values[0]) {
       if (values[1]) {
-        values = await LunaDialogs()
+        values = await ArrPilotDialogs()
             .deleteCatalogueWithFiles(context, widget.data.title);
         if (values[0]) {
           await _api

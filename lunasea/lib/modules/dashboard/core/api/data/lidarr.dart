@@ -36,16 +36,16 @@ class CalendarLidarrData extends CalendarData {
         const TextSpan(
           text: 'Not Downloaded',
           style: TextStyle(
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
-            color: LunaColours.red,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
+            color: ArrPilotColours.red,
           ),
         ),
       if (hasAllFiles)
         const TextSpan(
           text: 'Downloaded',
           style: TextStyle(
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
-            color: LunaColours.accent,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
+            color: ArrPilotColours.accent,
           ),
         )
     ];
@@ -59,7 +59,7 @@ class CalendarLidarrData extends CalendarData {
   }
 
   @override
-  Widget trailing(BuildContext context) => LunaIconButton(
+  Widget trailing(BuildContext context) => ArrPilotIconButton(
         icon: Icons.search_rounded,
         onPressed: () async => trailingOnPress(context),
         onLongPress: () async => trailingOnLongPress(context),
@@ -67,7 +67,7 @@ class CalendarLidarrData extends CalendarData {
 
   @override
   Future<void> trailingOnPress(BuildContext context) async {
-    await LidarrAPI.from(LunaProfile.current)
+    await LidarrAPI.from(ArrPilotProfile.current)
         .searchAlbums([id])
         .then((_) =>
             showLunaSuccessSnackBar(title: 'Searching...', message: albumTitle))
@@ -85,9 +85,9 @@ class CalendarLidarrData extends CalendarData {
 
   @override
   String backgroundUrl(BuildContext context) {
-    final host = LunaProfile.current.lidarrHost;
-    final key = LunaProfile.current.lidarrKey;
-    if (LunaProfile.current.lidarrEnabled) {
+    final host = ArrPilotProfile.current.lidarrHost;
+    final key = ArrPilotProfile.current.lidarrKey;
+    if (ArrPilotProfile.current.lidarrEnabled) {
       String _base = host.endsWith('/')
           ? '${host}api/v1/MediaCover/Artist'
           : '$host/api/v1/MediaCover/Artist';
@@ -98,9 +98,9 @@ class CalendarLidarrData extends CalendarData {
 
   @override
   String posterUrl(BuildContext context) {
-    final host = LunaProfile.current.lidarrHost;
-    final key = LunaProfile.current.lidarrKey;
-    if (LunaProfile.current.lidarrEnabled) {
+    final host = ArrPilotProfile.current.lidarrHost;
+    final key = ArrPilotProfile.current.lidarrKey;
+    if (ArrPilotProfile.current.lidarrEnabled) {
       String _base = host.endsWith('/')
           ? '${host}api/v1/MediaCover/Artist'
           : '$host/api/v1/MediaCover/Artist';

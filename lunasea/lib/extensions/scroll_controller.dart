@@ -3,7 +3,7 @@ import 'package:arrpilot/core.dart';
 
 extension ScrollControllerExtension on ScrollController {
   static const _duration =
-      Duration(milliseconds: LunaUI.ANIMATION_SPEED_SCROLLING);
+      Duration(milliseconds: ArrPilotUI.ANIMATION_SPEED_SCROLLING);
   static const _curve = Curves.easeInOutQuart;
 
   Future<void> animateToStart() async {

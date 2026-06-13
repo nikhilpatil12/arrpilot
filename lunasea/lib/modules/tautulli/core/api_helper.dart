@@ -23,7 +23,7 @@ class TautulliAPIHelper {
           );
         return true;
       }).catchError((error, trace) {
-        LunaLogger().error('Failed to backup configuration', error, trace);
+        ArrPilotLogger().error('Failed to backup configuration', error, trace);
         if (showSnackbar)
           showLunaErrorSnackBar(
             title: 'tautulli.BackingUpConfigurationFailed'.tr(),
@@ -54,7 +54,7 @@ class TautulliAPIHelper {
           );
         return true;
       }).catchError((error, trace) {
-        LunaLogger().error('Failed to backup database', error, trace);
+        ArrPilotLogger().error('Failed to backup database', error, trace);
         if (showSnackbar)
           showLunaErrorSnackBar(
             title: 'tautulli.BackingUpDatabaseFailed'.tr(),
@@ -85,7 +85,7 @@ class TautulliAPIHelper {
           );
         return true;
       }).catchError((error, trace) {
-        LunaLogger().error('Failed to delete cache', error, trace);
+        ArrPilotLogger().error('Failed to delete cache', error, trace);
         if (showSnackbar)
           showLunaErrorSnackBar(
             title: 'tautulli.DeletingCacheFailed'.tr(),
@@ -116,7 +116,7 @@ class TautulliAPIHelper {
           );
         return true;
       }).catchError((error, trace) {
-        LunaLogger().error('Failed to delete image cache', error, trace);
+        ArrPilotLogger().error('Failed to delete image cache', error, trace);
         if (showSnackbar)
           showLunaErrorSnackBar(
             title: 'tautulli.DeletingImageCacheFailed'.tr(),
@@ -147,7 +147,7 @@ class TautulliAPIHelper {
           );
         return true;
       }).catchError((error, trace) {
-        LunaLogger().error('Failed to delete temporary sessions', error, trace);
+        ArrPilotLogger().error('Failed to delete temporary sessions', error, trace);
         if (showSnackbar)
           showLunaErrorSnackBar(
             title: 'tautulli.DeletingTemporarySessionsFailed'.tr(),
@@ -181,11 +181,11 @@ class TautulliAPIHelper {
           message: [
             session.friendlyName,
             session.title,
-          ].join(LunaUI.TEXT_EMDASH.pad()),
+          ].join(ArrPilotUI.TEXT_EMDASH.pad()),
         );
         return true;
       }).catchError((error, stack) {
-        LunaLogger().error('Failed to delete temporary sessions', error, stack);
+        ArrPilotLogger().error('Failed to delete temporary sessions', error, stack);
         if (showSnackbar)
           showLunaErrorSnackBar(
             title: 'tautulli.TerminateSessionFailed'.tr(),

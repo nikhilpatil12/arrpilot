@@ -6,16 +6,16 @@ import 'package:arrpilot/system/platform.dart';
 import '../image_cache.dart';
 
 bool isPlatformSupported() {
-  return LunaPlatform.isMobile || LunaPlatform.isMacOS;
+  return ArrPilotPlatform.isMobile || ArrPilotPlatform.isMacOS;
 }
 
-LunaImageCache getImageCache() {
+ArrPilotImageCache getImageCache() {
   if (isPlatformSupported()) return IO();
-  throw UnsupportedError('LunaImageCache unsupported');
+  throw UnsupportedError('ArrPilotImageCache unsupported');
 }
 
-class IO implements LunaImageCache {
-  static final CacheManager _cache = CacheManager(Config(LunaImageCache.key));
+class IO implements ArrPilotImageCache {
+  static final CacheManager _cache = CacheManager(Config(ArrPilotImageCache.key));
 
   @override
   CacheManager get instance => _cache;

@@ -6,12 +6,12 @@ import 'package:arrpilot/modules/radarr/core/types/sorting_movies.dart';
 import 'package:arrpilot/modules/radarr/core/types/sorting_releases.dart';
 import 'package:arrpilot/vendor.dart';
 
-enum RadarrDatabase<T> with LunaTableMixin<T> {
+enum RadarrDatabase<T> with ArrPilotTableMixin<T> {
   NAVIGATION_INDEX<int>(0),
   NAVIGATION_INDEX_MOVIE_DETAILS<int>(0),
   NAVIGATION_INDEX_ADD_MOVIE<int>(0),
   NAVIGATION_INDEX_SYSTEM_STATUS<int>(0),
-  DEFAULT_VIEW_MOVIES<LunaListViewOption>(LunaListViewOption.BLOCK_VIEW),
+  DEFAULT_VIEW_MOVIES<ArrPilotListViewOption>(ArrPilotListViewOption.BLOCK_VIEW),
   DEFAULT_SORTING_MOVIES<RadarrMoviesSorting>(RadarrMoviesSorting.ALPHABETICAL),
   DEFAULT_SORTING_MOVIES_ASCENDING<bool>(true),
   DEFAULT_FILTERING_MOVIES<RadarrMoviesFilter>(RadarrMoviesFilter.ALL),
@@ -43,7 +43,7 @@ enum RadarrDatabase<T> with LunaTableMixin<T> {
   }
 
   @override
-  LunaTable get table => LunaTable.radarr;
+  ArrPilotTable get table => ArrPilotTable.radarr;
 
   @override
   final T fallback;
@@ -88,7 +88,7 @@ enum RadarrDatabase<T> with LunaTableMixin<T> {
         result = RadarrReleasesFilter.ALL.fromKey(value.toString());
         break;
       case RadarrDatabase.DEFAULT_VIEW_MOVIES:
-        result = LunaListViewOption.fromKey(value.toString());
+        result = ArrPilotListViewOption.fromKey(value.toString());
         break;
       default:
         result = value;

@@ -28,12 +28,12 @@ class _State extends State<RadarrMovieDetailsOverviewPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
-      module: LunaModule.RADARR,
+    return ArrPilotScaffold(
+      module: ArrPilotModule.RADARR,
       scaffoldKey: _scaffoldKey,
       body: Selector<RadarrState, Future<List<RadarrMovie>>?>(
         selector: (_, state) => state.movies,
-        builder: (context, movies, _) => LunaListView(
+        builder: (context, movies, _) => ArrPilotListView(
           controller: RadarrMovieDetailsNavigationBar.scrollControllers[0],
           children: [
             RadarrMovieDetailsOverviewDescriptionTile(movie: widget.movie),

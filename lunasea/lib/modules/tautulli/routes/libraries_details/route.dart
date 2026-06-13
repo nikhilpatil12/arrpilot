@@ -17,12 +17,12 @@ class LibrariesDetailsRoute extends StatefulWidget {
 
 class _State extends State<LibrariesDetailsRoute> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  LunaPageController? _pageController;
+  ArrPilotPageController? _pageController;
 
   @override
   void initState() {
     super.initState();
-    _pageController = LunaPageController(
+    _pageController = ArrPilotPageController(
       initialPage: TautulliDatabase.NAVIGATION_INDEX_LIBRARIES_DETAILS.read(),
     );
   }
@@ -36,7 +36,7 @@ class _State extends State<LibrariesDetailsRoute> {
       );
     }
 
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar(),
       body: _body(),
@@ -47,7 +47,7 @@ class _State extends State<LibrariesDetailsRoute> {
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'Library Details',
       scrollControllers:
           TautulliLibrariesDetailsNavigationBar.scrollControllers,
@@ -56,7 +56,7 @@ class _State extends State<LibrariesDetailsRoute> {
   }
 
   Widget _body() {
-    return LunaPageView(
+    return ArrPilotPageView(
       controller: _pageController,
       children: [
         TautulliLibrariesDetailsInformation(sectionId: widget.sectionId!),

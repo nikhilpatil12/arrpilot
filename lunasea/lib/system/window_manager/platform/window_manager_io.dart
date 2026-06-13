@@ -6,19 +6,19 @@ import 'package:window_manager/window_manager.dart';
 // ignore: always_use_package_imports
 import '../window_manager.dart';
 
-bool isPlatformSupported() => LunaPlatform.isDesktop;
-LunaWindowManager getWindowManager() {
-  switch (LunaPlatform.current) {
-    case LunaPlatform.LINUX:
-    case LunaPlatform.MACOS:
-    case LunaPlatform.WINDOWS:
+bool isPlatformSupported() => ArrPilotPlatform.isDesktop;
+ArrPilotWindowManager getWindowManager() {
+  switch (ArrPilotPlatform.current) {
+    case ArrPilotPlatform.LINUX:
+    case ArrPilotPlatform.MACOS:
+    case ArrPilotPlatform.WINDOWS:
       return IO();
     default:
-      throw UnsupportedError('LunaWindowManager unsupported');
+      throw UnsupportedError('ArrPilotWindowManager unsupported');
   }
 }
 
-class IO implements LunaWindowManager {
+class IO implements ArrPilotWindowManager {
   @override
   Future<void> initialize() async {
     if (kDebugMode) return;
@@ -26,7 +26,7 @@ class IO implements LunaWindowManager {
     await windowManager.ensureInitialized();
     windowManager.waitUntilReadyToShow().then((_) async {
       await setWindowSize();
-      await setWindowTitle('LunaSea');
+      await setWindowTitle('ArrPilot');
       windowManager.show();
     });
   }
@@ -39,14 +39,14 @@ class IO implements LunaWindowManager {
   }
 
   Future<void> setWindowSize() async {
-    const min = LunaWindowManager.MINIMUM_WINDOW_SIZE;
-    const init = LunaWindowManager.INITIAL_WINDOW_SIZE;
+    const min = ArrPilotWindowManager.MINIMUM_WINDOW_SIZE;
+    const init = ArrPilotWindowManager.INITIAL_WINDOW_SIZE;
     const minSize = Size(min, min);
     const initSize = Size(init, init);
 
     await windowManager.setSize(initSize);
     // Currently broken on Linux
-    if (!LunaPlatform.isLinux) {
+    if (!ArrPilotPlatform.isLinux) {
       await windowManager.setMinimumSize(minSize);
     }
   }

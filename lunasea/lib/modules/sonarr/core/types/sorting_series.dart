@@ -87,7 +87,7 @@ extension SonarrSeriesSortingExtension on SonarrSeriesSorting {
       case SonarrSeriesSorting.PREVIOUS_AIRING:
         return series.lunaPreviousAiring(true);
       case SonarrSeriesSorting.QUALITY:
-        return profile?.name ?? LunaUI.TEXT_EMDASH;
+        return profile?.name ?? ArrPilotUI.TEXT_EMDASH;
       case SonarrSeriesSorting.SIZE:
         return series.lunaSizeOnDisk;
       case SonarrSeriesSorting.TYPE:
@@ -197,10 +197,10 @@ class _Sorter {
   List<SonarrSeries> _network(List<SonarrSeries> series, bool ascending) {
     series.sort((a, b) {
       int _comparison = ascending
-          ? (a.network ?? LunaUI.TEXT_EMDASH)
-              .compareTo((b.network ?? LunaUI.TEXT_EMDASH))
-          : (b.network ?? LunaUI.TEXT_EMDASH)
-              .compareTo((a.network ?? LunaUI.TEXT_EMDASH));
+          ? (a.network ?? ArrPilotUI.TEXT_EMDASH)
+              .compareTo((b.network ?? ArrPilotUI.TEXT_EMDASH))
+          : (b.network ?? ArrPilotUI.TEXT_EMDASH)
+              .compareTo((a.network ?? ArrPilotUI.TEXT_EMDASH));
       return _comparison == 0
           ? a.sortTitle!.toLowerCase().compareTo(b.sortTitle!.toLowerCase())
           : _comparison;

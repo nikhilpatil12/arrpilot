@@ -23,7 +23,7 @@ class TautulliActivityDetailsMetadataAction extends StatelessWidget {
           TautulliSession? session = snapshot.data!.sessions!
               .firstWhereOrNull((element) => element.sessionKey == sessionKey);
           if (session != null)
-            return LunaIconButton(
+            return ArrPilotIconButton(
               icon: Icons.info_outline_rounded,
               onPressed: () async => _onPressed(context, session),
             );

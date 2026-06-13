@@ -26,7 +26,7 @@ class _State extends State<SonarrSeasonDetailsEpisodesPage>
     super.initState();
     _hideController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: LunaUI.ANIMATION_SPEED),
+      duration: const Duration(milliseconds: ArrPilotUI.ANIMATION_SPEED),
     );
     context.read<SonarrSeasonDetailsState>().addListener(_updateFabListener);
   }
@@ -49,7 +49,7 @@ class _State extends State<SonarrSeasonDetailsEpisodesPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       body: _body(),
       floatingActionButton: _floatingActionButton(),
@@ -60,8 +60,8 @@ class _State extends State<SonarrSeasonDetailsEpisodesPage>
     final state = context.watch<SonarrSeasonDetailsState>();
     return ScaleTransition(
       scale: _hideController,
-      child: LunaFloatingActionButton(
-        icon: LunaIcons.EDIT,
+      child: ArrPilotFloatingActionButton(
+        icon: ArrPilotIcons.EDIT,
         label: state.selectedEpisodes.length > 1
             ? 'sonarr.EpisodesCount'
                 .tr(args: [state.selectedEpisodes.length.toString()])
@@ -109,7 +109,7 @@ class _State extends State<SonarrSeasonDetailsEpisodesPage>
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       key: _refreshKey,
       context: context,
       onRefresh: _refresh,
@@ -125,12 +125,12 @@ class _State extends State<SonarrSeasonDetailsEpisodesPage>
             AsyncSnapshot<List<Object>> snapshot,
           ) {
             if (snapshot.hasError) {
-              LunaLogger().error(
+              ArrPilotLogger().error(
                 'Unable to fetch Sonarr episode files',
                 snapshot.error,
                 snapshot.stackTrace,
               );
-              return LunaMessage.error(
+              return ArrPilotMessage.error(
                 onTap: _refreshKey.currentState!.show,
               );
             }
@@ -140,7 +140,7 @@ class _State extends State<SonarrSeasonDetailsEpisodesPage>
                 episodeFiles: snapshot.data![1] as Map<int, SonarrEpisodeFile>,
                 queue: snapshot.data![2] as List<SonarrQueueRecord>,
               );
-            return const LunaLoader();
+            return const ArrPilotLoader();
           },
         ),
       ),
@@ -153,7 +153,7 @@ class _State extends State<SonarrSeasonDetailsEpisodesPage>
     required List<SonarrQueueRecord> queue,
   }) {
     if (episodes.isEmpty) {
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'sonarr.NoEpisodesFound'.tr(),
         buttonText: 'lunasea.Refresh'.tr(),
         onTap: _refreshKey.currentState!.show,
@@ -166,7 +166,7 @@ class _State extends State<SonarrSeasonDetailsEpisodesPage>
       queue: queue,
     );
 
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: SonarrSeasonDetailsNavigationBar.scrollControllers[0],
       itemCount: _widgets.length,
       itemBuilder: (context, index) => _widgets[index],

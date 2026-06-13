@@ -21,9 +21,9 @@ class SABnzbdRoute extends StatefulWidget {
 
 class _State extends State<SABnzbdRoute> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  LunaPageController? _pageController;
-  String _profileState = LunaProfile.current.toString();
-  SABnzbdAPI _api = SABnzbdAPI.from(LunaProfile.current);
+  ArrPilotPageController? _pageController;
+  String _profileState = ArrPilotProfile.current.toString();
+  SABnzbdAPI _api = SABnzbdAPI.from(ArrPilotProfile.current);
 
   final List _refreshKeys = [
     GlobalKey<RefreshIndicatorState>(),
@@ -33,13 +33,13 @@ class _State extends State<SABnzbdRoute> {
   @override
   void initState() {
     super.initState();
-    _pageController = LunaPageController(
+    _pageController = ArrPilotPageController(
         initialPage: SABnzbdDatabase.NAVIGATION_INDEX.read());
   }
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       body: _body(),
       drawer: widget.showDrawer ? _drawer() : null,
@@ -48,40 +48,40 @@ class _State extends State<SABnzbdRoute> {
       extendBodyBehindAppBar: false,
       extendBody: false,
       onProfileChange: (_) {
-        if (_profileState != LunaProfile.current.toString()) _refreshProfile();
+        if (_profileState != ArrPilotProfile.current.toString()) _refreshProfile();
       },
     );
   }
 
-  Widget _drawer() => LunaDrawer(page: LunaModule.SABNZBD.key);
+  Widget _drawer() => ArrPilotDrawer(page: ArrPilotModule.SABNZBD.key);
 
   Widget? _bottomNavigationBar() {
-    if (LunaProfile.current.sabnzbdEnabled)
+    if (ArrPilotProfile.current.sabnzbdEnabled)
       return SABnzbdNavigationBar(pageController: _pageController);
     return null;
   }
 
   Widget _appBar() {
-    List<String> profiles = LunaBox.profiles.keys.fold([], (value, element) {
-      if (LunaBox.profiles.read(element)?.sabnzbdEnabled ?? false)
+    List<String> profiles = ArrPilotBox.profiles.keys.fold([], (value, element) {
+      if (ArrPilotBox.profiles.read(element)?.sabnzbdEnabled ?? false)
         value.add(element);
       return value;
     });
     List<Widget>? actions;
-    if (LunaProfile.current.sabnzbdEnabled)
+    if (ArrPilotProfile.current.sabnzbdEnabled)
       actions = [
         Selector<SABnzbdState, bool>(
           selector: (_, model) => model.error,
           builder: (context, error, widget) =>
               error ? Container() : const SABnzbdAppBarStats(),
         ),
-        LunaIconButton(
+        ArrPilotIconButton(
           icon: Icons.more_vert_rounded,
           onPressed: () async => _handlePopup(),
         ),
       ];
-    return LunaAppBar.dropdown(
-      title: LunaModule.SABNZBD.title,
+    return ArrPilotAppBar.dropdown(
+      title: ArrPilotModule.SABNZBD.title,
       useDrawer: widget.showDrawer,
       hideLeading: !widget.showDrawer,
       profiles: profiles,
@@ -92,12 +92,12 @@ class _State extends State<SABnzbdRoute> {
   }
 
   Widget _body() {
-    if (!LunaProfile.current.sabnzbdEnabled)
-      return LunaMessage.moduleNotEnabled(
+    if (!ArrPilotProfile.current.sabnzbdEnabled)
+      return ArrPilotMessage.moduleNotEnabled(
         context: context,
-        module: LunaModule.SABNZBD.title,
+        module: ArrPilotModule.SABNZBD.title,
       );
-    return LunaPageView(
+    return ArrPilotPageView(
       controller: _pageController,
       children: [
         SABnzbdQueue(
@@ -115,7 +115,7 @@ class _State extends State<SABnzbdRoute> {
     if (values[0])
       switch (values[1]) {
         case 'web_gui':
-          LunaProfile profile = LunaProfile.current;
+          ArrPilotProfile profile = ArrPilotProfile.current;
           await profile.sabnzbdHost.openLink();
           break;
         case 'add_nzb':
@@ -134,7 +134,7 @@ class _State extends State<SABnzbdRoute> {
           _serverDetails();
           break;
         default:
-          LunaLogger().warning('Unknown Case: ${values[1]}');
+          ArrPilotLogger().warning('Unknown Case: ${values[1]}');
       }
   }
 
@@ -143,7 +143,7 @@ class _State extends State<SABnzbdRoute> {
   Future<void> _completeAction() async {
     List values = await SABnzbdDialogs.changeOnCompleteAction(context);
     if (values[0])
-      SABnzbdAPI.from(LunaProfile.current)
+      SABnzbdAPI.from(ArrPilotProfile.current)
           .setOnCompleteAction(values[1])
           .then((_) => showLunaSuccessSnackBar(
                 title: 'On Complete Action Set',
@@ -158,7 +158,7 @@ class _State extends State<SABnzbdRoute> {
   Future<void> _clearHistory() async {
     List values = await SABnzbdDialogs.clearAllHistory(context);
     if (values[0])
-      SABnzbdAPI.from(LunaProfile.current)
+      SABnzbdAPI.from(ArrPilotProfile.current)
           .clearHistory(values[1], values[2])
           .then((_) {
         showLunaSuccessSnackBar(
@@ -177,7 +177,7 @@ class _State extends State<SABnzbdRoute> {
   Future<void> _sort() async {
     List values = await SABnzbdDialogs.sortQueue(context);
     if (values[0])
-      await SABnzbdAPI.from(LunaProfile.current)
+      await SABnzbdAPI.from(ArrPilotProfile.current)
           .sortQueue(values[1], values[2])
           .then((_) {
         showLunaSuccessSnackBar(
@@ -206,13 +206,13 @@ class _State extends State<SABnzbdRoute> {
           _addByFile();
           break;
         default:
-          LunaLogger().warning('Unknown Case: ${values[1]}');
+          ArrPilotLogger().warning('Unknown Case: ${values[1]}');
       }
   }
 
   Future<void> _addByFile() async {
     try {
-      LunaFile? _file = await LunaFileSystem().read(context, [
+      ArrPilotFile? _file = await ArrPilotFileSystem().read(context, [
         'nzb',
         'zip',
         'rar',
@@ -235,7 +235,7 @@ class _State extends State<SABnzbdRoute> {
         }
       }
     } catch (error, stack) {
-      LunaLogger().error('Failed to add NZB by file', error, stack);
+      ArrPilotLogger().error('Failed to add NZB by file', error, stack);
       showLunaErrorSnackBar(
         title: 'Failed to Upload NZB',
         error: error,
@@ -259,8 +259,8 @@ class _State extends State<SABnzbdRoute> {
   }
 
   void _refreshProfile() {
-    _api = SABnzbdAPI.from(LunaProfile.current);
-    _profileState = LunaProfile.current.toString();
+    _api = SABnzbdAPI.from(ArrPilotProfile.current);
+    _profileState = ArrPilotProfile.current.toString();
     _refreshAllPages();
   }
 

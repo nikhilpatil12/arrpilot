@@ -17,11 +17,11 @@ class SonarrReleasesTile extends StatefulWidget {
 }
 
 class _State extends State<SonarrReleasesTile> {
-  LunaLoadingState _downloadState = LunaLoadingState.INACTIVE;
+  ArrPilotLoadingState _downloadState = ArrPilotLoadingState.INACTIVE;
 
   @override
   Widget build(BuildContext context) {
-    return LunaExpandableListTile(
+    return ArrPilotExpandableListTile(
       title: widget.release.title!,
       collapsedSubtitles: [
         _subtitle1(),
@@ -35,7 +35,7 @@ class _State extends State<SonarrReleasesTile> {
   }
 
   Widget _trailing() {
-    return LunaIconButton(
+    return ArrPilotIconButton(
       icon: widget.release.lunaTrailingIcon,
       color: widget.release.lunaTrailingColor,
       onPressed: () async =>
@@ -54,12 +54,12 @@ class _State extends State<SonarrReleasesTile> {
             color: widget.release.protocol!.lunaProtocolColor(
               release: widget.release,
             ),
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
           ),
         ),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: widget.release.lunaIndexer),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: widget.release.lunaAge),
       ],
     );
@@ -74,115 +74,115 @@ class _State extends State<SonarrReleasesTile> {
           TextSpan(
             text: _preferredWordScore,
             style: const TextStyle(
-              color: LunaColours.purple,
-              fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+              color: ArrPilotColours.purple,
+              fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
             ),
           ),
         if (_preferredWordScore != null)
-          TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+          TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: widget.release.lunaQuality),
         if (widget.release.language != null)
-          TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+          TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         if (widget.release.language != null)
           TextSpan(text: widget.release.lunaLanguage),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: widget.release.lunaSize),
       ],
     );
   }
 
-  List<LunaHighlightedNode> _highlightedNodes() {
+  List<ArrPilotHighlightedNode> _highlightedNodes() {
     return [
-      LunaHighlightedNode(
+      ArrPilotHighlightedNode(
         text: widget.release.protocol!.lunaReadable(),
         backgroundColor: widget.release.protocol!.lunaProtocolColor(
           release: widget.release,
         ),
       ),
       if (widget.release.lunaPreferredWordScore(nullOnEmpty: true) != null)
-        LunaHighlightedNode(
+        ArrPilotHighlightedNode(
           text: widget.release.lunaPreferredWordScore()!,
-          backgroundColor: LunaColours.purple,
+          backgroundColor: ArrPilotColours.purple,
         ),
     ];
   }
 
-  List<LunaTableContent> _tableContent() {
+  List<ArrPilotTableContent> _tableContent() {
     return [
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.Age'.tr(),
         body: widget.release.lunaAge,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.Indexer'.tr(),
         body: widget.release.lunaIndexer,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.Size'.tr(),
         body: widget.release.lunaSize,
       ),
       if (widget.release.language != null)
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'sonarr.Language'.tr(),
           body: widget.release.lunaLanguage,
         ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.Quality'.tr(),
         body: widget.release.lunaQuality,
       ),
       if (widget.release.seeders != null)
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'sonarr.Seeders'.tr(),
           body: '${widget.release.seeders}',
         ),
       if (widget.release.leechers != null)
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'sonarr.Leechers'.tr(),
           body: '${widget.release.leechers}',
         ),
     ];
   }
 
-  List<LunaButton> _tableButtons() {
+  List<ArrPilotButton> _tableButtons() {
     return [
-      LunaButton(
-        type: LunaButtonType.TEXT,
+      ArrPilotButton(
+        type: ArrPilotButtonType.TEXT,
         text: 'sonarr.Download'.tr(),
         icon: Icons.download_rounded,
         onTap: _startDownload,
         loadingState: _downloadState,
       ),
       if (widget.release.infoUrl?.isNotEmpty ?? false)
-        LunaButton.text(
+        ArrPilotButton.text(
           text: 'Indexer',
           icon: Icons.info_outline_rounded,
-          color: LunaColours.blue,
+          color: ArrPilotColours.blue,
           onTap: widget.release.infoUrl!.openLink,
         ),
       if (widget.release.rejected!)
-        LunaButton.text(
+        ArrPilotButton.text(
           text: 'sonarr.Rejected'.tr(),
           icon: Icons.report_outlined,
-          color: LunaColours.red,
+          color: ArrPilotColours.red,
           onTap: _showWarnings,
         ),
     ];
   }
 
   Future<void> _startDownload() async {
-    Future<void> setDownloadState(LunaLoadingState state) async {
+    Future<void> setDownloadState(ArrPilotLoadingState state) async {
       if (this.mounted) setState(() => _downloadState = state);
     }
 
-    setDownloadState(LunaLoadingState.ACTIVE);
+    setDownloadState(ArrPilotLoadingState.ACTIVE);
     SonarrAPIController()
         .downloadRelease(
           context: context,
           release: widget.release,
         )
-        .whenComplete(() async => setDownloadState(LunaLoadingState.INACTIVE));
+        .whenComplete(() async => setDownloadState(ArrPilotLoadingState.INACTIVE));
   }
 
-  Future<void> _showWarnings() async => await LunaDialogs()
+  Future<void> _showWarnings() async => await ArrPilotDialogs()
       .showRejections(context, widget.release.rejections ?? []);
 }

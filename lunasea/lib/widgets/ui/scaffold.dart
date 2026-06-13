@@ -3,9 +3,9 @@ import 'package:arrpilot/database/tables/lunasea.dart';
 import 'package:arrpilot/modules.dart';
 import 'package:arrpilot/system/platform.dart';
 
-class LunaScaffold extends StatelessWidget {
+class ArrPilotScaffold extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
-  final LunaModule? module;
+  final ArrPilotModule? module;
   final PreferredSizeWidget? appBar;
   final Widget? body;
   final Widget? drawer;
@@ -14,11 +14,11 @@ class LunaScaffold extends StatelessWidget {
   final bool extendBody;
   final bool extendBodyBehindAppBar;
 
-  /// Called when [LunaSeaDatabase.ENABLED_PROFILE] has changed. Triggered within the build function.
+  /// Called when [ArrPilotDatabase.ENABLED_PROFILE] has changed. Triggered within the build function.
   final void Function(BuildContext)? onProfileChange;
 
   // ignore: use_key_in_widget_constructors
-  const LunaScaffold({
+  const ArrPilotScaffold({
     required this.scaffoldKey,
     this.module,
     this.appBar,
@@ -33,14 +33,14 @@ class LunaScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (LunaPlatform.isAndroid) return android;
+    if (ArrPilotPlatform.isAndroid) return android;
     return scaffold;
   }
 
   Widget get android {
     return WillPopScope(
       onWillPop: () async {
-        if (!LunaSeaDatabase.ANDROID_BACK_OPENS_DRAWER.read()) return true;
+        if (!ArrPilotDatabase.ANDROID_BACK_OPENS_DRAWER.read()) return true;
 
         final state = scaffoldKey.currentState;
         if (state?.hasDrawer ?? false) {
@@ -55,7 +55,7 @@ class LunaScaffold extends StatelessWidget {
   }
 
   Widget get scaffold {
-    return LunaSeaDatabase.ENABLED_PROFILE.listenableBuilder(
+    return ArrPilotDatabase.ENABLED_PROFILE.listenableBuilder(
       builder: (context, _) {
         onProfileChange?.call(context);
         return Scaffold(

@@ -6,11 +6,11 @@ class NewznabAPI {
   static const _USER_AGENT =
       'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Safari/605.1.15';
   final Dio _dio;
-  final LunaIndexer indexer;
+  final ArrPilotIndexer indexer;
 
   NewznabAPI._internal(this._dio, this.indexer);
 
-  factory NewznabAPI.fromIndexer(LunaIndexer indexer) {
+  factory NewznabAPI.fromIndexer(ArrPilotIndexer indexer) {
     Dio _dio = Dio(
       BaseOptions(
         method: 'GET',

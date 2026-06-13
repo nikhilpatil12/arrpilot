@@ -14,12 +14,12 @@ class ConfigurationRadarrDefaultOptionsRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationRadarrDefaultOptionsRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -27,22 +27,22 @@ class _State extends State<ConfigurationRadarrDefaultOptionsRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'settings.DefaultOptions'.tr(),
       scrollControllers: [scrollController],
     );
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
-        LunaHeader(text: 'radarr.Movies'.tr()),
+        ArrPilotHeader(text: 'radarr.Movies'.tr()),
         _filteringMovies(),
         _sortingMovies(),
         _sortingMoviesDirection(),
         _viewMovies(),
-        LunaHeader(text: 'radarr.Releases'.tr()),
+        ArrPilotHeader(text: 'radarr.Releases'.tr()),
         _filteringReleases(),
         _sortingReleases(),
         _sortingReleasesDirection(),
@@ -54,15 +54,15 @@ class _State extends State<ConfigurationRadarrDefaultOptionsRoute>
     const _db = RadarrDatabase.DEFAULT_VIEW_MOVIES;
     return _db.listenableBuilder(
       builder: (context, _) {
-        return LunaBlock(
+        return ArrPilotBlock(
           title: 'lunasea.View'.tr(),
           body: [TextSpan(text: _db.read().readable)],
-          trailing: const LunaIconButton.arrow(),
+          trailing: const ArrPilotIconButton.arrow(),
           onTap: () async {
-            List<String> titles = LunaListViewOption.values
+            List<String> titles = ArrPilotListViewOption.values
                 .map<String>((view) => view.readable)
                 .toList();
-            List<IconData> icons = LunaListViewOption.values
+            List<IconData> icons = ArrPilotListViewOption.values
                 .map<IconData>((view) => view.icon)
                 .toList();
 
@@ -74,7 +74,7 @@ class _State extends State<ConfigurationRadarrDefaultOptionsRoute>
             );
 
             if (values.item1) {
-              LunaListViewOption _opt = LunaListViewOption.values[values.item2];
+              ArrPilotListViewOption _opt = ArrPilotListViewOption.values[values.item2];
               context.read<RadarrState>().moviesViewType = _opt;
               _db.update(_opt);
             }
@@ -87,15 +87,15 @@ class _State extends State<ConfigurationRadarrDefaultOptionsRoute>
   Widget _sortingMovies() {
     const _db = RadarrDatabase.DEFAULT_SORTING_MOVIES;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'settings.SortCategory'.tr(),
         body: [TextSpan(text: _db.read().readable)],
-        trailing: const LunaIconButton.arrow(),
+        trailing: const ArrPilotIconButton.arrow(),
         onTap: () async {
           List<String> titles = RadarrMoviesSorting.values
               .map<String>((sorting) => sorting.readable)
               .toList();
-          List<IconData> icons = List.filled(titles.length, LunaIcons.SORT);
+          List<IconData> icons = List.filled(titles.length, ArrPilotIcons.SORT);
 
           Tuple2<bool, int> values = await SettingsDialogs().setDefaultOption(
             context,
@@ -118,7 +118,7 @@ class _State extends State<ConfigurationRadarrDefaultOptionsRoute>
   Widget _sortingMoviesDirection() {
     const _db = RadarrDatabase.DEFAULT_SORTING_MOVIES_ASCENDING;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'settings.SortDirection'.tr(),
         body: [
           TextSpan(
@@ -127,7 +127,7 @@ class _State extends State<ConfigurationRadarrDefaultOptionsRoute>
                 : 'lunasea.Descending'.tr(),
           ),
         ],
-        trailing: LunaSwitch(
+        trailing: ArrPilotSwitch(
           value: _db.read(),
           onChanged: (value) {
             _db.update(value);
@@ -143,15 +143,15 @@ class _State extends State<ConfigurationRadarrDefaultOptionsRoute>
   Widget _filteringMovies() {
     const _db = RadarrDatabase.DEFAULT_FILTERING_MOVIES;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'settings.FilterCategory'.tr(),
         body: [TextSpan(text: _db.read().readable)],
-        trailing: const LunaIconButton.arrow(),
+        trailing: const ArrPilotIconButton.arrow(),
         onTap: () async {
           List<String?> titles = RadarrMoviesFilter.values
               .map<String?>((filter) => filter.readable)
               .toList();
-          List<IconData> icons = List.filled(titles.length, LunaIcons.FILTER);
+          List<IconData> icons = List.filled(titles.length, ArrPilotIcons.FILTER);
 
           Tuple2<bool, int> values = await SettingsDialogs().setDefaultOption(
             context,
@@ -172,15 +172,15 @@ class _State extends State<ConfigurationRadarrDefaultOptionsRoute>
   Widget _sortingReleases() {
     const _db = RadarrDatabase.DEFAULT_SORTING_RELEASES;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'settings.SortCategory'.tr(),
         body: [TextSpan(text: _db.read().readable)],
-        trailing: const LunaIconButton.arrow(),
+        trailing: const ArrPilotIconButton.arrow(),
         onTap: () async {
           List<String?> titles = RadarrReleasesSorting.values
               .map<String?>((sorting) => sorting.readable)
               .toList();
-          List<IconData> icons = List.filled(titles.length, LunaIcons.SORT);
+          List<IconData> icons = List.filled(titles.length, ArrPilotIcons.SORT);
 
           Tuple2<bool, int> values = await SettingsDialogs().setDefaultOption(
             context,
@@ -200,7 +200,7 @@ class _State extends State<ConfigurationRadarrDefaultOptionsRoute>
   Widget _sortingReleasesDirection() {
     const _db = RadarrDatabase.DEFAULT_SORTING_RELEASES_ASCENDING;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'settings.SortDirection'.tr(),
         body: [
           TextSpan(
@@ -209,7 +209,7 @@ class _State extends State<ConfigurationRadarrDefaultOptionsRoute>
                 : 'lunasea.Descending'.tr(),
           ),
         ],
-        trailing: LunaSwitch(
+        trailing: ArrPilotSwitch(
           value: _db.read(),
           onChanged: (value) => _db.update(value),
         ),
@@ -220,15 +220,15 @@ class _State extends State<ConfigurationRadarrDefaultOptionsRoute>
   Widget _filteringReleases() {
     const _db = RadarrDatabase.DEFAULT_FILTERING_RELEASES;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'settings.FilterCategory'.tr(),
         body: [TextSpan(text: _db.read().readable)],
-        trailing: const LunaIconButton.arrow(),
+        trailing: const ArrPilotIconButton.arrow(),
         onTap: () async {
           List<String?> titles = RadarrReleasesFilter.values
               .map<String?>((sorting) => sorting.readable)
               .toList();
-          List<IconData> icons = List.filled(titles.length, LunaIcons.FILTER);
+          List<IconData> icons = List.filled(titles.length, ArrPilotIcons.FILTER);
 
           Tuple2<bool, int> values = await SettingsDialogs().setDefaultOption(
             context,

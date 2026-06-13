@@ -9,7 +9,7 @@ class SonarrSeriesEditTagsTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'sonarr.Tags'.tr(),
       body: [
         TextSpan(
@@ -22,7 +22,7 @@ class SonarrSeriesEditTagsTile extends StatelessWidget {
                   .join(', '),
         )
       ],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async => await SonarrDialogs().setEditTags(context),
     );
   }

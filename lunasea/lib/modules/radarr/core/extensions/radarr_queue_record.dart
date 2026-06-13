@@ -2,37 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 import 'package:arrpilot/modules/radarr.dart';
 
-extension LunaRadarrQueueRecord on RadarrQueueRecord {
+extension ArrPilotRadarrQueueRecord on RadarrQueueRecord {
   String get lunaQuality {
-    return this.quality?.quality?.name ?? LunaUI.TEXT_EMDASH;
+    return this.quality?.quality?.name ?? ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaLanguage {
-    if ((this.languages?.length ?? 0) == 0) return LunaUI.TEXT_EMDASH;
+    if ((this.languages?.length ?? 0) == 0) return ArrPilotUI.TEXT_EMDASH;
     if (this.languages!.length == 1)
-      return this.languages![0].name ?? LunaUI.TEXT_EMDASH;
+      return this.languages![0].name ?? ArrPilotUI.TEXT_EMDASH;
     return 'Multi-Language';
   }
 
   String lunaMovieTitle(RadarrMovie movie) {
-    String title = movie.title ?? LunaUI.TEXT_EMDASH;
+    String title = movie.title ?? ArrPilotUI.TEXT_EMDASH;
     String year = movie.lunaYear;
     return '$title ($year)';
   }
 
   String? get lunaDownloadClient {
     if ((this.downloadClient ?? '').isNotEmpty) return this.downloadClient;
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String? get lunaIndexer {
     if ((this.indexer ?? '').isNotEmpty) return this.indexer;
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   Color get lunaProtocolColor {
-    if (this.protocol == RadarrProtocol.USENET) return LunaColours.accent;
-    return LunaColours.blue;
+    if (this.protocol == RadarrProtocol.USENET) return ArrPilotColours.accent;
+    return ArrPilotColours.blue;
   }
 
   int get lunaPercentageComplete {
@@ -69,34 +69,34 @@ extension LunaRadarrQueueRecord on RadarrQueueRecord {
     if (this.status == RadarrQueueRecordStatus.COMPLETED)
       switch (this.trackedDownloadState) {
         case RadarrTrackedDownloadState.FAILED_PENDING:
-          color = LunaColours.red;
+          color = ArrPilotColours.red;
           break;
         case RadarrTrackedDownloadState.IMPORT_PENDING:
-          color = LunaColours.purple;
+          color = ArrPilotColours.purple;
           break;
         case RadarrTrackedDownloadState.IMPORTING:
-          color = LunaColours.purple;
+          color = ArrPilotColours.purple;
           break;
         default:
           break;
       }
     if (this.trackedDownloadStatus == RadarrTrackedDownloadStatus.WARNING)
-      color = LunaColours.orange;
+      color = ArrPilotColours.orange;
     switch (this.status) {
       case RadarrQueueRecordStatus.DOWNLOAD_CLIENT_UNAVAILABLE:
-        color = LunaColours.orange;
+        color = ArrPilotColours.orange;
         break;
       case RadarrQueueRecordStatus.FAILED:
-        color = LunaColours.red;
+        color = ArrPilotColours.red;
         break;
       case RadarrQueueRecordStatus.WARNING:
-        color = LunaColours.orange;
+        color = ArrPilotColours.orange;
         break;
       default:
         break;
     }
     if (this.trackedDownloadStatus == RadarrTrackedDownloadStatus.ERROR)
-      color = LunaColours.red;
+      color = ArrPilotColours.red;
     return color;
   }
 }

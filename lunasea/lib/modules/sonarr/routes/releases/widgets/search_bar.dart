@@ -13,7 +13,7 @@ class SonarrReleasesSearchBar extends StatefulWidget
 
   @override
   Size get preferredSize =>
-      const Size.fromHeight(LunaTextInputBar.defaultAppBarHeight);
+      const Size.fromHeight(ArrPilotTextInputBar.defaultAppBarHeight);
 
   @override
   State<SonarrReleasesSearchBar> createState() => _State();
@@ -28,7 +28,7 @@ class _State extends State<SonarrReleasesSearchBar> {
       children: [
         Expanded(
           child: Consumer<SonarrReleasesState>(
-            builder: (context, state, _) => LunaTextInputBar(
+            builder: (context, state, _) => ArrPilotTextInputBar(
               controller: _controller,
               scrollController: widget.scrollController,
               autofocus: false,

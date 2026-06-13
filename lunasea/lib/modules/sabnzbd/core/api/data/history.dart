@@ -50,15 +50,15 @@ class SABnzbdHistoryData {
   Color get statusColor {
     switch (status.toLowerCase()) {
       case 'completed':
-        return LunaColours.accent;
+        return ArrPilotColours.accent;
       case 'queued':
-        return LunaColours.blue;
+        return ArrPilotColours.blue;
       case 'extracting':
-        return LunaColours.orange;
+        return ArrPilotColours.orange;
       case 'failed':
-        return LunaColours.red;
+        return ArrPilotColours.red;
     }
-    return LunaColours.purple;
+    return ArrPilotColours.purple;
   }
 
   String get statusString {

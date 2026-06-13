@@ -17,13 +17,13 @@ class LidarrCatalogueSortButton extends StatefulWidget {
 
 class _State extends State<LidarrCatalogueSortButton> {
   @override
-  Widget build(BuildContext context) => LunaCard(
+  Widget build(BuildContext context) => ArrPilotCard(
         context: context,
-        height: LunaTextInputBar.defaultHeight,
-        width: LunaTextInputBar.defaultHeight,
+        height: ArrPilotTextInputBar.defaultHeight,
+        width: ArrPilotTextInputBar.defaultHeight,
         child: Consumer<LidarrState>(
           builder: (context, model, _) =>
-              LunaPopupMenuButton<LidarrCatalogueSorting>(
+              ArrPilotPopupMenuButton<LidarrCatalogueSorting>(
             tooltip: 'Sort Catalogue',
             icon: Icons.sort_rounded,
             onSelected: (result) {
@@ -46,7 +46,7 @@ class _State extends State<LidarrCatalogueSortButton> {
                     Text(
                       LidarrCatalogueSorting.values[index].readable,
                       style: const TextStyle(
-                        fontSize: LunaUI.FONT_SIZE_H3,
+                        fontSize: ArrPilotUI.FONT_SIZE_H3,
                       ),
                     ),
                     if (model.sortCatalogueType ==
@@ -55,8 +55,8 @@ class _State extends State<LidarrCatalogueSortButton> {
                         model.sortCatalogueAscending
                             ? Icons.arrow_upward_rounded
                             : Icons.arrow_downward_rounded,
-                        size: LunaUI.FONT_SIZE_H2,
-                        color: LunaColours.accent,
+                        size: ArrPilotUI.FONT_SIZE_H2,
+                        color: ArrPilotColours.accent,
                       ),
                   ],
                 ),

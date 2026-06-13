@@ -14,12 +14,12 @@ class ConfigurationSearchRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationSearchRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar(),
       body: _body(),
@@ -28,16 +28,16 @@ class _State extends State<ConfigurationSearchRoute>
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'search.Search'.tr(),
       scrollControllers: [scrollController],
     );
   }
 
   Widget _bottomNavigationBar() {
-    return LunaBottomActionBar(
+    return ArrPilotBottomActionBar(
       actions: [
-        LunaButton.text(
+        ArrPilotButton.text(
           text: 'search.AddIndexer'.tr(),
           icon: Icons.add_rounded,
           onTap: SettingsRoutes.CONFIGURATION_SEARCH_ADD_INDEXER.go,
@@ -47,11 +47,11 @@ class _State extends State<ConfigurationSearchRoute>
   }
 
   Widget _body() {
-    return LunaBox.indexers.listenableBuilder(
-      builder: (context, _) => LunaListView(
+    return ArrPilotBox.indexers.listenableBuilder(
+      builder: (context, _) => ArrPilotListView(
         controller: scrollController,
         children: [
-          LunaModule.SEARCH.informationBanner(),
+          ArrPilotModule.SEARCH.informationBanner(),
           ..._indexerSection(),
           ..._customization(),
         ],
@@ -60,29 +60,29 @@ class _State extends State<ConfigurationSearchRoute>
   }
 
   List<Widget> _indexerSection() {
-    if (LunaBox.indexers.isEmpty) {
-      return [LunaMessage(text: 'search.NoIndexersFound'.tr())];
+    if (ArrPilotBox.indexers.isEmpty) {
+      return [ArrPilotMessage(text: 'search.NoIndexersFound'.tr())];
     }
     return _indexers;
   }
 
   List<Widget> get _indexers {
-    List<LunaIndexer> indexers = LunaBox.indexers.data.toList();
+    List<ArrPilotIndexer> indexers = ArrPilotBox.indexers.data.toList();
     indexers.sort((a, b) =>
         a.displayName.toLowerCase().compareTo(b.displayName.toLowerCase()));
-    List<LunaBlock> list = List.generate(
+    List<ArrPilotBlock> list = List.generate(
       indexers.length,
       (index) =>
-          _indexerTile(indexers[index], indexers[index].key) as LunaBlock,
+          _indexerTile(indexers[index], indexers[index].key) as ArrPilotBlock,
     );
     return list;
   }
 
-  Widget _indexerTile(LunaIndexer indexer, int index) {
-    return LunaBlock(
+  Widget _indexerTile(ArrPilotIndexer indexer, int index) {
+    return ArrPilotBlock(
       title: indexer.displayName,
       body: [TextSpan(text: indexer.host)],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () => SettingsRoutes.CONFIGURATION_SEARCH_EDIT_INDEXER.go(
         params: {
           'id': index.toString(),
@@ -93,7 +93,7 @@ class _State extends State<ConfigurationSearchRoute>
 
   List<Widget> _customization() {
     return [
-      LunaDivider(),
+      ArrPilotDivider(),
       _hideAdultCategories(),
       _showLinks(),
     ];
@@ -102,10 +102,10 @@ class _State extends State<ConfigurationSearchRoute>
   Widget _hideAdultCategories() {
     const _db = SearchDatabase.HIDE_XXX;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'search.HideAdultCategories'.tr(),
         body: [TextSpan(text: 'search.HideAdultCategoriesDescription'.tr())],
-        trailing: LunaSwitch(
+        trailing: ArrPilotSwitch(
           value: _db.read(),
           onChanged: _db.update,
         ),
@@ -116,10 +116,10 @@ class _State extends State<ConfigurationSearchRoute>
   Widget _showLinks() {
     const _db = SearchDatabase.SHOW_LINKS;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'search.ShowLinks'.tr(),
         body: [TextSpan(text: 'search.ShowLinksDescription'.tr())],
-        trailing: LunaSwitch(
+        trailing: ArrPilotSwitch(
           value: _db.read(),
           onChanged: _db.update,
         ),

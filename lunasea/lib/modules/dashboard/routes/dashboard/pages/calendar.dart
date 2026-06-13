@@ -17,7 +17,7 @@ class CalendarPage extends StatefulWidget {
 }
 
 class _State extends State<CalendarPage>
-    with AutomaticKeepAliveClientMixin, LunaLoadCallbackMixin {
+    with AutomaticKeepAliveClientMixin, ArrPilotLoadCallbackMixin {
   final _refreshKey = GlobalKey<RefreshIndicatorState>();
 
   @override
@@ -32,7 +32,7 @@ class _State extends State<CalendarPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: loadCallback,
@@ -43,12 +43,12 @@ class _State extends State<CalendarPage>
           AsyncSnapshot<Map<DateTime, List<CalendarData>>> snapshot,
         ) {
           if (snapshot.hasError) {
-            LunaLogger().error(
+            ArrPilotLogger().error(
               'Failed to fetch unified calendar data',
               snapshot.error,
               snapshot.stackTrace,
             );
-            return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+            return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
           }
 
           if (snapshot.connectionState == ConnectionState.done &&
@@ -65,7 +65,7 @@ class _State extends State<CalendarPage>
             );
           }
 
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );

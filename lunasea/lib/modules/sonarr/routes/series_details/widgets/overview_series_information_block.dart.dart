@@ -19,67 +19,67 @@ class SonarrSeriesDetailsOverviewInformationBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaTableCard(
+    return ArrPilotTableCard(
       content: [
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'sonarr.Monitoring'.tr(),
           body: (series?.monitored ?? false) ? 'Yes' : 'No',
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'type',
           body: series?.lunaSeriesType,
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'path',
           body: series?.path,
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'quality',
           body: qualityProfile?.name,
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'language',
           body: languageProfile?.name,
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'tags',
           body: series?.lunaTags(tags),
         ),
-        LunaTableContent(title: '', body: ''),
-        LunaTableContent(
+        ArrPilotTableContent(title: '', body: ''),
+        ArrPilotTableContent(
           title: 'status',
           body: series?.status?.toTitleCase(),
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'next airing',
           body: series?.lunaNextAiring(),
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'added on',
           body: series?.lunaDateAdded,
         ),
-        LunaTableContent(title: '', body: ''),
-        LunaTableContent(
+        ArrPilotTableContent(title: '', body: ''),
+        ArrPilotTableContent(
           title: 'year',
           body: series?.lunaYear,
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'network',
           body: series?.lunaNetwork,
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'runtime',
           body: series?.lunaRuntime,
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'rating',
           body: series?.certification,
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'genres',
           body: series?.lunaGenres,
         ),
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'alternate titles',
           body: series?.lunaAlternateTitles,
         ),

@@ -1,11 +1,11 @@
 import 'package:arrpilot/database/table.dart';
 
-enum SearchDatabase<T> with LunaTableMixin<T> {
+enum SearchDatabase<T> with ArrPilotTableMixin<T> {
   HIDE_XXX<bool>(false),
   SHOW_LINKS<bool>(true);
 
   @override
-  LunaTable get table => LunaTable.search;
+  ArrPilotTable get table => ArrPilotTable.search;
 
   @override
   final T fallback;

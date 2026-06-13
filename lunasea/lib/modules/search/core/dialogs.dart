@@ -16,14 +16,14 @@ class SearchDialogs {
       Navigator.of(context).pop();
     }
 
-    await LunaDialog.dialog(
+    await ArrPilotDialog.dialog(
       context: context,
       title: 'search.Download'.tr(),
-      customContent: LunaSeaDatabase.ENABLED_PROFILE.listenableBuilder(
-        builder: (context, _) => LunaDialog.content(
+      customContent: ArrPilotDatabase.ENABLED_PROFILE.listenableBuilder(
+        builder: (context, _) => ArrPilotDialog.content(
           children: [
             Padding(
-              child: LunaPopupMenuButton<String>(
+              child: ArrPilotPopupMenuButton<String>(
                 tooltip: 'lunasea.ChangeProfiles'.tr(),
                 child: Container(
                   child: Row(
@@ -31,15 +31,15 @@ class SearchDialogs {
                     children: [
                       Expanded(
                         child: Text(
-                          LunaSeaDatabase.ENABLED_PROFILE.read(),
+                          ArrPilotDatabase.ENABLED_PROFILE.read(),
                           style: const TextStyle(
-                            fontSize: LunaUI.FONT_SIZE_H3,
+                            fontSize: ArrPilotUI.FONT_SIZE_H3,
                           ),
                         ),
                       ),
                       const Icon(
                         Icons.arrow_drop_down_rounded,
-                        color: LunaColours.accent,
+                        color: ArrPilotColours.accent,
                       ),
                     ],
                   ),
@@ -47,7 +47,7 @@ class SearchDialogs {
                   decoration: const BoxDecoration(
                     border: Border(
                       bottom: BorderSide(
-                        color: LunaColours.accent,
+                        color: ArrPilotColours.accent,
                         width: 2.0,
                       ),
                     ),
@@ -55,20 +55,20 @@ class SearchDialogs {
                 ),
                 onSelected: (result) {
                   HapticFeedback.selectionClick();
-                  LunaProfileTools().changeTo(result);
+                  ArrPilotProfileTools().changeTo(result);
                 },
                 itemBuilder: (context) {
                   return <PopupMenuEntry<String>>[
-                    for (final profile in LunaBox.profiles.keys.cast<String>())
+                    for (final profile in ArrPilotBox.profiles.keys.cast<String>())
                       PopupMenuItem<String>(
                         value: profile,
                         child: Text(
                           profile,
                           style: TextStyle(
-                            fontSize: LunaUI.FONT_SIZE_H3,
-                            color: LunaSeaDatabase.ENABLED_PROFILE.read() ==
+                            fontSize: ArrPilotUI.FONT_SIZE_H3,
+                            color: ArrPilotDatabase.ENABLED_PROFILE.read() ==
                                     profile
-                                ? LunaColours.accent
+                                ? ArrPilotColours.accent
                                 : Colors.white,
                           ),
                         ),
@@ -76,33 +76,33 @@ class SearchDialogs {
                   ];
                 },
               ),
-              padding: LunaDialog.tileContentPadding()
+              padding: ArrPilotDialog.tileContentPadding()
                   .add(const EdgeInsets.only(bottom: 16.0)),
             ),
-            if (LunaProfile.current.sabnzbdEnabled)
-              LunaDialog.tile(
+            if (ArrPilotProfile.current.sabnzbdEnabled)
+              ArrPilotDialog.tile(
                 icon: SearchDownloadType.SABNZBD.icon,
-                iconColor: LunaColours().byListIndex(0),
+                iconColor: ArrPilotColours().byListIndex(0),
                 text: SearchDownloadType.SABNZBD.name,
                 onTap: () => _setValues(true, SearchDownloadType.SABNZBD),
               ),
-            if (LunaProfile.current.nzbgetEnabled)
-              LunaDialog.tile(
+            if (ArrPilotProfile.current.nzbgetEnabled)
+              ArrPilotDialog.tile(
                 icon: SearchDownloadType.NZBGET.icon,
-                iconColor: LunaColours().byListIndex(1),
+                iconColor: ArrPilotColours().byListIndex(1),
                 text: SearchDownloadType.NZBGET.name,
                 onTap: () => _setValues(true, SearchDownloadType.NZBGET),
               ),
-            LunaDialog.tile(
+            ArrPilotDialog.tile(
               icon: SearchDownloadType.FILESYSTEM.icon,
-              iconColor: LunaColours().byListIndex(2),
+              iconColor: ArrPilotColours().byListIndex(2),
               text: SearchDownloadType.FILESYSTEM.name,
               onTap: () => _setValues(true, SearchDownloadType.FILESYSTEM),
             ),
           ],
         ),
       ),
-      contentPadding: LunaDialog.listDialogContentPadding(),
+      contentPadding: ArrPilotDialog.listDialogContentPadding(),
     );
     return Tuple2(_flag, _type);
   }

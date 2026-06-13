@@ -13,7 +13,7 @@ class TautulliLogsLoginsLogTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: login.friendlyName,
       body: _body(),
       trailing: _trailing(),
@@ -28,8 +28,8 @@ class TautulliLogsLoginsLogTile extends StatelessWidget {
       TextSpan(
         text: login.timestamp!.asDateTime(),
         style: const TextStyle(
-          color: LunaColours.accent,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          color: ArrPilotColours.accent,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         ),
       ),
     ];
@@ -38,11 +38,11 @@ class TautulliLogsLoginsLogTile extends StatelessWidget {
   Widget _trailing() {
     return Column(
       children: [
-        LunaIconButton(
+        ArrPilotIconButton(
           icon: login.success!
               ? Icons.check_circle_rounded
               : Icons.cancel_rounded,
-          color: login.success! ? Colors.white : LunaColours.red,
+          color: login.success! ? Colors.white : ArrPilotColours.red,
         ),
       ],
       crossAxisAlignment: CrossAxisAlignment.center,

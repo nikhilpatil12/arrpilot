@@ -12,7 +12,7 @@ class TautulliActivityStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaHeader(
+    return ArrPilotHeader(
       text: activity!.lunaSessionsHeader,
       subtitle: [
         activity!.lunaSessions,

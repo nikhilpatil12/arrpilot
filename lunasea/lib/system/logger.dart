@@ -6,7 +6,7 @@ import 'package:arrpilot/database/models/log.dart';
 import 'package:arrpilot/types/exception.dart';
 import 'package:arrpilot/types/log_type.dart';
 
-class LunaLogger {
+class ArrPilotLogger {
   static String get checkLogsMessage => 'lunasea.CheckLogsMessage'.tr();
 
   void initialize() {
@@ -21,36 +21,36 @@ class LunaLogger {
   }
 
   Future<void> _compact([int count = 50]) async {
-    if (LunaBox.logs.data.length <= count) return;
-    List<LunaLog> logs = LunaBox.logs.data.toList();
+    if (ArrPilotBox.logs.data.length <= count) return;
+    List<ArrPilotLog> logs = ArrPilotBox.logs.data.toList();
     logs.sort((a, b) => (b.timestamp).compareTo(a.timestamp));
     logs.skip(count).forEach((log) => log.delete());
   }
 
   Future<String> export() async {
-    final logs = LunaBox.logs.data.map((log) => log.toJson()).toList();
+    final logs = ArrPilotBox.logs.data.map((log) => log.toJson()).toList();
     final encoder = JsonEncoder.withIndent(' '.repeat(4));
     return encoder.convert(logs);
   }
 
-  Future<void> clear() async => LunaBox.logs.clear();
+  Future<void> clear() async => ArrPilotBox.logs.clear();
 
   void debug(String message) {
-    LunaLog log = LunaLog.withMessage(
-      type: LunaLogType.DEBUG,
+    ArrPilotLog log = ArrPilotLog.withMessage(
+      type: ArrPilotLogType.DEBUG,
       message: message,
     );
-    LunaBox.logs.create(log);
+    ArrPilotBox.logs.create(log);
   }
 
   void warning(String message, [String? className, String? methodName]) {
-    LunaLog log = LunaLog.withMessage(
-      type: LunaLogType.WARNING,
+    ArrPilotLog log = ArrPilotLog.withMessage(
+      type: ArrPilotLogType.WARNING,
       message: message,
       className: className,
       methodName: methodName,
     );
-    LunaBox.logs.create(log);
+    ArrPilotBox.logs.create(log);
   }
 
   void error(String message, dynamic error, StackTrace? stackTrace) {
@@ -61,13 +61,13 @@ class LunaLogger {
     }
 
     if (error is! NetworkImageLoadException) {
-      LunaLog log = LunaLog.withError(
-        type: LunaLogType.ERROR,
+      ArrPilotLog log = ArrPilotLog.withError(
+        type: ArrPilotLogType.ERROR,
         message: message,
         error: error,
         stackTrace: stackTrace,
       );
-      LunaBox.logs.create(log);
+      ArrPilotBox.logs.create(log);
     }
   }
 
@@ -78,22 +78,22 @@ class LunaLogger {
     }
 
     if (error is! NetworkImageLoadException) {
-      LunaLog log = LunaLog.withError(
-        type: LunaLogType.CRITICAL,
-        message: error?.toString() ?? LunaUI.TEXT_EMDASH,
+      ArrPilotLog log = ArrPilotLog.withError(
+        type: ArrPilotLogType.CRITICAL,
+        message: error?.toString() ?? ArrPilotUI.TEXT_EMDASH,
         error: error,
         stackTrace: stackTrace,
       );
-      LunaBox.logs.create(log);
+      ArrPilotBox.logs.create(log);
     }
   }
 
-  void exception(LunaException exception, [StackTrace? trace]) {
+  void exception(ArrPilotException exception, [StackTrace? trace]) {
     switch (exception.type) {
-      case LunaLogType.WARNING:
+      case ArrPilotLogType.WARNING:
         warning(exception.toString(), exception.runtimeType.toString());
         break;
-      case LunaLogType.ERROR:
+      case ArrPilotLogType.ERROR:
         error(exception.toString(), exception, trace);
         break;
       default:

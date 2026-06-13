@@ -4,24 +4,24 @@ import 'package:arrpilot/extensions/datetime.dart';
 import 'package:arrpilot/extensions/double/time.dart';
 import 'package:arrpilot/modules/radarr.dart';
 
-extension LunaRadarrEventType on RadarrEventType {
-  // Get LunaSea associated colour of the event type.
+extension ArrPilotRadarrEventType on RadarrEventType {
+  // Get ArrPilot associated colour of the event type.
   Color get lunaColour {
     switch (this) {
       case RadarrEventType.GRABBED:
-        return LunaColours.orange;
+        return ArrPilotColours.orange;
       case RadarrEventType.DOWNLOAD_FAILED:
-        return LunaColours.red;
+        return ArrPilotColours.red;
       case RadarrEventType.DOWNLOAD_FOLDER_IMPORTED:
-        return LunaColours.accent;
+        return ArrPilotColours.accent;
       case RadarrEventType.DOWNLOAD_IGNORED:
-        return LunaColours.purple;
+        return ArrPilotColours.purple;
       case RadarrEventType.MOVIE_FILE_DELETED:
-        return LunaColours.red;
+        return ArrPilotColours.red;
       case RadarrEventType.MOVIE_FILE_RENAMED:
-        return LunaColours.blue;
+        return ArrPilotColours.blue;
       case RadarrEventType.MOVIE_FOLDER_IMPORTED:
-        return LunaColours.accent;
+        return ArrPilotColours.accent;
     }
   }
 
@@ -49,7 +49,7 @@ extension LunaRadarrEventType on RadarrEventType {
       case RadarrEventType.GRABBED:
         return Colors.white;
       case RadarrEventType.DOWNLOAD_FAILED:
-        return LunaColours.red;
+        return ArrPilotColours.red;
       case RadarrEventType.DOWNLOAD_FOLDER_IMPORTED:
         return Colors.white;
       case RadarrEventType.DOWNLOAD_IGNORED:
@@ -67,12 +67,12 @@ extension LunaRadarrEventType on RadarrEventType {
     switch (this) {
       case RadarrEventType.GRABBED:
         return 'radarr.GrabbedFrom'
-            .tr(args: [(record.data ?? {})['indexer'] ?? LunaUI.TEXT_EMDASH]);
+            .tr(args: [(record.data ?? {})['indexer'] ?? ArrPilotUI.TEXT_EMDASH]);
       case RadarrEventType.DOWNLOAD_FAILED:
         return 'radarr.DownloadFailed'.tr();
       case RadarrEventType.DOWNLOAD_FOLDER_IMPORTED:
         return 'radarr.MovieImported'
-            .tr(args: [record.quality?.quality?.name ?? LunaUI.TEXT_EMDASH]);
+            .tr(args: [record.quality?.quality?.name ?? ArrPilotUI.TEXT_EMDASH]);
       case RadarrEventType.DOWNLOAD_IGNORED:
         return 'radarr.DownloadIgnored'.tr();
       case RadarrEventType.MOVIE_FILE_DELETED:
@@ -81,11 +81,11 @@ extension LunaRadarrEventType on RadarrEventType {
         return 'radarr.MovieFileRenamed'.tr();
       case RadarrEventType.MOVIE_FOLDER_IMPORTED:
         return 'radarr.MovieImported'
-            .tr(args: [record.quality?.quality?.name ?? LunaUI.TEXT_EMDASH]);
+            .tr(args: [record.quality?.quality?.name ?? ArrPilotUI.TEXT_EMDASH]);
     }
   }
 
-  List<LunaTableContent> lunaTableContent(
+  List<ArrPilotTableContent> lunaTableContent(
     RadarrHistoryRecord record, {
     bool movieHistory = false,
   }) {
@@ -109,195 +109,195 @@ extension LunaRadarrEventType on RadarrEventType {
     }
   }
 
-  List<LunaTableContent> _grabbedTableContent(
+  List<ArrPilotTableContent> _grabbedTableContent(
     RadarrHistoryRecord record,
     bool showSourceTitle,
   ) {
     return [
       if (showSourceTitle)
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'source title',
-          body: record.sourceTitle ?? LunaUI.TEXT_EMDASH,
+          body: record.sourceTitle ?? ArrPilotUI.TEXT_EMDASH,
         ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'quality',
-        body: record.quality?.quality?.name ?? LunaUI.TEXT_EMDASH,
+        body: record.quality?.quality?.name ?? ArrPilotUI.TEXT_EMDASH,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'languages',
         body: record.languages
             ?.map<String?>((language) => language.name)
             .join('\n'),
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'indexer',
-        body: record.data!['indexer'] ?? LunaUI.TEXT_EMDASH,
+        body: record.data!['indexer'] ?? ArrPilotUI.TEXT_EMDASH,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'group',
-        body: record.data!['releaseGroup'] ?? LunaUI.TEXT_EMDASH,
+        body: record.data!['releaseGroup'] ?? ArrPilotUI.TEXT_EMDASH,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'client',
-        body: record.data!['downloadClientName'] ?? LunaUI.TEXT_EMDASH,
+        body: record.data!['downloadClientName'] ?? ArrPilotUI.TEXT_EMDASH,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'age',
         body: record.data!['ageHours'] != null
             ? double.tryParse((record.data!['ageHours'] as String))
                     ?.asTimeAgo() ??
-                LunaUI.TEXT_EMDASH
-            : LunaUI.TEXT_EMDASH,
+                ArrPilotUI.TEXT_EMDASH
+            : ArrPilotUI.TEXT_EMDASH,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'published date',
         body: DateTime.tryParse(record.data!['publishedDate']) != null
             ? DateTime.tryParse(record.data!['publishedDate'])
                     ?.asDateTime(delimiter: '\n') ??
-                LunaUI.TEXT_EMDASH
-            : LunaUI.TEXT_EMDASH,
+                ArrPilotUI.TEXT_EMDASH
+            : ArrPilotUI.TEXT_EMDASH,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'info url',
-        body: record.data!['nzbInfoUrl'] ?? LunaUI.TEXT_EMDASH,
+        body: record.data!['nzbInfoUrl'] ?? ArrPilotUI.TEXT_EMDASH,
         bodyIsUrl: record.data!['nzbInfoUrl'] != null,
       ),
     ];
   }
 
-  List<LunaTableContent> _downloadFailedTableContent(
+  List<ArrPilotTableContent> _downloadFailedTableContent(
     RadarrHistoryRecord record,
     bool showSourceTitle,
   ) {
     return [
       if (showSourceTitle)
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'source title',
-          body: record.sourceTitle ?? LunaUI.TEXT_EMDASH,
+          body: record.sourceTitle ?? ArrPilotUI.TEXT_EMDASH,
         ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'client',
-        body: record.data!['downloadClientName'] ?? LunaUI.TEXT_EMDASH,
+        body: record.data!['downloadClientName'] ?? ArrPilotUI.TEXT_EMDASH,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'message',
-        body: record.data!['message'] ?? LunaUI.TEXT_EMDASH,
+        body: record.data!['message'] ?? ArrPilotUI.TEXT_EMDASH,
       ),
     ];
   }
 
-  List<LunaTableContent> _downloadFolderImportedTableContent(
+  List<ArrPilotTableContent> _downloadFolderImportedTableContent(
     RadarrHistoryRecord record,
   ) {
     return [
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'source title',
-        body: record.sourceTitle ?? LunaUI.TEXT_EMDASH,
+        body: record.sourceTitle ?? ArrPilotUI.TEXT_EMDASH,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'quality',
-        body: record.quality?.quality?.name ?? LunaUI.TEXT_EMDASH,
+        body: record.quality?.quality?.name ?? ArrPilotUI.TEXT_EMDASH,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'languages',
         body: record.languages
                 ?.map<String?>((language) => language.name)
                 .join('\n') ??
-            LunaUI.TEXT_EMDASH,
+            ArrPilotUI.TEXT_EMDASH,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'client',
-        body: record.data!['downloadClientName'] ?? LunaUI.TEXT_EMDASH,
+        body: record.data!['downloadClientName'] ?? ArrPilotUI.TEXT_EMDASH,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'source',
-        body: record.data!['droppedPath'] ?? LunaUI.TEXT_EMDASH,
+        body: record.data!['droppedPath'] ?? ArrPilotUI.TEXT_EMDASH,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'imported to',
-        body: record.data!['importedPath'] ?? LunaUI.TEXT_EMDASH,
+        body: record.data!['importedPath'] ?? ArrPilotUI.TEXT_EMDASH,
       ),
     ];
   }
 
-  List<LunaTableContent> _downloadIgnoredTableContent(
+  List<ArrPilotTableContent> _downloadIgnoredTableContent(
     RadarrHistoryRecord record,
     bool showSourceTitle,
   ) {
     return [
       if (showSourceTitle)
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'source title',
-          body: record.sourceTitle ?? LunaUI.TEXT_EMDASH,
+          body: record.sourceTitle ?? ArrPilotUI.TEXT_EMDASH,
         ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'message',
-        body: record.data!['message'] ?? LunaUI.TEXT_EMDASH,
+        body: record.data!['message'] ?? ArrPilotUI.TEXT_EMDASH,
       ),
     ];
   }
 
-  List<LunaTableContent> _movieFileDeletedTableContent(
+  List<ArrPilotTableContent> _movieFileDeletedTableContent(
     RadarrHistoryRecord record,
     bool showSourceTitle,
   ) {
     return [
       if (showSourceTitle)
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'source title',
-          body: record.sourceTitle ?? LunaUI.TEXT_EMDASH,
+          body: record.sourceTitle ?? ArrPilotUI.TEXT_EMDASH,
         ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'reason',
         body: record.lunaFileDeletedReasonMessage,
       ),
     ];
   }
 
-  List<LunaTableContent> _movieFileRenamedTableContent(
+  List<ArrPilotTableContent> _movieFileRenamedTableContent(
     RadarrHistoryRecord record,
   ) {
     return [
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'source',
-        body: record.data!['sourceRelativePath'] ?? LunaUI.TEXT_EMDASH,
+        body: record.data!['sourceRelativePath'] ?? ArrPilotUI.TEXT_EMDASH,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'destination',
-        body: record.data!['relativePath'] ?? LunaUI.TEXT_EMDASH,
+        body: record.data!['relativePath'] ?? ArrPilotUI.TEXT_EMDASH,
       ),
     ];
   }
 
-  List<LunaTableContent> _movieFolderImportedTableContent(
+  List<ArrPilotTableContent> _movieFolderImportedTableContent(
     RadarrHistoryRecord record,
   ) {
     return [
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'source title',
-        body: record.sourceTitle ?? LunaUI.TEXT_EMDASH,
+        body: record.sourceTitle ?? ArrPilotUI.TEXT_EMDASH,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'quality',
-        body: record.quality?.quality?.name ?? LunaUI.TEXT_EMDASH,
+        body: record.quality?.quality?.name ?? ArrPilotUI.TEXT_EMDASH,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'languages',
-        body: ([RadarrLanguage(name: LunaUI.TEXT_EMDASH)])
+        body: ([RadarrLanguage(name: ArrPilotUI.TEXT_EMDASH)])
             .map<String?>((language) => language.name)
             .join('\n'),
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'client',
-        body: record.data!['downloadClientName'] ?? LunaUI.TEXT_EMDASH,
+        body: record.data!['downloadClientName'] ?? ArrPilotUI.TEXT_EMDASH,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'source',
-        body: record.data!['droppedPath'] ?? LunaUI.TEXT_EMDASH,
+        body: record.data!['droppedPath'] ?? ArrPilotUI.TEXT_EMDASH,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'imported to',
-        body: record.data!['importedPath'] ?? LunaUI.TEXT_EMDASH,
+        body: record.data!['importedPath'] ?? ArrPilotUI.TEXT_EMDASH,
       ),
     ];
   }

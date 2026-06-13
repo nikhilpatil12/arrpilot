@@ -12,18 +12,18 @@ class TautulliActivityDetailsMetadataBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaTableCard(
+    return ArrPilotTableCard(
       content: [
-        LunaTableContent(
+        ArrPilotTableContent(
             title: 'tautulli.Title'.tr(), body: session.lunaFullTitle),
         if (session.year != null)
-          LunaTableContent(title: 'tautulli.Year'.tr(), body: session.lunaYear),
-        LunaTableContent(
+          ArrPilotTableContent(title: 'tautulli.Year'.tr(), body: session.lunaYear),
+        ArrPilotTableContent(
             title: 'tautulli.Duration'.tr(), body: session.lunaDuration),
-        LunaTableContent(title: 'tautulli.ETA'.tr(), body: session.lunaETA),
-        LunaTableContent(
+        ArrPilotTableContent(title: 'tautulli.ETA'.tr(), body: session.lunaETA),
+        ArrPilotTableContent(
             title: 'tautulli.Library'.tr(), body: session.lunaLibraryName),
-        LunaTableContent(
+        ArrPilotTableContent(
             title: 'tautulli.User'.tr(), body: session.lunaFriendlyName),
       ],
     );

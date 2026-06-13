@@ -12,17 +12,17 @@ class RadarrDiskSpaceTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: diskSpace.lunaPath,
       body: [TextSpan(text: diskSpace.lunaSpace)],
-      bottom: LunaLinearPercentIndicator(
+      bottom: ArrPilotLinearPercentIndicator(
         percent: diskSpace.lunaPercentage / 100,
         progressColor: diskSpace.lunaColor,
       ),
-      bottomHeight: LunaLinearPercentIndicator.height,
-      trailing: LunaIconButton(
+      bottomHeight: ArrPilotLinearPercentIndicator.height,
+      trailing: ArrPilotIconButton(
         text: diskSpace.lunaPercentageString,
-        textSize: LunaUI.FONT_SIZE_H4,
+        textSize: ArrPilotUI.FONT_SIZE_H4,
         color: diskSpace.lunaColor,
       ),
     );

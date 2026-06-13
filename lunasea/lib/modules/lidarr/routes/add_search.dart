@@ -11,7 +11,7 @@ class AddArtistRoute extends StatefulWidget {
   State<AddArtistRoute> createState() => _State();
 }
 
-class _State extends State<AddArtistRoute> with LunaScrollControllerMixin {
+class _State extends State<AddArtistRoute> with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -25,7 +25,7 @@ class _State extends State<AddArtistRoute> with LunaScrollControllerMixin {
   }
 
   @override
-  Widget build(BuildContext context) => LunaScaffold(
+  Widget build(BuildContext context) => ArrPilotScaffold(
         scaffoldKey: _scaffoldKey,
         body: _body(),
         appBar: _appBar() as PreferredSizeWidget?,
@@ -33,21 +33,21 @@ class _State extends State<AddArtistRoute> with LunaScrollControllerMixin {
 
   Future<void> _refresh() async {
     final _model = Provider.of<LidarrState>(context, listen: false);
-    final _api = LidarrAPI.from(LunaProfile.current);
+    final _api = LidarrAPI.from(ArrPilotProfile.current);
     setState(() {
       _future = _api.searchArtists(_model.addSearchQuery);
     });
   }
 
   Future<void> _fetchAvailableArtists() async {
-    await LidarrAPI.from(LunaProfile.current)
+    await LidarrAPI.from(ArrPilotProfile.current)
         .getAllArtistIDs()
         .then((data) => _availableIDs = data)
         .catchError((error) => _availableIDs = []);
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       scrollControllers: [scrollController],
       title: 'Add Artist',
       bottom: LidarrAddSearchBar(
@@ -58,7 +58,7 @@ class _State extends State<AddArtistRoute> with LunaScrollControllerMixin {
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: _refresh,
@@ -69,16 +69,16 @@ class _State extends State<AddArtistRoute> with LunaScrollControllerMixin {
             return Container();
           if (snapshot.hasError) {
             if (snapshot.connectionState != ConnectionState.waiting)
-              LunaLogger().error(
+              ArrPilotLogger().error(
                 'Unable to fetch Lidarr artist lookup',
                 snapshot.error,
                 snapshot.stackTrace,
               );
-            return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+            return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
           }
           if (snapshot.connectionState == ConnectionState.done &&
               snapshot.hasData) return _list(snapshot.data);
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -86,11 +86,11 @@ class _State extends State<AddArtistRoute> with LunaScrollControllerMixin {
 
   Widget _list(List<LidarrSearchData>? data) {
     if ((data?.length ?? 0) == 0)
-      return LunaListView(
+      return ArrPilotListView(
         controller: scrollController,
-        children: const [LunaMessage(text: 'No Results Found')],
+        children: const [ArrPilotMessage(text: 'No Results Found')],
       );
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: scrollController,
       itemCount: data!.length,
       itemBuilder: (context, index) => LidarrAddSearchResultTile(

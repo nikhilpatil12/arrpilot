@@ -9,7 +9,7 @@ class TautulliAppBarGlobalSettingsAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaIconButton(
+    return ArrPilotIconButton(
       icon: Icons.more_vert_rounded,
       onPressed: () async {
         Tuple2<bool, TautulliGlobalSettingsType?> values =

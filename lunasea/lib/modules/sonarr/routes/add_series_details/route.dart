@@ -16,7 +16,7 @@ class AddSeriesDetailsRoute extends StatefulWidget {
 }
 
 class _State extends State<AddSeriesDetailsRoute>
-    with LunaLoadCallbackMixin, LunaScrollControllerMixin {
+    with ArrPilotLoadCallbackMixin, ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -39,7 +39,7 @@ class _State extends State<AddSeriesDetailsRoute>
     }
     return ChangeNotifierProvider(
       create: (_) => SonarrSeriesAddDetailsState(series: widget.series!),
-      builder: (context, _) => LunaScaffold(
+      builder: (context, _) => ArrPilotScaffold(
         scaffoldKey: _scaffoldKey,
         appBar: _appBar() as PreferredSizeWidget?,
         body: _body(context),
@@ -49,7 +49,7 @@ class _State extends State<AddSeriesDetailsRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'sonarr.AddSeries'.tr(),
       scrollControllers: [scrollController],
     );
@@ -68,13 +68,13 @@ class _State extends State<AddSeriesDetailsRoute>
       builder: (context, AsyncSnapshot<List<Object>> snapshot) {
         if (snapshot.hasError) {
           if (snapshot.connectionState != ConnectionState.waiting) {
-            LunaLogger().error(
+            ArrPilotLogger().error(
               'Unable to fetch Sonarr add series data',
               snapshot.error,
               snapshot.stackTrace,
             );
           }
-          return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+          return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
         }
         if (snapshot.hasData) {
           return _content(
@@ -85,7 +85,7 @@ class _State extends State<AddSeriesDetailsRoute>
             languageProfiles: snapshot.data![3] as List<SonarrLanguageProfile>,
           );
         }
-        return const LunaLoader();
+        return const ArrPilotLoader();
       },
     );
   }
@@ -112,7 +112,7 @@ class _State extends State<AddSeriesDetailsRoute>
         .initializeLanguageProfile(languageProfiles);
     context.read<SonarrSeriesAddDetailsState>().initializeTags(tags);
     context.read<SonarrSeriesAddDetailsState>().canExecuteAction = true;
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
         SonarrSeriesAddSearchResultTile(

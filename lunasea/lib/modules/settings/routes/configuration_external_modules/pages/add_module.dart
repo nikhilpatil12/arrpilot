@@ -13,13 +13,13 @@ class ConfigurationExternalModulesAddRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationExternalModulesAddRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  final LunaExternalModule _module = LunaExternalModule();
+  final ArrPilotExternalModule _module = ArrPilotExternalModule();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -28,16 +28,16 @@ class _State extends State<ConfigurationExternalModulesAddRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       scrollControllers: [scrollController],
       title: 'settings.AddModule'.tr(),
     );
   }
 
   Widget _bottomNavigationBar() {
-    return LunaBottomActionBar(
+    return ArrPilotBottomActionBar(
       actions: [
-        LunaButton.text(
+        ArrPilotButton.text(
           text: 'settings.AddModule'.tr(),
           icon: Icons.add_rounded,
           onTap: () async {
@@ -47,7 +47,7 @@ class _State extends State<ConfigurationExternalModulesAddRoute>
                 message: 'settings.AllFieldsAreRequired'.tr(),
               );
             } else {
-              LunaBox.externalModules.create(_module);
+              ArrPilotBox.externalModules.create(_module);
               showLunaSuccessSnackBar(
                 title: 'settings.AddModuleSuccess'.tr(),
                 message: _module.displayName,
@@ -61,7 +61,7 @@ class _State extends State<ConfigurationExternalModulesAddRoute>
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
         _displayNameTile(),
@@ -72,16 +72,16 @@ class _State extends State<ConfigurationExternalModulesAddRoute>
 
   Widget _displayNameTile() {
     String _displayName = _module.displayName;
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.DisplayName'.tr(),
       body: [
         TextSpan(
           text: _displayName.isEmpty ? 'lunasea.NotSet'.tr() : _displayName,
         ),
       ],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {
-        Tuple2<bool, String> values = await LunaDialogs().editText(
+        Tuple2<bool, String> values = await ArrPilotDialogs().editText(
           context,
           'settings.DisplayName'.tr(),
           prefill: _displayName,
@@ -93,12 +93,12 @@ class _State extends State<ConfigurationExternalModulesAddRoute>
 
   Widget _hostTile() {
     String _host = _module.host;
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.Host'.tr(),
       body: [
         TextSpan(text: _host.isEmpty ? 'lunasea.NotSet'.tr() : _host),
       ],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {
         Tuple2<bool, String> values =
             await SettingsDialogs().editExternalModuleHost(

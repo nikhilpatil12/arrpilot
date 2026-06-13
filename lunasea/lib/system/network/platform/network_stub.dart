@@ -2,4 +2,4 @@
 import '../network.dart';
 
 bool isPlatformSupported() => false;
-LunaNetwork getNetwork() => throw UnsupportedError('LunaNetwork unsupported');
+ArrPilotNetwork getNetwork() => throw UnsupportedError('ArrPilotNetwork unsupported');

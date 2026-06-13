@@ -10,6 +10,6 @@ class ConfigurationSABnzbdConnectionDetailsHeadersRoute
 
   @override
   Widget build(BuildContext context) {
-    return const SettingsHeaderRoute(module: LunaModule.SABNZBD);
+    return const SettingsHeaderRoute(module: ArrPilotModule.SABNZBD);
   }
 }

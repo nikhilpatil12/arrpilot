@@ -13,7 +13,7 @@ class RadarrManualImportPathBar extends StatefulWidget
 
   @override
   Size get preferredSize =>
-      const Size.fromHeight(LunaTextInputBar.defaultAppBarHeight);
+      const Size.fromHeight(ArrPilotTextInputBar.defaultAppBarHeight);
 
   @override
   State<RadarrManualImportPathBar> createState() => _State();
@@ -26,7 +26,7 @@ class _State extends State<RadarrManualImportPathBar> {
       child: Row(
         children: [
           Expanded(
-            child: LunaTextInputBar(
+            child: ArrPilotTextInputBar(
               action: TextInputAction.done,
               labelIcon: Icons.sd_storage_rounded,
               labelText: 'radarr.FileBrowser'.tr(),
@@ -48,7 +48,7 @@ class _State extends State<RadarrManualImportPathBar> {
           ),
         ],
       ),
-      height: LunaTextInputBar.defaultAppBarHeight,
+      height: ArrPilotTextInputBar.defaultAppBarHeight,
     );
   }
 }

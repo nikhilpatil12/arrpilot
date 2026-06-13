@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaHeader extends StatelessWidget {
+class ArrPilotHeader extends StatelessWidget {
   final String? text;
   final String? subtitle;
 
-  const LunaHeader({
+  const ArrPilotHeader({
     Key? key,
     required this.text,
     this.subtitle,
@@ -15,8 +15,8 @@ class LunaHeader extends StatelessWidget {
     return Text(
       text!,
       style: const TextStyle(
-        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
-        fontSize: LunaUI.FONT_SIZE_H2,
+        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
+        fontSize: ArrPilotUI.FONT_SIZE_H2,
         color: Colors.white,
       ),
     );
@@ -26,16 +26,16 @@ class LunaHeader extends StatelessWidget {
     return Padding(
       child: Container(
         height: 2.0,
-        width: LunaUI.DEFAULT_MARGIN_SIZE * 3,
+        width: ArrPilotUI.DEFAULT_MARGIN_SIZE * 3,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(LunaUI.BORDER_RADIUS),
-          color: LunaColours.accent,
+          borderRadius: BorderRadius.circular(ArrPilotUI.BORDER_RADIUS),
+          color: ArrPilotColours.accent,
         ),
       ),
       padding: const EdgeInsets.only(
-        top: LunaUI.DEFAULT_MARGIN_SIZE / 2,
+        top: ArrPilotUI.DEFAULT_MARGIN_SIZE / 2,
         left: 0,
-        bottom: LunaUI.DEFAULT_MARGIN_SIZE / 2,
+        bottom: ArrPilotUI.DEFAULT_MARGIN_SIZE / 2,
       ),
     );
   }
@@ -45,12 +45,12 @@ class LunaHeader extends StatelessWidget {
       child: Text(
         subtitle!,
         style: const TextStyle(
-          fontSize: LunaUI.FONT_SIZE_H4,
-          color: LunaColours.grey,
+          fontSize: ArrPilotUI.FONT_SIZE_H4,
+          color: ArrPilotColours.grey,
           fontWeight: FontWeight.w300,
         ),
       ),
-      padding: const EdgeInsets.only(bottom: LunaUI.DEFAULT_MARGIN_SIZE / 2),
+      padding: const EdgeInsets.only(bottom: ArrPilotUI.DEFAULT_MARGIN_SIZE / 2),
     );
   }
 
@@ -66,9 +66,9 @@ class LunaHeader extends StatelessWidget {
         ],
       ),
       padding: const EdgeInsets.only(
-        left: LunaUI.DEFAULT_MARGIN_SIZE,
-        right: LunaUI.DEFAULT_MARGIN_SIZE,
-        top: LunaUI.DEFAULT_MARGIN_SIZE / 2,
+        left: ArrPilotUI.DEFAULT_MARGIN_SIZE,
+        right: ArrPilotUI.DEFAULT_MARGIN_SIZE,
+        top: ArrPilotUI.DEFAULT_MARGIN_SIZE / 2,
       ),
     );
   }

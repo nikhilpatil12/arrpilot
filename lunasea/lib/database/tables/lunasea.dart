@@ -10,11 +10,11 @@ import 'package:arrpilot/types/log_type.dart';
 import 'package:arrpilot/vendor.dart';
 import 'package:arrpilot/widgets/ui.dart';
 
-enum LunaSeaDatabase<T> with LunaTableMixin<T> {
+enum ArrPilotDatabase<T> with ArrPilotTableMixin<T> {
   ANDROID_BACK_OPENS_DRAWER<bool>(true),
   DRAWER_AUTOMATIC_MANAGE<bool>(true),
   DRAWER_MANUAL_ORDER<List>([]),
-  ENABLED_PROFILE<String>(LunaProfile.DEFAULT_PROFILE),
+  ENABLED_PROFILE<String>(ArrPilotProfile.DEFAULT_PROFILE),
   NETWORKING_TLS_VALIDATION<bool>(false),
   THEME_AMOLED<bool>(false),
   THEME_AMOLED_BORDER<bool>(false),
@@ -32,31 +32,31 @@ enum LunaSeaDatabase<T> with LunaTableMixin<T> {
   CHANGELOG_LAST_BUILD_VERSION<int>(0);
 
   @override
-  LunaTable get table => LunaTable.lunasea;
+  ArrPilotTable get table => ArrPilotTable.lunasea;
 
   @override
   final T fallback;
 
-  const LunaSeaDatabase(this.fallback);
+  const ArrPilotDatabase(this.fallback);
 
   @override
   void register() {
-    Hive.registerAdapter(LunaExternalModuleAdapter());
-    Hive.registerAdapter(LunaIndexerAdapter());
-    Hive.registerAdapter(LunaProfileAdapter());
-    Hive.registerAdapter(LunaLogAdapter());
-    Hive.registerAdapter(LunaIndexerIconAdapter());
-    Hive.registerAdapter(LunaLogTypeAdapter());
-    Hive.registerAdapter(LunaModuleAdapter());
-    Hive.registerAdapter(LunaListViewOptionAdapter());
+    Hive.registerAdapter(ArrPilotExternalModuleAdapter());
+    Hive.registerAdapter(ArrPilotIndexerAdapter());
+    Hive.registerAdapter(ArrPilotProfileAdapter());
+    Hive.registerAdapter(ArrPilotLogAdapter());
+    Hive.registerAdapter(ArrPilotIndexerIconAdapter());
+    Hive.registerAdapter(ArrPilotLogTypeAdapter());
+    Hive.registerAdapter(ArrPilotModuleAdapter());
+    Hive.registerAdapter(ArrPilotListViewOptionAdapter());
   }
 
   @override
   dynamic export() {
-    LunaSeaDatabase db = this;
+    ArrPilotDatabase db = this;
     switch (db) {
-      case LunaSeaDatabase.DRAWER_MANUAL_ORDER:
-        return LunaDrawer.moduleOrderedList()
+      case ArrPilotDatabase.DRAWER_MANUAL_ORDER:
+        return ArrPilotDrawer.moduleOrderedList()
             .map<String>((module) => module.key)
             .toList();
       default:
@@ -66,14 +66,14 @@ enum LunaSeaDatabase<T> with LunaTableMixin<T> {
 
   @override
   void import(dynamic value) {
-    LunaSeaDatabase db = this;
+    ArrPilotDatabase db = this;
     dynamic result;
 
     switch (db) {
-      case LunaSeaDatabase.DRAWER_MANUAL_ORDER:
-        List<LunaModule> item = [];
+      case ArrPilotDatabase.DRAWER_MANUAL_ORDER:
+        List<ArrPilotModule> item = [];
         (value as List).cast<String>().forEach((val) {
-          LunaModule? module = LunaModule.fromKey(val);
+          ArrPilotModule? module = ArrPilotModule.fromKey(val);
           if (module != null) item.add(module);
         });
         result = item;

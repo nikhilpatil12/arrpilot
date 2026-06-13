@@ -14,7 +14,7 @@ class SearchResultTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaExpandableListTile(
+    return ArrPilotExpandableListTile(
       title: data.title,
       collapsedSubtitles: [
         _subtitle1(),
@@ -29,7 +29,7 @@ class SearchResultTile extends StatelessWidget {
   TextSpan _subtitle1() {
     return TextSpan(children: [
       TextSpan(text: data.size.asBytes()),
-      TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+      TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
       TextSpan(text: data.category),
     ]);
   }
@@ -38,29 +38,29 @@ class SearchResultTile extends StatelessWidget {
     return TextSpan(text: data.age);
   }
 
-  List<LunaTableContent> _tableContent() {
+  List<ArrPilotTableContent> _tableContent() {
     return [
-      LunaTableContent(title: 'search.Age'.tr(), body: data.age),
-      LunaTableContent(title: 'search.Size'.tr(), body: data.size.asBytes()),
-      LunaTableContent(title: 'search.Category'.tr(), body: data.category),
+      ArrPilotTableContent(title: 'search.Age'.tr(), body: data.age),
+      ArrPilotTableContent(title: 'search.Size'.tr(), body: data.size.asBytes()),
+      ArrPilotTableContent(title: 'search.Category'.tr(), body: data.category),
       if (SearchDatabase.SHOW_LINKS.read())
-        LunaTableContent(title: '', body: ''),
+        ArrPilotTableContent(title: '', body: ''),
       if (SearchDatabase.SHOW_LINKS.read())
-        LunaTableContent(
+        ArrPilotTableContent(
             title: 'search.Comments'.tr(),
             body: data.linkComments,
             bodyIsUrl: true),
       if (SearchDatabase.SHOW_LINKS.read())
-        LunaTableContent(
+        ArrPilotTableContent(
             title: 'search.Download'.tr(),
             body: data.linkDownload,
             bodyIsUrl: true),
     ];
   }
 
-  List<LunaButton> _tableButtons(BuildContext context) {
+  List<ArrPilotButton> _tableButtons(BuildContext context) {
     return [
-      LunaButton.text(
+      ArrPilotButton.text(
         icon: Icons.download_rounded,
         text: 'search.Download'.tr(),
         onTap: () async => _sendToClient(context),
@@ -68,8 +68,8 @@ class SearchResultTile extends StatelessWidget {
     ];
   }
 
-  LunaIconButton _trailing(BuildContext context) {
-    return LunaIconButton(
+  ArrPilotIconButton _trailing(BuildContext context) {
+    return ArrPilotIconButton(
       icon: Icons.download_rounded,
       onPressed: () => _sendToClient(context),
     );

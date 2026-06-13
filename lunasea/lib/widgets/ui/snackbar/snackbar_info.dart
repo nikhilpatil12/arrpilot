@@ -11,7 +11,7 @@ Future<void> showLunaInfoSnackBar({
     showLunaSnackBar(
       title: title,
       message: message.uiSafe(),
-      type: LunaSnackbarType.INFO,
+      type: ArrPilotSnackbarType.INFO,
       showButton: showButton,
       buttonText: buttonText,
       buttonOnPressed: buttonOnPressed,

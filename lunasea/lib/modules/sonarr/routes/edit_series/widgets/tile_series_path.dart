@@ -9,20 +9,20 @@ class SonarrSeriesEditSeriesPathTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'sonarr.SeriesPath'.tr(),
       body: [
         TextSpan(
           text: context.watch<SonarrSeriesEditState>().seriesPath,
         ),
       ],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async => _onTap(context),
     );
   }
 
   Future<void> _onTap(BuildContext context) async {
-    Tuple2<bool, String> _values = await LunaDialogs().editText(
+    Tuple2<bool, String> _values = await ArrPilotDialogs().editText(
       context,
       'sonarr.SeriesPath'.tr(),
       prefill: context.read<SonarrSeriesEditState>().seriesPath,

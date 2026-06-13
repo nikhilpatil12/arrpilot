@@ -9,8 +9,8 @@ const TYPE_WARNING = 'warning';
 const TYPE_ERROR = 'error';
 const TYPE_CRITICAL = 'critical';
 
-@HiveType(typeId: 24, adapterName: 'LunaLogTypeAdapter')
-enum LunaLogType {
+@HiveType(typeId: 24, adapterName: 'ArrPilotLogTypeAdapter')
+enum ArrPilotLogType {
   @HiveField(0)
   WARNING(TYPE_WARNING),
   @HiveField(1)
@@ -21,14 +21,14 @@ enum LunaLogType {
   DEBUG(TYPE_DEBUG);
 
   final String key;
-  const LunaLogType(this.key);
+  const ArrPilotLogType(this.key);
 
   String get description => 'settings.ViewTypeLogs'.tr(args: [title]);
 
   bool get enabled {
     switch (this) {
-      case LunaLogType.DEBUG:
-        return LunaFlavor.BETA.isRunningFlavor();
+      case ArrPilotLogType.DEBUG:
+        return ArrPilotFlavor.BETA.isRunningFlavor();
       default:
         return true;
     }
@@ -36,53 +36,53 @@ enum LunaLogType {
 
   String get title {
     switch (this) {
-      case LunaLogType.WARNING:
+      case ArrPilotLogType.WARNING:
         return 'lunasea.Warning'.tr();
-      case LunaLogType.ERROR:
+      case ArrPilotLogType.ERROR:
         return 'lunasea.Error'.tr();
-      case LunaLogType.CRITICAL:
+      case ArrPilotLogType.CRITICAL:
         return 'lunasea.Critical'.tr();
-      case LunaLogType.DEBUG:
+      case ArrPilotLogType.DEBUG:
         return 'lunasea.Debug'.tr();
     }
   }
 
   IconData get icon {
     switch (this) {
-      case LunaLogType.WARNING:
-        return LunaIcons.WARNING;
-      case LunaLogType.ERROR:
-        return LunaIcons.ERROR;
-      case LunaLogType.CRITICAL:
-        return LunaIcons.CRITICAL;
-      case LunaLogType.DEBUG:
-        return LunaIcons.DEBUG;
+      case ArrPilotLogType.WARNING:
+        return ArrPilotIcons.WARNING;
+      case ArrPilotLogType.ERROR:
+        return ArrPilotIcons.ERROR;
+      case ArrPilotLogType.CRITICAL:
+        return ArrPilotIcons.CRITICAL;
+      case ArrPilotLogType.DEBUG:
+        return ArrPilotIcons.DEBUG;
     }
   }
 
   Color get color {
     switch (this) {
-      case LunaLogType.WARNING:
-        return LunaColours.orange;
-      case LunaLogType.ERROR:
-        return LunaColours.red;
-      case LunaLogType.CRITICAL:
-        return LunaColours.accent;
-      case LunaLogType.DEBUG:
-        return LunaColours.blueGrey;
+      case ArrPilotLogType.WARNING:
+        return ArrPilotColours.orange;
+      case ArrPilotLogType.ERROR:
+        return ArrPilotColours.red;
+      case ArrPilotLogType.CRITICAL:
+        return ArrPilotColours.accent;
+      case ArrPilotLogType.DEBUG:
+        return ArrPilotColours.blueGrey;
     }
   }
 
-  static LunaLogType? fromKey(String key) {
+  static ArrPilotLogType? fromKey(String key) {
     switch (key) {
       case TYPE_WARNING:
-        return LunaLogType.WARNING;
+        return ArrPilotLogType.WARNING;
       case TYPE_ERROR:
-        return LunaLogType.ERROR;
+        return ArrPilotLogType.ERROR;
       case TYPE_CRITICAL:
-        return LunaLogType.CRITICAL;
+        return ArrPilotLogType.CRITICAL;
       case TYPE_DEBUG:
-        return LunaLogType.DEBUG;
+        return ArrPilotLogType.DEBUG;
     }
     return null;
   }

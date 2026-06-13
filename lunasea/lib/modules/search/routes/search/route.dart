@@ -12,7 +12,7 @@ class SearchIndexerRoute extends StatefulWidget {
   State<StatefulWidget> createState() => _State();
 }
 
-class _State extends State<SearchIndexerRoute> with LunaScrollControllerMixin {
+class _State extends State<SearchIndexerRoute> with ArrPilotScrollControllerMixin {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _refreshKey = GlobalKey<RefreshIndicatorState>();
   final PagingController<int, NewznabResultData> _pagingController =
@@ -27,7 +27,7 @@ class _State extends State<SearchIndexerRoute> with LunaScrollControllerMixin {
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -54,7 +54,7 @@ class _State extends State<SearchIndexerRoute> with LunaScrollControllerMixin {
       if (data.isEmpty) return _pagingController.appendLastPage([]);
       return _pagingController.appendPage(data, pageKey + 1);
     }).catchError((error, stack) {
-      LunaLogger().error(
+      ArrPilotLogger().error(
         'Unable to fetch search results page: $pageKey',
         error,
         stack,
@@ -72,7 +72,7 @@ class _State extends State<SearchIndexerRoute> with LunaScrollControllerMixin {
     if (category != null && subcategory != null) {
       title = '$title > ${subcategory.name ?? 'lunasea.Unknown'.tr()}';
     }
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: title,
       scrollControllers: [scrollController],
       bottom: SearchSearchBar(
@@ -87,7 +87,7 @@ class _State extends State<SearchIndexerRoute> with LunaScrollControllerMixin {
 
   Widget _body() {
     if (_firstSearched)
-      return LunaPagedListView<NewznabResultData>(
+      return ArrPilotPagedListView<NewznabResultData>(
         refreshKey: _refreshKey,
         pagingController: _pagingController,
         scrollController: scrollController,

@@ -3,7 +3,7 @@ import 'package:arrpilot/widgets/ui.dart';
 
 extension DurationAsTimestampExtension on Duration? {
   String asNumberTimestamp() {
-    if (this == null) return LunaUI.TEXT_EMDASH;
+    if (this == null) return ArrPilotUI.TEXT_EMDASH;
 
     final hours = this!.inHours.toString().padLeft(2, '0');
     final minutes = (this!.inMinutes % 60).toString().padLeft(2, '0');

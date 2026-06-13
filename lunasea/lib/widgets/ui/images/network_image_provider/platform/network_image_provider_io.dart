@@ -6,7 +6,7 @@ import 'package:arrpilot/system/cache/image/image_cache.dart';
 // ignore: always_use_package_imports
 import '../network_image_provider.dart';
 
-LunaNetworkImageProvider getNetworkImageProvider({
+ArrPilotNetworkImageProvider getNetworkImageProvider({
   required String url,
   Map<String, String>? headers,
 }) {
@@ -16,7 +16,7 @@ LunaNetworkImageProvider getNetworkImageProvider({
   );
 }
 
-class IO implements LunaNetworkImageProvider {
+class IO implements ArrPilotNetworkImageProvider {
   String url;
   Map<String, String>? headers;
 
@@ -27,14 +27,14 @@ class IO implements LunaNetworkImageProvider {
 
   @override
   ImageProvider<Object> get imageProvider {
-    return LunaImageCache.isSupported ? _cache() : _default();
+    return ArrPilotImageCache.isSupported ? _cache() : _default();
   }
 
   ImageProvider<Object> _cache() {
     return CachedNetworkImageProvider(
       url,
       headers: headers,
-      cacheManager: LunaImageCache().instance,
+      cacheManager: ArrPilotImageCache().instance,
       errorListener: (_) {},
     );
   }

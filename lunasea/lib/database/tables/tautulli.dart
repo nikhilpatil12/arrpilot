@@ -1,6 +1,6 @@
 import 'package:arrpilot/database/table.dart';
 
-enum TautulliDatabase<T> with LunaTableMixin<T> {
+enum TautulliDatabase<T> with ArrPilotTableMixin<T> {
   NAVIGATION_INDEX<int>(0),
   NAVIGATION_INDEX_GRAPHS<int>(0),
   NAVIGATION_INDEX_LIBRARIES_DETAILS<int>(0),
@@ -15,7 +15,7 @@ enum TautulliDatabase<T> with LunaTableMixin<T> {
   GRAPHS_MONTHS<int>(6);
 
   @override
-  LunaTable get table => LunaTable.tautulli;
+  ArrPilotTable get table => ArrPilotTable.tautulli;
 
   @override
   final T fallback;

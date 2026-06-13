@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaText extends Text {
+class ArrPilotText extends Text {
   /// Create a new [Text] widget.
-  const LunaText({
+  const ArrPilotText({
     required String text,
     Key? key,
     int? maxLines,
@@ -21,8 +21,8 @@ class LunaText extends Text {
           textAlign: textAlign,
         );
 
-  /// Create a [LunaText] widget with the styling pre-assigned to be a LunaSea title.
-  factory LunaText.title({
+  /// Create a [ArrPilotText] widget with the styling pre-assigned to be a ArrPilot title.
+  factory ArrPilotText.title({
     Key? key,
     required String text,
     int maxLines = 1,
@@ -31,7 +31,7 @@ class LunaText extends Text {
     TextOverflow overflow = TextOverflow.fade,
     Color color = Colors.white,
   }) =>
-      LunaText(
+      ArrPilotText(
         text: text,
         key: key,
         maxLines: maxLines,
@@ -40,23 +40,23 @@ class LunaText extends Text {
         textAlign: textAlign,
         style: TextStyle(
           color: color,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
-          fontSize: LunaUI.FONT_SIZE_H2,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
+          fontSize: ArrPilotUI.FONT_SIZE_H2,
         ),
       );
 
-  /// Create a [LunaText] widget with the styling pre-assigned to be a LunaSea subtitle.
-  factory LunaText.subtitle({
+  /// Create a [ArrPilotText] widget with the styling pre-assigned to be a ArrPilot subtitle.
+  factory ArrPilotText.subtitle({
     Key? key,
     required String text,
     int maxLines = 1,
     bool softWrap = false,
     TextAlign textAlign = TextAlign.start,
     TextOverflow overflow = TextOverflow.fade,
-    Color color = LunaColours.grey,
+    Color color = ArrPilotColours.grey,
     FontStyle fontStyle = FontStyle.normal,
   }) =>
-      LunaText(
+      ArrPilotText(
         key: key,
         text: text,
         softWrap: softWrap,
@@ -65,7 +65,7 @@ class LunaText extends Text {
         overflow: overflow,
         style: TextStyle(
           color: color,
-          fontSize: LunaUI.FONT_SIZE_H3,
+          fontSize: ArrPilotUI.FONT_SIZE_H3,
           fontStyle: fontStyle,
         ),
       );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaFloatingActionButton extends StatelessWidget {
+class ArrPilotFloatingActionButton extends StatelessWidget {
   final Color color;
   final Color backgroundColor;
   final IconData icon;
@@ -9,12 +9,12 @@ class LunaFloatingActionButton extends StatelessWidget {
   final void Function() onPressed;
   final Object? heroTag;
 
-  const LunaFloatingActionButton({
+  const ArrPilotFloatingActionButton({
     Key? key,
     required this.icon,
     this.label,
     required this.onPressed,
-    this.backgroundColor = LunaColours.accent,
+    this.backgroundColor = ArrPilotColours.accent,
     this.color = Colors.white,
     this.heroTag,
   }) : super(key: key);
@@ -29,8 +29,8 @@ class LunaFloatingActionButton extends StatelessWidget {
           label!,
           style: TextStyle(
             color: color,
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
-            fontSize: LunaUI.FONT_SIZE_H3,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
+            fontSize: ArrPilotUI.FONT_SIZE_H3,
             letterSpacing: 0.35,
           ),
         ),

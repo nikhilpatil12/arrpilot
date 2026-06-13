@@ -12,7 +12,7 @@ class TautulliStatisticsTypeButton extends StatelessWidget {
   Widget build(BuildContext context) =>
       Selector<TautulliState, TautulliStatsType>(
         selector: (_, state) => state.statisticsType,
-        builder: (context, type, _) => LunaPopupMenuButton<TautulliStatsType>(
+        builder: (context, type, _) => ArrPilotPopupMenuButton<TautulliStatsType>(
             tooltip: 'Statistics Type',
             icon: Icons.merge_type_rounded,
             onSelected: (value) {
@@ -27,9 +27,9 @@ class TautulliStatisticsTypeButton extends StatelessWidget {
                     child: Text(
                       TautulliStatsType.values[index].value!.toTitleCase(),
                       style: TextStyle(
-                        fontSize: LunaUI.FONT_SIZE_H3,
+                        fontSize: ArrPilotUI.FONT_SIZE_H3,
                         color: type == TautulliStatsType.values[index]
-                            ? LunaColours.accent
+                            ? ArrPilotColours.accent
                             : Colors.white,
                       ),
                     ),

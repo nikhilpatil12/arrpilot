@@ -12,12 +12,12 @@ class SettingsRoute extends StatefulWidget {
   State<SettingsRoute> createState() => _State();
 }
 
-class _State extends State<SettingsRoute> with LunaScrollControllerMixin {
+class _State extends State<SettingsRoute> with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar(),
       drawer: _drawer(),
@@ -25,36 +25,36 @@ class _State extends State<SettingsRoute> with LunaScrollControllerMixin {
     );
   }
 
-  Widget _drawer() => LunaDrawer(page: LunaModule.SETTINGS.key);
+  Widget _drawer() => ArrPilotDrawer(page: ArrPilotModule.SETTINGS.key);
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       useDrawer: true,
       scrollControllers: [scrollController],
-      title: LunaModule.SETTINGS.title,
+      title: ArrPilotModule.SETTINGS.title,
     );
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
-        LunaBlock(
+        ArrPilotBlock(
           title: 'settings.Configuration'.tr(),
           body: [TextSpan(text: 'settings.ConfigurationDescription'.tr())],
-          trailing: const LunaIconButton(icon: Icons.device_hub_rounded),
+          trailing: const ArrPilotIconButton(icon: Icons.device_hub_rounded),
           onTap: SettingsRoutes.CONFIGURATION.go,
         ),
-        LunaBlock(
+        ArrPilotBlock(
           title: 'settings.Profiles'.tr(),
           body: [TextSpan(text: 'settings.ProfilesDescription'.tr())],
-          trailing: const LunaIconButton(icon: Icons.switch_account_rounded),
+          trailing: const ArrPilotIconButton(icon: Icons.switch_account_rounded),
           onTap: SettingsRoutes.PROFILES.go,
         ),
-        LunaBlock(
+        ArrPilotBlock(
           title: 'settings.System'.tr(),
           body: [TextSpan(text: 'settings.SystemDescription'.tr())],
-          trailing: const LunaIconButton(icon: Icons.settings_rounded),
+          trailing: const ArrPilotIconButton(icon: Icons.settings_rounded),
           onTap: SettingsRoutes.SYSTEM.go,
         ),
       ],

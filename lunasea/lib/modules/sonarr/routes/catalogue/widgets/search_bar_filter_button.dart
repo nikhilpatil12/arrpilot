@@ -17,11 +17,11 @@ class SonarrSeriesSearchBarFilterButton extends StatefulWidget {
 
 class _State extends State<SonarrSeriesSearchBarFilterButton> {
   @override
-  Widget build(BuildContext context) => LunaCard(
+  Widget build(BuildContext context) => ArrPilotCard(
         context: context,
         child: Consumer<SonarrState>(
           builder: (context, state, _) =>
-              LunaPopupMenuButton<SonarrSeriesFilter>(
+              ArrPilotPopupMenuButton<SonarrSeriesFilter>(
             tooltip: 'sonarr.FilterCatalogue'.tr(),
             icon: Icons.filter_list_rounded,
             onSelected: (result) {
@@ -36,10 +36,10 @@ class _State extends State<SonarrSeriesSearchBarFilterButton> {
                 child: Text(
                   SonarrSeriesFilter.values[index].readable,
                   style: TextStyle(
-                    fontSize: LunaUI.FONT_SIZE_H3,
+                    fontSize: ArrPilotUI.FONT_SIZE_H3,
                     color: state.seriesFilterType ==
                             SonarrSeriesFilter.values[index]
-                        ? LunaColours.accent
+                        ? ArrPilotColours.accent
                         : Colors.white,
                   ),
                 ),
@@ -47,9 +47,9 @@ class _State extends State<SonarrSeriesSearchBarFilterButton> {
             ),
           ),
         ),
-        height: LunaTextInputBar.defaultHeight,
-        width: LunaTextInputBar.defaultHeight,
-        margin: const EdgeInsets.only(left: LunaUI.DEFAULT_MARGIN_SIZE),
+        height: ArrPilotTextInputBar.defaultHeight,
+        width: ArrPilotTextInputBar.defaultHeight,
+        margin: const EdgeInsets.only(left: ArrPilotUI.DEFAULT_MARGIN_SIZE),
         color: Theme.of(context).canvasColor,
       );
 }

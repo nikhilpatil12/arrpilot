@@ -10,10 +10,10 @@ class SonarrEditSeriesActionBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBottomActionBar(
+    return ArrPilotBottomActionBar(
       actions: [
-        LunaButton(
-          type: LunaButtonType.TEXT,
+        ArrPilotButton(
+          type: ArrPilotButtonType.TEXT,
           text: 'lunasea.Update'.tr(),
           icon: Icons.edit_rounded,
           loadingState: context.watch<SonarrSeriesEditState>().state,
@@ -25,7 +25,7 @@ class SonarrEditSeriesActionBar extends StatelessWidget {
 
   Future<void> _updateOnTap(BuildContext context) async {
     if (context.read<SonarrSeriesEditState>().canExecuteAction) {
-      context.read<SonarrSeriesEditState>().state = LunaLoadingState.ACTIVE;
+      context.read<SonarrSeriesEditState>().state = ArrPilotLoadingState.ACTIVE;
       if (context.read<SonarrSeriesEditState>().series != null) {
         SonarrSeries series = context
             .read<SonarrSeriesEditState>()
@@ -35,7 +35,7 @@ class SonarrEditSeriesActionBar extends StatelessWidget {
           context: context,
           series: series,
         );
-        if (result) LunaRouter().popSafely();
+        if (result) ArrPilotRouter().popSafely();
       }
     }
   }

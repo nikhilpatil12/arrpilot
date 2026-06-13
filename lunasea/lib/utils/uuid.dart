@@ -1,6 +1,6 @@
 import 'package:uuid/uuid.dart';
 
-class LunaUUID {
+class ArrPilotUUID {
   static const Uuid _generator = Uuid();
 
   String generate() {

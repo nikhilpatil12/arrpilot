@@ -40,7 +40,7 @@ class _State extends State<SonarrSeriesSearchBar> {
       children: [
         Expanded(
           child: Consumer<SonarrState>(
-            builder: (context, state, _) => LunaTextInputBar(
+            builder: (context, state, _) => ArrPilotTextInputBar(
               controller: _controller,
               scrollController: _sc,
               focusNode: _focusNode,
@@ -53,13 +53,13 @@ class _State extends State<SonarrSeriesSearchBar> {
         ),
         AnimatedContainer(
           duration: const Duration(
-            milliseconds: LunaUI.ANIMATION_SPEED_SCROLLING,
+            milliseconds: ArrPilotUI.ANIMATION_SPEED_SCROLLING,
           ),
           curve: Curves.easeInOutQuart,
           width: _hasFocus
               ? 0.0
-              : (LunaTextInputBar.defaultHeight * 3 +
-                  LunaUI.DEFAULT_MARGIN_SIZE * 3),
+              : (ArrPilotTextInputBar.defaultHeight * 3 +
+                  ArrPilotUI.DEFAULT_MARGIN_SIZE * 3),
           child: Row(
             children: [
               Flexible(

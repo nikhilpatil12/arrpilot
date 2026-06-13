@@ -3,10 +3,10 @@ import 'package:arrpilot/core.dart';
 import 'package:arrpilot/extensions/int/bytes.dart';
 import 'package:arrpilot/modules/radarr.dart';
 
-extension LunaRadarrDiskSpaceExtension on RadarrDiskSpace {
+extension ArrPilotRadarrDiskSpaceExtension on RadarrDiskSpace {
   String? get lunaPath {
     if (this.path != null && this.path!.isNotEmpty) return this.path;
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaSpace {
@@ -31,8 +31,8 @@ extension LunaRadarrDiskSpaceExtension on RadarrDiskSpace {
 
   Color get lunaColor {
     int percentage = this.lunaPercentage;
-    if (percentage >= 90) return LunaColours.red;
-    if (percentage >= 80) return LunaColours.orange;
-    return LunaColours.accent;
+    if (percentage >= 90) return ArrPilotColours.red;
+    if (percentage >= 80) return ArrPilotColours.orange;
+    return ArrPilotColours.accent;
   }
 }

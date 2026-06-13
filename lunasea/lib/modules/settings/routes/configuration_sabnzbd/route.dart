@@ -13,12 +13,12 @@ class ConfigurationSABnzbdRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationSABnzbdRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar(),
       body: _body(),
@@ -26,20 +26,20 @@ class _State extends State<ConfigurationSABnzbdRoute>
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
-      title: LunaModule.SABNZBD.title,
+    return ArrPilotAppBar(
+      title: ArrPilotModule.SABNZBD.title,
       scrollControllers: [scrollController],
     );
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
-        LunaModule.SABNZBD.informationBanner(),
+        ArrPilotModule.SABNZBD.informationBanner(),
         _enabledToggle(),
         _connectionDetailsPage(),
-        LunaDivider(),
+        ArrPilotDivider(),
         _defaultPagesPage(),
         //_defaultPagesPage(),
       ],
@@ -47,14 +47,14 @@ class _State extends State<ConfigurationSABnzbdRoute>
   }
 
   Widget _enabledToggle() {
-    return LunaBox.profiles.listenableBuilder(
-      builder: (context, _) => LunaBlock(
-        title: 'settings.EnableModule'.tr(args: [LunaModule.SABNZBD.title]),
-        trailing: LunaSwitch(
-          value: LunaProfile.current.sabnzbdEnabled,
+    return ArrPilotBox.profiles.listenableBuilder(
+      builder: (context, _) => ArrPilotBlock(
+        title: 'settings.EnableModule'.tr(args: [ArrPilotModule.SABNZBD.title]),
+        trailing: ArrPilotSwitch(
+          value: ArrPilotProfile.current.sabnzbdEnabled,
           onChanged: (value) {
-            LunaProfile.current.sabnzbdEnabled = value;
-            LunaProfile.current.save();
+            ArrPilotProfile.current.sabnzbdEnabled = value;
+            ArrPilotProfile.current.save();
             context.read<SABnzbdState>().reset();
           },
         ),
@@ -63,25 +63,25 @@ class _State extends State<ConfigurationSABnzbdRoute>
   }
 
   Widget _connectionDetailsPage() {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.ConnectionDetails'.tr(),
       body: [
         TextSpan(
           text: 'settings.ConnectionDetailsDescription'.tr(
-            args: [LunaModule.SABNZBD.title],
+            args: [ArrPilotModule.SABNZBD.title],
           ),
         )
       ],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: SettingsRoutes.CONFIGURATION_SABNZBD_CONNECTION_DETAILS.go,
     );
   }
 
   Widget _defaultPagesPage() {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.DefaultPages'.tr(),
       body: [TextSpan(text: 'settings.DefaultPagesDescription'.tr())],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: SettingsRoutes.CONFIGURATION_SABNZBD_DEFAULT_PAGES.go,
     );
   }

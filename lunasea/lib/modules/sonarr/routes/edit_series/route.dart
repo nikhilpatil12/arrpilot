@@ -16,7 +16,7 @@ class SeriesEditRoute extends StatefulWidget {
 }
 
 class _State extends State<SeriesEditRoute>
-    with LunaLoadCallbackMixin, LunaScrollControllerMixin {
+    with ArrPilotLoadCallbackMixin, ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -36,15 +36,15 @@ class _State extends State<SeriesEditRoute>
     return ChangeNotifierProvider(
         create: (_) => SonarrSeriesEditState(),
         builder: (context, _) {
-          LunaLoadingState state =
-              context.select<SonarrSeriesEditState, LunaLoadingState>(
+          ArrPilotLoadingState state =
+              context.select<SonarrSeriesEditState, ArrPilotLoadingState>(
                   (state) => state.state);
-          return LunaScaffold(
+          return ArrPilotScaffold(
             scaffoldKey: _scaffoldKey,
             appBar: _appBar() as PreferredSizeWidget?,
             body:
-                state == LunaLoadingState.ERROR ? _bodyError() : _body(context),
-            bottomNavigationBar: state == LunaLoadingState.ERROR
+                state == ArrPilotLoadingState.ERROR ? _bodyError() : _body(context),
+            bottomNavigationBar: state == ArrPilotLoadingState.ERROR
                 ? null
                 : const SonarrEditSeriesActionBar(),
           );
@@ -52,14 +52,14 @@ class _State extends State<SeriesEditRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       scrollControllers: [scrollController],
       title: 'sonarr.EditSeries'.tr(),
     );
   }
 
   Widget _bodyError() {
-    return LunaMessage.goBack(
+    return ArrPilotMessage.goBack(
       context: context,
       text: 'lunasea.AnErrorHasOccurred'.tr(),
     );
@@ -79,11 +79,11 @@ class _State extends State<SeriesEditRoute>
       ]),
       builder: (context, AsyncSnapshot<List<Object>> snapshot) {
         if (snapshot.hasError) {
-          return LunaMessage.error(onTap: loadCallback);
+          return ArrPilotMessage.error(onTap: loadCallback);
         }
         if (snapshot.hasData) {
           SonarrSeries? series = (snapshot.data![0] as Map)[widget.seriesId];
-          if (series == null) return const LunaLoader();
+          if (series == null) return const ArrPilotLoader();
           return _list(
             context,
             series: series,
@@ -92,7 +92,7 @@ class _State extends State<SeriesEditRoute>
             languageProfiles: snapshot.data![3] as List<SonarrLanguageProfile>,
           );
         }
-        return const LunaLoader();
+        return const ArrPilotLoader();
       },
     );
   }
@@ -115,7 +115,7 @@ class _State extends State<SeriesEditRoute>
       context.read<SonarrSeriesEditState>().initializeTags(tags);
       context.read<SonarrSeriesEditState>().canExecuteAction = true;
     }
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
         const SonarrSeriesEditMonitoredTile(),

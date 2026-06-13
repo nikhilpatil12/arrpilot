@@ -13,7 +13,7 @@ class TautulliLogsNotificationLogTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: notification.agentName,
       body: _body(),
       trailing: _trailing(),
@@ -28,8 +28,8 @@ class TautulliLogsNotificationLogTile extends StatelessWidget {
       TextSpan(
         text: notification.timestamp!.asDateTime(),
         style: const TextStyle(
-          color: LunaColours.accent,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          color: ArrPilotColours.accent,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         ),
       ),
     ];
@@ -37,11 +37,11 @@ class TautulliLogsNotificationLogTile extends StatelessWidget {
 
   Widget _trailing() => Column(
         children: [
-          LunaIconButton(
+          ArrPilotIconButton(
             icon: notification.success!
                 ? Icons.check_circle_rounded
                 : Icons.cancel_rounded,
-            color: notification.success! ? LunaColours.white : LunaColours.red,
+            color: notification.success! ? ArrPilotColours.white : ArrPilotColours.red,
           ),
         ],
         crossAxisAlignment: CrossAxisAlignment.center,

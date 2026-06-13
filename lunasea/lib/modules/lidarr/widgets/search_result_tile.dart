@@ -20,11 +20,11 @@ class LidarrReleasesTile extends StatefulWidget {
 }
 
 class _State extends State<LidarrReleasesTile> {
-  LunaLoadingState _downloadState = LunaLoadingState.INACTIVE;
+  ArrPilotLoadingState _downloadState = ArrPilotLoadingState.INACTIVE;
 
   @override
   Widget build(BuildContext context) {
-    return LunaExpandableListTile(
+    return ArrPilotExpandableListTile(
       title: widget.release.title,
       collapsedSubtitles: [
         _subtitle1(),
@@ -42,7 +42,7 @@ class _State extends State<LidarrReleasesTile> {
       TextSpan(
         style: TextStyle(
           color: lunaProtocolColor,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
         ),
         text: widget.release.protocol.toTitleCase(),
       ),
@@ -51,12 +51,12 @@ class _State extends State<LidarrReleasesTile> {
           text: ' (${widget.release.seeders}/${widget.release.leechers})',
           style: TextStyle(
             color: lunaProtocolColor,
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
           ),
         ),
-      TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+      TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
       TextSpan(text: widget.release.indexer),
-      TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+      TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
       TextSpan(text: widget.release.ageHours.asTimeAgo()),
     ]);
   }
@@ -65,18 +65,18 @@ class _State extends State<LidarrReleasesTile> {
     return TextSpan(
       children: [
         TextSpan(text: widget.release.quality),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: widget.release.size.asBytes()),
       ],
     );
   }
 
   Widget _trailing() {
-    return LunaIconButton(
+    return ArrPilotIconButton(
       icon: widget.release.approved
           ? Icons.file_download_rounded
           : Icons.report_outlined,
-      color: widget.release.approved ? Colors.white : LunaColours.red,
+      color: widget.release.approved ? Colors.white : ArrPilotColours.red,
       onPressed: () async =>
           widget.release.approved ? _startDownload() : _showWarnings(),
       onLongPress: _startDownload,
@@ -84,69 +84,69 @@ class _State extends State<LidarrReleasesTile> {
     );
   }
 
-  List<LunaHighlightedNode> _highlightedNodes() {
+  List<ArrPilotHighlightedNode> _highlightedNodes() {
     return [
-      LunaHighlightedNode(
+      ArrPilotHighlightedNode(
         text: widget.release.protocol.toTitleCase(),
         backgroundColor: lunaProtocolColor,
       ),
     ];
   }
 
-  List<LunaTableContent> _tableContent() {
+  List<ArrPilotTableContent> _tableContent() {
     return [
-      LunaTableContent(
+      ArrPilotTableContent(
           title: 'source', body: widget.release.protocol.toTitleCase()),
-      LunaTableContent(title: 'age', body: widget.release.ageHours.asTimeAgo()),
-      LunaTableContent(title: 'indexer', body: widget.release.indexer),
-      LunaTableContent(title: 'size', body: widget.release.size.asBytes()),
-      LunaTableContent(title: 'quality', body: widget.release.quality),
+      ArrPilotTableContent(title: 'age', body: widget.release.ageHours.asTimeAgo()),
+      ArrPilotTableContent(title: 'indexer', body: widget.release.indexer),
+      ArrPilotTableContent(title: 'size', body: widget.release.size.asBytes()),
+      ArrPilotTableContent(title: 'quality', body: widget.release.quality),
       if (widget.release.protocol == 'torrent' &&
           widget.release.seeders != null)
-        LunaTableContent(title: 'seeders', body: '${widget.release.seeders}'),
+        ArrPilotTableContent(title: 'seeders', body: '${widget.release.seeders}'),
       if (widget.release.protocol == 'torrent' &&
           widget.release.leechers != null)
-        LunaTableContent(title: 'leechers', body: '${widget.release.leechers}'),
+        ArrPilotTableContent(title: 'leechers', body: '${widget.release.leechers}'),
     ];
   }
 
   Color get lunaProtocolColor {
-    if (!widget.release.isTorrent) return LunaColours.accent;
+    if (!widget.release.isTorrent) return ArrPilotColours.accent;
     int seeders = widget.release.seeders ?? 0;
-    if (seeders > 10) return LunaColours.blue;
-    if (seeders > 0) return LunaColours.orange;
-    return LunaColours.red;
+    if (seeders > 10) return ArrPilotColours.blue;
+    if (seeders > 0) return ArrPilotColours.orange;
+    return ArrPilotColours.red;
   }
 
-  List<LunaButton> _tableButtons() {
+  List<ArrPilotButton> _tableButtons() {
     return [
-      LunaButton(
-        type: LunaButtonType.TEXT,
+      ArrPilotButton(
+        type: ArrPilotButtonType.TEXT,
         icon: Icons.download_rounded,
         text: 'Download',
         onTap: _startDownload,
         loadingState: _downloadState,
       ),
       if (widget.release.infoUrl.isNotEmpty)
-        LunaButton.text(
+        ArrPilotButton.text(
           text: 'Indexer',
           icon: Icons.info_outline_rounded,
-          color: LunaColours.blue,
+          color: ArrPilotColours.blue,
           onTap: widget.release.infoUrl.openLink,
         ),
       if (!widget.release.approved)
-        LunaButton.text(
+        ArrPilotButton.text(
           text: 'Rejected',
           icon: Icons.report_outlined,
-          color: LunaColours.red,
+          color: ArrPilotColours.red,
           onTap: _showWarnings,
         ),
     ];
   }
 
   Future<void> _startDownload() async {
-    setState(() => _downloadState = LunaLoadingState.ACTIVE);
-    LidarrAPI _api = LidarrAPI.from(LunaProfile.current);
+    setState(() => _downloadState = ArrPilotLoadingState.ACTIVE);
+    LidarrAPI _api = LidarrAPI.from(ArrPilotProfile.current);
     await _api
         .downloadRelease(widget.release.guid, widget.release.indexerId)
         .then((_) {
@@ -155,7 +155,7 @@ class _State extends State<LidarrReleasesTile> {
         message: widget.release.title,
         showButton: true,
         buttonText: 'Back',
-        buttonOnPressed: LunaRouter().popToRootRoute,
+        buttonOnPressed: ArrPilotRouter().popToRootRoute,
       );
     }).catchError((error, stack) {
       showLunaErrorSnackBar(
@@ -163,10 +163,10 @@ class _State extends State<LidarrReleasesTile> {
         error: error,
       );
     });
-    setState(() => _downloadState = LunaLoadingState.INACTIVE);
+    setState(() => _downloadState = ArrPilotLoadingState.INACTIVE);
   }
 
-  Future<void> _showWarnings() async => await LunaDialogs().showRejections(
+  Future<void> _showWarnings() async => await ArrPilotDialogs().showRejections(
         context,
         widget.release.rejections.cast<String>(),
       );

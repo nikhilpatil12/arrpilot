@@ -71,15 +71,15 @@ class NZBGetHistoryData {
   Color get statusColor {
     switch (status.substring(0, min(7, status.length))) {
       case 'SUCCESS':
-        return LunaColours.accent;
+        return ArrPilotColours.accent;
       case 'WARNING':
-        return LunaColours.orange;
+        return ArrPilotColours.orange;
       case 'DELETED':
-        return LunaColours.purple;
+        return ArrPilotColours.purple;
       case 'FAILURE':
-        return LunaColours.red;
+        return ArrPilotColours.red;
       default:
-        return LunaColours.blueGrey;
+        return ArrPilotColours.blueGrey;
     }
   }
 

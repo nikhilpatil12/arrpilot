@@ -27,7 +27,7 @@ class SonarrQueueTile extends StatefulWidget {
 class _State extends State<SonarrQueueTile> {
   @override
   Widget build(BuildContext context) {
-    return LunaExpandableListTile(
+    return ArrPilotExpandableListTile(
       title: widget.queueRecord.title!,
       collapsedSubtitles: [
         if (widget.type == SonarrQueueTileType.ALL) _subtitle1(),
@@ -59,7 +59,7 @@ class _State extends State<SonarrQueueTile> {
   Widget _collapsedTrailing() {
     Tuple3<String, IconData, Color> _status =
         widget.queueRecord.lunaStatusParameters();
-    return LunaIconButton(
+    return ArrPilotIconButton(
       icon: _status.item2,
       color: _status.item3,
     );
@@ -67,7 +67,7 @@ class _State extends State<SonarrQueueTile> {
 
   TextSpan _subtitle1() {
     return TextSpan(
-      text: widget.queueRecord.series!.title ?? LunaUI.TEXT_EMDASH,
+      text: widget.queueRecord.series!.title ?? ArrPilotUI.TEXT_EMDASH,
     );
   }
 
@@ -76,10 +76,10 @@ class _State extends State<SonarrQueueTile> {
       children: [
         TextSpan(
             text: widget.queueRecord.episode?.lunaSeasonEpisode() ??
-                LunaUI.TEXT_EMDASH),
+                ArrPilotUI.TEXT_EMDASH),
         const TextSpan(text: ': '),
         TextSpan(
-            text: widget.queueRecord.episode!.title ?? LunaUI.TEXT_EMDASH,
+            text: widget.queueRecord.episode!.title ?? ArrPilotUI.TEXT_EMDASH,
             style: const TextStyle(fontStyle: FontStyle.italic)),
       ],
     );
@@ -89,15 +89,15 @@ class _State extends State<SonarrQueueTile> {
     return TextSpan(
       children: [
         TextSpan(
-          text: widget.queueRecord.quality?.quality?.name ?? LunaUI.TEXT_EMDASH,
+          text: widget.queueRecord.quality?.quality?.name ?? ArrPilotUI.TEXT_EMDASH,
         ),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         if (widget.queueRecord.language != null)
           TextSpan(
-            text: widget.queueRecord.language?.name ?? LunaUI.TEXT_EMDASH,
+            text: widget.queueRecord.language?.name ?? ArrPilotUI.TEXT_EMDASH,
           ),
         if (widget.queueRecord.language != null)
-          TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+          TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(
           text: widget.queueRecord.lunaTimeLeft(),
         ),
@@ -111,85 +111,85 @@ class _State extends State<SonarrQueueTile> {
     return TextSpan(
       style: TextStyle(
         color: _params.item3,
-        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
       ),
       children: [
         TextSpan(text: widget.queueRecord.lunaPercentage()),
-        TextSpan(text: LunaUI.TEXT_EMDASH.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_EMDASH.pad()),
         TextSpan(text: _params.item1),
       ],
     );
   }
 
-  List<LunaHighlightedNode> _expandedHighlightedNodes() {
+  List<ArrPilotHighlightedNode> _expandedHighlightedNodes() {
     Tuple3<String, IconData, Color> _status =
         widget.queueRecord.lunaStatusParameters(canBeWhite: false);
     return [
-      LunaHighlightedNode(
+      ArrPilotHighlightedNode(
         text: widget.queueRecord.protocol!.lunaReadable(),
         backgroundColor: widget.queueRecord.protocol!.lunaProtocolColor(),
       ),
-      LunaHighlightedNode(
+      ArrPilotHighlightedNode(
         text: widget.queueRecord.lunaPercentage(),
         backgroundColor: _status.item3,
       ),
-      LunaHighlightedNode(
+      ArrPilotHighlightedNode(
         text: widget.queueRecord.status!.lunaStatus(),
         backgroundColor: _status.item3,
       ),
     ];
   }
 
-  List<LunaTableContent> _expandedTableContent() {
+  List<ArrPilotTableContent> _expandedTableContent() {
     return [
       if (widget.type == SonarrQueueTileType.ALL)
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'sonarr.Series'.tr(),
-          body: widget.queueRecord.series?.title ?? LunaUI.TEXT_EMDASH,
+          body: widget.queueRecord.series?.title ?? ArrPilotUI.TEXT_EMDASH,
         ),
       if (widget.type == SonarrQueueTileType.ALL)
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'sonarr.Episode'.tr(),
           body: widget.queueRecord.episode?.lunaSeasonEpisode() ??
-              LunaUI.TEXT_EMDASH,
+              ArrPilotUI.TEXT_EMDASH,
         ),
       if (widget.type == SonarrQueueTileType.ALL)
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'sonarr.Title'.tr(),
-          body: widget.queueRecord.episode?.title ?? LunaUI.TEXT_EMDASH,
+          body: widget.queueRecord.episode?.title ?? ArrPilotUI.TEXT_EMDASH,
         ),
       if (widget.type == SonarrQueueTileType.ALL)
-        LunaTableContent(title: '', body: ''),
-      LunaTableContent(
+        ArrPilotTableContent(title: '', body: ''),
+      ArrPilotTableContent(
         title: 'sonarr.Quality'.tr(),
-        body: widget.queueRecord.quality?.quality?.name ?? LunaUI.TEXT_EMDASH,
+        body: widget.queueRecord.quality?.quality?.name ?? ArrPilotUI.TEXT_EMDASH,
       ),
       if (widget.queueRecord.language != null)
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'sonarr.Language'.tr(),
-          body: widget.queueRecord.language?.name ?? LunaUI.TEXT_EMDASH,
+          body: widget.queueRecord.language?.name ?? ArrPilotUI.TEXT_EMDASH,
         ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.Client'.tr(),
-        body: widget.queueRecord.downloadClient ?? LunaUI.TEXT_EMDASH,
+        body: widget.queueRecord.downloadClient ?? ArrPilotUI.TEXT_EMDASH,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.Size'.tr(),
-        body: widget.queueRecord.size?.floor().asBytes() ?? LunaUI.TEXT_EMDASH,
+        body: widget.queueRecord.size?.floor().asBytes() ?? ArrPilotUI.TEXT_EMDASH,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.TimeLeft'.tr(),
         body: widget.queueRecord.lunaTimeLeft(),
       ),
     ];
   }
 
-  List<LunaButton> _tableButtons() {
+  List<ArrPilotButton> _tableButtons() {
     return [
       if ((widget.queueRecord.statusMessages ?? []).isNotEmpty)
-        LunaButton.text(
+        ArrPilotButton.text(
           icon: Icons.messenger_outline_rounded,
-          color: LunaColours.orange,
+          color: ArrPilotColours.orange,
           text: 'sonarr.Messages'.tr(),
           onTap: () async {
             SonarrDialogs().showQueueStatusMessages(
@@ -201,14 +201,14 @@ class _State extends State<SonarrQueueTile> {
       // if (widget.queueRecord.status == SonarrQueueStatus.COMPLETED &&
       //     widget.queueRecord?.trackedDownloadStatus ==
       //         SonarrTrackedDownloadStatus.WARNING)
-      //   LunaButton.text(
+      //   ArrPilotButton.text(
       //     icon: Icons.download_done_rounded,
       //     text: 'sonarr.Import'.tr(),
       //     onTap: () async {},
       //   ),
-      LunaButton.text(
+      ArrPilotButton.text(
         icon: Icons.delete_rounded,
-        color: LunaColours.red,
+        color: ArrPilotColours.red,
         text: 'lunasea.Remove'.tr(),
         onTap: () async {
           bool result = await SonarrDialogs().removeFromQueue(context);

@@ -17,7 +17,7 @@ class RadarrAddMovieSearchSearchBar extends StatefulWidget
 
   @override
   Size get preferredSize =>
-      const Size.fromHeight(LunaTextInputBar.defaultAppBarHeight);
+      const Size.fromHeight(ArrPilotTextInputBar.defaultAppBarHeight);
 
   @override
   State<RadarrAddMovieSearchSearchBar> createState() => _State();
@@ -39,7 +39,7 @@ class _State extends State<RadarrAddMovieSearchSearchBar> {
         children: [
           Expanded(
             child: Consumer<RadarrAddMovieState>(
-              builder: (context, state, _) => LunaTextInputBar(
+              builder: (context, state, _) => ArrPilotTextInputBar(
                 controller: _controller,
                 scrollController: widget.scrollController,
                 autofocus: widget.autofocus,
@@ -55,7 +55,7 @@ class _State extends State<RadarrAddMovieSearchSearchBar> {
           ),
         ],
       ),
-      height: LunaTextInputBar.defaultAppBarHeight,
+      height: ArrPilotTextInputBar.defaultAppBarHeight,
     );
   }
 }

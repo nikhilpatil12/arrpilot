@@ -20,31 +20,31 @@ class DashboardRoute extends StatefulWidget {
 
 class _State extends State<DashboardRoute> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  LunaPageController? _pageController;
+  ArrPilotPageController? _pageController;
 
   @override
   void initState() {
     super.initState();
 
     int page = DashboardDatabase.NAVIGATION_INDEX.read();
-    _pageController = LunaPageController(initialPage: page);
+    _pageController = ArrPilotPageController(initialPage: page);
   }
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      module: LunaModule.DASHBOARD,
+      module: ArrPilotModule.DASHBOARD,
       body: _body(),
       appBar: _appBar(),
-      drawer: LunaDrawer(page: LunaModule.DASHBOARD.key),
+      drawer: ArrPilotDrawer(page: ArrPilotModule.DASHBOARD.key),
       bottomNavigationBar: HomeNavigationBar(pageController: _pageController),
     );
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
-      title: 'LunaSea',
+    return ArrPilotAppBar(
+      title: 'ArrPilot',
       useDrawer: true,
       scrollControllers: HomeNavigationBar.scrollControllers,
       pageController: _pageController,
@@ -53,12 +53,12 @@ class _State extends State<DashboardRoute> {
   }
 
   Widget _body() {
-    return LunaSeaDatabase.ENABLED_PROFILE.listenableBuilder(
-      builder: (context, _) => LunaPageView(
+    return ArrPilotDatabase.ENABLED_PROFILE.listenableBuilder(
+      builder: (context, _) => ArrPilotPageView(
         controller: _pageController,
         children: [
-          ModulesPage(key: ValueKey(LunaSeaDatabase.ENABLED_PROFILE.read())),
-          CalendarPage(key: ValueKey(LunaSeaDatabase.ENABLED_PROFILE.read())),
+          ModulesPage(key: ValueKey(ArrPilotDatabase.ENABLED_PROFILE.read())),
+          CalendarPage(key: ValueKey(ArrPilotDatabase.ENABLED_PROFILE.read())),
         ],
       ),
     );

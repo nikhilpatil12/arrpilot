@@ -17,11 +17,11 @@ class SonarrSeriesSearchBarSortButton extends StatefulWidget {
 
 class _State extends State<SonarrSeriesSearchBarSortButton> {
   @override
-  Widget build(BuildContext context) => LunaCard(
+  Widget build(BuildContext context) => ArrPilotCard(
         context: context,
         child: Consumer<SonarrState>(
           builder: (context, state, _) =>
-              LunaPopupMenuButton<SonarrSeriesSorting>(
+              ArrPilotPopupMenuButton<SonarrSeriesSorting>(
             tooltip: 'sonarr.SortCatalogue'.tr(),
             icon: Icons.sort_rounded,
             onSelected: (result) {
@@ -44,10 +44,10 @@ class _State extends State<SonarrSeriesSearchBarSortButton> {
                     Text(
                       SonarrSeriesSorting.values[index].readable,
                       style: TextStyle(
-                        fontSize: LunaUI.FONT_SIZE_H3,
+                        fontSize: ArrPilotUI.FONT_SIZE_H3,
                         color: state.seriesSortType ==
                                 SonarrSeriesSorting.values[index]
-                            ? LunaColours.accent
+                            ? ArrPilotColours.accent
                             : Colors.white,
                       ),
                     ),
@@ -57,8 +57,8 @@ class _State extends State<SonarrSeriesSearchBarSortButton> {
                         state.seriesSortAscending
                             ? Icons.arrow_upward_rounded
                             : Icons.arrow_downward_rounded,
-                        size: LunaUI.FONT_SIZE_H2,
-                        color: LunaColours.accent,
+                        size: ArrPilotUI.FONT_SIZE_H2,
+                        color: ArrPilotColours.accent,
                       ),
                   ],
                 ),
@@ -66,9 +66,9 @@ class _State extends State<SonarrSeriesSearchBarSortButton> {
             ),
           ),
         ),
-        height: LunaTextInputBar.defaultHeight,
-        width: LunaTextInputBar.defaultHeight,
-        margin: const EdgeInsets.only(left: LunaUI.DEFAULT_MARGIN_SIZE),
+        height: ArrPilotTextInputBar.defaultHeight,
+        width: ArrPilotTextInputBar.defaultHeight,
+        margin: const EdgeInsets.only(left: ArrPilotUI.DEFAULT_MARGIN_SIZE),
         color: Theme.of(context).canvasColor,
       );
 }

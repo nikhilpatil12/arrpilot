@@ -16,12 +16,12 @@ class ConfigurationGeneralRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationGeneralRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar(),
       body: _body(),
@@ -29,20 +29,20 @@ class _State extends State<ConfigurationGeneralRoute>
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'settings.General'.tr(),
       scrollControllers: [scrollController],
     );
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
         ..._appearance(),
         ..._localization(),
         ..._modules(),
-        if (LunaNetwork.isSupported) ..._network(),
+        if (ArrPilotNetwork.isSupported) ..._network(),
         ..._platform(),
       ],
     );
@@ -50,7 +50,7 @@ class _State extends State<ConfigurationGeneralRoute>
 
   List<Widget> _appearance() {
     return [
-      LunaHeader(text: 'settings.Appearance'.tr()),
+      ArrPilotHeader(text: 'settings.Appearance'.tr()),
       _imageBackgroundOpacity(),
       _amoledTheme(),
       _amoledThemeBorders(),
@@ -59,29 +59,29 @@ class _State extends State<ConfigurationGeneralRoute>
 
   List<Widget> _localization() {
     return [
-      LunaHeader(text: 'settings.Localization'.tr()),
+      ArrPilotHeader(text: 'settings.Localization'.tr()),
       _use24HourTime(),
     ];
   }
 
   List<Widget> _modules() {
     return [
-      LunaHeader(text: 'dashboard.Modules'.tr()),
+      ArrPilotHeader(text: 'dashboard.Modules'.tr()),
       _bootModule(),
     ];
   }
 
   List<Widget> _network() {
     return [
-      LunaHeader(text: 'settings.Network'.tr()),
+      ArrPilotHeader(text: 'settings.Network'.tr()),
       _useTLSValidation(),
     ];
   }
 
   List<Widget> _platform() {
-    if (LunaPlatform.isAndroid) {
+    if (ArrPilotPlatform.isAndroid) {
       return [
-        LunaHeader(text: 'settings.Platform'.tr()),
+        ArrPilotHeader(text: 'settings.Platform'.tr()),
         _openDrawerOnBackAction(),
       ];
     }
@@ -90,14 +90,14 @@ class _State extends State<ConfigurationGeneralRoute>
   }
 
   Widget _openDrawerOnBackAction() {
-    const _db = LunaSeaDatabase.ANDROID_BACK_OPENS_DRAWER;
+    const _db = ArrPilotDatabase.ANDROID_BACK_OPENS_DRAWER;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'settings.OpenDrawerOnBackAction'.tr(),
         body: [
           TextSpan(text: 'settings.OpenDrawerOnBackActionDescription'.tr()),
         ],
-        trailing: LunaSwitch(
+        trailing: ArrPilotSwitch(
           value: _db.read(),
           onChanged: _db.update,
         ),
@@ -106,18 +106,18 @@ class _State extends State<ConfigurationGeneralRoute>
   }
 
   Widget _amoledTheme() {
-    const _db = LunaSeaDatabase.THEME_AMOLED;
+    const _db = ArrPilotDatabase.THEME_AMOLED;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'settings.AmoledTheme'.tr(),
         body: [
           TextSpan(text: 'settings.AmoledThemeDescription'.tr()),
         ],
-        trailing: LunaSwitch(
+        trailing: ArrPilotSwitch(
           value: _db.read(),
           onChanged: (value) {
             _db.update(value);
-            LunaTheme().initialize();
+            ArrPilotTheme().initialize();
           },
         ),
       ),
@@ -125,20 +125,20 @@ class _State extends State<ConfigurationGeneralRoute>
   }
 
   Widget _amoledThemeBorders() {
-    return LunaBox.lunasea.listenableBuilder(
+    return ArrPilotBox.lunasea.listenableBuilder(
       selectItems: [
-        LunaSeaDatabase.THEME_AMOLED_BORDER,
-        LunaSeaDatabase.THEME_AMOLED,
+        ArrPilotDatabase.THEME_AMOLED_BORDER,
+        ArrPilotDatabase.THEME_AMOLED,
       ],
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'settings.AmoledThemeBorders'.tr(),
         body: [
           TextSpan(text: 'settings.AmoledThemeBordersDescription'.tr()),
         ],
-        trailing: LunaSwitch(
-          value: LunaSeaDatabase.THEME_AMOLED_BORDER.read(),
-          onChanged: LunaSeaDatabase.THEME_AMOLED.read()
-              ? LunaSeaDatabase.THEME_AMOLED_BORDER.update
+        trailing: ArrPilotSwitch(
+          value: ArrPilotDatabase.THEME_AMOLED_BORDER.read(),
+          onChanged: ArrPilotDatabase.THEME_AMOLED.read()
+              ? ArrPilotDatabase.THEME_AMOLED_BORDER.update
               : null,
         ),
       ),
@@ -146,16 +146,16 @@ class _State extends State<ConfigurationGeneralRoute>
   }
 
   Widget _imageBackgroundOpacity() {
-    const _db = LunaSeaDatabase.THEME_IMAGE_BACKGROUND_OPACITY;
+    const _db = ArrPilotDatabase.THEME_IMAGE_BACKGROUND_OPACITY;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'settings.BackgroundImageOpacity'.tr(),
         body: [
           TextSpan(
             text: _db.read() == 0 ? 'lunasea.Disabled'.tr() : '${_db.read()}%',
           ),
         ],
-        trailing: const LunaIconButton.arrow(),
+        trailing: const ArrPilotIconButton.arrow(),
         onTap: () async {
           Tuple2<bool, int> result =
               await SettingsDialogs().changeBackgroundImageOpacity(context);
@@ -166,18 +166,18 @@ class _State extends State<ConfigurationGeneralRoute>
   }
 
   Widget _useTLSValidation() {
-    const _db = LunaSeaDatabase.NETWORKING_TLS_VALIDATION;
+    const _db = ArrPilotDatabase.NETWORKING_TLS_VALIDATION;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'settings.TLSCertificateValidation'.tr(),
         body: [
           TextSpan(text: 'settings.TLSCertificateValidationDescription'.tr()),
         ],
-        trailing: LunaSwitch(
+        trailing: ArrPilotSwitch(
           value: _db.read(),
           onChanged: (data) {
             _db.update(data);
-            if (LunaNetwork.isSupported) LunaNetwork().initialize();
+            if (ArrPilotNetwork.isSupported) ArrPilotNetwork().initialize();
           },
         ),
       ),
@@ -185,12 +185,12 @@ class _State extends State<ConfigurationGeneralRoute>
   }
 
   Widget _use24HourTime() {
-    const _db = LunaSeaDatabase.USE_24_HOUR_TIME;
+    const _db = ArrPilotDatabase.USE_24_HOUR_TIME;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'settings.Use24HourTime'.tr(),
         body: [TextSpan(text: 'settings.Use24HourTimeDescription'.tr())],
-        trailing: LunaSwitch(
+        trailing: ArrPilotSwitch(
           value: _db.read(),
           onChanged: _db.update,
         ),
@@ -201,10 +201,10 @@ class _State extends State<ConfigurationGeneralRoute>
   Widget _bootModule() {
     const _db = BIOSDatabase.BOOT_MODULE;
     return _db.listenableBuilder(
-      builder: (context, _) => LunaBlock(
+      builder: (context, _) => ArrPilotBlock(
         title: 'settings.BootModule'.tr(),
         body: [TextSpan(text: _db.read().title)],
-        trailing: LunaIconButton(icon: _db.read().icon),
+        trailing: ArrPilotIconButton(icon: _db.read().icon),
         onTap: () async {
           final result = await SettingsDialogs().selectBootModule();
           if (result.item1) {

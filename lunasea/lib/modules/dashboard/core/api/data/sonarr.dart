@@ -38,7 +38,7 @@ class CalendarSonarrData extends CalendarData {
         children: [
           TextSpan(
               text: seasonNumber == 0 ? 'Specials' : 'Season $seasonNumber'),
-          TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+          TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
           TextSpan(text: 'Episode $episodeNumber'),
         ],
       ),
@@ -52,16 +52,16 @@ class CalendarSonarrData extends CalendarData {
         TextSpan(
           text: released ? 'sonarr.Missing'.tr() : 'sonarr.Unaired'.tr(),
           style: TextStyle(
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
-            color: released ? LunaColours.red : LunaColours.blue,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
+            color: released ? ArrPilotColours.red : ArrPilotColours.blue,
           ),
         ),
       if (hasFile)
         TextSpan(
           text: 'Downloaded ($fileQualityProfile)',
           style: const TextStyle(
-            fontWeight: LunaUI.FONT_WEIGHT_BOLD,
-            color: LunaColours.accent,
+            fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
+            color: ArrPilotColours.accent,
           ),
         ),
     ];
@@ -78,7 +78,7 @@ class CalendarSonarrData extends CalendarData {
   }
 
   @override
-  Widget trailing(BuildContext context) => LunaIconButton(
+  Widget trailing(BuildContext context) => ArrPilotIconButton(
         text: airTimeString,
         onPressed: () async => trailingOnPress(context),
         onLongPress: () => trailingOnLongPress(context),
@@ -90,7 +90,7 @@ class CalendarSonarrData extends CalendarData {
 
   String get airTimeString {
     if (airTimeObject != null) {
-      return LunaSeaDatabase.USE_24_HOUR_TIME.read()
+      return ArrPilotDatabase.USE_24_HOUR_TIME.read()
           ? DateFormat.Hm().format(airTimeObject!)
           : DateFormat('hh:mm\na').format(airTimeObject!);
     }
@@ -110,7 +110,7 @@ class CalendarSonarrData extends CalendarData {
                 message: episodeTitle,
               ))
           .catchError((error, stack) {
-            LunaLogger().error(
+            ArrPilotLogger().error(
               'Failed to search for episode: $id',
               error,
               stack,

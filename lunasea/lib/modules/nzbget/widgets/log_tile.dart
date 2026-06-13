@@ -12,12 +12,12 @@ class NZBGetLogTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: data.text,
       body: [TextSpan(text: data.timestamp)],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async =>
-          LunaDialogs().textPreview(context, 'Log Entry', data.text!),
+          ArrPilotDialogs().textPreview(context, 'Log Entry', data.text!),
     );
   }
 }

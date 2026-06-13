@@ -5,7 +5,7 @@ import 'package:arrpilot/widgets/pages/error_route.dart';
 import 'package:arrpilot/router/routes.dart';
 import 'package:arrpilot/vendor.dart';
 
-class LunaRouter {
+class ArrPilotRouter {
   static late GoRouter router;
   static GlobalKey<NavigatorState> navigator = GlobalKey<NavigatorState>();
 
@@ -13,8 +13,8 @@ class LunaRouter {
     router = GoRouter(
       navigatorKey: navigator,
       errorBuilder: (_, state) => ErrorRoutePage(exception: state.error),
-      initialLocation: LunaRoutes.initialLocation,
-      routes: LunaRoutes.values.map((r) => r.root.routes).toList(),
+      initialLocation: ArrPilotRoutes.initialLocation,
+      routes: ArrPilotRoutes.values.map((r) => r.root.routes).toList(),
     );
   }
 
@@ -24,7 +24,7 @@ class LunaRouter {
 
   void popToRootRoute() {
     if (navigator.currentState == null) {
-      LunaLogger().warning('Not observing any navigation navigators, skipping');
+      ArrPilotLogger().warning('Not observing any navigation navigators, skipping');
       return;
     }
     navigator.currentState!.popUntil((route) => route.isFirst);

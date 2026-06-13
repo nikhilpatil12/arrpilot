@@ -5,39 +5,39 @@ import 'package:arrpilot/database/models/external_module.dart';
 import 'package:arrpilot/database/models/indexer.dart';
 import 'package:arrpilot/database/table.dart';
 
-class LunaConfig {
+class ArrPilotConfig {
   Future<void> import(BuildContext context, String data) async {
-    await LunaDatabase().clear();
+    await ArrPilotDatabase().clear();
 
     try {
       Map<String, dynamic> config = json.decode(data);
 
-      _setProfiles(config[LunaBox.profiles.key]);
-      _setIndexers(config[LunaBox.indexers.key]);
-      _setExternalModules(config[LunaBox.externalModules.key]);
-      for (final table in LunaTable.values) table.import(config[table.key]);
+      _setProfiles(config[ArrPilotBox.profiles.key]);
+      _setIndexers(config[ArrPilotBox.indexers.key]);
+      _setExternalModules(config[ArrPilotBox.externalModules.key]);
+      for (final table in ArrPilotTable.values) table.import(config[table.key]);
 
-      if (!LunaProfile.list.contains(LunaSeaDatabase.ENABLED_PROFILE.read())) {
-        LunaSeaDatabase.ENABLED_PROFILE.update(LunaProfile.list[0]);
+      if (!ArrPilotProfile.list.contains(ArrPilotDatabase.ENABLED_PROFILE.read())) {
+        ArrPilotDatabase.ENABLED_PROFILE.update(ArrPilotProfile.list[0]);
       }
     } catch (error, stack) {
-      await LunaDatabase().bootstrap();
-      LunaLogger().error(
+      await ArrPilotDatabase().bootstrap();
+      ArrPilotLogger().error(
         'Failed to import configuration, resetting to default',
         error,
         stack,
       );
     }
 
-    LunaState.reset(context);
+    ArrPilotState.reset(context);
   }
 
   String export() {
     Map<String, dynamic> config = {};
-    config[LunaBox.externalModules.key] = LunaBox.externalModules.export();
-    config[LunaBox.indexers.key] = LunaBox.indexers.export();
-    config[LunaBox.profiles.key] = LunaBox.profiles.export();
-    for (final table in LunaTable.values) config[table.key] = table.export();
+    config[ArrPilotBox.externalModules.key] = ArrPilotBox.externalModules.export();
+    config[ArrPilotBox.indexers.key] = ArrPilotBox.indexers.export();
+    config[ArrPilotBox.profiles.key] = ArrPilotBox.profiles.export();
+    for (final table in ArrPilotTable.values) config[table.key] = table.export();
 
     return json.encode(config);
   }
@@ -48,8 +48,8 @@ class LunaConfig {
     for (final item in data) {
       final content = (item as Map).cast<String, dynamic>();
       final key = content['key'] ?? 'default';
-      final obj = LunaProfile.fromJson(content);
-      LunaBox.profiles.update(key, obj);
+      final obj = ArrPilotProfile.fromJson(content);
+      ArrPilotBox.profiles.update(key, obj);
     }
   }
 
@@ -57,8 +57,8 @@ class LunaConfig {
     if (data == null) return;
 
     for (final indexer in data) {
-      final obj = LunaIndexer.fromJson(indexer);
-      LunaBox.indexers.create(obj);
+      final obj = ArrPilotIndexer.fromJson(indexer);
+      ArrPilotBox.indexers.create(obj);
     }
   }
 
@@ -66,8 +66,8 @@ class LunaConfig {
     if (data == null) return;
 
     for (final module in data) {
-      final obj = LunaExternalModule.fromJson(module);
-      LunaBox.externalModules.create(obj);
+      final obj = ArrPilotExternalModule.fromJson(module);
+      ArrPilotBox.externalModules.create(obj);
     }
   }
 }

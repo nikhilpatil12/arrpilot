@@ -6,7 +6,7 @@ import 'package:arrpilot/modules/sonarr.dart';
 import 'package:arrpilot/router/routes/sonarr.dart';
 
 class SonarrMissingTile extends StatefulWidget {
-  static final itemExtent = LunaBlock.calculateItemExtent(3);
+  static final itemExtent = ArrPilotBlock.calculateItemExtent(3);
 
   final SonarrMissingRecord record;
   final SonarrSeries? series;
@@ -24,16 +24,16 @@ class SonarrMissingTile extends StatefulWidget {
 class _State extends State<SonarrMissingTile> {
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       backgroundUrl:
           context.read<SonarrState>().getFanartURL(widget.record.seriesId),
       posterUrl:
           context.read<SonarrState>().getPosterURL(widget.record.seriesId),
       posterHeaders: context.read<SonarrState>().headers,
-      posterPlaceholderIcon: LunaIcons.VIDEO_CAM,
+      posterPlaceholderIcon: ArrPilotIcons.VIDEO_CAM,
       title: widget.record.series?.title ??
           widget.series?.title ??
-          LunaUI.TEXT_EMDASH,
+          ArrPilotUI.TEXT_EMDASH,
       body: [
         _subtitle1(),
         _subtitle2(),
@@ -47,7 +47,7 @@ class _State extends State<SonarrMissingTile> {
   }
 
   Widget _trailing() {
-    return LunaIconButton(
+    return ArrPilotIconButton(
       icon: Icons.search_rounded,
       onPressed: _trailingOnTap,
       onLongPress: _trailingOnLongPress,
@@ -61,7 +61,7 @@ class _State extends State<SonarrMissingTile> {
             text: widget.record.seasonNumber == 0
                 ? 'Specials'
                 : 'Season ${widget.record.seasonNumber}'),
-        TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+        TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
         TextSpan(text: 'Episode ${widget.record.episodeNumber}'),
       ],
     );
@@ -79,9 +79,9 @@ class _State extends State<SonarrMissingTile> {
   TextSpan _subtitle3() {
     return TextSpan(
       style: const TextStyle(
-        fontSize: LunaUI.FONT_SIZE_H3,
-        color: LunaColours.red,
-        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+        fontSize: ArrPilotUI.FONT_SIZE_H3,
+        color: ArrPilotColours.red,
+        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
       ),
       children: [
         TextSpan(
@@ -115,7 +115,7 @@ class _State extends State<SonarrMissingTile> {
               message: widget.record.title,
             ))
         .catchError((error, stack) {
-          LunaLogger().error(
+          ArrPilotLogger().error(
               'Failed to search for episode: ${widget.record.id}',
               error,
               stack);

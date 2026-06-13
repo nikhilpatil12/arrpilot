@@ -9,10 +9,10 @@ class RadarrManualImportDetailsBottomActionBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaBottomActionBar(
+    return ArrPilotBottomActionBar(
       actions: [
         RadarrDatabase.MANUAL_IMPORT_DEFAULT_MODE.listenableBuilder(
-          builder: (context, _) => LunaActionBarCard(
+          builder: (context, _) => ArrPilotActionBarCard(
             title: 'radarr.ImportMode'.tr(),
             subtitle: RadarrImportMode.COPY
                 .from((RadarrDatabase.MANUAL_IMPORT_DEFAULT_MODE.read()))!
@@ -21,8 +21,8 @@ class RadarrManualImportDetailsBottomActionBar extends StatelessWidget {
             onTap: () async => _importModeOnTap(context),
           ),
         ),
-        LunaButton(
-          type: LunaButtonType.TEXT,
+        ArrPilotButton(
+          type: ArrPilotButtonType.TEXT,
           text: 'radarr.Import'.tr(),
           icon: Icons.download_done_rounded,
           loadingState:
@@ -43,7 +43,7 @@ class RadarrManualImportDetailsBottomActionBar extends StatelessWidget {
   Future<void> _importOnTap(BuildContext context) async {
     if (context.read<RadarrManualImportDetailsState>().canExecuteAction &&
         context.read<RadarrManualImportDetailsState>().loadingState ==
-            LunaLoadingState.INACTIVE) {
+            ArrPilotLoadingState.INACTIVE) {
       List<RadarrManualImport> _imports =
           await context.read<RadarrManualImportDetailsState>().manualImport!;
       _imports = _imports
@@ -74,7 +74,7 @@ class RadarrManualImportDetailsBottomActionBar extends StatelessWidget {
       });
       if (_allValid) {
         context.read<RadarrManualImportDetailsState>().loadingState =
-            LunaLoadingState.ACTIVE;
+            ArrPilotLoadingState.ACTIVE;
         await RadarrAPIHelper()
             .triggerManualImport(
               context: context,
@@ -85,10 +85,10 @@ class RadarrManualImportDetailsBottomActionBar extends StatelessWidget {
             .then((result) => result
                 ? Navigator.of(context).pop()
                 : context.read<RadarrManualImportDetailsState>().loadingState =
-                    LunaLoadingState.INACTIVE)
+                    ArrPilotLoadingState.INACTIVE)
             .catchError((_) => context
                 .read<RadarrManualImportDetailsState>()
-                .loadingState = LunaLoadingState.ERROR);
+                .loadingState = ArrPilotLoadingState.ERROR);
       }
     }
   }

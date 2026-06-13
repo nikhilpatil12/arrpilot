@@ -16,7 +16,7 @@ class ActivityDetailsRoute extends StatefulWidget {
 }
 
 class _State extends State<ActivityDetailsRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -29,13 +29,13 @@ class _State extends State<ActivityDetailsRoute>
   @override
   Widget build(BuildContext context) {
     if (widget.sessionKey == -1) {
-      return LunaMessage.goBack(
+      return ArrPilotMessage.goBack(
         context: context,
         text: 'tautulli.SessionEnded'.tr(),
       );
     }
 
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -45,7 +45,7 @@ class _State extends State<ActivityDetailsRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
         title: 'tautulli.ActivityDetails'.tr(),
         scrollControllers: [
           scrollController
@@ -57,7 +57,7 @@ class _State extends State<ActivityDetailsRoute>
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: _refresh,
@@ -67,12 +67,12 @@ class _State extends State<ActivityDetailsRoute>
         builder: (context, AsyncSnapshot<TautulliActivity?> snapshot) {
           if (snapshot.hasError) {
             if (snapshot.connectionState != ConnectionState.waiting)
-              LunaLogger().error(
+              ArrPilotLogger().error(
                 'Unable to pull Tautulli activity session',
                 snapshot.error,
                 snapshot.stackTrace,
               );
-            return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+            return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
           }
           if (snapshot.hasData) {
             TautulliSession? session = snapshot.data!.sessions!
@@ -80,7 +80,7 @@ class _State extends State<ActivityDetailsRoute>
                     (element) => element.sessionKey == widget.sessionKey);
             return _session(session);
           }
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -88,19 +88,19 @@ class _State extends State<ActivityDetailsRoute>
 
   Widget _session(TautulliSession? session) {
     if (session == null)
-      return LunaMessage.goBack(
+      return ArrPilotMessage.goBack(
         context: context,
         text: 'tautulli.SessionEnded'.tr(),
       );
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
         TautulliActivityTile(session: session, disableOnTap: true),
-        LunaHeader(text: 'tautulli.Metadata'.tr()),
+        ArrPilotHeader(text: 'tautulli.Metadata'.tr()),
         TautulliActivityDetailsMetadataBlock(session: session),
-        LunaHeader(text: 'tautulli.Player'.tr()),
+        ArrPilotHeader(text: 'tautulli.Player'.tr()),
         TautulliActivityDetailsPlayerBlock(session: session),
-        LunaHeader(text: 'tautulli.Stream'.tr()),
+        ArrPilotHeader(text: 'tautulli.Stream'.tr()),
         TautulliActivityDetailsStreamBlock(session: session),
       ],
     );

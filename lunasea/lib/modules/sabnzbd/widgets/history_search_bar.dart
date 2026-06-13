@@ -31,7 +31,7 @@ class _State extends State<SABnzbdHistorySearchBar> {
       children: [
         Expanded(
           child: Consumer<SABnzbdState>(
-            builder: (context, state, _) => LunaTextInputBar(
+            builder: (context, state, _) => ArrPilotTextInputBar(
               controller: _controller,
               scrollController: widget.scrollController,
               autofocus: false,

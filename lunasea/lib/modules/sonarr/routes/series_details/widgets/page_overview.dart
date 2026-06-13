@@ -30,12 +30,12 @@ class _State extends State<SonarrSeriesDetailsOverviewPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
-      module: LunaModule.SONARR,
+      module: ArrPilotModule.SONARR,
       body: Selector<SonarrState, Future<Map<int?, SonarrSeries>>?>(
         selector: (_, state) => state.series,
-        builder: (context, movies, _) => LunaListView(
+        builder: (context, movies, _) => ArrPilotListView(
           controller: SonarrSeriesDetailsNavigationBar.scrollControllers[0],
           children: [
             SonarrSeriesDetailsOverviewDescriptionTile(series: widget.series),

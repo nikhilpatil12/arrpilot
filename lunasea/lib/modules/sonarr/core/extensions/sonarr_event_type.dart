@@ -8,19 +8,19 @@ extension SonarrEventTypeLunaExtension on SonarrEventType {
   Color lunaColour() {
     switch (this) {
       case SonarrEventType.EPISODE_FILE_RENAMED:
-        return LunaColours.blue;
+        return ArrPilotColours.blue;
       case SonarrEventType.EPISODE_FILE_DELETED:
-        return LunaColours.red;
+        return ArrPilotColours.red;
       case SonarrEventType.DOWNLOAD_FOLDER_IMPORTED:
-        return LunaColours.accent;
+        return ArrPilotColours.accent;
       case SonarrEventType.DOWNLOAD_FAILED:
-        return LunaColours.red;
+        return ArrPilotColours.red;
       case SonarrEventType.DOWNLOAD_IGNORED:
-        return LunaColours.purple;
+        return ArrPilotColours.purple;
       case SonarrEventType.GRABBED:
-        return LunaColours.orange;
+        return ArrPilotColours.orange;
       case SonarrEventType.SERIES_FOLDER_IMPORTED:
-        return LunaColours.accent;
+        return ArrPilotColours.accent;
     }
   }
 
@@ -52,7 +52,7 @@ extension SonarrEventTypeLunaExtension on SonarrEventType {
       case SonarrEventType.DOWNLOAD_FOLDER_IMPORTED:
         return Colors.white;
       case SonarrEventType.DOWNLOAD_FAILED:
-        return LunaColours.red;
+        return ArrPilotColours.red;
       case SonarrEventType.DOWNLOAD_IGNORED:
         return Colors.white;
       case SonarrEventType.GRABBED:
@@ -85,7 +85,7 @@ extension SonarrEventTypeLunaExtension on SonarrEventType {
     }
   }
 
-  List<LunaTableContent> lunaTableContent({
+  List<ArrPilotTableContent> lunaTableContent({
     required SonarrHistoryRecord history,
     required bool showSourceTitle,
   }) {
@@ -108,75 +108,75 @@ extension SonarrEventTypeLunaExtension on SonarrEventType {
     }
   }
 
-  List<LunaTableContent> _downloadFailedTableContent(
+  List<ArrPilotTableContent> _downloadFailedTableContent(
     SonarrHistoryRecord history,
     bool showSourceTitle,
   ) {
     return [
       if (showSourceTitle)
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'sonarr.SourceTitle'.tr(),
           body: history.sourceTitle,
         ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.Message'.tr(),
         body: history.data!['message'],
       ),
     ];
   }
 
-  List<LunaTableContent> _downloadFolderImportedTableContent(
+  List<ArrPilotTableContent> _downloadFolderImportedTableContent(
     SonarrHistoryRecord history,
     bool showSourceTitle,
   ) {
     return [
       if (showSourceTitle)
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'sonarr.SourceTitle'.tr(),
           body: history.sourceTitle,
         ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.Quality'.tr(),
-        body: history.quality?.quality?.name ?? LunaUI.TEXT_EMDASH,
+        body: history.quality?.quality?.name ?? ArrPilotUI.TEXT_EMDASH,
       ),
       if (history.language != null)
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'sonarr.Languages'.tr(),
-          body: history.language?.name ?? LunaUI.TEXT_EMDASH,
+          body: history.language?.name ?? ArrPilotUI.TEXT_EMDASH,
         ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.Client'.tr(),
-        body: history.data!['downloadClient'] ?? LunaUI.TEXT_EMDASH,
+        body: history.data!['downloadClient'] ?? ArrPilotUI.TEXT_EMDASH,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.Source'.tr(),
         body: history.data!['droppedPath'],
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.ImportedTo'.tr(),
         body: history.data!['importedPath'],
       ),
     ];
   }
 
-  List<LunaTableContent> _downloadIgnoredTableContent(
+  List<ArrPilotTableContent> _downloadIgnoredTableContent(
     SonarrHistoryRecord history,
     bool showSourceTitle,
   ) {
     return [
       if (showSourceTitle)
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'sonarr.Name'.tr(),
           body: history.sourceTitle,
         ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.Message'.tr(),
         body: history.data!['message'],
       ),
     ];
   }
 
-  List<LunaTableContent> _episodeFileDeletedTableContent(
+  List<ArrPilotTableContent> _episodeFileDeletedTableContent(
     SonarrHistoryRecord history,
     bool showSourceTitle,
   ) {
@@ -195,98 +195,98 @@ extension SonarrEventTypeLunaExtension on SonarrEventType {
 
     return [
       if (showSourceTitle)
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'sonarr.SourceTitle'.tr(),
           body: history.sourceTitle,
         ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.Reason'.tr(),
         body: _reasonMapping(history.data!['reason']),
       ),
     ];
   }
 
-  List<LunaTableContent> _episodeFileRenamedTableContent(
+  List<ArrPilotTableContent> _episodeFileRenamedTableContent(
     SonarrHistoryRecord history,
   ) {
     return [
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.Source'.tr(),
         body: history.data!['sourcePath'],
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.SourceRelative'.tr(),
         body: history.data!['sourceRelativePath'],
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.Destination'.tr(),
         body: history.data!['path'],
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.DestinationRelative'.tr(),
         body: history.data!['relativePath'],
       ),
     ];
   }
 
-  List<LunaTableContent> _grabbedTableContent(
+  List<ArrPilotTableContent> _grabbedTableContent(
     SonarrHistoryRecord history,
     bool showSourceTitle,
   ) {
     return [
       if (showSourceTitle)
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'sonarr.SourceTitle'.tr(),
           body: history.sourceTitle,
         ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.Quality'.tr(),
-        body: history.quality?.quality?.name ?? LunaUI.TEXT_EMDASH,
+        body: history.quality?.quality?.name ?? ArrPilotUI.TEXT_EMDASH,
       ),
       if (history.language != null)
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'sonarr.Languages'.tr(),
-          body: history.language?.name ?? LunaUI.TEXT_EMDASH,
+          body: history.language?.name ?? ArrPilotUI.TEXT_EMDASH,
         ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.Indexer'.tr(),
         body: history.data!['indexer'],
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.ReleaseGroup'.tr(),
         body: history.data!['releaseGroup'],
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.InfoURL'.tr(),
         body: history.data!['nzbInfoUrl'],
         bodyIsUrl: history.data!['nzbInfoUrl'] != null,
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.Client'.tr(),
         body: history.data!['downloadClientName'],
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.DownloadID'.tr(),
         body: history.data!['downloadId'],
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
         title: 'sonarr.Age'.tr(),
         body: double.tryParse(history.data!['ageHours'])?.asTimeAgo(),
       ),
-      LunaTableContent(
+      ArrPilotTableContent(
           title: 'sonarr.PublishedDate'.tr(),
           body: DateTime.tryParse(history.data!['publishedDate'])
               ?.asDateTime(delimiter: '\n')),
     ];
   }
 
-  List<LunaTableContent> _defaultTableContent(
+  List<ArrPilotTableContent> _defaultTableContent(
     SonarrHistoryRecord history,
     bool showSourceTitle,
   ) {
     return [
       if (showSourceTitle)
-        LunaTableContent(
+        ArrPilotTableContent(
           title: 'sonarr.Name'.tr(),
           body: history.sourceTitle,
         ),

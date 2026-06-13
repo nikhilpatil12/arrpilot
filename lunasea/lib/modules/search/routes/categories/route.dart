@@ -13,7 +13,7 @@ class CategoriesRoute extends StatefulWidget {
 }
 
 class _State extends State<CategoriesRoute>
-    with LunaLoadCallbackMixin, LunaScrollControllerMixin {
+    with ArrPilotLoadCallbackMixin, ArrPilotScrollControllerMixin {
   static const ADULT_CATEGORIES = ['xxx', 'adult', 'porn'];
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
@@ -26,7 +26,7 @@ class _State extends State<CategoriesRoute>
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar() as PreferredSizeWidget?,
       body: _body(),
@@ -34,11 +34,11 @@ class _State extends State<CategoriesRoute>
   }
 
   Widget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: context.read<SearchState>().indexer.displayName,
       scrollControllers: [scrollController],
       actions: <Widget>[
-        LunaIconButton(
+        ArrPilotIconButton(
           icon: Icons.search_rounded,
           onPressed: _enterSearch,
         ),
@@ -47,7 +47,7 @@ class _State extends State<CategoriesRoute>
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: loadCallback,
@@ -55,16 +55,16 @@ class _State extends State<CategoriesRoute>
         future: context.watch<SearchState>().categories,
         builder: (context, AsyncSnapshot<List<NewznabCategoryData>> snapshot) {
           if (snapshot.hasError) {
-            LunaLogger().error(
+            ArrPilotLogger().error(
               'Unable to fetch categories',
               snapshot.error,
               snapshot.stackTrace,
             );
-            return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+            return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
           }
           if (snapshot.connectionState == ConnectionState.done &&
               snapshot.hasData) return _list(snapshot.data!);
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -72,13 +72,13 @@ class _State extends State<CategoriesRoute>
 
   Widget _list(List<NewznabCategoryData> categories) {
     if (categories.isEmpty) {
-      return LunaMessage.goBack(
+      return ArrPilotMessage.goBack(
         context: context,
         text: 'search.NoCategoriesFound'.tr(),
       );
     }
     List<NewznabCategoryData> filtered = _filter(categories);
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: scrollController,
       itemCount: filtered.length,
       itemBuilder: (context, index) => SearchCategoryTile(

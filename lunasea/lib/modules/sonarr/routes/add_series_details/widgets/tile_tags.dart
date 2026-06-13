@@ -10,16 +10,16 @@ class SonarrSeriesAddDetailsTagsTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<SonarrTag> _tags = context.watch<SonarrSeriesAddDetailsState>().tags;
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'sonarr.Tags'.tr(),
       body: [
         TextSpan(
           text: _tags.isEmpty
-              ? LunaUI.TEXT_EMDASH
+              ? ArrPilotUI.TEXT_EMDASH
               : _tags.map((e) => e.label).join(', '),
         ),
       ],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async => await SonarrDialogs().setAddTags(context),
     );
   }

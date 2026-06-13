@@ -12,7 +12,7 @@ class TagsRoute extends StatefulWidget {
 }
 
 class _State extends State<TagsRoute>
-    with LunaScrollControllerMixin, LunaLoadCallbackMixin {
+    with ArrPilotScrollControllerMixin, ArrPilotLoadCallbackMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -25,7 +25,7 @@ class _State extends State<TagsRoute>
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar(),
       body: _body(),
@@ -33,7 +33,7 @@ class _State extends State<TagsRoute>
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'Tags',
       scrollControllers: [scrollController],
       actions: const [
@@ -43,7 +43,7 @@ class _State extends State<TagsRoute>
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: loadCallback,
@@ -52,16 +52,16 @@ class _State extends State<TagsRoute>
         builder: (context, AsyncSnapshot<List<SonarrTag>> snapshot) {
           if (snapshot.hasError) {
             if (snapshot.connectionState != ConnectionState.waiting) {
-              LunaLogger().error(
+              ArrPilotLogger().error(
                 'Unable to fetch Sonarr tags',
                 snapshot.error,
                 snapshot.stackTrace,
               );
             }
-            return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+            return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
           }
           if (snapshot.hasData) return _list(snapshot.data);
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -69,12 +69,12 @@ class _State extends State<TagsRoute>
 
   Widget _list(List<SonarrTag>? tags) {
     if ((tags?.length ?? 0) == 0)
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'sonarr.NoTagsFound'.tr(),
         buttonText: 'lunasea.Refresh'.tr(),
         onTap: _refreshKey.currentState?.show,
       );
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: scrollController,
       itemCount: tags!.length,
       itemBuilder: (context, index) => SonarrTagsTagTile(

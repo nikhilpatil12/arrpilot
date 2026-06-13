@@ -6,17 +6,17 @@ import 'package:arrpilot/vendor.dart';
 part 'profile.g.dart';
 
 @JsonSerializable()
-@HiveType(typeId: 0, adapterName: 'LunaProfileAdapter')
-class LunaProfile extends HiveObject {
+@HiveType(typeId: 0, adapterName: 'ArrPilotProfileAdapter')
+class ArrPilotProfile extends HiveObject {
   static const String DEFAULT_PROFILE = 'default';
 
-  static LunaProfile get current {
-    final enabled = LunaSeaDatabase.ENABLED_PROFILE.read();
-    return LunaBox.profiles.read(enabled) ?? LunaProfile();
+  static ArrPilotProfile get current {
+    final enabled = ArrPilotDatabase.ENABLED_PROFILE.read();
+    return ArrPilotBox.profiles.read(enabled) ?? ArrPilotProfile();
   }
 
   static List<String> get list {
-    final profiles = LunaBox.profiles.keys.cast<String>().toList();
+    final profiles = ArrPilotBox.profiles.keys.cast<String>().toList();
     profiles.sort((a, b) => a.toLowerCase().compareTo(b.toLowerCase()));
     return profiles;
   }
@@ -149,7 +149,7 @@ class LunaProfile extends HiveObject {
   @HiveField(43, defaultValue: <String, String>{})
   Map<String, String> overseerrHeaders;
 
-  LunaProfile._internal({
+  ArrPilotProfile._internal({
     //Lidarr
     required this.lidarrEnabled,
     required this.lidarrHost,
@@ -192,7 +192,7 @@ class LunaProfile extends HiveObject {
     required this.overseerrHeaders,
   });
 
-  factory LunaProfile({
+  factory ArrPilotProfile({
     //Lidarr
     bool? lidarrEnabled,
     String? lidarrHost,
@@ -234,7 +234,7 @@ class LunaProfile extends HiveObject {
     String? overseerrKey,
     Map<String, String>? overseerrHeaders,
   }) {
-    return LunaProfile._internal(
+    return ArrPilotProfile._internal(
       // Lidarr
       lidarrEnabled: lidarrEnabled ?? false,
       lidarrHost: lidarrHost ?? '',
@@ -282,25 +282,25 @@ class LunaProfile extends HiveObject {
   String toString() => json.encode(this.toJson());
 
   Map<String, dynamic> toJson() {
-    final json = _$LunaProfileToJson(this);
+    final json = _$ArrPilotProfileToJson(this);
     json['key'] = key.toString();
     return json;
   }
 
-  factory LunaProfile.fromJson(Map<String, dynamic> json) {
-    return _$LunaProfileFromJson(json);
+  factory ArrPilotProfile.fromJson(Map<String, dynamic> json) {
+    return _$ArrPilotProfileFromJson(json);
   }
 
-  factory LunaProfile.clone(LunaProfile profile) {
-    return LunaProfile.fromJson(profile.toJson().cast<String, dynamic>());
+  factory ArrPilotProfile.clone(ArrPilotProfile profile) {
+    return ArrPilotProfile.fromJson(profile.toJson().cast<String, dynamic>());
   }
 
-  factory LunaProfile.get(String key) {
-    return LunaBox.profiles.read(key)!;
+  factory ArrPilotProfile.get(String key) {
+    return ArrPilotBox.profiles.read(key)!;
   }
 
   bool isAnythingEnabled() {
-    for (final module in LunaModule.active) {
+    for (final module in ArrPilotModule.active) {
       if (module.isEnabled) return true;
     }
     return false;

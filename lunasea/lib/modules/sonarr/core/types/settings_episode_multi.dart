@@ -10,9 +10,9 @@ enum SonarrEpisodeMultiSettingsType {
   IconData get icon {
     switch (this) {
       case SonarrEpisodeMultiSettingsType.AUTOMATIC_SEARCH:
-        return LunaIcons.SEARCH;
+        return ArrPilotIcons.SEARCH;
       case SonarrEpisodeMultiSettingsType.DELETE_FILES:
-        return LunaIcons.DELETE;
+        return ArrPilotIcons.DELETE;
     }
   }
 

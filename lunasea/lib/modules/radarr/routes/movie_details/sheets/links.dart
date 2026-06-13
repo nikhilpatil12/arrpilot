@@ -4,7 +4,7 @@ import 'package:arrpilot/extensions/string/links.dart';
 import 'package:arrpilot/utils/links.dart';
 import 'package:arrpilot/widgets/ui.dart';
 
-class LinksSheet extends LunaBottomModalSheet {
+class LinksSheet extends ArrPilotBottomModalSheet {
   RadarrMovie movie;
 
   LinksSheet({
@@ -13,44 +13,44 @@ class LinksSheet extends LunaBottomModalSheet {
 
   @override
   Widget builder(BuildContext context) {
-    final imdb = LunaLinkedContent.imdb(movie.imdbId);
+    final imdb = ArrPilotLinkedContent.imdb(movie.imdbId);
     final tmdb =
-        LunaLinkedContent.theMovieDB(movie.tmdbId, LinkedContentType.MOVIE);
-    final letterboxd = LunaLinkedContent.letterboxd(movie.tmdbId);
+        ArrPilotLinkedContent.theMovieDB(movie.tmdbId, LinkedContentType.MOVIE);
+    final letterboxd = ArrPilotLinkedContent.letterboxd(movie.tmdbId);
     final trakt =
-        LunaLinkedContent.trakt(movie.tmdbId, LinkedContentType.MOVIE);
-    final youtube = LunaLinkedContent.youtube(movie.youTubeTrailerId);
+        ArrPilotLinkedContent.trakt(movie.tmdbId, LinkedContentType.MOVIE);
+    final youtube = ArrPilotLinkedContent.youtube(movie.youTubeTrailerId);
 
-    return LunaListViewModal(
+    return ArrPilotListViewModal(
       children: [
         if (imdb != null)
-          LunaBlock(
+          ArrPilotBlock(
             title: 'IMDb',
-            leading: const LunaIconButton(icon: LunaIcons.IMDB),
+            leading: const ArrPilotIconButton(icon: ArrPilotIcons.IMDB),
             onTap: imdb.openLink,
           ),
         if (letterboxd != null)
-          LunaBlock(
+          ArrPilotBlock(
             title: 'Letterboxd',
-            leading: const LunaIconButton(icon: LunaIcons.LETTERBOXD),
+            leading: const ArrPilotIconButton(icon: ArrPilotIcons.LETTERBOXD),
             onTap: letterboxd.openLink,
           ),
         if (tmdb != null)
-          LunaBlock(
+          ArrPilotBlock(
             title: 'The Movie Database',
-            leading: const LunaIconButton(icon: LunaIcons.THEMOVIEDATABASE),
+            leading: const ArrPilotIconButton(icon: ArrPilotIcons.THEMOVIEDATABASE),
             onTap: tmdb.openLink,
           ),
         if (trakt != null)
-          LunaBlock(
+          ArrPilotBlock(
             title: 'Trakt',
-            leading: const LunaIconButton(icon: LunaIcons.TRAKT),
+            leading: const ArrPilotIconButton(icon: ArrPilotIcons.TRAKT),
             onTap: trakt.openLink,
           ),
         if (youtube != null)
-          LunaBlock(
+          ArrPilotBlock(
             title: 'YouTube',
-            leading: const LunaIconButton(icon: LunaIcons.YOUTUBE),
+            leading: const ArrPilotIconButton(icon: ArrPilotIcons.YOUTUBE),
             onTap: youtube.openLink,
           ),
       ],

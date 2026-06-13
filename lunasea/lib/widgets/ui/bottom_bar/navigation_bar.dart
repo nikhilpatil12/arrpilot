@@ -5,7 +5,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:arrpilot/extensions/page_controller.dart';
 import 'package:arrpilot/extensions/scroll_controller.dart';
 
-class LunaBottomNavigationBar extends StatefulWidget {
+class ArrPilotBottomNavigationBar extends StatefulWidget {
   final PageController? pageController;
   final List<IconData> icons;
   final List<String> titles;
@@ -14,7 +14,7 @@ class LunaBottomNavigationBar extends StatefulWidget {
   final ValueChanged<int>? onTabChange;
   final List<Widget?>? leadingOnTab;
 
-  LunaBottomNavigationBar({
+  ArrPilotBottomNavigationBar({
     Key? key,
     required this.pageController,
     required this.icons,
@@ -26,18 +26,18 @@ class LunaBottomNavigationBar extends StatefulWidget {
   }) : super(key: key) {
     assert(
       icons.length == titles.length,
-      'An unequal amount of titles and icons were passed to LunaNavigationBar.',
+      'An unequal amount of titles and icons were passed to ArrPilotNavigationBar.',
     );
     if (leadingOnTab != null) {
       assert(
         icons.length == leadingOnTab!.length,
-        'An unequal amount of icons and leadingOnTab were passed to LunaNavigationBar.',
+        'An unequal amount of icons and leadingOnTab were passed to ArrPilotNavigationBar.',
       );
     }
     if (scrollControllers != null) {
       assert(
         icons.length == scrollControllers!.length,
-        'An unequal amount of icons and scrollControllers were passed to LunaNavigationBar.',
+        'An unequal amount of icons and scrollControllers were passed to ArrPilotNavigationBar.',
       );
     }
   }
@@ -46,7 +46,7 @@ class LunaBottomNavigationBar extends StatefulWidget {
   State<StatefulWidget> createState() => _State();
 }
 
-class _State extends State<LunaBottomNavigationBar> {
+class _State extends State<ArrPilotBottomNavigationBar> {
   late int _index;
 
   @override
@@ -79,10 +79,10 @@ class _State extends State<LunaBottomNavigationBar> {
   }
 
   Widget get _actionBar {
-    return LunaBottomActionBar(
+    return ArrPilotBottomActionBar(
       actions: widget.topActions,
       useSafeArea: false,
-      padding: LunaUI.MARGIN_HALF,
+      padding: ArrPilotUI.MARGIN_HALF,
     );
   }
 
@@ -91,44 +91,44 @@ class _State extends State<LunaBottomNavigationBar> {
       child: SafeArea(
         child: Padding(
           child: GNav(
-            gap: LunaUI.MARGIN_SIZE_HALF,
-            duration: const Duration(milliseconds: LunaUI.ANIMATION_SPEED),
+            gap: ArrPilotUI.MARGIN_SIZE_HALF,
+            duration: const Duration(milliseconds: ArrPilotUI.ANIMATION_SPEED),
             tabBackgroundColor: Theme.of(context).canvasColor.dimmed(),
-            activeColor: LunaColours.accent,
+            activeColor: ArrPilotColours.accent,
             tabs: List.generate(
                 widget.icons.length,
                 (index) => GButton(
                       icon: widget.icons[index],
                       text: widget.titles[index],
                       active: _index == index,
-                      iconSize: LunaUI.ICON_SIZE,
+                      iconSize: ArrPilotUI.ICON_SIZE,
                       haptic: true,
                       padding: const EdgeInsets.all(10.0).add(EdgeInsets.only(
-                        left: _index == index ? LunaUI.MARGIN_SIZE_HALF : 0.0,
+                        left: _index == index ? ArrPilotUI.MARGIN_SIZE_HALF : 0.0,
                       )),
                       iconColor: Colors.white,
                       textStyle: const TextStyle(
-                        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
-                        fontSize: LunaUI.FONT_SIZE_H3,
+                        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
+                        fontSize: ArrPilotUI.FONT_SIZE_H3,
                         color: Colors.white,
                       ),
-                      iconActiveColor: LunaColours.accent,
+                      iconActiveColor: ArrPilotColours.accent,
                       leading: widget.leadingOnTab == null
                           ? null
                           : widget.leadingOnTab![index],
                     )).toList(),
-            tabActiveBorder: LunaUI.shouldUseBorder
-                ? Border.all(color: LunaColours.white10)
+            tabActiveBorder: ArrPilotUI.shouldUseBorder
+                ? Border.all(color: ArrPilotColours.white10)
                 : null,
-            tabBorder: LunaUI.shouldUseBorder
+            tabBorder: ArrPilotUI.shouldUseBorder
                 ? Border.all(color: Colors.transparent)
                 : null,
             selectedIndex: _index,
             onTabChange: _onDestinationSelected,
           ),
           padding: (widget.topActions?.isNotEmpty ?? false)
-              ? LunaUI.MARGIN_DEFAULT.copyWith(top: 0.0)
-              : LunaUI.MARGIN_DEFAULT,
+              ? ArrPilotUI.MARGIN_DEFAULT.copyWith(top: 0.0)
+              : ArrPilotUI.MARGIN_DEFAULT,
         ),
         top: false,
       ),

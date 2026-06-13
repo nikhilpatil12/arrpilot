@@ -16,7 +16,7 @@ class ManualImportDetailsRoute extends StatefulWidget {
 }
 
 class _State extends State<ManualImportDetailsRoute>
-    with LunaScrollControllerMixin, LunaLoadCallbackMixin {
+    with ArrPilotScrollControllerMixin, ArrPilotLoadCallbackMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -40,7 +40,7 @@ class _State extends State<ManualImportDetailsRoute>
         path: widget.path!,
       ),
       builder: (context, _) {
-        return LunaScaffold(
+        return ArrPilotScaffold(
           scaffoldKey: _scaffoldKey,
           appBar: _appBar(),
           body: _body(context),
@@ -51,7 +51,7 @@ class _State extends State<ManualImportDetailsRoute>
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'radarr.ManualImport'.tr(),
       scrollControllers: [scrollController],
     );
@@ -70,13 +70,13 @@ class _State extends State<ManualImportDetailsRoute>
       builder: (context, AsyncSnapshot<List<Object>> snapshot) {
         if (snapshot.hasError) {
           if (snapshot.connectionState != ConnectionState.waiting) {
-            LunaLogger().error(
+            ArrPilotLogger().error(
               'Unable to fetch Radarr manual import: ${context.read<RadarrManualImportDetailsState>().path}',
               snapshot.error,
               snapshot.stackTrace,
             );
           }
-          return LunaMessage.error(
+          return ArrPilotMessage.error(
             onTap: () => context
                 .read<RadarrManualImportDetailsState>()
                 .fetchManualImport(context),
@@ -89,7 +89,7 @@ class _State extends State<ManualImportDetailsRoute>
             manualImport: snapshot.data![0] as List<RadarrManualImport>,
           );
         }
-        return const LunaLoader();
+        return const ArrPilotLoader();
       },
     );
   }
@@ -99,7 +99,7 @@ class _State extends State<ManualImportDetailsRoute>
     required List<RadarrManualImport> manualImport,
   }) {
     if (manualImport.isEmpty) {
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'radarr.NoFilesFound'.tr(),
         buttonText: 'lunasea.Refresh'.tr(),
         onTap: () => context
@@ -108,7 +108,7 @@ class _State extends State<ManualImportDetailsRoute>
       );
     }
     context.read<RadarrManualImportDetailsState>().canExecuteAction = true;
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: scrollController,
       itemCount: manualImport.length,
       itemBuilder: (context, index) => RadarrManualImportDetailsTile(

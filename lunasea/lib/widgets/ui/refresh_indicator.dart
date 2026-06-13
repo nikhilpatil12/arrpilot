@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LunaRefreshIndicator extends RefreshIndicator {
-  LunaRefreshIndicator({
+class ArrPilotRefreshIndicator extends RefreshIndicator {
+  ArrPilotRefreshIndicator({
     GlobalKey<RefreshIndicatorState>? key,
     required BuildContext context,
     required Future<void> Function() onRefresh,

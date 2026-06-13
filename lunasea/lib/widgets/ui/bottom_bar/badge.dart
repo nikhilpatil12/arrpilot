@@ -2,8 +2,8 @@ import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaNavigationBarBadge extends badges.Badge {
-  LunaNavigationBarBadge({
+class ArrPilotNavigationBarBadge extends badges.Badge {
+  ArrPilotNavigationBarBadge({
     Key? key,
     required String text,
     required IconData icon,
@@ -12,17 +12,17 @@ class LunaNavigationBarBadge extends badges.Badge {
   }) : super(
           key: key,
           badgeStyle: badges.BadgeStyle(
-            badgeColor: LunaColours.accent.dimmed(),
-            elevation: LunaUI.ELEVATION,
+            badgeColor: ArrPilotColours.accent.dimmed(),
+            elevation: ArrPilotUI.ELEVATION,
             shape: badges.BadgeShape.circle,
           ),
           badgeAnimation: const badges.BadgeAnimation.scale(
             animationDuration:
-                Duration(milliseconds: LunaUI.ANIMATION_SPEED_SCROLLING),
+                Duration(milliseconds: ArrPilotUI.ANIMATION_SPEED_SCROLLING),
           ),
           position: badges.BadgePosition.topEnd(
-            top: -LunaUI.DEFAULT_MARGIN_SIZE,
-            end: -LunaUI.DEFAULT_MARGIN_SIZE,
+            top: -ArrPilotUI.DEFAULT_MARGIN_SIZE,
+            end: -ArrPilotUI.DEFAULT_MARGIN_SIZE,
           ),
           badgeContent: Text(
             text,
@@ -30,7 +30,7 @@ class LunaNavigationBarBadge extends badges.Badge {
           ),
           child: Icon(
             icon,
-            color: isActive ? LunaColours.accent : Colors.white,
+            color: isActive ? ArrPilotColours.accent : Colors.white,
           ),
           showBadge: showBadge,
         );

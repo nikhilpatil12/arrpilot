@@ -10,11 +10,11 @@ enum LinkedContentType {
   IMAGE_BACKDROP,
 }
 
-enum LunaLinkedContent {
+enum ArrPilotLinkedContent {
   WEBSITE('https://www.lunasea.app');
 
   final String url;
-  const LunaLinkedContent(this.url);
+  const ArrPilotLinkedContent(this.url);
 
   Future<void> launch() async => url.openLink();
 
@@ -43,7 +43,7 @@ enum LunaLinkedContent {
     String plexIdentifier,
     int ratingKey,
   ) {
-    if (LunaPlatform.isAndroid) {
+    if (ArrPilotPlatform.isAndroid) {
       const base = 'plex://server://';
       const path = '/com.plexapp.plugins.library/library/metadata/';
       return '$base$plexIdentifier$path$ratingKey';

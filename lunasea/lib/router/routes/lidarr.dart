@@ -11,7 +11,7 @@ import 'package:arrpilot/modules/lidarr/routes/search_results.dart';
 import 'package:arrpilot/router/routes.dart';
 import 'package:arrpilot/vendor.dart';
 
-enum LidarrRoutes with LunaRoutesMixin {
+enum LidarrRoutes with ArrPilotRoutesMixin {
   HOME('/lidarr'),
   ADD_ARTIST('add_artist'),
   ADD_ARTIST_DETAILS('details'),
@@ -26,7 +26,7 @@ enum LidarrRoutes with LunaRoutesMixin {
   const LidarrRoutes(this.path);
 
   @override
-  LunaModule get module => LunaModule.LIDARR;
+  ArrPilotModule get module => ArrPilotModule.LIDARR;
 
   @override
   bool isModuleEnabled(BuildContext context) => true;

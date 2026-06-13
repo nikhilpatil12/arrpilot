@@ -14,7 +14,7 @@ class TautulliGraphHelper {
 
   FlBorderData borderData() => FlBorderData(
         show: true,
-        border: Border.all(color: LunaColours.white10),
+        border: Border.all(color: ArrPilotColours.white10),
       );
 
   FlTitlesData titlesData(
@@ -31,7 +31,7 @@ class TautulliGraphHelper {
                       min(maxTitleLength,
                           data.categories![value.truncate()]!.length))
                   .toUpperCase(),
-              if (titleOverFlowShowEllipsis) LunaUI.TEXT_ELLIPSIS,
+              if (titleOverFlowShowEllipsis) ArrPilotUI.TEXT_ELLIPSIS,
             ].join()
           : data.categories![value.truncate()]!.toUpperCase();
     }
@@ -44,15 +44,15 @@ class TautulliGraphHelper {
         sideTitles: SideTitles(
           showTitles: true,
           reservedSize:
-              LunaUI.FONT_SIZE_GRAPH_LEGEND + LunaUI.DEFAULT_MARGIN_SIZE,
+              ArrPilotUI.FONT_SIZE_GRAPH_LEGEND + ArrPilotUI.DEFAULT_MARGIN_SIZE,
           getTitlesWidget: (value, meta) {
             return Padding(
-              padding: const EdgeInsets.only(top: LunaUI.DEFAULT_MARGIN_SIZE),
+              padding: const EdgeInsets.only(top: ArrPilotUI.DEFAULT_MARGIN_SIZE),
               child: Text(
                 _getTitle(value),
                 style: const TextStyle(
-                  color: LunaColours.grey,
-                  fontSize: LunaUI.FONT_SIZE_GRAPH_LEGEND,
+                  color: ArrPilotColours.grey,
+                  fontSize: ArrPilotUI.FONT_SIZE_GRAPH_LEGEND,
                 ),
               ),
             );
@@ -72,10 +72,10 @@ class TautulliGraphHelper {
               children: [
                 Padding(
                   child: Container(
-                    height: LunaUI.FONT_SIZE_GRAPH_LEGEND,
-                    width: LunaUI.FONT_SIZE_GRAPH_LEGEND,
+                    height: ArrPilotUI.FONT_SIZE_GRAPH_LEGEND,
+                    width: ArrPilotUI.FONT_SIZE_GRAPH_LEGEND,
                     decoration: BoxDecoration(
-                      color: LunaColours().byGraphLayer(index),
+                      color: ArrPilotColours().byGraphLayer(index),
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
@@ -84,8 +84,8 @@ class TautulliGraphHelper {
                 Text(
                   data[index].name!,
                   style: TextStyle(
-                    fontSize: LunaUI.FONT_SIZE_GRAPH_LEGEND,
-                    color: LunaColours().byGraphLayer(index),
+                    fontSize: ArrPilotUI.FONT_SIZE_GRAPH_LEGEND,
+                    color: ArrPilotColours().byGraphLayer(index),
                   ),
                 ),
               ],
@@ -103,25 +103,25 @@ class TautulliGraphHelper {
   }
 
   Widget loadingContainer(BuildContext context) {
-    return LunaCard(
+    return ArrPilotCard(
       context: context,
       child: const SizedBox(
         height: GRAPH_HEIGHT + LEGEND_HEIGHT,
-        child: LunaLoader(),
+        child: ArrPilotLoader(),
       ),
     );
   }
 
   Widget errorContainer(BuildContext context) {
-    return LunaCard(
+    return ArrPilotCard(
       context: context,
       child: Container(
         height: GRAPH_HEIGHT + LEGEND_HEIGHT,
         alignment: Alignment.center,
-        child: const LunaIconButton(
-          icon: LunaIcons.ERROR,
-          iconSize: LunaUI.ICON_SIZE * 2,
-          color: LunaColours.red,
+        child: const ArrPilotIconButton(
+          icon: ArrPilotIcons.ERROR,
+          iconSize: ArrPilotUI.ICON_SIZE * 2,
+          color: ArrPilotColours.red,
         ),
       ),
     );

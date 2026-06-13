@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaPopupMenuButton<T> extends PopupMenuButton<T> {
-  LunaPopupMenuButton({
+class ArrPilotPopupMenuButton<T> extends PopupMenuButton<T> {
+  ArrPilotPopupMenuButton({
     required PopupMenuItemSelected<T> onSelected,
     required PopupMenuItemBuilder<T> itemBuilder,
     Key? key,
@@ -12,7 +12,7 @@ class LunaPopupMenuButton<T> extends PopupMenuButton<T> {
     String? tooltip,
   }) : super(
           key: key,
-          shape: LunaUI.shapeBorder,
+          shape: ArrPilotUI.shapeBorder,
           tooltip: tooltip,
           icon: icon == null ? null : Icon(icon),
           child: child,

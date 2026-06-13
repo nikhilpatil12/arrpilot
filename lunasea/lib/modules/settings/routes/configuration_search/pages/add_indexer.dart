@@ -13,13 +13,13 @@ class ConfigurationSearchAddIndexerRoute extends StatefulWidget {
 }
 
 class _State extends State<ConfigurationSearchAddIndexerRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  final _indexer = LunaIndexer();
+  final _indexer = ArrPilotIndexer();
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       appBar: _appBar(),
       body: _body(),
@@ -28,16 +28,16 @@ class _State extends State<ConfigurationSearchAddIndexerRoute>
   }
 
   PreferredSizeWidget _appBar() {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'search.AddIndexer'.tr(),
       scrollControllers: [scrollController],
     );
   }
 
   Widget _bottomActionBar() {
-    return LunaBottomActionBar(
+    return ArrPilotBottomActionBar(
       actions: [
-        LunaButton.text(
+        ArrPilotButton.text(
           text: 'search.AddIndexer'.tr(),
           icon: Icons.add_rounded,
           onTap: () async {
@@ -49,7 +49,7 @@ class _State extends State<ConfigurationSearchAddIndexerRoute>
                 message: 'settings.AllFieldsAreRequired'.tr(),
               );
             } else {
-              LunaBox.indexers.create(_indexer);
+              ArrPilotBox.indexers.create(_indexer);
               showLunaSuccessSnackBar(
                 title: 'search.IndexerAdded'.tr(),
                 message: _indexer.displayName,
@@ -63,7 +63,7 @@ class _State extends State<ConfigurationSearchAddIndexerRoute>
   }
 
   Widget _body() {
-    return LunaListView(
+    return ArrPilotListView(
       controller: scrollController,
       children: [
         _displayName(),
@@ -76,12 +76,12 @@ class _State extends State<ConfigurationSearchAddIndexerRoute>
 
   Widget _displayName() {
     String _name = _indexer.displayName;
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.DisplayName'.tr(),
       body: [TextSpan(text: _name.isEmpty ? 'lunasea.NotSet'.tr() : _name)],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {
-        Tuple2<bool, String> values = await LunaDialogs().editText(
+        Tuple2<bool, String> values = await ArrPilotDialogs().editText(
           context,
           'settings.DisplayName'.tr(),
           prefill: _name,
@@ -95,12 +95,12 @@ class _State extends State<ConfigurationSearchAddIndexerRoute>
 
   Widget _apiURL() {
     String _host = _indexer.host;
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'search.IndexerAPIHost'.tr(),
       body: [TextSpan(text: _host.isEmpty ? 'lunasea.NotSet'.tr() : _host)],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {
-        Tuple2<bool, String> values = await LunaDialogs().editText(
+        Tuple2<bool, String> values = await ArrPilotDialogs().editText(
           context,
           'search.IndexerAPIHost'.tr(),
           prefill: _host,
@@ -114,12 +114,12 @@ class _State extends State<ConfigurationSearchAddIndexerRoute>
 
   Widget _apiKey() {
     String _key = _indexer.apiKey;
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'search.IndexerAPIKey'.tr(),
       body: [TextSpan(text: _key.isEmpty ? 'lunasea.NotSet'.tr() : _key)],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {
-        Tuple2<bool, String> values = await LunaDialogs().editText(
+        Tuple2<bool, String> values = await ArrPilotDialogs().editText(
           context,
           'search.IndexerAPIKey'.tr(),
           prefill: _key,
@@ -132,10 +132,10 @@ class _State extends State<ConfigurationSearchAddIndexerRoute>
   }
 
   Widget _headers() {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: 'settings.CustomHeaders'.tr(),
       body: [TextSpan(text: 'settings.CustomHeadersDescription'.tr())],
-      trailing: const LunaIconButton.arrow(),
+      trailing: const ArrPilotIconButton.arrow(),
       onTap: () => SettingsRoutes.CONFIGURATION_SEARCH_ADD_INDEXER_HEADERS.go(
         extra: _indexer,
       ),

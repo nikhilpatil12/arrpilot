@@ -16,7 +16,7 @@ class NZBGetHistory extends StatefulWidget {
 }
 
 class _State extends State<NZBGetHistory>
-    with AutomaticKeepAliveClientMixin, LunaLoadCallbackMixin {
+    with AutomaticKeepAliveClientMixin, ArrPilotLoadCallbackMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   Future<List<NZBGetHistoryData>>? _future;
   List<NZBGetHistoryData>? _results = [];
@@ -27,7 +27,7 @@ class _State extends State<NZBGetHistory>
   @override
   Future<void> loadCallback() async {
     if (mounted) setState(() => _results = []);
-    final _api = NZBGetAPI.from(LunaProfile.current);
+    final _api = NZBGetAPI.from(ArrPilotProfile.current);
     if (mounted)
       setState(() {
         _future = _api.getHistory();
@@ -37,7 +37,7 @@ class _State extends State<NZBGetHistory>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       body: _body(),
       appBar: _appBar() as PreferredSizeWidget?,
@@ -45,15 +45,15 @@ class _State extends State<NZBGetHistory>
   }
 
   Widget _appBar() {
-    return LunaAppBar.empty(
+    return ArrPilotAppBar.empty(
       child: NZBGetHistorySearchBar(
           scrollController: NZBGetNavigationBar.scrollControllers[1]),
-      height: LunaTextInputBar.defaultAppBarHeight,
+      height: ArrPilotTextInputBar.defaultAppBarHeight,
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: widget.refreshIndicatorKey,
       onRefresh: loadCallback,
@@ -64,7 +64,7 @@ class _State extends State<NZBGetHistory>
             case ConnectionState.done:
               {
                 if (snapshot.hasError || snapshot.data == null) {
-                  return LunaMessage.error(
+                  return ArrPilotMessage.error(
                       onTap: widget.refreshIndicatorKey.currentState!.show);
                 }
                 _results = snapshot.data;
@@ -74,7 +74,7 @@ class _State extends State<NZBGetHistory>
             case ConnectionState.waiting:
             case ConnectionState.active:
             default:
-              return const LunaLoader();
+              return const ArrPilotLoader();
           }
         },
       ),
@@ -83,7 +83,7 @@ class _State extends State<NZBGetHistory>
 
   Widget get _list {
     if (_results?.isEmpty ?? true) {
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'No History Found',
         buttonText: 'Refresh',
         onTap: loadCallback,
@@ -104,12 +104,12 @@ class _State extends State<NZBGetHistory>
 
   Widget _listBody(List filtered) {
     if (filtered.isEmpty) {
-      return LunaListView(
+      return ArrPilotListView(
         controller: NZBGetNavigationBar.scrollControllers[1],
-        children: [LunaMessage.inList(text: 'No History Found')],
+        children: [ArrPilotMessage.inList(text: 'No History Found')],
       );
     }
-    return LunaListView(
+    return ArrPilotListView(
       controller: NZBGetNavigationBar.scrollControllers[1],
       children: List.generate(
         filtered.length,

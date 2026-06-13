@@ -12,7 +12,7 @@ extension RadarrReleaseExtension on RadarrRelease {
 
   Color get lunaTrailingColor {
     if (this.approved!) return Colors.white;
-    return LunaColours.red;
+    return ArrPilotColours.red;
   }
 
   String? get lunaProtocol {
@@ -20,36 +20,36 @@ extension RadarrReleaseExtension on RadarrRelease {
       return this.protocol == RadarrProtocol.TORRENT
           ? '${this.protocol!.readable} (${this.seeders ?? 0}/${this.leechers ?? 0})'
           : this.protocol!.readable;
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   Color get lunaProtocolColor {
-    if (this.protocol == RadarrProtocol.USENET) return LunaColours.accent;
+    if (this.protocol == RadarrProtocol.USENET) return ArrPilotColours.accent;
     int seeders = this.seeders ?? 0;
-    if (seeders > 10) return LunaColours.blue;
-    if (seeders > 0) return LunaColours.orange;
-    return LunaColours.red;
+    if (seeders > 10) return ArrPilotColours.blue;
+    if (seeders > 0) return ArrPilotColours.orange;
+    return ArrPilotColours.red;
   }
 
   String? get lunaIndexer {
     if (this.indexer != null && this.indexer!.isNotEmpty) return this.indexer;
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaAge {
     if (this.ageHours != null) return this.ageHours!.asTimeAgo();
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String? get lunaQuality {
     if (this.quality != null && this.quality!.quality != null)
       return this.quality!.quality!.name;
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String get lunaSize {
     if (this.size != null) return this.size.asBytes();
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 
   String? lunaCustomFormatScore({bool nullOnEmpty = false}) {
@@ -58,6 +58,6 @@ extension RadarrReleaseExtension on RadarrRelease {
       return '$_prefix${this.customFormatScore}';
     }
     if (nullOnEmpty) return null;
-    return LunaUI.TEXT_EMDASH;
+    return ArrPilotUI.TEXT_EMDASH;
   }
 }

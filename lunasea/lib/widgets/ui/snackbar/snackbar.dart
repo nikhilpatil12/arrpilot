@@ -2,33 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:arrpilot/core.dart';
 
-enum LunaSnackbarType {
+enum ArrPilotSnackbarType {
   SUCCESS,
   ERROR,
   INFO,
 }
 
-extension LunaSnackbarTypeExtension on LunaSnackbarType {
+extension ArrPilotSnackbarTypeExtension on ArrPilotSnackbarType {
   Color get color {
     switch (this) {
-      case LunaSnackbarType.SUCCESS:
-        return LunaColours.accent;
-      case LunaSnackbarType.ERROR:
-        return LunaColours.red;
-      case LunaSnackbarType.INFO:
-        return LunaColours.blue;
+      case ArrPilotSnackbarType.SUCCESS:
+        return ArrPilotColours.accent;
+      case ArrPilotSnackbarType.ERROR:
+        return ArrPilotColours.red;
+      case ArrPilotSnackbarType.INFO:
+        return ArrPilotColours.blue;
       default:
-        return LunaColours.purple;
+        return ArrPilotColours.purple;
     }
   }
 
   IconData get icon {
     switch (this) {
-      case LunaSnackbarType.SUCCESS:
+      case ArrPilotSnackbarType.SUCCESS:
         return Icons.check_circle_outline_rounded;
-      case LunaSnackbarType.ERROR:
+      case ArrPilotSnackbarType.ERROR:
         return Icons.error_outline_rounded;
-      case LunaSnackbarType.INFO:
+      case ArrPilotSnackbarType.INFO:
         return Icons.info_outline_rounded;
       default:
         return Icons.help_outline_rounded;
@@ -38,7 +38,7 @@ extension LunaSnackbarTypeExtension on LunaSnackbarType {
 
 Future<void> showLunaSnackBar({
   required String title,
-  required LunaSnackbarType type,
+  required ArrPilotSnackbarType type,
   required String message,
   Duration? duration,
   FlashPosition position = FlashPosition.bottom,
@@ -47,42 +47,42 @@ Future<void> showLunaSnackBar({
   Function? buttonOnPressed,
 }) async {
   showFlash(
-    context: LunaState.context,
+    context: ArrPilotState.context,
     duration: duration ?? Duration(seconds: showButton ? 4 : 2),
-    transitionDuration: const Duration(milliseconds: LunaUI.ANIMATION_SPEED),
+    transitionDuration: const Duration(milliseconds: ArrPilotUI.ANIMATION_SPEED),
     reverseTransitionDuration:
-        const Duration(milliseconds: LunaUI.ANIMATION_SPEED),
+        const Duration(milliseconds: ArrPilotUI.ANIMATION_SPEED),
     builder: (context, controller) => FlashBar(
       controller: controller,
       backgroundColor: Theme.of(context).primaryColor,
       behavior: FlashBehavior.floating,
-      margin: LunaUI.MARGIN_DEFAULT,
+      margin: ArrPilotUI.MARGIN_DEFAULT,
       position: position,
       shape: RoundedRectangleBorder(
         side: BorderSide(
           color:
-              LunaUI.shouldUseBorder ? LunaColours.white10 : Colors.transparent,
+              ArrPilotUI.shouldUseBorder ? ArrPilotColours.white10 : Colors.transparent,
         ),
-        borderRadius: BorderRadius.circular(LunaUI.BORDER_RADIUS),
+        borderRadius: BorderRadius.circular(ArrPilotUI.BORDER_RADIUS),
       ),
-      title: LunaText.title(
+      title: ArrPilotText.title(
         text: title,
         maxLines: 4,
         overflow: TextOverflow.ellipsis,
       ),
-      content: LunaText.subtitle(
+      content: ArrPilotText.subtitle(
         text: message,
         maxLines: 8,
         overflow: TextOverflow.ellipsis,
       ),
       shouldIconPulse: false,
       icon: Padding(
-        child: LunaIconButton(
+        child: ArrPilotIconButton(
           icon: type.icon,
           color: type.color,
         ),
         padding: const EdgeInsets.only(
-          left: LunaUI.DEFAULT_MARGIN_SIZE / 2,
+          left: ArrPilotUI.DEFAULT_MARGIN_SIZE / 2,
         ),
       ),
       primaryAction: showButton
@@ -90,8 +90,8 @@ Future<void> showLunaSnackBar({
               child: Text(
                 buttonText.toUpperCase(),
                 style: const TextStyle(
-                  fontWeight: LunaUI.FONT_WEIGHT_BOLD,
-                  color: LunaColours.accent,
+                  fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
+                  color: ArrPilotColours.accent,
                 ),
               ),
               onPressed: () {

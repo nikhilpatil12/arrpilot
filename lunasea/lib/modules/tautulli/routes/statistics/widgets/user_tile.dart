@@ -21,7 +21,7 @@ class TautulliStatisticsUserTile extends StatefulWidget {
 class _State extends State<TautulliStatisticsUserTile> {
   @override
   Widget build(BuildContext context) {
-    return LunaBlock(
+    return ArrPilotBlock(
       title: widget.data['friendly_name'] ?? 'Unknown User',
       body: _body(),
       posterUrl: context
@@ -29,7 +29,7 @@ class _State extends State<TautulliStatisticsUserTile> {
           .getImageURLFromPath(widget.data['user_thumb']),
       posterHeaders: context.watch<TautulliState>().headers,
       posterIsSquare: true,
-      posterPlaceholderIcon: LunaIcons.USER,
+      posterPlaceholderIcon: ArrPilotIcons.USER,
       onTap: _onTap,
     );
   }
@@ -44,15 +44,15 @@ class _State extends State<TautulliStatisticsUserTile> {
             style: TextStyle(
               color: context.watch<TautulliState>().statisticsType ==
                       TautulliStatsType.PLAYS
-                  ? LunaColours.accent
+                  ? ArrPilotColours.accent
                   : null,
               fontWeight: context.watch<TautulliState>().statisticsType ==
                       TautulliStatsType.PLAYS
-                  ? LunaUI.FONT_WEIGHT_BOLD
+                  ? ArrPilotUI.FONT_WEIGHT_BOLD
                   : null,
             ),
           ),
-          TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+          TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
           widget.data['total_duration'] != null
               ? TextSpan(
                   text: Duration(seconds: widget.data['total_duration'])
@@ -60,15 +60,15 @@ class _State extends State<TautulliStatisticsUserTile> {
                   style: TextStyle(
                     color: context.watch<TautulliState>().statisticsType ==
                             TautulliStatsType.DURATION
-                        ? LunaColours.accent
+                        ? ArrPilotColours.accent
                         : null,
                     fontWeight: context.watch<TautulliState>().statisticsType ==
                             TautulliStatsType.DURATION
-                        ? LunaUI.FONT_WEIGHT_BOLD
+                        ? ArrPilotUI.FONT_WEIGHT_BOLD
                         : null,
                   ),
                 )
-              : const TextSpan(text: LunaUI.TEXT_EMDASH),
+              : const TextSpan(text: ArrPilotUI.TEXT_EMDASH),
         ],
       ),
       widget.data['last_play'] != null
@@ -76,7 +76,7 @@ class _State extends State<TautulliStatisticsUserTile> {
               text:
                   'Last Streamed ${DateTime.fromMillisecondsSinceEpoch(widget.data['last_play'] * 1000).asAge()}',
             )
-          : const TextSpan(text: LunaUI.TEXT_EMDASH)
+          : const TextSpan(text: ArrPilotUI.TEXT_EMDASH)
     ];
   }
 

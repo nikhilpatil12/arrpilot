@@ -13,10 +13,10 @@ class TautulliLibrariesDetailsInformationGlobalStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LunaTableCard(
+    return ArrPilotTableCard(
       content: List.generate(
         watchtime.length,
-        (index) => LunaTableContent(
+        (index) => ArrPilotTableContent(
           title: _title(watchtime[index].queryDays),
           body: _body(watchtime[index].totalPlays, watchtime[index].totalTime!),
         ),

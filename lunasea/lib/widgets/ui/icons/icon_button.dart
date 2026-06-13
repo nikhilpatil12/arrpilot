@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:arrpilot/core.dart';
 
-class LunaIconButton extends StatelessWidget {
+class ArrPilotIconButton extends StatelessWidget {
   final IconData? icon;
   final double iconSize;
   final String? text;
@@ -10,16 +10,16 @@ class LunaIconButton extends StatelessWidget {
   final Color color;
   final Function? onPressed;
   final Function? onLongPress;
-  final LunaLoadingState? loadingState;
+  final ArrPilotLoadingState? loadingState;
   final AlignmentGeometry alignment;
   final MouseCursor? mouseCursor;
 
-  const LunaIconButton.arrow({
+  const ArrPilotIconButton.arrow({
     Key? key,
     this.text,
-    this.textSize = LunaUI.FONT_SIZE_H5,
-    this.icon = LunaIcons.ARROW_RIGHT,
-    this.iconSize = LunaUI.ICON_SIZE,
+    this.textSize = ArrPilotUI.FONT_SIZE_H5,
+    this.icon = ArrPilotIcons.ARROW_RIGHT,
+    this.iconSize = ArrPilotUI.ICON_SIZE,
     this.alignment = Alignment.center,
     this.color = Colors.white,
     this.onPressed,
@@ -28,12 +28,12 @@ class LunaIconButton extends StatelessWidget {
     this.mouseCursor,
   }) : super(key: key);
 
-  const LunaIconButton.appBar({
+  const ArrPilotIconButton.appBar({
     Key? key,
     this.text,
-    this.textSize = LunaUI.FONT_SIZE_H5,
+    this.textSize = ArrPilotUI.FONT_SIZE_H5,
     this.icon,
-    this.iconSize = LunaUI.ICON_SIZE,
+    this.iconSize = ArrPilotUI.ICON_SIZE,
     this.alignment = Alignment.center,
     this.color = Colors.white,
     this.onPressed,
@@ -42,12 +42,12 @@ class LunaIconButton extends StatelessWidget {
     this.mouseCursor,
   }) : super(key: key);
 
-  const LunaIconButton({
+  const ArrPilotIconButton({
     Key? key,
     this.text,
-    this.textSize = LunaUI.FONT_SIZE_H5,
+    this.textSize = ArrPilotUI.FONT_SIZE_H5,
     this.icon,
-    this.iconSize = LunaUI.ICON_SIZE,
+    this.iconSize = ArrPilotUI.ICON_SIZE,
     this.alignment = Alignment.center,
     this.color = Colors.white,
     this.onPressed,
@@ -60,7 +60,7 @@ class LunaIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: IconButton(
-        icon: loadingState == LunaLoadingState.ACTIVE ? _loader() : _icon(),
+        icon: loadingState == ArrPilotLoadingState.ACTIVE ? _loader() : _icon(),
         iconSize: iconSize,
         alignment: alignment,
         padding: EdgeInsets.zero,
@@ -77,7 +77,7 @@ class LunaIconButton extends StatelessWidget {
 
   Function? _onPressed() {
     if (onPressed == null) return null;
-    if (loadingState == LunaLoadingState.ACTIVE) return null;
+    if (loadingState == ArrPilotLoadingState.ACTIVE) return null;
     return () async {
       HapticFeedback.lightImpact();
       onPressed!();
@@ -86,7 +86,7 @@ class LunaIconButton extends StatelessWidget {
 
   Function? _onLongPress() {
     if (onLongPress == null) return null;
-    if (loadingState == LunaLoadingState.ACTIVE) return null;
+    if (loadingState == ArrPilotLoadingState.ACTIVE) return null;
     return () async {
       HapticFeedback.heavyImpact();
       onLongPress!();
@@ -94,8 +94,8 @@ class LunaIconButton extends StatelessWidget {
   }
 
   Widget _loader() {
-    return LunaLoader(
-      size: LunaUI.FONT_SIZE_H4,
+    return ArrPilotLoader(
+      size: ArrPilotUI.FONT_SIZE_H4,
       color: color,
       useSafeArea: false,
     );
@@ -103,7 +103,7 @@ class LunaIconButton extends StatelessWidget {
 
   Widget _icon() {
     assert((text != null || icon != null), 'both text and icon cannot be null');
-    if (loadingState == LunaLoadingState.ERROR) {
+    if (loadingState == ArrPilotLoadingState.ERROR) {
       return Icon(
         Icons.error_rounded,
         color: color,
@@ -119,7 +119,7 @@ class LunaIconButton extends StatelessWidget {
         textAlign: TextAlign.center,
         style: TextStyle(
           color: color,
-          fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+          fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
           fontSize: textSize,
         ),
       );

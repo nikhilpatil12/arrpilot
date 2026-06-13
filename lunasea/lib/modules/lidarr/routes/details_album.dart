@@ -21,7 +21,7 @@ class ArtistAlbumDetailsRoute extends StatefulWidget {
 }
 
 class _State extends State<ArtistAlbumDetailsRoute>
-    with LunaScrollControllerMixin {
+    with ArrPilotScrollControllerMixin {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _refreshKey = GlobalKey<RefreshIndicatorState>();
   Future<List<LidarrTrackData>>? _future;
@@ -35,7 +35,7 @@ class _State extends State<ArtistAlbumDetailsRoute>
   }
 
   Future<void> _refresh() async {
-    final api = LidarrAPI.from(LunaProfile.current);
+    final api = LidarrAPI.from(ArrPilotProfile.current);
     setState(() {
       _future = api.getAlbumTracks(widget.albumId);
     });
@@ -43,7 +43,7 @@ class _State extends State<ArtistAlbumDetailsRoute>
 
   @override
   Widget build(BuildContext context) {
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       body: _body,
       appBar: _appBar,
@@ -51,11 +51,11 @@ class _State extends State<ArtistAlbumDetailsRoute>
   }
 
   PreferredSizeWidget get _appBar {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'Album Details',
       scrollControllers: [scrollController],
       actions: <Widget>[
-        LunaIconButton(
+        ArrPilotIconButton(
           icon: Icons.search_rounded,
           onPressed: () async => _automaticSearch(),
           onLongPress: () async => _manualSearch(),
@@ -65,7 +65,7 @@ class _State extends State<ArtistAlbumDetailsRoute>
   }
 
   Widget get _body {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: _refresh,
@@ -76,7 +76,7 @@ class _State extends State<ArtistAlbumDetailsRoute>
             case ConnectionState.done:
               {
                 if (snapshot.hasError || snapshot.data == null) {
-                  return LunaMessage.error(onTap: _refresh);
+                  return ArrPilotMessage.error(onTap: _refresh);
                 }
                 return _list(snapshot.data!);
               }
@@ -84,7 +84,7 @@ class _State extends State<ArtistAlbumDetailsRoute>
             case ConnectionState.waiting:
             case ConnectionState.active:
             default:
-              return const LunaLoader();
+              return const ArrPilotLoader();
           }
         },
       ),
@@ -93,14 +93,14 @@ class _State extends State<ArtistAlbumDetailsRoute>
 
   Widget _list(List<LidarrTrackData> results) {
     if (results.isEmpty) {
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'No Tracks Found',
         buttonText: 'Refresh',
         onTap: _refresh,
       );
     }
 
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: scrollController,
       itemCount: results.length,
       itemBuilder: (context, index) {
@@ -113,14 +113,14 @@ class _State extends State<ArtistAlbumDetailsRoute>
   }
 
   Future<void> _automaticSearch() async {
-    LidarrAPI _api = LidarrAPI.from(LunaProfile.current);
+    LidarrAPI _api = LidarrAPI.from(ArrPilotProfile.current);
     _api.searchAlbums([widget.albumId]).then((_) {
       showLunaSuccessSnackBar(
         title: 'Searching...',
         message: '',
       );
     }).catchError((error, stack) {
-      LunaLogger().error('Failed to search for album', error, stack);
+      ArrPilotLogger().error('Failed to search for album', error, stack);
       showLunaErrorSnackBar(
         title: 'Failed to Search',
         error: error,

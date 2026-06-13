@@ -21,12 +21,12 @@ class TautulliActivityDetailsBottomActionBar extends StatelessWidget {
           TautulliSession? session = snapshot.data!.sessions!
               .firstWhereOrNull((element) => element.sessionKey == sessionKey);
           if (session != null)
-            return LunaBottomActionBar(
+            return ArrPilotBottomActionBar(
               actions: [
-                LunaButton.text(
+                ArrPilotButton.text(
                   text: 'tautulli.TerminateSession'.tr(),
                   icon: Icons.close_rounded,
-                  color: LunaColours.red,
+                  color: ArrPilotColours.red,
                   onTap: () async {
                     Tuple2<bool, String> _result =
                         await TautulliDialogs().terminateSession(context);

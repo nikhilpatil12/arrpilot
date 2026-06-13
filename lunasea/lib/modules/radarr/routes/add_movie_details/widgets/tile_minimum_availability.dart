@@ -12,10 +12,10 @@ class RadarrAddMovieDetailsMinimumAvailabilityTile extends StatelessWidget {
     return Selector<RadarrAddMovieDetailsState, RadarrAvailability>(
       selector: (_, state) => state.availability,
       builder: (context, availability, _) {
-        return LunaBlock(
+        return ArrPilotBlock(
           title: 'radarr.MinimumAvailability'.tr(),
           body: [TextSpan(text: availability.readable)],
-          trailing: const LunaIconButton.arrow(),
+          trailing: const ArrPilotIconButton.arrow(),
           onTap: () async {
             Tuple2<bool, RadarrAvailability?> values =
                 await RadarrDialogs().editMinimumAvailability(context);

@@ -19,7 +19,7 @@ class ReleasesRoute extends StatefulWidget {
   State<StatefulWidget> createState() => _State();
 }
 
-class _State extends State<ReleasesRoute> with LunaScrollControllerMixin {
+class _State extends State<ReleasesRoute> with ArrPilotScrollControllerMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -33,7 +33,7 @@ class _State extends State<ReleasesRoute> with LunaScrollControllerMixin {
         seriesId: widget.seriesId,
         seasonNumber: widget.seasonNumber,
       ),
-      builder: (context, _) => LunaScaffold(
+      builder: (context, _) => ArrPilotScaffold(
         scaffoldKey: _scaffoldKey,
         appBar: _appBar(context) as PreferredSizeWidget?,
         body: _body(context),
@@ -42,7 +42,7 @@ class _State extends State<ReleasesRoute> with LunaScrollControllerMixin {
   }
 
   Widget _appBar(BuildContext context) {
-    return LunaAppBar(
+    return ArrPilotAppBar(
       title: 'sonarr.Releases'.tr(),
       scrollControllers: [scrollController],
       bottom: SonarrReleasesSearchBar(scrollController: scrollController),
@@ -53,7 +53,7 @@ class _State extends State<ReleasesRoute> with LunaScrollControllerMixin {
   }
 
   Widget _body(BuildContext context) {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: () async {
@@ -65,18 +65,18 @@ class _State extends State<ReleasesRoute> with LunaScrollControllerMixin {
         builder: (context, AsyncSnapshot<List<SonarrRelease>> snapshot) {
           if (snapshot.hasError) {
             if (snapshot.connectionState != ConnectionState.waiting) {
-              LunaLogger().error(
+              ArrPilotLogger().error(
                 'Unable to fetch Sonarr releases',
                 snapshot.error,
                 snapshot.stackTrace,
               );
             }
-            return LunaMessage.error(
+            return ArrPilotMessage.error(
               onTap: () => _refreshKey.currentState!.show,
             );
           }
           if (snapshot.hasData) return _list(context, snapshot.data);
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -86,7 +86,7 @@ class _State extends State<ReleasesRoute> with LunaScrollControllerMixin {
     return Consumer<SonarrReleasesState>(
       builder: (context, state, _) {
         if (releases?.isEmpty ?? true) {
-          return LunaMessage(
+          return ArrPilotMessage(
             text: 'sonarr.NoReleasesFound'.tr(),
             buttonText: 'lunasea.Refresh'.tr(),
             onTap: _refreshKey.currentState!.show,
@@ -96,12 +96,12 @@ class _State extends State<ReleasesRoute> with LunaScrollControllerMixin {
           releases ?? [],
           state,
         );
-        return LunaListViewBuilder(
+        return ArrPilotListViewBuilder(
           controller: scrollController,
           itemCount: _processed.isEmpty ? 1 : _processed.length,
           itemBuilder: (context, index) {
             if (_processed.isEmpty) {
-              return LunaMessage.inList(text: 'sonarr.NoReleasesFound'.tr());
+              return ArrPilotMessage.inList(text: 'sonarr.NoReleasesFound'.tr());
             }
             return SonarrReleasesTile(release: _processed[index]);
           },

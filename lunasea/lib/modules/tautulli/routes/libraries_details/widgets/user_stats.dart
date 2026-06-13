@@ -15,7 +15,7 @@ class TautulliLibrariesDetailsUserStats extends StatefulWidget {
 }
 
 class _State extends State<TautulliLibrariesDetailsUserStats>
-    with AutomaticKeepAliveClientMixin, LunaLoadCallbackMixin {
+    with AutomaticKeepAliveClientMixin, ArrPilotLoadCallbackMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       GlobalKey<RefreshIndicatorState>();
@@ -32,14 +32,14 @@ class _State extends State<TautulliLibrariesDetailsUserStats>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return LunaScaffold(
+    return ArrPilotScaffold(
       scaffoldKey: _scaffoldKey,
       body: _body(),
     );
   }
 
   Widget _body() {
-    return LunaRefreshIndicator(
+    return ArrPilotRefreshIndicator(
       context: context,
       key: _refreshKey,
       onRefresh: loadCallback,
@@ -50,15 +50,15 @@ class _State extends State<TautulliLibrariesDetailsUserStats>
             (context, AsyncSnapshot<List<TautulliLibraryUserStats>> snapshot) {
           if (snapshot.hasError) {
             if (snapshot.connectionState != ConnectionState.waiting)
-              LunaLogger().error(
+              ArrPilotLogger().error(
                 'Failed to fetch library watch stats',
                 snapshot.error,
                 snapshot.stackTrace,
               );
-            return LunaMessage.error(onTap: _refreshKey.currentState!.show);
+            return ArrPilotMessage.error(onTap: _refreshKey.currentState!.show);
           }
           if (snapshot.hasData) return _list(snapshot.data);
-          return const LunaLoader();
+          return const ArrPilotLoader();
         },
       ),
     );
@@ -66,12 +66,12 @@ class _State extends State<TautulliLibrariesDetailsUserStats>
 
   Widget _list(List<TautulliLibraryUserStats>? stats) {
     if ((stats?.length ?? 0) == 0)
-      return LunaMessage(
+      return ArrPilotMessage(
         text: 'No Users Found',
         buttonText: 'Refresh',
         onTap: _refreshKey.currentState?.show,
       );
-    return LunaListViewBuilder(
+    return ArrPilotListViewBuilder(
       controller: TautulliLibrariesDetailsNavigationBar.scrollControllers[1],
       itemCount: stats!.length,
       itemBuilder: (context, index) =>

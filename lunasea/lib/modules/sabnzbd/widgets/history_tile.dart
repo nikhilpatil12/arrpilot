@@ -21,7 +21,7 @@ class SABnzbdHistoryTile extends StatefulWidget {
 class _State extends State<SABnzbdHistoryTile> {
   @override
   Widget build(BuildContext context) {
-    return LunaExpandableListTile(
+    return ArrPilotExpandableListTile(
       title: widget.data.name,
       collapsedSubtitles: [
         _subtitle1(),
@@ -37,9 +37,9 @@ class _State extends State<SABnzbdHistoryTile> {
   TextSpan _subtitle1() {
     return TextSpan(children: [
       TextSpan(text: widget.data.completeTimeString),
-      TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+      TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
       TextSpan(text: widget.data.sizeReadable),
-      TextSpan(text: LunaUI.TEXT_BULLET.pad()),
+      TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
       TextSpan(text: widget.data.category),
     ]);
   }
@@ -49,40 +49,40 @@ class _State extends State<SABnzbdHistoryTile> {
       text: widget.data.statusString,
       style: TextStyle(
         color: widget.data.statusColor,
-        fontWeight: LunaUI.FONT_WEIGHT_BOLD,
+        fontWeight: ArrPilotUI.FONT_WEIGHT_BOLD,
       ),
     );
   }
 
-  List<LunaTableContent> _expandedTableContent() {
+  List<ArrPilotTableContent> _expandedTableContent() {
     return [
-      LunaTableContent(title: 'age', body: widget.data.completeTimeString),
-      LunaTableContent(title: 'size', body: widget.data.sizeReadable),
-      LunaTableContent(title: 'category', body: widget.data.category),
-      LunaTableContent(title: 'path', body: widget.data.storageLocation),
+      ArrPilotTableContent(title: 'age', body: widget.data.completeTimeString),
+      ArrPilotTableContent(title: 'size', body: widget.data.sizeReadable),
+      ArrPilotTableContent(title: 'category', body: widget.data.category),
+      ArrPilotTableContent(title: 'path', body: widget.data.storageLocation),
     ];
   }
 
-  List<LunaHighlightedNode> _expandedHighlightedNodes() {
+  List<ArrPilotHighlightedNode> _expandedHighlightedNodes() {
     return [
-      LunaHighlightedNode(
+      ArrPilotHighlightedNode(
         text: widget.data.status,
         backgroundColor: widget.data.statusColor,
       ),
     ];
   }
 
-  List<LunaButton> _expandedButtons() {
+  List<ArrPilotButton> _expandedButtons() {
     return [
-      LunaButton.text(
+      ArrPilotButton.text(
         text: 'Stages',
         icon: Icons.subject_rounded,
         onTap: () async => _enterStages(),
       ),
-      LunaButton.text(
+      ArrPilotButton.text(
         text: 'Delete',
         icon: Icons.delete_rounded,
-        color: LunaColours.red,
+        color: ArrPilotColours.red,
         onTap: () async => _delete(),
       ),
     ];
@@ -109,14 +109,14 @@ class _State extends State<SABnzbdHistoryTile> {
           _delete();
           break;
         default:
-          LunaLogger().warning('Unknown Case: ${values[1]}');
+          ArrPilotLogger().warning('Unknown Case: ${values[1]}');
       }
   }
 
   Future<void> _delete() async {
     List values = await SABnzbdDialogs.deleteHistory(context);
     if (values[0]) {
-      SABnzbdAPI.from(LunaProfile.current)
+      SABnzbdAPI.from(ArrPilotProfile.current)
           .deleteHistory(widget.data.nzoId)
           .then((_) => _handleRefresh('History Deleted'))
           .catchError((error) => showLunaErrorSnackBar(
@@ -129,7 +129,7 @@ class _State extends State<SABnzbdHistoryTile> {
   Future<void> _password() async {
     List values = await SABnzbdDialogs.setPassword(context);
     if (values[0])
-      SABnzbdAPI.from(LunaProfile.current)
+      SABnzbdAPI.from(ArrPilotProfile.current)
           .retryFailedJobPassword(widget.data.nzoId, values[1])
           .then((_) => _handleRefresh('Password Set / Retrying...'))
           .catchError((error) => showLunaErrorSnackBar(
@@ -139,7 +139,7 @@ class _State extends State<SABnzbdHistoryTile> {
   }
 
   Future<void> _retry() async {
-    SABnzbdAPI.from(LunaProfile.current)
+    SABnzbdAPI.from(ArrPilotProfile.current)
         .retryFailedJob(widget.data.nzoId)
         .then((_) => _handleRefresh('Retrying Job'))
         .catchError((error) => showLunaErrorSnackBar(
