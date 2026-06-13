@@ -1,10 +1,47 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file.
 
-## [11.0.0](https://github.com/jagandeepbrar/lunasea/tree/v11.0.0) (2025-04-03)
+---
 
-**This is the final release of LunaSea.**
+## ArrPilot Fork
+
+### [12.0.0] - TBD
+
+**ArrPilot - First Release**
+
+This is the initial release of ArrPilot, a fork of LunaSea v11.0.0.
+
+#### Added
+- Complete rebrand from LunaSea to ArrPilot
+- Updated package namespace and bundle identifiers
+- Minimal test infrastructure (7 unit tests)
+- Updated CI/CD pipelines for ArrPilot
+- GPL-3.0 compliance and attribution
+
+#### Changed
+- Package name: `lunasea` → `arrpilot`
+- Bundle ID (iOS/macOS): `app.lunasea.lunasea` → `com.gemridge.arrpilot`
+- Package name (Android): `app.lunasea.lunasea` → `com.gemridge.arrpilot`
+- All class names: `Luna*` → `ArrPilot*`
+- Localization keys: `lunasea.*` → `arrpilot.*`
+
+#### Security
+- Upgraded Node.js 14 → 18 in cloud functions
+- Fixed 29 security vulnerabilities in dependencies
+- All critical and high-severity CVEs eliminated
+
+#### Migration from LunaSea
+- Users must perform fresh install (no update path)
+- Export/import functionality for data migration (coming soon)
+
+---
+
+## LunaSea History
+
+### [11.0.0](https://github.com/jagandeepbrar/lunasea/tree/v11.0.0) (2025-04-03)
+
+**This was the final release of LunaSea.**
 
 ### [10.2.6](https://github.com/jagandeepbrar/lunasea/compare/v10.2.5...v10.2.6) (2023-10-04)
 
