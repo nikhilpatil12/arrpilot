@@ -74,14 +74,16 @@ flutter:
     - family: ArrPilotBrandIcons
       fonts:
         - asset: assets/ArrPilotBrandIcons.ttf
+# TODO: Replace LunaSea icon/splash assets with ArrPilot branding before production
+# See PHASE2_ASSETS_BRANDING.md for requirements
 flutter_icons:
   android: true
   ios: true
-  image_path: assets/icon/icon.png
+  image_path: assets/icon/icon.png  # PLACEHOLDER: LunaSea icon
   adaptive_icon_background: "#32323E"
-  adaptive_icon_foreground: assets/icon/icon_adaptive.png
+  adaptive_icon_foreground: assets/icon/icon_adaptive.png  # PLACEHOLDER: LunaSea adaptive
 flutter_native_splash:
-  image: assets/images/branding_full.png
+  image: assets/images/branding_full.png  # PLACEHOLDER: LunaSea splash logo
   color: "#32323E"
 msix_config:
   architecture: x64
