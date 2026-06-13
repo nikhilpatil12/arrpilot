@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>LunaSea</string>
+	<string>ArrPilot</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -54,9 +54,9 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>ArrPilot would like to access your location for determining local-remote host switching</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>LunaSea would like to save photos from the app to your gallery</string>
+	<string>ArrPilot would like to save photos from the app to your gallery</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>ArrPilot would like to access your photo gallery for uploading images to LunaSea</string>
+	<string>ArrPilot would like to access your photo gallery for uploading images to ArrPilot</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
