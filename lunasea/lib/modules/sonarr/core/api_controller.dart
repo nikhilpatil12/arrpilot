@@ -635,7 +635,7 @@ class SonarrAPIController {
           .then((_) {
         if (showSnackbar)
           showLunaSuccessSnackBar(
-            title: 'lunasea.Refreshing'.tr(),
+            title: 'arrpilot.Refreshing'.tr(),
             message: series.title,
           );
         return true;

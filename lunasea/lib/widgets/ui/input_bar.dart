@@ -91,7 +91,7 @@ class _State extends State<ArrPilotTextInputBar> {
       );
 
   InputDecoration get _sharedInputDecoration => InputDecoration(
-        labelText: widget.labelText ?? 'lunasea.SearchTextBar'.tr(),
+        labelText: widget.labelText ?? 'arrpilot.SearchTextBar'.tr(),
         labelStyle: const TextStyle(
           color: ArrPilotColours.grey,
           decoration: TextDecoration.none,

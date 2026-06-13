@@ -44,7 +44,7 @@ class ArrPilotMessage extends StatelessWidget {
     return ArrPilotMessage(
       key: key,
       text: text,
-      buttonText: 'lunasea.GoBack'.tr(),
+      buttonText: 'arrpilot.GoBack'.tr(),
       onTap: () {
         if (ArrPilotRouter.router.canPop()) {
           ArrPilotRouter.router.pop();
@@ -64,8 +64,8 @@ class ArrPilotMessage extends StatelessWidget {
   }) {
     return ArrPilotMessage(
       key: key,
-      text: 'lunasea.AnErrorHasOccurred'.tr(),
-      buttonText: 'lunasea.TryAgain'.tr(),
+      text: 'arrpilot.AnErrorHasOccurred'.tr(),
+      buttonText: 'arrpilot.TryAgain'.tr(),
       onTap: onTap,
       useSafeArea: useSafeArea,
     );
@@ -80,8 +80,8 @@ class ArrPilotMessage extends StatelessWidget {
   }) {
     return ArrPilotMessage(
       key: key,
-      text: 'lunasea.ModuleIsNotEnabled'.tr(args: [module]),
-      buttonText: 'lunasea.ReturnToDashboard'.tr(),
+      text: 'arrpilot.ModuleIsNotEnabled'.tr(args: [module]),
+      buttonText: 'arrpilot.ReturnToDashboard'.tr(),
       onTap: ArrPilotModule.DASHBOARD.launch,
       useSafeArea: useSafeArea,
     );

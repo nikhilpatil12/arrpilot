@@ -5,7 +5,7 @@ extension SonarrSeriesSeasonExtension on SonarrSeriesSeason {
   String get lunaTitle {
     if (this.seasonNumber == 0) return 'sonarr.Specials'.tr();
     return 'sonarr.SeasonNumber'.tr(args: [
-      this.seasonNumber?.toString() ?? 'lunasea.Unknown'.tr(),
+      this.seasonNumber?.toString() ?? 'arrpilot.Unknown'.tr(),
     ]);
   }
 

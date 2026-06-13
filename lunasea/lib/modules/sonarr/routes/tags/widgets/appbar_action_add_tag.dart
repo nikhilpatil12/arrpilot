@@ -14,7 +14,7 @@ class SonarrTagsAppBarActionAddTag extends StatelessWidget {
   Widget build(BuildContext context) {
     if (asDialogButton)
       return ArrPilotDialog.button(
-        text: 'lunasea.Add'.tr(),
+        text: 'arrpilot.Add'.tr(),
         textColor: Colors.white,
         onPressed: () async => _onPressed(context),
       );

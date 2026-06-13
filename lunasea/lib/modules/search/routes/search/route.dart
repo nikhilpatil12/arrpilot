@@ -70,7 +70,7 @@ class _State extends State<SearchIndexerRoute> with ArrPilotScrollControllerMixi
         context.read<SearchState>().activeSubcategory;
     if (category != null) title = category.name!;
     if (category != null && subcategory != null) {
-      title = '$title > ${subcategory.name ?? 'lunasea.Unknown'.tr()}';
+      title = '$title > ${subcategory.name ?? 'arrpilot.Unknown'.tr()}';
     }
     return ArrPilotAppBar(
       title: title,

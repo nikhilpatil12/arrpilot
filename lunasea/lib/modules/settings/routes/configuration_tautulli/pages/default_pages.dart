@@ -48,7 +48,7 @@ class _State extends State<ConfigurationTautulliDefaultPagesRoute>
     const _db = TautulliDatabase.NAVIGATION_INDEX;
     return _db.listenableBuilder(
       builder: (context, _) => ArrPilotBlock(
-        title: 'lunasea.Home'.tr(),
+        title: 'arrpilot.Home'.tr(),
         body: [TextSpan(text: TautulliNavigationBar.titles[_db.read()])],
         trailing: ArrPilotIconButton(icon: TautulliNavigationBar.icons[_db.read()]),
         onTap: () async {

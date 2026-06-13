@@ -18,7 +18,7 @@ class DashboardDialogs {
 
     await ArrPilotDialog.dialog(
       context: context,
-      title: 'lunasea.Page'.tr(),
+      title: 'arrpilot.Page'.tr(),
       content: List.generate(
         HomeNavigationBar.titles.length,
         (index) => ArrPilotDialog.tile(
@@ -53,7 +53,7 @@ class DashboardDialogs {
       title: 'dashboard.PastDays'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Set'.tr(),
+          text: 'arrpilot.Set'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
@@ -101,7 +101,7 @@ class DashboardDialogs {
       title: 'dashboard.FutureDays'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Set'.tr(),
+          text: 'arrpilot.Set'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],

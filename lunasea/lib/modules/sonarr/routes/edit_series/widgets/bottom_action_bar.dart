@@ -14,7 +14,7 @@ class SonarrEditSeriesActionBar extends StatelessWidget {
       actions: [
         ArrPilotButton(
           type: ArrPilotButtonType.TEXT,
-          text: 'lunasea.Update'.tr(),
+          text: 'arrpilot.Update'.tr(),
           icon: Icons.edit_rounded,
           loadingState: context.watch<SonarrSeriesEditState>().state,
           onTap: () async => _updateOnTap(context),

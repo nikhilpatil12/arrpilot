@@ -75,7 +75,7 @@ class _State extends State<QueueRoute> with ArrPilotScrollControllerMixin {
     if (queue.records!.isEmpty) {
       return ArrPilotMessage(
         text: 'sonarr.EmptyQueue'.tr(),
-        buttonText: 'lunasea.Refresh'.tr(),
+        buttonText: 'arrpilot.Refresh'.tr(),
         onTap: _refreshKey.currentState!.show,
       );
     }

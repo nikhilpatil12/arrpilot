@@ -147,7 +147,7 @@ extension ArrPilotModuleMetadataExtension on ArrPilotModule {
   String get title {
     switch (this) {
       case ArrPilotModule.DASHBOARD:
-        return 'lunasea.Dashboard'.tr();
+        return 'arrpilot.Dashboard'.tr();
       case ArrPilotModule.LIDARR:
         return 'Lidarr';
       case ArrPilotModule.NZBGET:
@@ -159,7 +159,7 @@ extension ArrPilotModuleMetadataExtension on ArrPilotModule {
       case ArrPilotModule.SEARCH:
         return 'search.Search'.tr();
       case ArrPilotModule.SETTINGS:
-        return 'lunasea.Settings'.tr();
+        return 'arrpilot.Settings'.tr();
       case ArrPilotModule.SONARR:
         return 'Sonarr';
       case ArrPilotModule.TAUTULLI:
@@ -169,7 +169,7 @@ extension ArrPilotModuleMetadataExtension on ArrPilotModule {
       case ArrPilotModule.WAKE_ON_LAN:
         return 'Wake on LAN';
       case ArrPilotModule.EXTERNAL_MODULES:
-        return 'lunasea.ExternalModules'.tr();
+        return 'arrpilot.ExternalModules'.tr();
     }
   }
 
@@ -292,7 +292,7 @@ extension ArrPilotModuleMetadataExtension on ArrPilotModule {
   String get description {
     switch (this) {
       case ArrPilotModule.DASHBOARD:
-        return 'lunasea.Dashboard'.tr();
+        return 'arrpilot.Dashboard'.tr();
       case ArrPilotModule.LIDARR:
         return 'Manage Music';
       case ArrPilotModule.NZBGET:
@@ -433,6 +433,8 @@ extension ArrPilotModuleWebhookExtension on ArrPilotModule {
   }
 
   String? get webhookDocs {
+    // TODO: Replace with ArrPilot documentation URLs when available
+    // Currently referencing LunaSea docs as webhook setup process is identical
     switch (this) {
       case ArrPilotModule.LIDARR:
         return 'https://docs.lunasea.app/lunasea/notifications/lidarr';
@@ -503,7 +505,7 @@ extension ArrPilotModuleExtension on ArrPilotModule {
   }
 
   Widget informationBanner() {
-    String key = 'LUNASEA_MODULE_INFORMATION_${this.key}';
+    String key = 'ARRPILOT_MODULE_INFORMATION_${this.key}';
     void markSeen() => ArrPilotBox.alerts.update(key, false);
 
     return ArrPilotBox.alerts.listenableBuilder(
@@ -525,7 +527,7 @@ extension ArrPilotModuleExtension on ArrPilotModule {
                 ),
               if (this.website != null)
                 ArrPilotButton.text(
-                  text: 'lunasea.Website'.tr(),
+                  text: 'arrpilot.Website'.tr(),
                   icon: Icons.home_rounded,
                   onTap: this.website!.openLink,
                 ),

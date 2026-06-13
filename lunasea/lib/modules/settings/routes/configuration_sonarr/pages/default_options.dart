@@ -56,7 +56,7 @@ class _State extends State<ConfigurationSonarrDefaultOptionsRoute>
       builder: (context, _) {
         ArrPilotListViewOption _view = _db.read();
         return ArrPilotBlock(
-          title: 'lunasea.View'.tr(),
+          title: 'arrpilot.View'.tr(),
           body: [TextSpan(text: _view.readable)],
           trailing: const ArrPilotIconButton.arrow(),
           onTap: () async {
@@ -69,7 +69,7 @@ class _State extends State<ConfigurationSonarrDefaultOptionsRoute>
 
             Tuple2<bool, int> values = await SettingsDialogs().setDefaultOption(
               context,
-              title: 'lunasea.View'.tr(),
+              title: 'arrpilot.View'.tr(),
               values: titles,
               icons: icons,
             );
@@ -124,8 +124,8 @@ class _State extends State<ConfigurationSonarrDefaultOptionsRoute>
         body: [
           TextSpan(
             text: _db.read()
-                ? 'lunasea.Ascending'.tr()
-                : 'lunasea.Descending'.tr(),
+                ? 'arrpilot.Ascending'.tr()
+                : 'arrpilot.Descending'.tr(),
           ),
         ],
         trailing: ArrPilotSwitch(
@@ -200,8 +200,8 @@ class _State extends State<ConfigurationSonarrDefaultOptionsRoute>
         body: [
           TextSpan(
             text: _db.read()
-                ? 'lunasea.Ascending'.tr()
-                : 'lunasea.Descending'.tr(),
+                ? 'arrpilot.Ascending'.tr()
+                : 'arrpilot.Descending'.tr(),
           ),
         ],
         trailing: ArrPilotSwitch(

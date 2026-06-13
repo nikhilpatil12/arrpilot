@@ -7,7 +7,7 @@ import 'package:arrpilot/types/exception.dart';
 import 'package:arrpilot/types/log_type.dart';
 
 class ArrPilotLogger {
-  static String get checkLogsMessage => 'lunasea.CheckLogsMessage'.tr();
+  static String get checkLogsMessage => 'arrpilot.CheckLogsMessage'.tr();
 
   void initialize() {
     FlutterError.onError = (details) async {

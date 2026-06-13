@@ -14,7 +14,7 @@ class SonarrSeriesEditTagsTile extends StatelessWidget {
       body: [
         TextSpan(
           text: (context.watch<SonarrSeriesEditState>().tags?.isEmpty ?? true)
-              ? 'lunasea.NotSet'.tr()
+              ? 'arrpilot.NotSet'.tr()
               : context
                   .watch<SonarrSeriesEditState>()
                   .tags

@@ -23,7 +23,7 @@ class _State extends State<RadarrCatalogueSearchBarViewButton> {
       context: context,
       child: Consumer<RadarrState>(
         builder: (context, state, _) => ArrPilotPopupMenuButton<ArrPilotListViewOption>(
-          tooltip: 'lunasea.View'.tr(),
+          tooltip: 'arrpilot.View'.tr(),
           icon: ArrPilotIcons.VIEW,
           onSelected: (result) {
             state.moviesViewType = result;

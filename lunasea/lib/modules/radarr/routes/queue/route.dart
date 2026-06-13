@@ -84,7 +84,7 @@ class _State extends State<QueueRoute>
     if ((queue.records?.length ?? 0) == 0) {
       return ArrPilotMessage(
         text: 'Empty Queue',
-        buttonText: 'lunasea.Refresh'.tr(),
+        buttonText: 'arrpilot.Refresh'.tr(),
         onTap: _refreshKey.currentState?.show,
       );
     }

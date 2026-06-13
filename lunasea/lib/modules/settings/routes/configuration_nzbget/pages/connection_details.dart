@@ -60,7 +60,7 @@ class _State extends State<ConfigurationNZBGetConnectionDetailsRoute>
     String host = ArrPilotProfile.current.nzbgetHost;
     return ArrPilotBlock(
       title: 'settings.Host'.tr(),
-      body: [TextSpan(text: host.isEmpty ? 'lunasea.NotSet'.tr() : host)],
+      body: [TextSpan(text: host.isEmpty ? 'arrpilot.NotSet'.tr() : host)],
       trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {
         Tuple2<bool, String> _values = await SettingsDialogs().editHost(
@@ -81,7 +81,7 @@ class _State extends State<ConfigurationNZBGetConnectionDetailsRoute>
     return ArrPilotBlock(
       title: 'settings.Username'.tr(),
       body: [
-        TextSpan(text: username.isEmpty ? 'lunasea.NotSet'.tr() : username),
+        TextSpan(text: username.isEmpty ? 'arrpilot.NotSet'.tr() : username),
       ],
       trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {
@@ -106,7 +106,7 @@ class _State extends State<ConfigurationNZBGetConnectionDetailsRoute>
       body: [
         TextSpan(
           text: password.isEmpty
-              ? 'lunasea.NotSet'.tr()
+              ? 'arrpilot.NotSet'.tr()
               : ArrPilotUI.TEXT_OBFUSCATED_PASSWORD,
         ),
       ],

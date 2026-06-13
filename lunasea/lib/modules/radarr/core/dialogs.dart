@@ -18,7 +18,7 @@ class RadarrDialogs {
 
     await ArrPilotDialog.dialog(
       context: context,
-      title: 'lunasea.Settings'.tr(),
+      title: 'arrpilot.Settings'.tr(),
       content: List.generate(
         RadarrGlobalSettingsType.values.length,
         (index) => ArrPilotDialog.tile(
@@ -604,7 +604,7 @@ class RadarrDialogs {
       title: 'Remove Movie',
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Remove'.tr(),
+          text: 'arrpilot.Remove'.tr(),
           textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
@@ -681,10 +681,10 @@ class RadarrDialogs {
   Future<void> addMovieOptions(BuildContext context) async {
     await ArrPilotDialog.dialog(
       context: context,
-      title: 'lunasea.Options'.tr(),
+      title: 'arrpilot.Options'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Close'.tr(),
+          text: 'arrpilot.Close'.tr(),
           onPressed: () => Navigator.of(context, rootNavigator: true).pop(),
         ),
       ],
@@ -715,10 +715,10 @@ class RadarrDialogs {
       context: ArrPilotState.context,
       title: 'radarr.MoveFiles'.tr(),
       contentPadding: ArrPilotDialog.textDialogContentPadding(),
-      cancelButtonText: 'lunasea.No'.tr(),
+      cancelButtonText: 'arrpilot.No'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Yes'.tr(),
+          text: 'arrpilot.Yes'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],

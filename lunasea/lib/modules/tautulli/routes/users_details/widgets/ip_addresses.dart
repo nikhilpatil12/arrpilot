@@ -94,7 +94,7 @@ class _State extends State<TautulliUserDetailsIPAddresses>
       body: [
         TextSpan(
           children: [
-            TextSpan(text: record.lastSeen?.asAge() ?? 'lunasea.Unknown'.tr()),
+            TextSpan(text: record.lastSeen?.asAge() ?? 'arrpilot.Unknown'.tr()),
             TextSpan(text: ArrPilotUI.TEXT_BULLET.pad()),
             TextSpan(text: _count == 1 ? '1 Play' : '$_count Plays'),
           ],

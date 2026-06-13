@@ -40,7 +40,7 @@ extension SonarrSeriesExtension on SonarrSeries {
 
   String lunaNextAiring([bool short = false]) {
     if (this.status == 'ended') return 'sonarr.SeriesEnded'.tr();
-    if (this.nextAiring == null) return 'lunasea.Unknown'.tr();
+    if (this.nextAiring == null) return 'arrpilot.Unknown'.tr();
     return this.nextAiring!.asDateTime(
           showSeconds: false,
           delimiter: '@'.pad(),
@@ -59,14 +59,14 @@ extension SonarrSeriesExtension on SonarrSeries {
 
   String get lunaDateAdded {
     if (this.added == null) {
-      return 'lunasea.Unknown'.tr();
+      return 'arrpilot.Unknown'.tr();
     }
     return DateFormat('MMMM dd, y').format(this.added!.toLocal());
   }
 
   String get lunaDateAddedShort {
     if (this.added == null) {
-      return 'lunasea.Unknown'.tr();
+      return 'arrpilot.Unknown'.tr();
     }
     return DateFormat('MMM dd, y').format(this.added!.toLocal());
   }
@@ -83,19 +83,19 @@ extension SonarrSeriesExtension on SonarrSeries {
           : DateFormat('hh:mm a').format(this.previousAiring!.toLocal());
     }
     if (this.airTime == null) {
-      return 'lunasea.Unknown'.tr();
+      return 'arrpilot.Unknown'.tr();
     }
     return this.airTime;
   }
 
   String get lunaSeriesType {
-    if (this.seriesType == null) return 'lunasea.Unknown'.tr();
+    if (this.seriesType == null) return 'arrpilot.Unknown'.tr();
     return this.seriesType!.value!.toTitleCase();
   }
 
   String get lunaSeasonCount {
     if (this.statistics?.seasonCount == null) {
-      return 'lunasea.Unknown'.tr();
+      return 'arrpilot.Unknown'.tr();
     }
     return this.statistics!.seasonCount == 1
         ? 'sonarr.OneSeason'.tr()

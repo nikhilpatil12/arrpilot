@@ -92,7 +92,7 @@ class SettingsDialogs {
       title: 'settings.Host'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Set'.tr(),
+          text: 'arrpilot.Set'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
@@ -160,7 +160,7 @@ class SettingsDialogs {
       title: 'settings.Host'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Set'.tr(),
+          text: 'arrpilot.Set'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
@@ -217,7 +217,7 @@ class SettingsDialogs {
       title: 'settings.DeleteIndexer'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Delete'.tr(),
+          text: 'arrpilot.Delete'.tr(),
           textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
@@ -243,7 +243,7 @@ class SettingsDialogs {
       title: 'settings.DeleteModule'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Delete'.tr(),
+          text: 'arrpilot.Delete'.tr(),
           textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
@@ -269,7 +269,7 @@ class SettingsDialogs {
       title: 'settings.DeleteHeader'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Delete'.tr(),
+          text: 'arrpilot.Delete'.tr(),
           textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
@@ -329,7 +329,7 @@ class SettingsDialogs {
       title: 'settings.CustomHeader'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Add'.tr(),
+          text: 'arrpilot.Add'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
@@ -385,7 +385,7 @@ class SettingsDialogs {
       title: 'settings.BasicAuthentication'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Add'.tr(),
+          text: 'arrpilot.Add'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
@@ -448,7 +448,7 @@ class SettingsDialogs {
       title: 'settings.ClearLogs'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Clear'.tr(),
+          text: 'arrpilot.Clear'.tr(),
           onPressed: () => _setValues(true),
           textColor: ArrPilotColours.red,
         ),
@@ -480,7 +480,7 @@ class SettingsDialogs {
       title: 'settings.DeleteAccount'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Delete'.tr(),
+          text: 'arrpilot.Delete'.tr(),
           onPressed: () => _setValues(true),
           textColor: ArrPilotColours.red,
         ),
@@ -542,7 +542,7 @@ class SettingsDialogs {
       title: 'settings.UpdateEmail'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Update'.tr(),
+          text: 'arrpilot.Update'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
@@ -601,7 +601,7 @@ class SettingsDialogs {
       title: 'settings.UpdatePassword'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Update'.tr(),
+          text: 'arrpilot.Update'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
@@ -661,7 +661,7 @@ class SettingsDialogs {
       title: 'settings.AddProfile'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Add'.tr(),
+          text: 'arrpilot.Add'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
@@ -739,7 +739,7 @@ class SettingsDialogs {
       title: 'settings.RenameProfile'.tr(),
       buttons: [
         ArrPilotDialog.button(
-            text: 'lunasea.Rename'.tr(),
+            text: 'arrpilot.Rename'.tr(),
             onPressed: () => _setValues(true),
             textColor: ArrPilotColours.accent),
       ],
@@ -943,7 +943,7 @@ class SettingsDialogs {
       title: 'settings.BroadcastAddress'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Set'.tr(),
+          text: 'arrpilot.Set'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
@@ -1003,7 +1003,7 @@ class SettingsDialogs {
       title: 'settings.MACAddress'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Set'.tr(),
+          text: 'arrpilot.Set'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
@@ -1057,7 +1057,7 @@ class SettingsDialogs {
       title: 'settings.DismissBanners'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Dismiss'.tr(),
+          text: 'arrpilot.Dismiss'.tr(),
           textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
@@ -1085,7 +1085,7 @@ class SettingsDialogs {
       title: 'settings.ClearImageCache'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Clear'.tr(),
+          text: 'arrpilot.Clear'.tr(),
           textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
@@ -1113,7 +1113,7 @@ class SettingsDialogs {
       title: 'settings.ClearConfiguration'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Clear'.tr(),
+          text: 'arrpilot.Clear'.tr(),
           textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
@@ -1147,7 +1147,7 @@ class SettingsDialogs {
       title: 'settings.DecryptBackup'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Restore'.tr(),
+          text: 'arrpilot.Restore'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],
@@ -1188,7 +1188,7 @@ class SettingsDialogs {
       title: 'settings.BackupConfiguration'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.BackUp'.tr(),
+          text: 'arrpilot.BackUp'.tr(),
           textColor: ArrPilotColours.accent,
           onPressed: () => _setValues(true),
         ),
@@ -1244,7 +1244,7 @@ class SettingsDialogs {
       title: 'settings.ImageBackgroundOpacity'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Set'.tr(),
+          text: 'arrpilot.Set'.tr(),
           onPressed: () => _setValues(true),
         ),
       ],

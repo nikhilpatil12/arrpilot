@@ -42,8 +42,8 @@ extension StringExtension on String {
     await Clipboard.setData(ClipboardData(text: this));
     if (showSnackBar) {
       showLunaSuccessSnackBar(
-        title: 'lunasea.Copied'.tr(),
-        message: 'lunasea.CopiedContentToTheClipboard'.tr(),
+        title: 'arrpilot.Copied'.tr(),
+        message: 'arrpilot.CopiedContentToTheClipboard'.tr(),
       );
     }
   }

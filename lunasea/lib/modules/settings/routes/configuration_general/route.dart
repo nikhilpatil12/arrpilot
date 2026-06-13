@@ -152,7 +152,7 @@ class _State extends State<ConfigurationGeneralRoute>
         title: 'settings.BackgroundImageOpacity'.tr(),
         body: [
           TextSpan(
-            text: _db.read() == 0 ? 'lunasea.Disabled'.tr() : '${_db.read()}%',
+            text: _db.read() == 0 ? 'arrpilot.Disabled'.tr() : '${_db.read()}%',
           ),
         ],
         trailing: const ArrPilotIconButton.arrow(),

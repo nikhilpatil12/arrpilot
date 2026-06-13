@@ -96,7 +96,7 @@ class _State extends State<ConfigurationTautulliRoute>
         return ArrPilotBlock(
           title: 'tautulli.DefaultTerminationMessage'.tr(),
           body: [
-            TextSpan(text: message.isEmpty ? 'lunasea.NotSet'.tr() : message),
+            TextSpan(text: message.isEmpty ? 'arrpilot.NotSet'.tr() : message),
           ],
           trailing: const ArrPilotIconButton(icon: Icons.videocam_off_rounded),
           onTap: () async {
@@ -113,8 +113,8 @@ class _State extends State<ConfigurationTautulliRoute>
     const _db = TautulliDatabase.REFRESH_RATE;
     return _db.listenableBuilder(builder: (context, _) {
       String refreshRate = _db.read() == 1
-          ? 'lunasea.EverySecond'.tr()
-          : 'lunasea.EverySeconds'.tr(args: [_db.read().toString()]);
+          ? 'arrpilot.EverySecond'.tr()
+          : 'arrpilot.EverySeconds'.tr(args: [_db.read().toString()]);
       return ArrPilotBlock(
         title: 'tautulli.ActivityRefreshRate'.tr(),
         body: [TextSpan(text: refreshRate)],
@@ -132,8 +132,8 @@ class _State extends State<ConfigurationTautulliRoute>
     return _db.listenableBuilder(
       builder: (context, _) {
         String statisticsItems = _db.read() == 1
-            ? 'lunasea.OneItem'.tr()
-            : 'lunasea.Items'.tr(args: [_db.read().toString()]);
+            ? 'arrpilot.OneItem'.tr()
+            : 'arrpilot.Items'.tr(args: [_db.read().toString()]);
         return ArrPilotBlock(
           title: 'tautulli.StatisticsItemCount'.tr(),
           body: [TextSpan(text: statisticsItems)],

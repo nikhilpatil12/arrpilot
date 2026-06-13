@@ -103,7 +103,7 @@ class _State extends State<AddArtistDetailsRoute>
     return ArrPilotBottomActionBar(
       actions: [
         ArrPilotActionBarCard(
-          title: 'lunasea.Options'.tr(),
+          title: 'arrpilot.Options'.tr(),
           subtitle: 'radarr.StartSearchFor'.tr(),
           onTap: () async => LidarrDialogs().addArtistOptions(context),
         ),
@@ -148,7 +148,7 @@ class _State extends State<AddArtistDetailsRoute>
       controller: scrollController,
       children: <Widget>[
         LidarrDescriptionBlock(
-          title: widget.data?.title ?? 'lunasea.Unknown'.tr(),
+          title: widget.data?.title ?? 'arrpilot.Unknown'.tr(),
           description: (widget.data?.overview ?? '').isEmpty
               ? 'No Summary Available'
               : widget.data!.overview,

@@ -12,12 +12,12 @@ extension SonarrHistoryRecordLunaExtension on SonarrHistoryRecord {
         ? 'sonarr.SeasonNumber'.tr(
             args: [this.episode!.seasonNumber.toString()],
           )
-        : 'lunasea.Unknown'.tr();
+        : 'arrpilot.Unknown'.tr();
     String episode = this.episode?.episodeNumber != null
         ? 'sonarr.EpisodeNumber'.tr(
             args: [this.episode!.episodeNumber.toString()],
           )
-        : 'lunasea.Unknown'.tr();
+        : 'arrpilot.Unknown'.tr();
     return '$season ${ArrPilotUI.TEXT_BULLET} $episode';
   }
 

@@ -180,7 +180,7 @@ class RadarrBottomModalSheets {
                   snapshot.error,
                   snapshot.stackTrace,
                 );
-              return ArrPilotMessage(text: 'lunasea.AnErrorHasOccurred'.tr());
+              return ArrPilotMessage(text: 'arrpilot.AnErrorHasOccurred'.tr());
             }
             if (snapshot.hasData) {
               if ((snapshot.data?.length ?? 0) == 0)

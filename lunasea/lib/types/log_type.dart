@@ -37,13 +37,13 @@ enum ArrPilotLogType {
   String get title {
     switch (this) {
       case ArrPilotLogType.WARNING:
-        return 'lunasea.Warning'.tr();
+        return 'arrpilot.Warning'.tr();
       case ArrPilotLogType.ERROR:
-        return 'lunasea.Error'.tr();
+        return 'arrpilot.Error'.tr();
       case ArrPilotLogType.CRITICAL:
-        return 'lunasea.Critical'.tr();
+        return 'arrpilot.Critical'.tr();
       case ArrPilotLogType.DEBUG:
-        return 'lunasea.Debug'.tr();
+        return 'arrpilot.Debug'.tr();
     }
   }
 

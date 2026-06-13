@@ -70,13 +70,13 @@ extension SonarrEventTypeLunaExtension on SonarrEventType {
         return 'sonarr.EpisodeFileDeleted'.tr();
       case SonarrEventType.DOWNLOAD_FOLDER_IMPORTED:
         return 'sonarr.EpisodeImported'.tr(
-          args: [record.quality?.quality?.name ?? 'lunasea.Unknown'.tr()],
+          args: [record.quality?.quality?.name ?? 'arrpilot.Unknown'.tr()],
         );
       case SonarrEventType.DOWNLOAD_FAILED:
         return 'sonarr.DownloadFailed'.tr();
       case SonarrEventType.GRABBED:
         return 'sonarr.GrabbedFrom'.tr(
-          args: [record.data!['indexer'] ?? 'lunasea.Unknown'.tr()],
+          args: [record.data!['indexer'] ?? 'arrpilot.Unknown'.tr()],
         );
       case SonarrEventType.DOWNLOAD_IGNORED:
         return 'sonarr.DownloadIgnored'.tr();
@@ -189,7 +189,7 @@ extension SonarrEventTypeLunaExtension on SonarrEventType {
         case 'Manual':
           return 'sonarr.DeleteReasonManual'.tr();
         default:
-          return 'lunasea.Unknown'.tr();
+          return 'arrpilot.Unknown'.tr();
       }
     }
 

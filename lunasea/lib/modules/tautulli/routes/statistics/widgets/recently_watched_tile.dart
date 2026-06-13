@@ -20,7 +20,7 @@ class _State extends State<TautulliStatisticsRecentlyWatchedTile> {
   @override
   Widget build(BuildContext context) {
     return ArrPilotBlock(
-      title: widget.data['title'] ?? 'lunasea.Unknown'.tr(),
+      title: widget.data['title'] ?? 'arrpilot.Unknown'.tr(),
       body: _body(),
       onTap: _onTap,
       posterUrl: context

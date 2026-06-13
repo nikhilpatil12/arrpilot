@@ -60,7 +60,7 @@ class TautulliCheckForUpdatesTautulliTile extends StatelessWidget {
                     0,
                     min(7, update.currentVersion!.length),
                   ) ??
-                  'lunasea.Unknown'.tr(),
+                  'arrpilot.Unknown'.tr(),
             ),
           ],
         ),
@@ -74,7 +74,7 @@ class TautulliCheckForUpdatesTautulliTile extends StatelessWidget {
                     0,
                     min(7, update.latestVersion!.length),
                   ) ??
-                  'lunasea.Unknown'.tr(),
+                  'arrpilot.Unknown'.tr(),
             ),
           ],
         ),

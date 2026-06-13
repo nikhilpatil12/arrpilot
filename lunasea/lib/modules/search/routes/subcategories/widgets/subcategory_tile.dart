@@ -18,12 +18,12 @@ class SearchSubcategoryTile extends StatelessWidget {
       builder: (context, category, _) {
         NewznabSubcategoryData subcategory = category!.subcategories[index];
         return ArrPilotBlock(
-          title: subcategory.name ?? 'lunasea.Unknown'.tr(),
+          title: subcategory.name ?? 'arrpilot.Unknown'.tr(),
           body: [
             TextSpan(
               text: [
-                category.name ?? 'lunasea.Unknown'.tr(),
-                subcategory.name ?? 'lunasea.Unknown'.tr(),
+                category.name ?? 'arrpilot.Unknown'.tr(),
+                subcategory.name ?? 'arrpilot.Unknown'.tr(),
               ].join(' > '),
             )
           ],

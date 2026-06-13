@@ -78,7 +78,7 @@ class _State<T> extends State<ArrPilotPagedListView<T>> {
             ),
             noItemsFoundIndicatorBuilder: (context) => ArrPilotMessage(
               text: widget.noItemsFoundMessage,
-              buttonText: 'lunasea.Refresh'.tr(),
+              buttonText: 'arrpilot.Refresh'.tr(),
               onTap: () => Future.sync(() => widget.pagingController.refresh()),
             ),
           ),

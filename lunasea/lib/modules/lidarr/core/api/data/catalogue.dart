@@ -45,7 +45,7 @@ class LidarrCatalogueData {
 
   String get genre {
     if (genres.isNotEmpty) return genres.join('\n');
-    return 'lunasea.Unknown'.tr();
+    return 'arrpilot.Unknown'.tr();
   }
 
   DateTime? get dateAddedObject => DateTime.tryParse(added)?.toLocal();

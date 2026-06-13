@@ -130,7 +130,7 @@ class _State extends State<SonarrCatalogueRoute>
     if (series.isEmpty)
       return ArrPilotMessage(
         text: 'sonarr.NoSeriesFound'.tr(),
-        buttonText: 'lunasea.Refresh'.tr(),
+        buttonText: 'arrpilot.Refresh'.tr(),
         onTap: _refreshKey.currentState!.show,
       );
     return Selector<SonarrState, String>(

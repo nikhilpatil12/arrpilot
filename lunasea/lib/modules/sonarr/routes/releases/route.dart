@@ -88,7 +88,7 @@ class _State extends State<ReleasesRoute> with ArrPilotScrollControllerMixin {
         if (releases?.isEmpty ?? true) {
           return ArrPilotMessage(
             text: 'sonarr.NoReleasesFound'.tr(),
-            buttonText: 'lunasea.Refresh'.tr(),
+            buttonText: 'arrpilot.Refresh'.tr(),
             onTap: _refreshKey.currentState!.show,
           );
         }

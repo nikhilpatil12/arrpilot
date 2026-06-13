@@ -165,7 +165,7 @@ class ArrPilotDialogs {
 
     await ArrPilotDialog.dialog(
       context: context,
-      title: 'lunasea.DownloadClient'.tr(),
+      title: 'arrpilot.DownloadClient'.tr(),
       content: [
         if (profile.nzbgetEnabled)
           ArrPilotDialog.tile(

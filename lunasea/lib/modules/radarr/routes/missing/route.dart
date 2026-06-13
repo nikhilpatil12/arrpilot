@@ -74,7 +74,7 @@ class _State extends State<RadarrMissingRoute>
     if (movies.isEmpty) {
       return ArrPilotMessage(
         text: 'radarr.NoMoviesFound'.tr(),
-        buttonText: 'lunasea.Refresh'.tr(),
+        buttonText: 'arrpilot.Refresh'.tr(),
         onTap: _refreshKey.currentState!.show,
       );
     }

@@ -14,13 +14,13 @@ class SonarrAddSeriesDetailsActionBar extends StatelessWidget {
     return ArrPilotBottomActionBar(
       actions: [
         ArrPilotActionBarCard(
-          title: 'lunasea.Options'.tr(),
+          title: 'arrpilot.Options'.tr(),
           subtitle: 'sonarr.StartSearchFor'.tr(),
           onTap: () async => SonarrDialogs().addSeriesOptions(context),
         ),
         ArrPilotButton(
           type: ArrPilotButtonType.TEXT,
-          text: 'lunasea.Add'.tr(),
+          text: 'arrpilot.Add'.tr(),
           icon: Icons.add_rounded,
           onTap: () async => _onTap(context),
           loadingState: context.watch<SonarrSeriesAddDetailsState>().state,

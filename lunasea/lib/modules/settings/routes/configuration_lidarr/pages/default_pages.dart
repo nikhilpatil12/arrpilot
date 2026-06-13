@@ -44,7 +44,7 @@ class _State extends State<ConfigurationLidarrDefaultPagesRoute>
     const _db = LidarrDatabase.NAVIGATION_INDEX;
     return _db.listenableBuilder(
       builder: (context, _) => ArrPilotBlock(
-        title: 'lunasea.Home'.tr(),
+        title: 'arrpilot.Home'.tr(),
         body: [TextSpan(text: LidarrNavigationBar.titles[_db.read()])],
         trailing: ArrPilotIconButton(
           icon: LidarrNavigationBar.icons[_db.read()],

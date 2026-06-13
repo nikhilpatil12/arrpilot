@@ -42,7 +42,7 @@ class _State extends State<SonarrSeriesDetailsSeasonsPage> {
     if (widget.series?.seasons?.isEmpty ?? true) {
       return ArrPilotMessage(
         text: 'sonarr.NoSeasonsFound'.tr(),
-        buttonText: 'lunasea.Refresh'.tr(),
+        buttonText: 'arrpilot.Refresh'.tr(),
         onTap: _refreshKey.currentState!.show,
       );
     }

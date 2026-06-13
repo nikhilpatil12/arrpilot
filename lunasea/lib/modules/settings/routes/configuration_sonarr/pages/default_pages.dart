@@ -47,7 +47,7 @@ class _State extends State<ConfigurationSonarrDefaultPagesRoute>
     return _db.listenableBuilder(
       builder: (context, _) {
         return ArrPilotBlock(
-          title: 'lunasea.Home'.tr(),
+          title: 'arrpilot.Home'.tr(),
           body: [TextSpan(text: SonarrNavigationBar.titles[_db.read()])],
           trailing: ArrPilotIconButton(icon: SonarrNavigationBar.icons[_db.read()]),
           onTap: () async {

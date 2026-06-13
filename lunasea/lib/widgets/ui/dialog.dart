@@ -74,7 +74,7 @@ abstract class ArrPilotDialog {
   }) =>
       TextButton(
         child: Text(
-          text ?? 'lunasea.Cancel'.tr(),
+          text ?? 'arrpilot.Cancel'.tr(),
           style: TextStyle(
             color: textColor,
             fontSize: ArrPilotDialog.BUTTON_SIZE,

@@ -24,7 +24,7 @@ class SearchDialogs {
           children: [
             Padding(
               child: ArrPilotPopupMenuButton<String>(
-                tooltip: 'lunasea.ChangeProfiles'.tr(),
+                tooltip: 'arrpilot.ChangeProfiles'.tr(),
                 child: Container(
                   child: Row(
                     mainAxisSize: MainAxisSize.max,

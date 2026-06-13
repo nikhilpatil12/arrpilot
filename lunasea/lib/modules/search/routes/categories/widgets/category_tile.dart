@@ -16,7 +16,7 @@ class SearchCategoryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ArrPilotBlock(
-      title: category.name ?? 'lunasea.Unknown'.tr(),
+      title: category.name ?? 'arrpilot.Unknown'.tr(),
       body: [TextSpan(text: category.subcategoriesTitleList)],
       trailing: ArrPilotIconButton(
         icon: category.icon,

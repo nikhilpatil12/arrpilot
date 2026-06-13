@@ -71,7 +71,7 @@ class _Desktop extends _Shared {
           );
         } else {
           showLunaErrorSnackBar(
-            title: 'lunasea.InvalidFileTypeSelected'.tr(),
+            title: 'arrpilot.InvalidFileTypeSelected'.tr(),
             message: extensions.map((s) => '.$s').join(', '),
           );
         }
@@ -132,7 +132,7 @@ class _Mobile extends _Shared {
           );
         } else {
           showLunaErrorSnackBar(
-            title: 'lunasea.InvalidFileTypeSelected'.tr(),
+            title: 'arrpilot.InvalidFileTypeSelected'.tr(),
             message: extensions.map((s) => '.$s').join(', '),
           );
         }

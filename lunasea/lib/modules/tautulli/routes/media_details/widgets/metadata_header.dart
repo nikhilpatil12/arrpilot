@@ -102,7 +102,7 @@ class TautulliMediaDetailsMetadataHeaderTile extends StatelessWidget {
       case TautulliMediaType.MOVIE:
       case TautulliMediaType.ARTIST:
       case TautulliMediaType.SHOW:
-        _text = metadata!.year?.toString() ?? 'lunasea.Unknown'.tr();
+        _text = metadata!.year?.toString() ?? 'arrpilot.Unknown'.tr();
         break;
       case TautulliMediaType.ALBUM:
       case TautulliMediaType.SEASON:
@@ -120,7 +120,7 @@ class TautulliMediaDetailsMetadataHeaderTile extends StatelessWidget {
         break;
       case TautulliMediaType.NULL:
       default:
-        _text = 'lunasea.Unknown'.tr();
+        _text = 'arrpilot.Unknown'.tr();
         break;
     }
     return TextSpan(text: _text);
@@ -132,7 +132,7 @@ class TautulliMediaDetailsMetadataHeaderTile extends StatelessWidget {
       case TautulliMediaType.MOVIE:
       case TautulliMediaType.ARTIST:
       case TautulliMediaType.SHOW:
-        _text = metadata!.year?.toString() ?? 'lunasea.Unknown'.tr();
+        _text = metadata!.year?.toString() ?? 'arrpilot.Unknown'.tr();
         break;
       case TautulliMediaType.ALBUM:
       case TautulliMediaType.SEASON:
@@ -144,7 +144,7 @@ class TautulliMediaDetailsMetadataHeaderTile extends StatelessWidget {
         break;
       case TautulliMediaType.NULL:
       default:
-        _text = 'lunasea.Unknown'.tr();
+        _text = 'arrpilot.Unknown'.tr();
         break;
     }
     return TextSpan(text: _text);

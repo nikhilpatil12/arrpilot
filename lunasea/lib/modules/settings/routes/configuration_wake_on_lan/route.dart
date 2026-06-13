@@ -65,7 +65,7 @@ class _State extends State<ConfigurationWakeOnLANRoute>
       body: [
         TextSpan(
           text:
-              broadcastAddress == '' ? 'lunasea.NotSet'.tr() : broadcastAddress,
+              broadcastAddress == '' ? 'arrpilot.NotSet'.tr() : broadcastAddress,
         ),
       ],
       trailing: const ArrPilotIconButton.arrow(),
@@ -88,7 +88,7 @@ class _State extends State<ConfigurationWakeOnLANRoute>
     return ArrPilotBlock(
       title: 'settings.MACAddress'.tr(),
       body: [
-        TextSpan(text: macAddress == '' ? 'lunasea.NotSet'.tr() : macAddress),
+        TextSpan(text: macAddress == '' ? 'arrpilot.NotSet'.tr() : macAddress),
       ],
       trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {

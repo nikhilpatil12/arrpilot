@@ -45,7 +45,7 @@ class _State extends State<ConfigurationNZBGetDefaultPagesRoute>
     const _db = NZBGetDatabase.NAVIGATION_INDEX;
     return _db.listenableBuilder(
       builder: (context, _) => ArrPilotBlock(
-        title: 'lunasea.Home'.tr(),
+        title: 'arrpilot.Home'.tr(),
         body: [TextSpan(text: NZBGetNavigationBar.titles[_db.read()])],
         trailing: ArrPilotIconButton(
           icon: NZBGetNavigationBar.icons[_db.read()],

@@ -61,7 +61,7 @@ class _State extends State<SeriesEditRoute>
   Widget _bodyError() {
     return ArrPilotMessage.goBack(
       context: context,
-      text: 'lunasea.AnErrorHasOccurred'.tr(),
+      text: 'arrpilot.AnErrorHasOccurred'.tr(),
     );
   }
 

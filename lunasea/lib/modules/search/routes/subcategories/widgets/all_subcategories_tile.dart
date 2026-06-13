@@ -14,7 +14,7 @@ class SearchSubcategoryAllTile extends StatelessWidget {
       selector: (_, state) => state.activeCategory,
       builder: (context, category, _) => ArrPilotBlock(
         title: 'search.AllSubcategories'.tr(),
-        body: [TextSpan(text: category?.name ?? 'lunasea.Unknown'.tr())],
+        body: [TextSpan(text: category?.name ?? 'arrpilot.Unknown'.tr())],
         trailing: ArrPilotIconButton(
             icon: context.read<SearchState>().activeCategory?.icon,
             color: ArrPilotColours().byListIndex(0)),

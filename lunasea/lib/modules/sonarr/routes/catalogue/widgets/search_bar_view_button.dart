@@ -23,7 +23,7 @@ class _State extends State<SonarrSeriesSearchBarViewButton> {
       context: context,
       child: Consumer<SonarrState>(
         builder: (context, state, _) => ArrPilotPopupMenuButton<ArrPilotListViewOption>(
-          tooltip: 'lunasea.View'.tr(),
+          tooltip: 'arrpilot.View'.tr(),
           icon: ArrPilotIcons.VIEW,
           onSelected: (result) {
             state.seriesViewType = result;

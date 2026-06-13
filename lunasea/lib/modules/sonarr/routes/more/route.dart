@@ -31,7 +31,7 @@ class _State extends State<SonarrMoreRoute> with AutomaticKeepAliveClientMixin {
   // ignore: unused_element
   Future<void> _showComingSoonMessage() async {
     showLunaInfoSnackBar(
-      title: 'lunasea.ComingSoon'.tr(),
+      title: 'arrpilot.ComingSoon'.tr(),
       message: 'This feature is still being developed!',
     );
   }

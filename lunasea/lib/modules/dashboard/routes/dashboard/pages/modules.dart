@@ -30,8 +30,8 @@ class _State extends State<ModulesPage> with AutomaticKeepAliveClientMixin {
   Widget _list() {
     if (!(ArrPilotProfile.current.isAnythingEnabled())) {
       return ArrPilotMessage(
-        text: 'lunasea.NoModulesEnabled'.tr(),
-        buttonText: 'lunasea.GoToSettings'.tr(),
+        text: 'arrpilot.NoModulesEnabled'.tr(),
+        buttonText: 'arrpilot.GoToSettings'.tr(),
         onTap: ArrPilotModule.SETTINGS.launch,
       );
     }

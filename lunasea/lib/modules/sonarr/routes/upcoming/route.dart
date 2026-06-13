@@ -78,7 +78,7 @@ class _State extends State<SonarrUpcomingRoute>
     if (upcoming.isEmpty) {
       return ArrPilotMessage(
         text: 'sonarr.NoEpisodesFound'.tr(),
-        buttonText: 'lunasea.Refresh'.tr(),
+        buttonText: 'arrpilot.Refresh'.tr(),
         onTap: _refreshKey.currentState?.show,
       );
     }

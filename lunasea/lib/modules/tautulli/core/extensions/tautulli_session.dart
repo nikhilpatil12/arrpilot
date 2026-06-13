@@ -8,7 +8,7 @@ import 'package:arrpilot/modules/tautulli.dart';
 
 extension TautulliSessionAudioExtension on TautulliSession {
   String get _language {
-    if (audioLanguage?.isEmpty ?? true) return 'lunasea.Unknown'.tr();
+    if (audioLanguage?.isEmpty ?? true) return 'arrpilot.Unknown'.tr();
     return audioLanguage!.toTitleCase();
   }
 
@@ -54,12 +54,12 @@ extension TautulliSessionAudioExtension on TautulliSession {
 
 extension TautulliSessionContainerExtension on TautulliSession {
   String get _container {
-    if (container?.isEmpty ?? true) return 'lunasea.Unknown'.tr();
+    if (container?.isEmpty ?? true) return 'arrpilot.Unknown'.tr();
     return container!.toUpperCase();
   }
 
   String get _streamContainer {
-    if (streamContainer?.isEmpty ?? true) return 'lunasea.Unknown'.tr();
+    if (streamContainer?.isEmpty ?? true) return 'arrpilot.Unknown'.tr();
     return streamContainer!.toUpperCase();
   }
 
@@ -74,7 +74,7 @@ extension TautulliSessionContainerExtension on TautulliSession {
 
 extension TautulliSessionSubtitleExtension on TautulliSession {
   String get _language {
-    if (subtitleLanguage?.isEmpty ?? true) return 'lunasea.Unknown'.tr();
+    if (subtitleLanguage?.isEmpty ?? true) return 'arrpilot.Unknown'.tr();
     return subtitleLanguage!.toTitleCase();
   }
 
@@ -133,23 +133,23 @@ extension TautulliSessionStreamExtension on TautulliSession {
 
 extension TautulliSessionVideoExtension on TautulliSession {
   String get _codec {
-    if (videoCodec?.isEmpty ?? true) return 'lunasea.Unknown'.tr();
+    if (videoCodec?.isEmpty ?? true) return 'arrpilot.Unknown'.tr();
     return videoCodec!.toUpperCase();
   }
 
   String get _streamCodec {
-    if (streamVideoCodec?.isEmpty ?? true) return 'lunasea.Unknown'.tr();
+    if (streamVideoCodec?.isEmpty ?? true) return 'arrpilot.Unknown'.tr();
     return streamVideoCodec!.toUpperCase();
   }
 
   String get _fullResolution {
-    if (videoFullResolution?.isEmpty ?? true) return 'lunasea.Unknown'.tr();
+    if (videoFullResolution?.isEmpty ?? true) return 'arrpilot.Unknown'.tr();
     return videoFullResolution!;
   }
 
   String get _streamFullResolution {
     if (streamVideoFullResolution?.isEmpty ?? true)
-      return 'lunasea.Unknown'.tr();
+      return 'arrpilot.Unknown'.tr();
     return streamVideoFullResolution!;
   }
 
@@ -367,7 +367,7 @@ extension TautulliSessionExtension on TautulliSession {
       return DateTime.now().add(_eta).asTimeOnly();
     } catch (error, stack) {
       ArrPilotLogger().error('Failed to calculate ETA', error, stack);
-      return 'lunasea.Unknown'.tr();
+      return 'arrpilot.Unknown'.tr();
     }
   }
 

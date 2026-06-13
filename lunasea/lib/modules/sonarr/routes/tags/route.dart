@@ -71,7 +71,7 @@ class _State extends State<TagsRoute>
     if ((tags?.length ?? 0) == 0)
       return ArrPilotMessage(
         text: 'sonarr.NoTagsFound'.tr(),
-        buttonText: 'lunasea.Refresh'.tr(),
+        buttonText: 'arrpilot.Refresh'.tr(),
         onTap: _refreshKey.currentState?.show,
       );
     return ArrPilotListViewBuilder(

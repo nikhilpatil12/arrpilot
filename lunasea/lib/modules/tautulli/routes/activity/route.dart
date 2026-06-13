@@ -65,7 +65,7 @@ class _State extends State<TautulliActivityRoute>
     if ((activity?.sessions?.length ?? 0) == 0)
       return ArrPilotMessage(
         text: 'tautulli.NoActiveStreams'.tr(),
-        buttonText: 'lunasea.Refresh'.tr(),
+        buttonText: 'arrpilot.Refresh'.tr(),
         onTap: _refreshKey.currentState!.show,
       );
     return ArrPilotListView(

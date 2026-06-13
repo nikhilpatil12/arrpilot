@@ -99,7 +99,7 @@ class _State extends State<ArtistEditRoute> with ArrPilotScrollControllerMixin {
     return ArrPilotBottomActionBar(
       actions: [
         ArrPilotButton.text(
-          text: 'lunasea.Update'.tr(),
+          text: 'arrpilot.Update'.tr(),
           icon: Icons.edit_rounded,
           onTap: _save,
         ),

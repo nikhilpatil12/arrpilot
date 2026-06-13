@@ -59,7 +59,7 @@ class _State extends State<SonarrSeriesDetailsHistoryPage>
     if ((history?.length ?? 0) == 0)
       return ArrPilotMessage(
         text: 'sonarr.NoHistoryFound'.tr(),
-        buttonText: 'lunasea.Refresh'.tr(),
+        buttonText: 'arrpilot.Refresh'.tr(),
         onTap: _refreshKey.currentState!.show,
       );
     return ArrPilotListViewBuilder(

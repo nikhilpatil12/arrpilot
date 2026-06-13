@@ -47,49 +47,49 @@ extension DateTimeExtension on DateTime {
 
   String asAge() {
     final diff = DateTime.now().difference(this);
-    if (diff.inSeconds < 15) return 'lunasea.JustNow'.tr();
+    if (diff.inSeconds < 15) return 'arrpilot.JustNow'.tr();
 
     final days = diff.inDays.abs();
     if (days >= 1) {
       final years = (days / 365).floor();
-      if (years == 1) return 'lunasea.OneYearAgo'.tr();
-      if (years > 1) return 'lunasea.YearsAgo'.tr(args: [years.toString()]);
+      if (years == 1) return 'arrpilot.OneYearAgo'.tr();
+      if (years > 1) return 'arrpilot.YearsAgo'.tr(args: [years.toString()]);
 
       final months = (days / 30).floor();
-      if (months == 1) return 'lunasea.OneMonthAgo'.tr();
-      if (months > 1) return 'lunasea.MonthsAgo'.tr(args: [months.toString()]);
+      if (months == 1) return 'arrpilot.OneMonthAgo'.tr();
+      if (months > 1) return 'arrpilot.MonthsAgo'.tr(args: [months.toString()]);
 
-      if (days == 1) return 'lunasea.OneDayAgo'.tr();
-      if (days > 1) return 'lunasea.DaysAgo'.tr(args: [days.toString()]);
+      if (days == 1) return 'arrpilot.OneDayAgo'.tr();
+      if (days > 1) return 'arrpilot.DaysAgo'.tr(args: [days.toString()]);
     }
 
     final hours = diff.inHours.abs();
-    if (hours == 1) return 'lunasea.OneHourAgo'.tr();
-    if (hours > 1) return 'lunasea.HoursAgo'.tr(args: [hours.toString()]);
+    if (hours == 1) return 'arrpilot.OneHourAgo'.tr();
+    if (hours > 1) return 'arrpilot.HoursAgo'.tr(args: [hours.toString()]);
 
     final mins = diff.inMinutes.abs();
-    if (mins == 1) return 'lunasea.OneMinuteAgo'.tr();
-    if (mins > 1) return 'lunasea.MinutesAgo'.tr(args: [mins.toString()]);
+    if (mins == 1) return 'arrpilot.OneMinuteAgo'.tr();
+    if (mins > 1) return 'arrpilot.MinutesAgo'.tr(args: [mins.toString()]);
 
     final secs = diff.inSeconds.abs();
-    if (secs == 1) return 'lunasea.OneSecondAgo'.tr();
-    return 'lunasea.SecondsAgo'.tr(args: [secs.toString()]);
+    if (secs == 1) return 'arrpilot.OneSecondAgo'.tr();
+    return 'arrpilot.SecondsAgo'.tr(args: [secs.toString()]);
   }
 
   String asDaysDifference() {
     final diff = DateTime.now().difference(this);
     final days = diff.inDays.abs();
-    if (days == 0) return 'lunasea.Today'.tr();
+    if (days == 0) return 'arrpilot.Today'.tr();
 
     final years = (days / 365).floor();
-    if (years == 1) return 'lunasea.OneYear'.tr();
-    if (years > 1) return 'lunasea.Years'.tr(args: [years.toString()]);
+    if (years == 1) return 'arrpilot.OneYear'.tr();
+    if (years > 1) return 'arrpilot.Years'.tr(args: [years.toString()]);
 
     final months = (days / 30).floor();
-    if (months == 1) return 'lunasea.OneMonth'.tr();
-    if (months > 1) return 'lunasea.Months'.tr(args: [months.toString()]);
+    if (months == 1) return 'arrpilot.OneMonth'.tr();
+    if (months > 1) return 'arrpilot.Months'.tr(args: [months.toString()]);
 
-    if (days == 1) return 'lunasea.OneDay'.tr();
-    return 'lunasea.Days'.tr(args: [days.toString()]);
+    if (days == 1) return 'arrpilot.OneDay'.tr();
+    return 'arrpilot.Days'.tr(args: [days.toString()]);
   }
 }

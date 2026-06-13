@@ -45,7 +45,7 @@ class _State extends State<ConfigurationSABnzbdDefaultPagesRoute>
     const _db = SABnzbdDatabase.NAVIGATION_INDEX;
     return _db.listenableBuilder(
       builder: (context, _) => ArrPilotBlock(
-        title: 'lunasea.Home'.tr(),
+        title: 'arrpilot.Home'.tr(),
         body: [TextSpan(text: SABnzbdNavigationBar.titles[_db.read()])],
         trailing: ArrPilotIconButton(icon: SABnzbdNavigationBar.icons[_db.read()]),
         onTap: () async {

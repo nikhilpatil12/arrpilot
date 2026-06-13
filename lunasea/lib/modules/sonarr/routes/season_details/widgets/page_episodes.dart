@@ -155,7 +155,7 @@ class _State extends State<SonarrSeasonDetailsEpisodesPage>
     if (episodes.isEmpty) {
       return ArrPilotMessage(
         text: 'sonarr.NoEpisodesFound'.tr(),
-        buttonText: 'lunasea.Refresh'.tr(),
+        buttonText: 'arrpilot.Refresh'.tr(),
         onTap: _refreshKey.currentState!.show,
       );
     }

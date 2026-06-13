@@ -17,38 +17,38 @@ extension DurationAsTimestampExtension on Duration? {
     int multiplier = 1,
     int divisor = 1,
   }) {
-    if (this == null) return 'lunasea.Unknown'.tr();
-    if (this!.inSeconds <= 5) return 'lunasea.Minutes'.tr(args: ['0']);
+    if (this == null) return 'arrpilot.Unknown'.tr();
+    if (this!.inSeconds <= 5) return 'arrpilot.Minutes'.tr(args: ['0']);
 
     final List<String> words = [];
 
     final days = this!.inDays;
     if (days > 0) {
       if (days == 1) {
-        words.add('lunasea.OneDay'.tr());
+        words.add('arrpilot.OneDay'.tr());
       } else {
-        words.add('lunasea.Days'.tr(args: [days.toString()]));
+        words.add('arrpilot.Days'.tr(args: [days.toString()]));
       }
     }
 
     final hours = this!.inHours % 24;
     if (hours > 0) {
       if (hours == 1) {
-        words.add('lunasea.OneHour'.tr());
+        words.add('arrpilot.OneHour'.tr());
       } else {
-        words.add('lunasea.Hours'.tr(args: [hours.toString()]));
+        words.add('arrpilot.Hours'.tr(args: [hours.toString()]));
       }
     }
 
     final minutes = this!.inMinutes % 60;
     if (minutes > 0) {
       if (minutes == 1) {
-        words.add('lunasea.OneMinute'.tr());
+        words.add('arrpilot.OneMinute'.tr());
       } else {
-        words.add('lunasea.Minutes'.tr(args: [minutes.toString()]));
+        words.add('arrpilot.Minutes'.tr(args: [minutes.toString()]));
       }
     }
 
-    return words.isEmpty ? 'lunasea.UnderAMinute'.tr() : words.join(' ');
+    return words.isEmpty ? 'arrpilot.UnderAMinute'.tr() : words.join(' ');
   }
 }

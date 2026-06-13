@@ -209,7 +209,7 @@ class _State extends State<SonarrQueueTile> {
       ArrPilotButton.text(
         icon: Icons.delete_rounded,
         color: ArrPilotColours.red,
-        text: 'lunasea.Remove'.tr(),
+        text: 'arrpilot.Remove'.tr(),
         onTap: () async {
           bool result = await SonarrDialogs().removeFromQueue(context);
           if (result) {

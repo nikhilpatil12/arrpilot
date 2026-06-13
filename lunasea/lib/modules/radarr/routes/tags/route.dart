@@ -76,7 +76,7 @@ class _State extends State<TagsRoute> with ArrPilotScrollControllerMixin {
     if ((tags?.length ?? 0) == 0) {
       return ArrPilotMessage(
         text: 'radarr.NoTagsFound'.tr(),
-        buttonText: 'lunasea.Refresh'.tr(),
+        buttonText: 'arrpilot.Refresh'.tr(),
         onTap: _refreshKey.currentState!.show,
       );
     }

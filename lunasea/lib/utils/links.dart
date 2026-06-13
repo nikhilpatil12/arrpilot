@@ -11,7 +11,7 @@ enum LinkedContentType {
 }
 
 enum ArrPilotLinkedContent {
-  WEBSITE('https://www.lunasea.app');
+  WEBSITE('https://github.com/YOUR_USERNAME/arrpilot'); // TODO: Replace with arrpilot.app when available
 
   final String url;
   const ArrPilotLinkedContent(this.url);

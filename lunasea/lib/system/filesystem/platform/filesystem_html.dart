@@ -46,7 +46,7 @@ class _Web implements ArrPilotFileSystem {
           );
         } else {
           showLunaErrorSnackBar(
-            title: 'lunasea.InvalidFileTypeSelected'.tr(),
+            title: 'arrpilot.InvalidFileTypeSelected'.tr(),
             message: extensions.map((s) => '.$s').join(', '),
           );
         }

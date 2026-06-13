@@ -12,7 +12,7 @@ extension SonarrEpisodeExtension on SonarrEpisode {
   SonarrEpisode clone() => SonarrEpisode.fromJson(this.toJson());
 
   String lunaAirDate() {
-    if (this.airDateUtc == null) return 'lunasea.UnknownDate'.tr();
+    if (this.airDateUtc == null) return 'arrpilot.UnknownDate'.tr();
     return DateFormat.yMMMMd().format(this.airDateUtc!.toLocal());
   }
 
@@ -32,8 +32,8 @@ extension SonarrEpisodeExtension on SonarrEpisode {
       if (_hasAired()) return 'sonarr.Unaired'.tr();
       return 'sonarr.Missing'.tr();
     }
-    if (file == null) return 'lunasea.Unknown'.tr();
-    String quality = file.quality?.quality?.name ?? 'lunasea.Unknown'.tr();
+    if (file == null) return 'arrpilot.Unknown'.tr();
+    String quality = file.quality?.quality?.name ?? 'arrpilot.Unknown'.tr();
     String size = file.size?.asBytes() ?? '0.00 B';
     return '$quality ${ArrPilotUI.TEXT_EMDASH} $size';
   }
@@ -60,12 +60,12 @@ extension SonarrEpisodeExtension on SonarrEpisode {
         ? 'sonarr.SeasonNumber'.tr(
             args: [this.seasonNumber.toString()],
           )
-        : 'lunasea.Unknown'.tr();
+        : 'arrpilot.Unknown'.tr();
     String episode = this.episodeNumber != null
         ? 'sonarr.EpisodeNumber'.tr(
             args: [this.episodeNumber.toString()],
           )
-        : 'lunasea.Unknown'.tr();
+        : 'arrpilot.Unknown'.tr();
     return '$season ${ArrPilotUI.TEXT_BULLET} $episode';
   }
 }

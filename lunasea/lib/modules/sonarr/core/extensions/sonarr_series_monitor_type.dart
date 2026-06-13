@@ -21,7 +21,7 @@ extension ArrPilotSonarrSeriesMonitorTypeExtension on SonarrSeriesMonitorType {
       case SonarrSeriesMonitorType.NONE:
         return 'None';
       default:
-        return 'lunasea.Unknown'.tr();
+        return 'arrpilot.Unknown'.tr();
     }
   }
 }

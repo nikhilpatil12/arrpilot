@@ -19,7 +19,7 @@ class SonarrDialogs {
 
     await ArrPilotDialog.dialog(
       context: context,
-      title: 'lunasea.Settings'.tr(),
+      title: 'arrpilot.Settings'.tr(),
       content: List.generate(
         SonarrGlobalSettingsType.values.length,
         (index) => ArrPilotDialog.tile(
@@ -585,7 +585,7 @@ class SonarrDialogs {
       title: 'sonarr.RemoveSeries'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Remove'.tr(),
+          text: 'arrpilot.Remove'.tr(),
           textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
@@ -616,10 +616,10 @@ class SonarrDialogs {
   Future<void> addSeriesOptions(BuildContext context) async {
     await ArrPilotDialog.dialog(
       context: context,
-      title: 'lunasea.Options'.tr(),
+      title: 'arrpilot.Options'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Close'.tr(),
+          text: 'arrpilot.Close'.tr(),
           onPressed: () => Navigator.of(context, rootNavigator: true).pop(),
         ),
       ],
@@ -660,7 +660,7 @@ class SonarrDialogs {
       title: 'sonarr.DeleteEpisodeFile'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Delete'.tr(),
+          text: 'arrpilot.Delete'.tr(),
           textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
@@ -718,7 +718,7 @@ class SonarrDialogs {
       title: 'sonarr.RemoveFromQueue'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Remove'.tr(),
+          text: 'arrpilot.Remove'.tr(),
           textColor: ArrPilotColours.red,
           onPressed: () => _setValues(true),
         ),
@@ -760,7 +760,7 @@ class SonarrDialogs {
     await ArrPilotDialog.dialog(
       context: context,
       title: 'sonarr.Messages'.tr(),
-      cancelButtonText: 'lunasea.Close'.tr(),
+      cancelButtonText: 'arrpilot.Close'.tr(),
       contentPadding: ArrPilotDialog.listDialogContentPadding(),
       content: List.generate(
         messages.length,

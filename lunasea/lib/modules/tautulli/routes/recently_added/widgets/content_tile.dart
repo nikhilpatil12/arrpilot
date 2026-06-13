@@ -55,7 +55,7 @@ class _State extends State<TautulliRecentlyAddedContentTile> {
   }
 
   String? get _title {
-    String? title = 'lunasea.Unknown'.tr();
+    String? title = 'arrpilot.Unknown'.tr();
     if (widget.recentlyAdded.title != null &&
         widget.recentlyAdded.title!.isNotEmpty)
       title = widget.recentlyAdded.title;
@@ -112,7 +112,7 @@ class _State extends State<TautulliRecentlyAddedContentTile> {
         const TextSpan(text: ArrPilotUI.TEXT_EMDASH),
       TextSpan(text: widget.recentlyAdded.libraryName),
       TextSpan(
-        text: widget.recentlyAdded.addedAt?.asAge() ?? 'lunasea.Unknown'.tr(),
+        text: widget.recentlyAdded.addedAt?.asAge() ?? 'arrpilot.Unknown'.tr(),
       ),
     ];
   }

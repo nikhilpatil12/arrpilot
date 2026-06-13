@@ -31,9 +31,9 @@ extension ArrPilotListViewOptionExtension on ArrPilotListViewOption {
   String get readable {
     switch (this) {
       case ArrPilotListViewOption.BLOCK_VIEW:
-        return 'lunasea.BlockView'.tr();
+        return 'arrpilot.BlockView'.tr();
       case ArrPilotListViewOption.GRID_VIEW:
-        return 'lunasea.GridView'.tr();
+        return 'arrpilot.GridView'.tr();
     }
   }
 

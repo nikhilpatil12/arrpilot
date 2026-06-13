@@ -14,13 +14,13 @@ class RadarrAddMovieDetailsActionBar extends StatelessWidget {
     return ArrPilotBottomActionBar(
       actions: [
         ArrPilotActionBarCard(
-          title: 'lunasea.Options'.tr(),
+          title: 'arrpilot.Options'.tr(),
           subtitle: 'radarr.StartSearchFor'.tr(),
           onTap: () async => RadarrDialogs().addMovieOptions(context),
         ),
         ArrPilotButton(
           type: ArrPilotButtonType.TEXT,
-          text: 'lunasea.Add'.tr(),
+          text: 'arrpilot.Add'.tr(),
           icon: Icons.add_rounded,
           onTap: () async => _onTap(context),
           loadingState: context.watch<RadarrAddMovieDetailsState>().state,

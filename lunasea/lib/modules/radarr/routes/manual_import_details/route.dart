@@ -101,7 +101,7 @@ class _State extends State<ManualImportDetailsRoute>
     if (manualImport.isEmpty) {
       return ArrPilotMessage(
         text: 'radarr.NoFilesFound'.tr(),
-        buttonText: 'lunasea.Refresh'.tr(),
+        buttonText: 'arrpilot.Refresh'.tr(),
         onTap: () => context
             .read<RadarrManualImportDetailsState>()
             .fetchManualImport(context),

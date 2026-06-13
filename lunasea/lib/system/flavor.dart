@@ -50,7 +50,7 @@ extension ArrPilotFlavorExtension on ArrPilotFlavor {
   }
 
   String get downloadLink {
-    String base = 'https://builds.lunasea.app/#latest';
+    String base = 'https://github.com/YOUR_USERNAME/arrpilot/releases/#latest';
     switch (this) {
       case ArrPilotFlavor.EDGE:
         return '$base/${this.key}/';
@@ -64,11 +64,11 @@ extension ArrPilotFlavorExtension on ArrPilotFlavor {
   String get name {
     switch (this) {
       case ArrPilotFlavor.EDGE:
-        return 'lunasea.Edge'.tr();
+        return 'arrpilot.Edge'.tr();
       case ArrPilotFlavor.BETA:
-        return 'lunasea.Beta'.tr();
+        return 'arrpilot.Beta'.tr();
       case ArrPilotFlavor.STABLE:
-        return 'lunasea.Stable'.tr();
+        return 'arrpilot.Stable'.tr();
     }
   }
 

@@ -310,10 +310,10 @@ class LidarrDialogs {
   Future<void> addArtistOptions(BuildContext context) async {
     await ArrPilotDialog.dialog(
       context: context,
-      title: 'lunasea.Options'.tr(),
+      title: 'arrpilot.Options'.tr(),
       buttons: [
         ArrPilotDialog.button(
-          text: 'lunasea.Close'.tr(),
+          text: 'arrpilot.Close'.tr(),
           onPressed: () => Navigator.of(context, rootNavigator: true).pop(),
         ),
       ],

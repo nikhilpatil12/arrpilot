@@ -106,8 +106,8 @@ class _State extends State<ConfigurationSonarrRoute>
         body: [
           TextSpan(
             text: _db.read() == 1
-                ? 'lunasea.OneItem'.tr()
-                : 'lunasea.Items'.tr(args: [_db.read().toString()]),
+                ? 'arrpilot.OneItem'.tr()
+                : 'arrpilot.Items'.tr(args: [_db.read().toString()]),
           ),
         ],
         trailing: const ArrPilotIconButton(icon: Icons.queue_play_next_rounded),

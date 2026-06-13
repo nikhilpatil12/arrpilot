@@ -59,7 +59,7 @@ class _State extends State<ConfigurationLidarrConnectionDetailsRoute>
     String host = ArrPilotProfile.current.lidarrHost;
     return ArrPilotBlock(
       title: 'settings.Host'.tr(),
-      body: [TextSpan(text: host.isEmpty ? 'lunasea.NotSet'.tr() : host)],
+      body: [TextSpan(text: host.isEmpty ? 'arrpilot.NotSet'.tr() : host)],
       trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {
         Tuple2<bool, String> _values = await SettingsDialogs().editHost(
@@ -82,7 +82,7 @@ class _State extends State<ConfigurationLidarrConnectionDetailsRoute>
       body: [
         TextSpan(
           text: apiKey.isEmpty
-              ? 'lunasea.NotSet'.tr()
+              ? 'arrpilot.NotSet'.tr()
               : ArrPilotUI.TEXT_OBFUSCATED_PASSWORD,
         ),
       ],

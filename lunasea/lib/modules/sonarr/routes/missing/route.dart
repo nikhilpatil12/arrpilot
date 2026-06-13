@@ -74,7 +74,7 @@ class _State extends State<SonarrMissingRoute>
     if ((missing.records?.length ?? 0) == 0)
       return ArrPilotMessage(
         text: 'sonarr.NoEpisodesFound'.tr(),
-        buttonText: 'lunasea.Refresh'.tr(),
+        buttonText: 'arrpilot.Refresh'.tr(),
         onTap: _refreshKey.currentState?.show,
       );
     return ArrPilotListViewBuilder(

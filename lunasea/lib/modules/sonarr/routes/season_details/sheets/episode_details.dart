@@ -93,7 +93,7 @@ class SonarrEpisodeDetailsSheet extends ArrPilotBottomModalSheet {
         subtitle: [
           episode!.airDateUtc != null
               ? DateFormat.yMMMMd().format(episode!.airDateUtc!.toLocal())
-              : 'lunasea.UnknownDate'.tr(),
+              : 'arrpilot.UnknownDate'.tr(),
           '\n',
           'sonarr.SeasonNumber'.tr(
             args: [episode?.seasonNumber?.toString() ?? ArrPilotUI.TEXT_EMDASH],
@@ -159,7 +159,7 @@ class SonarrEpisodeDetailsSheet extends ArrPilotBottomModalSheet {
             ),
           ArrPilotButton(
             type: ArrPilotButtonType.TEXT,
-            text: 'lunasea.Delete'.tr(),
+            text: 'arrpilot.Delete'.tr(),
             icon: Icons.delete_rounded,
             onTap: () async {
               bool result = await SonarrDialogs().deleteEpisode(context);

@@ -40,7 +40,7 @@ class TautulliSyncedItemTile extends StatelessWidget {
   TextSpan _subtitle1() {
     int _count = syncedItem.itemCompleteCount ?? 0;
     int _size = syncedItem.totalSize ?? 0;
-    String _type = syncedItem.metadataType ?? 'lunasea.Unknown'.tr();
+    String _type = syncedItem.metadataType ?? 'arrpilot.Unknown'.tr();
 
     return TextSpan(
       children: [
@@ -66,7 +66,7 @@ class TautulliSyncedItemTile extends StatelessWidget {
   }
 
   TextSpan _subtitle3() {
-    String _state = syncedItem.state ?? 'lunasea.Unknown'.tr();
+    String _state = syncedItem.state ?? 'arrpilot.Unknown'.tr();
     return TextSpan(
       text: _state.toTitleCase(),
       style: const TextStyle(

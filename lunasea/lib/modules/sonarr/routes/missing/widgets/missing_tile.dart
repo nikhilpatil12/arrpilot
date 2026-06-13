@@ -72,7 +72,7 @@ class _State extends State<SonarrMissingTile> {
       style: const TextStyle(
         fontStyle: FontStyle.italic,
       ),
-      text: widget.record.title ?? 'lunasea.Unknown'.tr(),
+      text: widget.record.title ?? 'arrpilot.Unknown'.tr(),
     );
   }
 

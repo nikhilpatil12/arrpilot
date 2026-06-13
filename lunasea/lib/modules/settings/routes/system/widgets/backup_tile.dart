@@ -25,13 +25,13 @@ class SettingsSystemBackupRestoreBackupTile extends StatelessWidget {
       String name = DateFormat('y-MM-dd kk-mm-ss').format(DateTime.now());
       bool result = await ArrPilotFileSystem().save(
         context,
-        '$name.lunasea',
+        '$name.arrpilot',
         data.codeUnits,
       );
       if (result) {
         showLunaSuccessSnackBar(
           title: 'settings.BackupToCloudSuccess'.tr(),
-          message: '$name.lunasea',
+          message: '$name.arrpilot',
         );
       }
     } catch (error, stack) {

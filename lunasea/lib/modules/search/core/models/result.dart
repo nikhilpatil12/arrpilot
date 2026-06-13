@@ -33,7 +33,7 @@ class NewznabResultData {
     return null;
   }
 
-  String get age => dateObject?.asAge() ?? 'lunasea.Unknown'.tr();
+  String get age => dateObject?.asAge() ?? 'arrpilot.Unknown'.tr();
 
   int get posix => dateObject?.millisecondsSinceEpoch ?? 0;
 }

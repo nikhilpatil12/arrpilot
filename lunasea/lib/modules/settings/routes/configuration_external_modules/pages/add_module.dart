@@ -76,7 +76,7 @@ class _State extends State<ConfigurationExternalModulesAddRoute>
       title: 'settings.DisplayName'.tr(),
       body: [
         TextSpan(
-          text: _displayName.isEmpty ? 'lunasea.NotSet'.tr() : _displayName,
+          text: _displayName.isEmpty ? 'arrpilot.NotSet'.tr() : _displayName,
         ),
       ],
       trailing: const ArrPilotIconButton.arrow(),
@@ -96,7 +96,7 @@ class _State extends State<ConfigurationExternalModulesAddRoute>
     return ArrPilotBlock(
       title: 'settings.Host'.tr(),
       body: [
-        TextSpan(text: _host.isEmpty ? 'lunasea.NotSet'.tr() : _host),
+        TextSpan(text: _host.isEmpty ? 'arrpilot.NotSet'.tr() : _host),
       ],
       trailing: const ArrPilotIconButton.arrow(),
       onTap: () async {

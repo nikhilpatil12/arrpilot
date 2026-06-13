@@ -16,7 +16,7 @@ class TautulliDialogs {
 
     await ArrPilotDialog.dialog(
       context: context,
-      title: 'lunasea.Settings'.tr(),
+      title: 'arrpilot.Settings'.tr(),
       content: List.generate(
         TautulliGlobalSettingsType.values.length,
         (index) => ArrPilotDialog.tile(
