@@ -62,6 +62,6 @@ void _buildDebian() {
   ]);
   Process.runSync('mv', [
     'debian.deb',
-    'output/lunasea-linux-amd64.deb',
+    'output/arrpilot-linux-amd64.deb',
   ]);
 }
