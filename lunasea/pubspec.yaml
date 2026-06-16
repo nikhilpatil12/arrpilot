@@ -86,11 +86,11 @@ flutter_icons:
   android: true
   ios: true
   image_path: assets/icon/icon.png  # PLACEHOLDER: LunaSea icon
-  adaptive_icon_background: "#32323E"
+  adaptive_icon_background: "#1E2749"
   adaptive_icon_foreground: assets/icon/icon_adaptive.png  # PLACEHOLDER: LunaSea adaptive
 flutter_native_splash:
   image: assets/images/branding_full.png  # PLACEHOLDER: LunaSea splash logo
-  color: "#32323E"
+  color: "#1E2749"
 msix_config:
   architecture: x64
   capabilities: internetClientServer,privateNetworkClientServer

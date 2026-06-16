@@ -14,21 +14,21 @@ class ArrPilotColours {
     blueGrey,
   ];
 
-  /// Core accent colour
-  static const Color accent = Color(0xFF4ECCA3);
+  /// Core accent colour - Deep Cyan (ArrPilot brand)
+  static const Color accent = Color(0xFF00B4D8);
 
-  /// Core primary colour (background)
-  static const Color primary = Color(0xFF32323E);
+  /// Core primary colour (background) - Deep Navy Blue
+  static const Color primary = Color(0xFF1E2749);
 
-  /// Core secondary colour (appbar, bottom bar, etc.),
-  static const Color secondary = Color(0xFF282834);
+  /// Core secondary colour (appbar, bottom bar, etc.) - Darker Navy
+  static const Color secondary = Color(0xFF0D1B2A);
 
-  static const Color blue = Color(0xFF00A8E8);
-  static const Color blueGrey = Color(0xFF848FA5);
+  static const Color blue = Color(0xFF0077B6);
+  static const Color blueGrey = Color(0xFF778DA9);
   static const Color grey = Color(0xFFBBBBBB);
-  static const Color orange = Color(0xFFFF9000);
-  static const Color purple = Color(0xFF9649CB);
-  static const Color red = Color(0xFFF71735);
+  static const Color orange = Color(0xFFFCA311);
+  static const Color purple = Color(0xFF7209B7);
+  static const Color red = Color(0xFFD00000);
 
   /// Shades of White
   static const Color white = Color(0xFFFFFFFF);
