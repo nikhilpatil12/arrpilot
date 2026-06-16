@@ -3,122 +3,137 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ArrPilotTextStyle {
   static TextStyle bodySmall() {
-    return GoogleFonts.robotoFlex(
-      height: 1.33, // md.sys.typescale.body-small.line-height
-      fontSize: 12.0, // md.sys.typescale.body-small.size
-      fontWeight: FontWeight.w400, // md.sys.typescale.body-small.weight
+    return GoogleFonts.inter(
+      height: 1.40,
+      fontSize: 12.0,
+      fontWeight: FontWeight.w400,
+      letterSpacing: 0.2,
     );
   }
 
   static TextStyle bodyMedium() {
-    return GoogleFonts.robotoFlex(
-      height: 1.43, // md.sys.typescale.body-medium.line-height
-      fontSize: 14.0, // md.sys.typescale.body-medium.size
-      fontWeight: FontWeight.w400, // md.sys.typescale.body-medium.weight
+    return GoogleFonts.inter(
+      height: 1.50,
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
+      letterSpacing: 0.15,
     );
   }
 
   static TextStyle bodyLarge() {
-    return GoogleFonts.robotoFlex(
-      height: 1.50, // md.sys.typescale.body-large.line-height
-      fontSize: 16.0, // md.sys.typescale.body-large.size
-      fontWeight: FontWeight.w400, // md.sys.typescale.body-large.weight
+    return GoogleFonts.inter(
+      height: 1.55,
+      fontSize: 16.0,
+      fontWeight: FontWeight.w400,
+      letterSpacing: 0.1,
     );
   }
 
   static TextStyle displaySmall() {
-    return GoogleFonts.robotoFlex(
-      height: 1.22, // md.sys.typescale.display-small.line-height
-      fontSize: 36.0, // md.sys.typescale.display-small.size
-      fontWeight: FontWeight.w400, // md.sys.typescale.display-small.weight
+    return GoogleFonts.inter(
+      height: 1.25,
+      fontSize: 36.0,
+      fontWeight: FontWeight.w600,
+      letterSpacing: -0.5,
     );
   }
 
   static TextStyle displayMedium() {
-    return GoogleFonts.robotoFlex(
-      height: 1.56, // md.sys.typescale.display-medium.line-height
-      fontSize: 45.0, // md.sys.typescale.display-medium.size
-      fontWeight: FontWeight.w400, // md.sys.typescale.display-medium.weight
+    return GoogleFonts.inter(
+      height: 1.28,
+      fontSize: 45.0,
+      fontWeight: FontWeight.w600,
+      letterSpacing: -0.5,
     );
   }
 
   static TextStyle displayLarge() {
-    return GoogleFonts.robotoFlex(
-      height: 1.23, // md.sys.typescale.display-large.line-height
-      fontSize: 57.0, // md.sys.typescale.display-large.size
-      fontWeight: FontWeight.w400, // md.sys.typescale.display-large.weight
+    return GoogleFonts.inter(
+      height: 1.25,
+      fontSize: 57.0,
+      fontWeight: FontWeight.w700,
+      letterSpacing: -1.0,
     );
   }
 
   static TextStyle headlineSmall() {
-    return GoogleFonts.robotoFlex(
-      height: 1.25, // md.sys.typescale.headline-small.line-height
-      fontSize: 32.0, // md.sys.typescale.headline-small.size
-      fontWeight: FontWeight.w400, // md.sys.typescale.headline-small.weight
+    return GoogleFonts.inter(
+      height: 1.30,
+      fontSize: 32.0,
+      fontWeight: FontWeight.w600,
+      letterSpacing: -0.25,
     );
   }
 
   static TextStyle headlineMedium() {
-    return GoogleFonts.robotoFlex(
-      height: 1.29, // md.sys.typescale.headline-medium.line-height
-      fontSize: 28.0, // md.sys.typescale.headline-medium.size
-      fontWeight: FontWeight.w400, // md.sys.typescale.headline-medium.weight
+    return GoogleFonts.inter(
+      height: 1.32,
+      fontSize: 28.0,
+      fontWeight: FontWeight.w600,
+      letterSpacing: -0.25,
     );
   }
 
   static TextStyle headlineLarge() {
-    return GoogleFonts.robotoFlex(
-      height: 1.33, // md.sys.typescale.headline-large.line-height
-      fontSize: 24.0, // md.sys.typescale.headline-large.size
-      fontWeight: FontWeight.w400, // md.sys.typescale.headline-large.weight
+    return GoogleFonts.inter(
+      height: 1.35,
+      fontSize: 24.0,
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0,
     );
   }
 
   static TextStyle labelSmall() {
-    return GoogleFonts.robotoFlex(
-      height: 1.45, // md.sys.typescale.label-small.line-height
-      fontSize: 11.0, // md.sys.typescale.label-small.size
-      fontWeight: FontWeight.w500, // md.sys.typescale.label-small.weight
+    return GoogleFonts.inter(
+      height: 1.50,
+      fontSize: 11.0,
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.5,
     );
   }
 
   static TextStyle labelMedium() {
-    return GoogleFonts.robotoFlex(
-      height: 1.33, // md.sys.typescale.label-medium.line-height
-      fontSize: 12.0, // md.sys.typescale.label-medium.size
-      fontWeight: FontWeight.w500, // md.sys.typescale.label-medium.weight
+    return GoogleFonts.inter(
+      height: 1.40,
+      fontSize: 12.0,
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.4,
     );
   }
 
   static TextStyle labelLarge() {
-    return GoogleFonts.robotoFlex(
-      height: 1.43, // md.sys.typescale.label-large.line-height
-      fontSize: 14.0, // md.sys.typescale.label-large.size
-      fontWeight: FontWeight.w500, // md.sys.typescale.label-large.weight
+    return GoogleFonts.inter(
+      height: 1.45,
+      fontSize: 14.0,
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.3,
     );
   }
 
   static TextStyle titleSmall() {
-    return GoogleFonts.robotoFlex(
-      height: 1.43, // md.sys.typescale.title-small.line-height
-      fontSize: 14.0, // md.sys.typescale.title-small.size
-      fontWeight: FontWeight.w500, // md.sys.typescale.title-small.weight
+    return GoogleFonts.inter(
+      height: 1.45,
+      fontSize: 14.0,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 0.1,
     );
   }
 
   static TextStyle titleMedium() {
-    return GoogleFonts.robotoFlex(
-      height: 1.50, // md.sys.typescale.title-medium.line-height
-      fontSize: 16.0, // md.sys.typescale.title-medium.size
-      fontWeight: FontWeight.w500, // md.sys.typescale.title-medium.weight
+    return GoogleFonts.inter(
+      height: 1.50,
+      fontSize: 16.0,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 0.1,
     );
   }
 
   static TextStyle titleLarge() {
-    return GoogleFonts.robotoFlex(
-      height: 1.27, // md.sys.typescale.title-large.line-height
-      fontSize: 22.0, // md.sys.typescale.title-large.size
-      fontWeight: FontWeight.w400, // md.sys.typescale.title-large.weight
+    return GoogleFonts.inter(
+      height: 1.30,
+      fontSize: 22.0,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 0,
     );
   }
 }

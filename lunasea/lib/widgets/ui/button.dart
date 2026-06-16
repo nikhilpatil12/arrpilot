@@ -10,9 +10,9 @@ enum ArrPilotButtonType {
   LOADER,
 }
 
-/// A Luna-styled button.
+/// An ArrPilot-styled button.
 class ArrPilotButton extends Card {
-  static const DEFAULT_HEIGHT = 46.0;
+  static const DEFAULT_HEIGHT = 48.0;
 
   ArrPilotButton._({
     Key? key,

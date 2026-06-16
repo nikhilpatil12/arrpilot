@@ -69,25 +69,25 @@ class ArrPilotUI {
   static const double FONT_SIZE_TITLE = FONT_SIZE_H2;
 
   // <--> Icons
-  static const double ICON_SIZE = 24.0;
+  static const double ICON_SIZE = 22.0;
 
-  // <--> Animations
-  static const int ANIMATION_SPEED = 250;
+  // <--> Animations (Snappier, more responsive feel)
+  static const int ANIMATION_SPEED = 200;
   static const int ANIMATION_SPEED_IMAGES = ANIMATION_SPEED ~/ 2;
   static const int ANIMATION_SPEED_SCROLLING = ANIMATION_SPEED * 2;
-  static const int ANIMATION_SPEED_SHIMMER = ANIMATION_SPEED * 4;
+  static const int ANIMATION_SPEED_SHIMMER = ANIMATION_SPEED * 3;
 
   // <--> Other
-  static const double BORDER_RADIUS = 10.0;
-  static const double OPACITY_DIMMED = 0.75;
-  static const double OPACITY_DISABLED = 0.50;
-  static const double OPACITY_SPLASH = 0.25;
-  static const double OPACITY_SELECTED = 0.35;
+  static const double BORDER_RADIUS = 12.0;
+  static const double OPACITY_DIMMED = 0.70;
+  static const double OPACITY_DISABLED = 0.45;
+  static const double OPACITY_SPLASH = 0.20;
+  static const double OPACITY_SELECTED = 0.30;
   static const double ELEVATION = 0.0;
   static const FontWeight FONT_WEIGHT_BOLD = FontWeight.w600;
 
-  // <--> Margins
-  static const double DEFAULT_MARGIN_SIZE = 12.0;
+  // <--> Margins (Slightly more spacious)
+  static const double DEFAULT_MARGIN_SIZE = 14.0;
   static const double MARGIN_SIZE_HALF = DEFAULT_MARGIN_SIZE / 2;
 
   static const EdgeInsets MARGIN_DEFAULT = EdgeInsets.all(DEFAULT_MARGIN_SIZE);
