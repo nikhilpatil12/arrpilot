@@ -23,7 +23,7 @@ const MODULE_DASHBOARD_KEY = 'dashboard';
 const MODULE_EXTERNAL_MODULES_KEY = 'external_modules';
 const MODULE_LIDARR_KEY = 'lidarr';
 const MODULE_NZBGET_KEY = 'nzbget';
-const MODULE_OVERSEERR_KEY = 'overseerr';
+const MODULE_SEERR_KEY = 'seerr';
 const MODULE_RADARR_KEY = 'radarr';
 const MODULE_SABNZBD_KEY = 'sabnzbd';
 const MODULE_SEARCH_KEY = 'search';
@@ -43,7 +43,7 @@ enum ArrPilotModule {
   @HiveField(2)
   NZBGET(MODULE_NZBGET_KEY),
   @HiveField(3)
-  OVERSEERR(MODULE_OVERSEERR_KEY),
+  SEERR(MODULE_SEERR_KEY),
   @HiveField(4)
   RADARR(MODULE_RADARR_KEY),
   @HiveField(5)
@@ -80,8 +80,8 @@ enum ArrPilotModule {
         return ArrPilotModule.SETTINGS;
       case MODULE_SONARR_KEY:
         return ArrPilotModule.SONARR;
-      case MODULE_OVERSEERR_KEY:
-        return ArrPilotModule.OVERSEERR;
+      case MODULE_SEERR_KEY:
+        return ArrPilotModule.SEERR;
       case MODULE_TAUTULLI_KEY:
         return ArrPilotModule.TAUTULLI;
       case MODULE_WAKE_ON_LAN_KEY:
@@ -104,8 +104,8 @@ enum ArrPilotModule {
 extension ArrPilotModuleEnablementExtension on ArrPilotModule {
   bool get featureFlag {
     switch (this) {
-      case ArrPilotModule.OVERSEERR:
-        return false;
+      case ArrPilotModule.SEERR:
+        return true;
       case ArrPilotModule.WAKE_ON_LAN:
         return ArrPilotWakeOnLAN.isSupported;
       default:
@@ -123,8 +123,8 @@ extension ArrPilotModuleEnablementExtension on ArrPilotModule {
         return ArrPilotProfile.current.lidarrEnabled;
       case ArrPilotModule.NZBGET:
         return ArrPilotProfile.current.nzbgetEnabled;
-      case ArrPilotModule.OVERSEERR:
-        return ArrPilotProfile.current.overseerrEnabled;
+      case ArrPilotModule.SEERR:
+        return ArrPilotProfile.current.seerrEnabled;
       case ArrPilotModule.RADARR:
         return ArrPilotProfile.current.radarrEnabled;
       case ArrPilotModule.SABNZBD:
@@ -164,8 +164,8 @@ extension ArrPilotModuleMetadataExtension on ArrPilotModule {
         return 'Sonarr';
       case ArrPilotModule.TAUTULLI:
         return 'Tautulli';
-      case ArrPilotModule.OVERSEERR:
-        return 'Overseerr';
+      case ArrPilotModule.SEERR:
+        return 'Seerr';
       case ArrPilotModule.WAKE_ON_LAN:
         return 'Wake on LAN';
       case ArrPilotModule.EXTERNAL_MODULES:
@@ -193,8 +193,8 @@ extension ArrPilotModuleMetadataExtension on ArrPilotModule {
         return ArrPilotIcons.SONARR;
       case ArrPilotModule.TAUTULLI:
         return ArrPilotIcons.TAUTULLI;
-      case ArrPilotModule.OVERSEERR:
-        return ArrPilotIcons.OVERSEERR;
+      case ArrPilotModule.SEERR:
+        return ArrPilotIcons.SEERR;
       case ArrPilotModule.WAKE_ON_LAN:
         return Icons.settings_remote_rounded;
       case ArrPilotModule.EXTERNAL_MODULES:
@@ -222,7 +222,7 @@ extension ArrPilotModuleMetadataExtension on ArrPilotModule {
         return const Color(0xFF3FC6F4);
       case ArrPilotModule.TAUTULLI:
         return const Color(0xFFDBA23A);
-      case ArrPilotModule.OVERSEERR:
+      case ArrPilotModule.SEERR:
         return const Color(0xFF6366F1);
       case ArrPilotModule.WAKE_ON_LAN:
         return ArrPilotColours.accent;
@@ -251,8 +251,8 @@ extension ArrPilotModuleMetadataExtension on ArrPilotModule {
         return 'https://sonarr.tv';
       case ArrPilotModule.TAUTULLI:
         return 'https://tautulli.com';
-      case ArrPilotModule.OVERSEERR:
-        return 'https://overseerr.dev';
+      case ArrPilotModule.SEERR:
+        return 'https://seerr.dev';
       case ArrPilotModule.WAKE_ON_LAN:
         return null;
       case ArrPilotModule.EXTERNAL_MODULES:
@@ -280,8 +280,8 @@ extension ArrPilotModuleMetadataExtension on ArrPilotModule {
         return 'https://github.com/Sonarr/Sonarr';
       case ArrPilotModule.TAUTULLI:
         return 'https://github.com/Tautulli/Tautulli';
-      case ArrPilotModule.OVERSEERR:
-        return 'https://github.com/sct/overseerr';
+      case ArrPilotModule.SEERR:
+        return 'https://github.com/seerr/seerr';
       case ArrPilotModule.WAKE_ON_LAN:
         return null;
       case ArrPilotModule.EXTERNAL_MODULES:
@@ -309,8 +309,8 @@ extension ArrPilotModuleMetadataExtension on ArrPilotModule {
         return 'Manage Television Series';
       case ArrPilotModule.TAUTULLI:
         return 'View Plex Activity';
-      case ArrPilotModule.OVERSEERR:
-        return 'Manage Requests for New Content';
+      case ArrPilotModule.SEERR:
+        return 'Manage Media Requests';
       case ArrPilotModule.WAKE_ON_LAN:
         return 'Wake Your Machine';
       case ArrPilotModule.EXTERNAL_MODULES:
@@ -338,8 +338,8 @@ extension ArrPilotModuleMetadataExtension on ArrPilotModule {
         return 'Sonarr is a PVR for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new episodes of your favorite shows and will grab, sort and rename them. It can also be configured to automatically upgrade the quality of files already downloaded when a better quality format becomes available.';
       case ArrPilotModule.TAUTULLI:
         return 'Tautulli is an application that you can run alongside your Plex Media Server to monitor activity and track various statistics. Most importantly, these statistics include what has been watched, who watched it, when and where they watched it, and how it was watched.';
-      case ArrPilotModule.OVERSEERR:
-        return 'Overseerr is a free and open source software application for managing requests for your media library. It integrates with your existing services, such as Sonarr, Radarr, and Plex!';
+      case ArrPilotModule.SEERR:
+        return 'Seerr is a free and open source media request management tool. It integrates with your existing services like Sonarr, Radarr, Plex, Jellyfin, and Emby to streamline content requests from your users.';
       case ArrPilotModule.WAKE_ON_LAN:
         return 'Wake on LAN is an industry standard protocol for waking computers up from a very low power mode remotely by sending a specially constructed packet to the machine.';
       case ArrPilotModule.EXTERNAL_MODULES:
@@ -369,8 +369,8 @@ extension ArrPilotModuleRoutingExtension on ArrPilotModule {
         return ArrPilotRoutes.sonarr.root.path;
       case ArrPilotModule.TAUTULLI:
         return ArrPilotRoutes.tautulli.root.path;
-      case ArrPilotModule.OVERSEERR:
-        return null;
+      case ArrPilotModule.SEERR:
+        return null; // Will be updated when routes are created
       case ArrPilotModule.WAKE_ON_LAN:
         return null;
       case ArrPilotModule.EXTERNAL_MODULES:
@@ -386,8 +386,8 @@ extension ArrPilotModuleRoutingExtension on ArrPilotModule {
         return SettingsRoutes.CONFIGURATION_LIDARR;
       case ArrPilotModule.NZBGET:
         return SettingsRoutes.CONFIGURATION_NZBGET;
-      case ArrPilotModule.OVERSEERR:
-        return null;
+      case ArrPilotModule.SEERR:
+        return null; // Will be updated when settings route is created
       case ArrPilotModule.RADARR:
         return SettingsRoutes.CONFIGURATION_RADARR;
       case ArrPilotModule.SABNZBD:
@@ -423,7 +423,7 @@ extension ArrPilotModuleWebhookExtension on ArrPilotModule {
         return true;
       case ArrPilotModule.SONARR:
         return true;
-      case ArrPilotModule.OVERSEERR:
+      case ArrPilotModule.SEERR:
         return true;
       case ArrPilotModule.TAUTULLI:
         return true;
@@ -442,8 +442,8 @@ extension ArrPilotModuleWebhookExtension on ArrPilotModule {
         return 'https://docs.lunasea.app/lunasea/notifications/radarr';
       case ArrPilotModule.SONARR:
         return 'https://docs.lunasea.app/lunasea/notifications/sonarr';
-      case ArrPilotModule.OVERSEERR:
-        return 'https://docs.lunasea.app/lunasea/notifications/overseerr';
+      case ArrPilotModule.SEERR:
+        return 'https://docs.lunasea.app/lunasea/notifications/overseerr'; // TODO: Update when Seerr docs are available
       case ArrPilotModule.TAUTULLI:
         return 'https://docs.lunasea.app/lunasea/notifications/tautulli';
       default:
@@ -495,8 +495,8 @@ extension ArrPilotModuleExtension on ArrPilotModule {
         return context.read<NZBGetState>();
       case ArrPilotModule.SABNZBD:
         return context.read<SABnzbdState>();
-      case ArrPilotModule.OVERSEERR:
-        return null;
+      case ArrPilotModule.SEERR:
+        return null; // Will be updated when SeerrState is created
       case ArrPilotModule.TAUTULLI:
         return context.read<TautulliState>();
       case ArrPilotModule.EXTERNAL_MODULES:

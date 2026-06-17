@@ -135,19 +135,19 @@ class ArrPilotProfile extends HiveObject {
 
   @JsonKey()
   @HiveField(40, defaultValue: false)
-  bool overseerrEnabled;
+  bool seerrEnabled;
 
   @JsonKey()
   @HiveField(41, defaultValue: '')
-  String overseerrHost;
+  String seerrHost;
 
   @JsonKey()
   @HiveField(42, defaultValue: '')
-  String overseerrKey;
+  String seerrKey;
 
   @JsonKey()
   @HiveField(43, defaultValue: <String, String>{})
-  Map<String, String> overseerrHeaders;
+  Map<String, String> seerrHeaders;
 
   ArrPilotProfile._internal({
     //Lidarr
@@ -185,11 +185,11 @@ class ArrPilotProfile extends HiveObject {
     required this.tautulliHost,
     required this.tautulliKey,
     required this.tautulliHeaders,
-    //Overseerr
-    required this.overseerrEnabled,
-    required this.overseerrHost,
-    required this.overseerrKey,
-    required this.overseerrHeaders,
+    //Seerr
+    required this.seerrEnabled,
+    required this.seerrHost,
+    required this.seerrKey,
+    required this.seerrHeaders,
   });
 
   factory ArrPilotProfile({
@@ -228,11 +228,11 @@ class ArrPilotProfile extends HiveObject {
     String? tautulliHost,
     String? tautulliKey,
     Map<String, String>? tautulliHeaders,
-    //Overseerr
-    bool? overseerrEnabled,
-    String? overseerrHost,
-    String? overseerrKey,
-    Map<String, String>? overseerrHeaders,
+    //Seerr
+    bool? seerrEnabled,
+    String? seerrHost,
+    String? seerrKey,
+    Map<String, String>? seerrHeaders,
   }) {
     return ArrPilotProfile._internal(
       // Lidarr
@@ -270,11 +270,11 @@ class ArrPilotProfile extends HiveObject {
       tautulliHost: tautulliHost ?? '',
       tautulliKey: tautulliKey ?? '',
       tautulliHeaders: tautulliHeaders ?? {},
-      // Overseerr
-      overseerrEnabled: overseerrEnabled ?? false,
-      overseerrHost: overseerrHost ?? '',
-      overseerrKey: overseerrKey ?? '',
-      overseerrHeaders: overseerrHeaders ?? {},
+      // Seerr
+      seerrEnabled: seerrEnabled ?? false,
+      seerrHost: seerrHost ?? '',
+      seerrKey: seerrKey ?? '',
+      seerrHeaders: seerrHeaders ?? {},
     );
   }
 

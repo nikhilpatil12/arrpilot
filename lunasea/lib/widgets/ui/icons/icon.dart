@@ -69,7 +69,7 @@ class ArrPilotIcons {
   static const IconData LIDARR = IconData(0xe805, fontFamily: _fontFamily);
   static const IconData MUSICBRAINZ = IconData(0xe809, fontFamily: _fontFamily);
   static const IconData NZBGET = IconData(0xe807, fontFamily: _fontFamily);
-  static const IconData OVERSEERR = IconData(0xe808, fontFamily: _fontFamily);
+  static const IconData SEERR = IconData(0xe808, fontFamily: _fontFamily);
   static const IconData RADARR = IconData(0xe80a, fontFamily: _fontFamily);
   static const IconData SABNZBD = IconData(0xe80c, fontFamily: _fontFamily);
   static const IconData SONARR = IconData(0xe80e, fontFamily: _fontFamily);

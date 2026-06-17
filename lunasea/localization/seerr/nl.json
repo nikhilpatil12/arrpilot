@@ -1,0 +1,10 @@
+{
+    "seerr.NoRequests": "Geen Verzoeken",
+    "seerr.OneRequest": "1 Verzoek",
+    "seerr.Requests": "Verzoeken",
+    "seerr.NoRequestsFound": "Geen Verzoeken Gevonden",
+    "seerr.NoUsersFound": "Geen Gebruikers Gevonden",
+    "seerr.UnknownUser": "Onbekende Gebruiker",
+    "seerr.Users": "Gebruikers",
+    "seerr.SomeRequests": "{} Verzoeken"
+}
